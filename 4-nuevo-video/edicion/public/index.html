@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=720, height=1280" />
+    <title>Nuevo video — subtítulos y zooms</title>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-400-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-700-latin.woff2") format("woff2");
+        font-weight: 700;
+        font-display: block;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      /* Wrapper sin timing: la cámara digital. Origen a la altura del rostro
+         para que ningún zoom (máx. 1.12) recorte la cara. */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 36%;
+      }
+      #a-roll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── Subtítulos: blanco puro, sobrios ── */
+      #captions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 872px;
+        height: 140px;
+      }
+      .cap {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px 11px;
+        opacity: 0;
+      }
+      .w {
+        display: block;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1.2;
+        letter-spacing: -0.4px;
+        opacity: 0.42;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.55),
+          0 3px 16px rgba(0, 0, 0, 0.45);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="nuevo"
+      data-start="0"
+      data-duration="26.75"
+      data-fps="24"
+      data-width="720"
+      data-height="1280"
+    >
+      <div id="cam">
+        <video
+          id="a-roll"
+          class="clip"
+          src="ugc-cortado.mp4"
+          playsinline
+          data-has-audio="true"
+          data-start="0"
+          data-duration="26.75"
+          data-track-index="0"
+        ></video>
+      </div>
+
+      <div id="captions"></div>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        const FPS = 24;
+        const q = (t) => Math.round(t * FPS) / FPS;
+        const EASE = "sine.inOut";
+        const tl = gsap.timeline({ paused: true });
+
+        // ── Cámara ──
+        // Un bloque por tramo del video unido (edicion/segmentos.json).
+        // base: escala al entrar al tramo. Dentro del mismo clip, tramos seguidos
+        // alternan escala (≥7 %) para que el salto de corte se lea como cambio de plano.
+        // moves: [inicio, fin, escala] — push-ins suaves sobre las palabras clave.
+        const SHOTS = [
+          { t: 0.0, base: 1.0, moves: [[2.2, 3.2, 1.05]] }, //              clip 1 — "…anuncios hiperrealistas"
+          { t: 4.0417, base: 1.12, moves: [] }, //                          "con el sistema de Avatar Ads"
+          { t: 5.5417, base: 1.0, moves: [[5.6, 6.1, 1.03]] }, //           clip 2 — "Mírame,"
+          { t: 6.125, base: 1.11, moves: [] }, //                           "es muy difícil que alguien note"
+          { t: 7.875, base: 1.0, moves: [[8.3, 9.5, 1.05]] }, //            "que soy 100% inteligencia artificial"
+          { t: 10.0833, base: 1.12, moves: [] }, //                         "¿verdad?"
+          { t: 10.6667, base: 1.0, moves: [] }, //                          clip 3 — "Me veo natural,"
+          { t: 11.6667, base: 1.08, moves: [] }, //                         "me muevo natural"
+          { t: 12.875, base: 1.0, moves: [[13.0, 14.3, 1.03]] }, //         "y hablo de forma natural"
+          { t: 14.3333, base: 1.0, moves: [[14.4, 16.0, 1.05]] }, //        clip 4 — "¿Y sabes cuál es la mejor parte?"
+          { t: 16.0833, base: 1.12, moves: [] }, //                         "Costé 0 dólares en crear"
+          { t: 18.5417, base: 1.0, moves: [[22.9, 24.0, 1.05]] }, //        clip 5 — "…estos anuncios hiperrealistas"
+          { t: 24.0833, base: 1.12, moves: [] }, //                         "para promocionar tus productos y servicios"
+        ];
+        SHOTS.forEach((s) => {
+          tl.set("#cam", { scale: s.base }, q(s.t));
+          let from = s.base;
+          s.moves.forEach(([a, b, sc]) => {
+            tl.fromTo("#cam", { scale: from }, { scale: sc, duration: q(b) - q(a), ease: EASE, immediateRender: false }, q(a));
+            from = sc;
+          });
+        });
+
+        // ── Subtítulos (tiempos de edicion/transcript.json, texto corregido) ──
+        const W = (t, s, e) => ({ t, s, e });
+        const GROUPS = [
+          [W("Es", 0.0, 0.32), W("increíble", 0.32, 0.88)],
+          [W("la", 1.04, 1.2), W("calidad", 1.2, 1.6), W("de", 1.6, 1.76), W("anuncios", 1.76, 2.24)],
+          [W("hiperrealistas", 2.24, 3.2)],
+          [W("que", 3.2, 3.36), W("puedes", 3.36, 3.68), W("crear", 3.68, 4.08)],
+          [W("con", 4.08, 4.24), W("el", 4.24, 4.32), W("sistema", 4.32, 4.56)],
+          [W("de", 4.56, 4.72), W("Avatar", 4.72, 5.16), W("Ads.", 5.16, 5.6)],
+          [W("Mírame,", 5.68, 6.24)],
+          [W("es", 6.24, 6.4), W("muy", 6.4, 6.56), W("difícil", 6.56, 6.88)],
+          [W("que", 6.88, 7.12), W("alguien", 7.12, 7.44), W("note", 7.44, 7.68)],
+          [W("que", 7.92, 8.08), W("soy", 8.08, 8.32), W("100%", 8.32, 8.72)],
+          [W("inteligencia", 8.96, 9.52), W("artificial,", 9.52, 10.16)],
+          [W("¿verdad?", 10.16, 10.64)],
+          [W("Me", 10.64, 10.88), W("veo", 10.88, 11.2), W("natural,", 11.2, 11.76)],
+          [W("me", 11.76, 11.92), W("muevo", 11.92, 12.4), W("natural", 12.4, 12.8)],
+          [W("y", 12.96, 13.12), W("hablo", 13.12, 13.44), W("de", 13.44, 13.6), W("forma", 13.6, 13.84), W("natural.", 13.84, 14.32)],
+          [W("¿Y", 14.32, 14.48), W("sabes", 14.48, 14.88), W("cuál", 14.88, 15.12), W("es", 15.12, 15.2)],
+          [W("la", 15.2, 15.28), W("mejor", 15.28, 15.6), W("parte?", 15.6, 16.0)],
+          [W("Costé", 16.24, 16.8), W("0", 16.8, 17.12), W("dólares", 17.28, 17.76)],
+          [W("en", 17.76, 18.0), W("crear.", 18.0, 18.56)],
+          [W("Dentro", 18.56, 18.8), W("de", 18.8, 18.96), W("Avatar", 18.96, 19.48), W("Ads,", 19.48, 20.0)],
+          [W("te", 20.4, 20.56), W("enseñamos", 20.56, 21.2)],
+          [W("cómo", 21.2, 21.6), W("hacer", 21.6, 21.92), W("estos", 21.92, 22.4), W("anuncios", 22.4, 22.96)],
+          [W("hiperrealistas", 22.96, 24.08)],
+          [W("para", 24.16, 24.4), W("promocionar", 24.4, 25.04)],
+          [W("tus", 25.04, 25.28), W("productos", 25.28, 25.76), W("y", 25.76, 26.0), W("servicios.", 26.0, 26.64)],
+        ];
+        const host = document.getElementById("captions");
+        GROUPS.forEach((g, gi) => {
+          const el = document.createElement("div");
+          el.className = "cap";
+          el.id = "cap-" + gi;
+          const spans = g.map((w, wi) => {
+            const s = document.createElement("span");
+            s.className = "w";
+            s.id = "cap-" + gi + "-" + wi;
+            s.textContent = w.t;
+            el.appendChild(s);
+            return s;
+          });
+          host.appendChild(el);
+
+          const next = GROUPS[gi + 1];
+          const tin = q(Math.max(0, g[0].s - 0.06));
+          const last = g[g.length - 1].e;
+          let tout = next ? Math.min(next[0].s - 0.06, last + 0.35) : 26.75;
+          tout = q(Math.max(tout, tin + 0.5));
+
+          tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, tin);
+          g.forEach((w, wi) => {
+            tl.fromTo(spans[wi], { opacity: 0.42 }, { opacity: 1, duration: 0.12, ease: "power1.out", immediateRender: false }, q(w.s));
+          });
+          if (next) {
+            tl.fromTo(el, { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "power1.in", immediateRender: false }, q(tout - 0.1));
+          }
+        });
+
+        window.__timelines["nuevo"] = tl;
+      })();
+    </script>
+  </body>
+</html>

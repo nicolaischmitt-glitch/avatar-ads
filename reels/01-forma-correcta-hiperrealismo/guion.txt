@@ -1,0 +1,8 @@
+Si tus videos con IA se ven falsos, es porque los estás creando así.
+Paso uno: le pides a ChatGPT una imagen desde cero. Paso dos: conviertes esa imagen en video.
+Ese es el problema: si la IA inventa todo desde cero, parece IA.
+Si quieres hiperrealismo, hazlo así. Paso uno: busca un video real de referencia que te guste.
+Fíjate en el ángulo, la luz, la postura y los objetos. Paso dos: haz captura de ese momento.
+Paso tres: usa ChatGPT solo para cambiar al personaje, sin tocar la escena.
+Paso cuatro: sube esa imagen a Google Flow y anímala con un prompt JSON estructurado. Así hice este video.
+Comenta PROMPT y te envío el prompt que uso para generar estos videos.

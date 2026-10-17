@@ -1,0 +1,74 @@
+[
+  {
+    "id": "w0",
+    "text": "¿Y",
+    "start": 0.32,
+    "end": 0.64
+  },
+  {
+    "id": "w1",
+    "text": "sabes",
+    "start": 0.8,
+    "end": 1.28
+  },
+  {
+    "id": "w2",
+    "text": "cuál",
+    "start": 1.28,
+    "end": 1.6
+  },
+  {
+    "id": "w3",
+    "text": "es",
+    "start": 1.6,
+    "end": 1.68
+  },
+  {
+    "id": "w4",
+    "text": "la",
+    "start": 1.68,
+    "end": 1.76
+  },
+  {
+    "id": "w5",
+    "text": "mejor",
+    "start": 1.76,
+    "end": 2
+  },
+  {
+    "id": "w6",
+    "text": "parte?",
+    "start": 2.24,
+    "end": 2.8
+  },
+  {
+    "id": "w7",
+    "text": "Custe",
+    "start": 3.12,
+    "end": 3.6
+  },
+  {
+    "id": "w8",
+    "text": "0",
+    "start": 3.76,
+    "end": 4.08
+  },
+  {
+    "id": "w9",
+    "text": "dólares",
+    "start": 4.24,
+    "end": 4.8
+  },
+  {
+    "id": "w10",
+    "text": "en",
+    "start": 4.8,
+    "end": 5.04
+  },
+  {
+    "id": "w11",
+    "text": "crear.",
+    "start": 5.04,
+    "end": 5.84
+  }
+]

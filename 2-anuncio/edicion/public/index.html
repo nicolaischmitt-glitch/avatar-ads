@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=720, height=1280" />
+    <title>UGC Ad — subtítulos, música y SFX</title>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-400-latin.woff2") format("woff2");
+        font-weight: 400;
+        font-display: block;
+      }
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-700-latin.woff2") format("woff2");
+        font-weight: 700;
+        font-display: block;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      /* Wrapper sin timing: la cámara digital. Origen a la altura del rostro
+         para que ningún zoom (máx. 1.12) recorte la cara. */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 36%;
+      }
+      #a-roll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── Subtítulos: blanco puro, sobrios ── */
+      #captions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 872px;
+        height: 140px;
+      }
+      .cap {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px 11px;
+        opacity: 0;
+      }
+      .w {
+        display: block;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 44px;
+        line-height: 1.2;
+        letter-spacing: -0.4px;
+        opacity: 0.42;
+        text-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.55),
+          0 3px 16px rgba(0, 0, 0, 0.45);
+      }
+
+      /* ── Gráficos: monocromo, vidrio oscuro sobre el techo claro ── */
+      .gfx {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+      }
+      .glass {
+        background: rgba(12, 12, 14, 0.42);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 22px;
+        color: #ffffff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        text-align: center;
+      }
+      .eyebrow {
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        opacity: 0.82;
+      }
+
+      #precio {
+        top: 118px;
+      }
+      #precio .glass {
+        padding: 14px 40px 18px;
+      }
+      #precio .big {
+        font-weight: 700;
+        font-size: 80px;
+        line-height: 1;
+        letter-spacing: -2px;
+      }
+
+      #marca {
+        top: 124px;
+      }
+      #marca .glass {
+        padding: 18px 36px 22px;
+      }
+      #marca .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 8px;
+      }
+      #marca .name {
+        font-weight: 700;
+        font-size: 38px;
+        letter-spacing: 9px;
+        line-height: 1;
+        margin-right: -9px;
+      }
+      #marca .ver {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1;
+        padding: 6px 10px 7px;
+        border-radius: 9px;
+        border: 1.5px solid rgba(255, 255, 255, 0.9);
+      }
+      #marca .line {
+        height: 1.5px;
+        width: 100%;
+        margin-top: 16px;
+        background: rgba(255, 255, 255, 0.85);
+        transform-origin: 50% 50%;
+      }
+
+      #vivo {
+        top: 132px;
+        left: 36px;
+        right: auto;
+      }
+      #vivo .glass {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px 12px 18px;
+        border-radius: 999px;
+      }
+      #vivo .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #ffffff;
+      }
+      #vivo .lbl {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 3px;
+      }
+
+      #cupos {
+        top: 118px;
+      }
+      #cupos .glass {
+        padding: 14px 40px 18px;
+      }
+      #cupos .num {
+        font-weight: 700;
+        font-size: 92px;
+        line-height: 1;
+        letter-spacing: -2px;
+      }
+
+      #cta {
+        top: 1084px;
+      }
+      #cta .btn {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 20px 38px 21px;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #0b0b0c;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: -0.2px;
+        box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ugc"
+      data-start="0"
+      data-duration="40.125"
+      data-fps="24"
+      data-width="720"
+      data-height="1280"
+    >
+      <div id="cam">
+        <video
+          id="a-roll"
+          class="clip"
+          src="ugc-cortado.mp4"
+          playsinline
+          data-has-audio="true"
+          data-start="0"
+          data-duration="40.125"
+          data-track-index="0"
+        ></video>
+      </div>
+
+      <div id="captions"></div>
+
+      <div id="precio" class="gfx clip" data-start="15.85" data-duration="1.45" data-track-index="2">
+        <div class="glass" id="precio-card">
+          <div class="big">$1</div>
+          <div class="eyebrow">por segundo</div>
+        </div>
+      </div>
+
+      <div id="marca" class="gfx clip" data-start="18.75" data-duration="1.95" data-track-index="2">
+        <div class="glass" id="marca-card">
+          <div class="eyebrow">Taller en vivo</div>
+          <div class="row">
+            <div class="name">AVATAR ADS</div>
+            <div class="ver" id="marca-ver">1.0</div>
+          </div>
+          <div class="line" id="marca-line"></div>
+        </div>
+      </div>
+
+      <div id="vivo" class="gfx clip" data-start="21.35" data-duration="2.45" data-track-index="2">
+        <div class="glass" id="vivo-pill">
+          <div class="dot" id="vivo-dot"></div>
+          <div class="lbl">EN VIVO</div>
+        </div>
+      </div>
+
+      <div id="cupos" class="gfx clip" data-start="36.95" data-duration="1.5" data-track-index="2">
+        <div class="glass" id="cupos-card">
+          <div class="num" id="cupos-num">0</div>
+          <div class="eyebrow">puestos disponibles</div>
+        </div>
+      </div>
+
+      <div id="cta" class="gfx clip" data-start="38.45" data-duration="1.675" data-track-index="2">
+        <div class="btn" id="cta-btn"><span>Reserva tu puesto</span><span>→</span></div>
+      </div>
+
+      <!-- Música de fondo (Pixabay "Instrumental Minimal", ya editada y nivelada: scripts/musica.mjs) -->
+      <audio id="bgm" src="audio/bgm.wav" data-start="0" data-duration="40.125" data-volume="1" data-track-index="5"></audio>
+
+      <!-- Efectos de sonido (biblioteca Pixabay incluida en HyperFrames). Cada uno arranca
+           antes de su golpe para que el pico caiga sobre el corte o la animación. -->
+      <audio id="sfx-1" src="audio/sfx-whoosh-short.mp3" data-start="2.55" data-duration="0.57" data-volume="0.18" data-track-index="6"></audio>
+      <audio id="sfx-2" src="audio/sfx-whoosh-short.mp3" data-start="11.76" data-duration="0.57" data-volume="0.18" data-track-index="6"></audio>
+      <audio id="sfx-3" src="audio/sfx-pop.mp3" data-start="15.79" data-duration="0.72" data-volume="0.35" data-track-index="6"></audio>
+      <audio id="sfx-4" src="audio/sfx-impact-bass-1.mp3" data-start="18.75" data-duration="2.1" data-volume="0.07" data-track-index="6"></audio>
+      <audio id="sfx-5" src="audio/sfx-click-soft.mp3" data-start="21.4" data-duration="0.36" data-volume="0.5" data-track-index="6"></audio>
+      <audio id="sfx-6" src="audio/sfx-whoosh-short.mp3" data-start="27.42" data-duration="0.57" data-volume="0.18" data-track-index="6"></audio>
+      <audio id="sfx-7" src="audio/sfx-whoosh-short.mp3" data-start="33.21" data-duration="0.57" data-volume="0.18" data-track-index="6"></audio>
+      <audio id="sfx-8" src="audio/sfx-pop.mp3" data-start="36.93" data-duration="0.72" data-volume="0.35" data-track-index="6"></audio>
+      <audio id="sfx-9" src="audio/sfx-whoosh-short.mp3" data-start="38.3" data-duration="0.57" data-volume="0.2" data-track-index="6"></audio>
+      <audio id="sfx-10" src="audio/sfx-click-soft.mp3" data-start="39.35" data-duration="0.36" data-volume="0.5" data-track-index="6"></audio>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        const FPS = 24;
+        const q = (t) => Math.round(t * FPS) / FPS;
+        const EASE = "sine.inOut";
+        const tl = gsap.timeline({ paused: true });
+
+        // ── Cámara ──
+        // Un bloque por tramo del video unido (edicion-limpia/segmentos.json).
+        // base: escala al entrar al tramo. Dentro del mismo clip, tramos seguidos
+        // alternan escala para que el salto de corte se lea como cambio de plano.
+        // moves: [inicio, fin, escala] — push-ins suaves sobre palabras clave.
+        const SHOTS = [
+          { t: 0.0, base: 1.0, moves: [[0.0, 2.7, 1.03]] }, //                      clip 1 — "La creación de anuncios ha cambiado para siempre"
+          { t: 2.7083, base: 1.1, moves: [[4.15, 5.15, 1.12]] }, //                 "…quedarás atrás"
+          { t: 5.1667, base: 1.0, moves: [[7.45, 8.45, 1.06]] }, //                 clip 2 — "hiperrealistas"
+          { t: 10.25, base: 1.0, moves: [[11.2, 11.9, 1.04]] }, //                  clip 3 — "un gran problema"
+          { t: 11.9167, base: 1.12, moves: [[13.5, 14.5, 1.05], [16.0, 16.9, 1.1]] }, // "…Seedance" (abre) → "un dólar por segundo"
+          { t: 17.25, base: 1.0, moves: [[18.75, 20.0, 1.08]] }, //                 clip 4 — "Avatar Ads 1.0"
+          { t: 20.5833, base: 1.0, moves: [[21.3, 22.3, 1.04]] }, //                nuevo clip 5 — "Un taller 100% en vivo"
+          { t: 22.625, base: 1.11, moves: [] }, //                                  "donde te enseñamos el sistema paso a paso"
+          { t: 25.2917, base: 1.0, moves: [[26.5, 27.5, 1.04]] }, //                "para crear anuncios hiperrealistas"
+          { t: 27.5833, base: 1.12, moves: [] }, //                                 "por centavos"
+          { t: 28.4583, base: 1.0, moves: [[30.0, 31.1, 1.05]] }, //                nuevo clip 6 — "tan hiperrealistas"
+          { t: 33.375, base: 1.12, moves: [] }, //                                  "si es inteligencia artificial"
+          { t: 35.0, base: 1.0, moves: [] }, //                                     nuevo clip 7 — "Serán 3 días de taller"
+          { t: 36.4583, base: 1.08, moves: [[36.95, 37.75, 1.11]] }, //             "y solo 10 puestos disponibles"
+          { t: 38.4167, base: 1.0, moves: [[38.5, 39.95, 1.1]] }, //                CTA — "así que reserva tu puesto ya"
+        ];
+        SHOTS.forEach((s) => {
+          tl.set("#cam", { scale: s.base }, q(s.t));
+          let from = s.base;
+          s.moves.forEach(([a, b, sc]) => {
+            tl.fromTo("#cam", { scale: from }, { scale: sc, duration: q(b) - q(a), ease: EASE, immediateRender: false }, q(a));
+            from = sc;
+          });
+        });
+
+        // ── Subtítulos (tiempos de edicion-limpia/transcript.json, texto corregido) ──
+        const W = (t, s, e) => ({ t, s, e });
+        const GROUPS = [
+          [W("La", 0.0, 0.32), W("creación", 0.32, 0.64), W("de", 0.64, 0.72), W("anuncios", 0.72, 1.28)],
+          [W("ha", 1.28, 1.52), W("cambiado", 1.52, 2.0), W("para", 2.0, 2.24), W("siempre,", 2.24, 2.72)],
+          [W("y", 2.72, 2.88), W("si", 2.88, 3.04), W("no", 3.04, 3.2), W("te", 3.2, 3.36), W("actualizas,", 3.36, 4.16)],
+          [W("quedarás", 4.16, 4.72), W("atrás.", 4.72, 5.2)],
+          [W("Ahora", 5.2, 5.52), W("con", 5.52, 5.68), W("la", 5.68, 5.84), W("IA", 5.84, 6.32)],
+          [W("puedes", 6.32, 6.64), W("crear", 6.64, 6.96), W("anuncios", 6.96, 7.52)],
+          [W("hiperrealistas", 7.52, 8.48)],
+          [W("para", 8.48, 8.72), W("vender", 8.72, 9.04), W("tus", 9.04, 9.28), W("productos", 9.28, 9.68)],
+          [W("y", 9.68, 9.76), W("servicios.", 9.76, 10.32)],
+          [W("Pero", 10.32, 10.56), W("aún", 10.56, 10.8), W("existe", 10.8, 11.2)],
+          [W("un", 11.2, 11.28), W("gran", 11.28, 11.44), W("problema.", 11.44, 12.0)],
+          [W("La", 12.0, 12.16), W("mayoría", 12.16, 12.56), W("de", 12.56, 12.64), W("las", 12.64, 12.8)],
+          [W("herramientas,", 12.8, 13.36)],
+          [W("como", 13.52, 13.76), W("Seedance,", 13.76, 14.56)],
+          [W("cuestan", 14.56, 14.96), W("una", 14.96, 15.12), W("fortuna,", 15.12, 15.76)],
+          [W("hasta", 15.76, 16.0), W("un", 16.0, 16.16), W("dólar", 16.24, 16.56), W("por", 16.56, 16.72), W("segundo.", 16.72, 17.28)],
+          [W("Por", 17.28, 17.52), W("eso", 17.52, 17.68), W("hemos", 17.68, 17.92), W("creado", 17.92, 18.24)],
+          [W("el", 18.24, 18.32), W("taller", 18.32, 18.8), W("Avatar", 18.8, 19.2), W("Ads", 19.2, 19.6), W("1.0", 19.84, 20.72)],
+          [W("Un", 20.72, 20.88), W("taller", 20.88, 21.36), W("100%", 21.36, 21.92), W("en", 22.08, 22.24), W("vivo,", 22.24, 22.72)],
+          [W("donde", 22.72, 22.96), W("te", 22.96, 23.12), W("enseñamos", 23.12, 23.76)],
+          [W("el", 23.76, 24.0), W("sistema", 24.0, 24.32), W("paso", 24.48, 24.8), W("a", 24.8, 24.96), W("paso", 24.96, 25.28)],
+          [W("para", 25.36, 25.6), W("crear", 25.6, 25.92), W("anuncios", 25.92, 26.56)],
+          [W("hiperrealistas", 26.56, 27.6)],
+          [W("por", 27.6, 27.84), W("centavos.", 27.84, 28.56)],
+          [W("Aprenderás", 28.56, 29.12), W("a", 29.12, 29.2), W("crear", 29.28, 29.52), W("anuncios", 29.52, 30.0)],
+          [W("tan", 30.0, 30.24), W("hiperrealistas", 30.24, 31.12)],
+          [W("que", 31.2, 31.36), W("las", 31.36, 31.6), W("personas", 31.6, 31.92)],
+          [W("ni", 32.0, 32.16), W("siquiera", 32.16, 32.56), W("se", 32.56, 32.72), W("cuestionen", 32.72, 33.36)],
+          [W("si", 33.36, 33.52), W("es", 33.52, 33.76), W("inteligencia", 33.76, 34.32), W("artificial.", 34.32, 35.04)],
+          [W("Serán", 35.04, 35.44), W("3", 35.44, 35.68), W("días", 35.68, 35.92), W("de", 35.92, 36.08), W("taller", 36.08, 36.56)],
+          [W("y", 36.56, 36.72), W("solo", 36.72, 36.88), W("10", 37.04, 37.36), W("puestos", 37.36, 37.76)],
+          [W("disponibles,", 37.76, 38.48)],
+          [W("así", 38.48, 38.64), W("que", 38.64, 38.8), W("reserva", 38.8, 39.28)],
+          [W("tu", 39.28, 39.44), W("puesto", 39.44, 39.76), W("ya.", 39.76, 40.0)],
+        ];
+        const host = document.getElementById("captions");
+        GROUPS.forEach((g, gi) => {
+          const el = document.createElement("div");
+          el.className = "cap";
+          el.id = "cap-" + gi;
+          const spans = g.map((w, wi) => {
+            const s = document.createElement("span");
+            s.className = "w";
+            s.id = "cap-" + gi + "-" + wi;
+            s.textContent = w.t;
+            el.appendChild(s);
+            return s;
+          });
+          host.appendChild(el);
+
+          const next = GROUPS[gi + 1];
+          const tin = q(Math.max(0, g[0].s - 0.06));
+          const last = g[g.length - 1].e;
+          let tout = next ? Math.min(next[0].s - 0.06, last + 0.35) : 40.125;
+          tout = q(Math.max(tout, tin + 0.5));
+
+          tl.fromTo(el, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out", immediateRender: false }, tin);
+          g.forEach((w, wi) => {
+            tl.fromTo(spans[wi], { opacity: 0.42 }, { opacity: 1, duration: 0.12, ease: "power1.out", immediateRender: false }, q(w.s));
+          });
+          if (next) {
+            tl.fromTo(el, { opacity: 1 }, { opacity: 0, duration: 0.1, ease: "power1.in", immediateRender: false }, q(tout - 0.1));
+          }
+        });
+
+        // ── $1 por segundo ──
+        tl.fromTo("#precio-card", { opacity: 0, y: -12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, q(15.9));
+        tl.fromTo("#precio-card", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, q(17.08));
+
+        // ── Wordmark Avatar Ads 1.0 ──
+        tl.fromTo("#marca-card", { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, q(18.8));
+        tl.fromTo("#marca-line", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut", immediateRender: false }, q(19.0));
+        tl.fromTo("#marca-ver", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)", immediateRender: false }, q(19.84));
+        tl.fromTo("#marca-card", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, q(20.48));
+
+        // ── En vivo ──
+        tl.fromTo("#vivo-pill", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, q(21.4));
+        tl.fromTo("#vivo-dot", { opacity: 1 }, { opacity: 0.25, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, q(21.8));
+        tl.fromTo("#vivo-pill", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, q(23.58));
+
+        // ── 10 puestos ──
+        tl.fromTo("#cupos-card", { opacity: 0, y: -12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, q(36.98));
+        (function () {
+          const el = document.getElementById("cupos-num");
+          const o = { v: 0 };
+          tl.fromTo(o, { v: 0 }, { v: 10, duration: 0.45, ease: "power2.out", immediateRender: false, onUpdate: () => { el.textContent = String(Math.round(o.v)); } }, q(37.04));
+        })();
+        tl.fromTo("#cupos-card", { opacity: 1 }, { opacity: 0, duration: 0.2, ease: "power2.in", immediateRender: false }, q(38.23));
+
+        // ── CTA ──
+        tl.fromTo("#cta-btn", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, q(38.5));
+        tl.fromTo("#cta-btn", { scale: 1 }, { scale: 0.95, duration: 0.12, ease: "power2.in", immediateRender: false }, q(39.35));
+        tl.fromTo("#cta-btn", { scale: 0.95 }, { scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, q(39.47));
+
+        window.__timelines["ugc"] = tl;
+      })();
+    </script>
+  </body>
+</html>

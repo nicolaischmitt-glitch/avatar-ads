@@ -1,0 +1,68 @@
+[
+  {
+    "id": "w0",
+    "text": "Me",
+    "start": 0.64,
+    "end": 0.96
+  },
+  {
+    "id": "w1",
+    "text": "veo",
+    "start": 1.12,
+    "end": 1.6
+  },
+  {
+    "id": "w2",
+    "text": "natural,",
+    "start": 1.6,
+    "end": 2.32
+  },
+  {
+    "id": "w3",
+    "text": "me",
+    "start": 2.32,
+    "end": 2.56
+  },
+  {
+    "id": "w4",
+    "text": "muevo",
+    "start": 2.56,
+    "end": 3.12
+  },
+  {
+    "id": "w5",
+    "text": "natural,",
+    "start": 3.12,
+    "end": 4.16
+  },
+  {
+    "id": "w6",
+    "text": "y",
+    "start": 4.16,
+    "end": 4.4
+  },
+  {
+    "id": "w7",
+    "text": "hablo",
+    "start": 4.4,
+    "end": 4.8
+  },
+  {
+    "id": "w8",
+    "text": "de",
+    "start": 4.8,
+    "end": 4.96
+  },
+  {
+    "id": "w9",
+    "text": "forma",
+    "start": 4.96,
+    "end": 5.28
+  },
+  {
+    "id": "w10",
+    "text": "natural.",
+    "start": 5.28,
+    "end": 5.92
+  }
+]

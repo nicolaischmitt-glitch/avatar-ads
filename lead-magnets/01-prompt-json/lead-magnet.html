@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>El prompt JSON para videos UGC que no parecen IA · Avatar Ads 1.0</title>
+  <link rel="stylesheet" href="../_plantilla/base.css" />
+  <style>
+    .cover h1 { margin-top: 34px; font-size: 92px; }
+    .proof { margin-top: 44px !important; }
+    .cover .logo { height: 120px; }
+    .proof { display: flex; gap: 28px; margin-top: 60px; }
+    .proof figure { margin: 0; flex: 1; }
+    .proof img { width: 100%; height: 520px; object-fit: cover; border-radius: 26px; border: 1.5px solid var(--border); display: block; }
+    .proof figure.after img { border-color: var(--accent); box-shadow: 0 0 50px rgba(197,247,64,.2); }
+    .proof figcaption { margin-top: 16px; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 2px; color: var(--meta); text-align: center; }
+    .proof figure.after figcaption { color: var(--accent); }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 34px; }
+    .two .card { margin-top: 0; padding: 34px; }
+    .two .card p { font-size: 29px; margin-top: 12px; }
+    .bad { border-color: #3a2a2a; }
+    .x { color: #ff4d5e; }
+    .offer { margin-top: 40px; }
+    .offer .row { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(48,94,74,.6); font-size: 32px; }
+    .offer .row b { color: var(--text); font-weight: 600; }
+    .copy { display: block; margin-top: 18px; font-family: "JetBrains Mono", monospace; font-size: 25px; color: var(--accent); text-decoration: underline; text-underline-offset: 6px; }
+    .big-price { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 120px; color: var(--accent); line-height: 1; }
+  </style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="page cover">
+  <img class="logo" src="../_plantilla/logo.png" alt="Avatar Ads 1.0" />
+  <div class="kicker" style="margin-top:56px">Guía + plantilla · Comentaste PROMPT</div>
+  <h1>El prompt <span class="acc">JSON</span> para videos UGC que no parecen IA</h1>
+  <p class="lead">La estructura exacta que uso en Google Flow para animar mis avatares. Copias, pegas y cambias solo <b class="white">dos campos</b> en cada clip.</p>
+  <div class="proof">
+    <figure><img src="referencia.jpg" alt="" /><figcaption>REFERENCIA REAL</figcaption></figure>
+    <figure class="after"><img src="avatar.jpg" alt="" /><figcaption>AVATAR CON IA</figcaption></figure>
+  </div>
+  <p class="note">El avatar de la derecha habla, gesticula y sostiene un objeto. Lo animé con este mismo prompt.</p>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a></div>
+</section>
+
+<!-- 2 · ANTES DEL PROMPT -->
+<section class="page">
+  <div class="kicker">Antes de copiar el prompt</div>
+  <h2>El realismo empieza en la <span class="acc">imagen</span>, no en el prompt</h2>
+  <p class="lead">Si la IA inventa todo desde cero, el resultado parece IA. Por eso el prompt anima una imagen que ya se ve real:</p>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><h3>Busca un video real de referencia</h3><p>Un UGC de redes que te guste. Fíjate en el ángulo, la luz, la postura y los objetos.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Haz captura de ese momento</h3><p>El frame exacto que quieres recrear.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Cambia solo al personaje</h3><p>Con IA de imagen (por ejemplo ChatGPT), sin tocar la escena: misma luz, mismo lugar, mismo encuadre.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Anímala en Google Flow con el prompt JSON</h3><p>Es lo que tienes en las páginas siguientes.</p></div></div>
+  </div>
+  <div class="card hi"><h3>Prompt que usé para cambiar al personaje</h3><p style="font-size:30px">“Quítale todos los textos y stickers. Cambia al personaje por un hombre latino con traje que sostiene una banana en su mano como su micrófono. Entrégame la imagen como el primer frame de un video UGC.”</p></div>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">2</span></div>
+</section>
+
+<!-- 3 · POR QUÉ JSON -->
+<section class="page">
+  <div class="kicker">Por qué un prompt JSON</div>
+  <h2>Una estructura fija = <span class="acc">clips que parecen una sola grabación</span></h2>
+  <p class="lead">Un anuncio son varios clips de 6 a 8 segundos. Si cada clip lleva un prompt distinto, cambia la cara, la luz o el encuadre. Con el JSON:</p>
+  <ul class="clean">
+    <li><b class="white">Mismo avatar, lugar y encuadre</b> en todos los clips.</li>
+    <li><b class="white">Diálogo palabra por palabra</b>: no improvisa ni añade frases.</li>
+    <li><b class="white">Gestos sincronizados</b> con lo que dice, para que no se vea rígido.</li>
+    <li><b class="white">Look de iPhone, sin textos ni efectos</b>: la edición la haces tú después.</li>
+  </ul>
+  <div class="card hi">
+    <div class="kicker">Lo único que cambias en cada clip</div>
+    <div class="two" style="margin-top:24px">
+      <div class="card"><h3 class="acc">"script"</h3><p>El fragmento exacto de tu guion para ese clip.</p></div>
+      <div class="card"><h3 class="acc">"synchronization"</h3><p>Qué gesto hace con las manos en cada frase.</p></div>
+    </div>
+    <p style="font-size:29px">Todo lo demás se queda igual. Así mantienes la consistencia.</p>
+  </div>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">3</span></div>
+</section>
+
+<!-- 4 · PLANTILLA (1/2) -->
+<section class="page">
+  <div class="kicker">La plantilla · parte 1 de 2</div>
+  <h2>Copia esto tal cual</h2>
+  <a class="copy" href="https://taller.droilab.com/recursos/plantilla-prompt-json.txt">¿En el celular? Abre la plantilla para copiarla en un toque →</a>
+  <pre class="code">{
+  "scene": {
+    "style": "UGC hiperrealista grabado con un iPhone, apariencia raw y sin editar",
+    "camera": {
+      "shot": "plano fijo",
+      "movement": "sin movimiento de cámara",
+      "framing": "mantener exactamente el mismo encuadre durante toda la toma",
+      "cuts": "una sola toma, sin cortes bruscos",
+      "reframing": false
+    },
+    "character": {
+      "reference_image": true,
+      "identity_consistency": "mantener exactamente el mismo avatar de la imagen de referencia",
+      "location_consistency": "mantener la misma ubicación y la misma iluminación",
+      "eye_contact": "contacto visual directo con la cámara"
+    },
+    "performance": {
+      "language_accent": "español con acento ecuatoriano",
+      "delivery": "rápida, energética y natural",
+      "tone": "seguro, confiado y persuasivo",
+      "facial_expression": "sonrisa natural, cercanía y simpatía",
+      "hand_gestures": {
+        "enabled": true,
+        "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
+<span class="hl">        "synchronization": "coordinar los movimientos de las manos con las palabras y las ideas del diálogo",</span>
+        "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
+      }
+    },
+    "dialogue": {
+      "speaker": "hombre",
+<span class="hl">      "script": "[FRAGMENTO EXACTO DEL GUION]",</span>
+      "must_follow_exactly": true,
+      "allow_rephrasing": false,
+      "allow_additional_words": false
+    },
+    …</pre>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">4</span></div>
+</section>
+
+<!-- 5 · PLANTILLA (2/2) -->
+<section class="page">
+  <div class="kicker">La plantilla · parte 2 de 2</div>
+  <pre class="code">  …
+    "visual_restrictions": {
+      "subtitles": false,
+      "captions": false,
+      "on_screen_text": false,
+      "text_overlays": false,
+      "titles": false,
+      "added_logos": false,
+      "watermarks": false,
+      "graphic_elements": false,
+      "visual_effects": false,
+      "transitions": false,
+      "filters": false,
+      "editing": false,
+      "style": "video completamente raw, natural y sin editar",
+      "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
+    },
+    "continuity": {
+      "same_avatar": true,
+      "same_location": true,
+      "same_camera_framing": true,
+      "no_camera_reframing": true
+    }
+  },
+  "instructions": [
+    "Utilizar el personaje de la imagen de referencia.",
+    "Mantener contacto visual directo con la cámara.",
+    "Realizar gestos visibles y naturales con ambas manos durante el diálogo.",
+    "Sincronizar los gestos con el significado del discurso.",
+    "Evitar manos inmóviles, brazos rígidos y movimientos robóticos.",
+    "Hablar con energía y naturalidad, en español con acento ecuatoriano.",
+    "Respetar el diálogo palabra por palabra.",
+    "No generar subtítulos ni ningún tipo de texto en pantalla.",
+    "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
+  ]
+}</pre>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">5</span></div>
+</section>
+
+<!-- 6 · CÓMO USARLO EN FLOW -->
+<section class="page">
+  <div class="kicker">Paso a paso en Google Flow</div>
+  <h2>De la imagen al clip en <span class="acc">5 pasos</span></h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><h3>Sube tu imagen de referencia</h3><p>Usa la misma imagen en todos los clips del anuncio.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Elige video vertical y la duración</h3><p>6 u 8 segundos según el texto del clip (tabla en la página siguiente).</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Pega el JSON</h3><p>Con el fragmento de tu guion en "script" y los gestos de esa frase en "synchronization".</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Genera y revisa</h3><p>Diálogo completo, manos naturales, misma cara. Si algo falla, regenera solo ese clip.</p></div></div>
+    <div class="step"><div class="num">5</div><div><h3>Repite clip por clip y edita</h3><p>Une los clips, corta silencios y añade textos, zooms y tu CTA.</p></div></div>
+  </div>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">6</span></div>
+</section>
+
+<!-- 7 · DIVIDIR EL GUION -->
+<section class="page">
+  <div class="kicker">Divide tu guion en clips</div>
+  <h2>¿Cuánto texto cabe en <span class="acc">cada clip</span>?</h2>
+  <table class="t">
+    <tr><th>DURACIÓN</th><th>PALABRAS (APROX.)</th><th>CUÁNDO</th></tr>
+    <tr><td>4 s</td><td>8 – 10</td><td>Frases cortas</td></tr>
+    <tr><td>6 s</td><td>13 – 16</td><td>La mayoría</td></tr>
+    <tr><td>8 s</td><td>18 – 22</td><td>La mayoría</td></tr>
+    <tr><td>10 s</td><td>23 – 27</td><td>Solo si hace falta</td></tr>
+  </table>
+  <ul class="clean">
+    <li>Corta siempre al final de una frase, nunca a mitad de una idea.</li>
+    <li>No metas más texto del que cabe: usa un clip más largo o divide la frase.</li>
+    <li>El llamado a la acción va en el último clip.</li>
+  </ul>
+  <div class="kicker" style="margin-top:44px">Ejemplo real · clip 1 de mi reel (6 s)</div>
+  <pre class="code"><span class="hl">"script": "Si tus videos con IA se ven falsos, es porque los estás creando así."</span>
+
+<span class="hl">"synchronization": "al decir 'si tus videos con IA se ven falsos', inclina ligeramente la cabeza y abre la mano libre con la palma hacia arriba mientras mantiene el plátano cerca de la boca como micrófono; al decir 'es porque los estás creando así', señala suavemente hacia la cámara con la mano libre"</span></pre>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">7</span></div>
+</section>
+
+<!-- 8 · PERSONALIZA -->
+<section class="page">
+  <div class="kicker">Personalízalo</div>
+  <h2>3 cambios que sí <span class="acc">puedes hacer</span></h2>
+  <div class="card"><h3>1 · Acento e idioma</h3><p style="font-size:30px">Cambia "español con acento ecuatoriano" por el tuyo en <b class="acc">"language_accent"</b> y en la instrucción "Hablar con energía…". Mantén el mismo acento en todos los clips.</p></div>
+  <div class="card"><h3>2 · Hombre o mujer</h3><p style="font-size:30px">Cambia <b class="acc">"speaker": "hombre"</b> por "mujer" si tu avatar es mujer.</p></div>
+  <div class="card"><h3>3 · Un objeto en la mano</h3><p style="font-size:30px">Si el avatar sostiene algo (como mi banana-micrófono), añade esta instrucción al final de <b class="acc">"instructions"</b> y escribe que gesticula con la mano libre:</p>
+    <pre class="code" style="margin-top:20px">"Sostener el plátano durante todo el video en la misma mano que en la imagen de referencia, cerca de la boca, y usarlo como si fuera un micrófono. No cambiarlo de mano, no soltarlo ni apartarlo de la boca. Gesticular solo con la mano libre."</pre>
+  </div>
+  <p class="note">Regla de oro: cambia solo lo que necesitas y deja el resto igual. Cada campo que tocas es una oportunidad de que el avatar cambie entre clips.</p>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">8</span></div>
+</section>
+
+<!-- 9 · ERRORES -->
+<section class="page">
+  <div class="kicker">Errores comunes</div>
+  <h2>Si algo sale mal, <span class="acc">revisa esto</span></h2>
+  <table class="t">
+    <tr><th>PROBLEMA</th><th>SOLUCIÓN</th></tr>
+    <tr><td>Se come palabras o habla rapidísimo</td><td>Demasiado texto para la duración: usa un clip más largo o divide la frase.</td></tr>
+    <tr><td>Cambia la cara entre clips</td><td>Usa la misma imagen de referencia y no toques los campos de continuidad.</td></tr>
+    <tr><td>Aparecen textos o subtítulos</td><td>No borres "visual_restrictions". Regenera ese clip.</td></tr>
+    <tr><td>Manos raras o rígidas</td><td>Gestos concretos en "synchronization", sin pedir demasiados para una frase corta.</td></tr>
+    <tr><td>Acento distinto en un clip</td><td>El mismo acento en "language_accent" y en las instrucciones de todos los clips.</td></tr>
+  </table>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">9</span></div>
+</section>
+
+<!-- 10 · CTA -->
+<section class="page">
+  <img src="../_plantilla/logo.png" alt="Avatar Ads 1.0" style="height:110px" />
+  <div class="kicker" style="margin-top:60px">El siguiente paso</div>
+  <h2>Este prompt es <span class="acc">una pieza</span> del sistema completo</h2>
+  <p class="lead">En <b class="white">Avatar Ads 1.0</b> te enseño el proceso entero para producir anuncios UGC hiperrealistas que parecen producidos profesionalmente. Y por centavos.</p>
+  <ul class="clean">
+    <li>Guion, referencias y storyboard.</li>
+    <li>Imágenes consistentes de tu avatar.</li>
+    <li>Animación, edición y anuncio final.</li>
+    <li>Prompts y workflows listos para reutilizar.</li>
+  </ul>
+  <div class="card hi offer">
+    <div class="kicker">Taller en vivo de apertura</div>
+    <div class="row"><span>Fechas</span><b>26 – 28 de octubre de 2026</b></div>
+    <div class="row"><span>Horario</span><b>7:00 p.m. hora de Ecuador</b></div>
+    <div class="row"><span>Cupo</span><b>15 personas</b></div>
+    <div class="row" style="border:0"><span>Acceso</span><b>Vitalicio + actualizaciones</b></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px">
+      <div class="big-price">$37</div>
+      <a class="btn" href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json" style="margin-top:0">Quiero mi cupo</a>
+    </div>
+  </div>
+  <div class="foot"><img src="../_plantilla/logo.png" alt="" /><a href="https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=prompt-json">taller.droilab.com</a><span class="n">10</span></div>
+</section>
+
+</body>
+</html>

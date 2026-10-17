@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:\\Users\\nicol\\AppData\\Local\\Temp\\claude\\C--Users-nicol-Documents-Avatar-Ads-1-0\\f5b94706-8a9b-4c55-81ef-ed1c650dc08e\\scratchpad\\serve.mjs",
+        "C:\\Users\\nicol\\Documents\\Avatar Ads 1.0\\1-landing",
+        "8080"
+      ],
+      "port": 8080
+    }
+  ]
+}

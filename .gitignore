@@ -1,0 +1,34 @@
+# --- Qué NO se sube a GitHub ---
+# GitHub es para documentos, skills, guiones, prompts, código y la landing.
+# Los videos y audios pesados se respaldan en Google Drive (ver PROYECTO.md → Respaldo).
+
+# Netlify local
+.netlify
+
+# Videos y audios (pesados) — van a Google Drive
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.aac
+
+# Excepción: la landing se guarda completa (con sus videos) para poder republicarla
+!1-landing/**
+
+# Material viejo — solo en Google Drive
+99-archivo/
+
+# Enlaces de Windows a los skills (se recrean, ver PROYECTO.md)
+.claude/skills/
+
+# Basura y cachés de edición
+*.lnk
+*.log
+.waveform-cache/
+*.hf-transaction-*/
+node_modules/
+Thumbs.db
+desktop.ini

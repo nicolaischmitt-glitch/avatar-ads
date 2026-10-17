@@ -1,0 +1,92 @@
+[
+  {
+    "id": "w0",
+    "text": "La",
+    "start": 0.24,
+    "end": 0.48
+  },
+  {
+    "id": "w1",
+    "text": "creación",
+    "start": 0.48,
+    "end": 0.96
+  },
+  {
+    "id": "w2",
+    "text": "de",
+    "start": 0.96,
+    "end": 1.12
+  },
+  {
+    "id": "w3",
+    "text": "anuncios",
+    "start": 1.12,
+    "end": 1.68
+  },
+  {
+    "id": "w4",
+    "text": "ha",
+    "start": 1.68,
+    "end": 1.84
+  },
+  {
+    "id": "w5",
+    "text": "cambiado",
+    "start": 1.84,
+    "end": 2.4
+  },
+  {
+    "id": "w6",
+    "text": "para",
+    "start": 2.4,
+    "end": 2.64
+  },
+  {
+    "id": "w7",
+    "text": "siempre",
+    "start": 2.64,
+    "end": 3.04
+  },
+  {
+    "id": "w8",
+    "text": "y",
+    "start": 3.2,
+    "end": 3.44
+  },
+  {
+    "id": "w9",
+    "text": "si",
+    "start": 3.44,
+    "end": 3.6
+  },
+  {
+    "id": "w10",
+    "text": "no",
+    "start": 3.6,
+    "end": 3.76
+  },
+  {
+    "id": "w11",
+    "text": "te",
+    "start": 3.76,
+    "end": 3.92
+  },
+  {
+    "id": "w12",
+    "text": "actualizas,",
+    "start": 3.92,
+    "end": 4.72
+  },
+  {
+    "id": "w13",
+    "text": "quedarás",
+    "start": 4.72,
+    "end": 5.36
+  },
+  {
+    "id": "w14",
+    "text": "atrás.",
+    "start": 5.36,
+    "end": 5.84
+  }
+]

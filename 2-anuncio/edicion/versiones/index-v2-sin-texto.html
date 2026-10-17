@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=720, height=1280" />
+    <title>UGC Ad — edición limpia</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+      /* Wrapper sin timing: la cámara digital. Origen a la altura del rostro
+         para que ningún zoom (máx. 1.12) recorte la cara. */
+      #cam {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 36%;
+      }
+      #a-roll {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ugc"
+      data-start="0"
+      data-duration="40.125"
+      data-fps="24"
+      data-width="720"
+      data-height="1280"
+    >
+      <div id="cam">
+        <video
+          id="a-roll"
+          class="clip"
+          src="ugc-cortado.mp4"
+          playsinline
+          data-has-audio="true"
+          data-start="0"
+          data-duration="40.125"
+          data-track-index="0"
+        ></video>
+      </div>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      (function () {
+        const FPS = 24;
+        const q = (t) => Math.round(t * FPS) / FPS;
+        const EASE = "sine.inOut";
+
+        // Un bloque por tramo del video unido (edicion-limpia/segmentos.json).
+        // base: escala al entrar al tramo. Dentro del mismo clip, tramos seguidos
+        // alternan escala para que el salto de corte se lea como cambio de plano.
+        // moves: [inicio, fin, escala] — push-ins suaves sobre palabras clave.
+        const SHOTS = [
+          { t: 0.0, base: 1.0, moves: [[0.0, 2.7, 1.03]] }, //                      clip 1 — "La creación de anuncios ha cambiado para siempre"
+          { t: 2.7083, base: 1.1, moves: [[4.15, 5.15, 1.12]] }, //                 "…quedarás atrás"
+          { t: 5.1667, base: 1.0, moves: [[7.45, 8.45, 1.06]] }, //                 clip 2 — "hiperrealistas"
+          { t: 10.25, base: 1.0, moves: [[11.2, 11.9, 1.04]] }, //                  clip 3 — "un gran problema"
+          { t: 11.9167, base: 1.12, moves: [[13.5, 14.5, 1.05], [16.0, 16.9, 1.1]] }, // "…Seedance" (abre) → "un dólar por segundo"
+          { t: 17.25, base: 1.0, moves: [[18.75, 20.0, 1.08]] }, //                 clip 4 — "Avatar Ads 1.0"
+          { t: 20.5833, base: 1.0, moves: [[21.3, 22.3, 1.04]] }, //                nuevo clip 5 — "Un taller 100% en vivo"
+          { t: 22.625, base: 1.11, moves: [] }, //                                  "donde te enseñamos el sistema paso a paso"
+          { t: 25.2917, base: 1.0, moves: [[26.5, 27.5, 1.04]] }, //                "para crear anuncios hiperrealistas"
+          { t: 27.5833, base: 1.12, moves: [] }, //                                 "por centavos"
+          { t: 28.4583, base: 1.0, moves: [[30.0, 31.1, 1.05]] }, //                nuevo clip 6 — "tan hiperrealistas"
+          { t: 33.375, base: 1.12, moves: [] }, //                                  "si es inteligencia artificial"
+          { t: 35.0, base: 1.0, moves: [] }, //                                     nuevo clip 7 — "Serán 3 días de taller"
+          { t: 36.4583, base: 1.08, moves: [[36.95, 37.75, 1.11]] }, //             "y solo 10 puestos disponibles"
+          { t: 38.4167, base: 1.0, moves: [[38.5, 39.95, 1.1]] }, //                CTA — "así que reserva tu puesto ya"
+        ];
+
+        const tl = gsap.timeline({ paused: true });
+        SHOTS.forEach((s) => {
+          tl.set("#cam", { scale: s.base }, q(s.t));
+          let from = s.base;
+          s.moves.forEach(([a, b, sc]) => {
+            tl.fromTo("#cam", { scale: from }, { scale: sc, duration: q(b) - q(a), ease: EASE, immediateRender: false }, q(a));
+            from = sc;
+          });
+        });
+
+        window.__timelines["ugc"] = tl;
+      })();
+    </script>
+  </body>
+</html>

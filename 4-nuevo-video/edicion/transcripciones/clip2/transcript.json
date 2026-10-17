@@ -1,0 +1,80 @@
+[
+  {
+    "id": "w0",
+    "text": "Mírame,",
+    "start": 0,
+    "end": 1.04
+  },
+  {
+    "id": "w1",
+    "text": "es",
+    "start": 1.04,
+    "end": 1.2
+  },
+  {
+    "id": "w2",
+    "text": "muy",
+    "start": 1.2,
+    "end": 1.36
+  },
+  {
+    "id": "w3",
+    "text": "difícil",
+    "start": 1.36,
+    "end": 1.76
+  },
+  {
+    "id": "w4",
+    "text": "que",
+    "start": 1.76,
+    "end": 1.92
+  },
+  {
+    "id": "w5",
+    "text": "alguien",
+    "start": 1.92,
+    "end": 2.24
+  },
+  {
+    "id": "w6",
+    "text": "note",
+    "start": 2.24,
+    "end": 2.48
+  },
+  {
+    "id": "w7",
+    "text": "que",
+    "start": 2.88,
+    "end": 3.04
+  },
+  {
+    "id": "w8",
+    "text": "soy",
+    "start": 3.04,
+    "end": 3.28
+  },
+  {
+    "id": "w9",
+    "text": "100%",
+    "start": 3.28,
+    "end": 3.76
+  },
+  {
+    "id": "w10",
+    "text": "inteligencia",
+    "start": 4,
+    "end": 4.56
+  },
+  {
+    "id": "w11",
+    "text": "artificial,",
+    "start": 4.56,
+    "end": 5.28
+  },
+  {
+    "id": "w12",
+    "text": "¿verdad?",
+    "start": 5.28,
+    "end": 5.84
+  }
+]
