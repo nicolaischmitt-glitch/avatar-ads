@@ -101,7 +101,7 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 `netlify.cmd deploy --prod --dir landing`
 
 ## Respaldo (GitHub + Google Drive)
-- **GitHub (repositorio privado):** documentos, skills, guiones, prompts, lead magnets, proyectos de edición y la landing completa (con sus videos). Es la copia con historial: cada commit es un punto al que se puede volver. Qué se excluye: ver `.gitignore`.
+- **GitHub (repositorio privado, https://github.com/nicolaischmitt-glitch/avatar-ads):** documentos, skills, guiones, prompts, lead magnets, proyectos de edición y la landing completa (con sus videos). Es la copia con historial: cada commit es un punto al que se puede volver. Qué se excluye: ver `.gitignore`.
 - **Google Drive:** todo lo pesado que no va a GitHub: videos y audios (`*.mp4`, `*.wav`, `*.mp3`…) de `anuncios/`, `reels/` y `referencias/`, y la carpeta `archivo/` completa.
 - **Rutina:** al terminar algo importante, guardar en GitHub (`git add -A`, `git commit -m "qué cambió"`, `git push`) o pedírselo a Claude Code. Los videos nuevos, copiarlos a Drive.
 - **En una computadora nueva:** clonar el repositorio, copiar los videos desde Drive a sus mismas carpetas y recrear los enlaces de los skills (en `cmd`, desde la raíz del proyecto):
