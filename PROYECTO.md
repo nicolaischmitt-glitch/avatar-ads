@@ -26,12 +26,14 @@ Avatar Ads 1.0/
 │   └── finales/nuevo-video-subtitulos.mp4
 ├── 5-reel-clon/         ← réplica de referencias/ref01 (guion + prompts; esperando clips)
 ├── reels/               ← reels de Instagram hechos con el skill `reels-avatar-ads` (una carpeta por reel)
+├── carruseles/          ← carruseles de Instagram (skill `carruseles-avatar-ads`): _plantilla/ (diseño + render a PNG) y una carpeta por carrusel
 ├── lead-magnets/        ← un lead magnet por palabra clave de reel (índice en lead-magnets/README.md)
 ├── referencias/ + referencias de contenido/   ← videos de referencia y sus desgloses
 ├── skills e instrucciones/
 │   ├── master prompt para json prompts videos.txt ← reglas LOCKED IN de los prompts JSON de Google Flow
 │   ├── reels-avatar-ads/   ← skill del sistema de reels (guion → prompts Flow → edición). Editar aquí.
-│   └── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
+│   ├── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
+│   └── carruseles-avatar-ads/   ← skill del sistema de carruseles (guion → diseño HTML → PNG → caption)
 │                             (.claude/skills/<skill> son solo enlaces a estas carpetas; no borrarlos)
 └── 99-archivo/          ← material viejo, guardado por si acaso (se puede borrar)
     ├── version-1/            primera edición, hecha con los clips equivocados (video 1–7)
@@ -45,7 +47,7 @@ La versión limpia sin franja se puede rehacer con `2-anuncio/edicion/versiones/
 ## Misión actual
 Objetivo del negocio: hacer crecer Avatar Ads 1.0 vendiéndolo con **talleres en vivo semanales de $37** (mecanismo de marketing; cada taller da acceso al programa). El primero es el lunes 26 de octubre de 2026 (proceso completo para crear anuncios UGC hiperrealistas); después, un taller cada semana.
 
-1. **Sistema de creación de videos hiperrealistas**: el mejor sistema posible, lo más sistematizado posible, para contenido orgánico (reels) y anuncios: guion → prompts para Google Flow → generación → edición profesional. Se refina en paralelo a los talleres. Base actual: skill `skills e instrucciones/reels-avatar-ads/` + master prompt.
+1. **Sistema de creación de videos hiperrealistas**: el mejor sistema posible, lo más sistematizado posible, para contenido orgánico (reels) y anuncios: guion → prompts para Google Flow → generación → edición profesional. Se refina en paralelo a los talleres. Base actual: skill `skills e instrucciones/reels-avatar-ads/` + master prompt. Contenido orgánico complementario: carruseles (skill `carruseles-avatar-ads`), también con CTA a lead magnet.
 2. **Contenido del programa Avatar Ads**: módulos, clases, sistemas, herramientas, materiales y recursos del programa, más el contenido del taller del 26 de oct y de los siguientes talleres semanales.
 
 Terminado: landing de venta (`1-landing/`, publicada en https://taller.droilab.com/). Solo se toca para cambios puntuales.
@@ -100,7 +102,8 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 - **En una computadora nueva:** clonar el repositorio, copiar los videos desde Drive a sus mismas carpetas y recrear los enlaces de los skills (en `cmd`, desde la raíz del proyecto):
   `mkdir .claude\skills` ·
   `mklink /J ".claude\skills\reels-avatar-ads" "skills e instrucciones\reels-avatar-ads"` ·
-  `mklink /J ".claude\skills\lead-magnets-avatar-ads" "skills e instrucciones\lead-magnets-avatar-ads"`
+  `mklink /J ".claude\skills\lead-magnets-avatar-ads" "skills e instrucciones\lead-magnets-avatar-ads"` ·
+  `mklink /J ".claude\skills\carruseles-avatar-ads" "skills e instrucciones\carruseles-avatar-ads"`
   Netlify: `netlify.cmd login` y `netlify.cmd link --id 6a82e943-68a7-43f0-9346-abf24c07d754`.
 
 ## Pendientes de la landing

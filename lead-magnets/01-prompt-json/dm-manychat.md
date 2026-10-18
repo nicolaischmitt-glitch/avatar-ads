@@ -17,6 +17,6 @@
 **Mensaje 2 (DM, unos minutos después):**
 > Un tip: el prompt solo funciona bien si la imagen ya se ve real. Por eso parto de un video de referencia y cambio solo al personaje (está en la página 2).
 >
-> Si quieres aprender el proceso completo, del guion al anuncio terminado, abrí el taller en vivo de Avatar Ads 1.0: 26–28 de octubre, 15 cupos, $37 con acceso de por vida 👇
+> Si quieres aprender el proceso completo, del guion al anuncio terminado, lo enseño en el taller en vivo de Avatar Ads 1.0 👇
 >
-> [Botón] Ver Avatar Ads 1.0 → https://taller.droilab.com/?utm_source=instagram&utm_medium=dm&utm_campaign=prompt-json
+> [Botón] Ver más información → https://taller.droilab.com/?utm_source=instagram&utm_medium=dm&utm_campaign=prompt-json

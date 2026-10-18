@@ -30,12 +30,12 @@ Antes de escribir, ten en contexto `PROYECTO.md` (oferta, fechas, branding) y `B
 4. **Cómo usarlo** paso a paso (acciones concretas, herramientas reales).
 5. **Ejemplo real** del propio contenido de Avatar Ads (el reel, sus clips, su prompt).
 6. **Personalización / errores comunes** (tabla problema → solución).
-7. **CTA final**: "Esto es una pieza del sistema completo" → qué incluye Avatar Ads + la oferta vigente de `PROYECTO.md` + botón a la landing.
+7. **CTA final**: "Esto es una pieza del sistema completo" → qué incluye Avatar Ads + una mención simple al taller en vivo + botón **"Ver más información"** a la landing. **Sin fechas, horarios, cupos ni precio** (decisión del usuario): el lead magnet no vende el taller, solo lleva a la landing, que es donde se vende.
 
 ### 3. Reglas de contenido
 - Entrega completa y accionable: el lector debe poder aplicarlo hoy sin comprar nada.
 - Frases cortas, tuteo, español latino neutro; una idea por bloque; sin relleno.
-- No inventar datos (resultados, métricas, testimonios, precios futuros, funciones de herramientas que no hayas visto). Datos de la oferta solo de `PROYECTO.md`.
+- No inventar datos (resultados, métricas, testimonios, precios futuros, funciones de herramientas que no hayas visto).
 - Las plantillas/prompts salen de su **fuente única** (p. ej. el JSON se genera desde el master prompt en `preparar.mjs`, nunca copiado a mano).
 - Lo que el usuario compartió en el reel (su prompt real, sus capturas) es la mejor prueba: úsalo.
 - Caras: solo el avatar de Avatar Ads o gente con permiso; las referencias de terceros van difuminadas.
@@ -49,7 +49,7 @@ Antes de escribir, ten en contexto `PROYECTO.md` (oferta, fechas, branding) y `B
 ### 5. Funnel (links)
 - `config.json`: `landing` = `https://taller.droilab.com/?utm_source=instagram&utm_medium=lead-magnet&utm_campaign=<slug-corto>`; extras (p. ej. `.txt`) en `https://taller.droilab.com/recursos/<archivo>`.
 - Link a la landing en el pie de **cada** página + página final de CTA con botón. Una mención suave en medio solo si cabe sin apretar.
-- `dm-manychat.md`: respuesta pública al comentario (3 variantes), DM 1 con botones al PDF (y extras), DM 2 a los minutos con un tip + CTA a la landing (UTM `utm_medium=dm`).
+- `dm-manychat.md`: respuesta pública al comentario (3 variantes), DM 1 con botones al PDF (y extras), DM 2 a los minutos con un tip + mención al taller + botón "Ver más información" a la landing (UTM `utm_medium=dm`). Tampoco aquí fechas ni precio.
 
 ### 6. Construir y revisar (obligatorio)
 ```bash
@@ -69,4 +69,4 @@ Recorta por páginas con ffmpeg y mira que nada pise el pie ni se corte. El núm
 4. Recuerda al usuario configurar la automatización en ManyChat con los textos de `dm-manychat.md`.
 
 ### 8. Cuando cambie la oferta
-La página de CTA usa datos con fecha (taller de apertura 26–28 oct). Cuando cambien en `PROYECTO.md`, actualiza la página final de **todos** los lead magnets activos, reconstruye y vuelve a publicar.
+Como los lead magnets no llevan fechas ni precio, no hay que tocarlos cuando cambie la oferta; solo si cambia la URL de la landing (`config.json`) o el nombre del programa.

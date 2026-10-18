@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Carrusel 01 · PROMPT</title>
+<link rel="stylesheet" href="../_plantilla/base.css">
+<style>
+  /* ajustes solo de este carrusel */
+  .cover-visual { display: flex; justify-content: center; align-items: center; gap: 34px; }
+  .cover-visual .arr { color: var(--accent); font-size: 64px; }
+  .annot.wide { width: 920px; height: 620px; }
+  .annot.wide .phone { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 349px; }
+  .frame-pick { position: absolute; left: 50%; top: -74px; transform: translateX(-50%); }
+  .after-before { display: flex; justify-content: center; align-items: center; gap: 30px; }
+  .after-before .arr { color: var(--accent); font-size: 60px; }
+  .result { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 30px; padding: 26px; border-radius: 26px;
+    border: 1.5px dashed rgba(255,90,90,.55); background: rgba(255,90,90,.06); font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 40px; color: var(--text); }
+  .result .ic { color: var(--bad); font-size: 46px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="slide">
+  <span class="kicker">Videos UGC con IA</span>
+  <h1>Por qué tus videos con IA se ven <span class="mark">falsos</span></h1>
+  <p class="lead" style="margin-top:26px">Y el método de 4 pasos para que no.</p>
+  <div class="grow">
+    <div class="cover-visual">
+      <div class="phone sm tilt-l dim"><img src="img/ia-desde-cero.jpg" alt=""><span class="badge bad"><i class="ic" data-i="x"></i></span><span class="pill bad">Inventado</span></div>
+      <i class="ic arr" data-i="arrow"></i>
+      <div class="phone sm tilt-r"><img src="img/avatar.jpg" alt=""><span class="badge"><i class="ic" data-i="check"></i></span><span class="pill solid">Desde algo real</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · EL ERROR -->
+<section class="slide">
+  <span class="kicker">El error</span>
+  <h2>Le pides a la IA que lo invente <span class="bad-t">todo</span></h2>
+  <div class="grow">
+    <div class="flow v bad">
+      <div class="node bad"><span class="dot-ic bad"><i class="ic" data-i="chat"></i></span><div><h3>Le pides una imagen</h3><p>“Crea la foto de un hombre en una oficina con un traje…”</p></div></div>
+      <div class="arr"><i class="ic" data-i="down"></i></div>
+      <div class="node bad"><span class="dot-ic bad"><i class="ic" data-i="image"></i></span><div><h3>Te da una escena inventada</h3><p>Personaje, luz y lugar: todo creado desde cero</p></div></div>
+      <div class="arr"><i class="ic" data-i="down"></i></div>
+      <div class="node bad"><span class="dot-ic bad"><i class="ic" data-i="video"></i></span><div><h3>La conviertes en video</h3><p>Y el resultado…</p></div></div>
+    </div>
+    <div class="result"><i class="ic" data-i="x"></i> Se nota que es IA</div>
+  </div>
+</section>
+
+<!-- 3 · POR QUÉ SE NOTA -->
+<section class="slide">
+  <span class="kicker">Por qué se nota</span>
+  <h2>La IA lo inventa <span class="mark">perfecto</span>. Y lo perfecto no parece real.</h2>
+  <div class="grow">
+    <div class="annot wide">
+      <div class="phone dim"><img src="img/ia-desde-cero.jpg" alt=""></div>
+      <div class="pin bad" style="left:560px; top:110px; --l:40px"><span class="ln"></span><span class="pill bad">Luz de estudio</span></div>
+      <div class="pin bad left" style="right:520px; top:220px; --l:40px"><span class="ln"></span><span class="pill bad">Piel perfecta</span></div>
+      <div class="pin bad" style="left:560px; top:380px; --l:40px"><span class="ln"></span><span class="pill bad">Pose de modelo</span></div>
+      <div class="pin bad left" style="right:560px; top:500px; --l:40px"><span class="ln"></span><span class="pill bad">Escena genérica</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · LA FORMA CORRECTA (mapa) -->
+<section class="slide">
+  <span class="kicker">La forma correcta</span>
+  <h2>No crees desde cero. <span class="acc">Parte de algo real.</span></h2>
+  <div class="grow">
+    <div class="stepper">
+      <div class="st on"><span class="n">1</span><div><h3>Busca un video real</h3><p>Un UGC de referencia que te guste</p></div></div>
+      <div class="st on"><span class="n">2</span><div><h3>Captura el frame</h3><p>El momento exacto que quieres</p></div></div>
+      <div class="st on"><span class="n">3</span><div><h3>Cambia solo al personaje</h3><p>La escena no se toca</p></div></div>
+      <div class="st on"><span class="n">4</span><div><h3>Anímalo en Google Flow</h3><p>Con un prompt JSON estructurado</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · PASO 1 -->
+<section class="slide">
+  <div class="step-head"><span class="big-n">01</span><span class="of">PASO 1 DE 4</span></div>
+  <h2 class="mt-s">Busca un video real de referencia</h2>
+  <div class="grow">
+    <div class="annot wide">
+      <div class="phone"><img src="img/referencia.jpg" alt=""></div>
+      <div class="pin" style="left:540px; top:90px; --l:60px"><span class="ln"></span><span class="pill acc"><i class="ic" data-i="sun"></i>Luz</span></div>
+      <div class="pin left" style="right:560px; top:200px; --l:60px"><span class="ln"></span><span class="pill acc"><i class="ic" data-i="angle"></i>Ángulo</span></div>
+      <div class="pin" style="left:520px; top:330px; --l:80px"><span class="ln"></span><span class="pill acc"><i class="ic" data-i="pose"></i>Postura</span></div>
+      <div class="pin left" style="right:570px; top:430px; --l:60px"><span class="ln"></span><span class="pill acc"><i class="ic" data-i="box"></i>Objetos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PASO 2 -->
+<section class="slide">
+  <div class="step-head"><span class="big-n">02</span><span class="of">PASO 2 DE 4</span></div>
+  <h2 class="mt-s">Haz captura de ese momento</h2>
+  <p class="lead mt-s">Pausa el video justo donde la pose y la luz se ven bien.</p>
+  <div class="grow">
+    <div class="player" style="position:relative; margin-top:60px">
+      <span class="pill solid frame-pick"><i class="ic" data-i="frame"></i>Este frame</span>
+      <div class="frames" style="--h:400px">
+        <img src="img/referencia.jpg" alt="" style="object-position:30% 50%">
+        <img src="img/referencia.jpg" alt="" style="object-position:40% 50%">
+        <img class="on" src="img/referencia.jpg" alt="">
+        <img src="img/referencia.jpg" alt="" style="object-position:60% 50%">
+      </div>
+      <div class="track" style="--at:50%"><b></b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · PASO 3 -->
+<section class="slide">
+  <div class="step-head"><span class="big-n">03</span><span class="of">PASO 3 DE 4</span></div>
+  <h2 class="mt-s">Cambia solo al personaje</h2>
+  <div class="grow">
+    <div class="after-before">
+      <div class="phone sm" style="width:270px"><img src="img/referencia.jpg" alt=""><span class="pill">Antes</span></div>
+      <i class="ic arr" data-i="arrow"></i>
+      <div class="phone sm" style="width:270px"><img src="img/avatar.jpg" alt=""><span class="pill solid">Después</span></div>
+    </div>
+    <div class="chat mt">
+      <div class="msg user good">“Cambia al personaje por un hombre latino con traje… Entrégame la imagen como el primer frame de un video UGC.”</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · PASO 4 -->
+<section class="slide">
+  <div class="step-head"><span class="big-n">04</span><span class="of">PASO 4 DE 4</span></div>
+  <h2 class="mt-s">Anímalo en Flow con un <span class="acc">prompt JSON</span></h2>
+  <div class="grow">
+    <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>prompt.json</span></div>
+      <div class="body"><pre class="code" style="font-size:21px"><span class="k">"camera"</span>: {
+  <span class="hl">"movement": "sin movimiento de cámara"</span>
+},
+<span class="k">"character"</span>: {
+  <span class="hl">"identity_consistency": "mantener exactamente el mismo avatar…"</span>
+},
+<span class="k">"dialogue"</span>: {
+  <span class="hl">"must_follow_exactly": true</span>
+}</pre></div>
+    </div>
+    <ul class="checks mt" style="gap:16px">
+      <li><i class="ic" data-i="check"></i>Cámara fija, sin cortes</li>
+      <li><i class="ic" data-i="check"></i>El mismo avatar en cada clip</li>
+      <li><i class="ic" data-i="check"></i>Tu guion, palabra por palabra</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 9 · CTA -->
+<section class="slide glow-bottom">
+  <span class="kicker">¿Quieres el prompt completo?</span>
+  <h2>Comenta</h2>
+  <div class="keyword">PROMPT</div>
+  <div class="ig-comment mt-s"><span class="av"></span><span class="txt">PROMPT</span><span class="send"><i class="ic" data-i="send"></i></span></div>
+  <div class="grow">
+    <div class="row" style="gap:60px">
+      <div class="doc-stack"><span class="pg deco"></span><span class="pg deco"></span><img src="img/lead-magnet-portada.jpg" alt=""></div>
+      <div class="stack" style="align-items:flex-start">
+        <span class="pill acc"><i class="ic" data-i="send"></i>Te llega por DM</span>
+        <ul class="checks">
+          <li><i class="ic" data-i="check"></i>El prompt JSON completo</li>
+          <li><i class="ic" data-i="check"></i>Guía paso a paso</li>
+          <li><i class="ic" data-i="check"></i>Plantilla lista para copiar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../_plantilla/slides.js"></script>
+</body>
+</html>

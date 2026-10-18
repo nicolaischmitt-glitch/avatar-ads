@@ -152,6 +152,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 - **Avatar con labial en el auto** (`4-nuevo-video/finales/`) — avatar 100% IA que habla, se mueve y presenta el producto.
 - **Ejemplos UGC** (`3-ejemplos-ugc/`): audífonos (estilo de vida, varias escenas), skincare (demostración de producto), suplemento (testimonio UGC a cámara).
 - **Reels** (`reels/`): 01 — forma incorrecta vs. correcta de crear avatares hiperrealistas (palabra clave PROMPT).
+- **Carruseles** (`carruseles/`, índice en `carruseles/README.md`; sistema: skill `carruseles-avatar-ads`): 01 — por qué tus videos con IA se ven falsos + método de 4 pasos (palabra clave PROMPT).
 - **Lead magnets** (índice completo en `lead-magnets/README.md`; sistema: skill `lead-magnets-avatar-ads`). Cada reel termina con "Comenta PALABRA" → DM automático → PDF de alto valor que entrega lo prometido → CTA a la landing (UTM `utm_medium=lead-magnet`).
   - **PROMPT** (reel 01): "El prompt JSON para videos UGC que no parecen IA", guía de 10 páginas + plantilla copiable. https://taller.droilab.com/recursos/prompt-json-avatar-ads.pdf
 
@@ -169,5 +170,5 @@ Aún no hay testimonios de alumnos ni métricas de campañas: **no inventarlos**
 - No inventar datos: precios futuros, número de alumnos, testimonios, resultados de campañas, fechas nuevas. Si hace falta uno, preguntar.
 - Escasez y urgencia solo con hechos reales (15 cupos, apertura, precio que subirá).
 - No usar caras de personas reales reconocibles en recursos; el avatar es IA.
-- Reels: usar el skill `reels-avatar-ads`. Prompts de video: el master prompt manda.
+- Reels: usar el skill `reels-avatar-ads`. Carruseles: skill `carruseles-avatar-ads`. Prompts de video: el master prompt manda.
 - Cuando se defina algo nuevo (lead magnet, nuevo taller o contenido del programa, nuevo ángulo que funcionó, testimonio real), actualizar este documento.
