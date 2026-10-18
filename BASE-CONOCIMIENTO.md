@@ -2,7 +2,7 @@
 
 Documento de referencia para crear contenido, anuncios, guiones, emails, captions y todo lo que comunique Avatar Ads.
 Datos operativos (fechas, precio, cupo, links, estructura de carpetas, branding): **`PROYECTO.md`** es la fuente única. Si algo aquí contradice a `PROYECTO.md`, manda `PROYECTO.md`.
-Fuentes de este documento: la landing (`1-landing/index.html`, https://taller.droilab.com/) y `PROYECTO.md`. Lo marcado como *(propuesta)* es interpretación para contenido, no una promesa publicada en la landing.
+Fuentes de este documento: la landing (`landing/index.html`, https://taller.droilab.com/) y `PROYECTO.md`. Lo marcado como *(propuesta)* es interpretación para contenido, no una promesa publicada en la landing.
 
 ---
 
@@ -12,7 +12,7 @@ Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistem
 
 - **Versión corta (bio / hook):** "Crea anuncios hiperrealistas con IA."
 - **Promesa de la landing:** "Aprende el sistema que usamos para producir anuncios UGC hiperrealistas que parecen producidos profesionalmente. Y por centavos."
-- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — 3 días en vivo, 3 anuncios propios y acceso vitalicio con todas las actualizaciones.
+- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — 2 días en vivo + clase bonus, 3 anuncios propios y acceso vitalicio con todas las actualizaciones.
 
 ### Programa vs. talleres
 - **Avatar Ads (el producto)** es el programa: contenido, sistemas, prompts, workflows y herramientas para producir contenido y anuncios. Es lo que el alumno compra y conserva de por vida, con todas las futuras actualizaciones.
@@ -23,19 +23,21 @@ Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistem
 
 | Elemento | Detalle |
 |---|---|
-| Formato | Taller online de apertura, 3 clases en vivo (lun 26 – mié 28 oct 2026, 7 p.m. Ecuador), que da acceso al programa |
-| Precio | $37, pago único (edición de apertura) |
+| Formato | Taller online de apertura: 2 días en vivo (lun 26 y mar 27 oct 2026) + clase bonus de captación de clientes (mié 28), todas a las 7 p.m. Ecuador; da acceso al programa |
+| Precio | $37, pago único (edición de apertura). Primeras 5 personas: $27 con el cupón AVATAR27 en el checkout de Hotmart |
 | Cupo | 15 personas (grupo reducido para acompañar el proyecto de cada uno) |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
 | Resultado | Primer anuncio terminado y listo para publicar o probar; proyecto práctico de 3 anuncios |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
-**Incluye:** clases en vivo · grabaciones · grupo privado de WhatsApp · prompts y workflows reutilizables · proyecto práctico (3 anuncios para tu producto, servicio o portafolio) · acceso vitalicio + actualizaciones.
+**Incluye:** clases en vivo · grabaciones · prompts y workflows reutilizables · proyecto práctico (3 anuncios para tu producto, servicio o portafolio) · acceso vitalicio + actualizaciones.
 
 **Bonos:**
-1. **Cliente Cero** (valor $97) — kit para vender anuncios con IA a negocios: el flujo que usamos para venderlos a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta y guía de brief.
-2. **UGC Realism Vault** — biblioteca de prompts para avatares hiperrealistas: gestos y manos naturales, expresión, emoción, tono de voz y encuadre.
-3. **Low-Cost Production System** — guía paso a paso del proceso low cost para crear anuncios hiperrealistas sin desperdiciar créditos.
+1. **Día 3 bonus: cómo captar clientes** (clase en vivo, mié 28) — mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, cómo captar clientes de manera orgánica y cómo captarlos con anuncios.
+2. **Grupo privado de WhatsApp** — feedback de tus ads, ideas y actualización con los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
+3. **Cliente Cero** (valor $97) — kit para vender anuncios con IA a negocios: el flujo que usamos para venderlos a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta y guía de brief.
+4. **UGC Realism Vault** — biblioteca de prompts para avatares hiperrealistas: gestos y manos naturales, expresión, emoción, tono de voz y encuadre.
+5. **Low-Cost Production System** — guía paso a paso del proceso low cost para crear anuncios hiperrealistas sin desperdiciar créditos.
 
 **Futuro del negocio:** después de la apertura, talleres en vivo semanales de $37 como mecanismo de venta del programa. El precio de Avatar Ads incrementará en próximas ediciones (aún sin cifra: no inventar una).
 
@@ -50,8 +52,8 @@ Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistem
 
 ### Temario (un resultado cada día)
 - **Día 1 — Estrategia y preproducción.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · búsqueda de referencias UGC reales · breakdown visual (escenas, personajes, acciones, emociones) · storyboard. → *Guion terminado y escenas planificadas.*
-- **Día 2 — Creación de imágenes.** Adaptar referencias visuales · personaje, escenario y elementos · generación de imágenes con IA · consistencia entre escenas · corrección y selección de frames. → *Storyboard visual con las imágenes finales.*
-- **Día 3 — Animación, edición y anuncio final.** Estructura de prompts de video · acciones, movimientos, gesticulación, expresiones y voz · generación de clips · corrección de errores · gestión de créditos y regeneraciones · ensamblaje y ritmo · audio, subtítulos y textos · integración del producto y CTA · exportación. → *Primer anuncio terminado.*
+- **Día 2 — Imágenes, animación y anuncio final.** Adaptar referencias visuales · personaje, escenario y elementos · generación de imágenes con IA · consistencia entre escenas · corrección y selección de frames · estructura de prompts de video · acciones, movimientos, gesticulación, expresiones y voz · generación de clips · corrección de errores · gestión de créditos y regeneraciones · ensamblaje y ritmo · audio, subtítulos y textos · integración del producto y CTA · exportación. → *Primer anuncio terminado.*
+- **Día 3 (bonus) — Cómo captar clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio. → *Sabes qué vender y cómo conseguir clientes.*
 
 ### El método (lo que se enseña y se demuestra en el contenido)
 Es la columna vertebral del contenido orgánico; el reel 01 lo cuenta así:
@@ -59,7 +61,7 @@ Es la columna vertebral del contenido orgánico; el reel 01 lo cuenta así:
 2. **Partir de un video real de referencia** (UGC real de redes) y fijarse en ángulo, luz, postura y objetos.
 3. **Capturar el frame** de ese momento.
 4. **Cambiar solo al personaje** con IA de imagen (p. ej. ChatGPT), sin tocar la escena.
-5. **Animar en Google Flow** con un prompt JSON estructurado (reglas en `skills e instrucciones/master prompt para json prompts videos.txt`): actuación natural, gesticulación sincronizada, continuidad entre clips, look de grabación con iPhone.
+5. **Animar en Google Flow** con un prompt JSON estructurado (reglas en `skills/master prompt para json prompts videos.txt`): actuación natural, gesticulación sincronizada, continuidad entre clips, look de grabación con iPhone.
 6. **Editar** con ritmo, subtítulos, cutaways, producto y CTA.
 
 ## 4. Público
@@ -106,8 +108,8 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "Los negocios están pagando por esto y casi nadie sabe hacerlo bien."
    - "Así venderías tu primer anuncio con IA esta semana."
 5. **Resultado concreto y rápido**
-   Un resultado cada día; en 3 días sales con tu primer anuncio terminado y 3 anuncios en el proyecto.
-   - "En 3 días pasas de cero a tu primer anuncio terminado."
+   Un resultado cada día; en 2 días sales con tu primer anuncio terminado y 3 anuncios en el proyecto.
+   - "En 2 días pasas de cero a tu primer anuncio terminado."
 6. **Apertura / oportunidad de entrada** (urgencia real)
    Primera edición, en vivo, 15 cupos, $37 y acceso vitalicio con actualizaciones aunque el precio suba.
    - "Es la única edición en vivo con 15 personas."
@@ -148,10 +150,10 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 
 ## 8. Prueba y activos disponibles
 
-- **Anuncio de Avatar Ads** (`2-anuncio/finales/`) — portada de la landing.
-- **Avatar con labial en el auto** (`4-nuevo-video/finales/`) — avatar 100% IA que habla, se mueve y presenta el producto.
-- **Ejemplos UGC** (`3-ejemplos-ugc/`): audífonos (estilo de vida, varias escenas), skincare (demostración de producto), suplemento (testimonio UGC a cámara).
-- **Reels** (`reels/`): 01 — forma incorrecta vs. correcta de crear avatares hiperrealistas (palabra clave PROMPT).
+- **Anuncio de Avatar Ads** (`anuncios/01-avatar-ads/finales/`) — portada de la landing.
+- **Avatar con labial en el auto** (`anuncios/02-labial-auto/finales/`) — avatar 100% IA que habla, se mueve y presenta el producto.
+- **Ejemplos UGC** (`anuncios/ejemplos-ugc/`): audífonos (estilo de vida, varias escenas), skincare (demostración de producto), suplemento (testimonio UGC a cámara).
+- **Reels** (`reels/`): 01 — forma incorrecta vs. correcta de crear avatares hiperrealistas (palabra clave PROMPT). 02 — "El idioma del dinero no es el esfuerzo" (formato nuevo: voz en off del usuario + motion graphics, sin avatar, sin marca, sin música, solo SFX; referencias de estilo `referencias/ejemplo-voz-en-off-1.mp4` y `referencias/ejemplo-voz-en-off-2.mp4`, análisis en `reels/02-esfuerzo-vs-apalancamiento/guion.md`). 03 — la regla 7-11-4 de Google (confianza ← familiaridad ← repetición; cierra con "sígueme"). 04 — orgánico + anuncios: tráfico tibio de Meta y campaña dedicada. Plantilla y reglas del formato voz en off: `reels/_plantilla-voz-en-off/LEEME.md`.
 - **Carruseles** (`carruseles/`, índice en `carruseles/README.md`; sistema: skill `carruseles-avatar-ads`): 01 — por qué tus videos con IA se ven falsos + método de 4 pasos (palabra clave PROMPT).
 - **Lead magnets** (índice completo en `lead-magnets/README.md`; sistema: skill `lead-magnets-avatar-ads`). Cada reel termina con "Comenta PALABRA" → DM automático → PDF de alto valor que entrega lo prometido → CTA a la landing (UTM `utm_medium=lead-magnet`).
   - **PROMPT** (reel 01): "El prompt JSON para videos UGC que no parecen IA", guía de 10 páginas + plantilla copiable. https://taller.droilab.com/recursos/prompt-json-avatar-ads.pdf

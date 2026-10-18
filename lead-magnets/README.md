@@ -3,7 +3,7 @@
 Cada reel termina con "Comenta PALABRA" → DM automático (ManyChat) → lead magnet → CTA a la landing.
 Los lead magnets son **funnels**: entregan de verdad lo prometido en el reel y llevan al programa (link a la landing en el pie de cada página + página final de CTA).
 
-Sistema: skill `lead-magnets-avatar-ads` (en `skills e instrucciones/lead-magnets-avatar-ads/`).
+Sistema: skill `lead-magnets-avatar-ads` (en `skills/lead-magnets-avatar-ads/`).
 
 ## Índice
 
@@ -29,4 +29,4 @@ lead-magnets/
 ```
 
 Construir: `node lead-magnets/_plantilla/construir.mjs lead-magnets/NN-slug`
-Publicar: copiar el PDF y los extras a `1-landing/recursos/` y desplegar (`netlify.cmd deploy --prod --dir 1-landing`).
+Publicar: copiar el PDF y los extras a `landing/recursos/` y desplegar (`netlify.cmd deploy --prod --dir landing`).

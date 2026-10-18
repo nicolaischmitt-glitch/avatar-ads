@@ -16,18 +16,21 @@
 *.aac
 
 # Excepción: la landing se guarda completa (con sus videos) para poder republicarla
-!1-landing/**
+!landing/**
 
 # Material viejo — solo en Google Drive
-99-archivo/
+archivo/
 
 # Enlaces de Windows a los skills (se recrean, ver PROYECTO.md)
 .claude/skills/
 
-# Basura y cachés de edición
+# Basura y cachés de edición (HyperFrames / media-use se regeneran solos)
 *.lnk
 *.log
+.hyperframes/
+.thumbnails/
 .waveform-cache/
+.media/
 *.hf-transaction-*/
 node_modules/
 Thumbs.db

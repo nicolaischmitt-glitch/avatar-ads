@@ -1,0 +1,16 @@
+{
+  "fuente": "reels/03-regla-7-11-4/voz-original.mp4",
+  "nota": "Se quita el arranque fallido 'La regla 7-11-4.' (4.16–5.36) y se recortan las pausas largas a ~0,25 s.",
+  "conservar": [
+    [6.33, 12.14],
+    [12.35, 14.48],
+    [14.78, 25.63],
+    [25.87, 30.33],
+    [30.58, 33.1],
+    [33.27, 38.51],
+    [38.66, 42.56],
+    [42.72, 44.03],
+    [44.31, 54.4],
+    [54.58, 55.45]
+  ]
+}

@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Reel 02 — El idioma del dinero</title>
+    <style>
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+
+      :root {
+        --bg: #020604; --card: #090f0b; --border: #305e4a; --accent: #c5f740;
+        --text: #f8f8f8; --muted: #dddad7; --meta: #9f9587;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020604;
+        font-family: "Inter", "Archivo", "Instrument Serif", sans-serif; color: #f8f8f8; }
+      #stage { position: relative; width: 100%; height: 100%; overflow: hidden;
+        background: radial-gradient(110% 60% at 50% 18%, #0d2016 0%, #020604 62%); }
+      #grid { position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(48,94,74,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(48,94,74,.13) 1px, transparent 1px);
+        background-size: 60px 60px; }
+
+      .scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .in { position: absolute; inset: 0; }
+      .txt { position: absolute; left: 60px; width: 960px; text-align: center; }
+      .serif { font-family: "Instrument Serif", serif; font-weight: 400; line-height: 1.02; letter-spacing: -0.5px; color: var(--text); }
+      .it { font-style: italic; }
+      .big { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; letter-spacing: -1px; line-height: .95; color: var(--text); }
+      .acc { color: var(--accent); }
+      .label { font-family: "Inter", sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 6px; text-transform: uppercase; color: var(--meta); }
+      .card { position: absolute; background: var(--card); border: 2px solid var(--border); border-radius: 28px;
+        box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+      .word { position: relative; display: inline-block; }
+      .strike { position: absolute; left: -2%; top: 50%; width: 104%; height: 12px; margin-top: -6px; border-radius: 6px;
+        background: var(--accent); transform-origin: 0 50%; box-shadow: 0 0 24px rgba(197,247,64,.5); }
+      svg { position: absolute; overflow: visible; }
+
+      /* 1 · agenda */
+      #s1-grid { position: absolute; left: 140px; top: 700px; width: 800px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+      .blk { height: 84px; border-radius: 14px; background: #10211a; border: 1.5px solid var(--border); }
+      .blk:nth-child(3n) { background: #172b21; } .blk:nth-child(5n) { background: #0c1712; }
+      #s1-check { position: absolute; left: 390px; top: 760px; width: 300px; height: 300px; border-radius: 40px; background: var(--accent);
+        box-shadow: 0 0 90px rgba(197,247,64,.45); }
+      #s1-check::after { content: ""; position: absolute; left: 112px; top: 58px; width: 66px; height: 130px; border: solid #0a1206; border-width: 0 26px 26px 0; rotate: 45deg; }
+
+      /* 3 · órbita */
+      #s3-orbit { position: absolute; left: 260px; top: 640px; width: 560px; height: 560px; border-radius: 50%; border: 2px dashed rgba(197,247,64,.35); }
+      #s3-arm { position: absolute; left: 260px; top: 640px; width: 560px; height: 560px; }
+      #s3-dot { position: absolute; left: 258px; top: -22px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 40px var(--accent); }
+
+      /* 4 · computadora */
+      #s4-win { left: 110px; top: 620px; width: 860px; height: 540px; overflow: hidden; }
+      .winbar { height: 64px; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 12px; padding-left: 26px; }
+      .winbar i { width: 18px; height: 18px; border-radius: 50%; background: #305e4a; }
+      #s4-clock { position: absolute; left: 0; top: 150px; width: 100%; text-align: center; font-family: "Archivo", sans-serif; font-weight: 800;
+        font-stretch: 125%; font-size: 150px; letter-spacing: -2px; color: var(--text); font-variant-numeric: tabular-nums; }
+      #s4-sub { position: absolute; left: 0; top: 360px; width: 100%; text-align: center; }
+      #s4-money { position: absolute; left: 440px; top: 1190px; width: 200px; height: 200px; border-radius: 50%; border: 4px dashed rgba(248,248,248,.45);
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 110px; color: rgba(248,248,248,.45); display: flex; align-items: center; justify-content: center; }
+
+      /* 5 · semanas */
+      #s5-weeks { position: absolute; left: 90px; top: 540px; width: 900px; display: flex; gap: 20px; }
+      .wk { flex: 1; padding: 18px 0; text-align: center; border-radius: 16px; border: 2px solid var(--border); background: var(--card);
+        font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 30px; letter-spacing: 1px; color: var(--meta); }
+      .wk.on { border-color: var(--accent); color: var(--accent); }
+      #s5-chart { left: 90px; top: 680px; width: 900px; height: 520px; }
+
+      /* 7 · palanca */
+      #s7-svg { left: 0; top: 0; width: 1080px; height: 1920px; }
+
+      /* 8 · curva */
+      #s8-chart { left: 90px; top: 660px; width: 900px; height: 600px; }
+
+      /* 10 · acciones */
+      .act { width: 440px; height: 500px; overflow: hidden; }
+      .act .hd { padding: 26px 28px 0; }
+      .act .k { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 24px; letter-spacing: 2px; color: var(--accent); }
+      .ph { position: absolute; left: 28px; right: 28px; border-radius: 18px; background: linear-gradient(135deg, #16352a 0%, #0c1712 100%); border: 1.5px solid var(--border); }
+      .btn { position: absolute; left: 28px; right: 28px; height: 70px; border-radius: 16px; background: var(--accent); color: #0a1206;
+        font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 28px; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; }
+      .tri { position: absolute; left: 50%; top: 50%; margin: -40px 0 0 -26px; border-style: solid; border-width: 40px 0 40px 64px; border-color: transparent transparent transparent var(--text); }
+      .prog { position: absolute; left: 28px; right: 28px; height: 12px; border-radius: 6px; background: rgba(248,248,248,.15); overflow: hidden; }
+      .prog i { position: absolute; inset: 0; background: var(--accent); transform-origin: 0 50%; }
+      .avatar { position: absolute; left: 150px; top: 130px; width: 140px; height: 140px; border-radius: 50%; background: #16352a; border: 2px solid var(--border); }
+      .avatar::before { content: ""; position: absolute; left: 44px; top: 26px; width: 52px; height: 52px; border-radius: 50%; background: #3d6b55; }
+      .avatar::after { content: ""; position: absolute; left: 26px; top: 86px; width: 88px; height: 48px; border-radius: 44px 44px 0 0; background: #3d6b55; }
+      .ring { position: absolute; left: 150px; top: 130px; width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--accent); }
+      .callbtn { position: absolute; left: 180px; top: 380px; width: 80px; height: 80px; border-radius: 50%; background: var(--accent); }
+      .callbtn::after { content: ""; position: absolute; left: 22px; top: 30px; width: 36px; height: 20px; border-radius: 10px 10px 4px 4px; border: 7px solid #0a1206; border-bottom: 0; }
+      .bub { position: absolute; padding: 16px 22px; border-radius: 22px; font-family: "Inter", sans-serif; font-weight: 500; font-size: 25px; line-height: 1.25; white-space: nowrap; }
+      .bub.me { right: 28px; background: var(--accent); color: #0a1206; border-bottom-right-radius: 6px; }
+      .seen { position: absolute; right: 30px; font-family: "Inter", sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 1px; color: var(--meta); }
+
+      /* 11 · reloj */
+      #s11-clock { position: absolute; left: 400px; top: 880px; width: 280px; height: 280px; border-radius: 50%; border: 4px solid var(--text); }
+      #s11-clock::before { content: ""; position: absolute; left: 132px; top: 132px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); }
+      #s11-h { position: absolute; left: 136px; top: 70px; width: 8px; height: 72px; border-radius: 4px; background: var(--text); transform-origin: 50% 100%; }
+      #s11-m { position: absolute; left: 137px; top: 30px; width: 6px; height: 112px; border-radius: 3px; background: var(--accent); transform-origin: 50% 100%; }
+
+      /* 12 · pregunta */
+      .q { width: 420px; height: 330px; padding: 34px 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+      .q .serif { font-size: 54px; }
+      .q .ic { width: 96px; height: 96px; border-radius: 50%; margin-bottom: 18px; display: flex; align-items: center; justify-content: center;
+        font-family: "Archivo", sans-serif; font-weight: 800; font-size: 54px; }
+      #s12-a { border-color: var(--accent); }
+      #s12-a .ic { background: var(--accent); color: #0a1206; }
+      #s12-b .ic { border: 3px solid var(--meta); color: var(--meta); }
+      .spark { position: absolute; width: 34px; height: 34px; background: var(--muted);
+        clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+
+      /* subtítulos */
+      #subs { position: absolute; left: 0; top: 1440px; width: 1080px; height: 200px; }
+      .sub { position: absolute; left: 90px; width: 900px; top: 0; text-align: center; opacity: 0;
+        font-family: "Inter", sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2; color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,.6), 0 4px 18px rgba(0,0,0,.55); }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="reel-02" data-start="0" data-duration="45.6" data-fps="30" data-width="1080" data-height="1920">
+      <div id="grid"></div>
+
+      <!-- 1–2 · ocupado → lo correcto (0 – 4.16) -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="4.16" data-track-index="2">
+        <div class="in" id="s1-in">
+          <div class="txt serif" id="s1-a" style="top:330px;font-size:70px">No se trata de estar</div>
+          <div class="txt" id="s1-b" style="top:420px"><span class="word big" style="font-size:150px">OCUPADO<span class="strike" id="s1-strike"></span></span></div>
+          <div class="txt serif" id="s1-c" style="top:330px;font-size:70px">se trata de hacer</div>
+          <div class="txt serif it acc" id="s1-d" style="top:420px;font-size:150px">lo correcto</div>
+          <div id="s1-grid"></div>
+          <div id="s1-check"></div>
+        </div>
+      </div>
+
+      <!-- 3 · ilusión del trabajo duro (4.16 – 7.36) -->
+      <div id="s3" class="scene clip" data-start="4.16" data-duration="3.2" data-track-index="2">
+        <div class="in" id="s3-in">
+          <div class="txt serif" id="s3-a" style="top:330px;font-size:64px">A veces nos perdemos en</div>
+          <div class="txt serif it acc" id="s3-b" style="top:410px;font-size:140px">la ilusión</div>
+          <div id="s3-orbit"></div>
+          <div id="s3-arm"><div id="s3-dot"></div></div>
+          <div class="txt" id="s3-c" style="top:860px"><div class="big" style="font-size:70px;line-height:1.05">TRABAJO<br />DURO</div></div>
+        </div>
+      </div>
+
+      <!-- 4 · horas frente a la computadora (7.36 – 12.64) -->
+      <div id="s4" class="scene clip" data-start="7.36" data-duration="5.28" data-track-index="2">
+        <div class="in" id="s4-in">
+          <div class="txt serif" id="s4-a" style="top:330px;font-size:64px">Pensamos que por pasar</div>
+          <div class="txt serif it acc" id="s4-b" style="top:410px;font-size:120px">horas ocupados</div>
+          <div class="card" id="s4-win">
+            <div class="winbar"><i></i><i></i><i></i></div>
+            <div id="s4-clock">00:00</div>
+            <div id="s4-sub" class="label">horas frente a la computadora</div>
+          </div>
+          <div id="s4-money">$</div>
+          <div class="txt label" id="s4-wait" style="top:1405px">esperando que llegue…</div>
+        </div>
+      </div>
+
+      <!-- 5 · pasan las semanas, nada se mueve (12.64 – 16.24) -->
+      <div id="s5" class="scene clip" data-start="12.64" data-duration="3.6" data-track-index="2">
+        <div class="in" id="s5-in">
+          <div class="txt serif" id="s5-a" style="top:330px;font-size:70px">pero pasan las <span class="it acc">semanas</span></div>
+          <div id="s5-weeks"><div class="wk" id="wk1">SEM 1</div><div class="wk" id="wk2">SEM 2</div><div class="wk" id="wk3">SEM 3</div><div class="wk" id="wk4">SEM 4</div></div>
+          <div class="card" id="s5-chart">
+            <div class="label" style="position:absolute;left:36px;top:30px">ventas</div>
+            <svg width="900" height="520" style="left:0;top:0">
+              <line x1="70" y1="440" x2="850" y2="440" stroke="#305e4a" stroke-width="3" />
+              <line x1="70" y1="110" x2="70" y2="440" stroke="#305e4a" stroke-width="3" />
+              <line x1="70" y1="220" x2="850" y2="220" stroke="#305e4a" stroke-width="1.5" stroke-dasharray="8 10" opacity=".6" />
+              <line x1="70" y1="330" x2="850" y2="330" stroke="#305e4a" stroke-width="1.5" stroke-dasharray="8 10" opacity=".6" />
+              <path id="s5-line" d="M70 425 L265 423 L460 426 L655 424 L850 425" fill="none" stroke="#f8f8f8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="txt serif it" id="s5-b" style="top:1240px;font-size:84px">y nada se mueve.</div>
+        </div>
+      </div>
+
+      <!-- 6 · el idioma del dinero no es el esfuerzo (16.24 – 19.84) -->
+      <div id="s6" class="scene clip" data-start="16.24" data-duration="3.6" data-track-index="2">
+        <div class="in" id="s6-in">
+          <div class="txt" id="s6-bg" style="top:340px"><span class="big" style="font-size:1000px;line-height:1;color:transparent;-webkit-text-stroke:3px rgba(48,94,74,.55)">$</span></div>
+          <div class="txt serif" id="s6-a" style="top:420px;font-size:70px">La razón es que</div>
+          <div class="txt serif" id="s6-b" style="top:510px;font-size:110px">el idioma del <span class="it acc">dinero</span></div>
+          <div class="txt serif" id="s6-c" style="top:760px;font-size:70px">no es el</div>
+          <div class="txt" id="s6-d" style="top:860px"><span class="word big" style="font-size:150px">ESFUERZO<span class="strike" id="s6-strike"></span></span></div>
+        </div>
+      </div>
+
+      <!-- 7 · es el apalancamiento (19.84 – 21.6) -->
+      <div id="s7" class="scene clip" data-start="19.84" data-duration="1.76" data-track-index="2">
+        <div class="in" id="s7-in">
+          <div class="txt serif" id="s7-a" style="top:330px;font-size:70px">es el</div>
+          <div class="txt big acc" id="s7-b" style="top:430px;font-size:98px;font-stretch:112%">APALANCAMIENTO</div>
+          <svg id="s7-svg" width="1080" height="1920">
+            <polygon points="380,1150 330,1250 430,1250" fill="none" stroke="#c5f740" stroke-width="5" stroke-linejoin="round" />
+            <line x1="120" y1="1250" x2="960" y2="1250" stroke="#305e4a" stroke-width="3" />
+            <g id="s7-lever">
+              <rect x="120" y="1140" width="840" height="14" rx="7" fill="#f8f8f8" />
+              <g id="s7-block">
+                <rect x="140" y="980" width="200" height="160" rx="18" fill="#090f0b" stroke="#c5f740" stroke-width="4" />
+                <text x="240" y="1096" text-anchor="middle" font-family="Archivo" font-weight="800" font-size="110" fill="#c5f740">$</text>
+              </g>
+              <circle cx="925" cy="1112" r="26" fill="#f8f8f8" />
+            </g>
+            <g id="s7-push">
+              <line x1="925" y1="930" x2="925" y2="1040" stroke="#c5f740" stroke-width="7" stroke-linecap="round" />
+              <polyline points="895,1010 925,1048 955,1010" fill="none" stroke="#c5f740" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 8 · acciones que aumentan tus probabilidades de vender (21.6 – 25.84) -->
+      <div id="s8" class="scene clip" data-start="21.6" data-duration="4.24" data-track-index="2">
+        <div class="in" id="s8-in">
+          <div class="txt serif" id="s8-a" style="top:330px;font-size:64px">Debes trabajar en las</div>
+          <div class="txt serif it acc" id="s8-b" style="top:410px;font-size:140px">acciones</div>
+          <div class="card" id="s8-chart">
+            <div class="label" style="position:absolute;left:36px;top:30px">probabilidad de vender</div>
+            <svg width="900" height="600" style="left:0;top:0">
+              <line x1="70" y1="520" x2="850" y2="520" stroke="#305e4a" stroke-width="3" />
+              <line x1="70" y1="110" x2="70" y2="520" stroke="#305e4a" stroke-width="3" />
+              <path id="s8-line" d="M70 505 C 300 495, 420 470, 520 390 S 720 170, 830 130" fill="none" stroke="#c5f740" stroke-width="9" stroke-linecap="round" />
+              <circle id="s8-dot" cx="830" cy="130" r="18" fill="#c5f740" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 · las que más miedo te dan (25.84 – 31.04) -->
+      <div id="s9" class="scene clip" data-start="25.84" data-duration="5.2" data-track-index="2">
+        <div class="in" id="s9-in">
+          <div class="txt serif" id="s9-a" style="top:330px;font-size:64px">y esas acciones son justamente</div>
+          <div class="txt serif" id="s9-b" style="top:410px;font-size:70px">las que más</div>
+          <div class="txt" id="s9-c" style="top:500px"><span class="word serif it acc" id="s9-word" style="font-size:200px">miedo</span></div>
+          <div class="txt serif" id="s9-d" style="top:720px;font-size:70px">te dan.</div>
+          <svg width="1080" height="400" style="left:0;top:880px">
+            <path id="s9-calm" fill="none" stroke="#f8f8f8" stroke-width="5" stroke-linecap="round" />
+            <path id="s9-wild" fill="none" stroke="#c5f740" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- 10 · anuncio, video, llamada, mensajes (31.04 – 36.48) -->
+      <div id="s10" class="scene clip" data-start="31.04" data-duration="5.44" data-track-index="2">
+        <div class="in" id="s10-in">
+          <div class="card act" id="c1" style="left:80px;top:300px">
+            <div class="hd"><div class="k">LANZAR ESE ANUNCIO</div><div class="label" style="font-size:18px;letter-spacing:3px;margin-top:6px">patrocinado</div></div>
+            <div class="ph" style="top:130px;height:250px"></div>
+            <div class="btn" id="c1-btn" style="top:402px">PUBLICAR</div>
+          </div>
+          <div class="card act" id="c2" style="left:560px;top:300px">
+            <div class="hd"><div class="k">LANZAR ESE VIDEO</div></div>
+            <div class="ph" style="top:100px;height:250px"><div class="tri"></div></div>
+            <div class="prog" style="top:388px"><i id="c2-bar"></i></div>
+            <div class="label" id="c2-st" style="position:absolute;left:28px;top:420px;font-size:20px;letter-spacing:3px">subiendo…</div>
+            <div class="label acc" id="c2-ok" style="position:absolute;left:28px;top:420px;font-size:20px;letter-spacing:3px;color:#c5f740">publicado ✓</div>
+          </div>
+          <div class="card act" id="c3" style="left:80px;top:840px">
+            <div class="hd"><div class="k">HACER ESA LLAMADA</div></div>
+            <div class="ring" id="c3-r1"></div><div class="ring" id="c3-r2"></div>
+            <div class="avatar"></div>
+            <div class="label" style="position:absolute;left:0;width:100%;text-align:center;top:300px;font-size:20px;letter-spacing:3px">llamando…</div>
+            <div class="callbtn"></div>
+          </div>
+          <div class="card act" id="c4" style="left:560px;top:840px">
+            <div class="hd"><div class="k">ENVIAR ESOS MENSAJES</div></div>
+            <div class="bub me" id="b1" style="top:110px">Hola, ¿tienes 5 min?</div>
+            <div class="bub me" id="b2" style="top:200px">Te comparto la propuesta</div>
+            <div class="bub me" id="b3" style="top:290px">¿Agendamos hoy?</div>
+            <div class="seen" id="b-seen" style="top:372px">ENVIADO ✓✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 · antes de iniciar tu trabajo (36.48 – 38.8) -->
+      <div id="s11" class="scene clip" data-start="36.48" data-duration="2.32" data-track-index="2">
+        <div class="in" id="s11-in">
+          <div class="txt serif" id="s11-a" style="top:560px;font-size:76px">Así que antes de iniciar</div>
+          <div class="txt serif it acc" id="s11-b" style="top:660px;font-size:120px">tu trabajo</div>
+          <div id="s11-clock"><div id="s11-h"></div><div id="s11-m"></div></div>
+        </div>
+      </div>
+
+      <!-- 12 · pregúntate (38.8 – 45.6) -->
+      <div id="s12" class="scene clip" data-start="38.8" data-duration="6.8" data-track-index="2">
+        <div class="in" id="s12-in">
+          <div class="txt big" id="s12-t" style="top:300px;font-size:120px">PREGÚNTATE</div>
+          <div class="txt serif" id="s12-s" style="top:450px;font-size:56px">lo que voy a hacer…</div>
+          <svg width="1080" height="1920" style="left:0;top:0">
+            <path id="s12-fork" d="M540 560 L540 680 M540 680 L300 820 M540 680 L780 820" fill="none" stroke="#305e4a" stroke-width="5" stroke-linecap="round" />
+          </svg>
+          <div class="card q" id="s12-a" style="left:90px;top:840px">
+            <div class="ic">$</div>
+            <div class="serif">¿me acerca al <span class="it acc">dinero?</span></div>
+          </div>
+          <div class="card q" id="s12-b" style="left:570px;top:840px">
+            <div class="ic">✦</div>
+            <div class="serif">¿o solo se ve <span class="it">atractivo?</span></div>
+            <div class="spark" id="sp1" style="left:340px;top:26px"></div>
+            <div class="spark" id="sp2" style="left:36px;top:250px;width:24px;height:24px"></div>
+            <div class="spark" id="sp3" style="left:370px;top:240px;width:20px;height:20px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="subs"></div>
+
+      <!-- Voz (limpia y nivelada: scripts/voz.mjs) -->
+      <audio id="voz" src="audio/voz.wav" data-start="0" data-duration="45.01" data-volume="1" data-track-index="10"></audio>
+
+      <!-- Efectos de sonido -->
+      <audio id="fx01" src="audio/typing.mp3" data-start="0.15" data-duration="1.4" data-volume="0.22" data-track-index="11"></audio>
+      <audio id="fx02" src="audio/click.mp3" data-start="1.9" data-duration="0.37" data-volume="0.35" data-track-index="12"></audio>
+      <audio id="fx03" src="audio/pop.mp3" data-start="3.18" data-duration="0.72" data-volume="0.35" data-track-index="11"></audio>
+      <audio id="fx04" src="audio/chime.mp3" data-start="3.3" data-duration="1.4" data-volume="0.18" data-track-index="12"></audio>
+      <audio id="fx05" src="audio/whoosh-short.mp3" data-start="4.0" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx06" src="audio/whoosh-short.mp3" data-start="7.2" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx07" src="audio/typing.mp3" data-start="8.6" data-duration="1.5" data-volume="0.2" data-track-index="11"></audio>
+      <audio id="fx08" src="audio/pop.mp3" data-start="11.65" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx09" src="audio/whoosh-short.mp3" data-start="12.48" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx10" src="audio/click-soft.mp3" data-start="13.2" data-duration="0.36" data-volume="0.45" data-track-index="11"></audio>
+      <audio id="fx11" src="audio/click-soft.mp3" data-start="13.45" data-duration="0.36" data-volume="0.45" data-track-index="12"></audio>
+      <audio id="fx12" src="audio/click-soft.mp3" data-start="13.7" data-duration="0.36" data-volume="0.45" data-track-index="11"></audio>
+      <audio id="fx13" src="audio/click-soft.mp3" data-start="13.95" data-duration="0.36" data-volume="0.45" data-track-index="12"></audio>
+      <audio id="fx14" src="audio/whoosh-short.mp3" data-start="16.08" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx15" src="audio/glitch-1.mp3" data-start="19.5" data-duration="0.8" data-volume="0.16" data-track-index="11"></audio>
+      <audio id="fx16" src="audio/impact-bass-1.mp3" data-start="20.38" data-duration="1.2" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx17" src="audio/whoosh-short.mp3" data-start="21.44" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx18" src="audio/ping.mp3" data-start="25.15" data-duration="1.0" data-volume="0.22" data-track-index="11"></audio>
+      <audio id="fx19" src="audio/whoosh-short.mp3" data-start="25.68" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx20" src="audio/glitch-1.mp3" data-start="29.6" data-duration="0.9" data-volume="0.18" data-track-index="12"></audio>
+      <audio id="fx21" src="audio/pop.mp3" data-start="30.95" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx22" src="audio/click.mp3" data-start="31.85" data-duration="0.37" data-volume="0.35" data-track-index="12"></audio>
+      <audio id="fx23" src="audio/pop.mp3" data-start="32.4" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx24" src="audio/pop.mp3" data-start="33.68" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx25" src="audio/ping.mp3" data-start="34.1" data-duration="0.8" data-volume="0.15" data-track-index="13"></audio>
+      <audio id="fx26" src="audio/pop.mp3" data-start="34.88" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx27" src="audio/key-press.mp3" data-start="35.15" data-duration="0.4" data-volume="0.35" data-track-index="12"></audio>
+      <audio id="fx28" src="audio/key-press.mp3" data-start="35.5" data-duration="0.4" data-volume="0.35" data-track-index="13"></audio>
+      <audio id="fx29" src="audio/key-press.mp3" data-start="35.85" data-duration="0.4" data-volume="0.35" data-track-index="12"></audio>
+      <audio id="fx30" src="audio/whoosh-short.mp3" data-start="36.32" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx31" src="audio/pop.mp3" data-start="38.7" data-duration="0.72" data-volume="0.35" data-track-index="11"></audio>
+      <audio id="fx32" src="audio/click-soft.mp3" data-start="39.85" data-duration="0.36" data-volume="0.45" data-track-index="12"></audio>
+      <audio id="fx33" src="audio/pop.mp3" data-start="40.88" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx34" src="audio/pop.mp3" data-start="42.48" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx35" src="audio/sparkle.mp3" data-start="44.1" data-duration="1.4" data-volume="0.2" data-track-index="13"></audio>
+      <audio id="fx36" src="audio/chime.mp3" data-start="44.95" data-duration="0.65" data-volume="0.18" data-track-index="11"></audio>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      // Se construye cuando las fuentes ya cargaron, para medir bien los textos.
+      document.fonts.ready.then(function () {
+        const FPS = 30;
+        const q = (t) => Math.round(t * FPS) / FPS;
+        const tl = gsap.timeline({ paused: true });
+        const $ = (s) => document.querySelector(s);
+        const IR = { immediateRender: false };
+
+        // Palabras grandes: reduce el tamaño hasta que el TEXTO quepa en 940 px (zona segura).
+        const textWidth = (el) => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; };
+        document.querySelectorAll(".big").forEach((el) => {
+          let fs = parseFloat(getComputedStyle(el).fontSize);
+          while (textWidth(el) > 940 && fs > 40) { fs -= 2; el.style.fontSize = fs + "px"; }
+        });
+
+        // ── helpers ──
+        const rise = (sel, t, d = 0.35) => tl.fromTo(sel, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: d, ease: "power3.out", ...IR }, q(t));
+        const pop = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: d, ease: "back.out(2)", ...IR }, q(t));
+        const out = (sel, t, d = 0.18) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: d, ease: "power1.in", ...IR }, q(t));
+        const draw = (sel, t, d) => {
+          const el = $(sel);
+          const L = el.getTotalLength();
+          tl.set(sel, { strokeDasharray: L, strokeDashoffset: L }, 0);
+          tl.fromTo(sel, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut", ...IR }, q(t));
+        };
+        const strike = (sel, t) => tl.fromTo(sel, { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out", ...IR }, q(t));
+        // estado inicial: todo lo que entra animado empieza oculto
+        const hide = (sels) => tl.set(sels, { opacity: 0 }, 0);
+        // entrada / salida de cada escena (contenedor .in)
+        const scene = (id, a, b) => {
+          tl.fromTo(id, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out", ...IR }, q(a));
+          tl.fromTo(id, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power1.in", ...IR }, q(b - 0.15));
+        };
+
+        // ── 1 · ocupado → lo correcto ──
+        const grid = $("#s1-grid");
+        for (let i = 0; i < 24; i++) { const b = document.createElement("div"); b.className = "blk"; grid.appendChild(b); }
+        hide(["#s1-a", "#s1-b", "#s1-c", "#s1-d", "#s1-check", "#s1-grid .blk"]);
+        tl.set("#s1-strike", { scaleX: 0 }, 0);
+        tl.set("#s1-in", { opacity: 1 }, 0);
+        rise("#s1-a", 0.0);
+        tl.fromTo("#s1-grid .blk", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)", stagger: { each: 0.05, from: "random" }, ...IR }, q(0.1));
+        pop("#s1-b", 1.52);
+        strike("#s1-strike", 1.95);
+        out(["#s1-a", "#s1-b"], 2.2);
+        tl.fromTo("#s1-grid .blk", { opacity: 1 }, { opacity: 0.12, duration: 0.3, ...IR }, q(2.32));
+        rise("#s1-c", 2.32);
+        pop("#s1-d", 3.28, 0.45);
+        pop("#s1-check", 3.3, 0.5);
+        out("#s1-in", 4.0, 0.16);
+
+        // ── 3 · órbita ──
+        scene("#s3-in", 4.16, 7.36);
+        hide(["#s3-a", "#s3-b", "#s3-c", "#s3-orbit", "#s3-dot"]);
+        rise("#s3-a", 4.2);
+        tl.fromTo("#s3-orbit", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out", ...IR }, q(4.3));
+        tl.fromTo("#s3-dot", { opacity: 0 }, { opacity: 1, duration: 0.2, ...IR }, q(4.4));
+        tl.fromTo("#s3-arm", { rotation: 0 }, { rotation: 900, duration: 2.95, ease: "none", ...IR }, q(4.4));
+        rise("#s3-b", 5.52, 0.45);
+        pop("#s3-c", 6.4);
+
+        // ── 4 · horas frente a la computadora ──
+        scene("#s4-in", 7.36, 12.64);
+        hide(["#s4-a", "#s4-b", "#s4-win", "#s4-money", "#s4-wait"]);
+        rise("#s4-a", 7.4);
+        rise("#s4-win", 7.6, 0.45);
+        rise("#s4-b", 8.56, 0.4);
+        (function () {
+          const el = $("#s4-clock"); const o = { m: 0 };
+          const fmt = () => { const m = Math.round(o.m); el.textContent = String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+          tl.fromTo(o, { m: 0 }, { m: 12 * 60 + 47, duration: 2.6, ease: "power1.in", onUpdate: fmt, ...IR }, q(8.6));
+          tl.set(o, { m: 0, onComplete: fmt }, 0);
+        })();
+        pop("#s4-money", 11.76);
+        rise("#s4-wait", 11.9);
+        tl.fromTo("#s4-money", { opacity: 1 }, { opacity: 0.35, duration: 0.3, yoyo: true, repeat: 1, ease: "sine.inOut", ...IR }, q(12.0));
+
+        // ── 5 · semanas ──
+        scene("#s5-in", 12.64, 16.24);
+        hide(["#s5-a", "#s5-weeks", "#s5-chart", "#s5-b"]);
+        rise("#s5-a", 12.68);
+        rise("#s5-weeks", 12.8);
+        ["#wk1", "#wk2", "#wk3", "#wk4"].forEach((w, i) => {
+          tl.set(w, { attr: { class: "wk" } }, 0);
+          tl.set(w, { attr: { class: "wk on" } }, q(13.2 + i * 0.25));
+          tl.fromTo(w, { scale: 1.12 }, { scale: 1, duration: 0.2, ...IR }, q(13.2 + i * 0.25));
+        });
+        rise("#s5-chart", 13.1, 0.4);
+        draw("#s5-line", 14.3, 1.1);
+        rise("#s5-b", 15.12, 0.4);
+
+        // ── 6 · idioma del dinero ──
+        scene("#s6-in", 16.24, 19.84);
+        hide(["#s6-bg", "#s6-a", "#s6-b", "#s6-c", "#s6-d"]);
+        tl.set("#s6-strike", { scaleX: 0 }, 0);
+        tl.fromTo("#s6-bg", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 3.5, ease: "power1.out", ...IR }, q(16.3));
+        rise("#s6-a", 16.3);
+        rise("#s6-b", 17.3, 0.45);
+        rise("#s6-c", 18.64);
+        pop("#s6-d", 19.2);
+        strike("#s6-strike", 19.52);
+
+        // ── 7 · palanca ──
+        scene("#s7-in", 19.84, 21.6);
+        hide(["#s7-a", "#s7-b", "#s7-push"]);
+        rise("#s7-a", 19.88);
+        tl.set("#s7-lever", { rotation: 9, svgOrigin: "380 1147" }, 0);
+        tl.fromTo("#s7-push", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out", ...IR }, q(20.0));
+        tl.fromTo("#s7-lever", { rotation: 9 }, { rotation: -11, svgOrigin: "380 1147", duration: 0.55, ease: "back.out(1.6)", ...IR }, q(20.4));
+        pop("#s7-b", 20.4, 0.45);
+
+        // ── 8 · curva de probabilidad ──
+        scene("#s8-in", 21.6, 25.84);
+        hide(["#s8-a", "#s8-b", "#s8-chart", "#s8-dot"]);
+        rise("#s8-a", 21.64);
+        rise("#s8-b", 22.72, 0.45);
+        rise("#s8-chart", 23.1, 0.4);
+        draw("#s8-line", 23.44, 1.7);
+        pop("#s8-dot", 25.1, 0.35);
+
+        // ── 9 · miedo ──
+        scene("#s9-in", 25.84, 31.04);
+        hide(["#s9-a", "#s9-b", "#s9-c", "#s9-d", "#s9-wild"]);
+        (function () {
+          // onda tranquila y onda caótica (pseudoaleatorio con semilla fija → render determinista)
+          let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+          let calm = "M0 200", wild = "M0 200";
+          for (let x = 0; x <= 1080; x += 12) {
+            calm += ` L${x} ${(200 + Math.sin(x / 60) * 40).toFixed(1)}`;
+            wild += ` L${x} ${(200 + Math.sin(x / 30) * 50 + (rnd() - 0.5) * 230).toFixed(1)}`;
+          }
+          $("#s9-calm").setAttribute("d", calm); $("#s9-wild").setAttribute("d", wild);
+        })();
+        draw("#s9-calm", 25.9, 1.4);
+        rise("#s9-a", 25.9);
+        rise("#s9-b", 28.8);
+        tl.fromTo("#s9-calm", { opacity: 1 }, { opacity: 0, duration: 0.15, ...IR }, q(29.6));
+        tl.fromTo("#s9-wild", { opacity: 0 }, { opacity: 1, duration: 0.1, ...IR }, q(29.6));
+        tl.fromTo("#s9-wild", { scaleY: 0.6, transformOrigin: "50% 50%" }, { scaleY: 1.15, duration: 0.09, yoyo: true, repeat: 15, ease: "none", ...IR }, q(29.6));
+        pop("#s9-c", 29.6, 0.3);
+        tl.fromTo("#s9-word", { x: -6 }, { x: 6, duration: 0.05, yoyo: true, repeat: 15, ease: "none", ...IR }, q(29.7));
+        rise("#s9-d", 30.16);
+
+        // ── 10 · acciones ──
+        scene("#s10-in", 31.04, 36.48);
+        hide(["#c1", "#c2", "#c3", "#c4", "#c2-ok", "#b1", "#b2", "#b3", "#b-seen"]);
+        tl.set("#c2-bar", { scaleX: 0 }, 0);
+        const cards = [["#c1", 31.04], ["#c2", 32.48], ["#c3", 33.76], ["#c4", 34.96]];
+        cards.forEach(([c, t], i) => {
+          pop(c, t, 0.4);
+          tl.set(c, { borderColor: "#c5f740" }, q(t));
+          if (i > 0) { tl.fromTo(cards[i - 1][0], { opacity: 1 }, { opacity: 0.4, duration: 0.25, ...IR }, q(t)); tl.set(cards[i - 1][0], { borderColor: "#305e4a" }, q(t)); }
+        });
+        tl.fromTo("#c1-btn", { scale: 1 }, { scale: 0.92, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.inOut", ...IR }, q(31.85));
+        tl.fromTo("#c2-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power1.inOut", ...IR }, q(32.6));
+        tl.fromTo("#c2-st", { opacity: 1 }, { opacity: 0, duration: 0.1, ...IR }, q(33.5));
+        tl.fromTo("#c2-ok", { opacity: 0 }, { opacity: 1, duration: 0.15, ...IR }, q(33.5));
+        ["#c3-r1", "#c3-r2"].forEach((r, i) => {
+          tl.fromTo(r, { scale: 1, opacity: 0.8 }, { scale: 2.1, opacity: 0, duration: 0.9, repeat: 1, ease: "power1.out", ...IR }, q(33.9 + i * 0.45));
+        });
+        ["#b1", "#b2", "#b3"].forEach((b, i) => pop(b, 35.15 + i * 0.35, 0.3));
+        rise("#b-seen", 36.0, 0.2);
+
+        // ── 11 · reloj ──
+        scene("#s11-in", 36.48, 38.8);
+        hide(["#s11-a", "#s11-b", "#s11-clock"]);
+        rise("#s11-a", 36.52);
+        rise("#s11-b", 37.5, 0.4);
+        pop("#s11-clock", 36.7, 0.4);
+        tl.fromTo("#s11-m", { rotation: 0 }, { rotation: 720, duration: 2.0, ease: "power1.inOut", ...IR }, q(36.75));
+        tl.fromTo("#s11-h", { rotation: 30 }, { rotation: 90, duration: 2.0, ease: "power1.inOut", ...IR }, q(36.75));
+
+        // ── 12 · pregúntate ──
+        tl.fromTo("#s12-in", { opacity: 0 }, { opacity: 1, duration: 0.2, ...IR }, q(38.8));
+        hide(["#s12-t", "#s12-s", "#s12-a", "#s12-b", "#sp1", "#sp2", "#sp3"]);
+        pop("#s12-t", 38.8, 0.45);
+        rise("#s12-s", 39.84);
+        draw("#s12-fork", 40.0, 0.6);
+        pop("#s12-a", 40.96, 0.45);
+        pop("#s12-b", 42.56, 0.45);
+        ["#sp1", "#sp2", "#sp3"].forEach((s, i) => {
+          tl.fromTo(s, { opacity: 0, scale: 0, rotation: 0 }, { opacity: 1, scale: 1, rotation: 90, duration: 0.35, ease: "back.out(2)", ...IR }, q(44.15 + i * 0.12));
+        });
+        // la respuesta: gana la que acerca al dinero
+        tl.fromTo("#s12-b", { opacity: 1 }, { opacity: 0.35, duration: 0.4, ...IR }, q(45.0));
+        tl.fromTo("#s12-a", { scale: 1, boxShadow: "0 30px 80px rgba(0,0,0,.55)" }, { scale: 1.06, boxShadow: "0 0 80px rgba(197,247,64,.45)", duration: 0.4, ease: "power2.out", ...IR }, q(45.0));
+
+        // ── subtítulos (frases cortas, a partir del transcript de la voz limpia) ──
+        const WORDS = [["No",0,0.32],["se",0.32,0.56],["trata",0.56,0.96],["de",0.96,1.28],["estar",1.28,1.52],["ocupado,",1.52,2.32],["se",2.32,2.48],["trata",2.48,2.8],["de",2.8,3.04],["hacer",3.04,3.28],["lo",3.28,3.52],["correcto.",3.52,4.16],["A",4.16,4.24],["veces",4.24,4.56],["nos",4.56,4.8],["perdemos",4.8,5.28],["en",5.28,5.36],["la",5.36,5.52],["ilusión",5.52,6.16],["del",6.16,6.4],["trabajo",6.4,6.88],["duro.",6.88,7.36],["Pensamos",7.36,7.84],["que",7.84,8],["por",8,8.16],["pasar",8.16,8.56],["horas",8.56,8.96],["ocupados",8.96,9.6],["frente",9.6,9.92],["a",9.92,10],["una",10,10.24],["computadora",10.24,10.8],["vamos",10.96,11.28],["a",11.28,11.44],["ver",11.44,11.6],["el",11.6,11.76],["dinero",11.76,12.16],["llegar,",12.16,12.64],["pero",12.64,12.88],["luego",12.88,13.2],["pasan",13.2,13.52],["las",13.52,13.68],["semanas",13.68,14.08],["y",14.16,14.4],["no",14.4,14.56],["ves",14.56,14.88],["que",14.88,15.12],["nada",15.12,15.44],["se",15.44,15.6],["mueve.",15.6,16.24],["La",16.24,16.4],["razón",16.4,16.88],["es",16.88,17.04],["que",17.04,17.2],["el",17.2,17.36],["idioma",17.36,17.84],["del",17.84,18.08],["dinero",18.08,18.64],["no",18.64,18.8],["es",18.8,19.04],["el",19.04,19.2],["esfuerzo,",19.2,19.84],["es",20,20.16],["el",20.16,20.4],["apalancamiento.",20.4,21.6],["Debes",21.6,22],["trabajar",22,22.4],["en",22.4,22.56],["las",22.56,22.72],["acciones",22.72,23.2],["que",23.2,23.44],["aumentan",23.44,24.08],["tus",24.08,24.32],["probabilidades",24.32,25.04],["de",25.04,25.28],["vender.",25.28,25.84],["Y",25.84,26],["normalmente",26,26.64],["esas",26.88,27.2],["acciones",27.2,27.68],["son",27.68,28],["justamente",28,28.64],["las",28.8,29.12],["que",29.12,29.36],["más",29.36,29.6],["miedo",29.6,30],["te",30,30.16],["dan",30.16,30.32],["realizar.",30.4,31.04],["Lanzar",31.04,31.52],["ese",31.52,31.76],["anuncio,",31.76,32.48],["lanzar",32.48,32.88],["ese",32.88,33.12],["video,",33.12,33.76],["hacer",33.76,34.08],["esa",34.08,34.32],["llamada,",34.32,34.96],["enviar",34.96,35.44],["esos",35.44,35.76],["mensajes.",35.76,36.48],["Así",36.48,36.8],["que",36.8,37.04],["antes",37.04,37.36],["de",37.36,37.52],["iniciar",37.52,38],["tu",38,38.24],["trabajo,",38.24,38.8],["pregúntate:",38.8,39.52],["lo",39.84,40],["que",40,40.16],["voy",40.16,40.4],["a",40.4,40.48],["hacer,",40.48,40.64],["¿me",40.96,41.2],["acerca",41.2,41.76],["al",41.76,42],["dinero",42,42.48],["o",42.56,42.88],["simplemente",42.88,43.52],["se",43.68,43.84],["ve",43.84,44.16],["atractivo?",44.16,44.88]];
+        const groups = [];
+        let cur = [];
+        WORDS.forEach((w, i) => {
+          cur.push(w);
+          const next = WORDS[i + 1];
+          const punct = /[,.:?]$/.test(w[0]);
+          const gap = next ? next[1] - w[2] : 1;
+          if (!next || punct || cur.length >= 5 || gap > 0.28) { groups.push(cur); cur = []; }
+        });
+        const subs = $("#subs");
+        groups.forEach((g, gi) => {
+          const el = document.createElement("div");
+          el.className = "sub";
+          el.textContent = g.map((w) => w[0]).join(" ");
+          subs.appendChild(el);
+          const a = q(g[0][1] - 0.05);
+          const nx = groups[gi + 1];
+          const b = q(nx ? Math.min(nx[0][1] - 0.05, g[g.length - 1][2] + 0.4) : 45.6);
+          tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.15, ease: "power2.out", ...IR }, a);
+          if (nx) tl.fromTo(el, { opacity: 1 }, { opacity: 0, duration: 0.08, ...IR }, q(b - 0.08));
+        });
+
+        window.__timelines["reel-02"] = tl;
+      });
+    </script>
+  </body>
+</html>

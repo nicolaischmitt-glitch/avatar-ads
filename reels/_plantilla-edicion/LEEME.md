@@ -33,7 +33,7 @@ Cada elemento se anima con atributos; el script del final los compila:
 - **Sin música.** Solo voz + SFX.
 - Voz a −14 LUFS: al crear `public/input-video.mp4` añadir
   `-af "highpass=f=70,acompressor=threshold=-22dB:ratio=3:attack=5:release=90:makeup=2,loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000"`.
-- SFX incluidos y cuándo usarlos: tabla en `skills e instrucciones/reels-avatar-ads/references/estilo-edicion.md` (sección Audio).
+- SFX incluidos y cuándo usarlos: tabla en `skills/reels-avatar-ads/references/estilo-edicion.md` (sección Audio).
 
 ## Zooms
 El video va dentro de `<div id="zoom">`; los tweens de `scale` están al final del script del ejemplo (intro lenta + golpes en frases de impacto).

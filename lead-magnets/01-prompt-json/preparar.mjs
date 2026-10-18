@@ -12,7 +12,7 @@ const mark = (line) => {
 };
 
 export default async function () {
-  const master = fs.readFileSync(path.join(root, "skills e instrucciones/master prompt para json prompts videos.txt"), "utf8");
+  const master = fs.readFileSync(path.join(root, "skills/master prompt para json prompts videos.txt"), "utf8");
   const sec = master.slice(master.indexOf("## 4."), master.indexOf("## 5."));
   const tpl = JSON.parse(sec.slice(sec.indexOf("{"), sec.lastIndexOf("}") + 1));
   const lines = JSON.stringify(tpl, null, 2).split("\n");
