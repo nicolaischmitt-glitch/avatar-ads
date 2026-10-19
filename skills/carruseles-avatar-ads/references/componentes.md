@@ -1,6 +1,6 @@
-# Catálogo de componentes (carruseles/_plantilla/base.css)
+# Catálogo de componentes (Contenido/carruseles/_plantilla/base.css)
 
-Lienzo: 1080×1350. Zona de contenido: 920 px de ancho; ~1050 px de alto entre las barras. Todo el ejemplo vivo está en `carruseles/01-prompt-json/carrusel.html`.
+Lienzo: 1080×1350. Zona de contenido: 920 px de ancho; ~1050 px de alto entre las barras. Todo el ejemplo vivo está en `Contenido/carruseles/01-prompt-json/carrusel.html`.
 
 ## Elegir el componente según el mensaje
 

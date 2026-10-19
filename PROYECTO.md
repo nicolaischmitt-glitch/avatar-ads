@@ -22,12 +22,17 @@ Avatar Ads 1.0/
 │   │   ├── edicion/     ← proyecto HyperFrames (mismo flujo que 01-avatar-ads)
 │   │   └── finales/nuevo-video-subtitulos.mp4
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
-├── reels/               ← reels de Instagram (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
-│   ├── 01 … 04          ← reels hechos (formato B: la voz original va en NN-slug/voz-original.mp4)
-│   ├── 05-clon-ia-anda-saluda/ ← réplica de referencias/ref01 (guion + prompts; esperando clips)
-│   ├── _plantilla-edicion/     plantilla del formato avatar (talking head)
-│   └── _plantilla-voz-en-off/  plantilla + reglas del formato voz en off + motion graphics (LEEME.md, scripts de voz, SFX, logos)
-├── carruseles/          ← carruseles de Instagram (skill `carruseles-avatar-ads`): _plantilla/ (diseño + render a PNG) y una carpeta por carrusel
+├── Contenido/           ← todo el contenido orgánico de Instagram
+│   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
+│   │   ├── 01 … 04      ← reels hechos (formato B: la voz original va en NN-slug/voz-original.mp4)
+│   │   ├── 05-clon-ia-anda-saluda/ ← réplica de referencias/ref01 (guion + prompts; esperando clips)
+│   │   ├── _plantilla-edicion/     plantilla del formato avatar (talking head)
+│   │   └── _plantilla-voz-en-off/  plantilla + reglas del formato voz en off + motion graphics (LEEME.md, scripts de voz, SFX, logos)
+│   ├── carruseles/      ← carruseles (skill `carruseles-avatar-ads`): _plantilla/ (diseño + render a PNG) y una carpeta por carrusel
+│   ├── Historias de ig/ ← secuencias de historias ya publicadas (guía e inspiración de copy), una carpeta por secuencia
+│   └── imagenes y recursos (para usar)/ ← material propio para usar en el contenido
+│       ├── fotos mias para usar/
+│       └── screnshots de dinero y ventas/
 ├── lead-magnets/        ← un lead magnet por palabra clave (índice en lead-magnets/README.md)
 ├── referencias/         ← videos de referencia de otros creadores y sus desgloses (ref01, ref02, ejemplos de voz en off)
 ├── skills/
@@ -42,7 +47,7 @@ Avatar Ads 1.0/
     ├── renders-viejos/       primera versión limpia
     └── publicar-duplicado/   copia antigua de la landing
 ```
-Dónde va cada cosa nueva: anuncio → `anuncios/NN-slug/` · reel → `reels/NN-slug/` · carrusel → `carruseles/NN-slug/` · lead magnet → `lead-magnets/NN-slug/` · video de referencia → `referencias/` · material del programa/talleres → `programa/` (crear cuando empiece).
+Dónde va cada cosa nueva: anuncio → `anuncios/NN-slug/` · reel → `Contenido/reels/NN-slug/` · carrusel → `Contenido/carruseles/NN-slug/` · historias → `Contenido/Historias de ig/<secuencia>/` · fotos y capturas propias → `Contenido/imagenes y recursos (para usar)/` · lead magnet → `lead-magnets/NN-slug/` · video de referencia → `referencias/` · material del programa/talleres → `programa/` (crear cuando empiece).
 Para volver a renderizar el anuncio: desde `anuncios/01-avatar-ads/edicion/` → `hyperframes render public -o ../finales/<nombre>.mp4 --fps 24 --quality delivery --workers 1`.
 La versión limpia sin franja se puede rehacer con `anuncios/01-avatar-ads/edicion/versiones/index-v2-sin-texto.html` (ya corregida).
 
@@ -102,7 +107,7 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 
 ## Respaldo (GitHub + Google Drive)
 - **GitHub (repositorio privado, https://github.com/nicolaischmitt-glitch/avatar-ads):** documentos, skills, guiones, prompts, lead magnets, proyectos de edición y la landing completa (con sus videos). Es la copia con historial: cada commit es un punto al que se puede volver. Qué se excluye: ver `.gitignore`.
-- **Google Drive:** todo lo pesado que no va a GitHub: videos y audios (`*.mp4`, `*.wav`, `*.mp3`…) de `anuncios/`, `reels/` y `referencias/`, y la carpeta `archivo/` completa.
+- **Google Drive:** todo lo pesado que no va a GitHub: videos y audios (`*.mp4`, `*.wav`, `*.mp3`…) de `anuncios/`, `Contenido/reels/` y `referencias/`, y la carpeta `archivo/` completa.
 - **Rutina:** al terminar algo importante, guardar en GitHub (`git add -A`, `git commit -m "qué cambió"`, `git push`) o pedírselo a Claude Code. Los videos nuevos, copiarlos a Drive.
 - **En una computadora nueva:** clonar el repositorio, copiar los videos desde Drive a sus mismas carpetas y recrear los enlaces de los skills (en `cmd`, desde la raíz del proyecto):
   `mkdir .claude\skills` ·

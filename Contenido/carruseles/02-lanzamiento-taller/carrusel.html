@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Carrusel 02 · Lanzamiento taller</title>
+<link rel="stylesheet" href="../_plantilla/base.css">
+<style>
+  /* portada: abanico de 3 teléfonos */
+  .fan { position: relative; height: 440px; }
+  .fan .phone { position: absolute; top: 50%; left: 50%; }
+  .fan .p1 { width: 210px; transform: translate(-128%, -46%) rotate(-9deg); }
+  .fan .p3 { width: 210px; transform: translate(28%, -46%) rotate(9deg); }
+  .fan .p2 { width: 250px; transform: translate(-50%, -50%); z-index: 2; box-shadow: 0 0 0 2px var(--accent), 0 0 80px rgba(197,247,64,.3), 0 40px 90px rgba(0,0,0,.7); }
+  .live { display: inline-flex; align-items: center; gap: 12px; }
+  .live::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #ff5a5a; box-shadow: 0 0 0 6px rgba(255,90,90,.25); }
+
+  /* muro de anuncios */
+  .wall { display: flex; gap: 22px; justify-content: center; align-items: flex-start; }
+  .wall .phone { width: 212px; border-radius: 34px; padding: 7px; }
+  .wall .phone > img { border-radius: 28px; }
+  .wall .phone:nth-child(even) { margin-top: 90px; }
+  .wall .phone .pill { font-size: 19px; padding: 9px 16px; bottom: 16px; letter-spacing: 1.5px; }
+
+  /* perfiles */
+  .profile { display: flex; gap: 30px; align-items: flex-start; }
+  .profile .tag { font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 3px; color: var(--accent); }
+  .profile h3 { margin-top: 10px; font-size: 42px; }
+  .profile p { margin-top: 12px; font-size: 30px; color: var(--meta); line-height: 1.4; }
+  .me { display: inline-flex; align-items: center; gap: 14px; margin-top: 22px; }
+  .me img, .me .ph { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+
+  /* línea de tiempo de los días */
+  .days { display: flex; flex-direction: column; gap: 30px; }
+  .day { display: grid; grid-template-columns: 150px 1fr; gap: 28px; align-items: center; }
+  .day .d { text-align: center; padding: 18px 0; border-radius: 24px; background: var(--card2); border: 2px solid var(--accent); }
+  .day .d b { display: block; font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 52px; color: var(--accent); line-height: 1; }
+  .day .d span { font-family: "JetBrains Mono", monospace; font-size: 20px; letter-spacing: 2px; color: var(--meta); }
+  .day.bonus .d { border-style: dashed; }
+  .day .card { padding: 34px 36px; }
+  .day h3 { font-size: 40px; }
+  .day .out { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 31px; color: var(--text); }
+  .day .out .ic { color: var(--accent); font-size: 30px; }
+
+  /* incluye + bonos */
+  .bono { display: flex; gap: 24px; align-items: center; padding: 26px 30px; border-radius: 26px; border: 1.5px dashed var(--accent); background: rgba(197,247,64,.05); }
+  .bono h3 { font-size: 34px; }
+  .bono p { font-size: 27px; color: var(--meta); margin-top: 6px; line-height: 1.35; }
+  .bono .tag { font-family: "JetBrains Mono", monospace; font-size: 20px; letter-spacing: 3px; color: var(--accent); }
+
+  /* ticket */
+  .ticket { position: relative; border-radius: 36px; background: linear-gradient(160deg, #0f1d14, #070c09); border: 2px solid var(--accent); box-shadow: 0 0 80px rgba(197,247,64,.15); overflow: hidden; }
+  .ticket .top { padding: 44px 50px 36px; }
+  .ticket .price { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 170px; line-height: .9; color: var(--text); letter-spacing: -4px; }
+  .ticket .price small { font-size: 40px; letter-spacing: 0; color: var(--meta); font-family: "Inter"; font-weight: 600; margin-left: 14px; }
+  .ticket .cut { position: relative; height: 0; border-top: 3px dashed rgba(197,247,64,.5); margin: 0 40px; }
+  .ticket .cut::before, .ticket .cut::after { content: ""; position: absolute; top: -30px; width: 60px; height: 60px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .ticket .cut::before { left: -72px; } .ticket .cut::after { right: -72px; }
+  .ticket .bot { padding: 36px 50px 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 30px; }
+  .ticket .it span { display: block; font-family: "JetBrains Mono", monospace; font-size: 20px; letter-spacing: 3px; color: var(--meta); }
+  .ticket .it b { display: block; margin-top: 8px; font-size: 32px; color: var(--text); font-weight: 600; }
+  .coupon { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 30px; padding: 24px 30px; border-radius: 24px; background: var(--accent); color: #0a1206; }
+  .coupon .l { font-size: 30px; font-weight: 600; line-height: 1.3; }
+  .coupon .l b { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 52px; display: block; }
+  .coupon .code { font-family: "JetBrains Mono", monospace; font-size: 34px; letter-spacing: 3px; padding: 14px 22px; border: 3px dashed #0a1206; border-radius: 16px; }
+
+  /* CTA: dos caminos */
+  .paths { display: grid; grid-template-columns: 1fr; gap: 26px; }
+  .path { border-radius: 30px; padding: 40px 42px; background: var(--card); border: 1.5px solid var(--border); }
+  .path.hi { border-color: var(--accent); box-shadow: 0 0 60px rgba(197,247,64,.12); }
+  .path .tag { font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 3px; color: var(--accent); }
+  .path h3 { margin-top: 12px; font-size: 48px; }
+  .path .ig-comment { margin-top: 22px; }
+  .path .ig-comment .txt { font-size: 38px; }
+  .bio { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
+  .bio .pill { font-size: 24px; }
+  .host { display: flex; align-items: center; gap: 22px; }
+  .host img, .host .ph { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); flex: none; }
+  .ph { display: flex; align-items: center; justify-content: center; background: var(--card2); color: var(--meta); font-family: "JetBrains Mono", monospace; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="slide">
+  <span class="pill acc live">Taller en vivo · 26 oct</span>
+  <h1 class="mt-s">Aprende a crear anuncios <span class="mark">hiperrealistas</span> con IA</h1>
+  <p class="lead mt-s">Paso a paso y de la forma más económica.</p>
+  <div class="grow">
+    <div class="fan">
+      <div class="phone p1"><img src="img/ejemplo-labial.jpg" alt=""></div>
+      <div class="phone p3"><img src="img/ejemplo-skincare.jpg" alt=""></div>
+      <div class="phone p2"><img src="img/avatar-ads-anuncio.jpg" alt=""><span class="pill solid">100% IA</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · PRUEBA -->
+<section class="slide">
+  <span class="kicker">La prueba</span>
+  <h2>Nadie grabó estos anuncios</h2>
+  <p class="lead mt-s">Avatar, voz, gestos y producto: todo con IA.</p>
+  <div class="grow">
+    <div class="wall">
+      <div class="phone"><img src="img/ejemplo-labial.jpg" alt=""><span class="pill">Labial</span></div>
+      <div class="phone"><img src="img/ejemplo-airpods.jpg" alt=""><span class="pill">Audífonos</span></div>
+      <div class="phone"><img src="img/ejemplo-suplemento.jpg" alt=""><span class="pill">Suplemento</span></div>
+      <div class="phone"><img src="img/ejemplo-skincare.jpg" alt=""><span class="pill">Skincare</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · POR QUÉ IMPORTA -->
+<section class="slide">
+  <span class="kicker">Por qué importa</span>
+  <h2>Anuncios que <span class="acc">escalan ventas</span></h2>
+  <div class="grow">
+    <div class="flow v">
+      <div class="node"><span class="dot-ic"><i class="ic" data-i="layers"></i></span><div><h3>Creas más anuncios</h3><p>Sin grabarte ni contratar producción</p></div></div>
+      <div class="arr"><i class="ic" data-i="down"></i></div>
+      <div class="node"><span class="dot-ic"><i class="ic" data-i="target"></i></span><div><h3>Testeas más ángulos</h3><p>Más rápido, en menos tiempo</p></div></div>
+      <div class="arr"><i class="ic" data-i="down"></i></div>
+      <div class="node hi"><span class="dot-ic solid"><i class="ic" data-i="spark"></i></span><div><h3>Encuentras ganadores y escalas</h3><p>El que testea más, gana</p></div></div>
+    </div>
+    <div class="card mt row" style="gap:24px"><span class="dot-ic"><i class="ic" data-i="coin"></i></span><p style="font-size:30px">El mejor proceso que he encontrado en <b class="white">calidad / precio</b>.</p></div>
+  </div>
+</section>
+
+<!-- 4 · PARA QUIÉN -->
+<section class="slide">
+  <span class="kicker">Para quién es</span>
+  <h2>Esto te servirá si…</h2>
+  <div class="grow">
+    <div class="stack" style="gap:30px">
+      <div class="card profile"><span class="dot-ic solid"><i class="ic" data-i="target"></i></span><div><span class="tag">PERFIL 01</span><h3>Ya inviertes en ads</h3><p>Y quieres crear más y mejores anuncios para escalar.</p></div></div>
+      <div class="card profile"><span class="dot-ic solid"><i class="ic" data-i="coin"></i></span><div><span class="tag">PERFIL 02</span><h3>Quieres ofrecerlo como servicio</h3><p>Vender anuncios con IA a negocios.</p>
+        <span class="me"><img src="img/foto.jpg" alt="" onerror="this.outerHTML=&quot;<span class=ph>FOTO</span>&quot;"><span class="pill acc">Yo lo hago</span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · QUÉ APRENDES -->
+<section class="slide">
+  <span class="kicker">Qué aprendes</span>
+  <h2>Un resultado cada día</h2>
+  <div class="grow">
+    <div class="days">
+      <div class="day"><div class="d"><b>1</b><span>LUN 26</span></div><div class="card"><h3>Estrategia y preproducción</h3><div class="out"><i class="ic" data-i="check"></i>Guion y escenas planificadas</div></div></div>
+      <div class="day"><div class="d"><b>2</b><span>MAR 27</span></div><div class="card"><h3>Imágenes, animación y edición</h3><div class="out"><i class="ic" data-i="check"></i>Tu primer anuncio terminado</div></div></div>
+      <div class="day bonus"><div class="d"><b>3</b><span>MIÉ 28</span></div><div class="card hi"><span class="pill solid" style="font-size:19px;padding:7px 16px">Bonus</span><h3 class="mt-s">Cómo captar clientes</h3><div class="out"><i class="ic" data-i="check"></i>Qué vender y cómo conseguirlos</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · QUÉ INCLUYE -->
+<section class="slide">
+  <span class="kicker">Qué incluye</span>
+  <h2>Todo para producir</h2>
+  <div class="grow">
+    <ul class="checks">
+      <li><i class="ic" data-i="check"></i>2 días de taller en vivo</li>
+      <li><i class="ic" data-i="check"></i>Mis prompts de hiperrealismo</li>
+      <li><i class="ic" data-i="check"></i>Mis flujos completos</li>
+      <li><i class="ic" data-i="check"></i>Acceso vitalicio a Avatar Ads 1.0</li>
+    </ul>
+    <div class="stack mt" style="gap:20px">
+      <div class="bono"><span class="dot-ic solid"><i class="ic" data-i="user"></i></span><div><span class="tag">BONO 1</span><h3>Día 3: captar clientes</h3><p>Mi proceso para vender este servicio</p></div></div>
+      <div class="bono"><span class="dot-ic solid"><i class="ic" data-i="chat"></i></span><div><span class="tag">BONO 2</span><h3>Grupo privado de WhatsApp</h3><p>Feedback de tus ads y los mejores sistemas nuevos</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · LA OFERTA -->
+<section class="slide">
+  <span class="kicker">Tu entrada</span>
+  <h2>Solo 15 cupos</h2>
+  <div class="grow">
+    <div class="ticket">
+      <div class="top">
+        <span class="pill acc">Avatar Ads 1.0 · apertura</span>
+        <div class="price mt-s">$37<small>pago único</small></div>
+      </div>
+      <div class="cut"></div>
+      <div class="bot">
+        <div class="it"><span>INICIO</span><b>Lun 26 de octubre</b></div>
+        <div class="it"><span>HORA</span><b>7:00 p.m. (Ecuador)</b></div>
+        <div class="it"><span>MODALIDAD</span><b>Online, en vivo</b></div>
+        <div class="it"><span>CUPO</span><b>15 personas</b></div>
+      </div>
+    </div>
+    <div class="coupon">
+      <div class="l">Primeras 5 personas<b>$27</b></div>
+      <span class="code">AVATAR27</span>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · CTA -->
+<section class="slide glow-bottom">
+  <div class="host"><img src="img/foto.jpg" alt="" onerror="this.outerHTML=&quot;<span class=ph>FOTO</span>&quot;"><div><span class="kicker">¿Te gustaría participar?</span><h2 style="font-size:62px" class="mt-s">Elige cómo entrar</h2></div></div>
+  <div class="grow">
+    <div class="paths">
+      <div class="path hi"><span class="tag">OPCIÓN 1 · QUIERO INFO</span><h3>Comenta TALLER</h3><p class="small" style="margin-top:8px">Te envío todos los detalles por DM.</p>
+        <div class="ig-comment"><span class="av"></span><span class="txt">TALLER</span><span class="send"><i class="ic" data-i="send"></i></span></div></div>
+      <div class="path"><span class="tag">OPCIÓN 2 · QUIERO MI CUPO</span><h3>Link en mi bio</h3>
+        <div class="bio"><span class="pill solid">AVATAR27</span><span class="small">$27 para las primeras 5 personas</span></div></div>
+    </div>
+  </div>
+</section>
+
+<script src="../_plantilla/slides.js"></script>
+</body>
+</html>

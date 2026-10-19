@@ -9,7 +9,7 @@ Sistema: skill `lead-magnets-avatar-ads` (en `skills/lead-magnets-avatar-ads/`).
 
 | # | Palabra | Lead magnet | Reel | Formato | Link público | Estado |
 |---|---|---|---|---|---|---|
-| 01 | PROMPT | El prompt JSON para videos UGC que no parecen IA (guía + plantilla) | reels/01 | PDF 10 págs + .txt | https://taller.droilab.com/recursos/prompt-json-avatar-ads.pdf | Listo |
+| 01 | PROMPT | El prompt JSON para videos UGC que no parecen IA (guía + plantilla) | Contenido/reels/01 | PDF 10 págs + .txt | https://taller.droilab.com/recursos/prompt-json-avatar-ads.pdf | Listo |
 
 ## Estructura
 ```

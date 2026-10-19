@@ -1,0 +1,10 @@
+{
+  "fuente": "Contenido/reels/04-organico-mas-anuncios/voz-original.mp4",
+  "nota": "Se quita el arranque fallido 'La estrategia más potente en' (0.88–2.96) y se recortan las pausas largas a ~0,25 s.",
+  "conservar": [
+    [3.7, 14.73],
+    [14.89, 21.3],
+    [21.45, 24.05],
+    [24.23, 39.02]
+  ]
+}

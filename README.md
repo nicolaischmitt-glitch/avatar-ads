@@ -7,6 +7,6 @@ Landing publicada: https://taller.droilab.com/
 - **`BASE-CONOCIMIENTO.md`** — público, ángulos de venta, objeciones y tono.
 - **`CLAUDE.md`** — instrucciones para Claude Code.
 
-Carpetas: `landing/` (Netlify) · `anuncios/` · `reels/` · `carruseles/` · `lead-magnets/` · `referencias/` · `skills/` · `marca/`.
+Carpetas: `landing/` (Netlify) · `anuncios/` · `Contenido/` (reels, carruseles, historias de IG, imágenes y recursos) · `lead-magnets/` · `referencias/` · `skills/` · `marca/`.
 
 Los videos y audios no están en este repositorio (solo los de `landing/`): se respaldan en Google Drive.

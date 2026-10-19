@@ -24,4 +24,4 @@ En cada guion, clasifica cada recurso en una de estas 3 columnas y dile al usuar
 ## Reglas
 - Si un número aparece en pantalla como resultado, debe ser real o estar claramente marcado como ejemplo.
 - Nunca usar caras de personas reales que no sean el avatar de Avatar Ads o alumnos con permiso.
-- Guarda lo que aporte el usuario en `reels/NN-slug/recursos/` y reutiliza entre reels (el mockup del lead magnet, por ejemplo, se hace una vez).
+- Guarda lo que aporte el usuario en `Contenido/reels/NN-slug/recursos/` y reutiliza entre reels (el mockup del lead magnet, por ejemplo, se hace una vez).

@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Reel 03 — La regla 7-11-4</title>
+    <style>
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+
+      :root {
+        --bg: #020604; --card: #090f0b; --border: #305e4a; --accent: #c5f740;
+        --text: #f8f8f8; --muted: #dddad7; --meta: #9f9587;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #020604;
+        font-family: "Inter", "Archivo", "Instrument Serif", sans-serif; color: #f8f8f8; }
+      #stage { position: relative; width: 100%; height: 100%; overflow: hidden;
+        background: radial-gradient(110% 60% at 50% 18%, #0d2016 0%, #020604 62%); }
+      #grid { position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(48,94,74,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(48,94,74,.13) 1px, transparent 1px);
+        background-size: 60px 60px; }
+
+      .scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+      .in { position: absolute; inset: 0; }
+      .txt { position: absolute; left: 60px; width: 960px; text-align: center; }
+      .serif { font-family: "Instrument Serif", serif; font-weight: 400; line-height: 1.02; letter-spacing: -0.5px; color: var(--text); }
+      .it { font-style: italic; }
+      .big { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -1px; line-height: .95; color: var(--text); }
+      .acc { color: var(--accent); }
+      .label { font-family: "Inter", sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 6px; text-transform: uppercase; color: var(--meta); }
+      .card { position: absolute; background: var(--card); border: 2px solid var(--border); border-radius: 28px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+      svg { position: absolute; overflow: visible; }
+
+      /* logos (Simple Icons, CC0) como íconos de app */
+      .logo { position: absolute; width: 200px; height: 200px; border-radius: 48px; display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+      .logo i { display: block; width: 58%; height: 58%; background: #fff; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+      .lg-google { background: #fff; } .lg-google i { --m: url("logos/google.svg"); background: #4285f4; }
+      .lg-instagram { background: linear-gradient(45deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%); } .lg-instagram i { --m: url("logos/instagram.svg"); }
+      .lg-tiktok { background: #000; border: 2px solid #2a2a2a; } .lg-tiktok i { --m: url("logos/tiktok.svg"); }
+      .lg-youtube { background: #ff0000; } .lg-youtube i { --m: url("logos/youtube.svg"); }
+      .lg-facebook { background: #0866ff; } .lg-facebook i { --m: url("logos/facebook.svg"); }
+      .lg-meta { background: #fff; } .lg-meta i { --m: url("logos/meta.svg"); background: #0467df; }
+      .lgcap { position: absolute; width: 200px; text-align: center; font-family: "Inter", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+
+      /* 1 · 7·11·4 */
+      .num { display: inline-block; margin: 0 14px; }
+      .dotsep { display: inline-block; color: var(--border); }
+
+      /* 2 · ruido */
+      .noise { position: absolute; padding: 12px 22px; border-radius: 999px; border: 1.5px solid rgba(159,149,135,.45); background: rgba(9,15,11,.8);
+        font-family: "Inter", sans-serif; font-weight: 700; font-size: 30px; color: var(--meta); white-space: nowrap; }
+
+      /* 3 · persona → compra */
+      .person { position: absolute; width: 170px; height: 220px; }
+      .person::before { content: ""; position: absolute; left: 45px; top: 0; width: 80px; height: 80px; border-radius: 50%; border: 5px solid var(--text); }
+      .person::after { content: ""; position: absolute; left: 10px; top: 100px; width: 150px; height: 110px; border-radius: 75px 75px 18px 18px; border: 5px solid var(--text); border-bottom-width: 5px; }
+      .bag { position: absolute; width: 180px; height: 170px; border-radius: 18px 18px 30px 30px; background: var(--accent); }
+      .bag::before { content: ""; position: absolute; left: 50px; top: -54px; width: 70px; height: 70px; border: 9px solid var(--accent); border-bottom: 0; border-radius: 40px 40px 0 0; }
+      .bag::after { content: "COMPRA"; position: absolute; left: 0; top: 66px; width: 100%; text-align: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; color: #0a1206; }
+
+      /* 7 · tarjetas de la cadena */
+      .pill { position: absolute; left: 190px; width: 700px; height: 124px; border-radius: 30px; display: flex; align-items: center; justify-content: center;
+        background: var(--card); border: 2px solid var(--border); font-family: "Archivo", sans-serif; font-weight: 800; font-size: 56px; letter-spacing: 1px; color: var(--text); }
+      .pill.hot { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 60px rgba(197,247,64,.25); }
+      .link { position: absolute; left: 0; width: 1080px; text-align: center; font-family: "Instrument Serif", serif; font-style: italic; font-size: 44px; color: var(--meta); }
+
+      /* 8 · feed */
+      #feed-phone { left: 300px; top: 300px; width: 480px; height: 940px; border-radius: 56px; overflow: hidden; border: 3px solid #3d6b55; background: #050a07; }
+      #feed { position: absolute; left: 24px; top: 24px; width: 426px; }
+      .post { height: 230px; margin-bottom: 22px; border-radius: 24px; background: #0e1a14; border: 1.5px solid #1d3329; position: relative; }
+      .post::before { content: ""; position: absolute; left: 20px; top: 20px; width: 44px; height: 44px; border-radius: 50%; background: #1d3329; }
+      .post::after { content: ""; position: absolute; left: 20px; right: 20px; top: 84px; height: 124px; border-radius: 14px; background: #13241c; }
+      .post.brand { border: 3px solid var(--accent); background: #142a14; }
+      .post.brand::before { background: var(--accent); }
+      .post.brand::after { background: linear-gradient(135deg, #2b4a17 0%, #1a3010 100%); }
+      .post.brand span { position: absolute; left: 80px; top: 26px; z-index: 2; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px; color: var(--accent); letter-spacing: 1px; }
+      #count { position: absolute; left: 820px; top: 640px; width: 200px; height: 140px; text-align: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 120px; color: var(--accent); }
+      .cn { position: absolute; left: 0; top: 0; width: 100%; }
+      .eye { position: absolute; width: 220px; height: 120px; border: 6px solid var(--text); border-radius: 50% / 50%; }
+      .eye::after { content: ""; position: absolute; left: 70px; top: 18px; width: 70px; height: 70px; border-radius: 50%; background: var(--accent); }
+
+      /* 9 · anuncios + contenido */
+      .duo { width: 420px; height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 50px; }
+      .duo .logo { position: relative; margin-bottom: 40px; }
+
+      /* 10 · seguir */
+      #follow { position: absolute; left: 290px; top: 760px; width: 500px; height: 110px; border-radius: 22px; background: var(--accent); color: #0a1206;
+        display: flex; align-items: center; justify-content: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: 1px; }
+      #followed { position: absolute; left: 290px; top: 760px; width: 500px; height: 110px; border-radius: 22px; background: var(--card); border: 2px solid var(--accent); color: var(--accent);
+        display: flex; align-items: center; justify-content: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 44px; letter-spacing: 1px; }
+
+      /* subtítulos */
+      #subs { position: absolute; left: 0; top: 1440px; width: 1080px; height: 200px; }
+      .sub { position: absolute; left: 90px; width: 900px; top: 0; text-align: center; opacity: 0;
+        font-family: "Inter", sans-serif; font-weight: 700; font-size: 44px; line-height: 1.2; color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0,0,0,.6), 0 4px 18px rgba(0,0,0,.55); }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="reel-03" data-start="0" data-duration="47.7" data-fps="30" data-width="1080" data-height="1920">
+      <div id="grid"></div>
+
+      <!-- 1 · la regla 7-11-4 de Google (0 – 5.84) -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="5.84" data-track-index="2">
+        <div class="in" id="s1-in">
+          <div class="txt label" id="s1-k" style="top:330px;font-size:30px">la regla</div>
+          <div class="txt big" id="s1-n" style="top:390px;font-size:220px"><span class="num acc" id="n7">7</span><span class="dotsep">·</span><span class="num acc" id="n11">11</span><span class="dotsep">·</span><span class="num acc" id="n4">4</span></div>
+          <div class="txt serif" id="s1-de" style="top:640px;font-size:64px">de</div>
+          <div class="logo lg-google" id="s1-g" style="left:440px;top:730px"><i></i></div>
+          <div class="txt serif" id="s1-a" style="top:1000px;font-size:62px">lo único que necesitas saber</div>
+          <div class="txt serif" id="s1-b" style="top:1080px;font-size:62px">para tener <span class="it acc">éxito en marketing</span></div>
+        </div>
+      </div>
+
+      <!-- 2 · todo lo demás es ruido (5.84 – 8.0) -->
+      <div id="s2" class="scene clip" data-start="5.84" data-duration="2.16" data-track-index="2">
+        <div class="in" id="s2-in">
+          <div class="txt serif" id="s2-a" style="top:330px;font-size:70px">Todo lo demás es</div>
+          <div id="s2-cloud"></div>
+          <div class="txt big" id="s2-b" style="top:800px;font-size:200px">RUIDO</div>
+        </div>
+      </div>
+
+      <!-- 3 · para que una persona te compre (8.0 – 11.36) -->
+      <div id="s3" class="scene clip" data-start="8.0" data-duration="3.36" data-track-index="2">
+        <div class="in" id="s3-in">
+          <div class="txt label" id="s3-k" style="top:340px">en promedio</div>
+          <div class="txt serif" id="s3-a" style="top:400px;font-size:70px">para que una persona</div>
+          <div class="txt serif it acc" id="s3-b" style="top:480px;font-size:120px">te compre</div>
+          <div class="person" id="s3-p" style="left:150px;top:900px"></div>
+          <svg width="1080" height="1920" style="left:0;top:0"><path id="s3-path" d="M330 1010 C 480 880, 600 1140, 760 1000" fill="none" stroke="#c5f740" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round" /></svg>
+          <div class="bag" id="s3-bag" style="left:760px;top:930px"></div>
+        </div>
+      </div>
+
+      <!-- 4 · 7 horas (11.36 – 14.56) -->
+      <div id="s4" class="scene clip" data-start="11.36" data-duration="3.2" data-track-index="2">
+        <div class="in" id="s4-in">
+          <div class="txt serif" id="s4-a" style="top:330px;font-size:64px">necesita</div>
+          <svg width="1080" height="1920" style="left:0;top:0">
+            <circle cx="540" cy="820" r="260" fill="none" stroke="#132a1e" stroke-width="22" />
+            <circle id="s4-ring" cx="540" cy="820" r="260" fill="none" stroke="#c5f740" stroke-width="22" stroke-linecap="round" transform="rotate(-90 540 820)" />
+          </svg>
+          <div class="txt big acc" id="s4-n" style="top:660px;font-size:280px">7</div>
+          <div class="txt label" id="s4-h" style="top:960px;font-size:34px;color:#f8f8f8">horas</div>
+          <div class="txt serif" id="s4-b" style="top:1150px;font-size:64px">de interacción con <span class="it acc">tu marca</span></div>
+        </div>
+      </div>
+
+      <!-- 5 · 11 puntos de contacto (14.56 – 16.72) -->
+      <div id="s5" class="scene clip" data-start="14.56" data-duration="2.16" data-track-index="2">
+        <div class="in" id="s5-in">
+          <div class="txt label" id="s5-k" style="top:330px">mínimo</div>
+          <div class="txt big acc" id="s5-n" style="top:380px;font-size:200px">11</div>
+          <div class="txt label" id="s5-l" style="top:590px;font-size:30px;color:#f8f8f8">puntos de contacto</div>
+          <svg id="s5-net" width="1080" height="1920" style="left:0;top:0"></svg>
+          <div class="card" id="s5-core" style="left:440px;top:910px;width:200px;height:200px;border-radius:50%;border-color:#c5f740;display:flex;align-items:center;justify-content:center;text-align:center">
+            <div class="big acc" style="font-size:34px;line-height:1.05">TU<br />MARCA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 · 4 ubicaciones (16.72 – 18.72) -->
+      <div id="s6" class="scene clip" data-start="16.72" data-duration="2.0" data-track-index="2">
+        <div class="in" id="s6-in">
+          <div class="txt label" id="s6-k" style="top:330px">en</div>
+          <div class="txt big acc" id="s6-n" style="top:380px;font-size:200px">4</div>
+          <div class="txt label" id="s6-l" style="top:590px;font-size:30px;color:#f8f8f8">ubicaciones distintas</div>
+          <div class="logo lg-instagram" id="l1" style="left:290px;top:700px"><i></i></div>
+          <div class="logo lg-tiktok" id="l2" style="left:590px;top:700px"><i></i></div>
+          <div class="logo lg-youtube" id="l3" style="left:290px;top:1000px"><i></i></div>
+          <div class="logo lg-facebook" id="l4" style="left:590px;top:1000px"><i></i></div>
+        </div>
+      </div>
+
+      <!-- 7 · olvídate de los números (18.72 – 21.52) -->
+      <div id="s7" class="scene clip" data-start="18.72" data-duration="2.8" data-track-index="2">
+        <div class="in" id="s7-in">
+          <div class="txt serif" id="s7-a" style="top:330px;font-size:76px">Olvídate de los <span class="it acc">números</span></div>
+          <div class="txt big" style="top:620px;font-size:220px"><span class="num" id="f7">7</span><span class="dotsep" id="fd1">·</span><span class="num" id="f11">11</span><span class="dotsep" id="fd2">·</span><span class="num" id="f4">4</span></div>
+          <div class="txt serif it" id="s7-b" style="top:1000px;font-size:64px;color:#9f9587">eso es lo de menos</div>
+        </div>
+      </div>
+
+      <!-- 8 · concéntrate en el mensaje (21.52 – 23.28) -->
+      <div id="s8" class="scene clip" data-start="21.52" data-duration="1.76" data-track-index="2">
+        <div class="in" id="s8-in">
+          <div class="txt serif" id="s8-a" style="top:330px;font-size:76px">Concéntrate en</div>
+          <div class="card" id="s8-msg" style="left:170px;top:640px;width:740px;height:330px;border-color:#c5f740;border-bottom-left-radius:6px;display:flex;align-items:center;justify-content:center">
+            <div class="serif it acc" style="font-size:130px">el mensaje</div>
+          </div>
+          <svg width="1080" height="1920" style="left:0;top:0">
+            <path id="s8-c1" d="M110 640 L110 580 L170 580" fill="none" stroke="#f8f8f8" stroke-width="6" stroke-linecap="round" />
+            <path id="s8-c2" d="M970 640 L970 580 L910 580" fill="none" stroke="#f8f8f8" stroke-width="6" stroke-linecap="round" />
+            <path id="s8-c3" d="M110 970 L110 1030 L170 1030" fill="none" stroke="#f8f8f8" stroke-width="6" stroke-linecap="round" />
+            <path id="s8-c4" d="M970 970 L970 1030 L910 1030" fill="none" stroke="#f8f8f8" stroke-width="6" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- 9 · compra ← confianza ← familiaridad ← repetición (23.28 – 30.96) -->
+      <div id="s9" class="scene clip" data-start="23.28" data-duration="7.68" data-track-index="2">
+        <div class="in" id="s9-in">
+          <div class="pill" id="p1" style="top:340px">COMPRA</div>
+          <div class="link" id="k1" style="top:486px">necesita</div>
+          <div class="pill" id="p2" style="top:560px">CONFIANZA</div>
+          <div class="link" id="k2" style="top:706px">se gana con</div>
+          <div class="pill" id="p3" style="top:780px">FAMILIARIDAD</div>
+          <div class="link" id="k3" style="top:926px">que se gana con</div>
+          <div class="pill" id="p4" style="top:1000px">REPETICIÓN</div>
+        </div>
+      </div>
+
+      <!-- 10 · ver tu marca varias veces (30.96 – 36.32) -->
+      <div id="s10" class="scene clip" data-start="30.96" data-duration="5.36" data-track-index="2">
+        <div class="in" id="s10-in">
+          <div class="card" id="feed-phone">
+            <div id="feed">
+              <div class="post"></div><div class="post brand"><span>TU MARCA</span></div><div class="post"></div><div class="post"></div>
+              <div class="post brand"><span>TU MARCA</span></div><div class="post"></div><div class="post"></div><div class="post brand"><span>TU MARCA</span></div>
+              <div class="post"></div><div class="post"></div><div class="post brand"><span>TU MARCA</span></div><div class="post"></div>
+            </div>
+          </div>
+          <div id="count"><span class="cn" id="cn0">×0</span><span class="cn" id="cn1">×1</span><span class="cn" id="cn2">×2</span><span class="cn" id="cn3">×3</span><span class="cn" id="cn4">×4</span></div>
+          <div class="label" id="s10-cl" style="position:absolute;left:800px;top:790px;width:240px;text-align:center;font-size:20px;letter-spacing:3px">veces que te ve</div>
+          <div class="eye" id="s10-eye" style="left:60px;top:640px"></div>
+          <div class="label" id="s10-el" style="position:absolute;left:30px;top:790px;width:280px;text-align:center;font-size:20px;letter-spacing:3px">aunque sea de reojo</div>
+        </div>
+      </div>
+
+      <!-- 11 · anuncios y contenido (36.32 – 40.64) -->
+      <div id="s11" class="scene clip" data-start="36.32" data-duration="4.32" data-track-index="2">
+        <div class="in" id="s11-in">
+          <div class="txt serif" id="s11-a" style="top:330px;font-size:70px">¿Cómo se logra?</div>
+          <div class="card duo" id="d1" style="left:90px;top:560px"><div class="logo lg-meta"><i></i></div><div class="big" style="font-size:52px">ANUNCIOS</div></div>
+          <div class="txt big acc" id="s11-plus" style="top:760px;font-size:90px">+</div>
+          <div class="card duo" id="d2" style="left:570px;top:560px"><div class="logo lg-instagram"><i></i></div><div class="big" style="font-size:52px">CONTENIDO</div></div>
+        </div>
+      </div>
+
+      <!-- 12 · sígueme (40.64 – 47.7) -->
+      <div id="s12" class="scene clip" data-start="40.64" data-duration="7.06" data-track-index="2">
+        <div class="in" id="s12-in">
+          <div id="s12-learn">
+            <div class="txt serif" id="s12-a" style="top:420px;font-size:70px">Si quieres aprender a crear</div>
+            <div class="txt serif" id="s12-b" style="top:520px;font-size:84px">los mejores <span class="acc it">anuncios</span></div>
+            <div class="txt serif" id="s12-c" style="top:630px;font-size:84px">y el mejor <span class="acc it">contenido</span></div>
+            <div class="txt label" id="s12-d" style="top:780px;font-size:32px;color:#f8f8f8">con inteligencia artificial</div>
+          </div>
+          <div class="txt big" id="s12-t" style="top:560px;font-size:150px">SÍGUEME</div>
+          <div id="follow">Seguir</div>
+          <div id="followed">Siguiendo ✓</div>
+        </div>
+      </div>
+
+      <div id="subs"></div>
+
+      <!-- Voz (limpia y nivelada: Contenido/reels/_plantilla-voz-en-off/scripts/voz.mjs + cortes.json) -->
+      <audio id="voz" src="audio/voz.wav" data-start="0" data-duration="47.04" data-volume="1" data-track-index="10"></audio>
+
+      <!-- Efectos de sonido -->
+      <audio id="fx01" src="audio/pop.mp3" data-start="0.5" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx02" src="audio/pop.mp3" data-start="0.78" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx03" src="audio/pop.mp3" data-start="1.06" data-duration="0.72" data-volume="0.3" data-track-index="13"></audio>
+      <audio id="fx04" src="audio/ping.mp3" data-start="1.7" data-duration="1.0" data-volume="0.2" data-track-index="11"></audio>
+      <audio id="fx05" src="audio/whoosh-short.mp3" data-start="5.68" data-duration="0.57" data-volume="0.28" data-track-index="12"></audio>
+      <audio id="fx06" src="audio/glitch-1.mp3" data-start="7.28" data-duration="0.7" data-volume="0.18" data-track-index="13"></audio>
+      <audio id="fx07" src="audio/whoosh-short.mp3" data-start="7.84" data-duration="0.57" data-volume="0.28" data-track-index="11"></audio>
+      <audio id="fx08" src="audio/pop.mp3" data-start="10.9" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx09" src="audio/whoosh-short.mp3" data-start="11.2" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx10" src="audio/impact-bass-1.mp3" data-start="12.22" data-duration="1.0" data-volume="0.25" data-track-index="11"></audio>
+      <audio id="fx11" src="audio/whoosh-short.mp3" data-start="14.4" data-duration="0.57" data-volume="0.28" data-track-index="12"></audio>
+      <audio id="fx12" src="audio/sparkle.mp3" data-start="15.1" data-duration="1.2" data-volume="0.15" data-track-index="13"></audio>
+      <audio id="fx13" src="audio/pop.mp3" data-start="17.12" data-duration="0.72" data-volume="0.28" data-track-index="11"></audio>
+      <audio id="fx14" src="audio/pop.mp3" data-start="17.37" data-duration="0.72" data-volume="0.28" data-track-index="12"></audio>
+      <audio id="fx15" src="audio/pop.mp3" data-start="17.62" data-duration="0.72" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx16" src="audio/pop.mp3" data-start="17.87" data-duration="0.72" data-volume="0.28" data-track-index="11"></audio>
+      <audio id="fx17" src="audio/whoosh-short.mp3" data-start="19.5" data-duration="0.57" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx18" src="audio/pop.mp3" data-start="22.56" data-duration="0.72" data-volume="0.3" data-track-index="13"></audio>
+      <audio id="fx19" src="audio/click-soft.mp3" data-start="24.12" data-duration="0.36" data-volume="0.45" data-track-index="11"></audio>
+      <audio id="fx20" src="audio/click-soft.mp3" data-start="25.1" data-duration="0.36" data-volume="0.45" data-track-index="12"></audio>
+      <audio id="fx21" src="audio/click-soft.mp3" data-start="27.66" data-duration="0.36" data-volume="0.45" data-track-index="13"></audio>
+      <audio id="fx22" src="audio/pop.mp3" data-start="30.1" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx23" src="audio/whoosh-short.mp3" data-start="30.8" data-duration="0.57" data-volume="0.28" data-track-index="12"></audio>
+      <audio id="fx24" src="audio/click-soft.mp3" data-start="32.94" data-duration="0.36" data-volume="0.45" data-track-index="13"></audio>
+      <audio id="fx25" src="audio/click-soft.mp3" data-start="33.9" data-duration="0.36" data-volume="0.45" data-track-index="11"></audio>
+      <audio id="fx26" src="audio/click-soft.mp3" data-start="34.38" data-duration="0.36" data-volume="0.45" data-track-index="12"></audio>
+      <audio id="fx27" src="audio/whoosh-short.mp3" data-start="36.16" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx28" src="audio/pop.mp3" data-start="38.58" data-duration="0.72" data-volume="0.3" data-track-index="11"></audio>
+      <audio id="fx29" src="audio/pop.mp3" data-start="39.7" data-duration="0.72" data-volume="0.3" data-track-index="12"></audio>
+      <audio id="fx30" src="audio/whoosh-short.mp3" data-start="40.48" data-duration="0.57" data-volume="0.28" data-track-index="13"></audio>
+      <audio id="fx31" src="audio/pop.mp3" data-start="46.42" data-duration="0.72" data-volume="0.32" data-track-index="11"></audio>
+      <audio id="fx32" src="audio/click.mp3" data-start="46.95" data-duration="0.37" data-volume="0.35" data-track-index="12"></audio>
+      <audio id="fx33" src="audio/chime.mp3" data-start="47.05" data-duration="0.65" data-volume="0.16" data-track-index="13"></audio>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      // Se construye cuando las fuentes ya cargaron, para medir bien los textos.
+      document.fonts.ready.then(function () {
+        const FPS = 30;
+        const q = (t) => Math.round(t * FPS) / FPS;
+        const tl = gsap.timeline({ paused: true });
+        const $ = (s) => document.querySelector(s);
+        const IR = { immediateRender: false };
+        const END = 47.7;
+
+        // Palabras grandes: reduce el tamaño hasta que el texto quepa en 940 px (zona segura).
+        const textWidth = (el) => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; };
+        document.querySelectorAll(".big").forEach((el) => {
+          let fs = parseFloat(getComputedStyle(el).fontSize);
+          while (textWidth(el) > 940 && fs > 40) { fs -= 2; el.style.fontSize = fs + "px"; }
+        });
+
+        // ── helpers ──
+        const rise = (sel, t, d = 0.35) => tl.fromTo(sel, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: d, ease: "power3.out", ...IR }, q(t));
+        const pop = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: d, ease: "back.out(2)", ...IR }, q(t));
+        const out = (sel, t, d = 0.18) => tl.fromTo(sel, { opacity: 1 }, { opacity: 0, duration: d, ease: "power1.in", ...IR }, q(t));
+        const draw = (sel, t, d) => {
+          const el = $(sel); const L = el.getTotalLength();
+          tl.set(sel, { strokeDasharray: L, strokeDashoffset: L }, 0);
+          tl.fromTo(sel, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut", ...IR }, q(t));
+        };
+        const hide = (sels) => tl.set(sels, { opacity: 0 }, 0);
+        const scene = (id, a, b) => {
+          tl.fromTo(id, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out", ...IR }, q(a));
+          if (b) tl.fromTo(id, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: "power1.in", ...IR }, q(b - 0.15));
+        };
+
+        // ── 1 · la regla 7-11-4 de Google ──
+        scene("#s1-in", 0, 5.84);
+        hide(["#s1-k", "#n7", "#n11", "#n4", "#s1-n .dotsep", "#s1-de", "#s1-g", "#s1-a", "#s1-b"]);
+        rise("#s1-k", 0.0);
+        pop("#n7", 0.56); pop("#n11", 0.84); pop("#n4", 1.12);
+        tl.fromTo("#s1-n .dotsep", { opacity: 0 }, { opacity: 1, duration: 0.2, ...IR }, q(0.9));
+        rise("#s1-de", 1.52);
+        pop("#s1-g", 1.68, 0.45);
+        rise("#s1-a", 2.48);
+        rise("#s1-b", 4.0);
+
+        // ── 2 · ruido ──
+        scene("#s2-in", 5.84, 8.0);
+        (function () {
+          const words = ["tips", "hacks", "tendencias", "algoritmo", "virales", "fórmulas", "trucos", "métricas", "hooks", "growth", "trends", "atajos", "secretos", "IA nueva"];
+          let seed = 11; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+          const host = $("#s2-cloud");
+          words.forEach((w, i) => {
+            const el = document.createElement("div"); el.className = "noise"; el.id = "nz" + i; el.textContent = w;
+            el.style.left = Math.round(60 + rnd() * 720) + "px"; el.style.top = Math.round(480 + rnd() * 820) + "px";
+            host.appendChild(el);
+            tl.set(el, { opacity: 0 }, 0);
+            tl.fromTo(el, { opacity: 0, scale: 0.5 }, { opacity: 0.85, scale: 1, duration: 0.2, ease: "back.out(2)", ...IR }, q(5.9 + i * 0.07));
+            tl.fromTo(el, { x: -4, rotation: -2 }, { x: 4, rotation: 2, duration: 0.06, yoyo: true, repeat: 20, ease: "none", ...IR }, q(6.3 + (i % 5) * 0.02));
+          });
+        })();
+        hide(["#s2-a", "#s2-b"]);
+        rise("#s2-a", 5.88);
+        pop("#s2-b", 7.28, 0.35);
+        tl.fromTo("#s2-b", { x: -10 }, { x: 10, duration: 0.05, yoyo: true, repeat: 7, ease: "none", ...IR }, q(7.4));
+
+        // ── 3 · persona → compra ──
+        scene("#s3-in", 8.0, 11.36);
+        hide(["#s3-k", "#s3-a", "#s3-b", "#s3-p", "#s3-bag"]);
+        rise("#s3-k", 9.12);
+        rise("#s3-a", 9.84);
+        rise("#s3-p", 8.1);
+        draw("#s3-path", 9.4, 1.3);
+        pop("#s3-bag", 10.96, 0.45);
+        rise("#s3-b", 10.72, 0.4);
+
+        // ── 4 · 7 horas ──
+        scene("#s4-in", 11.36, 14.56);
+        hide(["#s4-a", "#s4-n", "#s4-h", "#s4-b"]);
+        rise("#s4-a", 11.4);
+        draw("#s4-ring", 12.3, 2.0);
+        pop("#s4-n", 12.24, 0.45);
+        rise("#s4-h", 12.72);
+        rise("#s4-b", 13.04);
+
+        // ── 5 · 11 puntos de contacto ──
+        scene("#s5-in", 14.56, 16.72);
+        hide(["#s5-k", "#s5-n", "#s5-l", "#s5-core"]);
+        (function () {
+          const svg = $("#s5-net"); const NS = "http://www.w3.org/2000/svg"; const cx = 540, cy = 1010, R = 330;
+          for (let i = 0; i < 11; i++) {
+            const a = -Math.PI / 2 + (i * 2 * Math.PI) / 11; const x = cx + R * Math.cos(a), y = cy + R * Math.sin(a);
+            const ln = document.createElementNS(NS, "line");
+            ln.setAttribute("x1", cx); ln.setAttribute("y1", cy); ln.setAttribute("x2", x.toFixed(1)); ln.setAttribute("y2", y.toFixed(1));
+            ln.setAttribute("stroke", "#305e4a"); ln.setAttribute("stroke-width", "4"); ln.id = "ln" + i; svg.appendChild(ln);
+            const c = document.createElementNS(NS, "circle");
+            c.setAttribute("cx", x.toFixed(1)); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", "26"); c.setAttribute("fill", "#c5f740"); c.id = "dt" + i; svg.appendChild(c);
+            const t = 15.1 + i * 0.07;
+            draw("#ln" + i, t, 0.25);
+            tl.set("#dt" + i, { opacity: 0 }, 0);
+            tl.fromTo("#dt" + i, { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2.5)", ...IR }, q(t + 0.18));
+          }
+        })();
+        rise("#s5-k", 14.6);
+        pop("#s5-n", 15.04, 0.4);
+        rise("#s5-l", 15.52);
+        pop("#s5-core", 14.8, 0.4);
+
+        // ── 6 · 4 ubicaciones ──
+        scene("#s6-in", 16.72, 18.72);
+        hide(["#s6-k", "#s6-n", "#s6-l", "#l1", "#l2", "#l3", "#l4"]);
+        rise("#s6-k", 16.74);
+        pop("#s6-n", 16.88, 0.4);
+        rise("#s6-l", 17.2);
+        ["#l1", "#l2", "#l3", "#l4"].forEach((l, i) => pop(l, 17.18 + i * 0.25, 0.4));
+
+        // ── 7 · olvídate de los números ──
+        scene("#s7-in", 18.72, 21.52);
+        hide(["#s7-a", "#s7-b"]);
+        rise("#s7-a", 18.76);
+        tl.set(["#f7", "#fd1", "#f11", "#fd2", "#f4"], { opacity: 0 }, 0);
+        tl.fromTo(["#f7", "#fd1", "#f11", "#fd2", "#f4"], { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.06, ease: "power3.out", ...IR }, q(18.85));
+        [["#f7", -25], ["#fd1", 0], ["#f11", 18], ["#fd2", 0], ["#f4", -12]].forEach(([s, r], i) => {
+          tl.fromTo(s, { y: 0, rotation: 0, opacity: 1 }, { y: 900, rotation: r, opacity: 0, duration: 0.7, ease: "power2.in", ...IR }, q(19.62 + i * 0.1));
+        });
+        rise("#s7-b", 20.2);
+
+        // ── 8 · el mensaje ──
+        scene("#s8-in", 21.52, 23.28);
+        hide(["#s8-a", "#s8-msg"]);
+        rise("#s8-a", 21.56);
+        pop("#s8-msg", 22.56, 0.45);
+        ["#s8-c1", "#s8-c2", "#s8-c3", "#s8-c4"].forEach((c) => draw(c, 22.7, 0.35));
+
+        // ── 9 · cadena ──
+        scene("#s9-in", 23.28, 30.96);
+        hide(["#p1", "#p2", "#p3", "#p4", "#k1", "#k2", "#k3"]);
+        const chain = [["#p1", 24.16], ["#k1", 24.64], ["#p2", 25.12], ["#k2", 26.88], ["#p3", 27.68], ["#k3", 29.92], ["#p4", 30.16]];
+        chain.forEach(([s, t]) => (s.startsWith("#p") ? pop(s, t, 0.4) : rise(s, t, 0.3)));
+        ["#p1", "#p2", "#p3", "#p4"].forEach((p, i) => {
+          tl.set(p, { attr: { class: "pill" } }, 0);
+          const t = chain.find((c) => c[0] === p)[1];
+          tl.set(p, { attr: { class: "pill hot" } }, q(t));
+          if (i > 0) tl.set(["#p1", "#p2", "#p3", "#p4"][i - 1], { attr: { class: "pill" } }, q(t));
+        });
+
+        // ── 10 · feed: ver tu marca varias veces ──
+        scene("#s10-in", 30.96, 36.32);
+        hide(["#feed-phone", "#count", "#s10-cl", "#s10-eye", "#s10-el"]);
+        rise("#feed-phone", 31.0, 0.4);
+        tl.fromTo("#feed", { y: 0 }, { y: -1800, duration: 5.2, ease: "none", ...IR }, q(31.1));
+        rise(["#count", "#s10-cl"], 32.0);
+        // contador ×0 → ×4: cada número es su propio elemento (seek-safe, sin tl.call)
+        tl.set(["#cn1", "#cn2", "#cn3", "#cn4"], { opacity: 0 }, 0);
+        [32.96, 33.92, 34.4, 35.3].forEach((t, i) => {
+          tl.set("#cn" + i, { opacity: 0 }, q(t));
+          tl.set("#cn" + (i + 1), { opacity: 1 }, q(t));
+          tl.fromTo("#count", { scale: 1.3 }, { scale: 1, duration: 0.2, ...IR }, q(t));
+        });
+        pop("#s10-eye", 35.6, 0.4);
+        rise("#s10-el", 35.7);
+
+        // ── 11 · anuncios + contenido ──
+        scene("#s11-in", 36.32, 40.64);
+        hide(["#s11-a", "#d1", "#d2", "#s11-plus"]);
+        rise("#s11-a", 36.36);
+        pop("#d1", 38.64, 0.45);
+        pop("#s11-plus", 39.44, 0.3);
+        pop("#d2", 39.76, 0.45);
+
+        // ── 12 · sígueme ──
+        tl.fromTo("#s12-in", { opacity: 0 }, { opacity: 1, duration: 0.2, ...IR }, q(40.64));
+        hide(["#s12-a", "#s12-b", "#s12-c", "#s12-d", "#s12-t", "#follow", "#followed"]);
+        rise("#s12-a", 40.66);
+        rise("#s12-b", 42.24);
+        rise("#s12-c", 43.6);
+        rise("#s12-d", 45.12);
+        out("#s12-learn", 46.32, 0.15);
+        pop("#s12-t", 46.48, 0.45);
+        pop("#follow", 46.6, 0.35);
+        tl.fromTo("#follow", { scale: 1 }, { scale: 0.93, duration: 0.1, yoyo: true, repeat: 1, ...IR }, q(46.95));
+        tl.fromTo("#follow", { opacity: 1 }, { opacity: 0, duration: 0.1, ...IR }, q(47.15));
+        tl.fromTo("#followed", { opacity: 0 }, { opacity: 1, duration: 0.12, ...IR }, q(47.15));
+
+        // ── subtítulos (frases cortas desde el transcript de la voz limpia) ──
+        const WORDS = [["La",0,0.24],["regla",0.24,0.56],["7-11-4",0.56,1.36],["de",1.52,1.68],["Google",1.68,2.16],["es",2.16,2.32],["lo",2.32,2.48],["único",2.48,2.72],["que",2.72,2.96],["necesitas",2.96,3.36],["saber",3.44,3.76],["para",3.76,4],["tener",4,4.4],["éxito",4.4,4.88],["en",4.88,5.12],["marketing.",5.12,5.84],["Todo",5.84,6.16],["lo",6.16,6.32],["demás",6.32,6.72],["es",6.72,6.96],["puro",6.96,7.28],["ruido.",7.28,8],["Prácticamente",8,8.64],["dice",8.64,8.96],["que",8.96,9.04],["en",9.12,9.28],["promedio,",9.28,9.76],["para",9.84,10.08],["que",10.08,10.24],["una",10.24,10.4],["persona",10.4,10.72],["te",10.72,10.96],["compre",10.96,11.36],["necesita",11.6,12.24],["7",12.24,12.56],["horas",12.72,12.96],["de",12.96,13.04],["interacción",13.04,13.6],["con",13.6,13.76],["tu",13.76,13.92],["marca,",13.92,14.56],["mínimo",14.56,14.88],["11",15.04,15.52],["puntos",15.52,15.84],["de",15.84,16],["contacto",16,16.72],["en",16.72,16.88],["4",16.88,17.2],["ubicaciones",17.2,18],["distintas.",18,18.72],["Olvídate",18.72,19.36],["de",19.36,19.44],["los",19.44,19.6],["números,",19.6,20.16],["eso",20.16,20.4],["es",20.4,20.56],["lo",20.56,20.72],["de",20.72,20.96],["menos.",20.96,21.52],["Concéntrate",21.52,22.32],["en",22.32,22.48],["el",22.48,22.64],["mensaje.",22.64,23.28],["Para",23.28,23.52],["que",23.52,23.68],["alguien",23.68,24],["te",24,24.16],["compre",24.16,24.48],["necesita",24.64,25.12],["confianza.",25.12,25.84],["La",25.84,26.08],["confianza",26.08,26.72],["se",26.72,26.88],["gana",26.88,27.44],["con",27.44,27.68],["familiaridad",27.68,28.48],["y",28.64,28.8],["la",28.8,28.96],["familiaridad",28.96,29.76],["con",29.92,30.16],["repetición.",30.16,30.96],["En",30.96,31.12],["pocas",31.12,31.44],["palabras,",31.44,31.92],["el",31.92,32.08],["cliente",32.08,32.48],["necesita",32.48,32.96],["ver",32.96,33.28],["tu",33.28,33.44],["marca",33.44,33.92],["varias",33.92,34.4],["veces,",34.4,34.96],["así",34.96,35.28],["sea",35.28,35.52],["de",35.52,35.68],["reojo.",35.68,36.32],["Y",36.32,36.48],["la",36.48,36.64],["forma",36.64,36.96],["de",36.96,37.12],["lograr",37.12,37.52],["esto",37.76,38.08],["es",38.24,38.4],["con",38.4,38.64],["anuncios",38.64,39.44],["y",39.44,39.76],["contenido.",39.76,40.64],["Si",40.64,40.88],["quieres",40.88,41.2],["aprender",41.2,41.6],["a",41.6,41.76],["crear",41.76,42.08],["los",42.08,42.24],["mejores",42.24,42.64],["anuncios",42.64,43.2],["y",43.2,43.44],["el",43.44,43.6],["mejor",43.6,43.92],["contenido",43.92,44.4],["posible",44.4,44.88],["con",44.88,45.12],["inteligencia",45.12,45.68],["artificial,",45.68,46.48],["sígueme.",46.48,47.04]];
+        const groups = []; let cur = [];
+        WORDS.forEach((w, i) => {
+          cur.push(w);
+          const next = WORDS[i + 1]; const punct = /[,.:?]$/.test(w[0]); const gap = next ? next[1] - w[2] : 1;
+          if (!next || punct || cur.length >= 5 || gap > 0.28) { groups.push(cur); cur = []; }
+        });
+        const subs = $("#subs");
+        groups.forEach((g, gi) => {
+          const el = document.createElement("div"); el.className = "sub"; el.textContent = g.map((w) => w[0]).join(" "); subs.appendChild(el);
+          const a = q(g[0][1] - 0.05); const nx = groups[gi + 1];
+          const b = q(nx ? Math.min(nx[0][1] - 0.05, g[g.length - 1][2] + 0.4) : END);
+          tl.fromTo(el, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.15, ease: "power2.out", ...IR }, a);
+          if (nx) tl.fromTo(el, { opacity: 1 }, { opacity: 0, duration: 0.08, ...IR }, q(b - 0.08));
+        });
+
+        window.__timelines["reel-03"] = tl;
+      });
+    </script>
+  </body>
+</html>

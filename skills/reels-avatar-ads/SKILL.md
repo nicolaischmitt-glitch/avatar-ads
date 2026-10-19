@@ -11,7 +11,7 @@ Contexto de marca y oferta: `PROYECTO.md` (raíz del proyecto). Léelo si no lo 
 
 ## Dos formatos de reel
 - **A · Avatar talking head** (flujo de 5 fases de abajo): guion → prompts JSON para Flow → clips del avatar → edición con cutaways y CTA "comenta PALABRA".
-- **B · Voz en off del usuario + motion graphics**: el usuario deja su grabación en `reels/` (al crear la carpeta del reel se mueve a `reels/NN-slug/voz-original.mp4`) y se edita con gráficos, ilustraciones, maquetas UI y logos. Sin avatar, **sin mencionar Avatar Ads, sin música**, solo SFX. Todo el procedimiento y sus reglas están en **`reels/_plantilla-voz-en-off/LEEME.md`** (léelo completo antes de editar uno). Ejemplos: `reels/02-…` y `reels/03-…`.
+- **B · Voz en off del usuario + motion graphics**: el usuario deja su grabación en `Contenido/reels/` (al crear la carpeta del reel se mueve a `Contenido/reels/NN-slug/voz-original.mp4`) y se edita con gráficos, ilustraciones, maquetas UI y logos. Sin avatar, **sin mencionar Avatar Ads, sin música**, solo SFX. Todo el procedimiento y sus reglas están en **`Contenido/reels/_plantilla-voz-en-off/LEEME.md`** (léelo completo antes de editar uno). Ejemplos: `Contenido/reels/02-…` y `Contenido/reels/03-…`.
 
 ## Archivos de este skill
 
@@ -31,7 +31,7 @@ Referencias analizadas: `referencias/ref02_tutorial-head-talking_desglose.md` (f
 ## Carpeta de cada reel
 
 ```
-reels/NN-slug/            (NN = número correlativo: 01, 02…)
+Contenido/reels/NN-slug/            (NN = número correlativo: 01, 02…)
 ├── guion.md              guion final + tabla de clips + plan de cutaways + caption de IG
 ├── guion.txt             solo el texto hablado aprobado (lo usa el validador)
 ├── prompts-flow.md       los JSON por clip, cada uno en su bloque de código
@@ -45,7 +45,7 @@ reels/NN-slug/            (NN = número correlativo: 01, 02…)
 ## Flujo (5 fases)
 
 ### Fase 1 — Entrada
-El usuario da una idea o un borrador. Si falta algo imprescindible (tema), pregunta una sola vez. Si no, avanza. Crea la carpeta `reels/NN-slug/`.
+El usuario da una idea o un borrador. Si falta algo imprescindible (tema), pregunta una sola vez. Si no, avanza. Crea la carpeta `Contenido/reels/NN-slug/`.
 
 ### Fase 2 — Guion
 1. Lee `references/frameworks-guion.md` y `cta-lead-magnet.md`.
@@ -65,7 +65,7 @@ El usuario ya tiene la imagen/frame del avatar para Flow. No la generes. Si no s
 2. Un JSON por clip, con la estructura LOCKED IN. Solo cambian `scene.dialogue.script` (fragmento exacto del guion aprobado) y `scene.performance.hand_gestures.synchronization` (gestos concretos según el significado). Nada más, salvo que el usuario autorice expresamente otra variable (p. ej. `speaker`, acento).
 3. El guion de los clips concatenado debe ser **idéntico palabra por palabra** al guion aprobado.
 4. Guarda cada JSON en `prompts/clip-NN.json` y ejecuta:
-   `node "skills/reels-avatar-ads/scripts/validar-json.mjs" reels/NN-slug/prompts --guion reels/NN-slug/guion.txt`
+   `node "skills/reels-avatar-ads/scripts/validar-json.mjs" Contenido/reels/NN-slug/prompts --guion Contenido/reels/NN-slug/guion.txt`
    (añade `--allow ruta.de.la.clave` solo para variables que el usuario autorizó expresamente, p. ej. `--allow scene.dialogue.speaker`).
    Si falla, corrige y repite. No entregues prompts que no pasen.
 5. Escribe `prompts-flow.md` con el formato de salida del master prompt (total de clips y duración; por clip: número, descripción breve, duración y el JSON en su propio bloque).
@@ -76,7 +76,7 @@ Cuando el usuario diga que los clips están en `clips/`:
 1. Revisa cada clip (frames + transcripción con `hyperframes transcribe`). Avisa si el diálogo no coincide, hay texto generado, manos deformes o cambios de cara. Sugiere regenerar solo los clips malos.
 2. Une los clips cortando silencios y respiraciones del principio/final (corte seco).
 3. Edita siguiendo `references/estilo-edicion.md`: entra por el skill `hyperframes` (y `hyperframes-core`, `hyperframes-animation`, `media-use` según haga falta). Construye los cutaways (mockups de UI, títulos, pasos, mockup del lead magnet, etc.).
-4. La primera vez, guarda la composición reutilizable en `reels/_plantilla-edicion/` para que los siguientes reels partan de ella.
+4. La primera vez, guarda la composición reutilizable en `Contenido/reels/_plantilla-edicion/` para que los siguientes reels partan de ella.
 5. Renderiza 1080×1920, 30 fps → `final/reel-NN-slug.mp4`. Revisa frames del render antes de entregar.
 6. Entrega el MP4 + el caption.
 

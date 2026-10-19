@@ -17,7 +17,7 @@ export default async function () {
   const tpl = JSON.parse(sec.slice(sec.indexOf("{"), sec.lastIndexOf("}") + 1));
   const lines = JSON.stringify(tpl, null, 2).split("\n");
   const cut = lines.findIndex((l) => l.includes('"visual_restrictions"'));
-  const clip = JSON.parse(fs.readFileSync(path.join(root, "reels/01-forma-correcta-hiperrealismo/prompts/clip-01.json"), "utf8"));
+  const clip = JSON.parse(fs.readFileSync(path.join(root, "Contenido/reels/01-forma-correcta-hiperrealismo/prompts/clip-01.json"), "utf8"));
   const ejemplo = [
     `"script": ${JSON.stringify(clip.scene.dialogue.script)}`,
     ``,
