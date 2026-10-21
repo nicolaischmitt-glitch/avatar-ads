@@ -11,12 +11,14 @@ Avatar Ads 1.0/
 ├── landing/             ← la página. ESTA carpeta completa es la que se sube a Netlify
 │   ├── index.html
 │   ├── videos/          ← videos y portadas que usa la página (versiones comprimidas para web)
+│   ├── resultados/      ← pruebas reales: video del panel de ventas de Hotmart, 3 mensajes de clientes y captura de Meta (CPL $0,35)
 │   └── recursos/        ← lead magnets publicados (PDF/.txt) → https://taller.droilab.com/recursos/…
 ├── anuncios/            ← anuncios terminados (una carpeta por anuncio: clips/ → edicion/ → finales/)
 │   ├── 01-avatar-ads/   ← el anuncio de Avatar Ads (portada de la landing)
 │   │   ├── clips/       ← tomas originales: clip 1–4 + nuevo clip 5–7
 │   │   ├── edicion/     ← proyecto HyperFrames (public/index.html, scripts/, música, SFX)
-│   │   └── finales/     ← avatar-ads-anuncio-subtitulos.mp4 (final) · avatar-ads-anuncio-limpio.mp4 (sin texto; franja negra de 18 px arriba)
+│   │   ├── edicion-v2/  ← reedición estilo reel 07 podcast (cortes.txt → unir-clips.mjs → build.mjs; sin "solo 10 puestos", sin música)
+│   │   └── finales/     ← avatar-ads-anuncio-v2.mp4 (v2, 1080×1920, estilo podcast) · avatar-ads-anuncio-subtitulos.mp4 (v1) · avatar-ads-anuncio-limpio.mp4 (v1 sin texto; franja negra de 18 px arriba)
 │   ├── 02-labial-auto/  ← avatar en el auto con labial: 5 clips → subtítulos blancos + zooms
 │   │   ├── clips/       ← clip 1–5 originales (traen un botón "<" que la edición borra con delogo)
 │   │   ├── edicion/     ← proyecto HyperFrames (mismo flujo que 01-avatar-ads)
@@ -26,6 +28,7 @@ Avatar Ads 1.0/
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
 │   │   ├── 01 … 04      ← reels hechos (formato B: la voz original va en NN-slug/voz-original.mp4)
 │   │   ├── 05-clon-ia-anda-saluda/ ← réplica de referencias/ref01 (guion + prompts; esperando clips)
+│   │   ├── 07-podcast-seedance-centavos/ ← primer reel formato podcast (2 personajes; final/reel-07-podcast-seedance-centavos.mp4)
 │   │   ├── _plantilla-edicion/     plantilla del formato avatar (talking head)
 │   │   └── _plantilla-voz-en-off/  plantilla + reglas del formato voz en off + motion graphics (LEEME.md, scripts de voz, SFX, logos)
 │   ├── carruseles/      ← carruseles (skill `carruseles-avatar-ads`): _plantilla/ (diseño + render a PNG) y una carpeta por carrusel
@@ -38,6 +41,7 @@ Avatar Ads 1.0/
 ├── skills/
 │   ├── master prompt para json prompts videos.txt ← reglas LOCKED IN de los prompts JSON de Google Flow
 │   ├── reels-avatar-ads/        ← skill del sistema de reels (guion → prompts Flow → edición). Editar aquí.
+│   │                               formatos/podcast/ = plantillas JSON por personaje + reglas del formato podcast
 │   ├── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
 │   └── carruseles-avatar-ads/   ← skill del sistema de carruseles (guion → diseño HTML → PNG → caption)
 │                             (.claude/skills/<skill> son solo enlaces a estas carpetas; no borrarlos)
@@ -73,9 +77,8 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 - **Edición:** apertura de Avatar Ads 1.0 → por eso el taller es en vivo
 - **Fechas:** lunes 26 y martes 27 de octubre de 2026 (2 días de taller) + clase bonus el miércoles 28; todas en vivo a las 7:00 p.m. hora de Ecuador (UTC-5)
 - **Modalidad:** online, clases en vivo
-- **Cupo:** 15 personas
-- **Inversión:** $37, pago único
-- **Descuento de lanzamiento:** las primeras 5 personas pagan $27 con el cupón **AVATAR27** en el checkout de Hotmart (−$10). Solo válido para las primeras 5 inscripciones; después, $37.
+- **Cupo:** sin límite (se eliminó el límite de 15 el 20 oct 2026)
+- **Inversión:** $27, pago único (sin cupones ni descuentos)
 - **Precio futuro:** incrementará en próximas ediciones (aún sin cifra). Quien entra en la apertura conserva acceso vitalicio + todas las futuras actualizaciones.
 - **Ángulo diferencial:** "sistema económico" — anuncios de alta calidad sin depender de herramientas costosas (p. ej. Seedance).
 
@@ -84,19 +87,20 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 2. Freelancers / futuros proveedores que quieren vender anuncios con IA a negocios.
 
 ## Incluye
-Clases en vivo · grabaciones · prompts y workflows · proyecto práctico (3 anuncios) · acceso vitalicio + futuras actualizaciones.
+(Oferta única de la landing; los días van en orden: Día 1 → Día 2 → Día 3 bono.) Día 1 y Día 2 del taller en vivo · herramientas · prompts.
 
 ## Bonos
-1. **Día 3 bonus (mié 28, en vivo): cómo captar clientes** para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
+1. **Día 3 en vivo (mié 28): cómo conseguir clientes** para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
 2. **Grupo privado de WhatsApp:** feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana).
-3. **Cliente Cero** ($97): flujo para vender anuncios a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta, guía de brief del cliente.
-4. **UGC Realism Vault:** biblioteca de prompts para avatares hiperrealistas (gestos, expresión, voz, encuadre, naturalidad).
-5. **Low-Cost Production System:** guía paso a paso del proceso low cost.
+3. **Grabación completa del taller.**
+4. **Acceso vitalicio al curso Avatar Ads** (con todas las futuras actualizaciones).
+5. **Cliente Cero** ($97): flujo para vender anuncios a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta, guía de brief del cliente.
+(Eliminados: UGC Realism Vault y Low-Cost Production System. Ya no se promete "3 anuncios listos" ni proyecto práctico de 3 anuncios.)
 
 ## Temario
-- Día 1 (lun 26) — Estrategia y preproducción → guion terminado y escenas planificadas.
-- Día 2 (mar 27) — Imágenes, animación y anuncio final → primer anuncio terminado (unifica los antiguos días 2 y 3).
-- Día 3 bonus (mié 28) — Cómo captar clientes para este servicio: qué oferta vender, captación orgánica y con anuncios.
+- Día 1 (lun 26) — Estrategia, storyboard e imágenes → terminamos con el storyboard y las imágenes de referencia.
+- Día 2 (mar 27) — Creación de videos y edición → creamos los videos y los editamos.
+- Día 3 bono (mié 28) — Cómo conseguir clientes para este servicio: qué oferta vender, captación orgánica y con anuncios.
 
 ## Publicación
 Sitio en Netlify: https://taller.droilab.com/ — se sube la carpeta `landing/` completa (`index.html` + `videos/`, ~16 MB).
@@ -118,4 +122,6 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 
 ## Pendientes de la landing
 - [x] Links de los botones CTA → checkout de Hotmart: https://pay.hotmart.com/G108061829I?checkoutMode=10 (los 4 botones).
-- [x] Videos en la landing (`landing/videos/`): 01 = anuncio de Avatar Ads (portada), 02 = avatar con labial (`anuncios/02-labial-auto`), 03–05 = ejemplos de `anuncios/ejemplos-ugc/` (airpods, skincare, suplemento). Se reproducen en silencio al entrar en pantalla y tienen botón "Activar sonido".
+- [x] Videos en la landing (`landing/videos/`): 01 = anuncio de Avatar Ads (portada, en el hero), 02 = reel de podcast (`Contenido/reels/07-podcast-seedance-centavos`), 03 = avatar con labial (`anuncios/02-labial-auto`), 04–06 = ejemplos de `anuncios/ejemplos-ugc/` (airpods, skincare, suplemento). La sección de ejemplos va justo después del hero. Se reproducen en silencio al entrar en pantalla y tienen botón "Activar sonido".
+- [x] Estructura actual (20 oct 2026): hero → ejemplos (videos) → resultados reales (video de ventas en Hotmart + 3 mensajes de clientes, con visor) → "el sistema más económico" (mosaico animado: cuántos anuncios de 30 s salen con $27 en Avatar Ads ~70, Wan 2.5 ~9, Seedance 2.0 2–9) → "testea más, encuentra más ganadores" (gráfico XY animado, ilustrativo: ads con IA 20–30/mes vs ads normales 4/mes → 1 ganador, + captura de Meta CPL $0,35) → para quién / qué aprenderás → oferta única (Día 1 → Día 2 → Día 3 bono con temario desplegable, herramientas, prompts + bonos destacados + $27 + CTA) → FAQ → cierre.
+- [ ] Confirmar cifras de la comparativa: Wan 2.5 ~$0,10/s y Seedance 2.0 $0,11–$0,46/s son precios públicos de API (oct 2026); el usuario mencionó ~$1/s para Seedance en el reel 07.

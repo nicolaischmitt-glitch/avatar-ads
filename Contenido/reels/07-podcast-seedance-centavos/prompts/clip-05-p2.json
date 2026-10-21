@@ -1,0 +1,71 @@
+{
+  "scene": {
+    "style": "grabación hiperrealista de un podcast real en estudio, apariencia raw, natural y sin editar",
+    "camera": {
+      "shot": "plano fijo",
+      "movement": "sin movimiento de cámara",
+      "framing": "mantener exactamente el mismo encuadre de la imagen de referencia durante toda la toma",
+      "cuts": "una sola toma continua, sin cortes; el personaje empieza a hablar desde el primer instante del clip",
+      "reframing": false
+    },
+    "character": {
+      "reference_image": true,
+      "identity_consistency": "mantener exactamente la misma persona de la imagen de referencia, con la misma ropa",
+      "location_consistency": "mantener el mismo estudio de podcast, el mismo micrófono, los mismos objetos y la misma iluminación",
+      "eye_contact": "cabeza y ojos girados en todo momento hacia su interlocutor, sentado fuera de cuadro a la izquierda de la imagen, con el mismo ángulo de cabeza y la misma dirección de mirada de la imagen de referencia; le habla directamente a él durante todo el clip; nunca mira al frente, a la cámara ni al vacío"
+    },
+    "performance": {
+      "language_accent": "español con acento ecuatoriano",
+      "delivery": "natural y conversacional, como una charla real entre dos personas; voz masculina grave, calmada y segura de un hombre de unos 38 años, igual en todos los clips",
+      "tone": "seguro, tranquilo y convincente, como alguien que domina el tema",
+      "facial_expression": "media sonrisa segura y expresión relajada, sin exagerar",
+      "hand_gestures": {
+        "enabled": true,
+        "style": "gestos naturales de conversación con una o ambas manos sobre la mesa o por encima de ella, sin tocar ni mover el micrófono",
+        "synchronization": "al decir 'Ese es justamente el problema', señala hacia su interlocutor con la mano abierta y asiente; al decir 'el noventa y nueve por ciento de las personas', abre ambas manos en un gesto amplio que abarca a mucha gente; al decir 'las herramientas más caras', sube una mano con la palma hacia abajo marcando algo alto; al decir 'por desconocimiento', gira levemente la mano con la palma hacia arriba",
+        "body_language": "sentado frente al micrófono, postura relajada, ligeramente inclinado hacia su interlocutor, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
+      }
+    },
+    "dialogue": {
+      "speaker": "hombre",
+      "script": "Ese es justamente el problema. El noventa y nueve por ciento de las personas usan las herramientas más caras solo por desconocimiento,",
+      "must_follow_exactly": true,
+      "allow_rephrasing": false,
+      "allow_additional_words": false
+    },
+    "visual_restrictions": {
+      "subtitles": false,
+      "captions": false,
+      "on_screen_text": false,
+      "text_overlays": false,
+      "titles": false,
+      "added_logos": false,
+      "watermarks": false,
+      "graphic_elements": false,
+      "visual_effects": false,
+      "transitions": false,
+      "filters": false,
+      "editing": false,
+      "style": "video completamente raw, natural y sin editar",
+      "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente a este personaje sentado frente al micrófono, hablando y gesticulando de forma natural mientras conversa con su interlocutor fuera de cuadro. Solo se escucha la voz de este personaje: sin otras voces, sin música y sin efectos de sonido."
+    },
+    "continuity": {
+      "same_avatar": true,
+      "same_location": true,
+      "same_camera_framing": true,
+      "no_camera_reframing": true
+    }
+  },
+  "instructions": [
+    "Utilizar el personaje de la imagen de referencia.",
+    "Mantener la cabeza y la mirada giradas hacia su interlocutor, a la izquierda de la imagen, durante todo el clip, como en la imagen de referencia; nunca mirar al frente, a la cámara ni al vacío.",
+    "Realizar gestos visibles y naturales con las manos durante el diálogo, sin tocar el micrófono.",
+    "Sincronizar los gestos con el significado del discurso.",
+    "Evitar manos inmóviles, brazos rígidos y movimientos robóticos.",
+    "Hablar con naturalidad, en tono de conversación, en español con acento ecuatoriano.",
+    "Respetar el diálogo palabra por palabra.",
+    "No generar subtítulos ni ningún tipo de texto en pantalla.",
+    "No añadir efectos, transiciones, filtros, música ni elementos visuales no solicitados.",
+    "Mantener la misma persona, el mismo estudio y el mismo encuadre."
+  ]
+}

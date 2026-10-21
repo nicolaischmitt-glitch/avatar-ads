@@ -1,0 +1,16 @@
+# clip  inicio  fin  (segundos dentro del clip; mismos cortes que la v1, salvo el clip 7: se quita "y solo 10 puestos disponibles")
+# El último segmento sigue 0,7 s después de "ya" (el avatar sonríe en silencio) para que el CTA se lea.
+1  0.3750  3.0833
+1  3.2917  5.7500
+2  0.5000  5.5833
+3  0.3333  2.0000
+3  2.2500  7.5833
+4  0.5000  3.8333
+5  0.4583  2.5000
+5  2.7083  5.3750
+5  5.5000  7.7917
+5  8.0417  8.9167
+6  0.7500  5.6667
+6  5.7917  7.4167
+7  0.9583  2.4167
+7  4.6250  7.0000

@@ -1,0 +1,674 @@
+[
+  {
+    "id": "w0",
+    "text": "Oye,",
+    "start": 0,
+    "end": 0.4
+  },
+  {
+    "id": "w1",
+    "text": "una",
+    "start": 0.4,
+    "end": 0.64
+  },
+  {
+    "id": "w2",
+    "text": "pregunta.",
+    "start": 0.64,
+    "end": 1.04
+  },
+  {
+    "id": "w3",
+    "text": "¿De",
+    "start": 1.2,
+    "end": 1.44
+  },
+  {
+    "id": "w4",
+    "text": "verdad",
+    "start": 1.52,
+    "end": 1.92
+  },
+  {
+    "id": "w5",
+    "text": "se",
+    "start": 1.92,
+    "end": 2.08
+  },
+  {
+    "id": "w6",
+    "text": "pueden",
+    "start": 2.08,
+    "end": 2.48
+  },
+  {
+    "id": "w7",
+    "text": "crear",
+    "start": 2.48,
+    "end": 2.96
+  },
+  {
+    "id": "w8",
+    "text": "anuncios",
+    "start": 2.96,
+    "end": 3.76
+  },
+  {
+    "id": "w9",
+    "text": "hiperrealistas",
+    "start": 3.76,
+    "end": 4.8
+  },
+  {
+    "id": "w10",
+    "text": "con",
+    "start": 4.96,
+    "end": 5.2
+  },
+  {
+    "id": "w11",
+    "text": "inteligencia",
+    "start": 5.2,
+    "end": 5.92
+  },
+  {
+    "id": "w12",
+    "text": "artificial",
+    "start": 5.92,
+    "end": 6.48
+  },
+  {
+    "id": "w13",
+    "text": "sin",
+    "start": 6.64,
+    "end": 6.8
+  },
+  {
+    "id": "w14",
+    "text": "gastar",
+    "start": 6.8,
+    "end": 7.2
+  },
+  {
+    "id": "w15",
+    "text": "una",
+    "start": 7.2,
+    "end": 7.44
+  },
+  {
+    "id": "w16",
+    "text": "fortuna?",
+    "start": 7.44,
+    "end": 8
+  },
+  {
+    "id": "w17",
+    "text": "Sí,",
+    "start": 8,
+    "end": 8.32
+  },
+  {
+    "id": "w18",
+    "text": "claro,",
+    "start": 8.32,
+    "end": 8.64
+  },
+  {
+    "id": "w19",
+    "text": "mis",
+    "start": 8.64,
+    "end": 8.88
+  },
+  {
+    "id": "w20",
+    "text": "videos",
+    "start": 8.88,
+    "end": 9.2
+  },
+  {
+    "id": "w21",
+    "text": "me",
+    "start": 9.2,
+    "end": 9.36
+  },
+  {
+    "id": "w22",
+    "text": "cuestan",
+    "start": 9.36,
+    "end": 9.76
+  },
+  {
+    "id": "w23",
+    "text": "centavos",
+    "start": 9.76,
+    "end": 10.4
+  },
+  {
+    "id": "w24",
+    "text": "y",
+    "start": 10.56,
+    "end": 10.72
+  },
+  {
+    "id": "w25",
+    "text": "tienen",
+    "start": 10.72,
+    "end": 11.12
+  },
+  {
+    "id": "w26",
+    "text": "la",
+    "start": 11.12,
+    "end": 11.2
+  },
+  {
+    "id": "w27",
+    "text": "misma",
+    "start": 11.2,
+    "end": 11.44
+  },
+  {
+    "id": "w28",
+    "text": "calidad",
+    "start": 11.44,
+    "end": 11.76
+  },
+  {
+    "id": "w29",
+    "text": "que",
+    "start": 11.76,
+    "end": 11.92
+  },
+  {
+    "id": "w30",
+    "text": "Sidans,",
+    "start": 11.92,
+    "end": 12.72
+  },
+  {
+    "id": "w31",
+    "text": "si",
+    "start": 12.72,
+    "end": 12.88
+  },
+  {
+    "id": "w32",
+    "text": "sabes",
+    "start": 12.88,
+    "end": 13.2
+  },
+  {
+    "id": "w33",
+    "text": "cómo",
+    "start": 13.2,
+    "end": 13.44
+  },
+  {
+    "id": "w34",
+    "text": "hacerlo",
+    "start": 13.44,
+    "end": 13.84
+  },
+  {
+    "id": "w35",
+    "text": "bien.",
+    "start": 13.84,
+    "end": 14.4
+  },
+  {
+    "id": "w36",
+    "text": "De",
+    "start": 14.4,
+    "end": 14.56
+  },
+  {
+    "id": "w37",
+    "text": "hecho,",
+    "start": 14.56,
+    "end": 14.96
+  },
+  {
+    "id": "w38",
+    "text": "este",
+    "start": 14.96,
+    "end": 15.28
+  },
+  {
+    "id": "w39",
+    "text": "video",
+    "start": 15.28,
+    "end": 15.52
+  },
+  {
+    "id": "w40",
+    "text": "costó",
+    "start": 15.76,
+    "end": 16.32
+  },
+  {
+    "id": "w41",
+    "text": "solo",
+    "start": 16.32,
+    "end": 16.48
+  },
+  {
+    "id": "w42",
+    "text": "53",
+    "start": 16.8,
+    "end": 17.76
+  },
+  {
+    "id": "w43",
+    "text": "centavos.",
+    "start": 18.08,
+    "end": 19.04
+  },
+  {
+    "id": "w44",
+    "text": "Pero",
+    "start": 19.04,
+    "end": 19.2
+  },
+  {
+    "id": "w45",
+    "text": "cómo",
+    "start": 19.44,
+    "end": 19.84
+  },
+  {
+    "id": "w46",
+    "text": "es",
+    "start": 19.84,
+    "end": 20
+  },
+  {
+    "id": "w47",
+    "text": "posible.",
+    "start": 20,
+    "end": 20.56
+  },
+  {
+    "id": "w48",
+    "text": "A",
+    "start": 20.56,
+    "end": 20.72
+  },
+  {
+    "id": "w49",
+    "text": "mí,",
+    "start": 20.72,
+    "end": 20.96
+  },
+  {
+    "id": "w50",
+    "text": "Sidance",
+    "start": 20.96,
+    "end": 21.6
+  },
+  {
+    "id": "w51",
+    "text": "me",
+    "start": 21.68,
+    "end": 21.84
+  },
+  {
+    "id": "w52",
+    "text": "cuesta",
+    "start": 21.84,
+    "end": 22.32
+  },
+  {
+    "id": "w53",
+    "text": "casi",
+    "start": 22.32,
+    "end": 22.64
+  },
+  {
+    "id": "w54",
+    "text": "un",
+    "start": 22.64,
+    "end": 22.8
+  },
+  {
+    "id": "w55",
+    "text": "dólar",
+    "start": 22.8,
+    "end": 23.2
+  },
+  {
+    "id": "w56",
+    "text": "el",
+    "start": 23.2,
+    "end": 23.36
+  },
+  {
+    "id": "w57",
+    "text": "segundo.",
+    "start": 23.36,
+    "end": 24.08
+  },
+  {
+    "id": "w58",
+    "text": "Ese",
+    "start": 24.32,
+    "end": 24.64
+  },
+  {
+    "id": "w59",
+    "text": "es",
+    "start": 24.64,
+    "end": 24.8
+  },
+  {
+    "id": "w60",
+    "text": "justamente",
+    "start": 24.8,
+    "end": 25.28
+  },
+  {
+    "id": "w61",
+    "text": "el",
+    "start": 25.28,
+    "end": 25.36
+  },
+  {
+    "id": "w62",
+    "text": "problema.",
+    "start": 25.36,
+    "end": 25.84
+  },
+  {
+    "id": "w63",
+    "text": "El",
+    "start": 25.84,
+    "end": 26.08
+  },
+  {
+    "id": "w64",
+    "text": "99%",
+    "start": 26.08,
+    "end": 26.88
+  },
+  {
+    "id": "w65",
+    "text": "de",
+    "start": 27.12,
+    "end": 27.28
+  },
+  {
+    "id": "w66",
+    "text": "las",
+    "start": 27.28,
+    "end": 27.44
+  },
+  {
+    "id": "w67",
+    "text": "personas",
+    "start": 27.44,
+    "end": 27.76
+  },
+  {
+    "id": "w68",
+    "text": "usan",
+    "start": 27.84,
+    "end": 28.16
+  },
+  {
+    "id": "w69",
+    "text": "las",
+    "start": 28.24,
+    "end": 28.4
+  },
+  {
+    "id": "w70",
+    "text": "herramientas",
+    "start": 28.4,
+    "end": 28.96
+  },
+  {
+    "id": "w71",
+    "text": "más",
+    "start": 28.96,
+    "end": 29.2
+  },
+  {
+    "id": "w72",
+    "text": "caras",
+    "start": 29.2,
+    "end": 29.68
+  },
+  {
+    "id": "w73",
+    "text": "solo",
+    "start": 29.76,
+    "end": 29.92
+  },
+  {
+    "id": "w74",
+    "text": "por",
+    "start": 30.08,
+    "end": 30.24
+  },
+  {
+    "id": "w75",
+    "text": "desconocimiento.",
+    "start": 30.24,
+    "end": 31.12
+  },
+  {
+    "id": "w76",
+    "text": "No",
+    "start": 31.12,
+    "end": 31.36
+  },
+  {
+    "id": "w77",
+    "text": "saben",
+    "start": 31.36,
+    "end": 31.68
+  },
+  {
+    "id": "w78",
+    "text": "que",
+    "start": 31.68,
+    "end": 31.84
+  },
+  {
+    "id": "w79",
+    "text": "existen",
+    "start": 31.84,
+    "end": 32.4
+  },
+  {
+    "id": "w80",
+    "text": "métodos",
+    "start": 32.4,
+    "end": 32.96
+  },
+  {
+    "id": "w81",
+    "text": "económicos",
+    "start": 32.96,
+    "end": 33.76
+  },
+  {
+    "id": "w82",
+    "text": "que",
+    "start": 33.76,
+    "end": 33.92
+  },
+  {
+    "id": "w83",
+    "text": "dan",
+    "start": 33.92,
+    "end": 34.24
+  },
+  {
+    "id": "w84",
+    "text": "la",
+    "start": 34.24,
+    "end": 34.4
+  },
+  {
+    "id": "w85",
+    "text": "misma",
+    "start": 34.4,
+    "end": 34.64
+  },
+  {
+    "id": "w86",
+    "text": "calidad.",
+    "start": 34.64,
+    "end": 35.12
+  },
+  {
+    "id": "w87",
+    "text": "¿Y",
+    "start": 35.12,
+    "end": 35.28
+  },
+  {
+    "id": "w88",
+    "text": "dónde",
+    "start": 35.36,
+    "end": 35.68
+  },
+  {
+    "id": "w89",
+    "text": "puedo",
+    "start": 35.68,
+    "end": 35.92
+  },
+  {
+    "id": "w90",
+    "text": "aprender",
+    "start": 35.92,
+    "end": 36.48
+  },
+  {
+    "id": "w91",
+    "text": "estos",
+    "start": 36.48,
+    "end": 36.8
+  },
+  {
+    "id": "w92",
+    "text": "métodos?",
+    "start": 36.8,
+    "end": 37.44
+  },
+  {
+    "id": "w93",
+    "text": "Tengo",
+    "start": 37.44,
+    "end": 37.76
+  },
+  {
+    "id": "w94",
+    "text": "un",
+    "start": 37.76,
+    "end": 37.84
+  },
+  {
+    "id": "w95",
+    "text": "documento",
+    "start": 37.84,
+    "end": 38.32
+  },
+  {
+    "id": "w96",
+    "text": "donde",
+    "start": 38.4,
+    "end": 38.8
+  },
+  {
+    "id": "w97",
+    "text": "explico",
+    "start": 38.8,
+    "end": 39.36
+  },
+  {
+    "id": "w98",
+    "text": "todo",
+    "start": 39.36,
+    "end": 39.6
+  },
+  {
+    "id": "w99",
+    "text": "mi",
+    "start": 39.6,
+    "end": 39.76
+  },
+  {
+    "id": "w100",
+    "text": "proceso.",
+    "start": 39.76,
+    "end": 40.16
+  },
+  {
+    "id": "w101",
+    "text": "Dile",
+    "start": 40.16,
+    "end": 40.56
+  },
+  {
+    "id": "w102",
+    "text": "a",
+    "start": 40.56,
+    "end": 40.64
+  },
+  {
+    "id": "w103",
+    "text": "tu",
+    "start": 40.64,
+    "end": 40.8
+  },
+  {
+    "id": "w104",
+    "text": "audiencia",
+    "start": 40.8,
+    "end": 41.28
+  },
+  {
+    "id": "w105",
+    "text": "que",
+    "start": 41.28,
+    "end": 41.44
+  },
+  {
+    "id": "w106",
+    "text": "comente",
+    "start": 41.44,
+    "end": 41.76
+  },
+  {
+    "id": "w107",
+    "text": "guía",
+    "start": 41.92,
+    "end": 42.24
+  },
+  {
+    "id": "w108",
+    "text": "y",
+    "start": 42.4,
+    "end": 42.48
+  },
+  {
+    "id": "w109",
+    "text": "se",
+    "start": 42.48,
+    "end": 42.56
+  },
+  {
+    "id": "w110",
+    "text": "lo",
+    "start": 42.56,
+    "end": 42.72
+  },
+  {
+    "id": "w111",
+    "text": "envío.",
+    "start": 42.72,
+    "end": 43.28
+  }
+]

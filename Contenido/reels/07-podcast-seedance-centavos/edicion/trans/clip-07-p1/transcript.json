@@ -1,0 +1,50 @@
+[
+  {
+    "id": "w0",
+    "text": "Y",
+    "start": 0.56,
+    "end": 0.72
+  },
+  {
+    "id": "w1",
+    "text": "dónde",
+    "start": 0.96,
+    "end": 1.36
+  },
+  {
+    "id": "w2",
+    "text": "puedo",
+    "start": 1.36,
+    "end": 1.76
+  },
+  {
+    "id": "w3",
+    "text": "aprender",
+    "start": 1.76,
+    "end": 2.4
+  },
+  {
+    "id": "w4",
+    "text": "estos",
+    "start": 2.72,
+    "end": 3.2
+  },
+  {
+    "id": "w5",
+    "text": "métodos,",
+    "start": 3.2,
+    "end": 4
+  },
+  {
+    "id": "w6",
+    "text": "estos",
+    "start": 4.32,
+    "end": 4.72
+  },
+  {
+    "id": "w7",
+    "text": "métodos.",
+    "start": 4.72,
+    "end": 5.52
+  }
+]

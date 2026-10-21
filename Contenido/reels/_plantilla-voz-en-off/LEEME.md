@@ -24,9 +24,11 @@ Voz editada del usuario ≈ **2,7 palabras/s**. Duración del reel ≈ palabras 
    ```json
    { "fuente": "Contenido/reels/NN-slug/voz-original.mp4", "conservar": [[ini, fin], [ini, fin]] }
    ```
-   - Quitar silencio inicial/final (dejar ~0,1 s antes de la primera palabra y ~0,18 s después de la última).
+   - Aplicar la regla general de **voz fluida** (`skills/reels-avatar-ads/SKILL.md` → Reglas generales). Para encontrar pausas y palabras estiradas: `node skills/reels-avatar-ads/scripts/detectar-estiramientos.mjs Contenido/reels/NN-slug`.
+   - Quitar silencio inicial/final: la primera palabra suena desde el inicio (~0,05 s antes como máximo); ~0,18 s después de la última.
    - Quitar **arranques fallidos y frases repetidas** (avisar al usuario cuáles se quitaron).
-   - Pausas > 0,35 s → dejarlas en ~0,25 s, cortando dentro del silencio (nunca en una palabra). Pausas dramáticas antes de una pregunta o del cierre: ~0,3 s.
+   - Pausas > 0,3 s → dejarlas en ~0,1–0,2 s, cortando dentro del silencio (nunca en una palabra). Pausas dramáticas antes de una pregunta o del cierre: ~0,3 s.
+   - Palabras estiradas (vocal sostenida > 0,3 s): cortar dentro de la vocal dejando ~0,15 s y saltar a la palabra siguiente.
 4. **Voz**: `node "Contenido/reels/_plantilla-voz-en-off/scripts/voz.mjs" Contenido/reels/NN-slug` → `edicion/public/audio/voz.wav`.
    Cadena: micro-crossfade 30 ms en cada corte → `adeclip` → highpass 75 Hz → EQ −2,5 dB a 250 Hz, +2,5 dB a 3,2 kHz, +1,5 dB aire 10 kHz → de-esser → compresor 3:1 → loudnorm −14 LUFS / −1,5 dBTP.
 5. **Transcribir la voz limpia**: `hyperframes transcribe edicion/public/audio/voz.wav -d edicion -l es -e parakeet --json` → `edicion/transcript.json` (tiempos definitivos). Corregir en pantalla lo que el reconocedor escriba mal (números, marcas: "71.4" → 7-11-4, "Avatarat" → …).

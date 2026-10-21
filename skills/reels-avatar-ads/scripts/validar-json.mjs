@@ -3,6 +3,10 @@
 //
 // Uso:
 //   node validar-json.mjs <carpeta-prompts> [--guion guion.txt] [--allow ruta.clave ...]
+//        [--plantilla p1=ruta/plantilla-personaje-1.json --plantilla p2=...]
+//
+// - Con --plantilla, los archivos clip-NN-<sufijo>.json se validan contra esa plantilla de
+//   formato (p. ej. podcast) en vez de la del master; la plantilla debe tener la misma estructura.
 //
 // - Toma la plantilla de "master prompt para json prompts videos.txt" (sección 4).
 // - Cada clip debe tener exactamente las mismas claves, jerarquía, tipos y valores,
@@ -26,9 +30,14 @@ if (!dir) {
 }
 let guionFile = null;
 const allowed = new Set(ALWAYS_ALLOWED);
+const plantillas = []; // [sufijo, ruta]: clip-NN-<sufijo>.json se valida contra esa plantilla
 for (let i = 1; i < args.length; i++) {
   if (args[i] === "--guion") guionFile = args[++i];
   else if (args[i] === "--allow") allowed.add(args[++i]);
+  else if (args[i] === "--plantilla") {
+    const [sufijo, ruta] = args[++i].split("=");
+    plantillas.push([sufijo, ruta]);
+  }
 }
 
 function extractTemplate(text) {
@@ -62,6 +71,31 @@ function compare(tpl, val, p, errors) {
 const norm = (s) => s.replace(/\s+/g, " ").trim();
 
 const template = extractTemplate(fs.readFileSync(MASTER, "utf8"));
+
+// Las plantillas de formato (p. ej. podcast) solo pueden cambiar valores, nunca la estructura del master.
+function sameShape(a, b, p, errors) {
+  const ta = typeOf(a), tb = typeOf(b);
+  if (ta !== tb) return errors.push(`${p}: tipo ${tb}, se esperaba ${ta}`);
+  if (ta !== "object") return;
+  const ka = Object.keys(a), kb = Object.keys(b);
+  if (ka.join("|") !== kb.join("|")) return errors.push(`${p || "(raíz)"}: claves distintas a las del master`);
+  for (const k of ka) sameShape(a[k], b[k], p ? `${p}.${k}` : k, errors);
+}
+const formatTemplates = plantillas.map(([sufijo, ruta]) => {
+  const tpl = JSON.parse(fs.readFileSync(ruta, "utf8"));
+  const errors = [];
+  sameShape(template, tpl, "", errors);
+  if (errors.length) {
+    console.log(`✗ Plantilla ${ruta} no respeta la estructura del master:`);
+    for (const e of errors) console.log(`    - ${e}`);
+    process.exit(1);
+  }
+  return [sufijo, tpl];
+});
+const templateFor = (f) => {
+  const hit = formatTemplates.find(([sufijo]) => f.toLowerCase().endsWith(`-${sufijo.toLowerCase()}.json`));
+  return hit ? hit[1] : template;
+};
 const files = fs.readdirSync(dir).filter((f) => /\.json$/i.test(f)).sort();
 if (!files.length) {
   console.error(`No hay archivos .json en ${dir}`);
@@ -80,11 +114,11 @@ for (const f of files) {
     failed = true;
     continue;
   }
-  compare(template, data, "", errors);
+  compare(templateFor(f), data, "", errors);
   const script = data?.scene?.dialogue?.script ?? "";
   const sync = data?.scene?.performance?.hand_gestures?.synchronization ?? "";
   if (!script.trim() || script.includes("[FRAGMENTO")) errors.push("scene.dialogue.script: vacío o sin rellenar");
-  if (!sync.trim()) errors.push("scene.performance.hand_gestures.synchronization: vacío");
+  if (!sync.trim() || sync.includes("[GESTOS")) errors.push("scene.performance.hand_gestures.synchronization: vacío");
   scripts.push(script);
   if (errors.length) {
     failed = true;

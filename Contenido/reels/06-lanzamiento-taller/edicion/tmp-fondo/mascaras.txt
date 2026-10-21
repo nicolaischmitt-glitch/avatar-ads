@@ -1,0 +1,11 @@
+file 'mascara_0.png'
+duration 11.8333
+file 'mascara_1.png'
+duration 22.3000
+file 'mascara_2.png'
+duration 18.9667
+file 'mascara_3.png'
+duration 18.3000
+file 'mascara_4.png'
+duration 4.9000
+file 'mascara_4.png'

@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Avatar Ads 1.0</title>
-<meta name="description" content="Apertura de Avatar Ads 1.0: taller en vivo de 2 días + clase bonus para crear anuncios UGC hiperrealistas con IA. Solo 15 cupos · $37 · acceso vitalicio.">
+<meta name="description" content="Taller en vivo de Avatar Ads 1.0: aprende a crear anuncios hiperrealistas con IA para escalar tus ventas u ofrecerlo como servicio. Cada anuncio a menos de un dólar. $27, pago único.">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="theme-color" content="#020604">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23020604%27/%3E%3Cpath d=%27M24 18l24 14-24 14z%27 fill=%27%23C5F740%27/%3E%3C/svg%3E">
 <meta property="og:image" content="https://taller.droilab.com/logo-avatar-ads.png">
@@ -33,6 +34,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{background:var(--bg);color:var(--text-2);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:92px}
+  img,video,svg{max-width:100%}
   button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .wrap{width:100%;max-width:640px;margin:0 auto;padding:0 var(--gutter)}
   section{padding:64px 0}
@@ -65,7 +67,7 @@
   .topbar{background:var(--bg-2);color:var(--neon);border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px var(--gutter)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);max-width:640px;margin:0 auto}
   .logo img{display:block;height:44px;width:auto;mix-blend-mode:screen}
-  .nav .seats{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--meta)}
+  .nav .seats{text-decoration:none;font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--meta)}
   .nav .seats b{color:var(--white)}
 
   /* ===== Hero ===== */
@@ -77,11 +79,11 @@
   .hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(197,247,64,.45);background:var(--neon-soft);color:var(--white);border-radius:999px;padding:7px 13px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
   .live{width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon);animation:blink 1.3s infinite}
   @keyframes blink{50%{opacity:.3}}
-  .hero h1{font-size:clamp(38px,11vw,62px);margin:18px 0 16px}
+  .hero h1{font-size:clamp(31px,8.6vw,54px);line-height:1.05;margin:18px 0 16px}
   .hero p.sub{font-size:17.5px;color:var(--text-2);margin-bottom:26px}
   .hero p.sub b{color:var(--white);font-weight:600}
 
-  .facts{display:grid;grid-template-columns:repeat(4,1fr);margin:32px 0 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(9,15,11,.7)}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);margin:32px 0 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(9,15,11,.7)}
   .facts div{padding:12px 6px;text-align:center;border-right:1px solid var(--line-soft)}
   .facts div:last-child{border-right:0}
   .facts b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;font-size:21px;color:var(--white);letter-spacing:-.02em}
@@ -117,21 +119,6 @@
   .rail figcaption .muted{color:var(--meta)}
   .rail-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;color:var(--meta)}
 
-  /* ===== Apertura ===== */
-  .open-card{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:var(--bg);overflow:hidden}
-  .open-row{display:flex;gap:14px;padding:18px;border-bottom:1px solid var(--line-soft)}
-  .open-row:last-child{border-bottom:0}
-  .open-row .ic{flex:none;width:38px;height:38px;border-radius:10px;background:var(--neon-soft);border:1px solid rgba(197,247,64,.35);color:var(--neon);display:grid;place-items:center}
-  .open-row h3{font-size:18px;margin-bottom:3px}
-  .open-row p{font-size:15px}
-  .lock{margin-top:16px;background:linear-gradient(160deg,rgba(48,94,74,.35),var(--bg) 60%);border:1px solid var(--line);border-radius:20px;padding:22px}
-  .lock .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
-  .lock .row:last-of-type{border-bottom:0}
-  .lock .row b{font-family:var(--display);font-stretch:108%;font-weight:800;font-size:18px;color:var(--white);text-align:right;white-space:nowrap}
-  .lock .row.you, .lock .row.you b{color:var(--neon)}
-  .lock .row b.sm{font-family:var(--body);font-stretch:100%;font-weight:600;font-size:15px}
-  .lock p{font-size:13px;color:var(--meta);margin-top:10px}
-
   /* ===== Para quién ===== */
   .who{display:grid;gap:12px;margin-top:22px}
   .who article{border:1px solid var(--line-soft);background:var(--bg-2);border-radius:18px;padding:20px}
@@ -144,46 +131,25 @@
   .checks li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--text-2)}
   .checks li::before{content:"";flex:none;margin-top:3px;width:18px;height:18px;border-radius:5px;background:var(--neon) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23020604' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
 
-  /* ===== Temario ===== */
-  .days{margin-top:24px;display:grid;gap:10px}
-  .day{border:1px solid var(--line);border-radius:16px;background:var(--bg);transition:border-color .2s}
-  .day[open]{border-color:rgba(197,247,64,.45)}
-  .bonus-day .d{background:var(--neon-soft);border-color:rgba(197,247,64,.45);color:var(--neon)}
-  .day summary{list-style:none;display:flex;align-items:center;gap:14px;padding:16px;cursor:pointer}
-  .day summary::-webkit-details-marker{display:none}
-  .day .d{flex:none;width:52px;text-align:center;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;line-height:1.1;padding:7px 0;border-radius:10px;background:var(--bg-2);border:1px solid var(--line);color:var(--meta)}
-  .day .d b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;font-size:22px;color:var(--neon)}
-  .day h3{font-size:18px}
-  .day .date{font-size:13px;color:var(--meta)}
-  .day .tog{margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);color:var(--text-2);display:grid;place-items:center;font-weight:700;transition:transform .2s, background .2s}
-  .day[open] .tog{transform:rotate(45deg);background:var(--neon);border-color:var(--neon);color:var(--bg)}
-  .day .body{padding:0 16px 18px}
-  .day .body p.intro{font-weight:600;color:var(--white);margin-bottom:10px}
-  .day ul{list-style:none;display:grid;gap:7px;font-size:15px;color:var(--text-2)}
-  .day ul li{padding-left:16px;position:relative}
-  .day ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--neon)}
-  .res{margin-top:14px;font-size:14px;background:var(--neon-soft);border:1px solid rgba(197,247,64,.3);color:var(--white);border-radius:10px;padding:10px 12px}
-  .res b{color:var(--neon)}
-
-  /* ===== Incluye + bonos ===== */
-  .inc{list-style:none;margin-top:22px;border-top:1px solid var(--line-soft)}
-  .inc li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line-soft)}
-  .inc .k{flex:none;font-family:var(--mono);font-size:12px;color:var(--neon);padding-top:3px;width:22px}
-  .inc b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white)}
-  .inc span{font-size:14.5px;color:var(--text-2)}
-  .bonus-h{margin-top:44px}
-  .bonus{margin-top:12px;border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(160deg,rgba(48,94,74,.32),var(--bg-2) 70%)}
-  .bonus .top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--neon)}
-  .bonus .top s{color:var(--meta)}
-  .bonus h3{font-size:21px;margin:8px 0 4px}
-  .bonus p{font-size:14.5px;color:var(--text-2)}
+  /* ===== Offer stack ===== */
+  .stack{margin-top:24px;border:1px solid rgba(197,247,64,.45);border-radius:22px;background:var(--bg-2);overflow:hidden;box-shadow:0 30px 80px -40px rgba(197,247,64,.4)}
+  .stack-head{background:var(--bg);border-bottom:1px solid var(--line);color:var(--text-2);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+  .stack-list{list-style:none;padding:8px 18px}
+  .stack-list > li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .stack-list > li:last-child{border-bottom:0}
+  .stack-list b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white);line-height:1.2;margin-bottom:3px}
+  .stack-list b s{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--meta);margin-left:6px;letter-spacing:.04em}
+  .stack-list li > div > span{font-size:14.5px;color:var(--text-2);display:block}
+  .stack-list .ok{flex:none;margin-top:2px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(197,247,64,.5);background:var(--neon-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C5F740' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+  .stack-sep{display:flex;align-items:center;gap:12px;padding:6px 18px 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon)}
+  .stack-sep::before,.stack-sep::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(197,247,64,.5),transparent)}
+  .stack-list.bonuses{padding:12px 14px 16px;display:grid;gap:10px}
+  .stack-list.bonuses > li{padding:14px;border:1px dashed rgba(197,247,64,.55);border-radius:14px;background:linear-gradient(160deg,rgba(197,247,64,.1),rgba(48,94,74,.15) 70%,transparent)}
+  .stack-list.bonuses > li:last-child{border-bottom:1px dashed rgba(197,247,64,.55)}
+  .stack-list .tag{flex:none;margin-top:1px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:4px 7px;border-radius:6px}
+  .stack-total{border-top:1px solid var(--line);padding:22px 18px 24px;background:radial-gradient(90% 60% at 50% 0%, rgba(48,94,74,.35), transparent 70%),var(--bg)}
 
   /* ===== Precio ===== */
-  .price-card{margin-top:24px;border:1px solid rgba(197,247,64,.45);border-radius:22px;background:var(--bg);overflow:hidden;box-shadow:0 30px 80px -40px rgba(197,247,64,.4)}
-  .price-head{background:var(--bg-2);border-bottom:1px solid var(--line);color:var(--text-2);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
-  .price-head .dots{display:flex;gap:3px}
-  .price-head .dots i{width:7px;height:7px;border-radius:2px;background:var(--neon)}
-  .price-body{padding:22px 20px 24px;background:radial-gradient(90% 60% at 50% 0%, rgba(48,94,74,.3), transparent 70%)}
   .price{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:72px;color:var(--white);letter-spacing:-.04em;line-height:1}
   .price small{font-family:var(--body);font-size:16px;letter-spacing:0;font-weight:500;color:var(--meta);margin-left:8px}
   .info{list-style:none;margin:18px 0 22px;border-top:1px solid var(--line-soft)}
@@ -196,18 +162,93 @@
   .countdown span{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--meta)}
   .cd-label{text-align:center;font-size:12.5px;color:var(--meta);margin-top:8px}
 
-  /* ===== Cupón de descuento ===== */
-  .coupon{margin-top:16px;border:1px dashed rgba(197,247,64,.6);border-radius:16px;padding:16px;background:linear-gradient(160deg,rgba(197,247,64,.1),rgba(48,94,74,.18) 60%,transparent)}
-  .coupon .c-top{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--neon)}
-  .coupon .c-price{margin:6px 0 12px;font-size:15px;color:var(--text-2)}
-  .coupon .c-price b{font-family:var(--display);font-stretch:110%;font-weight:800;font-size:30px;color:var(--white);letter-spacing:-.03em;margin-right:6px}
-  .coupon .c-price s{color:var(--meta);margin-right:6px}
-  .code{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(197,247,64,.5);background:var(--bg);color:var(--white);font-family:var(--mono);font-size:18px;letter-spacing:.12em;transition:background .15s}
-  .code:hover{background:var(--bg-2)}
-  .code .cp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:5px 9px;border-radius:7px;font-weight:500}
-  .coupon .c-note{margin-top:10px;font-size:12.5px;color:var(--meta);line-height:1.4}
-  .hero .coupon{text-align:left}
-  .price-body .coupon{margin:16px 0 4px}
+  /* ===== Resultados (carrusel de prueba) ===== */
+  .proof-media{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0d1310;padding:0}
+  .proof-media video,.proof-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1310}
+  .proof-media video{object-fit:cover}
+  .proof-media.zoom{cursor:zoom-in}
+  .proof-media.zoom::after{content:"";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(2,6,4,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C5F740' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-4.5-4.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid rgba(197,247,64,.4)}
+  .pill{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:3px 7px;border-radius:6px}
+  .fine-print{margin-top:14px;font-size:12px;line-height:1.45;color:var(--meta)}
+
+  /* ===== $27 en cada herramienta ===== */
+  .hl{color:var(--neon)}
+  .spend{display:grid;gap:12px;margin-top:24px}
+  .sp-card{border:1px solid var(--line);border-radius:18px;background:var(--bg);padding:16px}
+  .sp-card.win{border-color:rgba(197,247,64,.55);background:linear-gradient(160deg,rgba(197,247,64,.12),var(--bg) 65%);box-shadow:0 20px 50px -30px rgba(197,247,64,.6)}
+  .sp-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sp-name{font-family:var(--display);font-stretch:106%;font-weight:700;font-size:16px;color:var(--white)}
+  .sp-cost{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--meta)}
+  .sp-num{display:flex;align-items:baseline;gap:8px;margin:6px 0 12px}
+  .sp-num b{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--white)}
+  .sp-card.win .sp-num b{color:var(--neon);text-shadow:0 0 24px rgba(197,247,64,.45)}
+  .sp-num span{font-size:14px;color:var(--meta)}
+  .tiles{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}
+  .tiles i,.sp-legend i{display:block;aspect-ratio:9/16;border-radius:3px;background:#5d6b63;position:relative}
+  .sp-card.win .tiles i{background:var(--neon)}
+  .tiles i.maybe,.sp-legend i.maybe{background:transparent;border:1px dashed #5d6b63}
+  .tiles i::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);border-left:4px solid rgba(2,6,4,.75);border-top:3px solid transparent;border-bottom:3px solid transparent}
+  .tiles i.maybe::after{display:none}
+  .js .tiles i{opacity:0;transform:scale(.4)}
+  .spend.in .tiles i{opacity:1;transform:none;transition:opacity .3s ease, transform .3s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--i) * 18ms)}
+  .sp-legend{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin-top:12px;font-size:12.5px;color:var(--text-2)}
+  .sp-legend i{width:9px;display:inline-block;vertical-align:middle;background:var(--neon)}
+
+  /* ===== Gráfico XY ===== */
+  .xy{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(90% 70% at 80% 0%,rgba(48,94,74,.35),transparent 70%),var(--bg-2);padding:16px 12px 10px}
+  .xy-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 4px 6px}
+  .xy-title{font-family:var(--display);font-stretch:106%;font-weight:700;font-size:16px;color:var(--white)}
+  .xy-leg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2)}
+  .xy-leg i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-left:6px}
+  .xy-leg .l-ia{background:var(--neon);box-shadow:0 0 6px var(--neon)}
+  .xy-leg .l-no{background:repeating-linear-gradient(90deg,#9F9587 0 5px,transparent 5px 9px)}
+  .xy svg{display:block;width:100%;height:auto;overflow:visible}
+  .xy-grid line{stroke:rgba(48,94,74,.45);stroke-width:1}
+  .xy-axis line{stroke:#9F9587;stroke-width:1.5}
+  .xy-x text,.xy-y{fill:#9F9587;font-family:"JetBrains Mono",monospace;font-size:19px;text-anchor:middle}
+  .xy-area{fill:url(#xyFill);opacity:0;transition:opacity 1s ease .9s}
+  .xy-ia{fill:none;stroke:#C5F740;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(197,247,64,.6))}
+  .xy-no{fill:none;stroke:#9F9587;stroke-width:3;stroke-dasharray:9 8;stroke-linecap:round}
+  .xy-dot.ia{fill:#C5F740;filter:drop-shadow(0 0 6px rgba(197,247,64,.9))}
+  .xy-dot.no{fill:#9F9587}
+  .xy-tag rect{fill:#020604;stroke-width:1.5}
+  .xy-tag.ia rect{stroke:#C5F740}
+  .xy-tag.no rect{stroke:#9F9587}
+  .xy-tag text{font-family:Inter,system-ui,sans-serif;font-size:20px;font-weight:600;text-anchor:middle}
+  .xy-tag.ia text{fill:#C5F740}
+  .xy-tag.no text{fill:#DDDAD7}
+  .xy-note{font-size:11.5px;color:var(--meta);padding:2px 4px 0;text-align:right}
+  .js .xy-ia{stroke-dasharray:900;stroke-dashoffset:900}
+  .js .xy-no{opacity:0}
+  .js .xy-dot,.js .xy-tag{opacity:0}
+  .xy.in .xy-ia{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.6,0,.2,1)}
+  .xy.in .xy-no{opacity:1;transition:opacity .6s ease .2s}
+  .xy.in .xy-area{opacity:1}
+  .xy.in .xy-dot,.xy.in .xy-tag{opacity:1;transition:opacity .5s ease 1.4s}
+
+  .proof-wide{margin-top:22px;border:1px solid rgba(197,247,64,.45);border-radius:18px;overflow:hidden;background:var(--bg-2);max-width:100%}
+  .proof-wide .zoom{display:block;width:100%;max-width:100%;overflow:hidden;cursor:zoom-in;background:#fff}
+  .proof-wide img{display:block;width:100%;max-width:100%;height:auto}
+  .proof-wide figcaption{padding:14px 16px;font-size:14.5px;color:var(--text-2)}
+  .proof-wide figcaption b{color:var(--neon)}
+
+  /* ===== Detalle de cada día dentro del stack ===== */
+  .more{margin-top:8px}
+  .more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--neon)}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary::after{content:"+";font-size:15px;line-height:1;transition:transform .2s}
+  .more[open] summary::after{transform:rotate(45deg)}
+  .more ul{list-style:none;display:grid;gap:6px;margin-top:10px}
+  .more li{position:relative;padding-left:14px;font-size:14px;color:var(--text-2)}
+  .more li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--neon)}
+  .stack-list > li.day3{margin:6px 0;padding:14px;border:1.5px solid var(--neon);border-radius:14px;background:linear-gradient(160deg,rgba(197,247,64,.2),rgba(48,94,74,.25) 70%,transparent);box-shadow:0 0 30px -10px rgba(197,247,64,.55)}
+  .stack-list > li.day3:last-child{border-bottom:1.5px solid var(--neon)}
+
+  /* ===== Visor de capturas ===== */
+  .lightbox{border:0;padding:0;background:transparent;max-width:min(560px,94vw);max-height:92vh;margin:auto}
+  .lightbox::backdrop{background:rgba(2,6,4,.88);backdrop-filter:blur(4px)}
+  .lightbox img{display:block;max-width:100%;max-height:88vh;border-radius:14px}
+  .lb-close{position:fixed;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:var(--neon);color:var(--bg);font-weight:800;font-size:16px}
 
   /* ===== FAQ ===== */
   .faq{margin-top:20px}
@@ -247,6 +288,10 @@
     .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
     .split > :first-child h2{margin-top:14px}
     .who{grid-template-columns:1fr 1fr}
+    .spend{grid-template-columns:repeat(3,1fr)}
+    .xy{padding:22px 22px 12px}
+    .narrow-p{max-width:720px}
+    .proof-wide{max-width:620px;margin-left:auto;margin-right:auto}
     .rail{margin:28px 0 0;padding:4px 0 8px;justify-content:flex-start}
     .rail > figure{flex:1 1 0;min-width:0;max-width:280px}
     .narrow{max-width:720px}
@@ -263,7 +308,7 @@
 
 <nav class="nav">
   <div class="logo"><img src="logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
-  <div class="seats">Cupo <b>15 personas</b></div>
+  <a class="seats" href="#inscripcion">Taller en vivo · <b>$27</b></a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -271,8 +316,8 @@
   <div class="wrap">
     <div>
       <span class="hero-tag"><span class="live"></span>Apertura · Taller en vivo</span>
-      <h1>Crea anuncios <span class="b">hiperrealistas</span> con IA.</h1>
-      <p class="sub">Aprende el sistema que usamos para producir anuncios UGC hiperrealistas que parecen producidos profesionalmente. <b>Y por centavos.</b></p>
+      <h1>Aprende a crear anuncios <span class="b">hiperrealistas</span> con IA para escalar tus ventas u ofrecerlo como servicio</h1>
+      <p class="sub">El mejor sistema calidad/precio. <b>Cada anuncio te sale a menos de un dólar.</b></p>
 
       <!-- VIDEO 1 (principal): el anuncio de Avatar Ads 1.0 -->
       <figure class="hero-video">
@@ -290,72 +335,42 @@
         </div>
       </figure>
 
-      <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero mi cupo · $37
+      <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero mi cupo · $27
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
       </a>
-      <p class="under-btn muted">Pago único · Acceso vitalicio + futuras actualizaciones</p>
-      <div class="coupon">
-        <div class="c-top">Solo para las primeras 5 personas</div>
-        <div class="c-price"><b>$27</b><s>$37</s>con el cupón</div>
-        <button type="button" class="code" data-code="AVATAR27" aria-label="Copiar el cupón AVATAR27">AVATAR27 <span class="cp">Copiar</span></button>
-        <p class="c-note">Escríbelo en el checkout de Hotmart. Válido solo para las primeras 5 inscripciones.</p>
-      </div>
+      <p class="under-btn">Pago único · Taller en vivo · 26 y 27 de octubre</p>
 
       <div class="facts">
-        <div><b>2</b><span>días en vivo + bonus</span></div>
-        <div><b>15</b><span>cupos</span></div>
-        <div><b>3</b><span>anuncios tuyos</span></div>
-        <div><b>∞</b><span>acceso</span></div>
+        <div><b>2</b><span>días en vivo</span></div>
+        <div><b>+1</b><span>clase bonus</span></div>
+        <div><b>&lt;$1</b><span>por anuncio</span></div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ============ APERTURA / EN VIVO / ACCESO VITALICIO ============ -->
-<section class="alt">
-  <div class="wrap split">
-    <div>
-      <span class="label">Por qué ahora</span>
-      <h2>Es la <span class="b">apertura</span> de Avatar Ads 1.0.</h2>
-      <p class="muted">Por eso esta primera edición es en vivo: te muestro el proceso paso a paso, en tiempo real, y resolvemos dudas con un grupo reducido de 15 personas.</p>
-    </div>
-    <div>
-      <div class="open-card">
-        <div class="open-row">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M5 5a10 10 0 000 14M19 5a10 10 0 010 14"/></svg></span>
-          <div><h3>Clases en vivo</h3><p class="muted">2 días contigo + una clase bonus, solo en esta edición de apertura.</p></div>
-        </div>
-        <div class="open-row">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18.2 8.5a4 4 0 110 7c-2.5 0-4-3.5-6.2-3.5S8.3 15.5 5.8 15.5a4 4 0 110-7c2.5 0 4 3.5 6.2 3.5s3.7-3.5 6.2-3.5z"/></svg></span>
-          <div><h3>Acceso vitalicio</h3><p class="muted">Entras una vez y el programa es tuyo para siempre.</p></div>
-        </div>
-        <div class="open-row">
-          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 11-2.3-5.7M20 4v4h-4"/></svg></span>
-          <div><h3>Todas las futuras actualizaciones</h3><p class="muted">La IA cambia rápido. Cada mejora del método llega a tu acceso sin pagar más.</p></div>
-        </div>
-      </div>
-
-      <div class="lock">
-        <div class="row"><span>Apertura (hoy)</span><b>$37</b></div>
-        <div class="row"><span>Próximas ediciones</span><b class="sm">El precio incrementará</b></div>
-        <div class="row you"><span>Tú, si entras ahora</span><b>Ya estás dentro</b></div>
-        <p>Aunque el precio incremente, tu acceso y tus actualizaciones se mantienen.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SISTEMA ECONÓMICO + VIDEOS 2 y 3 ============ -->
-<section>
+<!-- ============ EJEMPLOS ============ -->
+<!-- 02 = reel de podcast (Contenido/reels/07-podcast-seedance-centavos) · 03 = labial (anuncios/02-labial-auto) · 04–06 = anuncios/ejemplos-ugc -->
+<section class="alt" id="ejemplos">
   <div class="wrap">
-    <span class="label">El sistema económico</span>
+    <span class="label">Ejemplos hechos con el sistema</span>
     <h2>Calidad de producción, <span class="b">sin herramientas caras.</span></h2>
-    <p class="muted">No dependemos de herramientas costosas como Seedance para lograr anuncios de alta calidad visual. Y no se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio.</p>
+    <p class="muted">Todos estos videos están hechos con IA. Y no se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio.</p>
 
-    <!-- VIDEOS 2–5: ejemplos UGC. 02 = video del avatar con labial (anuncios/02-labial-auto); 03–05 = carpeta anuncios/ejemplos-ugc -->
     <div class="rail">
       <figure>
         <div class="video-slot"><span class="num">02</span>
+          <video src="videos/ejemplo-podcast.mp4" poster="videos/ejemplo-podcast.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: reel en formato podcast con dos avatares de IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Formato podcast</b><span class="muted">Dos avatares IA conversando en un estudio</span></figcaption>
+      </figure>
+      <figure>
+        <div class="video-slot"><span class="num">03</span>
           <video src="videos/ejemplo-labial.mp4" poster="videos/ejemplo-labial.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: avatar con IA presentando un labial"></video>
           <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
             <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
@@ -366,7 +381,7 @@
         <figcaption><b>Avatar 100% IA</b><span class="muted">Habla, se mueve y presenta el producto</span></figcaption>
       </figure>
       <figure>
-        <div class="video-slot"><span class="num">03</span>
+        <div class="video-slot"><span class="num">04</span>
           <video src="videos/ejemplo-airpods.mp4" poster="videos/ejemplo-airpods.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: anuncio de audífonos"></video>
           <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
             <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
@@ -377,7 +392,7 @@
         <figcaption><b>Anuncio para producto</b><span class="muted">Audífonos · estilo de vida en varias escenas</span></figcaption>
       </figure>
       <figure>
-        <div class="video-slot"><span class="num">04</span>
+        <div class="video-slot"><span class="num">05</span>
           <video src="videos/ejemplo-skincare.mp4" poster="videos/ejemplo-skincare.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: demostración de serum facial"></video>
           <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
             <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
@@ -388,7 +403,7 @@
         <figcaption><b>Anuncio de skincare</b><span class="muted">Demostración de producto</span></figcaption>
       </figure>
       <figure>
-        <div class="video-slot"><span class="num">05</span>
+        <div class="video-slot"><span class="num">06</span>
           <video src="videos/ejemplo-suplemento.mp4" poster="videos/ejemplo-suplemento.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: testimonio con suplemento"></video>
           <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
             <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
@@ -399,12 +414,112 @@
         <figcaption><b>Testimonio UGC</b><span class="muted">Avatar hablando a cámara · suplemento</span></figcaption>
       </figure>
     </div>
-    <p class="rail-hint muted">← desliza →</p>
+    <p class="rail-hint">← desliza →</p>
+  </div>
+</section>
+
+<!-- ============ RESULTADOS (recursos en landing/resultados/) ============ -->
+<section id="resultados">
+  <div class="wrap">
+    <span class="label">Resultados reales</span>
+    <h2>Ventas con anuncios de IA <span class="b">y clientes felices.</span></h2>
+    <p class="muted">Estas son ventas mías usando anuncios hechos con IA, y mensajes de clientes. Toca una imagen para verla completa.</p>
+
+    <div class="rail proof-rail">
+      <figure class="proof">
+        <div class="proof-media"><video src="resultados/hotmart-ventas.mp4" poster="resultados/hotmart-ventas.jpg" playsinline muted loop preload="none" aria-label="Grabación de pantalla del panel de ventas de Hotmart"></video><span class="pill">Video</span></div>
+        <figcaption><b>Ventas en Hotmart</b><span class="muted">Mi panel de ingresos con anuncios de IA</span></figcaption>
+      </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom" aria-label="Ver captura completa"><img src="resultados/testimonio-whatsapp.webp" alt="Mensaje de WhatsApp de un cliente: 10.537 USD facturados en abril" loading="lazy"></button>
+        <figcaption><b>Mensaje de cliente</b><span class="muted">"$10.537 USD abril"</span></figcaption>
+      </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom" aria-label="Ver captura completa"><img src="resultados/testimonio-instagram.webp" alt="Mensaje de Instagram de un cliente con 420,63 US$ y 20 ventas en un día" loading="lazy"></button>
+        <figcaption><b>Mensaje de cliente</b><span class="muted">20 ventas en un día</span></figcaption>
+      </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom" aria-label="Ver captura completa"><img src="resultados/testimonio-asesoria.webp" alt="Mensaje de Instagram de un cliente de asesoría agradeciendo los consejos" loading="lazy"></button>
+        <figcaption><b>Mensaje de cliente</b><span class="muted">"Tus consejos me sirvieron mucho"</span></figcaption>
+      </figure>
+    </div>
+    <p class="rail-hint">← desliza →</p>
+    <p class="fine-print">Resultados individuales: dependen de cada proyecto y de su ejecución.</p>
+  </div>
+</section>
+
+<!-- ============ EL SISTEMA MÁS ECONÓMICO ============ -->
+<section class="alt" id="economico">
+  <div class="wrap narrow">
+    <span class="label">El sistema más económico</span>
+    <h2>Calidad hiperrealista, <span class="b">por centavos.</span></h2>
+    <p class="muted">Imagina que pones <b class="hl">$27</b> en cada herramienta. ¿Cuántos anuncios de 30 segundos te salen?</p>
+
+    <div class="spend" id="spend">
+      <div class="sp-card win">
+        <div class="sp-top"><span class="sp-name">Sistema Avatar Ads</span><span class="sp-cost">~$0,37 / anuncio</span></div>
+        <div class="sp-num"><b>~70</b><span>anuncios</span></div>
+        <div class="tiles" data-n="70" aria-hidden="true"></div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-top"><span class="sp-name">Wan 2.5</span><span class="sp-cost">~$3 / anuncio</span></div>
+        <div class="sp-num"><b>~9</b><span>anuncios</span></div>
+        <div class="tiles" data-n="9" aria-hidden="true"></div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-top"><span class="sp-name">Seedance 2.0</span><span class="sp-cost">$3–$14 / anuncio</span></div>
+        <div class="sp-num"><b>2–9</b><span>anuncios</span></div>
+        <div class="tiles" data-n="2" data-maybe="7" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="sp-legend"><i></i> 1 anuncio de 30 s con $27 <i class="maybe"></i> según la plataforma</p>
+    <p class="fine-print">Avatar Ads: costo real de nuestro reel de podcast (43 s de video, $0,53 en generación). Wan 2.5 y Seedance 2.0: precios públicos de API a octubre de 2026 (720p–1080p). Solo generación, sin regeneraciones; los precios varían según la plataforma y la resolución.</p>
+  </div>
+</section>
+
+<!-- ============ MÁS TESTEO = MEJORES CAMPAÑAS ============ -->
+<section id="testeo">
+  <div class="wrap">
+    <span class="label">Más testeo, mejores campañas</span>
+    <h2>Testea más ángulos. <span class="b">Encuentra más ganadores.</span></h2>
+    <p class="muted narrow-p">Tus campañas rinden mejor cuando puedes probar más ángulos y creativos en menos tiempo. Con anuncios de IA, cada nueva versión cuesta centavos y minutos, no una producción entera.</p>
+
+    <figure class="xy" id="xy">
+      <figcaption class="xy-head">
+        <span class="xy-title">Anuncios ganadores encontrados</span>
+        <span class="xy-leg"><i class="l-ia"></i>Ads con IA <i class="l-no"></i>Ads normales</span>
+      </figcaption>
+      <svg viewBox="0 0 600 352" role="img" aria-label="Gráfico ilustrativo: con ads con IA los anuncios ganadores crecen rápido mes a mes; con ads normales crecen lento, alrededor de uno por mes.">
+        <defs>
+          <linearGradient id="xyFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C5F740" stop-opacity=".28"/><stop offset="1" stop-color="#C5F740" stop-opacity="0"/></linearGradient>
+        </defs>
+        <g class="xy-grid">
+          <line x1="64" y1="30" x2="580" y2="30"/><line x1="64" y1="100" x2="580" y2="100"/><line x1="64" y1="170" x2="580" y2="170"/><line x1="64" y1="240" x2="580" y2="240"/>
+          <line x1="236" y1="30" x2="236" y2="310"/><line x1="408" y1="30" x2="408" y2="310"/><line x1="580" y1="30" x2="580" y2="310"/>
+        </g>
+        <g class="xy-axis"><line x1="64" y1="30" x2="64" y2="310"/><line x1="64" y1="310" x2="580" y2="310"/></g>
+        <g class="xy-x"><text x="76" y="340">Inicio</text><text x="236" y="340">Mes 1</text><text x="408" y="340">Mes 2</text><text x="562" y="340">Mes 3</text></g>
+        <text class="xy-y" transform="translate(30 170) rotate(-90)">Ganadores</text>
+        <path class="xy-area" d="M64,306 C190,302 250,230 320,160 S470,52 580,44 L580,310 L64,310 Z"/>
+        <path class="xy-no" d="M64,306 L580,262"/>
+        <path class="xy-ia" d="M64,306 C190,302 250,230 320,160 S470,52 580,44"/>
+        <circle class="xy-dot ia" cx="580" cy="44" r="6"/>
+        <circle class="xy-dot no" cx="580" cy="262" r="5"/>
+        <g class="xy-tag ia"><rect x="84" y="40" width="262" height="46" rx="12"/><text x="215" y="70">20–30 anuncios al mes</text></g>
+        <g class="xy-tag no"><rect x="322" y="196" width="232" height="46" rx="12"/><text x="438" y="226">4 anuncios al mes</text></g>
+      </svg>
+      <p class="xy-note">Gráfico ilustrativo.</p>
+    </figure>
+
+    <figure class="proof-wide">
+      <a class="zoom" href="resultados/fb-ads-costo-por-lead.webp" aria-label="Ver captura completa"><img src="resultados/fb-ads-costo-por-lead.webp" alt="Administrador de anuncios de Meta: 581 clientes potenciales a 0,35 dólares por resultado" loading="lazy"></a>
+      <figcaption><b>Costo por lead: $0,35.</b> Campaña de Meta testeando anuncios UGC hiperrealistas: 581 clientes potenciales a centavos cada uno.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ============ PARA QUIÉN + APRENDERÁS ============ -->
-<section style="padding-top:0">
+<section class="alt">
   <div class="wrap split">
     <div>
       <span class="label">¿Para quién es?</span>
@@ -436,139 +551,82 @@
   </div>
 </section>
 
-<!-- ============ TEMARIO ============ -->
-<section class="alt" id="temario">
+<!-- ============ LA OFERTA (programa por días + todo lo incluido + precio + CTA) ============ -->
+<section id="inscripcion">
   <div class="wrap narrow">
-    <span class="label">Temario · 26 y 27 de octubre + bonus</span>
-    <h2>Un resultado <span class="b">cada día.</span></h2>
-    <p class="muted">Clases en vivo a las 7:00 p.m. (hora de Ecuador) mientras construyes tu propio anuncio, paso a paso.</p>
+    <span class="label">La oferta · Apertura</span>
+    <h2>Todo lo que obtienes <span class="b">por $27.</span></h2>
+    <p class="muted">Clases en vivo a las 7:00 p.m. (hora de Ecuador). Toca cada día para ver lo que veremos.</p>
 
-    <div class="days">
-      <details class="day" open>
-        <summary><span class="d">Día<b>1</b></span><div><h3>Estrategia y preproducción</h3><div class="date">Lunes 26 · 7 p.m.</div></div><span class="tog">+</span></summary>
-        <div class="body">
-          <p class="intro">Del concepto al plan de producción.</p>
-          <ul>
-            <li>Setup: herramientas necesarias y alternativas económicas.</li>
-            <li>Ángulos publicitarios y formatos de anuncios con IA.</li>
-            <li>Desarrollo del script: hook, desarrollo y CTA.</li>
-            <li>Búsqueda de referencias UGC reales en redes sociales.</li>
-            <li>Breakdown visual: escenas, personajes, acciones y emociones.</li>
-            <li>Creación del storyboard del anuncio.</li>
-          </ul>
-          <div class="res"><b>Resultado:</b> guion terminado y todas las escenas planificadas.</div>
-        </div>
-      </details>
-      <details class="day">
-        <summary><span class="d">Día<b>2</b></span><div><h3>Imágenes, animación y anuncio final</h3><div class="date">Martes 27 · 7 p.m.</div></div><span class="tog">+</span></summary>
-        <div class="body">
-          <p class="intro">De las referencias al anuncio UGC hiperrealista terminado.</p>
-          <ul>
-            <li>Cómo adaptar las referencias visuales al anuncio.</li>
-            <li>Creación del personaje, escenario y elementos visuales.</li>
-            <li>Generación de imágenes con IA y consistencia visual entre escenas.</li>
-            <li>Corrección y selección de los frames definitivos.</li>
-            <li>Estructura de los prompts de video.</li>
-            <li>Acciones, movimientos y comportamiento del personaje.</li>
-            <li>Gesticulación, expresiones faciales y tonalidad de voz.</li>
-            <li>Generación de clips, revisión y corrección de errores.</li>
-            <li>Gestión eficiente de créditos y regeneraciones.</li>
-            <li>Organización de clips, ensamblaje y ritmo narrativo.</li>
-            <li>Audio, subtítulos y textos en pantalla.</li>
-            <li>Integración del producto, CTA, exportación y revisión final.</li>
-          </ul>
-          <div class="res"><b>Resultado:</b> primer anuncio terminado y listo para publicar o probar.</div>
-        </div>
-      </details>
-      <details class="day bonus-day">
-        <summary><span class="d">Bonus<b>3</b></span><div><h3>Cómo captar clientes para este servicio</h3><div class="date">Miércoles 28 · 7 p.m.</div></div><span class="tog">+</span></summary>
-        <div class="body">
-          <p class="intro">Mi proceso para conseguir clientes para un servicio de alta demanda.</p>
-          <ul>
-            <li>Qué oferta vender.</li>
-            <li>El proceso para captar clientes de manera orgánica.</li>
-            <li>Cómo captar clientes con anuncios para ofrecer este servicio.</li>
-          </ul>
-          <div class="res"><b>Resultado:</b> sabes qué vender y cómo conseguir clientes para tus anuncios con IA.</div>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
+    <div class="stack">
+      <div class="stack-head"><span>Avatar Ads 1.0</span><span>En vivo · 26–28 oct</span></div>
 
-<!-- ============ INCLUYE + BONOS ============ -->
-<section>
-  <div class="wrap split">
-    <div>
-      <span class="label">Tu acceso incluye</span>
-      <h2>Todo para producir.</h2>
-      <ul class="inc">
-        <li><span class="k">01</span><div><b>Clases en vivo</b><span>Los 2 días del taller, proceso paso a paso.</span></div></li>
-        <li><span class="k">02</span><div><b>Grabaciones</b><span>Repite cualquier clase cuando quieras.</span></div></li>
-        <li><span class="k">03</span><div><b>Prompts y workflows</b><span>Recursos reutilizables para tu producción.</span></div></li>
-        <li><span class="k">04</span><div><b>Proyecto práctico</b><span>Crea 3 anuncios para tu producto, servicio o portafolio.</span></div></li>
-        <li><span class="k">05</span><div><b>Acceso vitalicio + actualizaciones</b><span>Para siempre, incluso cuando el precio incremente.</span></div></li>
+      <ul class="stack-list">
+        <li><span class="ok"></span><div>
+          <b>Día 1 en vivo · Lunes 26</b>
+          <span>Estrategia, storyboard e imágenes. Terminamos con el storyboard y las imágenes de referencia.</span>
+          <details class="more"><summary>Ver lo que veremos</summary>
+            <ul>
+              <li>Setup: herramientas necesarias y alternativas económicas.</li>
+              <li>Ángulos publicitarios y formatos de anuncios con IA.</li>
+              <li>Desarrollo del script: hook, desarrollo y CTA.</li>
+              <li>Búsqueda de referencias UGC reales en redes sociales.</li>
+              <li>Breakdown visual: escenas, personajes, acciones y emociones.</li>
+              <li>Creación del storyboard del anuncio.</li>
+              <li>Creación del personaje, escenario y elementos visuales.</li>
+              <li>Generación de imágenes con IA y consistencia visual entre escenas.</li>
+              <li>Corrección y selección de los frames definitivos.</li>
+            </ul>
+          </details>
+        </div></li>
+        <li><span class="ok"></span><div>
+          <b>Día 2 en vivo · Martes 27</b>
+          <span>Creamos los videos y los editamos.</span>
+          <details class="more"><summary>Ver lo que veremos</summary>
+            <ul>
+              <li>Estructura de los prompts de video.</li>
+              <li>Acciones, movimientos y comportamiento del personaje.</li>
+              <li>Gesticulación, expresiones faciales y tonalidad de voz.</li>
+              <li>Generación de clips, revisión y corrección de errores.</li>
+              <li>Gestión eficiente de créditos y regeneraciones.</li>
+              <li>Organización de clips, ensamblaje y ritmo narrativo.</li>
+              <li>Audio, subtítulos y textos en pantalla.</li>
+              <li>Integración del producto, CTA y exportación.</li>
+            </ul>
+          </details>
+        </div></li>
+        <li class="day3"><span class="tag">Bono</span><div>
+          <b>Día 3 en vivo · Miércoles 28: cómo conseguir clientes</b>
+          <span>Mi proceso para conseguir clientes para este servicio de alta demanda.</span>
+          <details class="more"><summary>Ver lo que veremos</summary>
+            <ul>
+              <li>Qué oferta vender.</li>
+              <li>El proceso para captar clientes de manera orgánica.</li>
+              <li>Cómo captar clientes con anuncios para ofrecer este servicio.</li>
+            </ul>
+          </details>
+        </div></li>
+        <li><span class="ok"></span><div><b>Herramientas</b><span>Las herramientas que uso y sus alternativas económicas.</span></div></li>
+        <li><span class="ok"></span><div><b>Prompts</b><span>Prompts y workflows listos para adaptar a tus anuncios.</span></div></li>
       </ul>
-    </div>
-    <div>
-      <span class="label bonus-h">Bonos exclusivos</span>
-      <div class="bonus">
-        <div class="top"><span>Bono 1</span><span>Clase en vivo · Mié 28</span></div>
-        <h3>Día 3: cómo captar clientes</h3>
-        <p>Una clase extra en vivo con mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, cómo captar clientes de manera orgánica y cómo captarlos con anuncios.</p>
-      </div>
-      <div class="bonus">
-        <div class="top"><span>Bono 2</span><span>Incluido</span></div>
-        <h3>Grupo privado de WhatsApp</h3>
-        <p>Recibe feedback de tus ads, comparte y recibe ideas, y mantente al día con los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.</p>
-      </div>
-      <div class="bonus">
-        <div class="top"><span>Bono 3</span><span>Valor <s>$97</s> · incluido</span></div>
-        <h3>Cliente Cero</h3>
-        <p>El kit para vender anuncios con IA a negocios: el flujo que usamos para venderlos a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta y guía de brief.</p>
-      </div>
-      <div class="bonus">
-        <div class="top"><span>Bono 4</span><span>Incluido</span></div>
-        <h3>UGC Realism Vault</h3>
-        <p>Biblioteca de prompts para avatares hiperrealistas: gestos y manos naturales, expresión, emoción, tono de voz y encuadre.</p>
-      </div>
-      <div class="bonus">
-        <div class="top"><span>Bono 5</span><span>Incluido</span></div>
-        <h3>Low-Cost Production System</h3>
-        <p>Guía paso a paso del proceso low cost para crear anuncios hiperrealistas sin desperdiciar créditos.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ PRECIO ============ -->
-<section class="alt" id="inscripcion">
-  <div class="wrap narrow">
-    <span class="label">Inscripción · Apertura</span>
-    <h2>Solo <span class="b">15 cupos</span> en vivo.</h2>
-    <p class="muted">Grupo reducido para acompañar el proyecto de cada participante.</p>
+      <div class="stack-sep"><span>+ Bonos</span></div>
+      <ul class="stack-list bonuses">
+        <li><span class="tag">Bono</span><div><b>Grupo privado de WhatsApp</b><span>Feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.</span></div></li>
+        <li><span class="tag">Bono</span><div><b>Grabación completa del taller</b><span>Repite cualquier clase cuando quieras.</span></div></li>
+        <li><span class="tag">Bono</span><div><b>Acceso vitalicio al curso Avatar Ads</b><span>Para siempre, con todas las futuras actualizaciones.</span></div></li>
+        <li><span class="tag">Bono</span><div><b>Cliente Cero <s>Valor $97</s></b><span>El kit para vender anuncios con IA: el flujo que usamos para venderlos a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta y guía de brief.</span></div></li>
+      </ul>
 
-    <div class="price-card">
-      <div class="price-head"><span>Avatar Ads 1.0</span><span class="dots" aria-label="15 cupos"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
-      <div class="price-body">
-        <div class="price">$37<small>pago único</small></div>
-        <div class="coupon">
-          <div class="c-top">Solo para las primeras 5 personas</div>
-          <div class="c-price"><b>$27</b><s>$37</s>con el cupón</div>
-          <button type="button" class="code" data-code="AVATAR27" aria-label="Copiar el cupón AVATAR27">AVATAR27 <span class="cp">Copiar</span></button>
-          <p class="c-note">Escríbelo en el checkout de Hotmart. Válido solo para las primeras 5 inscripciones.</p>
-        </div>
+      <div class="stack-total">
+        <div class="price">$27<small>pago único</small></div>
         <ul class="info">
-          <li><span>Fechas</span><b>Lun 26 y Mar 27 oct 2026</b></li>
-          <li><span>Clase bonus</span><b>Mié 28 oct</b></li>
+          <li><span>Taller en vivo</span><b>Lun 26 y Mar 27 oct</b></li>
+          <li><span>Bono en vivo</span><b>Mié 28 oct</b></li>
           <li><span>Horario</span><b>7:00 p.m. hora de Ecuador</b></li>
-          <li><span>Duración</span><b>2 días en vivo + 1 bonus</b></li>
-          <li><span>Modalidad</span><b>Online</b></li>
-          <li><span>Cupo</span><b>15 personas</b></li>
-          <li><span>Acceso</span><b>Vitalicio + actualizaciones</b></li>
-          <li><span>Bonos</span><b>5 incluidos</b></li>
+          <li><span>Modalidad</span><b>Online, en vivo</b></li>
         </ul>
-        <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Reservar mi cupo
+        <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero mi cupo · $27
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
         <div class="countdown" id="countdown">
@@ -584,16 +642,15 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section>
+<section class="alt">
   <div class="wrap narrow">
     <span class="label">Preguntas frecuentes</span>
     <h2>Antes de entrar.</h2>
     <div class="faq">
-      <details><summary>¿Cómo obtengo los $10 de descuento?</summary><p>Las primeras 5 personas pagan $27 en lugar de $37: escribe el cupón <b>AVATAR27</b> en el checkout de Hotmart. Cuando se usen los 5 cupos con descuento, el precio vuelve a $37.</p></details>
-      <details><summary>¿Por qué es en vivo?</summary><p>Porque es la apertura de Avatar Ads 1.0. Esta primera edición se da en vivo, con grupo reducido, para mostrar el proceso en tiempo real y resolver dudas.</p></details>
-      <details><summary>¿Y si no puedo conectarme a una clase?</summary><p>Tendrás las grabaciones del taller y acceso vitalicio al programa.</p></details>
+      <details><summary>¿Por qué es en vivo?</summary><p>Porque es la apertura de Avatar Ads 1.0. Esta primera edición se da en vivo para mostrar el proceso en tiempo real y resolver dudas.</p></details>
+      <details><summary>¿Y si no puedo conectarme a una clase?</summary><p>Tendrás la grabación completa del taller y acceso vitalicio al curso Avatar Ads.</p></details>
       <details><summary>¿Qué pasa cuando incremente el precio?</summary><p>El precio de Avatar Ads incrementará en las próximas ediciones. Si entras en la apertura, nada cambia para ti: mantienes tu acceso de por vida y recibes todas las futuras actualizaciones sin pagar más.</p></details>
-      <details><summary>¿Necesito herramientas costosas?</summary><p>No. El taller usa un sistema económico con alternativas de bajo costo, e incluye el bono Low-Cost Production System.</p></details>
+      <details><summary>¿Necesito herramientas costosas?</summary><p>No. Te enseño un sistema económico con alternativas de bajo costo: cada anuncio te sale a menos de un dólar.</p></details>
       <details><summary>¿Puedo vender este servicio?</summary><p>Sí. En la clase bonus del día 3 te enseño qué oferta vender y cómo captar clientes de manera orgánica y con anuncios. Además, el bono Cliente Cero incluye el flujo, scripts y plantillas para vender anuncios con IA a negocios.</p></details>
     </div>
   </div>
@@ -605,8 +662,8 @@
     <img class="final-logo" src="logo-avatar-ads.webp" alt="" width="900" height="330" loading="lazy">
     <span class="label">Apertura · Avatar Ads 1.0</span>
     <h2>Entra hoy. <span class="b">Quédate para siempre.</span></h2>
-    <p class="muted">2 días en vivo + clase bonus, 3 anuncios propios y acceso vitalicio con todas las actualizaciones.</p>
-    <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero mi cupo · $37
+    <p class="muted">Crea anuncios hiperrealistas con IA por menos de un dólar cada uno, para tu negocio o para tus clientes.</p>
+    <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero mi cupo · $27
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
     </a>
   </div>
@@ -616,10 +673,16 @@
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>$37</b>$27 con AVATAR27 · 5 primeros</div>
+    <div class="p"><b>$27</b>pago único · en vivo</div>
     <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Reservar cupo</a>
   </div>
 </div>
+
+<!-- Visor de capturas -->
+<dialog class="lightbox" id="lightbox" aria-label="Captura ampliada">
+  <img alt="">
+  <button type="button" class="lb-close" aria-label="Cerrar">✕</button>
+</dialog>
 
 <script>
   // Cuenta regresiva al inicio del taller
@@ -675,16 +738,47 @@
     }, { threshold: 0.6 });
     vids.forEach((v) => io.observe(v));
   }
-  // Cupón: copiar al portapapeles
-  document.querySelectorAll(".code").forEach((b) => {
-    b.addEventListener("click", async () => {
-      const cp = b.querySelector(".cp");
-      try { await navigator.clipboard.writeText(b.dataset.code); cp.textContent = "¡Copiado!"; }
-      catch { cp.textContent = "AVATAR27"; }
-      setTimeout(() => { cp.textContent = "Copiar"; }, 2000);
-    });
-  });
 
+  // Resultados: los videos se reproducen en silencio al entrar en pantalla
+  const proofVids = [...document.querySelectorAll(".proof-media video")];
+  if ("IntersectionObserver" in window) {
+    const pio = new IntersectionObserver((entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting && !reduce) v.play().catch(() => {}); else v.pause();
+      });
+    }, { threshold: 0.6 });
+    proofVids.forEach((v) => pio.observe(v));
+  }
+
+  // $27 en cada herramienta: un mosaico por anuncio
+  document.querySelectorAll(".tiles").forEach((t) => {
+    const n = +t.dataset.n, maybe = +(t.dataset.maybe || 0);
+    for (let i = 0; i < n + maybe; i++) {
+      const el = document.createElement("i");
+      if (i >= n) el.className = "maybe";
+      el.style.setProperty("--i", i);
+      t.appendChild(el);
+    }
+  });
+  // Animaciones al entrar en pantalla (gráfico XY y mosaicos)
+  const anim = [document.getElementById("spend"), document.getElementById("xy")];
+  if ("IntersectionObserver" in window && !reduce) {
+    const aio = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); aio.unobserve(e.target); }
+    }), { threshold: 0.35 });
+    anim.forEach((el) => aio.observe(el));
+  } else anim.forEach((el) => el.classList.add("in"));
+
+  // Visor de capturas: toca una imagen para verla completa
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img");
+  document.querySelectorAll(".zoom").forEach((b) => b.addEventListener("click", (e) => {
+    e.preventDefault();
+    const img = b.querySelector("img");
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    if (lb.showModal) lb.showModal(); else window.open(img.src, "_blank");
+  }));
+  lb.addEventListener("click", () => lb.close());
 </script>
 </body>
 </html>

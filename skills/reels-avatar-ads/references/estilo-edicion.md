@@ -64,7 +64,7 @@ Basado en `referencias/ref02` (tutorial head talking), adaptado a la marca de `P
 - [ ] Ningún tramo de más de 4 s sin cambio visual
 - [ ] Palabra clave dicha, escrita en pantalla y en el caption
 - [ ] Textos dentro de la zona segura
-- [ ] Sin cortes con respiración/silencio entre clips
+- [ ] Voz fluida (regla general del `SKILL.md`): habla desde el fotograma 0, ningún hueco > 0,3 s, sin palabras estiradas, sin dobles cortes
 - [ ] Render revisado frame a frame en los cortes
 - [ ] Sin música · voz a −14 LUFS · ningún texto en rojo
 - [ ] Zooms en la intro y golpes en las frases de impacto

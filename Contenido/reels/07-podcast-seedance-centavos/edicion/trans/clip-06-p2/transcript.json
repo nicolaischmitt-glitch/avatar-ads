@@ -1,0 +1,68 @@
+[
+  {
+    "id": "w0",
+    "text": "No",
+    "start": 0.24,
+    "end": 0.56
+  },
+  {
+    "id": "w1",
+    "text": "saben",
+    "start": 0.56,
+    "end": 0.96
+  },
+  {
+    "id": "w2",
+    "text": "que",
+    "start": 0.96,
+    "end": 1.12
+  },
+  {
+    "id": "w3",
+    "text": "existen",
+    "start": 1.12,
+    "end": 1.68
+  },
+  {
+    "id": "w4",
+    "text": "métodos",
+    "start": 1.68,
+    "end": 2.24
+  },
+  {
+    "id": "w5",
+    "text": "económicos",
+    "start": 2.24,
+    "end": 3.04
+  },
+  {
+    "id": "w6",
+    "text": "que",
+    "start": 3.04,
+    "end": 3.28
+  },
+  {
+    "id": "w7",
+    "text": "dan",
+    "start": 3.28,
+    "end": 3.6
+  },
+  {
+    "id": "w8",
+    "text": "la",
+    "start": 3.6,
+    "end": 3.76
+  },
+  {
+    "id": "w9",
+    "text": "misma",
+    "start": 3.76,
+    "end": 4.08
+  },
+  {
+    "id": "w10",
+    "text": "calidad.",
+    "start": 4.08,
+    "end": 5.36
+  }
+]
