@@ -94,6 +94,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "¿Persona real o IA? Mira las manos."
 2. **Sistema económico / low cost** (ángulo diferencial declarado)
    Calidad de producción sin herramientas caras como Seedance; producir "por centavos" y sin desperdiciar créditos.
+   - Dato verificado (21 oct 2026) para el copy: **un segundo de Seedance 2.0 en 1080p cuesta ~$0,68 en fal.ai** (API oficial BytePlus: $0,37/s, hasta $0,91/s con video de referencia; Seedance 2.5: $0,57/s, hasta $2,38/s). Decir "te puede costar casi setenta centavos", no "siempre cuesta" (hay planes con suscripción más baratos). Fuentes y tabla: `anuncios/03-calidad-seedance-centavos/guion.md`.
    - "No necesitas Seedance para hacer esto."
    - "Este anuncio me costó menos que un café."
    - "Deja de quemar créditos regenerando el mismo clip."
@@ -154,13 +155,14 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 
 - **Anuncio de Avatar Ads** (`anuncios/01-avatar-ads/finales/`) — portada de la landing.
 - **Avatar con labial en el auto** (`anuncios/02-labial-auto/finales/`) — avatar 100% IA que habla, se mueve y presenta el producto.
+- **Anuncios pagados en producción**: 03 — "Calidad Seedance por centavos" (`anuncios/03-calidad-seedance-centavos/`, primer anuncio pagado, talking head de una toma con avatar nuevo) · 04 — "Yo no existo" (`anuncios/04-yo-no-existo/`, copy guardado).
 - **Ejemplos UGC** (`anuncios/ejemplos-ugc/`): audífonos (estilo de vida, varias escenas), skincare (demostración de producto), suplemento (testimonio UGC a cámara).
 - **Reels** (`Contenido/reels/`): 01 — forma incorrecta vs. correcta de crear avatares hiperrealistas (palabra clave PROMPT). 02 — "El idioma del dinero no es el esfuerzo" (formato nuevo: voz en off del usuario + motion graphics, sin avatar, sin marca, sin música, solo SFX; referencias de estilo `referencias/ejemplo-voz-en-off-1.mp4` y `referencias/ejemplo-voz-en-off-2.mp4`, análisis en `Contenido/reels/02-esfuerzo-vs-apalancamiento/guion.md`). 03 — la regla 7-11-4 de Google (confianza ← familiaridad ← repetición; cierra con "sígueme"). 04 — orgánico + anuncios: tráfico tibio de Meta y campaña dedicada. 06 — lanzamiento del taller (el usuario a cámara, edición estilo Matt Gray: pantalla dividida + gráficos verde lima, fondo del carro desenfocado, sin subtítulos; CTA "comenta TALLER" → DM con la información; guion y caption en `Contenido/reels/06-lanzamiento-taller/guion.md`). 07 — formato podcast (sirve también como anuncio): dos avatares IA conversando en un estudio, el escéptico pregunta si se pueden hacer anuncios hiperrealistas sin gastar una fortuna y el experto responde que su video costó $0,53 frente a ~$1/segundo de Seedance (ángulo low cost); CTA "comenta GUIA" (lead magnet pendiente). Reglas del formato: `skills/reels-avatar-ads/formatos/podcast/LEEME.md`. Plantilla y reglas del formato voz en off: `Contenido/reels/_plantilla-voz-en-off/LEEME.md`.
 - **Carruseles** (`Contenido/carruseles/`, índice en `Contenido/carruseles/README.md`; sistema: skill `carruseles-avatar-ads`): 01 — por qué tus videos con IA se ven falsos + método de 4 pasos (palabra clave PROMPT).
 - **Lead magnets** (índice completo en `lead-magnets/README.md`; sistema: skill `lead-magnets-avatar-ads`). Cada reel termina con "Comenta PALABRA" → DM automático → PDF de alto valor que entrega lo prometido → CTA a la landing (UTM `utm_medium=lead-magnet`).
   - **PROMPT** (reel 01): "El prompt JSON para videos UGC que no parecen IA", guía de 10 páginas + plantilla copiable. https://taller.droilab.com/recursos/prompt-json-avatar-ads.pdf
 
-**Pruebas reales disponibles** (en `landing/resultados/`, sección "Resultados reales" de la landing): video del panel de ventas propias en Hotmart con anuncios de IA (en la landing; fuera de ella también hay capturas de US$1.657 en 7 días y US$2.173 en 14 días en `imagenes y recursos (para usar)/`), mensajes de clientes (WhatsApp "$10.537 USD abril", Instagram "20 ventas / 420,63 US$ en un día", Instagram de un cliente de asesoría "$170k en Hotmart") y captura de Meta Ads: 581 leads a $0,35 testeando anuncios UGC hiperrealistas.
+**Pruebas reales disponibles** (en `landing/resultados/`, sección "Resultados reales" de la landing): video del panel de ventas propias en Hotmart con anuncios de IA (en la landing; fuera de ella también hay capturas de US$1.657 en 7 días y US$2.173 en 14 días en `imagenes y recursos (para usar)/`), mensajes de clientes (WhatsApp de Sebastian "$10.537 USD abril", servicio tradicional escalado con anuncios de IA (confirmado por el usuario el 21 oct 2026), Instagram "20 ventas / 420,63 US$ en un día", Instagram de un cliente de asesoría "$170k en Hotmart") y captura de Meta Ads: 581 leads a $0,35 testeando anuncios UGC hiperrealistas.
 Aún no hay testimonios de **alumnos de Avatar Ads**: no inventarlos ni presentar a estos clientes como alumnos del programa.
 
 ## 9. Tono y voz
@@ -174,6 +176,7 @@ Aún no hay testimonios de **alumnos de Avatar Ads**: no inventarlos ni presenta
 
 - No inventar datos: precios futuros, número de alumnos, testimonios, resultados de campañas, fechas nuevas. Si hace falta uno, preguntar.
 - Escasez y urgencia solo con hechos reales (apertura, fecha del taller en vivo, precio que subirá). Ya no hay límite de cupos.
+- **Anuncios pagados = evergreen** (decisión del 21 oct 2026): sin precio ni fecha, ni en la voz ni en pantalla. Los detalles viven en la landing, así el mismo anuncio sirve para todos los talleres.
 - No usar caras de personas reales reconocibles en recursos; el avatar es IA.
 - Reels: usar el skill `reels-avatar-ads`. Carruseles: skill `carruseles-avatar-ads`. Prompts de video: el master prompt manda.
 - Cuando se defina algo nuevo (lead magnet, nuevo taller o contenido del programa, nuevo ángulo que funcionó, testimonio real), actualizar este documento.

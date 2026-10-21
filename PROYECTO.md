@@ -23,6 +23,9 @@ Avatar Ads 1.0/
 │   │   ├── clips/       ← clip 1–5 originales (traen un botón "<" que la edición borra con delogo)
 │   │   ├── edicion/     ← proyecto HyperFrames (mismo flujo que 01-avatar-ads)
 │   │   └── finales/nuevo-video-subtitulos.mp4
+│   ├── 03-calidad-seedance-centavos/ ← PRIMER ANUNCIO PAGADO (Meta): talking head de una toma, avatar nuevo (Nano Banana) + B-rolls y gráficos
+│   │                    avatar/ · prompts/ · clips/ · moodboard/ (storyboard) · edicion/ (build.mjs, igual que el reel 07) · finales/anuncio-03-calidad-seedance-centavos.mp4
+│   ├── 04-yo-no-existo/ ← copy guardado para un segundo anuncio (hook "Yo no existo")
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
 ├── Contenido/           ← todo el contenido orgánico de Instagram
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
@@ -40,8 +43,10 @@ Avatar Ads 1.0/
 ├── referencias/         ← videos de referencia de otros creadores y sus desgloses (ref01, ref02, ejemplos de voz en off)
 ├── skills/
 │   ├── master prompt para json prompts videos.txt ← reglas LOCKED IN de los prompts JSON de Google Flow
+│   ├── master prompt para json prompts imagenes.md ← estructura fija de prompts JSON para crear el frame del avatar desde cero (Nano Banana)
 │   ├── reels-avatar-ads/        ← skill del sistema de reels (guion → prompts Flow → edición). Editar aquí.
 │   │                               formatos/podcast/ = plantillas JSON por personaje + reglas del formato podcast
+│   │                               formatos/head-talking/ = reglas + plantilla de edición del formato D (anuncio head talking de una toma + B-rolls)
 │   ├── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
 │   └── carruseles-avatar-ads/   ← skill del sistema de carruseles (guion → diseño HTML → PNG → caption)
 │                             (.claude/skills/<skill> son solo enlaces a estas carpetas; no borrarlos)
@@ -124,4 +129,4 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 - [x] Links de los botones CTA → checkout de Hotmart: https://pay.hotmart.com/G108061829I?checkoutMode=10 (los 4 botones).
 - [x] Videos en la landing (`landing/videos/`): 01 = anuncio de Avatar Ads (portada, en el hero), 02 = reel de podcast (`Contenido/reels/07-podcast-seedance-centavos`), 03 = avatar con labial (`anuncios/02-labial-auto`), 04–06 = ejemplos de `anuncios/ejemplos-ugc/` (airpods, skincare, suplemento). La sección de ejemplos va justo después del hero. Se reproducen en silencio al entrar en pantalla y tienen botón "Activar sonido".
 - [x] Estructura actual (20 oct 2026): hero → ejemplos (videos) → resultados reales (video de ventas en Hotmart + 3 mensajes de clientes, con visor) → "el sistema más económico" (mosaico animado: cuántos anuncios de 30 s salen con $27 en Avatar Ads ~70, Wan 2.5 ~9, Seedance 2.0 2–9) → "testea más, encuentra más ganadores" (gráfico XY animado, ilustrativo: ads con IA 20–30/mes vs ads normales 4/mes → 1 ganador, + captura de Meta CPL $0,35) → para quién / qué aprenderás → oferta única (Día 1 → Día 2 → Día 3 bono con temario desplegable, herramientas, prompts + bonos destacados + $27 + CTA) → FAQ → cierre.
-- [ ] Confirmar cifras de la comparativa: Wan 2.5 ~$0,10/s y Seedance 2.0 $0,11–$0,46/s son precios públicos de API (oct 2026); el usuario mencionó ~$1/s para Seedance en el reel 07.
+- [ ] Confirmar cifras de la comparativa: Wan 2.5 ~$0,10/s y Seedance 2.0 $0,11–$0,46/s son precios públicos de API (oct 2026); el usuario mencionó ~$1/s para Seedance en el reel 07. Precios verificados el 21 oct 2026 (tabla completa en `anuncios/03-calidad-seedance-centavos/guion.md`): Seedance 2.0 en 1080p cuesta $0,682/s en fal.ai y $0,37/s en la API oficial de BytePlus ($0,41–$0,91/s con video de referencia); Seedance 2.5 en 1080p, $0,569/s (hasta $2,38/s con video de referencia).

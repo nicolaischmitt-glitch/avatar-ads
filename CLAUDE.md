@@ -10,5 +10,5 @@ Antes de crear cualquier contenido, guion, anuncio, caption o material del curso
 Reglas:
 - Responde en español.
 - No inventes datos (precios futuros, testimonios, métricas, fechas). Si falta uno, pregunta.
-- Reels de Instagram → skill `reels-avatar-ads`. Carruseles de Instagram → skill `carruseles-avatar-ads`. Prompts JSON de Google Flow → `skills/master prompt para json prompts videos.txt`.
+- Reels de Instagram y anuncios en video → skill `reels-avatar-ads` (anuncio head talking de una toma + B-rolls → `skills/reels-avatar-ads/formatos/head-talking/LEEME.md`). Carruseles de Instagram → skill `carruseles-avatar-ads`. Prompts JSON de Google Flow → `skills/master prompt para json prompts videos.txt`. Prompts JSON de imágenes hiperrealistas (frame del avatar desde cero, Nano Banana) → `skills/master prompt para json prompts imagenes.md`.
 - Si se decide algo nuevo sobre la oferta o el marketing, actualiza `PROYECTO.md` o `BASE-CONOCIMIENTO.md` según corresponda.

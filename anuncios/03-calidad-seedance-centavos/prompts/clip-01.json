@@ -1,0 +1,71 @@
+{
+  "scene": {
+    "style": "UGC hiperrealista grabado con un iPhone, apariencia raw y sin editar",
+    "camera": {
+      "shot": "plano fijo",
+      "movement": "sin movimiento de cámara",
+      "framing": "mantener exactamente el mismo encuadre durante toda la toma",
+      "cuts": "una sola toma, sin cortes bruscos",
+      "reframing": false
+    },
+    "character": {
+      "reference_image": true,
+      "identity_consistency": "mantener exactamente el mismo avatar de la imagen de referencia",
+      "location_consistency": "mantener la misma ubicación y la misma iluminación",
+      "eye_contact": "contacto visual directo con la cámara"
+    },
+    "performance": {
+      "language_accent": "español con acento ecuatoriano",
+      "delivery": "rápida, energética y natural",
+      "tone": "seguro, confiado y persuasivo",
+      "facial_expression": "sonrisa natural, cercanía y simpatía",
+      "hand_gestures": {
+        "enabled": true,
+        "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
+        "synchronization": "al decir '¿Y si pudieras', levanta las manos del escritorio y abre ambas palmas hacia arriba con una ligera inclinación de cabeza, como quien plantea una pregunta; al decir 'crear anuncios hiperrealistas', mueve las dos manos suavemente hacia delante como si enmarcara algo frente a él; al decir 'la misma calidad de Seedance', coloca ambas manos a la misma altura, una junto a la otra, como si las igualara; al decir 'pero por centavos', junta el pulgar y el índice de una mano mostrando algo muy pequeño, con una sonrisa cómplice",
+        "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
+      }
+    },
+    "dialogue": {
+      "speaker": "hombre",
+      "script": "¿Y si pudieras crear anuncios hiperrealistas con la misma calidad de Seedance… pero por centavos?",
+      "must_follow_exactly": true,
+      "allow_rephrasing": false,
+      "allow_additional_words": false
+    },
+    "visual_restrictions": {
+      "subtitles": false,
+      "captions": false,
+      "on_screen_text": false,
+      "text_overlays": false,
+      "titles": false,
+      "added_logos": false,
+      "watermarks": false,
+      "graphic_elements": false,
+      "visual_effects": false,
+      "transitions": false,
+      "filters": false,
+      "editing": false,
+      "style": "video completamente raw, natural y sin editar",
+      "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
+    },
+    "continuity": {
+      "same_avatar": true,
+      "same_location": true,
+      "same_camera_framing": true,
+      "no_camera_reframing": true
+    }
+  },
+  "instructions": [
+    "Utilizar el personaje de la imagen de referencia.",
+    "Mantener contacto visual directo con la cámara.",
+    "Realizar gestos visibles y naturales con ambas manos durante el diálogo.",
+    "Sincronizar los gestos con el significado del discurso.",
+    "Evitar manos inmóviles, brazos rígidos y movimientos robóticos.",
+    "Hablar con energía y naturalidad, en español con acento ecuatoriano.",
+    "Respetar el diálogo palabra por palabra.",
+    "No generar subtítulos ni ningún tipo de texto en pantalla.",
+    "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
+  ]
+}

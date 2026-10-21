@@ -1,0 +1,155 @@
+[
+  {
+    "clip": 1,
+    "a": 0.4167,
+    "b": 5.3333,
+    "frameStart": 0,
+    "frames": 118,
+    "start": 0,
+    "end": 4.9167
+  },
+  {
+    "clip": 2,
+    "a": 0.4167,
+    "b": 5.125,
+    "frameStart": 118,
+    "frames": 113,
+    "start": 4.9167,
+    "end": 9.625
+  },
+  {
+    "clip": 2,
+    "a": 5.3333,
+    "b": 7.5833,
+    "frameStart": 231,
+    "frames": 54,
+    "start": 9.625,
+    "end": 11.875
+  },
+  {
+    "clip": 3,
+    "a": 0.4167,
+    "b": 1.625,
+    "frameStart": 285,
+    "frames": 29,
+    "start": 11.875,
+    "end": 13.0833
+  },
+  {
+    "clip": 3,
+    "a": 2.2917,
+    "b": 5.6667,
+    "frameStart": 314,
+    "frames": 81,
+    "start": 13.0833,
+    "end": 16.4583
+  },
+  {
+    "clip": 3,
+    "a": 5.9167,
+    "b": 7.2917,
+    "frameStart": 395,
+    "frames": 33,
+    "start": 16.4583,
+    "end": 17.8333
+  },
+  {
+    "clip": 4,
+    "a": 0.4167,
+    "b": 4.875,
+    "frameStart": 428,
+    "frames": 107,
+    "start": 17.8333,
+    "end": 22.2917
+  },
+  {
+    "clip": 4,
+    "a": 5.0833,
+    "b": 7.3333,
+    "frameStart": 535,
+    "frames": 54,
+    "start": 22.2917,
+    "end": 24.5417
+  },
+  {
+    "clip": 5,
+    "a": 0.375,
+    "b": 1.7083,
+    "frameStart": 589,
+    "frames": 32,
+    "start": 24.5417,
+    "end": 25.875
+  },
+  {
+    "clip": 5,
+    "a": 2.125,
+    "b": 2.9583,
+    "frameStart": 621,
+    "frames": 20,
+    "start": 25.875,
+    "end": 26.7083
+  },
+  {
+    "clip": 5,
+    "a": 3.25,
+    "b": 5.75,
+    "frameStart": 641,
+    "frames": 60,
+    "start": 26.7083,
+    "end": 29.2083
+  },
+  {
+    "clip": 5,
+    "a": 5.9167,
+    "b": 7.6667,
+    "frameStart": 701,
+    "frames": 42,
+    "start": 29.2083,
+    "end": 30.9583
+  },
+  {
+    "clip": 6,
+    "a": 0.5,
+    "b": 1.9583,
+    "frameStart": 743,
+    "frames": 35,
+    "start": 30.9583,
+    "end": 32.4167
+  },
+  {
+    "clip": 6,
+    "a": 2.2083,
+    "b": 4.125,
+    "frameStart": 778,
+    "frames": 46,
+    "start": 32.4167,
+    "end": 34.3333
+  },
+  {
+    "clip": 6,
+    "a": 4.375,
+    "b": 6,
+    "frameStart": 824,
+    "frames": 39,
+    "start": 34.3333,
+    "end": 35.9583
+  },
+  {
+    "clip": 6,
+    "a": 6.2083,
+    "b": 7,
+    "frameStart": 863,
+    "frames": 19,
+    "start": 35.9583,
+    "end": 36.75
+  },
+  {
+    "clip": 6,
+    "a": 7.3333,
+    "b": 10,
+    "frameStart": 882,
+    "frames": 64,
+    "start": 36.75,
+    "end": 39.4167
+  }
+]

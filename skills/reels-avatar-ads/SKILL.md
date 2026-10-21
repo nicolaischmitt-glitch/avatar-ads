@@ -1,6 +1,6 @@
 ---
 name: reels-avatar-ads
-description: Sistema de reels de alto engagement para el Instagram de Avatar Ads 1.0 (formato talking head + cutaways + CTA "comenta PALABRA" para recibir un lead magnet). Úsalo cuando el usuario quiera crear un reel nuevo, mejorar o escribir un guion para Instagram, generar los prompts JSON de Google Flow para los clips del avatar, o editar un reel con los clips que ya generó. También cuando diga "nuevo reel", "guion para reel", "prompts para Flow", "ya tengo los clips".
+description: Sistema de reels y anuncios en video de alto engagement para Avatar Ads 1.0 (talking head + cutaways/B-rolls, podcast, voz en off; CTA "comenta PALABRA" o CTA a la landing en anuncios pagados). Úsalo cuando el usuario quiera crear un reel o un anuncio en video nuevo, mejorar o escribir un guion o copy, generar los prompts JSON de Google Flow para los clips del avatar, hacer el storyboard, o editar un reel/anuncio con los clips que ya generó. También cuando diga "nuevo reel", "nuevo ad", "guion para reel", "prompts para Flow", "storyboard", "ya tengo los clips".
 ---
 
 # Reels Avatar Ads — sistema de producción
@@ -13,6 +13,9 @@ Contexto de marca y oferta: `PROYECTO.md` (raíz del proyecto). Léelo si no lo 
 - **A · Avatar talking head** (flujo de 5 fases de abajo): guion → prompts JSON para Flow → clips del avatar → edición con cutaways y CTA "comenta PALABRA".
 - **B · Voz en off del usuario + motion graphics**: el usuario deja su grabación en `Contenido/reels/` (al crear la carpeta del reel se mueve a `Contenido/reels/NN-slug/voz-original.mp4`) y se edita con gráficos, ilustraciones, maquetas UI y logos. Sin avatar, **sin mencionar Avatar Ads, sin música**, solo SFX. Todo el procedimiento y sus reglas están en **`Contenido/reels/_plantilla-voz-en-off/LEEME.md`** (léelo completo antes de editar uno). Ejemplos: `Contenido/reels/02-…` y `Contenido/reels/03-…`.
 - **C · Podcast (2 personajes conversando)**: plano/contraplano de dos avatares en un estudio, el escéptico pregunta y el experto responde y cierra con el CTA. Sirve para reels y anuncios. Mismo flujo de 5 fases, pero los prompts usan las plantillas por personaje de **`formatos/podcast/`** (derivadas del master, misma estructura) y el validador con `--plantilla`. Lee **`formatos/podcast/LEEME.md`** completo antes de dividir el guion. Ejemplo: `Contenido/reels/07-podcast-seedance-centavos/`.
+- **D · Head talking de una toma + B-rolls (anuncio directo)**: un avatar creado desde cero (Nano Banana) habla a cámara en una sola toma, intercalado con B-rolls, gráficos y pruebas reales al ritmo del reel 07; avatar en cámara ≈ 60–65 %. Objetivo: vender (anuncios pagados evergreen → landing; también sirve para orgánico). Proceso completo (copy → avatar → prompts → clips → revisión → storyboard → edición → render), catálogo de escenas, plantilla de `build.mjs` y errores ya resueltos en **`formatos/head-talking/LEEME.md`** (léelo completo antes de empezar uno). Ejemplo: `anuncios/03-calidad-seedance-centavos/`.
+
+**Storyboard / moodboard** (cualquier formato): solo la lámina de frames visuales (frames reales + gráficos de la edición), sin paneles de reglas, recursos, paleta ni tipografía. El estilo de referencia es el **render final** del reel 07, no su moodboard viejo.
 
 ## Archivos de este skill
 
@@ -26,6 +29,9 @@ Ubicación real: `skills/reels-avatar-ads/` (en `.claude/skills/reels-avatar-ads
 | `cta-lead-magnet.md` | Fase 2 (palabra clave y promesa del CTA) |
 | `scripts/validar-json.mjs` | Fase 4, obligatorio antes de entregar los prompts |
 | `scripts/detectar-estiramientos.mjs` | Fase 5 de todos los formatos: silencios y palabras estiradas (regla de voz fluida) |
+| `scripts/medir-voz.mjs` | Fase 5: inicio, fin y huecos de la voz por nivel de audio (para `cortes.txt`; Parakeet adelanta ~0,4 s los tiempos en clips sueltos) y nivel cada 20 ms para ubicar una palabra a quitar |
+| `formatos/head-talking/` | Formato D: `LEEME.md` + `edicion/` (plantillas `build.mjs`, `unir-clips.mjs`, `cortes` de ejemplo) |
+| `skills/master prompt para json prompts imagenes.md` | Avatar desde cero (frame de Nano Banana) |
 | `skills/master prompt para json prompts videos.txt` | Fase 4. **Fuente única de verdad** de los prompts JSON. Léelo completo cada vez; no lo copies a otro sitio. |
 
 Referencias analizadas: `referencias/ref02_tutorial-head-talking_desglose.md` (formato base) y `referencias/ref01_desglose.md`.
@@ -60,7 +66,7 @@ El usuario da una idea o un borrador. Si falta algo imprescindible (tema), pregu
 8. Al aprobarse, guarda solo el texto hablado en `guion.txt`.
 
 ### Fase 3 — Imagen de referencia
-El usuario ya tiene la imagen/frame del avatar para Flow. No la generes. Si no sabes cómo es el avatar (hombre/mujer), pregúntalo: afecta a `dialogue.speaker`.
+Normalmente el usuario ya tiene la imagen/frame del avatar para Flow: no la generes. Si quiere crear el avatar desde cero, escríbele el JSON prompt para Nano Banana con la estructura fija de `skills/master prompt para json prompts imagenes.md` (él genera la imagen). Si no sabes cómo es el avatar (hombre/mujer), pregúntalo: afecta a `dialogue.speaker`.
 
 ### Fase 4 — Prompts JSON para Google Flow (Omni)
 1. Lee **completo** `skills/master prompt para json prompts videos.txt`. Sus reglas mandan sobre todo lo demás de esta fase.

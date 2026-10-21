@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 500 700; font-display: block; }
+      @font-face { font-family: "JBM"; src: url("fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      :root { --bg: #020604; --card: #090f0b; --border: #305e4a; --accent: #c5f740; --text: #f8f8f8; --muted: #dddad7; --meta: #9f9587; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: "Inter", sans-serif; color: var(--text); }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #video-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 1; transform-origin: 0 0; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 32%; }
+      #zoom video { width: 100%; height: 100%; object-fit: cover; }
+      .shade { position: absolute; inset: 0; pointer-events: none; z-index: 2;
+        background: linear-gradient(180deg, rgba(2,6,4,.55) 0%, rgba(2,6,4,0) 22%, rgba(2,6,4,0) 62%, rgba(2,6,4,.62) 100%); }
+      .tag { font-family: "JBM", monospace; font-size: 26px; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); }
+      .src { font-family: "JBM", monospace; font-size: 22px; letter-spacing: 3px; color: var(--meta); text-transform: uppercase; }
+      .big { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; color: var(--text); line-height: 1; letter-spacing: -1px; }
+      .glow { text-shadow: 0 0 40px rgba(197,247,64,.45), 0 6px 26px rgba(0,0,0,.6); }
+      .center { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+      /* subtítulos (siempre arriba de todo) */
+      .sub { position: absolute; z-index: 20; left: 70px; width: 940px; top: 1395px; text-align: center; pointer-events: none;
+        font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 62px; line-height: 1.12; letter-spacing: -0.5px;
+        color: #fff; text-shadow: 0 4px 22px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.75); }
+      .sub .w { display: inline-block; color: #fff; }
+      /* gráficos sobre la cara (franja superior) */
+      .g { position: absolute; z-index: 10; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      /* B-roll a pantalla completa */
+      .broll { position: absolute; z-index: 8; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; pointer-events: none;
+        background: radial-gradient(120% 70% at 50% 0%, #0f2418 0%, var(--bg) 62%); }
+      .broll.back { z-index: 0; }
+      .broll.grid::after { content: ""; position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(48,94,74,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(48,94,74,.12) 1px, transparent 1px);
+        background-size: 60px 60px; }
+      .broll > .in { position: absolute; inset: 0; z-index: 1; }
+      .chip { display: inline-flex; align-items: center; gap: 14px; padding: 16px 30px; border-radius: 999px; border: 2px solid var(--accent);
+        background: rgba(2,6,4,.82); font-family: "JBM", monospace; font-size: 28px; letter-spacing: 3px; color: var(--accent); white-space: nowrap; }
+      .chip b { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); display: block; box-shadow: 0 0 12px rgba(197,247,64,.8); }
+      .card { border-radius: 30px; overflow: hidden; border: 2px solid var(--border); background: var(--card); box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+      .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      /* S2: nuestros anuncios (videos en tarjetas) */
+      .advid { position: absolute; z-index: 9; top: 420px; width: 292px; height: 520px; object-fit: cover; border-radius: 26px; border: 2px solid var(--border);
+        box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+      /* S3: misma calidad (la tarjeta de la izquierda es el propio video, encogido) */
+      .vsframe { position: absolute; z-index: 9; left: 60px; top: 440px; width: 435px; height: 773px; border-radius: 30px; border: 2px solid var(--border); }
+      .vsframe .lab { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px; text-align: center; border-radius: 0 0 28px 28px;
+        background: linear-gradient(0deg, rgba(2,6,4,.92), rgba(2,6,4,0)); font-family: "JBM", monospace; font-size: 24px; letter-spacing: 3px; color: var(--muted); }
+      .live { position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; align-items: center; padding: 8px 14px; border-radius: 999px; background: rgba(2,6,4,.75);
+        font-family: "JBM", monospace; font-size: 20px; letter-spacing: 2px; color: var(--accent); }
+      .live i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); display: block; }
+      .eq { position: absolute; z-index: 9; left: 495px; width: 90px; top: 760px; text-align: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 110px;
+        color: var(--accent); text-shadow: 0 0 30px rgba(197,247,64,.5); }
+      .seedcard { position: absolute; z-index: 9; left: 585px; top: 440px; width: 435px; height: 773px; }
+      .seed { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 22px;
+        background: radial-gradient(90% 60% at 50% 40%, #16261d 0%, #090f0b 70%); }
+      .seed .name { font-family: "Inter", sans-serif; font-weight: 700; font-size: 64px; letter-spacing: -1px; color: var(--text); }
+      .seedcard .lab { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px; text-align: center; font-family: "JBM", monospace; font-size: 24px; letter-spacing: 3px; color: var(--muted); }
+      /* S4: cronómetro */
+      .watch { position: relative; width: 560px; height: 560px; }
+      .watch svg { position: absolute; inset: 0; }
+      .watch .t { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+      /* tarjeta pequeña sobre la cara */
+      .mcard { width: 820px; padding: 28px 40px; border-radius: 30px; border: 2px solid var(--border); background: rgba(9,15,11,.9); box-shadow: 0 14px 40px rgba(0,0,0,.45); text-align: center; }
+      /* S7: galería */
+      .gal { position: absolute; left: 50px; width: 980px; top: 470px; height: 464px; }
+      .gal img { object-position: top left; transform-origin: 30% 30%; }
+      /* S10–S11: íconos de anuncio */
+      .ads { position: absolute; left: 70px; right: 70px; top: 640px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 16px; }
+      .adi { display: flex; align-items: center; justify-content: center; aspect-ratio: 9 / 16; border-radius: 14px; border: 2px solid var(--border);
+        background: linear-gradient(180deg, #102018, #090f0b); position: relative; }
+      .adi::before { content: ""; width: 0; height: 0; border-left: 22px solid var(--meta); border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 5px; }
+      .adi::after { content: "AD"; position: absolute; top: 7px; left: 7px; font-family: "JBM", monospace; font-size: 14px; letter-spacing: 1px; color: var(--meta);
+        border: 1.5px solid var(--border); border-radius: 5px; padding: 0 5px; }
+      .wl { position: absolute; inset: -2px; border-radius: 14px; border: 3px solid var(--accent); background: linear-gradient(180deg, rgba(197,247,64,.28), rgba(197,247,64,.08));
+        box-shadow: 0 0 36px rgba(197,247,64,.6); opacity: 0; font-family: "JBM", monospace; font-weight: 500; font-size: 14px; letter-spacing: 1px; color: #071006;
+        display: flex; align-items: flex-start; justify-content: flex-start; padding: 6px; }
+      .wl span { background: var(--accent); border-radius: 4px; padding: 0 5px; }
+      .swap { position: relative; height: 160px; width: 1000px; }
+      .swap > div { position: absolute; left: 0; right: 0; text-align: center; }
+      /* S13–S14: teléfono */
+      .phone { position: absolute; left: 260px; top: 300px; width: 560px; height: 1060px; border-radius: 56px; border: 10px solid #1a2a21; background: #000;
+        overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 2px var(--border); }
+      .phone img, .phone video { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+      #chat-phone { background: #0b141a; }
+      #chat-img { object-fit: contain; object-position: top; transform-origin: 40% 75%; }
+      .zoomtag { position: absolute; right: 70px; padding: 16px 24px; border-radius: 22px; background: rgba(2,6,4,.92); border: 2px solid var(--accent);
+        font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 60px; color: var(--accent); box-shadow: 0 0 40px rgba(197,247,64,.3); }
+      /* S15: días */
+      .mdays { display: flex; gap: 22px; }
+      .mday { padding: 22px 30px; border-radius: 24px; border: 2px solid var(--border); background: rgba(9,15,11,.9); display: flex; gap: 20px; align-items: center; box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+      .mday .n { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 80px; color: var(--accent); line-height: .9; }
+      .mday .t { font-family: "JBM", monospace; font-size: 22px; letter-spacing: 3px; color: var(--meta); text-transform: uppercase; }
+      .mday .t em { display: block; font-style: normal; margin-top: 6px; font-family: "Inter"; font-weight: 700; font-size: 32px; letter-spacing: 0; color: var(--text); text-transform: none; }
+      .rec { display: inline-flex; gap: 14px; align-items: center; }
+      .rec i { width: 16px; height: 16px; border-radius: 50%; background: #e5484d; display: block; box-shadow: 0 0 14px rgba(229,72,77,.8); }
+      /* S16: logo + botón */
+      .logo { width: 520px; mix-blend-mode: screen; }
+      .cta { padding: 28px 52px; border-radius: 26px; background: var(--accent); color: #071006; font-family: "Archivo", sans-serif; font-weight: 800;
+        font-stretch: 125%; font-size: 64px; letter-spacing: -0.5px; box-shadow: 0 0 60px rgba(197,247,64,.35), 0 14px 40px rgba(0,0,0,.45); }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="anuncio-03" data-start="0" data-duration="39.417" data-fps="24" data-width="1080" data-height="1920">
+      <!-- fondo de la escena 3 (detrás del video encogido) -->
+      <div class="broll back grid clip" id="vs-bg" data-start="2.22" data-duration="2.696" data-track-index="2"><div class="in">
+        <div class="center" style="top:330px"><div class="tag">Misma calidad</div></div>
+      </div></div>
+
+      <div id="video-wrap">
+        <div id="zoom"><video id="bg-video" src="input-video.mp4" playsinline data-has-audio="true" data-start="0" data-duration="39.417" data-track-index="1"></video></div>
+        <div class="shade" id="shade"></div>
+      </div>
+
+      <!-- S2 · nuestros anuncios hechos con IA -->
+      <div class="broll grid clip" id="ads-bg" data-start="0.919" data-duration="1.301" data-track-index="5"><div class="in">
+        <div class="center" style="top:290px"><div class="chip" id="ads-chip"><b></b>100% HECHOS CON IA</div></div>
+      </div></div>
+      <video class="advid clip" id="adv-0" src="broll/ad-labial.mp4" muted playsinline style="left:70px" data-start="0.919" data-duration="1.301" data-track-index="9"></video>
+      <video class="advid clip" id="adv-1" src="broll/ad-airpods.mp4" muted playsinline style="left:394px" data-start="0.919" data-duration="1.301" data-track-index="9"></video>
+      <video class="advid clip" id="adv-2" src="broll/ad-suplemento.mp4" muted playsinline style="left:718px" data-start="0.919" data-duration="1.301" data-track-index="9"></video>
+
+      <!-- S3 · misma calidad que Seedance (el video del avatar sigue hablando en la tarjeta) -->
+      <div class="g clip" id="vs" data-start="2.22" data-duration="2.696" data-track-index="6">
+        <div class="vsframe" id="vs-frame"><div class="live"><i></i>VIDEO</div><div class="lab">AVATAR ADS</div></div>
+        <div class="eq" id="vs-eq">=</div>
+        <div class="seedcard card" id="vs-seed"><div class="seed"><div class="name">Seedance</div><div class="src">video con IA</div></div><div class="lab">SEEDANCE</div></div>
+      </div>
+
+      <!-- S4 · cronómetro: 1 segundo de Seedance -->
+      <div class="broll grid clip" id="watch" data-start="6.74" data-duration="2.885" data-track-index="5"><div class="in">
+        <div class="center" style="top:330px"><div class="tag">Seedance 2.0 · 1080p</div></div>
+        <div class="center" style="top:520px"><div class="watch">
+          <svg viewBox="0 0 560 560"><circle cx="280" cy="280" r="250" fill="#070c09" stroke="#305e4a" stroke-width="4"/>
+            <circle id="watch-ring" cx="280" cy="280" r="250" fill="none" stroke="#c5f740" stroke-width="12" stroke-linecap="round" transform="rotate(-90 280 280)"
+              stroke-dasharray="1571" stroke-dashoffset="1571" style="filter:drop-shadow(0 0 14px rgba(197,247,64,.6))"/></svg>
+          <div class="t"><div class="big glow" id="watch-num" style="font-size:96px">0:00.00</div></div>
+        </div></div>
+      </div></div>
+
+      <!-- S5 · cara + $0,68 por segundo -->
+      <div class="g clip" id="c68" data-start="9.625" data-duration="2.25" data-track-index="4">
+        <div class="center" style="top:110px"><div class="mcard" id="c68-card"><div class="tag">Seedance · cada segundo de video</div>
+          <div class="big glow" id="c68-num" style="font-size:150px;margin-top:14px">$0,00</div>
+          <div class="src" style="margin-top:16px;font-size:20px">Seedance 2.0 · 1080p · fal.ai · oct 2026</div></div></div>
+      </div>
+
+      <!-- S6 · chip: este avatar es 100 % IA -->
+      <div class="g clip" id="chip100" data-start="11.875" data-duration="1.208" data-track-index="4">
+        <div class="center" style="top:150px"><div class="chip" id="chip100-c"><b></b>ESTE AVATAR ES 100% IA</div></div>
+      </div>
+
+      <!-- S7 · creado desde cero + $0,67 -->
+      <div class="broll grid clip" id="gal" data-start="13.8" data-duration="2.658" data-track-index="5"><div class="in">
+        <div class="center" style="top:360px"><div class="tag">Creado desde cero · Nano Banana + Flow</div></div>
+        <div class="gal card" id="gal-card"><img id="gal-img" src="broll/flow-galeria-recorte.png" alt=""></div>
+        <div class="center" id="gal-price" style="top:1000px"><div class="tag">Costo de este avatar</div>
+          <div class="big glow" id="gal-num" style="font-size:170px;margin-top:14px">$0,00</div>
+          <div class="src" id="gal-vs" style="margin-top:18px">vs. $0,68 por 1 segundo de Seedance</div></div>
+      </div></div>
+
+      <!-- S8 · chip: hecho en 20 min -->
+      <div class="g clip" id="chip20" data-start="16.458" data-duration="1.375" data-track-index="4">
+        <div class="center" style="top:150px"><div class="chip" id="chip20-c"><b></b>HECHO EN 20 MIN</div></div>
+      </div>
+
+      <!-- S10–S11 · más anuncios testeados → más ganadores -->
+      <div class="broll grid clip" id="icons" data-start="20.44" data-duration="3.28" data-track-index="5"><div class="in">
+        <div class="center" style="top:300px"><div class="tag" id="icons-tag">Anuncios testeados</div>
+          <div class="swap" style="margin-top:22px">
+            <div class="big glow" id="icons-num" style="font-size:150px">4</div>
+            <div class="big glow" id="icons-win" style="font-size:96px;line-height:1.1;opacity:0">Más tests =<br>más ganadores</div>
+          </div></div>
+        <div class="ads"><i class="adi" id="ad-0"><b class="wl" id="wl-0"><span>WIN</span></b></i><i class="adi" id="ad-1"><b class="wl" id="wl-1"><span>WIN</span></b></i><i class="adi" id="ad-2"><b class="wl" id="wl-2"><span>WIN</span></b></i><i class="adi" id="ad-3"><b class="wl" id="wl-3"><span>WIN</span></b></i><i class="adi" id="ad-4"><b class="wl" id="wl-4"><span>WIN</span></b></i><i class="adi" id="ad-5"><b class="wl" id="wl-5"><span>WIN</span></b></i><i class="adi" id="ad-6"><b class="wl" id="wl-6"><span>WIN</span></b></i><i class="adi" id="ad-7"><b class="wl" id="wl-7"><span>WIN</span></b></i><i class="adi" id="ad-8"><b class="wl" id="wl-8"><span>WIN</span></b></i><i class="adi" id="ad-9"><b class="wl" id="wl-9"><span>WIN</span></b></i><i class="adi" id="ad-10"><b class="wl" id="wl-10"><span>WIN</span></b></i><i class="adi" id="ad-11"><b class="wl" id="wl-11"><span>WIN</span></b></i><i class="adi" id="ad-12"><b class="wl" id="wl-12"><span>WIN</span></b></i><i class="adi" id="ad-13"><b class="wl" id="wl-13"><span>WIN</span></b></i><i class="adi" id="ad-14"><b class="wl" id="wl-14"><span>WIN</span></b></i><i class="adi" id="ad-15"><b class="wl" id="wl-15"><span>WIN</span></b></i><i class="adi" id="ad-16"><b class="wl" id="wl-16"><span>WIN</span></b></i><i class="adi" id="ad-17"><b class="wl" id="wl-17"><span>WIN</span></b></i><i class="adi" id="ad-18"><b class="wl" id="wl-18"><span>WIN</span></b></i><i class="adi" id="ad-19"><b class="wl" id="wl-19"><span>WIN</span></b></i><i class="adi" id="ad-20"><b class="wl" id="wl-20"><span>WIN</span></b></i><i class="adi" id="ad-21"><b class="wl" id="wl-21"><span>WIN</span></b></i><i class="adi" id="ad-22"><b class="wl" id="wl-22"><span>WIN</span></b></i><i class="adi" id="ad-23"><b class="wl" id="wl-23"><span>WIN</span></b></i><i class="adi" id="ad-24"><b class="wl" id="wl-24"><span>WIN</span></b></i><i class="adi" id="ad-25"><b class="wl" id="wl-25"><span>WIN</span></b></i><i class="adi" id="ad-26"><b class="wl" id="wl-26"><span>WIN</span></b></i><i class="adi" id="ad-27"><b class="wl" id="wl-27"><span>WIN</span></b></i><i class="adi" id="ad-28"><b class="wl" id="wl-28"><span>WIN</span></b></i><i class="adi" id="ad-29"><b class="wl" id="wl-29"><span>WIN</span></b></i></div>
+      </div></div>
+
+      <!-- S12 · cara + curva de crecimiento -->
+      <div class="g clip" id="curve" data-start="24.541" data-duration="2.167" data-track-index="4">
+        <div class="center" style="top:110px"><div class="mcard" id="curve-card" style="padding:24px 30px"><div class="tag" style="font-size:22px">Más tests → más ganadores → escalar</div>
+          <svg viewBox="0 0 920 340" style="width:100%;display:block;margin-top:10px">
+            <line x1="20" y1="320" x2="900" y2="320" stroke="rgba(48,94,74,.6)" stroke-width="2"/>
+            <path id="curve-fill" d="M20 310 C 220 305, 330 290, 450 250 S 700 110, 880 30 L 880 320 L 20 320 Z" fill="rgba(197,247,64,.08)"/>
+            <path id="curve-line" d="M20 310 C 220 305, 330 290, 450 250 S 700 110, 880 30" fill="none" stroke="#c5f740" stroke-width="10" stroke-linecap="round"
+              stroke-dasharray="1100" stroke-dashoffset="1100" style="filter:drop-shadow(0 0 12px rgba(197,247,64,.6))"/>
+            <circle id="curve-dot" cx="880" cy="30" r="18" fill="#c5f740"/>
+          </svg></div></div>
+      </div>
+
+      <!-- S13 · producto digital: ventas en Hotmart -->
+      <div class="broll grid clip" id="hot" data-start="26.708" data-duration="2.5" data-track-index="5"><div class="in">
+        <div class="center" style="top:170px"><div class="chip"><b></b>PRODUCTO DIGITAL · HOTMART</div></div>
+        <div class="phone" id="hot-phone"></div>
+      </div></div>
+      <video class="clip" id="hot-vid" src="broll/hotmart.mp4" muted playsinline style="position:absolute;z-index:9;left:270px;top:310px;width:540px;height:1040px;object-fit:cover;object-position:top;border-radius:46px" data-start="26.708" data-duration="2.5" data-track-index="9"></video>
+      <div class="g clip" id="hot-g" data-start="26.708" data-duration="2.5" data-track-index="10"><div class="zoomtag" id="hot-tag" style="top:1000px">1.759 US$</div></div>
+
+      <!-- S14 · servicio tradicional: resultado de un cliente (sin nombre ni foto) -->
+      <div class="broll grid clip" id="chat" data-start="29.208" data-duration="1.75" data-track-index="5"><div class="in">
+        <div class="center" style="top:170px"><div class="chip"><b></b>SERVICIO · RESULTADO DE UN CLIENTE</div></div>
+        <div class="phone" id="chat-phone"><img id="chat-img" src="broll/sebastian-limpio.png" alt=""></div>
+        <div class="zoomtag" id="chat-tag" style="top:1080px">$10.537 USD</div>
+      </div></div>
+
+      <!-- logo sobre la cara -->
+      <div class="g clip" id="logo1" style="mix-blend-mode:screen" data-start="32.416" data-duration="1.917" data-track-index="4">
+        <div class="center" style="top:130px"><img class="logo" id="logo1-img" src="broll/logo-avatar-ads.webp" alt=""></div>
+      </div>
+
+      <!-- S15 · cara + días -->
+      <div class="g clip" id="days" data-start="34.333" data-duration="2.417" data-track-index="4">
+        <div class="center" style="top:110px"><div class="tag" id="days-tag" style="margin-bottom:22px"><span class="rec"><i></i>Taller en vivo</span></div>
+          <div class="mdays"><div class="mday" id="day1"><div class="n">1</div><div class="t">Día 1<em>Storyboard e imágenes</em></div></div>
+          <div class="mday" id="day2"><div class="n">2</div><div class="t">Día 2<em>Videos y edición</em></div></div></div></div>
+      </div>
+
+      <!-- S16 · CTA -->
+      <div class="g clip" id="logo2" style="mix-blend-mode:screen" data-start="36.75" data-duration="2.666" data-track-index="4">
+        <div class="center" style="top:130px"><img class="logo" id="cta-logo" src="broll/logo-avatar-ads.webp" alt=""></div>
+      </div>
+      <div class="g clip" id="cta" data-start="36.75" data-duration="2.666" data-track-index="7">
+        <div class="center" style="top:1150px"><div class="cta" id="cta-btn">Reservar mi lugar ↓</div></div>
+      </div>
+
+      <div class="sub clip" id="sub-0" data-start="0" data-duration="0.667" data-track-index="3"><span id="sub-0-w0" class="w">Y</span> <span id="sub-0-w1" class="w">si</span> <span id="sub-0-w2" class="w">pudieras</span></div>
+      <div class="sub clip" id="sub-1" data-start="0.667" data-duration="1.542" data-track-index="3"><span id="sub-1-w0" class="w">crear</span> <span id="sub-1-w1" class="w">anuncios</span> <span id="sub-1-w2" class="w">hiperrealistas</span></div>
+      <div class="sub clip" id="sub-2" data-start="2.208" data-duration="0.458" data-track-index="3"><span id="sub-2-w0" class="w">con</span> <span id="sub-2-w1" class="w">la</span> <span id="sub-2-w2" class="w">misma</span></div>
+      <div class="sub clip" id="sub-3" data-start="2.667" data-duration="1.125" data-track-index="3"><span id="sub-3-w0" class="w">calidad</span> <span id="sub-3-w1" class="w">de</span> <span id="sub-3-w2" class="w">Seedance</span></div>
+      <div class="sub clip" id="sub-4" data-start="3.792" data-duration="1.042" data-track-index="3"><span id="sub-4-w0" class="w">pero</span> <span id="sub-4-w1" class="w">por</span> <span id="sub-4-w2" class="w">centavos?</span></div>
+      <div class="sub clip" id="sub-5" data-start="4.833" data-duration="0.417" data-track-index="3"><span id="sub-5-w0" class="w">Para</span> <span id="sub-5-w1" class="w">que</span> <span id="sub-5-w2" class="w">te</span></div>
+      <div class="sub clip" id="sub-6" data-start="5.25" data-duration="0.958" data-track-index="3"><span id="sub-6-w0" class="w">des</span> <span id="sub-6-w1" class="w">una</span> <span id="sub-6-w2" class="w">idea</span></div>
+      <div class="sub clip" id="sub-7" data-start="6.208" data-duration="0.958" data-track-index="3"><span id="sub-7-w0" class="w">un</span> <span id="sub-7-w1" class="w">solo</span> <span id="sub-7-w2" class="w">segundo</span></div>
+      <div class="sub clip" id="sub-8" data-start="7.167" data-duration="0.542" data-track-index="3"><span id="sub-8-w0" class="w">de</span> <span id="sub-8-w1" class="w">video</span> <span id="sub-8-w2" class="w">de</span></div>
+      <div class="sub clip" id="sub-9" data-start="7.708" data-duration="1.375" data-track-index="3"><span id="sub-9-w0" class="w">Seedance</span> <span id="sub-9-w1" class="w">en</span> <span id="sub-9-w2" class="w">alta</span></div>
+      <div class="sub clip" id="sub-10" data-start="9.083" data-duration="1.042" data-track-index="3"><span id="sub-10-w0" class="w">calidad</span> <span id="sub-10-w1" class="w">te</span> <span id="sub-10-w2" class="w">puede</span></div>
+      <div class="sub clip" id="sub-11" data-start="10.125" data-duration="1.208" data-track-index="3"><span id="sub-11-w0" class="w">costar</span> <span id="sub-11-w1" class="w">casi</span> <span id="sub-11-w2" class="w">70</span></div>
+      <div class="sub clip" id="sub-12" data-start="11.333" data-duration="0.542" data-track-index="3"><span id="sub-12-w0" class="w">centavos</span></div>
+      <div class="sub clip" id="sub-13" data-start="11.875" data-duration="0.708" data-track-index="3"><span id="sub-13-w0" class="w">En</span> <span id="sub-13-w1" class="w">cambio</span></div>
+      <div class="sub clip" id="sub-14" data-start="12.583" data-duration="0.5" data-track-index="3"><span id="sub-14-w0" class="w">a</span> <span id="sub-14-w1" class="w">mí</span></div>
+      <div class="sub clip" id="sub-15" data-start="13.083" data-duration="0.708" data-track-index="3"><span id="sub-15-w0" class="w">mi</span> <span id="sub-15-w1" class="w">creador</span></div>
+      <div class="sub clip" id="sub-16" data-start="13.792" data-duration="0.792" data-track-index="3"><span id="sub-16-w0" class="w">me</span> <span id="sub-16-w1" class="w">creó</span> <span id="sub-16-w2" class="w">por</span></div>
+      <div class="sub clip" id="sub-17" data-start="14.583" data-duration="1.875" data-track-index="3"><span id="sub-17-w0" class="w">apenas</span> <span id="sub-17-w1" class="w">67</span> <span id="sub-17-w2" class="w">centavos</span></div>
+      <div class="sub clip" id="sub-18" data-start="16.458" data-duration="0.625" data-track-index="3"><span id="sub-18-w0" class="w">y</span> <span id="sub-18-w1" class="w">en</span> <span id="sub-18-w2" class="w">solo</span></div>
+      <div class="sub clip" id="sub-19" data-start="17.083" data-duration="0.792" data-track-index="3"><span id="sub-19-w0" class="w">20</span> <span id="sub-19-w1" class="w">minutos</span></div>
+      <div class="sub clip" id="sub-20" data-start="17.875" data-duration="0.708" data-track-index="3"><span id="sub-20-w0" class="w">Los</span> <span id="sub-20-w1" class="w">anuncios</span> <span id="sub-20-w2" class="w">con</span></div>
+      <div class="sub clip" id="sub-21" data-start="18.583" data-duration="1.375" data-track-index="3"><span id="sub-21-w0" class="w">inteligencia</span> <span id="sub-21-w1" class="w">artificial</span> <span id="sub-21-w2" class="w">te</span></div>
+      <div class="sub clip" id="sub-22" data-start="19.958" data-duration="1.458" data-track-index="3"><span id="sub-22-w0" class="w">permiten</span> <span id="sub-22-w1" class="w">testear</span> <span id="sub-22-w2" class="w">muchos</span></div>
+      <div class="sub clip" id="sub-23" data-start="21.417" data-duration="1.042" data-track-index="3"><span id="sub-23-w0" class="w">más</span> <span id="sub-23-w1" class="w">anuncios</span> <span id="sub-23-w2" class="w">y</span></div>
+      <div class="sub clip" id="sub-24" data-start="22.458" data-duration="0.708" data-track-index="3"><span id="sub-24-w0" class="w">encontrar</span> <span id="sub-24-w1" class="w">a</span> <span id="sub-24-w2" class="w">los</span></div>
+      <div class="sub clip" id="sub-25" data-start="23.167" data-duration="0.958" data-track-index="3"><span id="sub-25-w0" class="w">ganadores</span> <span id="sub-25-w1" class="w">mucho</span> <span id="sub-25-w2" class="w">más</span></div>
+      <div class="sub clip" id="sub-26" data-start="24.125" data-duration="0.458" data-track-index="3"><span id="sub-26-w0" class="w">rápido</span></div>
+      <div class="sub clip" id="sub-27" data-start="24.583" data-duration="0.5" data-track-index="3"><span id="sub-27-w0" class="w">Y</span> <span id="sub-27-w1" class="w">ese</span> <span id="sub-27-w2" class="w">es</span></div>
+      <div class="sub clip" id="sub-28" data-start="25.083" data-duration="1.042" data-track-index="3"><span id="sub-28-w0" class="w">el</span> <span id="sub-28-w1" class="w">secreto</span> <span id="sub-28-w2" class="w">para</span></div>
+      <div class="sub clip" id="sub-29" data-start="26.125" data-duration="0.542" data-track-index="3"><span id="sub-29-w0" class="w">escalar</span></div>
+      <div class="sub clip" id="sub-30" data-start="26.667" data-duration="1.458" data-track-index="3"><span id="sub-30-w0" class="w">Estos</span> <span id="sub-30-w1" class="w">anuncios</span> <span id="sub-30-w2" class="w">escalan</span></div>
+      <div class="sub clip" id="sub-31" data-start="28.125" data-duration="1.208" data-track-index="3"><span id="sub-31-w0" class="w">productos</span> <span id="sub-31-w1" class="w">digitales</span> <span id="sub-31-w2" class="w">y</span></div>
+      <div class="sub clip" id="sub-32" data-start="29.333" data-duration="1.583" data-track-index="3"><span id="sub-32-w0" class="w">también</span> <span id="sub-32-w1" class="w">servicios</span> <span id="sub-32-w2" class="w">tradicionales</span></div>
+      <div class="sub clip" id="sub-33" data-start="30.917" data-duration="0.792" data-track-index="3"><span id="sub-33-w0" class="w">Si</span> <span id="sub-33-w1" class="w">quieres</span> <span id="sub-33-w2" class="w">aprender</span></div>
+      <div class="sub clip" id="sub-34" data-start="31.708" data-duration="0.583" data-track-index="3"><span id="sub-34-w0" class="w">a</span> <span id="sub-34-w1" class="w">hacerlo</span></div>
+      <div class="sub clip" id="sub-35" data-start="32.292" data-duration="0.958" data-track-index="3"><span id="sub-35-w0" class="w">únete</span> <span id="sub-35-w1" class="w">al</span> <span id="sub-35-w2" class="w">taller</span></div>
+      <div class="sub clip" id="sub-36" data-start="33.25" data-duration="1.25" data-track-index="3"><span id="sub-36-w0" class="w">de</span> <span id="sub-36-w1" class="w">Avatar</span> <span id="sub-36-w2" class="w">Ads</span></div>
+      <div class="sub clip" id="sub-37" data-start="34.5" data-duration="0.917" data-track-index="3"><span id="sub-37-w0" class="w">dos</span> <span id="sub-37-w1" class="w">días</span> <span id="sub-37-w2" class="w">en</span></div>
+      <div class="sub clip" id="sub-38" data-start="35.417" data-duration="0.542" data-track-index="3"><span id="sub-38-w0" class="w">vivo</span></div>
+      <div class="sub clip" id="sub-39" data-start="35.958" data-duration="0.792" data-track-index="3"><span id="sub-39-w0" class="w">paso</span> <span id="sub-39-w1" class="w">a</span> <span id="sub-39-w2" class="w">paso</span></div>
+      <div class="sub clip" id="sub-40" data-start="36.75" data-duration="0.958" data-track-index="3"><span id="sub-40-w0" class="w">Reserva</span> <span id="sub-40-w1" class="w">tu</span> <span id="sub-40-w2" class="w">lugar</span></div>
+      <div class="sub clip" id="sub-41" data-start="37.708" data-duration="0.667" data-track-index="3"><span id="sub-41-w0" class="w">en</span> <span id="sub-41-w1" class="w">el</span> <span id="sub-41-w2" class="w">botón</span></div>
+      <div class="sub clip" id="sub-42" data-start="38.375" data-duration="1.042" data-track-index="3"><span id="sub-42-w0" class="w">de</span> <span id="sub-42-w1" class="w">abajo</span></div>
+
+      <audio id="sfx-01-whoosh-short" src="audio/whoosh-short.mp3" data-start="0.917" data-duration="0.574" data-track-index="11" data-volume="0.18"></audio>
+      <audio id="sfx-02-whoosh-short" src="audio/whoosh-short.mp3" data-start="2.208" data-duration="0.574" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sfx-03-pop" src="audio/pop.mp3" data-start="3.125" data-duration="0.72" data-track-index="13" data-volume="0.3"></audio>
+      <audio id="sfx-04-whoosh-short" src="audio/whoosh-short.mp3" data-start="6.75" data-duration="0.574" data-track-index="14" data-volume="0.18"></audio>
+      <audio id="sfx-05-click-soft" src="audio/click-soft.mp3" data-start="6.792" data-duration="0.365" data-track-index="11" data-volume="0.4"></audio>
+      <audio id="sfx-06-click-soft" src="audio/click-soft.mp3" data-start="7.292" data-duration="0.365" data-track-index="12" data-volume="0.35"></audio>
+      <audio id="sfx-07-impact-bass-1" src="audio/impact-bass-1.mp3" data-start="10.875" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-08-pop" src="audio/pop.mp3" data-start="11.917" data-duration="0.72" data-track-index="14" data-volume="0.28"></audio>
+      <audio id="sfx-09-whoosh-short" src="audio/whoosh-short.mp3" data-start="13.792" data-duration="0.574" data-track-index="11" data-volume="0.18"></audio>
+      <audio id="sfx-10-impact-bass-1" src="audio/impact-bass-1.mp3" data-start="15.042" data-duration="1" data-track-index="12" data-volume="0.24"></audio>
+      <audio id="sfx-11-pop" src="audio/pop.mp3" data-start="16.5" data-duration="0.72" data-track-index="13" data-volume="0.28"></audio>
+      <audio id="sfx-12-whoosh-short" src="audio/whoosh-short.mp3" data-start="20.458" data-duration="0.574" data-track-index="14" data-volume="0.18"></audio>
+      <audio id="sfx-13-typing" src="audio/typing.mp3" data-start="21" data-duration="1.2" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sfx-14-ping" src="audio/ping.mp3" data-start="22.458" data-duration="0.6" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-15-ping" src="audio/ping.mp3" data-start="22.583" data-duration="0.6" data-track-index="13" data-volume="0.12"></audio>
+      <audio id="sfx-16-ping" src="audio/ping.mp3" data-start="22.708" data-duration="0.6" data-track-index="14" data-volume="0.12"></audio>
+      <audio id="sfx-17-ping" src="audio/ping.mp3" data-start="22.833" data-duration="0.6" data-track-index="11" data-volume="0.12"></audio>
+      <audio id="sfx-18-ping" src="audio/ping.mp3" data-start="22.958" data-duration="0.6" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-19-ping" src="audio/ping.mp3" data-start="23.083" data-duration="0.6" data-track-index="13" data-volume="0.12"></audio>
+      <audio id="sfx-20-ping" src="audio/ping.mp3" data-start="23.208" data-duration="0.6" data-track-index="14" data-volume="0.12"></audio>
+      <audio id="sfx-21-click-soft" src="audio/click-soft.mp3" data-start="24.583" data-duration="0.365" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-22-whoosh-short" src="audio/whoosh-short.mp3" data-start="26.708" data-duration="0.574" data-track-index="12" data-volume="0.18"></audio>
+      <audio id="sfx-23-whoosh-short" src="audio/whoosh-short.mp3" data-start="29.208" data-duration="0.574" data-track-index="13" data-volume="0.18"></audio>
+      <audio id="sfx-24-pop" src="audio/pop.mp3" data-start="32.458" data-duration="0.72" data-track-index="14" data-volume="0.28"></audio>
+      <audio id="sfx-25-click-soft" src="audio/click-soft.mp3" data-start="34.375" data-duration="0.365" data-track-index="11" data-volume="0.35"></audio>
+      <audio id="sfx-26-pop" src="audio/pop.mp3" data-start="36.833" data-duration="0.72" data-track-index="12" data-volume="0.38"></audio>
+      <audio id="sfx-27-chime" src="audio/chime.mp3" data-start="38.083" data-duration="1" data-track-index="13" data-volume="0.22"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          const tl = window.gsap.timeline({ paused: true });
+          const Z = "#zoom";
+          // ── zooms
+          tl.set(Z, { scale: 1 }, 0);
+          tl.to(Z, { scale: 1.007, duration: 0.333, ease: "none" }, 0);
+          tl.to(Z, { scale: 1.09, duration: 0.18, ease: "power3.out" }, 0.333);
+          tl.to(Z, { scale: 1.18, duration: 4.353, ease: "none" }, 0.513);
+          tl.set(Z, { scale: 1 }, 4.915);
+          tl.to(Z, { scale: 1.05, duration: 4.658, ease: "none" }, 4.917);
+          tl.set(Z, { scale: 1.12 }, 9.623);
+          tl.to(Z, { scale: 1.16, duration: 2.2, ease: "none" }, 9.625);
+          tl.set(Z, { scale: 1 }, 11.873);
+          tl.to(Z, { scale: 1.03, duration: 0.917, ease: "none" }, 11.875);
+          tl.to(Z, { scale: 1.096, duration: 0.18, ease: "power3.out" }, 12.792);
+          tl.to(Z, { scale: 1.1, duration: 0.062, ease: "none" }, 12.972);
+          tl.set(Z, { scale: 1.18 }, 13.081);
+          tl.to(Z, { scale: 1.2, duration: 3.325, ease: "none" }, 13.083);
+          tl.set(Z, { scale: 1 }, 16.456);
+          tl.to(Z, { scale: 1.029, duration: 1, ease: "none" }, 16.458);
+          tl.to(Z, { scale: 1.094, duration: 0.18, ease: "power3.out" }, 17.458);
+          tl.to(Z, { scale: 1.1, duration: 0.145, ease: "none" }, 17.638);
+          tl.set(Z, { scale: 1 }, 17.831);
+          tl.to(Z, { scale: 1.08, duration: 4.408, ease: "none" }, 17.833);
+          tl.set(Z, { scale: 1.12 }, 22.29);
+          tl.to(Z, { scale: 1.14, duration: 2.2, ease: "none" }, 22.292);
+          tl.set(Z, { scale: 1 }, 24.54);
+          tl.to(Z, { scale: 1.03, duration: 1.283, ease: "none" }, 24.542);
+          tl.set(Z, { scale: 1.14 }, 25.873);
+          tl.to(Z, { scale: 1.154, duration: 0.292, ease: "none" }, 25.875);
+          tl.to(Z, { scale: 1.233, duration: 0.18, ease: "power3.out" }, 26.167);
+          tl.to(Z, { scale: 1.25, duration: 0.312, ease: "none" }, 26.347);
+          tl.set(Z, { scale: 1 }, 26.706);
+          tl.to(Z, { scale: 1.02, duration: 2.45, ease: "none" }, 26.708);
+          tl.set(Z, { scale: 1.1 }, 29.206);
+          tl.to(Z, { scale: 1.1, duration: 1.7, ease: "none" }, 29.208);
+          tl.set(Z, { scale: 1 }, 30.956);
+          tl.to(Z, { scale: 1.04, duration: 1.408, ease: "none" }, 30.958);
+          tl.set(Z, { scale: 1.14 }, 32.415);
+          tl.to(Z, { scale: 1.17, duration: 1.867, ease: "none" }, 32.417);
+          tl.set(Z, { scale: 1.02 }, 34.331);
+          tl.to(Z, { scale: 1.04, duration: 1.575, ease: "none" }, 34.333);
+          tl.set(Z, { scale: 1.14 }, 35.956);
+          tl.to(Z, { scale: 1.16, duration: 0.742, ease: "none" }, 35.958);
+          tl.set(Z, { scale: 1 }, 36.748);
+          tl.to(Z, { scale: 1.05, duration: 1.333, ease: "none" }, 36.75);
+          tl.to(Z, { scale: 1.137, duration: 0.18, ease: "power3.out" }, 38.083);
+          tl.to(Z, { scale: 1.18, duration: 1.103, ease: "none" }, 38.263);
+
+          // ── subtítulos: palabra activa en verde
+          tl.fromTo("#sub-0", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 0);
+          tl.set("#sub-0-w0", { color: "#C5F740" }, 0);
+          tl.set("#sub-0-w0", { color: "#FFFFFF" }, 0.167);
+          tl.set("#sub-0-w1", { color: "#C5F740" }, 0.167);
+          tl.set("#sub-0-w1", { color: "#FFFFFF" }, 0.333);
+          tl.set("#sub-0-w2", { color: "#C5F740" }, 0.333);
+          tl.fromTo("#sub-1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 0.667);
+          tl.set("#sub-1-w0", { color: "#C5F740" }, 0.708);
+          tl.set("#sub-1-w0", { color: "#FFFFFF" }, 0.958);
+          tl.set("#sub-1-w1", { color: "#C5F740" }, 0.958);
+          tl.set("#sub-1-w1", { color: "#FFFFFF" }, 1.375);
+          tl.set("#sub-1-w2", { color: "#C5F740" }, 1.375);
+          tl.fromTo("#sub-2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 2.208);
+          tl.set("#sub-2-w0", { color: "#C5F740" }, 2.25);
+          tl.set("#sub-2-w0", { color: "#FFFFFF" }, 2.417);
+          tl.set("#sub-2-w1", { color: "#C5F740" }, 2.417);
+          tl.set("#sub-2-w1", { color: "#FFFFFF" }, 2.5);
+          tl.set("#sub-2-w2", { color: "#C5F740" }, 2.5);
+          tl.fromTo("#sub-3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 2.667);
+          tl.set("#sub-3-w0", { color: "#C5F740" }, 2.708);
+          tl.set("#sub-3-w0", { color: "#FFFFFF" }, 2.958);
+          tl.set("#sub-3-w1", { color: "#C5F740" }, 2.958);
+          tl.set("#sub-3-w1", { color: "#FFFFFF" }, 3.125);
+          tl.set("#sub-3-w2", { color: "#C5F740" }, 3.125);
+          tl.fromTo("#sub-4", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 3.792);
+          tl.set("#sub-4-w0", { color: "#C5F740" }, 3.833);
+          tl.set("#sub-4-w0", { color: "#FFFFFF" }, 4.083);
+          tl.set("#sub-4-w1", { color: "#C5F740" }, 4.083);
+          tl.set("#sub-4-w1", { color: "#FFFFFF" }, 4.25);
+          tl.set("#sub-4-w2", { color: "#C5F740" }, 4.25);
+          tl.fromTo("#sub-5", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 4.833);
+          tl.set("#sub-5-w0", { color: "#C5F740" }, 4.875);
+          tl.set("#sub-5-w0", { color: "#FFFFFF" }, 5.042);
+          tl.set("#sub-5-w1", { color: "#C5F740" }, 5.042);
+          tl.set("#sub-5-w1", { color: "#FFFFFF" }, 5.208);
+          tl.set("#sub-5-w2", { color: "#C5F740" }, 5.208);
+          tl.fromTo("#sub-6", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 5.25);
+          tl.set("#sub-6-w0", { color: "#C5F740" }, 5.292);
+          tl.set("#sub-6-w0", { color: "#FFFFFF" }, 5.5);
+          tl.set("#sub-6-w1", { color: "#C5F740" }, 5.5);
+          tl.set("#sub-6-w1", { color: "#FFFFFF" }, 5.667);
+          tl.set("#sub-6-w2", { color: "#C5F740" }, 5.667);
+          tl.fromTo("#sub-7", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 6.208);
+          tl.set("#sub-7-w0", { color: "#C5F740" }, 6.25);
+          tl.set("#sub-7-w0", { color: "#FFFFFF" }, 6.5);
+          tl.set("#sub-7-w1", { color: "#C5F740" }, 6.5);
+          tl.set("#sub-7-w1", { color: "#FFFFFF" }, 6.792);
+          tl.set("#sub-7-w2", { color: "#C5F740" }, 6.792);
+          tl.fromTo("#sub-8", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 7.167);
+          tl.set("#sub-8-w0", { color: "#C5F740" }, 7.208);
+          tl.set("#sub-8-w0", { color: "#FFFFFF" }, 7.292);
+          tl.set("#sub-8-w1", { color: "#C5F740" }, 7.292);
+          tl.set("#sub-8-w1", { color: "#FFFFFF" }, 7.583);
+          tl.set("#sub-8-w2", { color: "#C5F740" }, 7.583);
+          tl.fromTo("#sub-9", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 7.708);
+          tl.set("#sub-9-w0", { color: "#C5F740" }, 7.75);
+          tl.set("#sub-9-w1", { color: "#C5F740" }, 8.542);
+          tl.set("#sub-9-w1", { color: "#FFFFFF" }, 8.708);
+          tl.set("#sub-9-w2", { color: "#C5F740" }, 8.708);
+          tl.fromTo("#sub-10", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 9.083);
+          tl.set("#sub-10-w0", { color: "#C5F740" }, 9.125);
+          tl.set("#sub-10-w0", { color: "#FFFFFF" }, 9.667);
+          tl.set("#sub-10-w1", { color: "#C5F740" }, 9.667);
+          tl.set("#sub-10-w1", { color: "#FFFFFF" }, 9.833);
+          tl.set("#sub-10-w2", { color: "#C5F740" }, 9.833);
+          tl.fromTo("#sub-11", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 10.125);
+          tl.set("#sub-11-w0", { color: "#C5F740" }, 10.167);
+          tl.set("#sub-11-w0", { color: "#FFFFFF" }, 10.542);
+          tl.set("#sub-11-w1", { color: "#C5F740" }, 10.542);
+          tl.set("#sub-11-w1", { color: "#FFFFFF" }, 10.875);
+          tl.set("#sub-11-w2", { color: "#C5F740" }, 10.875);
+          tl.fromTo("#sub-12", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 11.333);
+          tl.set("#sub-12-w0", { color: "#C5F740" }, 11.375);
+          tl.fromTo("#sub-13", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 11.875);
+          tl.set("#sub-13-w0", { color: "#C5F740" }, 11.917);
+          tl.set("#sub-13-w0", { color: "#FFFFFF" }, 12.167);
+          tl.set("#sub-13-w1", { color: "#C5F740" }, 12.167);
+          tl.fromTo("#sub-14", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 12.583);
+          tl.set("#sub-14-w0", { color: "#C5F740" }, 12.625);
+          tl.set("#sub-14-w0", { color: "#FFFFFF" }, 12.792);
+          tl.set("#sub-14-w1", { color: "#C5F740" }, 12.792);
+          tl.fromTo("#sub-15", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 13.083);
+          tl.set("#sub-15-w0", { color: "#C5F740" }, 13.125);
+          tl.set("#sub-15-w0", { color: "#FFFFFF" }, 13.292);
+          tl.set("#sub-15-w1", { color: "#C5F740" }, 13.292);
+          tl.fromTo("#sub-16", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 13.792);
+          tl.set("#sub-16-w0", { color: "#C5F740" }, 13.833);
+          tl.set("#sub-16-w0", { color: "#FFFFFF" }, 14);
+          tl.set("#sub-16-w1", { color: "#C5F740" }, 14);
+          tl.set("#sub-16-w1", { color: "#FFFFFF" }, 14.5);
+          tl.set("#sub-16-w2", { color: "#C5F740" }, 14.5);
+          tl.fromTo("#sub-17", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 14.583);
+          tl.set("#sub-17-w0", { color: "#C5F740" }, 14.625);
+          tl.set("#sub-17-w0", { color: "#FFFFFF" }, 15.042);
+          tl.set("#sub-17-w1", { color: "#C5F740" }, 15.042);
+          tl.set("#sub-17-w2", { color: "#C5F740" }, 15.833);
+          tl.fromTo("#sub-18", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 16.458);
+          tl.set("#sub-18-w0", { color: "#C5F740" }, 16.5);
+          tl.set("#sub-18-w0", { color: "#FFFFFF" }, 16.625);
+          tl.set("#sub-18-w1", { color: "#C5F740" }, 16.625);
+          tl.set("#sub-18-w1", { color: "#FFFFFF" }, 16.792);
+          tl.set("#sub-18-w2", { color: "#C5F740" }, 16.792);
+          tl.fromTo("#sub-19", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 17.083);
+          tl.set("#sub-19-w0", { color: "#C5F740" }, 17.125);
+          tl.set("#sub-19-w1", { color: "#C5F740" }, 17.458);
+          tl.fromTo("#sub-20", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 17.875);
+          tl.set("#sub-20-w0", { color: "#C5F740" }, 17.917);
+          tl.set("#sub-20-w0", { color: "#FFFFFF" }, 18.083);
+          tl.set("#sub-20-w1", { color: "#C5F740" }, 18.083);
+          tl.set("#sub-20-w1", { color: "#FFFFFF" }, 18.5);
+          tl.set("#sub-20-w2", { color: "#C5F740" }, 18.5);
+          tl.fromTo("#sub-21", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 18.583);
+          tl.set("#sub-21-w0", { color: "#C5F740" }, 18.625);
+          tl.set("#sub-21-w0", { color: "#FFFFFF" }, 19.292);
+          tl.set("#sub-21-w1", { color: "#C5F740" }, 19.292);
+          tl.set("#sub-21-w1", { color: "#FFFFFF" }, 19.833);
+          tl.set("#sub-21-w2", { color: "#C5F740" }, 19.833);
+          tl.fromTo("#sub-22", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 19.958);
+          tl.set("#sub-22-w0", { color: "#C5F740" }, 20);
+          tl.set("#sub-22-w0", { color: "#FFFFFF" }, 20.5);
+          tl.set("#sub-22-w1", { color: "#C5F740" }, 20.5);
+          tl.set("#sub-22-w1", { color: "#FFFFFF" }, 21.125);
+          tl.set("#sub-22-w2", { color: "#C5F740" }, 21.125);
+          tl.fromTo("#sub-23", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 21.417);
+          tl.set("#sub-23-w0", { color: "#C5F740" }, 21.458);
+          tl.set("#sub-23-w0", { color: "#FFFFFF" }, 21.667);
+          tl.set("#sub-23-w1", { color: "#C5F740" }, 21.667);
+          tl.set("#sub-23-w1", { color: "#FFFFFF" }, 22.25);
+          tl.set("#sub-23-w2", { color: "#C5F740" }, 22.25);
+          tl.fromTo("#sub-24", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 22.458);
+          tl.set("#sub-24-w0", { color: "#C5F740" }, 22.5);
+          tl.set("#sub-24-w0", { color: "#FFFFFF" }, 22.958);
+          tl.set("#sub-24-w1", { color: "#C5F740" }, 22.958);
+          tl.set("#sub-24-w1", { color: "#FFFFFF" }, 23.042);
+          tl.set("#sub-24-w2", { color: "#C5F740" }, 23.042);
+          tl.fromTo("#sub-25", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 23.167);
+          tl.set("#sub-25-w0", { color: "#C5F740" }, 23.208);
+          tl.set("#sub-25-w1", { color: "#C5F740" }, 23.75);
+          tl.set("#sub-25-w1", { color: "#FFFFFF" }, 24);
+          tl.set("#sub-25-w2", { color: "#C5F740" }, 24);
+          tl.fromTo("#sub-26", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 24.125);
+          tl.set("#sub-26-w0", { color: "#C5F740" }, 24.167);
+          tl.fromTo("#sub-27", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 24.583);
+          tl.set("#sub-27-w0", { color: "#C5F740" }, 24.625);
+          tl.set("#sub-27-w0", { color: "#FFFFFF" }, 24.792);
+          tl.set("#sub-27-w1", { color: "#C5F740" }, 24.792);
+          tl.set("#sub-27-w1", { color: "#FFFFFF" }, 24.958);
+          tl.set("#sub-27-w2", { color: "#C5F740" }, 24.958);
+          tl.fromTo("#sub-28", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 25.083);
+          tl.set("#sub-28-w0", { color: "#C5F740" }, 25.125);
+          tl.set("#sub-28-w0", { color: "#FFFFFF" }, 25.292);
+          tl.set("#sub-28-w1", { color: "#C5F740" }, 25.292);
+          tl.set("#sub-28-w1", { color: "#FFFFFF" }, 25.917);
+          tl.set("#sub-28-w2", { color: "#C5F740" }, 25.917);
+          tl.fromTo("#sub-29", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 26.125);
+          tl.set("#sub-29-w0", { color: "#C5F740" }, 26.167);
+          tl.fromTo("#sub-30", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 26.667);
+          tl.set("#sub-30-w0", { color: "#C5F740" }, 26.708);
+          tl.set("#sub-30-w0", { color: "#FFFFFF" }, 27.042);
+          tl.set("#sub-30-w1", { color: "#C5F740" }, 27.042);
+          tl.set("#sub-30-w1", { color: "#FFFFFF" }, 27.583);
+          tl.set("#sub-30-w2", { color: "#C5F740" }, 27.583);
+          tl.fromTo("#sub-31", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 28.125);
+          tl.set("#sub-31-w0", { color: "#C5F740" }, 28.167);
+          tl.set("#sub-31-w0", { color: "#FFFFFF" }, 28.542);
+          tl.set("#sub-31-w1", { color: "#C5F740" }, 28.542);
+          tl.set("#sub-31-w1", { color: "#FFFFFF" }, 29.208);
+          tl.set("#sub-31-w2", { color: "#C5F740" }, 29.208);
+          tl.fromTo("#sub-32", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 29.333);
+          tl.set("#sub-32-w0", { color: "#C5F740" }, 29.375);
+          tl.set("#sub-32-w0", { color: "#FFFFFF" }, 29.75);
+          tl.set("#sub-32-w1", { color: "#C5F740" }, 29.75);
+          tl.set("#sub-32-w1", { color: "#FFFFFF" }, 30.333);
+          tl.set("#sub-32-w2", { color: "#C5F740" }, 30.333);
+          tl.fromTo("#sub-33", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 30.917);
+          tl.set("#sub-33-w0", { color: "#C5F740" }, 30.958);
+          tl.set("#sub-33-w0", { color: "#FFFFFF" }, 31.125);
+          tl.set("#sub-33-w1", { color: "#C5F740" }, 31.125);
+          tl.set("#sub-33-w1", { color: "#FFFFFF" }, 31.458);
+          tl.set("#sub-33-w2", { color: "#C5F740" }, 31.458);
+          tl.fromTo("#sub-34", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 31.708);
+          tl.set("#sub-34-w0", { color: "#C5F740" }, 31.75);
+          tl.set("#sub-34-w0", { color: "#FFFFFF" }, 31.917);
+          tl.set("#sub-34-w1", { color: "#C5F740" }, 31.917);
+          tl.fromTo("#sub-35", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 32.292);
+          tl.set("#sub-35-w0", { color: "#C5F740" }, 32.333);
+          tl.set("#sub-35-w0", { color: "#FFFFFF" }, 32.792);
+          tl.set("#sub-35-w1", { color: "#C5F740" }, 32.792);
+          tl.set("#sub-35-w1", { color: "#FFFFFF" }, 32.958);
+          tl.set("#sub-35-w2", { color: "#C5F740" }, 32.958);
+          tl.fromTo("#sub-36", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 33.25);
+          tl.set("#sub-36-w0", { color: "#C5F740" }, 33.292);
+          tl.set("#sub-36-w0", { color: "#FFFFFF" }, 33.375);
+          tl.set("#sub-36-w1", { color: "#C5F740" }, 33.375);
+          tl.set("#sub-36-w1", { color: "#FFFFFF" }, 34.083);
+          tl.set("#sub-36-w2", { color: "#C5F740" }, 34.083);
+          tl.fromTo("#sub-37", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 34.5);
+          tl.set("#sub-37-w0", { color: "#C5F740" }, 34.542);
+          tl.set("#sub-37-w0", { color: "#FFFFFF" }, 34.875);
+          tl.set("#sub-37-w1", { color: "#C5F740" }, 34.875);
+          tl.set("#sub-37-w1", { color: "#FFFFFF" }, 35.292);
+          tl.set("#sub-37-w2", { color: "#C5F740" }, 35.292);
+          tl.fromTo("#sub-38", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 35.417);
+          tl.set("#sub-38-w0", { color: "#C5F740" }, 35.458);
+          tl.fromTo("#sub-39", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 35.958);
+          tl.set("#sub-39-w0", { color: "#C5F740" }, 36);
+          tl.set("#sub-39-w0", { color: "#FFFFFF" }, 36.333);
+          tl.set("#sub-39-w1", { color: "#C5F740" }, 36.333);
+          tl.set("#sub-39-w1", { color: "#FFFFFF" }, 36.417);
+          tl.set("#sub-39-w2", { color: "#C5F740" }, 36.417);
+          tl.fromTo("#sub-40", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 36.75);
+          tl.set("#sub-40-w0", { color: "#C5F740" }, 36.792);
+          tl.set("#sub-40-w0", { color: "#FFFFFF" }, 37.375);
+          tl.set("#sub-40-w1", { color: "#C5F740" }, 37.375);
+          tl.set("#sub-40-w1", { color: "#FFFFFF" }, 37.458);
+          tl.set("#sub-40-w2", { color: "#C5F740" }, 37.458);
+          tl.fromTo("#sub-41", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 37.708);
+          tl.set("#sub-41-w0", { color: "#C5F740" }, 37.75);
+          tl.set("#sub-41-w0", { color: "#FFFFFF" }, 37.917);
+          tl.set("#sub-41-w1", { color: "#C5F740" }, 37.917);
+          tl.set("#sub-41-w1", { color: "#FFFFFF" }, 38.083);
+          tl.set("#sub-41-w2", { color: "#C5F740" }, 38.083);
+          tl.fromTo("#sub-42", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 38.375);
+          tl.set("#sub-42-w0", { color: "#C5F740" }, 38.417);
+          tl.set("#sub-42-w0", { color: "#FFFFFF" }, 38.542);
+          tl.set("#sub-42-w1", { color: "#C5F740" }, 38.542);
+
+          const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.36, ease: "back.out(2)" }, t);
+          const rise = (sel, t, d = 0.35) => tl.fromTo(sel, { opacity: 0, y: 30, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: d, ease: "power3.out" }, t);
+          const settle = (sel, t, d) => tl.fromTo(sel, { scale: 1.06 }, { scale: 1, duration: d, ease: "power2.out" }, t);
+          const count = (id, to, t, d, fmt) => { const o = { v: 0 }; tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => { document.getElementById(id).textContent = fmt(o.v); } }, t); };
+          const money = (v) => "$0," + String(Math.round(v)).padStart(2, "0");
+
+          // ── S2 nuestros anuncios
+          settle("#ads-bg .in", 0.919, 0.5);
+          rise("#ads-chip", 0.97);
+          [0, 1, 2].forEach((i) => tl.fromTo("#adv-" + i, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.92 + i * 0.08));
+          // ── S3 el video del avatar se encoge a la tarjeta de la izquierda y vuelve
+          tl.fromTo("#video-wrap", { scale: 1, x: 0, y: 0, borderRadius: 0 }, { scale: 0.4028, x: 60, y: 440, borderRadius: 74, duration: 0.32, ease: "power3.inOut" }, 2.22);
+          tl.set("#shade", { opacity: 0 }, 2.22);
+          tl.set("#video-wrap", { scale: 1, x: 0, y: 0, borderRadius: 0 }, 4.914);
+          tl.set("#shade", { opacity: 1 }, 4.914);
+          tl.fromTo("#vs-frame", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 2.42);
+          pop("#vs-eq", 2.57);
+          pop("#vs-seed", 3.125);
+          // ── S4 cronómetro
+          settle("#watch .in", 6.74, 0.5);
+          tl.to("#watch-ring", { strokeDashoffset: 0, duration: 1, ease: "none" }, 6.792);
+          count("watch-num", 100, 6.792, 1, (v) => "0:0" + (v >= 100 ? "1.00" : "0." + String(Math.round(v)).padStart(2, "0")));
+          // ── S5 $0,68
+          rise("#c68-card", 9.645);
+          count("c68-num", 68, 10.667, 0.6, money);
+          // ── S6 / S8 chips
+          rise("#chip100-c", 11.895);
+          rise("#chip20-c", 16.478);
+          // ── S7 galería + $0,67
+          settle("#gal .in", 13.8, 0.5);
+          tl.fromTo("#gal-img", { scale: 1.0 }, { scale: 1.1, duration: 2.658, ease: "none" }, 13.8);
+          rise("#gal-price", 14.1);
+          count("gal-num", 67, 14.792, 0.7, money);
+          // ── S10 íconos: de 4 a 30
+          settle("#icons .in", 20.44, 0.5);
+          for (let i = 0; i < 30; i++) {
+            const t0 = i < 4 ? 20.49 + i * 0.06 : 21.02 + (i - 4) * 0.035;
+            tl.fromTo("#ad-" + i, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, t0);
+          }
+          count("icons-num", 30, 21.02, 1.01, (v) => String(Math.max(4, Math.round(v))));
+          // ── S11 se iluminan varios ganadores
+          tl.to("#icons-num", { opacity: 0, y: -20, duration: 0.2 }, 22.292);
+          tl.fromTo("#icons-win", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 22.392);
+          tl.to("#icons-tag", { opacity: 0, duration: 0.15 }, 22.292);
+          const W = [2,7,11,14,19,23,27];
+          for (let i = 0; i < 30; i++) if (!W.includes(i)) tl.to("#ad-" + i, { opacity: 0.3, duration: 0.4 }, 22.392);
+          W.forEach((i, k) => {
+            const t = 22.442 + k * 0.13;
+            tl.to("#wl-" + i, { opacity: 1, duration: 0.12 }, t);
+            tl.fromTo("#ad-" + i, { scale: 1 }, { scale: 1.18, duration: 0.14, yoyo: true, repeat: 1, ease: "power2.out" }, t);
+          });
+          // ── S12 curva
+          rise("#curve-card", 24.562);
+          tl.to("#curve-line", { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, 24.742);
+          tl.fromTo("#curve-fill", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 25.042);
+          pop("#curve-dot", 25.892);
+          // ── S13 Hotmart
+          pop("#hot-tag", 27.858);  // cuando el panel pasa de 7 a 14 días (930 → 1.759 US$)
+          // ── S14 chat del cliente
+          settle("#chat .in", 29.208, 0.5);
+          tl.fromTo("#chat-img", { scale: 1 }, { scale: 1.06, duration: 1.75, ease: "none" }, 29.208);
+          pop("#chat-tag", 29.708);
+          // ── logo + días + CTA
+          rise("#logo1-img", 32.437);
+          rise("#days-tag", 34.353);
+          rise("#day1", 34.433);
+          rise("#day2", 34.633);
+          rise("#cta-logo", 36.77);
+          pop("#cta-btn", 36.85);
+          tl.to("#cta-btn", { y: 14, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 38.083);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["anuncio-03"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>

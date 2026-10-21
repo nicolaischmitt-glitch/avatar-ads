@@ -1,0 +1,65 @@
+{
+  "task": "Generate one photorealistic still frame that looks like a paused vertical video a real man recorded of himself with his iPhone front camera, in his office, to talk to his audience. It will be used as the first frame of a talking-head video, so it must be indistinguishable from a real phone recording.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone front-camera video frame, not a professional photo"
+  },
+  "subject": {
+    "identity": "an original, non-famous Ecuadorian man (Latin American mestizo), 36 years old",
+    "face": "warm light-brown skin with natural texture (visible pores, slight unevenness, faint under-eye lines), dark brown eyes, defined but friendly features, slight natural facial asymmetry",
+    "hair": "short black hair, neat low fade on the sides, slightly textured on top, naturally styled, a few loose strands",
+    "facial_hair": "short, well-groomed black beard, closely trimmed, natural edges",
+    "accessories": "no glasses, simple steel wristwatch on the left wrist, no other jewelry",
+    "build": "average, healthy build"
+  },
+  "wardrobe": {
+    "top": "dark olive green casual button-up shirt in soft cotton, top button undone, sleeves rolled up to the forearms, natural fabric wrinkles",
+    "style": "smart casual entrepreneur, relaxed and approachable, nothing flashy, no visible logos"
+  },
+  "pose_and_expression": {
+    "position": "seated at his desk, upper body leaning very slightly toward the camera",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "calm, confident and friendly, a subtle natural half-smile, as if about to start talking; mouth closed or barely parted, relaxed jaw",
+    "hands": "both hands resting naturally on the desk in the lower part of the frame, fingers relaxed and loosely interlaced, all fingers anatomically correct and fully visible",
+    "posture": "shoulders relaxed and square to the camera, natural and unposed"
+  },
+  "environment": {
+    "location": "his own small, modern, bright office during the day",
+    "background": "clean white walls, white suspended ceiling panels visible at the top, a light grey office chair behind him, a low white cabinet against the back wall with a small potted green plant on it, uncluttered; no window visible at his sides",
+    "foreground": "the corner of an open silver laptop at the bottom right edge of the frame, slightly out of focus, on a light grey desk",
+    "atmosphere": "tidy, real, lived-in workspace, not a staged studio set"
+  },
+  "camera": {
+    "device": "iPhone front camera propped on the desk at chest-to-eye height, slightly below eye level",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "medium close-up from the waist up, subject centered horizontally; his head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty wall and ceiling above his head for on-screen graphics",
+    "focus": "face sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft, diffused frontal daylight from a large window directly in front of him, behind the phone, lighting his whole face evenly from the front",
+    "fill": "neutral white overhead office ceiling panels that brighten the room evenly",
+    "mood": "bright, clean and realistic; both sides of the face equally lit with the same brightness and no side shadows, only very soft natural shading under the chin and nose; accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "must look like a real person recorded on a phone, not AI-generated and not a stock photo",
+    "real skin texture, no smoothing, no beauty filter, no plastic or waxy skin",
+    "natural fabric folds and wrinkles on the shirt",
+    "correct human anatomy: two hands, five fingers each, natural proportions",
+    "realistic eyes with natural catchlights from the window in front of him",
+    "even, symmetrical illumination on the face, as when someone films himself facing a window"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, watermarks, UI elements",
+    "glasses",
+    "side lighting, split lighting, one half of the face darker than the other, strong shadows on one side of the face, a window beside him lighting the face from the side",
+    "backlighting, silhouette, overexposed background",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, asymmetrical eyes, warped face",
+    "smooth or airbrushed skin, 3D render, cartoon, illustration, CGI look",
+    "suit and tie, formal wear, flashy clothes, visible brand logos",
+    "cluttered background, other people, mirrors",
+    "a likeness of any real or famous person"
+  ]
+}

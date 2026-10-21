@@ -1,0 +1,20 @@
+# clip  inicio  fin   (segundos dentro del clip; unir-clips los ajusta a fotogramas de 24 fps)
+# Inicio/fin medidos por nivel de audio (la transcripción de Parakeet llega ~0,4 s adelantada).
+# Pausas internas > 0,3 s recortadas a ~0,15 s. Clip 3: se quita "Nicolai" (1,64–2,29). Cada corte interno se tapa con zoom o B-roll.
+1  0.40  5.32
+2  0.42  5.13
+2  5.34  7.58
+3  0.40  1.64
+3  2.29  5.65
+3  5.92  7.30
+4  0.42  4.87
+4  5.08  7.34
+5  0.38  1.69
+5  2.14  2.95
+5  3.24  5.73
+5  5.90  7.68
+6  0.50  1.95
+6  2.20  4.11
+6  4.38  5.99
+6  6.20  7.02
+6  7.34  10.00
