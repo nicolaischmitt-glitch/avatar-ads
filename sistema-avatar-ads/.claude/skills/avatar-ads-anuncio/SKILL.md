@@ -13,7 +13,7 @@ Antes de empezar, lee `negocio/negocio.md`, `negocio/marca.md` y `negocio/aprend
 | 1 | Brief | carpeta del anuncio + `brief.md` | no |
 | 2 | Ángulo y formato | ángulo y formato elegidos | sí (elige) |
 | 3 | Guion | `guion.md` + `guion.txt` | **sí** |
-| 4 | Avatar | prompt de Nano Banana → `avatar/avatar.jpg` | **sí** (elige la imagen) |
+| 4 | Avatar | 3 caminos (tengo uno · referencia · desde cero) → ficha → prompt de Nano Banana Pro → `avatar/avatar.jpg` | **sí** (ficha e imagen) |
 | 5 | Prompts de video | `prompts-flow.md` listo para Flow | no |
 | 6 | Revisión de clips | lista de clips buenos y a regenerar | sí, si hay que regenerar |
 | 7 | Storyboard | `storyboard/storyboard.png` | **sí** |
@@ -58,11 +58,33 @@ Crea la carpeta y guarda `brief.md` (5–8 líneas).
 Si el usuario trae su propio guion: respeta su estructura y su orden; solo pule claridad, persuasión y que se pueda generar.
 
 ## 4 · Avatar
-1. Si el negocio ya tiene un avatar aprobado (`negocio/avatar/`) y el usuario quiere usarlo, cópialo a `avatar/avatar.jpg` y salta al paso 5.
-2. Si no, lee completo `sistema/prompts/master-prompt-imagen.md`. Pregunta solo lo necesario (hombre o mujer, edad aproximada, dónde graba: oficina, carro, cocina…; si tiene una foto de referencia del ángulo o el lugar, mejor). Escribe el JSON en inglés con su estructura fija → `avatar/prompt-nano-banana.json` y muéstralo en un bloque listo para copiar.
-3. Instrucciones para el usuario: abrir Nano Banana, poner 9:16, pegar el JSON, generar 4 variaciones, elegir una y guardarla como `anuncios/NN-slug/avatar/avatar.jpg`.
-4. Cuando la deje, **mírala** (ábrela con Read) y revisa: manos y dedos, ojos, dientes, piel no plástica, luz pareja en la cara, sin letras inventadas en el fondo, espacio libre arriba de la cabeza. Si algo falla, dile qué corregir o ajusta el prompt.
-5. Si el usuario quiere reutilizar este avatar en otros anuncios, cópialo a `negocio/avatar/` y anótalo en `marca.md`.
+Pregunta: **"¿Cómo quieres crear a tu avatar?"** con tres opciones (si el negocio ya tiene un avatar en `negocio/avatar/`, menciónalo en la opción 1):
+1. **Ya tengo un avatar**: uno aprobado antes o una imagen que trae el usuario.
+2. **Partir de una referencia**: una foto o un frame de un video con el ángulo, el lugar y la luz que le gustan; se copia la escena con una persona original.
+3. **Desde cero** *(recomendado: es el que da la mejor calidad)*.
+
+### Camino 1 · Ya tengo un avatar
+Copia la imagen a `avatar/avatar.jpg`, revísala (punto "Revisión" de abajo) y salta al paso 5. Si la imagen no sirve para Flow (manos fuera de cuadro, boca abierta, sin espacio arriba), dile qué falla y ofrécele el camino 3.
+
+### Camino 2 · Partir de una referencia
+Pide la imagen y guárdala en `avatar/referencia.jpg`; mírala. Haz las mismas 3 preguntas del camino 3 (la escena ya la pone la referencia, así que la tercera es solo para confirmar el lugar). En el JSON usa la frase opcional del `task` del master ("If a reference image is attached, copy its camera angle, framing, setting and lighting, but create a completely different original person") y dile al usuario que adjunte la referencia en Nano Banana junto con el prompt. Nunca copiar la cara de la persona de la referencia.
+
+### Camino 3 · Desde cero
+1. **Solo 3 preguntas, con opciones**, de a una:
+   - ¿Hombre o mujer?
+   - ¿Edad aproximada? (20–30 · 30–40 · 40–50 · 50+)
+   - ¿Dónde graba? Ofrece 4–5 lugares que tengan sentido para su negocio (oficina, carro, cocina, sala, consultorio, gimnasio…).
+   No preguntes el acento: ya está en `marca.md`.
+2. **Ficha del avatar**: con esas respuestas y `negocio.md`, propón el resto pensando en **alguien en quien su cliente ideal confiaría** (el avatar es quien vende este producto): nacionalidad acorde al público, rasgos, pelo, ropa concreta (color, tela), estilo, 3–5 objetos del fondo y el objeto en primer plano. Muéstrala en 6–8 líneas cortas, por ejemplo:
+   > **Valentina, 32 años, colombiana** · pelo castaño ondulado suelto · blusa de lino blanca, estilo casual cuidado · graba en su cocina luminosa: frutas en la mesa, plantas, repisa de madera · taza en primer plano · luz de ventana frente a ella.
+   Pregunta "¿Va así o cambias algo?" y ajusta lo que pida ("más joven", "con lentes", "en su consultorio").
+3. Con la ficha aprobada, lee completo `sistema/prompts/master-prompt-imagen.md` y escribe el JSON en inglés con su estructura fija → `avatar/prompt-nano-banana.json`. Muéstralo en un bloque listo para copiar.
+
+### Generar y revisar (caminos 2 y 3)
+1. Instrucciones para el usuario: abrir **Nano Banana Pro**, poner el formato 9:16, pegar el JSON (y adjuntar la referencia en el camino 2), generar 4 variaciones, elegir una y guardarla como `anuncios/NN-slug/avatar/avatar.jpg`.
+2. **Revisión** (todos los caminos): abre la imagen con Read y revisa manos y dedos, ojos, dientes, piel no plástica, luz pareja en la cara, sin letras inventadas en el fondo, boca cerrada, espacio libre arriba de la cabeza. Si algo falla, dile qué corregir o ajusta el prompt.
+3. Si el generador bloquea el prompt, sigue la sección "Si el generador lo bloquea" del master.
+4. Si el usuario quiere reutilizar este avatar en otros anuncios, cópialo a `negocio/avatar/` y anota su ficha en `marca.md`.
 
 ## 5 · Prompts de video (Google Flow)
 1. Lee completo `sistema/prompts/master-prompt-video.txt`: sus reglas mandan en este paso.

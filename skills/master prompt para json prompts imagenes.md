@@ -5,8 +5,8 @@ Probada por primera vez en el anuncio 03 (21 oct 2026): el resultado se ve como 
 Prompt de ejemplo: `anuncios/03-calidad-seedance-centavos/avatar/prompt-nano-banana.json` · resultado: `…/avatar/avatar.jpg`.
 
 ## 1. Cuándo usarla
-- Cuando el avatar se crea desde cero, sin un video ni un frame real de referencia.
-- La alternativa (el método principal del curso) es partir de un frame de un UGC real y cambiar solo al personaje. Esta estructura sirve cuando no hay referencia o cuando se quiere un personaje y un escenario totalmente propios.
+- **Es el método principal** (decisión del 21 oct 2026): crear el avatar desde cero con este JSON en **Nano Banana Pro** dio mejor calidad que partir de un frame de un UGC real y cambiar al personaje (anuncios 03 y 04).
+- Partir de una referencia (una foto con el ángulo, el lugar y la luz buscados) sigue siendo una opción: se adjunta la imagen y se usa la frase opcional del `task`, creando siempre a una persona original.
 
 ## 2. Estructura fija
 Conserva siempre las mismas claves, la misma jerarquía y el mismo orden. El prompt se escribe **en inglés** (Nano Banana lo sigue mejor). Solo cambian los valores marcados como **variables**.
@@ -102,7 +102,7 @@ Conserva siempre las mismas claves, la misma jerarquía y el mismo orden. El pro
 
 8. **Ángulo según el lugar** (anuncio 04, 21 oct 2026): en una oficina, el teléfono apoyado de frente funciona. En un **carro**, el frontal con todo el volante se ve falso: mejor el selfie sostenido con la mano, un poco por encima de los ojos y en tres cuartos, sin volante ni tablero en cuadro. Pedir una expresión relajada (sonrisa leve, sin dientes); la sonrisa grande se ve posada.
 9. **"Premium" hay que describirlo**: la palabra sola da un interior básico beige. Nombrar materiales y colores concretos: cuero napa coñac con costura acolchada, techo negro, techo panorámico de vidrio.
-10. **Mejor aún, partir de una referencia real** (el método principal del curso): adjuntar una foto con el ángulo, el carro y la luz buscados, y pedir que copie todo eso pero con una mujer distinta y original.
+10. **Opción: partir de una referencia real**: adjuntar una foto con el ángulo, el carro y la luz buscados, y pedir que copie todo eso pero con una mujer distinta y original.
 
 ### Si el generador lo bloquea ("podría infringir nuestras políticas")
 Pasó con la v1 del anuncio 04 (mujer en un carro). Evitar:
@@ -113,6 +113,6 @@ Pasó con la v1 del anuncio 04 (mujer en un carro). Evitar:
 Si sigue bloqueando en Flow, probar en la app de Gemini o en Google AI Studio.
 
 ## 5. Al generar
-1. Pon 9:16 también en la interfaz de Nano Banana (algunos modos ignoran el aspect ratio del JSON).
+1. Usa **Nano Banana Pro** y pon 9:16 también en su interfaz (algunos modos ignoran el aspect ratio del JSON).
 2. Genera 4 variaciones y revisa con lupa las manos, los ojos, los dientes, la textura de la piel y el texto del fondo (no debe haber letras inventadas).
 3. Guarda la elegida en la carpeta del anuncio o del reel (`avatar/avatar.jpg`). Es el primer frame de todos los clips de esa toma.

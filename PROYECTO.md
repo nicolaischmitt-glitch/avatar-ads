@@ -8,7 +8,7 @@ Avatar Ads 1.0/
 ├── CLAUDE.md · PROYECTO.md · BASE-CONOCIMIENTO.md · README.md · .gitignore
 │                        (PROYECTO = este archivo · BASE-CONOCIMIENTO = marketing · .gitignore = qué NO va a GitHub)
 ├── marca/               ← logo original (logo-avatar-ads.png)
-├── landing/             ← la página. ESTA carpeta completa es la que se sube a Netlify
+├── landing/             ← la página. ESTA carpeta completa es la que se publica (GitHub Pages, con publicar-landing.mjs)
 │   ├── index.html
 │   ├── videos/          ← videos y portadas que usa la página (versiones comprimidas para web)
 │   ├── resultados/      ← pruebas reales: video del panel de ventas de Hotmart, 3 mensajes de clientes y captura de Meta (CPL $0,35)
@@ -120,11 +120,12 @@ Nombre oficial: **Sistema Avatar Ads**. Vive en **Claude Code** (app de escritor
 - Entrega al alumno: un `.zip` de la carpeta `sistema-avatar-ads/` (sin `anuncios/` propios) en el área de alumno; las actualizaciones, igual (skill `avatar-ads-actualizar`). Dónde se aloja el zip: por definir.
 
 ## Publicación
-Sitio en Netlify: https://taller.droilab.com/ — se sube la carpeta `landing/` completa (`index.html` + `videos/`, ~16 MB).
-Nunca subir la carpeta raíz del proyecto: contiene clips y renders pesados que no deben publicarse.
-Publicación automática con Netlify CLI (instalada y con sesión iniciada; proyecto vinculado al sitio `avatarads`, id `6a82e943-68a7-43f0-9346-abf24c07d754`, en `.netlify/`).
-Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porque los scripts `.ps1` están bloqueados):
-`netlify.cmd deploy --prod --dir landing`
+Sitio en **GitHub Pages** (desde el 21 oct 2026; antes Netlify, que pausó las publicaciones al agotar los créditos del plan gratis): https://taller.droilab.com/
+- Repositorio **público** aparte, solo con la landing: https://github.com/nicolaischmitt-glitch/avatar-ads-landing (el repo principal sigue privado). Nunca publicar ahí nada que no esté en `landing/`.
+- Publicar, desde la raíz del proyecto: `node publicar-landing.mjs "qué cambió"` → copia `landing/` a `.deploy-landing/` (repo aparte, ignorado), añade `CNAME` y `.nojekyll`, y sube. Se actualiza en ~1 min; sin límite de publicaciones.
+- DNS (Namecheap, `droilab.com` → Advanced DNS): registro CNAME `taller` → `nicolaischmitt-glitch.github.io.`
+- GitHub CLI instalada (`C:\Program Files\GitHub CLI\gh.exe`) y con sesión de `nicolaischmitt-glitch`.
+- Netlify (sitio `avatarads`, id `6a82e943-68a7-43f0-9346-abf24c07d754`) queda solo como respaldo; ya no se usa para publicar.
 
 ## Respaldo (GitHub + Google Drive)
 - **GitHub (repositorio privado, https://github.com/nicolaischmitt-glitch/avatar-ads):** documentos, skills, guiones, prompts, lead magnets, proyectos de edición y la landing completa (con sus videos). Es la copia con historial: cada commit es un punto al que se puede volver. Qué se excluye: ver `.gitignore`.
@@ -135,7 +136,7 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
   `mklink /J ".claude\skills\reels-avatar-ads" "skills\reels-avatar-ads"` ·
   `mklink /J ".claude\skills\lead-magnets-avatar-ads" "skills\lead-magnets-avatar-ads"` ·
   `mklink /J ".claude\skills\carruseles-avatar-ads" "skills\carruseles-avatar-ads"`
-  Netlify: `netlify.cmd login` y `netlify.cmd link --id 6a82e943-68a7-43f0-9346-abf24c07d754`.
+  Landing: instalar GitHub CLI (`winget install GitHub.cli`), `gh auth login --web` y publicar con `node publicar-landing.mjs` (crea `.deploy-landing/` solo).
 
 ## Pendientes de la landing
 - [x] Links de los botones CTA → checkout de Hotmart: https://pay.hotmart.com/G108061829I?checkoutMode=10 (los 4 botones).

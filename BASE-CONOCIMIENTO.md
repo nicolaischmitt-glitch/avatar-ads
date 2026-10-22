@@ -60,13 +60,12 @@ No prometer "3 anuncios listos" al final del taller.
 El sistema propio que se enseña en el taller y que el alumno se lleva: vive en Claude Code, le hace preguntas y lo guía de la idea al anuncio editado, con la base de conocimiento de su negocio siempre actualizada y la edición automatizada. Se actualiza con cada formato y anuncio nuevo que creamos. En el copy: "el Sistema Avatar Ads", "el mismo sistema que uso para crear mis anuncios".
 
 ### El método (lo que se enseña y se demuestra en el contenido)
-Es la columna vertebral del contenido orgánico; el reel 01 lo cuenta así:
-1. **No crear desde cero.** Si la IA inventa todo, parece IA.
-2. **Partir de un video real de referencia** (UGC real de redes) y fijarse en ángulo, luz, postura y objetos.
-3. **Capturar el frame** de ese momento.
-4. **Cambiar solo al personaje** con IA de imagen (p. ej. ChatGPT), sin tocar la escena.
-5. **Animar en Google Flow** con un prompt JSON estructurado (reglas en `skills/master prompt para json prompts videos.txt`): actuación natural, gesticulación sincronizada, continuidad entre clips, look de grabación con iPhone.
-6. **Editar** con ritmo, subtítulos, cutaways, producto y CTA.
+**Método actual (decisión del 21 oct 2026):** el avatar se crea **desde cero** con un prompt JSON estructurado (`skills/master prompt para json prompts imagenes.md`) en **Nano Banana Pro**. Con los anuncios 03 y 04 dio mejor calidad que partir de un frame real. Lo que lo hace creíble no es la referencia, sino el prompt: pedir un frame de video de iPhone (no una foto), imperfección controlada (poros, asimetría, arrugas de la ropa, ruido del sensor), luz frontal pareja, un lugar concreto y vivido, y manos visibles con la boca cerrada para animarlo bien.
+1. **Crear al avatar desde cero** con el JSON en Nano Banana Pro (3 decisiones: hombre o mujer, edad, dónde graba; el resto lo propone el sistema). Opción: partir de una foto de referencia del ángulo y el lugar, siempre con una persona original.
+2. **Animar en Google Flow** con un prompt JSON estructurado (reglas en `skills/master prompt para json prompts videos.txt`): actuación natural, gesticulación sincronizada, continuidad entre clips, look de grabación con iPhone.
+3. **Editar** con ritmo, subtítulos, cutaways, producto y CTA (automatizado con el Sistema Avatar Ads).
+
+*Método anterior* (el que cuenta el reel 01 y su lead magnet PROMPT): no crear desde cero, partir de un video UGC real, capturar el frame y cambiar solo al personaje. Ya no es el principal; no volver a presentarlo como "la forma correcta" en contenido nuevo.
 
 ## 4. Público
 
@@ -90,7 +89,7 @@ Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a ne
 Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los hooks son *(propuesta)*; adaptarlos a la voz del guion.
 
 1. **Hiperrealismo / "que no parezca IA"** (ángulo principal del contenido orgánico)
-   La diferencia está en el método: partir de referencias reales, no inventar desde cero.
+   La diferencia está en el prompt: pedirle a la IA un frame de video real de iPhone, con imperfecciones, luz y lugar concretos (no "una foto bonita").
    - "Si tus videos con IA se ven falsos, es porque los estás creando así."
    - "Este anuncio no lo grabó nadie."
    - "¿Persona real o IA? Mira las manos."
@@ -130,7 +129,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 | Objeción | Respuesta (basada en la oferta) |
 |---|---|
 | "Necesito herramientas caras." | No. Avatar Ads usa un sistema económico con alternativas de bajo costo: cada anuncio sale a menos de un dólar. |
-| "Los videos con IA se ven falsos." | Por eso el método parte de referencias UGC reales y cambia solo al personaje; los ejemplos de la landing están hechos así. |
+| "Los videos con IA se ven falsos." | Se ven falsos cuando el prompt pide perfección. El sistema crea al avatar con un prompt que pide un video real de iPhone: piel con textura, luz natural, un lugar vivido. |
 | "No puedo conectarme a una clase." | Tienes la grabación completa del taller y acceso vitalicio al curso. |
 | "¿Y si sube el precio?" | Si entras en la apertura, nada cambia para ti: acceso de por vida y todas las actualizaciones sin pagar más. |
 | "¿Por qué en vivo?" | Es la apertura: se muestra el proceso en tiempo real y se resuelven dudas en vivo. |

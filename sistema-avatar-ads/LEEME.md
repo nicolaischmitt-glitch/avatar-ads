@@ -12,7 +12,7 @@ Tu copiloto para crear anuncios UGC hiperrealistas con inteligencia artificial, 
 1. **Brief** — qué vendes, a quién y con qué objetivo.
 2. **Ángulo y formato** — Claude te propone 3 ángulos con su hook; tú eliges.
 3. **Guion** — hook, problema, solución, prueba y CTA, dividido en clips.
-4. **Avatar** — Claude escribe el prompt para Nano Banana; tú generas la imagen y eliges.
+4. **Avatar** — usas uno que ya tienes, partes de una foto de referencia o lo creas desde cero (lo recomendado) respondiendo 3 preguntas. Claude te propone cómo será la persona, escribe el prompt para Nano Banana Pro y tú generas la imagen y eliges.
 5. **Prompts de video** — un prompt por clip, listo para pegar en Google Flow.
 6. **Revisión de clips** — Claude revisa tus clips y te dice cuáles regenerar.
 7. **Storyboard** — decides cómo quieres la edición, escena por escena.

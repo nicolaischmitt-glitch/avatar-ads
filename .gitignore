@@ -36,3 +36,6 @@ archivo/
 node_modules/
 Thumbs.db
 desktop.ini
+
+# Copia de publicación de la landing (repo aparte: avatar-ads-landing, ver publicar-landing.mjs)
+.deploy-landing/
