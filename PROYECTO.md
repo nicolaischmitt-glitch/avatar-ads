@@ -43,6 +43,7 @@ Avatar Ads 1.0/
 │                          CLAUDE.md · LEEME.md · INSTALACION.md · .claude/skills/ (inicio, anuncio, actualizar)
 │                          sistema/ (prompts, formatos, scripts, checklists; VERSION + CAMBIOS.md) · negocio/ · anuncios/
 ├── lead-magnets/        ← un lead magnet por palabra clave (índice en lead-magnets/README.md)
+├── tracking/            ← tracking de Meta Ads: configuración actual (pixel + Hotmart nativo) y plan B con n8n (LEEME.md)
 ├── referencias/         ← videos de referencia de otros creadores y sus desgloses (ref01, ref02, ejemplos de voz en off)
 ├── skills/
 │   ├── master prompt para json prompts videos.txt ← reglas LOCKED IN de los prompts JSON de Google Flow
@@ -125,6 +126,7 @@ Sitio en **GitHub Pages** (desde el 21 oct 2026; antes Netlify, que pausó las p
 - Publicar, desde la raíz del proyecto: `node publicar-landing.mjs "qué cambió"` → copia `landing/` a `.deploy-landing/` (repo aparte, ignorado), añade `CNAME` y `.nojekyll`, y sube. Se actualiza en ~1 min; sin límite de publicaciones.
 - DNS (Namecheap, `droilab.com` → Advanced DNS): registro CNAME `taller` → `nicolaischmitt-glitch.github.io.`
 - GitHub CLI instalada (`C:\Program Files\GitHub CLI\gh.exe`) y con sesión de `nicolaischmitt-glitch`.
+- **Tracking de Meta** (22 oct 2026): pixel `602723701857782` en la landing → `PageView`, `ViewContent` (cuando la oferta de $27 entra en pantalla) y evento propio `ClicCheckout` en los botones (no `InitiateCheckout`: ese lo envía Hotmart). Los botones copian los parámetros de la visita (`fbclid`, `utm_*`) al link de Hotmart para atribuir la compra. En Hotmart va el mismo pixel + API de conversiones (token generado en Events Manager; el token **nunca** va en la landing ni en el repo). La landing no tiene API de conversiones propia (GitHub Pages no tiene servidor). Decisión: lanzamiento con la API nativa de Hotmart; si no atribuye bien, plan B con n8n. Todo el detalle, las correcciones y el script en `tracking/LEEME.md`.
 - Netlify (sitio `avatarads`, id `6a82e943-68a7-43f0-9346-abf24c07d754`) queda solo como respaldo; ya no se usa para publicar.
 
 ## Respaldo (GitHub + Google Drive)

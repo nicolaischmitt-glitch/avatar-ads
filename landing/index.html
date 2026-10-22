@@ -6,6 +6,17 @@
 <title>Avatar Ads 1.0</title>
 <meta name="description" content="Taller en vivo de Avatar Ads 1.0: aprende a crear anuncios hiperrealistas con IA para escalar tus ventas u ofrecerlo como servicio. Cada anuncio a menos de un dólar. $27, pago único.">
 <script>document.documentElement.classList.add("js")</script>
+<!-- Meta Pixel (el mismo pixel está configurado en Hotmart con la API de conversiones) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '602723701857782');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=602723701857782&ev=PageView&noscript=1"></noscript>
 <meta name="theme-color" content="#020604">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23020604%27/%3E%3Cpath d=%27M24 18l24 14-24 14z%27 fill=%27%23C5F740%27/%3E%3C/svg%3E">
 <meta property="og:image" content="https://taller.droilab.com/logo-avatar-ads.png">
@@ -764,6 +775,27 @@
     if (lb.showModal) lb.showModal(); else window.open(img.src, "_blank");
   }));
   lb.addEventListener("click", () => lb.close());
+
+  // Tracking de Meta: los botones de Hotmart llevan los parámetros de la visita (fbclid, utm_*)
+  // para que la compra se atribuya al anuncio; el clic se mide con un evento propio
+  // (InitiateCheckout ya lo envía Hotmart al abrir el checkout).
+  const visit = new URLSearchParams(location.search);
+  document.querySelectorAll('a[href^="https://pay.hotmart.com/"]').forEach((a) => {
+    const url = new URL(a.href);
+    visit.forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+    a.href = url.toString();
+    a.addEventListener("click", () => { if (window.fbq) fbq("trackCustom", "ClicCheckout"); });
+  });
+  // ViewContent: cuando la oferta ($27) entra en pantalla, una sola vez
+  if ("IntersectionObserver" in window) {
+    const vio = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        if (window.fbq) fbq("track", "ViewContent", { content_name: "Avatar Ads 1.0", value: 27, currency: "USD" });
+        vio.disconnect();
+      }
+    }, { threshold: 0.3 });
+    vio.observe(pricing);
+  }
 </script>
 </body>
 </html>
