@@ -1,0 +1,56 @@
+[
+  {
+    "id": "w0",
+    "text": "Así",
+    "start": 0.32,
+    "end": 0.64
+  },
+  {
+    "id": "w1",
+    "text": "se",
+    "start": 0.96,
+    "end": 1.2
+  },
+  {
+    "id": "w2",
+    "text": "escalan",
+    "start": 1.2,
+    "end": 1.84
+  },
+  {
+    "id": "w3",
+    "text": "productos",
+    "start": 1.84,
+    "end": 2.32
+  },
+  {
+    "id": "w4",
+    "text": "digitales",
+    "start": 2.32,
+    "end": 3.04
+  },
+  {
+    "id": "w5",
+    "text": "y",
+    "start": 3.2,
+    "end": 3.44
+  },
+  {
+    "id": "w6",
+    "text": "también",
+    "start": 3.44,
+    "end": 3.68
+  },
+  {
+    "id": "w7",
+    "text": "servicios",
+    "start": 3.92,
+    "end": 4.56
+  },
+  {
+    "id": "w8",
+    "text": "tradicionales.",
+    "start": 4.56,
+    "end": 5.84
+  }
+]

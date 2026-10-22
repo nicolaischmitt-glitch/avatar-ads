@@ -43,12 +43,15 @@ const files = fs.statSync(target).isDirectory()
   : [target];
 for (const f of files) {
   const db = levels(f);
-  const on = db.findIndex((d) => d > -35);
-  const off = db.length - 1 - [...db].reverse().findIndex((d) => d > -35);
+  // umbral relativo al ruido de fondo de ESE clip (carro, ambiente): piso = percentil 15; voz = piso + 10 dB
+  const piso = [...db].sort((a, b) => a - b)[Math.floor(db.length * 0.15)];
+  const thr = Math.max(-42, piso + 10);
+  const on = db.findIndex((d) => d > thr);
+  const off = db.length - 1 - [...db].reverse().findIndex((d) => d > thr);
   const gaps = []; let st = -1;
   for (let i = on; i <= off; i++) {
-    if (db[i] < -38) { if (st < 0) st = i; }
+    if (db[i] < thr - 3) { if (st < 0) st = i; }
     else { if (st >= 0 && (i - st) * STEP >= 0.2) gaps.push(`${(st * STEP).toFixed(2)}–${(i * STEP).toFixed(2)} (${((i - st) * STEP).toFixed(2)})`); st = -1; }
   }
-  console.log(`${path.basename(f)}: voz ${(on * STEP).toFixed(2)} → ${((off + 1) * STEP).toFixed(2)} · dura ${(db.length * STEP).toFixed(2)} s · huecos ${gaps.join("  ") || "—"}`);
+  console.log(`${path.basename(f)}: piso ${piso.toFixed(0)} dB · umbral ${thr.toFixed(0)} dB · voz ${(on * STEP).toFixed(2)} → ${((off + 1) * STEP).toFixed(2)} · dura ${(db.length * STEP).toFixed(2)} s · huecos ${gaps.join("  ") || "—"}`);
 }

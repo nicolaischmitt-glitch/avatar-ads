@@ -48,3 +48,6 @@ Avatar: **mujer de ~30 años en su carro de lujo** (estacionado, luz frontal por
 ## Edición (21 oct 2026)
 `edicion/` (mismo flujo del formato D): `cortes.txt` → `unir-clips.mjs` → `base.mp4` → `transcript.json` → `build.mjs` (set de animaciones propio, ver arriba) → `finales/anuncio-04-yo-no-existo.mp4` (38,4 s, 1080×1920, −14,9 LUFS).
 Pendiente de confirmar por el usuario: clip 02 ("veinte" sonó como "dos" para la transcripción) y clip 06 (dura 4 s; "tradicionales" puede quedar cortado al final). Galería de la escena 2 en baja resolución (465 px).
+
+## Edición v3 · "Keynote premium" (22 oct 2026, la que vale)
+La v2 (set de animaciones propio) se descartó: cortes que comían finales de palabra y silencios largos (archivada en `_v2-descartada/`). La v3 sigue el storyboard `moodboard/storyboard-anuncio-04-v4.png`: gráficos solo sobre la cabeza, cutaways con su video desenfocado de fondo, tipografía fina, la cara nunca se tapa. Cortes nuevos con la regla dura (verificado en `base.mp4`: 0 huecos > 0,3 s entre palabras). Final: `finales/anuncio-04-yo-no-existo-v3.mp4` (36,9 s).

@@ -43,6 +43,7 @@ Avatar Ads 1.0/
 ├── sistema-avatar-ads/  ← EL PRODUCTO: kit del Sistema Avatar Ads que se entrega al alumno (se abre con Claude Code)
 │                          CLAUDE.md · LEEME.md · INSTALACION.md · .claude/skills/ (inicio, anuncio, actualizar)
 │                          sistema/ (prompts, formatos, scripts, checklists; VERSION + CAMBIOS.md) · negocio/ · anuncios/
+├── emails/              ← secuencias de email para la lista de Brevo (una carpeta por secuencia: NN-slug/)
 ├── lead-magnets/        ← un lead magnet por palabra clave (índice en lead-magnets/README.md)
 ├── tracking/            ← tracking de Meta Ads: configuración actual (pixel + Hotmart nativo) y plan B con n8n (LEEME.md)
 ├── referencias/         ← videos de referencia de otros creadores y sus desgloses (ref01, ref02, ejemplos de voz en off)

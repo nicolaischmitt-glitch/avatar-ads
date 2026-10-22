@@ -87,6 +87,22 @@ Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
 - **Varias tomas**: se puede cambiar de lugar cuando el guion cambia de tema (anuncio 04: carro para el hook y el precio → casa para el argumento de negocio). La segunda imagen se genera adjuntando la primera para mantener a la misma persona; en Flow cada clip usa la imagen de su toma. El cambio de toma es un corte de escena (transición whip), no necesita zoom.
 - **Selfie sostenido con la mano**: en esos clips gesticula con la mano libre; con un objeto en la mano (taza), gesticula con la otra.
 
+## Nunca tapar la cara + look premium (anuncio 04, storyboard v3 rechazado)
+- **Ningún gráfico, tarjeta, sticker ni app tapa la cara de la avatar, en ningún momento.** Sobre la cara solo se permite la banda superior (por encima de la cabeza) y el subtítulo a la altura del pecho. Si un gráfico necesita espacio, va en un cutaway a pantalla completa (su propio video desenfocado de fondo + el objeto flotando), no encima de ella.
+- El estilo "UGC nativo" (encuesta de IG, app de Notas, calculadora, stickers, emojis, flechas a mano) se rechazó: **no se ve premium**. El usuario quiere un look profesional: tipografía fina, mucho aire, pocas cosas a la vez, colores de marca. Referencia aprobada para proponer: `anuncios/04-yo-no-existo/moodboard/storyboard-anuncio-04-v4.png` ("Keynote premium").
+
+## Nunca mostrar nuestras herramientas
+En los anuncios no se nombran ni se muestran las herramientas propias (Nano Banana, Flow, Claude, HyperFrames, etc.): ni en texto, ni en etiquetas, ni en capturas de sus interfaces. Se dice "creada desde cero", "100% inteligencia artificial". Sí se puede nombrar a la competencia cuando el guion la compara (Seedance), con su fuente.
+
+## Cortes de voz — regla dura (anuncio 04, el usuario lo rechazó por esto)
+En el anuncio 04 se cortaron finales de palabra ("centavo-", "minu-") y quedaron silencios largos (1 s antes de "¡Un solo segundo!", ~1 s al inicio del clip 2). Causa: el ruido de fondo del carro y de la casa (−33 a −48 dB) está casi al nivel de los finales suaves de palabra, y se usó un umbral fijo de −35 dB.
+1. `medir-voz.mjs` ahora calcula el **piso de ruido de cada clip** (percentil 15) y usa **piso + 10 dB** como umbral de voz. Leer siempre su salida (piso, umbral, inicio, fin, huecos).
+2. **Fin de cada tramo = último fotograma con voz + 0,20 s como mínimo.** Nunca cortar mientras el nivel siga por encima de piso + 3 dB (la "s", "-tos", "-vos" finales son suaves y largas).
+3. **Inicio de cada tramo = primer fotograma con voz − 0,05 s.** Todo lo anterior (respiración, ruido, gesto) se quita.
+4. Todo hueco > 0,3 s dentro del clip se recorta a ~0,15 s (incluidos los de entre frases, como "dólar. … ¡Un solo segundo!").
+5. **Verificación obligatoria antes del render**: transcribir `base.mp4` y revisar (a) que la última palabra de cada tramo esté completa (si la transcripción la escribe incompleta o rara, alargar el corte), (b) que no haya más de 0,3 s entre una palabra y la siguiente en todo el video, (c) que el primer sonido esté en el fotograma 0. Si algo falla, corregir `cortes.txt` y repetir.
+6. Si un clip de Flow termina **justo** con la última palabra (voz hasta el último fotograma), la palabra probablemente está cortada en origen: avisar y pedir regenerarlo más largo.
+
 ## Errores ya resueltos (no repetir)
 - **Logo con fondo negro**: `mix-blend-mode: screen` va en el **contenedor** `.g` del logo (capa propia), no en la imagen dentro de otra capa.
 - **Video dentro de un B-roll**: no animarle la opacidad al entrar (deja un fotograma negro) y no aplicarle `settle` al fondo si el video no escala igual (desfasa el marco del teléfono).

@@ -84,6 +84,11 @@ Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a ne
 - **Dolores** *(propuesta)*: no saben qué servicio ofrecer ni cuánto cobrar; no tienen portafolio; no saben prospectar; las herramientas caras se comen el margen.
 - **Puente de la oferta:** la clase bonus (mar 27) enseña qué oferta vender y cómo captar clientes, y el bono Cliente Cero da el flujo para venderlos a $50 c/u.
 
+### Lista de email (Brevo, ~590 contactos)
+La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y vender productos digitales (ebooks) con IA. Les interesa generar ingresos online con IA. Lista fría (meses sin correos): el primer correo reconecta antes de vender.
+- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, por centavos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (Cliente Cero, $50 por anuncio).
+- Correos en `emails/` (una carpeta por secuencia). Brevo gratis = 300 correos al día: alternar Lista A / Lista B. Links con `src=emailN` + `utm_*` (la landing los pasa al checkout de Hotmart). Excluir siempre a los compradores.
+
 ## 5. Ángulos de venta
 
 Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los hooks son *(propuesta)*; adaptarlos a la voz del guion.

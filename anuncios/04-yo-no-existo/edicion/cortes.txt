@@ -1,13 +1,19 @@
 # clip  inicio  fin   (segundos dentro del clip; unir-clips los ajusta a fotogramas de 24 fps)
-# Medidos con medir-voz.mjs. Pausas > 0,3 s recortadas a ~0,15 s. El cambio carro → casa es entre el clip 3 y el 4.
-1  0.24  5.80
-2  0.00  2.75
-3  0.04  7.32
-4  0.42  2.03
-4  2.66  5.27
-4  5.64  7.50
-5  0.50  5.42
-6  0.56  4.00
-7  0.58  2.01
-7  2.28  6.53
+# v3 · regla dura de cortes: umbral relativo al ruido de cada clip (medir-voz.mjs), fin >= 0,2 s después de la última voz,
+# huecos > 0,3 s recortados a ~0,15 s cortando dentro del silencio. El clip 2 tenía ~1 s de ruido al inicio; el 3, ~0,8 s entre "dólar." y "¡Un solo segundo!".
+1  0.24  4.20
+1  4.38  6.00
+2  1.06  3.05
+3  0.40  1.20
+3  1.38  3.13
+3  3.36  5.26
+3  5.99  7.40
+4  0.42  2.14
+4  2.62  5.38
+4  5.64  7.62
+5  0.48  5.62
+6  0.75  2.95
+6  3.30  5.55
+7  0.57  2.06
+7  2.30  6.58
 7  7.22  9.80
