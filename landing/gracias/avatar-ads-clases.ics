@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Avatar Ads//Clases en vivo//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:avatar-ads-taller-20261026@taller.droilab.com
+DTSTAMP:20261022T000000Z
+DTSTART:20261027T000000Z
+DTEND:20261027T020000Z
+SUMMARY:Avatar Ads · Taller en vivo
+DESCRIPTION:El link para entrar se envía por el grupo de WhatsApp de alumnos y por correo.
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Avatar Ads · Taller en vivo en 1 hora
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:avatar-ads-bonus-20261027@taller.droilab.com
+DTSTAMP:20261022T000000Z
+DTSTART:20261028T000000Z
+DTEND:20261028T020000Z
+SUMMARY:Avatar Ads · Clase bonus: cómo conseguir clientes
+DESCRIPTION:El link para entrar se envía por el grupo de WhatsApp de alumnos y por correo.
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Avatar Ads · Clase bonus en 1 hora
+END:VALARM
+END:VEVENT
+END:VCALENDAR

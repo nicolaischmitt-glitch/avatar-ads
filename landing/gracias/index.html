@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¡Ya estás dentro! · Avatar Ads 1.0</title>
+<!-- Página de gracias: Hotmart redirige aquí después de la compra. No se indexa ni se enlaza desde la landing. -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Meta Pixel: solo PageView. La compra (Purchase) la envía Hotmart con su pixel + API; no duplicarla aquí. -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '602723701857782');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=602723701857782&ev=PageView&noscript=1"></noscript>
+<meta name="theme-color" content="#020604">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23020604%27/%3E%3Cpath d=%27M24 18l24 14-24 14z%27 fill=%27%23C5F740%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* ===== Branding Avatar Ads (mismos tokens que la landing) ===== */
+  :root{
+    --bg:#020604;
+    --bg-2:#090F0B;
+    --neon:#C5F740;
+    --white:#F8F8F8;
+    --text-2:#DDDAD7;
+    --meta:#9F9587;
+    --forest:#305E4A;
+    --line:rgba(48,94,74,.55);
+    --line-soft:rgba(48,94,74,.3);
+    --neon-soft:rgba(197,247,64,.12);
+    --display:"Archivo", system-ui, sans-serif;
+    --body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+    --gutter:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--text-2);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background-image:radial-gradient(90% 40% at 50% 0%, rgba(48,94,74,.35), transparent 70%)}
+  .wrap{width:100%;max-width:600px;margin:0 auto;padding:0 var(--gutter)}
+  a{color:inherit}
+
+  .topbar{background:var(--bg-2);color:var(--neon);border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px var(--gutter)}
+  .logo{display:flex;justify-content:center;padding:22px 0 8px}
+  .logo img{display:block;height:44px;width:auto;mix-blend-mode:screen}
+
+  .label{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon)}
+  .label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px rgba(197,247,64,.7)}
+  h1,h2{font-family:var(--display);font-stretch:112%;color:var(--white);letter-spacing:-.025em;line-height:1.04;font-weight:800}
+  h1{font-size:clamp(32px,9vw,48px);margin:14px 0 14px}
+  h1 .b{color:var(--neon)}
+  h2{font-size:clamp(22px,6vw,28px);font-stretch:106%;margin:6px 0 10px}
+  .lead{font-size:17px}
+  .meta{color:var(--meta)}
+
+  .hero{text-align:center;padding:26px 0 30px}
+  .check{width:64px;height:64px;margin:0 auto;border-radius:50%;display:grid;place-items:center;background:var(--neon-soft);border:1px solid rgba(197,247,64,.5);box-shadow:0 0 30px -6px rgba(197,247,64,.5)}
+
+  /* Pasos */
+  .step{background:var(--bg-2);border:1px solid var(--line-soft);border-radius:18px;padding:24px 22px;margin-bottom:16px}
+  .step.main{border-color:rgba(197,247,64,.55);box-shadow:0 0 0 1px rgba(197,247,64,.15), 0 20px 50px -30px rgba(197,247,64,.6)}
+  .num{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
+  .step.main .num{color:var(--neon)}
+  .step p + p{margin-top:10px}
+
+  .btn{display:flex;text-decoration:none;align-items:center;justify-content:space-between;gap:12px;width:100%;background:var(--neon);color:var(--bg);font-family:var(--display);font-stretch:108%;font-weight:800;font-size:18px;padding:19px 22px;border-radius:14px;margin-top:18px;
+    box-shadow:0 0 0 1px rgba(197,247,64,.6), 0 14px 34px -14px rgba(197,247,64,.55);transition:transform .12s, filter .2s}
+  .btn:hover{filter:brightness(1.05)}
+  .btn:active{transform:translateY(2px)}
+  .btn:focus-visible,.btn-2:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+  .btn svg{flex:none}
+  .note{font-family:var(--mono);font-size:12.5px;margin-top:12px;color:var(--meta);letter-spacing:.01em}
+
+  /* Clases */
+  .session{border-top:1px solid var(--line-soft);padding-top:16px;margin-top:16px}
+  .session:first-of-type{border-top:0;padding-top:0}
+  .s-tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--neon)}
+  .s-title{font-family:var(--display);font-stretch:106%;font-weight:700;color:var(--white);font-size:19px;margin:4px 0 2px}
+  .s-local{font-size:14px;color:var(--meta);margin-top:2px}
+  .s-local strong{color:var(--text-2);font-weight:600}
+  .btn-2{display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin-top:12px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);color:var(--white);font-size:14px;font-weight:600;transition:border-color .2s, background .2s}
+  .btn-2:hover{border-color:var(--neon);background:var(--neon-soft)}
+  .ics{display:inline-block;margin-top:16px;font-size:14px;color:var(--meta)}
+  .ics a{color:var(--text-2)}
+
+  /* Lo que recibes */
+  ul.list{list-style:none;margin-top:12px}
+  ul.list li{position:relative;padding:9px 0 9px 28px;border-top:1px solid var(--line-soft)}
+  ul.list li:first-child{border-top:0}
+  ul.list li::before{content:"";position:absolute;left:2px;top:15px;width:14px;height:8px;border-left:2px solid var(--neon);border-bottom:2px solid var(--neon);transform:rotate(-45deg)}
+  ul.list strong{color:var(--white);font-weight:600}
+
+  footer{text-align:center;padding:30px 0 44px;font-size:13px;color:var(--meta)}
+</style>
+</head>
+<body>
+
+<div class="topbar">Compra confirmada · Avatar Ads 1.0</div>
+
+<main class="wrap">
+  <div class="logo"><img src="../logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
+
+  <section class="hero">
+    <div class="check" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <span class="label" style="margin-top:22px">Tu acceso está listo</span>
+    <h1>¡Ya estás dentro de <span class="b">Avatar Ads</span>!</h1>
+    <p class="lead">Te faltan 3 pasos rápidos para no perderte nada. El primero es el más importante.</p>
+  </section>
+
+  <!-- Paso 1: grupo de WhatsApp (el canal donde se envía todo) -->
+  <section class="step main">
+    <div class="num">Paso 1 · Obligatorio</div>
+    <h2>Únete al grupo de alumnos en WhatsApp</h2>
+    <p>Ahí te enviamos <strong style="color:var(--white)">el link para entrar a las clases en vivo</strong>, los recordatorios y todas las novedades del Sistema Avatar Ads. También es tu espacio de soporte: dudas, feedback de tus anuncios e ideas.</p>
+    <a class="btn" href="https://chat.whatsapp.com/G8zIpseAtyJDtDqVjw5FEh" target="_blank" rel="noopener" id="btn-whatsapp">
+      Entrar al grupo de WhatsApp
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="note">Al entrar, revisa el mensaje fijado: ahí estará el link del taller.</p>
+  </section>
+
+  <!-- Paso 2: agendar las clases -->
+  <section class="step">
+    <div class="num">Paso 2</div>
+    <h2>Agenda las dos clases en vivo</h2>
+
+    <div class="session">
+      <div class="s-tag">Taller en vivo</div>
+      <div class="s-title">Lunes 26 de octubre · 7:00 p.m. (Ecuador)</div>
+      <div class="s-local" data-utc="2026-10-27T00:00:00Z"></div>
+      <a class="btn-2" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Avatar%20Ads%20%C2%B7%20Taller%20en%20vivo&dates=20261027T000000Z/20261027T020000Z&details=El%20link%20para%20entrar%20se%20env%C3%ADa%20por%20el%20grupo%20de%20WhatsApp%20de%20alumnos%20y%20por%20correo.">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Agregar a Google Calendar
+      </a>
+    </div>
+
+    <div class="session">
+      <div class="s-tag">Clase bonus · Cómo conseguir clientes</div>
+      <div class="s-title">Martes 27 de octubre · 7:00 p.m. (Ecuador)</div>
+      <div class="s-local" data-utc="2026-10-28T00:00:00Z"></div>
+      <a class="btn-2" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Avatar%20Ads%20%C2%B7%20Clase%20bonus%3A%20c%C3%B3mo%20conseguir%20clientes&dates=20261028T000000Z/20261028T020000Z&details=El%20link%20para%20entrar%20se%20env%C3%ADa%20por%20el%20grupo%20de%20WhatsApp%20de%20alumnos%20y%20por%20correo.">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Agregar a Google Calendar
+      </a>
+    </div>
+
+    <span class="ics">¿Usas iPhone u Outlook? <a href="avatar-ads-clases.ics" download>Descarga las dos clases (.ics)</a></span>
+  </section>
+
+  <!-- Paso 3: correo -->
+  <section class="step">
+    <div class="num">Paso 3</div>
+    <h2>Revisa tu correo</h2>
+    <p>Hotmart te envió la confirmación de tu compra. Al mismo correo te llegará también el link de cada clase, como respaldo del grupo.</p>
+    <p class="meta">¿No lo ves? Busca en Spam o Promociones y márcalo como "No es spam" para no perderte el link del lunes.</p>
+  </section>
+
+  <!-- Lo que incluye -->
+  <section class="step">
+    <div class="num">Lo que ya es tuyo</div>
+    <ul class="list">
+      <li><strong>Taller en vivo</strong> (lun 26): creamos dos anuncios completos, de la idea al video editado.</li>
+      <li><strong>Clase bonus en vivo</strong> (mar 27): cómo conseguir clientes para este servicio.</li>
+      <li><strong>Sistema Avatar Ads</strong> con guía de instalación, herramientas y prompts.</li>
+      <li><strong>Grabación completa</strong> del taller.</li>
+      <li><strong>Cliente Cero</strong>: el flujo para vender anuncios con IA a negocios.</li>
+      <li><strong>Acceso vitalicio</strong> con todas las futuras actualizaciones.</li>
+    </ul>
+    <p class="meta" style="margin-top:14px">Te avisamos por el grupo y por correo cómo acceder a cada material.</p>
+  </section>
+</main>
+
+<footer class="wrap">Avatar Ads 1.0 · Nos vemos el lunes en vivo.</footer>
+
+<script>
+  // Muestra la hora de cada clase en la zona horaria del visitante
+  document.querySelectorAll(".s-local").forEach(el => {
+    try {
+      const d = new Date(el.dataset.utc);
+      const txt = new Intl.DateTimeFormat("es", { weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" }).format(d);
+      el.innerHTML = "En tu hora: <strong>" + txt + "</strong>";
+    } catch (e) { el.remove(); }
+  });
+  // Evento propio para medir cuántos compradores entran al grupo (no es una compra)
+  document.getElementById("btn-whatsapp").addEventListener("click", () => { if (window.fbq) fbq("trackCustom", "ClicGrupoWhatsApp"); });
+</script>
+</body>
+</html>

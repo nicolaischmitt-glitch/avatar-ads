@@ -10,6 +10,7 @@ Avatar Ads 1.0/
 ├── marca/               ← logo original (logo-avatar-ads.png)
 ├── landing/             ← la página. ESTA carpeta completa es la que se publica (GitHub Pages, con publicar-landing.mjs)
 │   ├── index.html
+│   ├── gracias/         ← página de gracias post compra (Hotmart redirige aquí) + .ics de las clases
 │   ├── videos/          ← videos y portadas que usa la página (versiones comprimidas para web)
 │   ├── resultados/      ← pruebas reales: video del panel de ventas de Hotmart, 3 mensajes de clientes y captura de Meta (CPL $0,35)
 │   └── recursos/        ← lead magnets publicados (PDF/.txt) → https://taller.droilab.com/recursos/…
@@ -127,6 +128,7 @@ Sitio en **GitHub Pages** (desde el 21 oct 2026; antes Netlify, que pausó las p
 - DNS (Namecheap, `droilab.com` → Advanced DNS): registro CNAME `taller` → `nicolaischmitt-glitch.github.io.`
 - GitHub CLI instalada (`C:\Program Files\GitHub CLI\gh.exe`) y con sesión de `nicolaischmitt-glitch`.
 - **Tracking de Meta** (22 oct 2026): pixel `602723701857782` en la landing → `PageView`, `ViewContent` (cuando la oferta de $27 entra en pantalla) y evento propio `ClicCheckout` en los botones (no `InitiateCheckout`: ese lo envía Hotmart). Los botones copian los parámetros de la visita (`fbclid`, `utm_*`) al link de Hotmart para atribuir la compra. En Hotmart va el mismo pixel + API de conversiones (token generado en Events Manager; el token **nunca** va en la landing ni en el repo). La landing no tiene API de conversiones propia (GitHub Pages no tiene servidor). Decisión: lanzamiento con la API nativa de Hotmart; si no atribuye bien, plan B con n8n. Todo el detalle, las correcciones y el script en `tracking/LEEME.md`.
+- **Post compra** (22 oct 2026): Hotmart redirige a la página de gracias `landing/gracias/` → https://taller.droilab.com/gracias/ (noindex, no se enlaza desde la landing; pixel solo `PageView` + evento propio `ClicGrupoWhatsApp`; **no** `Purchase`, lo envía Hotmart). Pasos: 1) unirse al grupo de WhatsApp de alumnos (obligatorio), 2) agendar las dos clases (Google Calendar o `.ics`; se puso 7–9 p.m. como duración estimada), 3) revisar el correo. Arquitectura decidida: **un solo grupo de WhatsApp para todos los talleres, que es también el grupo de soporte de alumnos** (https://chat.whatsapp.com/G8zIpseAtyJDtDqVjw5FEh), con entrada automática por link (sin aprobación manual; si el link se filtra, restablecerlo en WhatsApp y cambiarlo en la página). Redirección configurada en Hotmart (página externa, solo "Compras aprobadas"; las URL de pago en espera y análisis de crédito quedan vacías a propósito: Hotmart muestra su página de estado y a esos compradores se les envía el link del grupo a mano). El día de cada taller se fija en el grupo el mensaje con el link (recordatorios 24 h y 1 h antes) y el mismo link se envía por correo a los compradores como respaldo. Se descartaron Telegram y un grupo por taller (por simplicidad).
 - Netlify (sitio `avatarads`, id `6a82e943-68a7-43f0-9346-abf24c07d754`) queda solo como respaldo; ya no se usa para publicar.
 
 ## Respaldo (GitHub + Google Drive)
