@@ -27,7 +27,7 @@ Conserva siempre las mismas claves, la misma jerarquía y el mismo orden. El pro
 ## 3. Plantilla
 ```json
 {
-  "task": "Generate one photorealistic still frame that looks like a paused vertical video a real [man/woman] recorded of [himself/herself] with [his/her] iPhone front camera, [LUGAR], to talk to [his/her] audience. It will be used as the first frame of a talking-head video, so it must be indistinguishable from a real phone recording.",
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional [man/woman] films of [himself/herself] with [his/her] phone front camera, [LUGAR], to talk to [his/her] audience. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video. [Opcional: If a reference image is attached, copy its camera angle, framing, setting and lighting, but create a completely different original person.]",
   "output": {
     "aspect_ratio": "9:16",
     "orientation": "vertical",
@@ -99,6 +99,18 @@ Conserva siempre las mismas claves, la misma jerarquía y el mismo orden. El pro
 5. **Escenario concreto y vivido**: 3–5 objetos reales y un objeto en primer plano desenfocado, que da la sensación de "lo grabó él mismo".
 6. **Negativos explícitos** de lo que suele fallar (manos, piel plástica, luz de estudio, textos).
 7. **Luz frontal pareja**: la luz viene de delante (como cuando alguien se graba mirando a una ventana) y el fondo no tiene ventanas a los lados de la persona. Si la ventana aparece al lado, el modelo ilumina media cara y deja la otra en sombra (pasó en la v1 del anuncio 03). Por eso la ventana se describe "frente a él, detrás del teléfono".
+
+8. **Ángulo según el lugar** (anuncio 04, 21 oct 2026): en una oficina, el teléfono apoyado de frente funciona. En un **carro**, el frontal con todo el volante se ve falso: mejor el selfie sostenido con la mano, un poco por encima de los ojos y en tres cuartos, sin volante ni tablero en cuadro. Pedir una expresión relajada (sonrisa leve, sin dientes); la sonrisa grande se ve posada.
+9. **"Premium" hay que describirlo**: la palabra sola da un interior básico beige. Nombrar materiales y colores concretos: cuero napa coñac con costura acolchada, techo negro, techo panorámico de vidrio.
+10. **Mejor aún, partir de una referencia real** (el método principal del curso): adjuntar una foto con el ángulo, el carro y la luz buscados, y pedir que copie todo eso pero con una mujer distinta y original.
+
+### Si el generador lo bloquea ("podría infringir nuestras políticas")
+Pasó con la v1 del anuncio 04 (mujer en un carro). Evitar:
+- frases que suenan a hacer pasar la imagen por real: "indistinguishable from a real recording", "not AI-generated", "a real woman". Usar "original fictional", "natural and authentic";
+- conducción insegura: "seatbelt not fastened", el carro en movimiento;
+- descripciones del cuerpo de una mujer ("slim", "fitted");
+- mencionar a personas reales, aunque sea para negarlo ("a likeness of any real person").
+Si sigue bloqueando en Flow, probar en la app de Gemini o en Google AI Studio.
 
 ## 5. Al generar
 1. Pon 9:16 también en la interfaz de Nano Banana (algunos modos ignoran el aspect ratio del JSON).

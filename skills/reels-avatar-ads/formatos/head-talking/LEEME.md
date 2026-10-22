@@ -80,6 +80,13 @@ Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
 | Prueba en teléfono | Ventas / resultados | Video de Hotmart en un teléfono (tramo donde la cifra sube 930 → 1.759) + etiqueta con la cifra cuando aparece; chat del cliente **sin nombre ni foto** |
 | Logo + días + botón | CTA | Logo (mezcla "screen"), tarjetas Día 1 / Día 2 sobre la cara, botón verde "Reservar mi lugar ↓" que rebota en "botón" |
 
+## Variantes y reglas añadidas (anuncio 04)
+- **Animaciones distintas en cada anuncio**: si el anuncio anterior usó un set de escenas, el siguiente propone otro (el usuario lo pidió en el 04). Set alternativo probado en `anuncios/04-yo-no-existo/moodboard/moodboard.html`: subtítulos en mayúsculas con píldora verde, pantalla dividida, video en burbuja sobre las pruebas, escaneo IA + glitch, taxímetro, sellos "WINNER", escalera de barras, teléfono 3D con marcador, calendario, botón con toque.
+- **Pantalla dividida (gráfico arriba, avatar abajo)**: el subtítulo va **sobre la línea divisoria** (franja), el panel de arriba ocupa ~43 % (0–820 px) y el video de abajo se encuadra con la cara justo debajo de la franja. Si el subtítulo queda en su posición normal, le tapa la cara.
+- **Nunca subtítulos ni gráficos clave en el ~20 % inferior**: lo tapa la interfaz de Reels/Stories (texto del anuncio, botón de Meta).
+- **Varias tomas**: se puede cambiar de lugar cuando el guion cambia de tema (anuncio 04: carro para el hook y el precio → casa para el argumento de negocio). La segunda imagen se genera adjuntando la primera para mantener a la misma persona; en Flow cada clip usa la imagen de su toma. El cambio de toma es un corte de escena (transición whip), no necesita zoom.
+- **Selfie sostenido con la mano**: en esos clips gesticula con la mano libre; con un objeto en la mano (taza), gesticula con la otra.
+
 ## Errores ya resueltos (no repetir)
 - **Logo con fondo negro**: `mix-blend-mode: screen` va en el **contenedor** `.g` del logo (capa propia), no en la imagen dentro de otra capa.
 - **Video dentro de un B-roll**: no animarle la opacidad al entrar (deja un fotograma negro) y no aplicarle `settle` al fondo si el video no escala igual (desfasa el marco del teléfono).

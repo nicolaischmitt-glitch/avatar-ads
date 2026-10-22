@@ -15,14 +15,15 @@
 *.m4a
 *.aac
 
-# Excepción: la landing se guarda completa (con sus videos) para poder republicarla
+# Excepciones: la landing completa (con sus videos, para republicarla) y los SFX del Sistema Avatar Ads
 !landing/**
+!sistema-avatar-ads/sistema/**
 
 # Material viejo — solo en Google Drive
 archivo/
 
 # Enlaces de Windows a los skills (se recrean, ver PROYECTO.md)
-.claude/skills/
+/.claude/skills/
 
 # Basura y cachés de edición (HyperFrames / media-use se regeneran solos)
 *.lnk

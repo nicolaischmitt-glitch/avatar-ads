@@ -25,7 +25,7 @@ Avatar Ads 1.0/
 │   │   └── finales/nuevo-video-subtitulos.mp4
 │   ├── 03-calidad-seedance-centavos/ ← PRIMER ANUNCIO PAGADO (Meta): talking head de una toma, avatar nuevo (Nano Banana) + B-rolls y gráficos
 │   │                    avatar/ · prompts/ · clips/ · moodboard/ (storyboard) · edicion/ (build.mjs, igual que el reel 07) · finales/anuncio-03-calidad-seedance-centavos.mp4
-│   ├── 04-yo-no-existo/ ← copy guardado para un segundo anuncio (hook "Yo no existo")
+│   ├── 04-yo-no-existo/ ← anuncio 2 tomas (carro → casa), mujer creada con Nano Banana, set de animaciones propio · finales/anuncio-04-yo-no-existo.mp4
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
 ├── Contenido/           ← todo el contenido orgánico de Instagram
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
@@ -39,6 +39,9 @@ Avatar Ads 1.0/
 │   └── imagenes y recursos (para usar)/ ← material propio para usar en el contenido
 │       ├── fotos mias para usar/
 │       └── screnshots de dinero y ventas/
+├── sistema-avatar-ads/  ← EL PRODUCTO: kit del Sistema Avatar Ads que se entrega al alumno (se abre con Claude Code)
+│                          CLAUDE.md · LEEME.md · INSTALACION.md · .claude/skills/ (inicio, anuncio, actualizar)
+│                          sistema/ (prompts, formatos, scripts, checklists; VERSION + CAMBIOS.md) · negocio/ · anuncios/
 ├── lead-magnets/        ← un lead magnet por palabra clave (índice en lead-magnets/README.md)
 ├── referencias/         ← videos de referencia de otros creadores y sus desgloses (ref01, ref02, ejemplos de voz en off)
 ├── skills/
@@ -80,7 +83,8 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 
 ## Datos clave de la oferta
 - **Edición:** apertura de Avatar Ads 1.0 → por eso el taller es en vivo
-- **Fechas:** lunes 26 y martes 27 de octubre de 2026 (2 días de taller) + clase bonus el miércoles 28; todas en vivo a las 7:00 p.m. hora de Ecuador (UTC-5)
+- **Fechas:** lunes 26 de octubre de 2026 (1 día intenso de taller) + clase bonus el martes 27; ambas en vivo a las 7:00 p.m. hora de Ecuador (UTC-5). Decidido el 21 oct 2026 (antes eran 2 días + bonus el miércoles 28; solo 2 compradores, el usuario les avisa).
+- **Dinámica:** los alumnos observan; el usuario crea en vivo **2 anuncios** con el Sistema Avatar Ads, de productos ficticios: uno para un **producto digital** y otro para un **servicio** (formatos por definir). Método "programa de cocina": los clips de Flow se generan antes; en vivo se hace brief → guion → storyboard → prompts → un clip de muestra → edición. Después, cada alumno lo implementa solo con la grabación, los tutoriales, la guía de instalación y el grupo de WhatsApp. El taller probablemente se da desde una Mac (por confirmar).
 - **Modalidad:** online, clases en vivo
 - **Cupo:** sin límite (se eliminó el límite de 15 el 20 oct 2026)
 - **Inversión:** $27, pago único (sin cupones ni descuentos)
@@ -92,10 +96,10 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 2. Freelancers / futuros proveedores que quieren vender anuncios con IA a negocios.
 
 ## Incluye
-(Oferta única de la landing; los días van en orden: Día 1 → Día 2 → Día 3 bono.) Día 1 y Día 2 del taller en vivo · herramientas · prompts.
+(Oferta única de la landing, en orden: taller → clase bonus.) Taller en vivo (lun 26) · **Sistema Avatar Ads** con guía de instalación · herramientas · prompts.
 
 ## Bonos
-1. **Día 3 en vivo (mié 28): cómo conseguir clientes** para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
+1. **Clase bonus en vivo (mar 27): cómo conseguir clientes** para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
 2. **Grupo privado de WhatsApp:** feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana).
 3. **Grabación completa del taller.**
 4. **Acceso vitalicio al curso Avatar Ads** (con todas las futuras actualizaciones).
@@ -103,9 +107,17 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 (Eliminados: UGC Realism Vault y Low-Cost Production System. Ya no se promete "3 anuncios listos" ni proyecto práctico de 3 anuncios.)
 
 ## Temario
-- Día 1 (lun 26) — Estrategia, storyboard e imágenes → terminamos con el storyboard y las imágenes de referencia.
-- Día 2 (mar 27) — Creación de videos y edición → creamos los videos y los editamos.
-- Día 3 bono (mié 28) — Cómo conseguir clientes para este servicio: qué oferta vender, captación orgánica y con anuncios.
+- Taller (lun 26) — Un día intenso: setup y alternativas económicas · ángulos y formatos · script · storyboard · personaje e imágenes · prompts de video · generación y corrección · edición automatizada · exportación → dos anuncios completos en vivo (producto digital + servicio).
+- Clase bonus (mar 27) — Cómo conseguir clientes para este servicio: qué oferta vender, captación orgánica y con anuncios.
+
+## Sistema Avatar Ads (el producto que se enseña y se vende)
+Nombre oficial: **Sistema Avatar Ads**. Vive en **Claude Code** (app de escritorio de Claude, pestaña Code): una carpeta con skills + la base de conocimiento del negocio del alumno, que Claude mantiene actualizada mientras el alumno conversa. Guía al alumno con preguntas de la idea al anuncio editado; la edición es automatizada con HyperFrames y el alumno la decide en el storyboard e itera conversando (vista previa en el navegador → render final).
+- Ubicación: `sistema-avatar-ads/` (kit que se entrega al alumno; ver su `LEEME.md`). Se separa lo nuestro (`sistema/`, reemplazable con cada actualización) de lo del alumno (`negocio/`, `anuncios/`, nunca se tocan).
+- Se actualiza de forma continua a medida que el usuario crea anuncios y encuentra formatos nuevos; el alumno recibe cada versión (acceso vitalicio).
+- Prioridad Windows (~70–80 % de la audiencia, estimado) y también Mac.
+- Nosotros también lo usamos para los anuncios nuevos (un solo sistema, probado de verdad).
+- Versión actual: 1.0.0 (21 oct 2026): formato head talking. Los master prompts del kit son copias de `skills/master prompt…`: si se cambia uno, actualizar el otro y anotar el cambio en `sistema/CAMBIOS.md` (subir `VERSION`).
+- Entrega al alumno: un `.zip` de la carpeta `sistema-avatar-ads/` (sin `anuncios/` propios) en el área de alumno; las actualizaciones, igual (skill `avatar-ads-actualizar`). Dónde se aloja el zip: por definir.
 
 ## Publicación
 Sitio en Netlify: https://taller.droilab.com/ — se sube la carpeta `landing/` completa (`index.html` + `videos/`, ~16 MB).
@@ -128,5 +140,5 @@ Desde la raíz del proyecto, en la terminal de Windows (usar `netlify.cmd`, porq
 ## Pendientes de la landing
 - [x] Links de los botones CTA → checkout de Hotmart: https://pay.hotmart.com/G108061829I?checkoutMode=10 (los 4 botones).
 - [x] Videos en la landing (`landing/videos/`): 01 = anuncio de Avatar Ads (portada, en el hero), 02 = reel de podcast (`Contenido/reels/07-podcast-seedance-centavos`), 03 = avatar con labial (`anuncios/02-labial-auto`), 04–06 = ejemplos de `anuncios/ejemplos-ugc/` (airpods, skincare, suplemento). La sección de ejemplos va justo después del hero. Se reproducen en silencio al entrar en pantalla y tienen botón "Activar sonido".
-- [x] Estructura actual (20 oct 2026): hero → ejemplos (videos) → resultados reales (video de ventas en Hotmart + 3 mensajes de clientes, con visor) → "el sistema más económico" (mosaico animado: cuántos anuncios de 30 s salen con $27 en Avatar Ads ~70, Wan 2.5 ~9, Seedance 2.0 2–9) → "testea más, encuentra más ganadores" (gráfico XY animado, ilustrativo: ads con IA 20–30/mes vs ads normales 4/mes → 1 ganador, + captura de Meta CPL $0,35) → para quién / qué aprenderás → oferta única (Día 1 → Día 2 → Día 3 bono con temario desplegable, herramientas, prompts + bonos destacados + $27 + CTA) → FAQ → cierre.
+- [x] Estructura actual (20 oct 2026): hero → ejemplos (videos) → resultados reales (video de ventas en Hotmart + 3 mensajes de clientes, con visor) → "el sistema más económico" (mosaico animado: cuántos anuncios de 30 s salen con $27 en Avatar Ads ~70, Wan 2.5 ~9, Seedance 2.0 2–9) → "testea más, encuentra más ganadores" (gráfico XY animado, ilustrativo: ads con IA 20–30/mes vs ads normales 4/mes → 1 ganador, + captura de Meta CPL $0,35) → para quién / qué aprenderás → oferta única (taller lun 26 → clase bonus mar 27 con temario desplegable, Sistema Avatar Ads, herramientas, prompts + bonos destacados + $27 + CTA) → FAQ → cierre.
 - [ ] Confirmar cifras de la comparativa: Wan 2.5 ~$0,10/s y Seedance 2.0 $0,11–$0,46/s son precios públicos de API (oct 2026); el usuario mencionó ~$1/s para Seedance en el reel 07. Precios verificados el 21 oct 2026 (tabla completa en `anuncios/03-calidad-seedance-centavos/guion.md`): Seedance 2.0 en 1080p cuesta $0,682/s en fal.ai y $0,37/s en la API oficial de BytePlus ($0,41–$0,91/s con video de referencia); Seedance 2.5 en 1080p, $0,569/s (hasta $2,38/s con video de referencia).

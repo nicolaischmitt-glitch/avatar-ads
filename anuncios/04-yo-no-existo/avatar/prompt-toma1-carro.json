@@ -1,0 +1,65 @@
+{
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional woman films of herself, handheld, while sitting in her parked high-end luxury car, to talk to her audience. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday influencer phone video, not a posed photo. If a reference image is attached, copy its camera angle, framing, car interior and lighting, but create a completely different original woman.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "candid handheld phone front-camera video frame, slightly imperfect, not a professional photo"
+  },
+  "subject": {
+    "identity": "an original fictional Latin American woman, around 30 years old, stylish and confident",
+    "face": "warm light-olive skin with natural texture (visible pores, tiny natural imperfections), dark brown eyes, defined brows, soft natural makeup with nude lips, slight natural facial asymmetry",
+    "hair": "dark brown hair pulled back loosely, a few loose strands framing the face, slightly messy and natural",
+    "facial_hair": "none",
+    "accessories": "medium gold hoop earrings, no sunglasses",
+    "build": "average, healthy build"
+  },
+  "wardrobe": {
+    "top": "black leather jacket over a black turtleneck, the leather with natural creases and soft reflections",
+    "style": "elegant, modern, effortless city style, no visible logos"
+  },
+  "pose_and_expression": {
+    "position": "seated in the driver's seat of the parked car, body slightly turned toward the camera, which she holds in one hand at arm's length (the phone and that arm are out of frame)",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "relaxed and self-assured, a very subtle closed-mouth smile, as if about to start talking; calm, not a big smile, no teeth",
+    "hands": "her free hand resting lightly near her collar or chest, relaxed natural fingers, correct anatomy",
+    "posture": "relaxed, slightly leaning back into the seat, natural and unposed"
+  },
+  "environment": {
+    "location": "inside a high-end luxury sedan, parked on a city street on an overcast day",
+    "background": "rich cognac-brown nappa leather seats with fine quilted stitching, the matching leather headrest behind her shoulder, the rear bench in the same cognac leather, a dark black headliner and a panoramic glass roof showing a grey sky, the rear window softly out of focus",
+    "foreground": "nothing in front of her: no steering wheel, no dashboard visible",
+    "atmosphere": "quiet, premium, real car interior, not a studio set"
+  },
+  "camera": {
+    "device": "phone front camera held in her hand at arm's length, slightly above her eye level and slightly off to one side (three-quarter angle, not straight-on)",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "close-up from the chest up, her face slightly off-center, head in the upper-middle of the frame, with the headliner and glass roof visible above her head as space for on-screen graphics",
+    "focus": "face sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight sensor noise, mild compression, true-to-life slightly cool colors"
+  },
+  "lighting": {
+    "key": "soft overcast daylight coming from the windshield and the glass roof in front of and above her, lighting her face evenly and gently",
+    "fill": "soft ambient light reflected by the leather interior",
+    "mood": "calm, natural and slightly moody; both sides of the face evenly lit with soft natural shading, no harsh shadows, accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "candid, authentic everyday phone video look, like an influencer filming in her car, not a stock photo",
+    "natural skin texture, no heavy smoothing or beauty filter",
+    "natural creases on the leather jacket and the seats",
+    "correct anatomy: natural hands and fingers, natural proportions",
+    "natural catchlights in the eyes from the windshield"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, watermarks, UI elements",
+    "steering wheel, dashboard, car brand emblems or badges, readable screens",
+    "straight-on frontal camera angle, symmetrical passport-style framing",
+    "big smile showing teeth, exaggerated expression, posing",
+    "beige or grey basic car interior, cheap plastic trim",
+    "one half of the face much darker than the other, harsh direct sunlight, strong shadows",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, warped face",
+    "plastic skin, heavy makeup, 3D render, cartoon, illustration",
+    "sunglasses, flashy clothes",
+    "the car in motion, motion blur, other people"
+  ]
+}

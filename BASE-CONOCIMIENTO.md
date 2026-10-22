@@ -23,17 +23,17 @@ Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistem
 
 | Elemento | Detalle |
 |---|---|
-| Formato | Taller online de apertura: 2 días en vivo (lun 26 y mar 27 oct 2026) + clase bonus de captación de clientes (mié 28), todas a las 7 p.m. Ecuador; da acceso al programa |
+| Formato | Taller online de apertura: 1 día intenso en vivo (lun 26 oct 2026) + clase bonus de captación de clientes (mar 27), ambas a las 7 p.m. Ecuador; da acceso al programa |
 | Precio | $27, pago único (edición de apertura). Sin cupones ni descuentos |
 | Cupo | Sin límite de cupos |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
-| Qué se ve | Día 1: storyboard e imágenes de referencia · Día 2: creamos los videos y los editamos · Día 3 (bono): cómo conseguir clientes |
+| Qué se ve | Taller: creamos en vivo dos anuncios completos (producto digital y servicio), de la idea al video editado · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
-**Incluye (oferta única):** Día 1 y Día 2 del taller en vivo · herramientas · prompts.
+**Incluye (oferta única):** taller en vivo (lun 26) · **Sistema Avatar Ads** con guía de instalación · herramientas · prompts.
 
 **Bonos:**
-1. **Día 3 en vivo: cómo conseguir clientes** (mié 28) — mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
+1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27) — mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
 2. **Grupo privado de WhatsApp** — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
 3. **Grabación completa del taller.**
 4. **Acceso vitalicio al curso Avatar Ads**, con todas las futuras actualizaciones.
@@ -52,10 +52,12 @@ No prometer "3 anuncios listos" al final del taller.
 - Producir anuncios para infoproductos, servicios y generación de leads.
 - Aplicar la habilidad en su negocio o para conseguir clientes.
 
-### Temario (esto es lo que veremos cada día)
-- **Día 1 — Estrategia, storyboard e imágenes.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · búsqueda de referencias UGC reales · breakdown visual · storyboard · personaje, escenario y elementos · generación de imágenes con IA y consistencia entre escenas · selección de frames. → *Terminamos con el storyboard y las imágenes de referencia.*
-- **Día 2 — Creación de videos y edición.** Estructura de prompts de video · acciones, movimientos, gesticulación, expresiones y voz · generación de clips y corrección de errores · gestión de créditos · ensamblaje y ritmo · audio, subtítulos y textos · producto, CTA y exportación. → *Creamos los videos y los editamos.*
-- **Día 3 (bono) — Cómo conseguir clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio.
+### Temario (esto es lo que veremos)
+- **Taller (lun 26) — Un día intenso.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · storyboard · personaje e imágenes con IA con consistencia entre escenas · prompts de video (acciones, gesticulación, expresiones, voz) · generación de clips, corrección y gestión de créditos · edición automatizada (ritmo, subtítulos, textos, producto, CTA) · exportación. → *Creamos en vivo dos anuncios completos: uno para un producto digital y otro para un servicio.*
+- **Clase bonus (mar 27) — Cómo conseguir clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio.
+
+### Sistema Avatar Ads
+El sistema propio que se enseña en el taller y que el alumno se lleva: vive en Claude Code, le hace preguntas y lo guía de la idea al anuncio editado, con la base de conocimiento de su negocio siempre actualizada y la edición automatizada. Se actualiza con cada formato y anuncio nuevo que creamos. En el copy: "el Sistema Avatar Ads", "el mismo sistema que uso para crear mis anuncios".
 
 ### El método (lo que se enseña y se demuestra en el contenido)
 Es la columna vertebral del contenido orgánico; el reel 01 lo cuenta así:
@@ -81,7 +83,7 @@ Invierten en publicidad y necesitan producir nuevas creatividades para **probar,
 Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a negocios y empresas.
 - **Quieren:** una habilidad vendible, un servicio concreto con precio, primeros clientes.
 - **Dolores** *(propuesta)*: no saben qué servicio ofrecer ni cuánto cobrar; no tienen portafolio; no saben prospectar; las herramientas caras se comen el margen.
-- **Puente de la oferta:** la clase bono del día 3 enseña qué oferta vender y cómo captar clientes, y el bono Cliente Cero da el flujo para venderlos a $50 c/u.
+- **Puente de la oferta:** la clase bonus (mar 27) enseña qué oferta vender y cómo captar clientes, y el bono Cliente Cero da el flujo para venderlos a $50 c/u.
 
 ## 5. Ángulos de venta
 
@@ -111,8 +113,8 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "Los negocios están pagando por esto y casi nadie sabe hacerlo bien."
    - "Así venderías tu primer anuncio con IA esta semana."
 5. **Resultado concreto y rápido**
-   En 2 días ves el proceso completo: storyboard e imágenes el día 1, videos y edición el día 2.
-   - "En 2 días ves cómo pasar de una idea a un anuncio editado."
+   En un solo día ves el proceso completo, de la idea al anuncio editado, con dos anuncios creados en vivo.
+   - "En un día ves cómo pasar de una idea a un anuncio editado."
 6. **Apertura / oportunidad de entrada** (urgencia real)
    Primera edición, en vivo, $27 y acceso vitalicio con actualizaciones aunque el precio suba.
    - "Es la primera y única edición de apertura en vivo."

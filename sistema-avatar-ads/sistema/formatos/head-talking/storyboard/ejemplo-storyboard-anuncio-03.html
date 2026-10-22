@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Anuncio 03 · Storyboard y moodboard</title>
+<style>
+  @font-face { font-family: "Archivo"; src: url("../../../Contenido/carruseles/_plantilla/fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Inter"; src: url("../../../Contenido/carruseles/_plantilla/fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("../../../Contenido/carruseles/_plantilla/fonts/Inter-600.woff2") format("woff2"); font-weight: 600 700; }
+  @font-face { font-family: "JBM"; src: url("../../../Contenido/carruseles/_plantilla/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+  :root { --bg: #020604; --card: #090f0b; --border: #305e4a; --accent: #c5f740; --text: #f8f8f8; --muted: #dddad7; --meta: #9f9587; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: var(--bg); color: var(--muted); font-family: "Inter", sans-serif; overflow: hidden; }
+  body { padding: 34px 48px; display: flex; flex-direction: column; gap: 20px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+  header h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 26px; color: var(--text); }
+  header h1 span { color: var(--accent); }
+  .meta { font-family: "JBM", monospace; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: var(--meta); }
+
+  /* ---------- storyboard: cada viñeta es el lienzo real 1080×1920 escalado ---------- */
+  .board { display: grid; grid-template-columns: repeat(8, 214px); justify-content: space-between; row-gap: 16px; }
+  .shot { display: flex; flex-direction: column; gap: 7px; }
+  .mini { width: 214px; height: 380px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); position: relative; background: #000; }
+  .mini.b { border-color: rgba(197,247,64,.55); }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.19815); transform-origin: 0 0; overflow: hidden; background: #000; }
+  .cap { display: flex; justify-content: space-between; font-family: "JBM", monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--meta); }
+  .cap b { color: var(--accent); font-weight: 500; }
+  .say { font-size: 12.5px; line-height: 1.3; color: var(--muted); min-height: 32px; }
+  .say em { font-style: normal; color: var(--text); font-weight: 600; }
+
+  /* --- vocabulario visual del reel 07 final (mismas clases y medidas) --- */
+  .face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,4,.55) 0%, rgba(2,6,4,0) 22%, rgba(2,6,4,0) 62%, rgba(2,6,4,.62) 100%); }
+  .broll { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(120% 70% at 50% 0%, #0f2418 0%, var(--bg) 62%); }
+  .broll::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(48,94,74,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(48,94,74,.12) 1px, transparent 1px); background-size: 60px 60px; }
+  .broll > * { position: relative; z-index: 1; }
+  .center { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; z-index: 2; }
+  .tag { font-family: "JBM", monospace; font-size: 30px; letter-spacing: 6px; text-transform: uppercase; color: var(--accent); }
+  .big { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; color: var(--text); line-height: 1; letter-spacing: -1px; }
+  .glow { text-shadow: 0 0 40px rgba(197,247,64,.45), 0 6px 26px rgba(0,0,0,.6); }
+  .sub { position: absolute; z-index: 20; left: 70px; width: 940px; top: 1395px; text-align: center; font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%;
+    font-size: 66px; line-height: 1.12; color: #fff; text-shadow: 0 4px 22px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.75); }
+  .sub b { color: var(--accent); }
+  .chip { display: inline-flex; align-items: center; gap: 16px; padding: 20px 36px; border-radius: 999px; border: 3px solid var(--accent); background: rgba(2,6,4,.82);
+    font-family: "JBM", monospace; font-size: 34px; letter-spacing: 3px; color: var(--accent); white-space: nowrap; }
+  .chip i { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); display: block; box-shadow: 0 0 12px rgba(197,247,64,.8); }
+  .card { border-radius: 34px; overflow: hidden; border: 3px solid var(--border); background: var(--card); box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+  .card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rows { position: absolute; left: 80px; right: 80px; top: 520px; display: flex; flex-direction: column; gap: 36px; z-index: 2; }
+  .row { border-radius: 30px; border: 3px solid var(--border); background: rgba(9,15,11,.92); padding: 40px 46px; display: flex; justify-content: space-between; align-items: center; }
+  .row .who { font-family: "JBM", monospace; font-size: 28px; letter-spacing: 4px; color: var(--meta); text-transform: uppercase; }
+  .row .who em { display: block; font-style: normal; margin-top: 12px; font-family: "Inter", sans-serif; font-weight: 600; font-size: 42px; letter-spacing: 0; color: var(--text); text-transform: none; }
+  .row .val { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 100px; color: var(--text); white-space: nowrap; }
+  .row .val small { font-size: 36px; color: var(--meta); font-family: "JBM", monospace; font-weight: 500; margin-left: 8px; }
+  .row.win { border-color: var(--accent); box-shadow: 0 0 50px rgba(197,247,64,.18); }
+  .row.win .val { color: var(--accent); text-shadow: 0 0 30px rgba(197,247,64,.4); }
+  .cta { padding: 30px 56px; border-radius: 28px; background: var(--accent); color: #071006; font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 70px;
+    box-shadow: 0 0 60px rgba(197,247,64,.35), 0 14px 40px rgba(0,0,0,.45); }
+  .src { font-family: "JBM", monospace; font-size: 24px; letter-spacing: 3px; color: var(--meta); text-transform: uppercase; }
+
+  /* vs (misma calidad) */
+  .vs { position: absolute; top: 470px; left: 60px; right: 60px; display: grid; grid-template-columns: 1fr 130px 1fr; align-items: center; z-index: 2; }
+  .vs .card { height: 700px; position: relative; }
+  .vs .lab { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px; text-align: center; background: linear-gradient(0deg, rgba(2,6,4,.92), rgba(2,6,4,0));
+    font-family: "JBM", monospace; font-size: 28px; letter-spacing: 3px; color: var(--muted); }
+  .vs .eq { text-align: center; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 120px; color: var(--accent); text-shadow: 0 0 30px rgba(197,247,64,.5); }
+  .seed { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 22px; background: radial-gradient(90% 60% at 50% 40%, #16261d 0%, #090f0b 70%); }
+  .seed .name { font-family: "Inter", sans-serif; font-weight: 700; font-size: 70px; color: var(--text); }
+  /* mosaico de anuncios */
+  .mosaic { position: absolute; left: 70px; right: 70px; top: 330px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; z-index: 2; }
+  .mosaic .card { aspect-ratio: 9 / 16; border-radius: 26px; position: relative; }
+  .mosaic.small { grid-template-columns: repeat(5, 1fr); gap: 16px; top: 420px; left: 50px; right: 50px; }
+  .mosaic.small .card { border-radius: 16px; border-width: 2px; }
+  .mosaic .card.win { border-color: var(--accent); box-shadow: 0 0 60px rgba(197,247,64,.5); transform: scale(1.08); z-index: 3; }
+  .mosaic .card.dim { opacity: .35; }
+  .badge { position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%); background: var(--accent); color: #071006; font-family: "JBM", monospace; font-size: 22px;
+    letter-spacing: 3px; padding: 10px 18px; border-radius: 999px; white-space: nowrap; }
+  /* cronómetro */
+  .watch { width: 520px; height: 520px; border-radius: 50%; border: 4px solid var(--border); display: flex; align-items: center; justify-content: center; position: relative;
+    background: radial-gradient(circle, #0d1a12 0%, #070c09 70%); }
+  .watch::before { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 10px solid transparent; border-top-color: var(--accent); border-right-color: var(--accent);
+    filter: drop-shadow(0 0 14px rgba(197,247,64,.6)); transform: rotate(10deg); }
+  /* gráfico de crecimiento */
+  .chart { position: absolute; left: 80px; right: 80px; top: 470px; height: 760px; z-index: 2; }
+  /* teléfono / prueba */
+  .phone { position: absolute; left: 50%; transform: translateX(-50%); top: 300px; width: 560px; height: 1060px; border-radius: 56px; border: 10px solid #1a2a21; background: #000;
+    overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.7), 0 0 0 3px var(--border); z-index: 2; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .zoomtag { position: absolute; z-index: 3; right: 70px; top: 1000px; padding: 18px 26px; border-radius: 22px; background: rgba(2,6,4,.9); border: 3px solid var(--accent);
+    font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 64px; color: var(--accent); box-shadow: 0 0 40px rgba(197,247,64,.3); }
+  /* días */
+  .days { position: absolute; left: 90px; right: 90px; top: 520px; display: flex; flex-direction: column; gap: 36px; z-index: 2; }
+  .day { border-radius: 30px; border: 3px solid var(--border); background: rgba(9,15,11,.92); padding: 44px 48px; display: flex; gap: 40px; align-items: center; }
+  .day .n { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 120px; color: var(--accent); line-height: .9; }
+  .day .t { font-family: "JBM", monospace; font-size: 28px; letter-spacing: 4px; color: var(--meta); text-transform: uppercase; }
+  .day .t em { display: block; font-style: normal; margin-top: 12px; font-family: "Inter"; font-weight: 600; font-size: 46px; letter-spacing: 0; color: var(--text); text-transform: none; }
+  .live { display: inline-flex; gap: 14px; align-items: center; }
+  .live i { width: 18px; height: 18px; border-radius: 50%; background: #e5484d; display: block; box-shadow: 0 0 14px rgba(229,72,77,.8); }
+  .logo { width: 560px; mix-blend-mode: screen; }
+  /* video del avatar dentro de la tarjeta (sigue hablando) */
+  .live-dot { position: absolute; top: 22px; left: 22px; z-index: 2; display: flex; gap: 10px; align-items: center; padding: 8px 14px; border-radius: 999px; background: rgba(2,6,4,.75);
+    font-family: "JBM", monospace; font-size: 20px; letter-spacing: 2px; color: var(--accent); }
+  .live-dot i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); display: block; }
+  /* íconos de anuncio */
+  .ads { position: absolute; left: 70px; right: 70px; top: 600px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; z-index: 2; }
+  .adi { aspect-ratio: 9 / 16; border-radius: 12px; border: 3px solid var(--border); background: linear-gradient(180deg, #102018, #090f0b); position: relative;
+    display: flex; align-items: center; justify-content: center; }
+  .adi::before { content: ""; width: 0; height: 0; border-left: 20px solid var(--meta); border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 5px; }
+  .adi::after { content: "AD"; position: absolute; top: 7px; left: 7px; font-family: "JBM", monospace; font-size: 13px; letter-spacing: 1px; color: var(--meta);
+    border: 2px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+  .adi.dim { opacity: .3; }
+  .adi.win { border-color: var(--accent); box-shadow: 0 0 50px rgba(197,247,64,.55); transform: scale(1.12); z-index: 3; background: linear-gradient(180deg, #1d3a12, #0d1a0b); }
+  .adi.win::before { border-left-color: var(--accent); }
+  .adi.win::after { color: var(--accent); border-color: var(--accent); }
+  /* galería: avatar creado desde cero */
+  .gal { position: absolute; left: 50px; width: 980px; top: 470px; height: 464px; z-index: 2; }
+  .gal img { object-position: top left; }
+  /* tarjeta pequeña sobre la cara */
+  .mcard { width: 820px; padding: 30px 40px; border-radius: 30px; border: 3px solid var(--border); background: rgba(9,15,11,.9); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+  .mdays { display: flex; gap: 22px; }
+  .mday { padding: 22px 30px; border-radius: 24px; border: 3px solid var(--border); background: rgba(9,15,11,.9); display: flex; gap: 20px; align-items: center; }
+  .mday .n { font-family: "Archivo", sans-serif; font-weight: 800; font-stretch: 125%; font-size: 80px; color: var(--accent); line-height: .9; }
+  .mday .t { font-family: "JBM", monospace; font-size: 22px; letter-spacing: 3px; color: var(--meta); text-transform: uppercase; }
+  .mday .t em { display: block; font-style: normal; margin-top: 6px; font-family: "Inter"; font-weight: 600; font-size: 32px; letter-spacing: 0; color: var(--text); text-transform: none; }
+
+</style>
+</head>
+<body>
+<header>
+  <h1>Anuncio 03 · Calidad Seedance por centavos — <span>Storyboard</span></h1>
+  <div class="meta">Avatar Ads · Meta Ads · 9:16 · ≈ 45 s · avatar en cámara ≈ 65 %</div>
+</header>
+
+<section class="board">
+  <!-- 01 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f01.jpg" style="transform:scale(1.12);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="sub">¿Y si <b>pudieras</b> crear</div>
+    </div></div>
+    <div class="cap"><span>01 · C1</span><b>Hook · punch-in</b></div>
+    <div class="say">"<em>¿Y si pudieras crear</em>…"</div>
+  </div>
+  <!-- 02 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:200px"><div class="chip"><i></i>100% HECHOS CON IA</div></div>
+      <div class="mosaic"><div class="card"><img src="assets/ad-labial.jpg"></div><div class="card"><img src="assets/ad-airpods.jpg"></div><div class="card"><img src="assets/ad-suplemento.jpg"></div></div>
+      <div class="sub">anuncios <b>hiperrealistas</b></div>
+    </div></div></div>
+    <div class="cap"><span>02 · C1</span><b>B-roll · nuestros ads</b></div>
+    <div class="say">"…<em>anuncios hiperrealistas</em>…"</div>
+  </div>
+  <!-- 03 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:330px"><div class="tag">Misma calidad</div></div>
+      <div class="vs">
+        <div class="card"><img src="frames/f03.jpg" style="object-position:50% 20%"><div class="live-dot"><i></i>VIDEO</div><div class="lab">AVATAR ADS</div></div>
+        <div class="eq">=</div>
+        <div class="card"><div class="seed"><div class="name">Seedance</div><div class="src">video con IA</div></div><div class="lab">SEEDANCE</div></div>
+      </div>
+      <div class="sub">pero por <b>centavos?</b></div>
+    </div></div></div>
+    <div class="cap"><span>03 · C1</span><b>Comparación =</b></div>
+    <div class="say">"…<em>misma calidad de Seedance… pero por centavos?</em>"</div>
+  </div>
+  <!-- 04 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:300px"><div class="tag">Seedance 2.0 · 1080p</div></div>
+      <div class="center" style="top:520px"><div class="watch"><div class="big glow" style="font-size:150px">0:01</div></div></div>
+      <div class="sub">un solo <b>segundo</b> de video</div>
+    </div></div></div>
+    <div class="cap"><span>04 · C2</span><b>Cronómetro 1 s</b></div>
+    <div class="say">"…<em>un solo segundo de video de Seedance</em>…"</div>
+  </div>
+  <!-- 05 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f05.jpg" style="transform:scale(1.14);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:120px"><div class="mcard" style="text-align:center"><div class="tag" style="font-size:26px">Seedance · cada segundo</div>
+        <div class="big glow" style="font-size:150px;margin-top:14px">$0,68</div>
+        <div class="src" style="margin-top:14px;font-size:20px">Seedance 2.0 · 1080p · fal.ai · oct 2026</div></div></div>
+      <div class="sub">casi <b>setenta</b> centavos</div>
+    </div></div>
+    <div class="cap"><span>05 · C2</span><b>Cara + cifra</b></div>
+    <div class="say">"…<em>te puede costar casi setenta centavos.</em>"</div>
+  </div>
+  <!-- 06 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f06.jpg" style="transform:scale(1.18);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:150px"><div class="chip"><i></i>ESTE AVATAR ES 100% IA</div></div>
+      <div class="sub">En cambio, <b>a mí</b></div>
+    </div></div>
+    <div class="cap"><span>06 · C3</span><b>Cara + chip</b></div>
+    <div class="say">"<em>En cambio, a mí mi creador</em>…" (sin "Nicolai")</div>
+  </div>
+  <!-- 07 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:360px"><div class="tag">Creado desde cero · Nano Banana + Flow</div></div>
+      <div class="gal card"><img src="assets/flow-galeria-recorte.png"></div>
+      <div class="center" style="top:990px"><div class="tag">Costo de este avatar</div>
+        <div class="big glow" style="font-size:170px;margin-top:14px">$0,67</div>
+        <div class="src" style="margin-top:18px">vs. $0,68 por 1 segundo de Seedance</div></div>
+      <div class="sub" style="top:1500px">sesenta y siete <b>centavos</b></div>
+    </div></div></div>
+    <div class="cap"><span>07 · C3</span><b>Galería + costo</b></div>
+    <div class="say">"…<em>me creó por apenas sesenta y siete centavos</em>…"</div>
+  </div>
+  <!-- 08 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f08.jpg" style="transform:scale(1.06);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:150px"><div class="chip"><i></i>HECHO EN 20 MIN</div></div>
+      <div class="sub">en solo <b>veinte minutos</b></div>
+    </div></div>
+    <div class="cap"><span>08 · C3</span><b>Cara + reloj</b></div>
+    <div class="say">"…<em>y en solo veinte minutos.</em>"</div>
+  </div>
+
+  <!-- 09 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f09.jpg" style="transform:scale(1.12);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="sub">anuncios con <b>inteligencia artificial</b></div>
+    </div></div>
+    <div class="cap"><span>09 · C4</span><b>Cara · zoom</b></div>
+    <div class="say">"<em>Los anuncios con inteligencia artificial</em>…"</div>
+  </div>
+  <!-- 10 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:250px"><div class="tag">Anuncios testeados</div><div class="big glow" style="font-size:150px;margin-top:20px">4 → 30</div></div>
+      <div class="ads" data-ads="30"></div>
+      <div class="sub" style="top:1500px">testear muchos <b>más anuncios</b></div>
+    </div></div></div>
+    <div class="cap"><span>10 · C4</span><b>Íconos que crecen</b></div>
+    <div class="say">"…<em>testear muchos más anuncios</em>…"</div>
+  </div>
+  <!-- 11 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:250px"><div class="tag">Anuncios testeados</div><div class="big glow" style="font-size:150px;margin-top:20px">1 ganador</div></div>
+      <div class="ads" data-ads="30" data-win="15"></div>
+      <div class="sub" style="top:1500px">encontrar a los <b>ganadores</b></div>
+    </div></div></div>
+    <div class="cap"><span>11 · C4</span><b>Se ilumina 1</b></div>
+    <div class="say">"…<em>encontrar a los ganadores mucho más rápido.</em>"</div>
+  </div>
+  <!-- 12 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f12.jpg" style="transform:scale(1.2);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:110px"><div class="mcard" style="padding:24px 30px"><div class="tag" style="font-size:22px;text-align:center">Más tests → más ganadores → escalar</div>
+      <svg viewBox="0 0 920 360" style="width:100%;display:block;margin-top:10px">
+        <g stroke="rgba(48,94,74,.5)" stroke-width="2"><line x1="20" y1="330" x2="900" y2="330"/></g>
+        <path d="M20 320 C 220 315, 330 300, 450 260 S 700 120, 880 30" fill="none" stroke="#c5f740" stroke-width="10" stroke-linecap="round" style="filter:drop-shadow(0 0 12px rgba(197,247,64,.6))"/>
+        <path d="M20 320 C 220 315, 330 300, 450 260 S 700 120, 880 30 L 880 330 L 20 330 Z" fill="rgba(197,247,64,.08)"/>
+        <circle cx="880" cy="30" r="18" fill="#c5f740"/>
+      </svg></div></div>
+      <div class="sub">el secreto para <b>escalar</b></div>
+    </div></div>
+    <div class="cap"><span>12 · C5</span><b>Cara + curva</b></div>
+    <div class="say">"<em>Y ese es el secreto para escalar.</em>"</div>
+  </div>
+  <!-- 13 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:170px"><div class="chip"><i></i>PRODUCTO DIGITAL · HOTMART</div></div>
+      <div class="phone"><img src="assets/hotmart.jpg"></div>
+      <div class="zoomtag">1.759 US$</div>
+      <div class="sub"><b>productos digitales</b>…</div>
+    </div></div></div>
+    <div class="cap"><span>13 · C5</span><b>Prueba · ventas</b></div>
+    <div class="say">"…<em>escalan productos digitales</em>…"</div>
+  </div>
+  <!-- 14 -->
+  <div class="shot">
+    <div class="mini b"><div class="stage"><div class="broll">
+      <div class="center" style="top:170px"><div class="chip"><i></i>SERVICIO · RESULTADO DE UN CLIENTE</div></div>
+      <div class="phone"><img src="assets/sebastian-limpio.png"></div>
+      <div class="zoomtag" style="top:1080px">$10.537 USD</div>
+      <div class="sub">servicios <b>tradicionales</b></div>
+    </div></div></div>
+    <div class="cap"><span>14 · C5</span><b>Prueba · cliente</b></div>
+    <div class="say">"…<em>y también servicios tradicionales.</em>"</div>
+  </div>
+  <!-- 15 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f15.jpg" style="transform:scale(1.08);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:110px"><div class="tag" style="margin-bottom:22px"><span class="live"><i></i>Taller en vivo</span></div>
+        <div class="mdays"><div class="mday"><div class="n">1</div><div class="t">Día 1<em>Storyboard e imágenes</em></div></div>
+        <div class="mday"><div class="n">2</div><div class="t">Día 2<em>Videos y edición</em></div></div></div></div>
+      <div class="sub">dos días <b>en vivo</b>, paso a paso</div>
+    </div></div>
+    <div class="cap"><span>15 · C6</span><b>Cara + días</b></div>
+    <div class="say">"…<em>únete al taller de Avatar Ads: dos días en vivo, paso a paso.</em>"</div>
+  </div>
+  <!-- 16 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f16.jpg" style="transform:scale(1.14);transform-origin:50% 32%"><div class="shade"></div>
+      <div class="center" style="top:150px"><img class="logo" src="assets/logo-avatar-ads.webp"></div>
+      <div class="center" style="top:1080px"><div class="cta">Reservar mi lugar ↓</div></div>
+      <div class="sub" style="top:1500px">el <b>botón</b> de abajo</div>
+    </div></div>
+    <div class="cap"><span>16 · C6</span><b>CTA · botón</b></div>
+    <div class="say">"<em>Reserva tu lugar en el botón de abajo.</em>"</div>
+  </div>
+</section>
+<script>
+  for (const g of document.querySelectorAll(".ads")) {
+    const n = +g.dataset.ads, win = g.dataset.win ? +g.dataset.win : -1;
+    for (let i = 0; i < n; i++) { const d = document.createElement("div"); d.className = "adi" + (win < 0 ? "" : i === win ? " win" : " dim"); g.appendChild(d); }
+  }
+</script>
+</body>
+</html>

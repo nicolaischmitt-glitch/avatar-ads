@@ -1,0 +1,64 @@
+{
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video in which the same woman from the attached reference image talks to her audience from her home office. The attached reference image shows this exact woman sitting in her car: keep her identity exactly the same (same face, facial features, skin tone, skin texture with its natural freckles and small imperfections, eyes, brows and hair), and only change the location, clothes, pose and camera setup described below. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video, not a posed photo.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "candid phone front-camera video frame, slightly imperfect, not a professional photo"
+  },
+  "subject": {
+    "identity": "exactly the same original fictional woman as in the attached reference image, around 30 years old",
+    "face": "identical to the reference: same light warm skin with natural freckles, small blemishes and visible pores, same dark brown eyes and brows, same bare, natural no-makeup look with soft nude lips",
+    "hair": "same dark brown hair as the reference, pulled back loosely in a low bun, a few loose strands framing the face",
+    "facial_hair": "none",
+    "accessories": "the same medium gold hoop earrings as in the reference",
+    "build": "same as the reference"
+  },
+  "wardrobe": {
+    "top": "comfortable oversized oatmeal-colored knit sweater, soft fabric with natural folds",
+    "style": "cozy at-home clothes, relaxed and natural, no visible logos"
+  },
+  "pose_and_expression": {
+    "position": "seated at her desk, facing the phone, leaning very slightly toward the camera",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "relaxed and self-assured, a very subtle closed-mouth smile, as if about to start talking; calm, no teeth",
+    "hands": "both hands resting relaxed on the desk in the lower part of the frame, natural fingers, correct anatomy",
+    "posture": "relaxed, natural and unposed"
+  },
+  "environment": {
+    "location": "her bright, modern home office, during the day",
+    "background": "warm white wall, a light wooden shelf with a few books and a small plant, a soft linen curtain at one edge, a cozy and tidy space, softly out of focus",
+    "foreground": "an open silver laptop on a light wooden desk at the lower edge of the frame, its screen angled away (no readable content), next to a ceramic coffee mug",
+    "atmosphere": "calm, warm, real lived-in home workspace, not a studio set"
+  },
+  "camera": {
+    "device": "phone front camera propped on the desk in front of her, at chest-to-eye height, slightly below eye level and slightly off to one side (gentle three-quarter angle, not perfectly straight-on)",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "medium close-up from the waist up, head in the upper-middle of the frame (eyes at about 38% of the frame height from the top), the laptop visible at the bottom, clean wall space above her head for on-screen graphics",
+    "focus": "face sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft, diffused daylight from a large window directly in front of her, behind the phone, lighting her whole face evenly",
+    "fill": "warm ambient room light",
+    "mood": "bright, warm and natural; both sides of the face evenly lit, no side shadows, accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "candid, authentic everyday phone video look, not a stock photo",
+    "same natural skin texture as the reference, no smoothing or beauty filter",
+    "natural folds on the knit sweater",
+    "correct anatomy: two hands, five fingers each, natural proportions",
+    "natural catchlights in the eyes from the window in front of her"
+  ],
+  "negative": [
+    "a different face, a different person, changed facial features or hairstyle",
+    "text, captions, subtitles, logos, watermarks, UI elements, readable laptop screen",
+    "the car, the leather jacket",
+    "straight-on symmetrical passport-style framing",
+    "big smile showing teeth, exaggerated expression, posing",
+    "side lighting, one half of the face darker than the other, harsh direct sunlight, strong shadows",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, warped face",
+    "plastic skin, makeup that is not in the reference, 3D render, cartoon, illustration",
+    "sunglasses, glasses, cluttered desk, other people"
+  ]
+}

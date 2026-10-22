@@ -11,4 +11,5 @@ Reglas:
 - Responde en español.
 - No inventes datos (precios futuros, testimonios, métricas, fechas). Si falta uno, pregunta.
 - Reels de Instagram y anuncios en video → skill `reels-avatar-ads` (anuncio head talking de una toma + B-rolls → `skills/reels-avatar-ads/formatos/head-talking/LEEME.md`). Carruseles de Instagram → skill `carruseles-avatar-ads`. Prompts JSON de Google Flow → `skills/master prompt para json prompts videos.txt`. Prompts JSON de imágenes hiperrealistas (frame del avatar desde cero, Nano Banana) → `skills/master prompt para json prompts imagenes.md`.
+- El producto que se enseña y se vende es el **Sistema Avatar Ads** (`sistema-avatar-ads/`, ver su `LEEME.md` y `PROYECTO.md`). Cada formato o mejora que probemos en nuestros anuncios se lleva también al kit.
 - Si se decide algo nuevo sobre la oferta o el marketing, actualiza `PROYECTO.md` o `BASE-CONOCIMIENTO.md` según corresponda.

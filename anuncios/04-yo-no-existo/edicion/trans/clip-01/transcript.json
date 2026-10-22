@@ -1,0 +1,80 @@
+[
+  {
+    "id": "w0",
+    "text": "Yo",
+    "start": 0,
+    "end": 0.4
+  },
+  {
+    "id": "w1",
+    "text": "no",
+    "start": 0.4,
+    "end": 0.64
+  },
+  {
+    "id": "w2",
+    "text": "existo.",
+    "start": 0.64,
+    "end": 1.44
+  },
+  {
+    "id": "w3",
+    "text": "Mi",
+    "start": 1.44,
+    "end": 1.68
+  },
+  {
+    "id": "w4",
+    "text": "creador",
+    "start": 1.68,
+    "end": 2.16
+  },
+  {
+    "id": "w5",
+    "text": "me",
+    "start": 2.16,
+    "end": 2.4
+  },
+  {
+    "id": "w6",
+    "text": "hizo",
+    "start": 2.4,
+    "end": 2.72
+  },
+  {
+    "id": "w7",
+    "text": "con",
+    "start": 2.72,
+    "end": 2.88
+  },
+  {
+    "id": "w8",
+    "text": "inteligencia",
+    "start": 2.88,
+    "end": 3.52
+  },
+  {
+    "id": "w9",
+    "text": "artificial",
+    "start": 3.52,
+    "end": 4.32
+  },
+  {
+    "id": "w10",
+    "text": "por",
+    "start": 4.32,
+    "end": 4.56
+  },
+  {
+    "id": "w11",
+    "text": "67",
+    "start": 4.56,
+    "end": 5.28
+  },
+  {
+    "id": "w12",
+    "text": "centavos.",
+    "start": 5.28,
+    "end": 6
+  }
+]

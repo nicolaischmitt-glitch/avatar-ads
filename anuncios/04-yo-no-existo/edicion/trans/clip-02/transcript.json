@@ -1,0 +1,38 @@
+[
+  {
+    "id": "w0",
+    "text": "Y",
+    "start": 0.64,
+    "end": 0.8
+  },
+  {
+    "id": "w1",
+    "text": "en",
+    "start": 1.12,
+    "end": 1.44
+  },
+  {
+    "id": "w2",
+    "text": "menos",
+    "start": 1.44,
+    "end": 1.76
+  },
+  {
+    "id": "w3",
+    "text": "de",
+    "start": 1.76,
+    "end": 2
+  },
+  {
+    "id": "w4",
+    "text": "2",
+    "start": 2,
+    "end": 2.48
+  },
+  {
+    "id": "w5",
+    "text": "minutos.",
+    "start": 2.48,
+    "end": 3.76
+  }
+]
