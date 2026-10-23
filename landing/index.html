@@ -201,6 +201,12 @@ fbq('track', 'PageView');
   .proof-media video,.proof-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1310}
   .proof-media video{object-fit:cover}
   .proof-media.zoom{cursor:zoom-in}
+  .proof-media.stat{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:18px 14px;background:radial-gradient(90% 60% at 50% 20%,rgba(48,94,74,.45),transparent 70%),#0d1310}
+  .stat-nums{display:grid;gap:14px;text-align:left}
+  .stat-nums > span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
+  .stat-nums b{display:block;font-family:var(--display);font-stretch:112%;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--neon);text-shadow:0 0 24px rgba(197,247,64,.4);text-transform:none}
+  .stat-shot{display:block;border-radius:10px;overflow:hidden;background:#fff}
+  .proof-media.stat .stat-shot img{position:static;display:block;width:100%;height:auto;background:#fff}
   .proof-media.zoom::after{content:"";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(2,6,4,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C5F740' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-4.5-4.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid rgba(197,247,64,.4)}
   .pill{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:3px 7px;border-radius:6px}
   .fine-print{margin-top:14px;font-size:12px;line-height:1.45;color:var(--meta)}
@@ -491,6 +497,13 @@ fbq('track', 'PageView');
         <button type="button" class="proof-media zoom" aria-label="Ver captura completa"><img src="resultados/caso-servicio.webp" alt="Mensaje de un cliente: 10.537 USD facturados en abril con un servicio" loading="lazy"></button>
         <figcaption><b>Para vender servicios</b><span class="muted">Resultado de un cliente: un servicio tradicional escalado con anuncios de IA</span></figcaption>
       </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom stat" aria-label="Ver captura completa">
+          <span class="stat-nums"><span><b>581</b>leads</span><span><b>$0,35</b>por lead</span></span>
+          <span class="stat-shot"><img src="resultados/fb-ads-costo-por-lead.webp" alt="Administrador de anuncios de Meta: 581 clientes potenciales a 0,35 dólares por resultado" loading="lazy"></span>
+        </button>
+        <figcaption><b>Para generar leads</b><span class="muted">Campaña de Meta testeando anuncios UGC hiperrealistas</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -556,10 +569,6 @@ fbq('track', 'PageView');
       <p class="xy-note">Gráfico ilustrativo.</p>
     </figure>
 
-    <figure class="proof-wide">
-      <a class="zoom" href="resultados/fb-ads-costo-por-lead.webp" aria-label="Ver captura completa"><img src="resultados/fb-ads-costo-por-lead.webp" alt="Administrador de anuncios de Meta: 581 clientes potenciales a 0,35 dólares por resultado" loading="lazy"></a>
-      <figcaption><b>Costo por lead: $0,35.</b> Campaña de Meta testeando anuncios UGC hiperrealistas: 581 clientes potenciales a centavos cada uno.</figcaption>
-    </figure>
   </div>
 </section>
 
