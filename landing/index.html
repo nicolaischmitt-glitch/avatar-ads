@@ -72,14 +72,10 @@ fbq('track', 'PageView');
   .btn:active{transform:translateY(2px)}
   .btn:focus-visible{outline:2px solid var(--white);outline-offset:3px}
   .btn svg{flex:none}
-  .under-btn{font-family:var(--mono);font-size:12.5px;margin-top:14px;letter-spacing:.02em;color:var(--meta)}
 
   /* ===== Barra superior + logo ===== */
-  .topbar{background:var(--bg-2);color:var(--neon);border-bottom:1px solid var(--line-soft);font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px var(--gutter)}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);max-width:640px;margin:0 auto}
   .logo img{display:block;height:44px;width:auto;mix-blend-mode:screen}
-  .nav .seats{text-decoration:none;font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--meta)}
-  .nav .seats b{color:var(--white)}
 
   /* ===== Hero ===== */
   .hero{padding:20px 0 56px;position:relative;background:
@@ -95,11 +91,6 @@ fbq('track', 'PageView');
   .hero p.sub{font-size:17.5px;color:var(--text-2);margin-bottom:26px}
   .hero p.sub b{color:var(--white);font-weight:600}
 
-  .facts{display:grid;grid-template-columns:repeat(3,1fr);margin:32px 0 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(9,15,11,.7)}
-  .facts div{padding:12px 6px;text-align:center;border-right:1px solid var(--line-soft)}
-  .facts div:last-child{border-right:0}
-  .facts b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;font-size:21px;color:var(--white);letter-spacing:-.02em}
-  .facts span{font-size:11px;color:var(--meta);line-height:1.25;display:block}
 
   /* ===== Videos (9:16) ===== */
   .video-slot{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:
@@ -315,7 +306,6 @@ fbq('track', 'PageView');
     .wrap,.nav{max-width:1080px}
     .logo img{height:52px}
     .hero .wrap{max-width:720px;text-align:center}
-    .hero .facts{text-align:center}
     .hero-video{max-width:340px}
     .hero .btn{max-width:420px;margin:0 auto}
     .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
@@ -337,11 +327,8 @@ fbq('track', 'PageView');
 </head>
 <body>
 
-<div class="topbar">En vivo · Lun 26 oct + bonus mar 27 · 7 p.m. Ecuador</div>
-
 <nav class="nav">
   <div class="logo"><img src="logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
-  <a class="seats" href="#inscripcion">Taller en vivo</a>
 </nav>
 
 <!-- ============ HERO ============ -->
@@ -368,16 +355,9 @@ fbq('track', 'PageView');
         </div>
       </figure>
 
-      <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      <a class="btn" href="#inscripcion">Ver todo lo que incluye
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
-      <p class="under-btn">Pago único · Tuyo para siempre · Taller en vivo el lunes 26</p>
-
-      <div class="facts">
-        <div><b>1</b><span>día intenso en vivo</span></div>
-        <div><b>+1</b><span>clase bonus</span></div>
-        <div><b>&lt;$1</b><span>por anuncio</span></div>
-      </div>
     </div>
   </div>
 </header>

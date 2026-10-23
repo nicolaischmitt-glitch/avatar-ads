@@ -7,6 +7,7 @@
 - [ ] ¿Hay algo específico (un número, una escena, un contraste) en vez de adjetivos?
 - [ ] ¿Coincide con la promesa del hero de la landing?
 - [ ] ¿Hay un solo CTA, claro?
+- [ ] Si es el inicio de una landing o un funnel: ¿solo copy que capta, sin precio, fechas ni información extra?
 
 ## Datos y reglas
 - [ ] Cada dato existe en `PROYECTO.md`, `BASE-CONOCIMIENTO.md` o en una fuente citada. Nada inventado.

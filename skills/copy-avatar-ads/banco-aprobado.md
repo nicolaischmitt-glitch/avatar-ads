@@ -36,6 +36,8 @@ Qué hace que funcione (imitar esto):
 - **"Por $27 te llevas el Sistema Avatar Ads, tuyo para siempre y con todas sus futuras actualizaciones. En las clases en vivo te enseño a usarlo."** · oferta
   Por qué: el usuario pidió dejar explícito que los $27 son el sistema, no la entrada a un taller. El taller es donde se enseña a usarlo (sin decir que es un mecanismo de marketing).
   CTA que acompaña: **"Quiero el sistema · $27"** (antes "Quiero mi cupo").
+- **"Ver todo lo que incluye"** · primer botón del hero (lleva a la oferta, no al checkout)
+  Por qué: principio del usuario "el inicio capta, no vende": arriba no hay precio ni datos extra; el precio aparece cuando ya hay interés.
 
 ### Anuncios
 - **"Y no se trata solo de ahorrar."** · anuncio 04 "Yo no existo" (21 oct 2026)

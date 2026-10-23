@@ -196,6 +196,7 @@ Aún no hay testimonios de **alumnos de Avatar Ads**: no inventarlos ni presenta
 ## 10. Reglas para crear contenido
 
 - No inventar datos: precios futuros, número de alumnos, testimonios, resultados de campañas, fechas nuevas. Si hace falta uno, preguntar.
+- **El inicio capta, no vende** (principio del usuario, 22 oct 2026): en el inicio de una landing, un funnel o cualquier pieza, mientras más simple, mejor. Arriba solo va el copy que capta la atención (título, subtítulo, prueba visual): sin precios, sin fechas ni horarios, sin datos extra y sin botón directo al checkout. El primer CTA lleva a la oferta ("Ver todo lo que incluye"); el precio y los detalles aparecen cuando ya hay interés.
 - Escasez y urgencia solo con hechos reales (apertura, fecha del taller en vivo, precio que subirá). Ya no hay límite de cupos.
 - **Anuncios pagados = evergreen** (decisión del 21 oct 2026): sin precio ni fecha, ni en la voz ni en pantalla. Los detalles viven en la landing, así el mismo anuncio sirve para todos los talleres.
 - No usar caras de personas reales reconocibles en recursos; el avatar es IA.
