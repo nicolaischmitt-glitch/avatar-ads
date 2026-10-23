@@ -148,7 +148,6 @@ fbq('track', 'PageView');
   .mloop svg{flex:none;color:var(--neon)}
   .machine.in .mloop svg{animation:mspin 6s linear infinite}
   @keyframes mspin{to{transform:rotate(360deg)}}
-  .machine-note{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--meta)}
 
   /* ===== Para quién ===== */
   .who{display:grid;gap:12px;margin-top:22px}
@@ -314,9 +313,9 @@ fbq('track', 'PageView');
   .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(2,6,4,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s}
   .sticky.show{transform:none}
   .sticky .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:14px}
-  .sticky .p{font-size:12px;color:var(--meta);line-height:1.25}
+  .sticky .p{flex:1;min-width:0;font-size:12px;color:var(--meta);line-height:1.25}
   .sticky .p b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;color:var(--white);font-size:22px;letter-spacing:-.03em}
-  .sticky .btn{width:auto;flex:1;padding:14px 16px;font-size:16px;justify-content:center}
+  .sticky .btn{width:auto;flex:none;white-space:nowrap;padding:14px 20px;font-size:16px;justify-content:center}
 
   /* ===== Escritorio (secundario) ===== */
   @media (min-width:900px){
@@ -473,11 +472,10 @@ fbq('track', 'PageView');
         <li style="--i:0"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0012 3z"/></svg></span><div><span class="mnum">01</span><b>Idea y ángulo</b><small>El sistema te pregunta y define a quién le hablas.</small></div></li>
         <li style="--i:1"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><span class="mnum">02</span><b>Guion</b><small>Hook, desarrollo y CTA pensados para vender.</small></div></li>
         <li style="--i:2"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></span><div><span class="mnum">03</span><b>Avatar y video</b><small>Un avatar realista que habla por tu marca.</small></div></li>
-        <li style="--i:3"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><div><span class="mnum">04</span><b>Edición</b><small>Subtítulos, ritmo y CTA, automatizados.</small></div></li>
+        <li style="--i:3"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><div><span class="mnum">04</span><b>Edición</b><small>Subtítulos, ritmo, efectos y CTA: toda la edición, sin editores.</small></div></li>
         <li class="last" style="--i:4"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><div><span class="mnum">05</span><b>Testear y escalar</b><small>Decenas de versiones para encontrar tus ganadores.</small></div></li>
       </ol>
       <div class="mloop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg><span>Y vuelve a empezar: cada ángulo nuevo es otro anuncio, en minutos.</span></div>
-      <p class="machine-note">De la idea al anuncio editado, las veces que lo necesites.</p>
     </div>
   </div>
 </section>
@@ -486,7 +484,7 @@ fbq('track', 'PageView');
 <section class="alt" id="resultados">
   <div class="wrap">
     <h2>¿Para qué sirven <span class="b">los anuncios hiperrealistas?</span></h2>
-    <p class="muted">Casos reales de anuncios hechos con IA. Toca una imagen para verla completa.</p>
+    <p class="muted">Casos reales de anuncios hechos con IA.</p>
 
     <div class="rail proof-rail">
       <figure class="proof">
