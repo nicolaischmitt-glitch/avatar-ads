@@ -100,14 +100,14 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 2. Freelancers / futuros proveedores que quieren vender anuncios con IA a negocios.
 
 ## Incluye
-(Oferta única de la landing, en orden: taller → clase bonus.) Taller en vivo (lun 26) · **Sistema Avatar Ads** con guía de instalación · herramientas · prompts.
+(Oferta única de la landing, en orden, con su valor tachado.) **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación (valor $197) · Taller en vivo (lun 26): aprende a usar el sistema (valor $97) · Clase bonus mar 27 (valor $67) · Prompts (valor $47).
+Para usar el sistema el alumno necesita Claude con Claude Code (plan Pro, ~$20 al mes) y una cuenta de Google con Google Flow: está en la FAQ "¿Qué necesito para usar el sistema?".
 
 ## Bonos
-1. **Clase bonus en vivo (mar 27): cómo conseguir clientes** para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
-2. **Grupo privado de WhatsApp:** feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana).
-3. **Grabación completa del taller.**
-4. **Acceso vitalicio al curso Avatar Ads** (con todas las futuras actualizaciones).
-5. **Cliente Cero** ($97): flujo para vender anuncios a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta, guía de brief del cliente.
+1. **Clase bonus en vivo (mar 27): cómo conseguir clientes** — "mi proceso para vender estos anuncios a negocios": qué oferta vender, captación orgánica y captación con anuncios (valor $67).
+2. **Grupo privado de WhatsApp:** feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana) (valor $97).
+3. **Grabación completa del taller** (valor $47).
+(22 oct 2026: se eliminaron "Herramientas" —no entregamos herramientas: Claude Code y Google Flow los paga el alumno—, el bono **Cliente Cero** —no existe— y el **acceso vitalicio al curso Avatar Ads** —aún no hay curso ni plataforma; no crear falsas expectativas—. Valores de cada componente puestos por Claude como ancla, el usuario puede cambiarlos.)
 (Eliminados: UGC Realism Vault y Low-Cost Production System. Ya no se promete "3 anuncios listos" ni proyecto práctico de 3 anuncios.)
 
 ## Temario

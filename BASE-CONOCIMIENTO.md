@@ -40,14 +40,14 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 **Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
 
-**Incluye (oferta única):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación · taller en vivo (lun 26): aprende a usar el sistema · herramientas · prompts.
+**Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($197) · taller en vivo (lun 26): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
 
 **Bonos:**
-1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27) — mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
-2. **Grupo privado de WhatsApp** — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
-3. **Grabación completa del taller.**
-4. **Acceso vitalicio al curso Avatar Ads**, con todas las futuras actualizaciones.
-5. **Cliente Cero** (valor $97) — kit para vender anuncios con IA a negocios: el flujo que usamos para venderlos a $50 c/u, scripts de prospección y seguimiento, plantilla de oferta y guía de brief.
+1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27, $67) — mi proceso para vender estos anuncios a negocios: qué oferta vender, captación orgánica y captación con anuncios.
+2. **Grupo privado de WhatsApp** ($97) — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
+3. **Grabación completa del taller** ($47).
+
+No existen (no mencionarlos): el bono **Cliente Cero** y un **curso Avatar Ads** con plataforma (eliminados el 22 oct 2026). Lo que el alumno se lleva para siempre es el sistema + la grabación.
 
 No prometer "3 anuncios listos" al final del taller.
 
@@ -92,11 +92,11 @@ Invierten en publicidad y necesitan producir nuevas creatividades para **probar,
 Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a negocios y empresas.
 - **Quieren:** una habilidad vendible, un servicio concreto con precio, primeros clientes.
 - **Dolores** *(propuesta)*: no saben qué servicio ofrecer ni cuánto cobrar; no tienen portafolio; no saben prospectar; las herramientas caras se comen el margen.
-- **Puente de la oferta:** la clase bonus (mar 27) enseña qué oferta vender y cómo captar clientes, y el bono Cliente Cero da el flujo para venderlos a $50 c/u.
+- **Puente de la oferta:** la clase bonus (mar 27) enseña qué oferta vender y cómo captar clientes, y el grupo de WhatsApp da feedback de sus anuncios.
 
 ### Lista de email (Brevo, ~590 contactos)
 La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y vender productos digitales (ebooks) con IA. Les interesa generar ingresos online con IA. Lista fría (meses sin correos): el primer correo reconecta antes de vender.
-- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, por centavos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (Cliente Cero, $50 por anuncio).
+- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, por centavos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (vender anuncios a negocios, clase bonus).
 - Correos en `emails/` (una carpeta por secuencia). Brevo gratis = 300 correos al día: alternar Lista A / Lista B. Links con `src=emailN` + `utm_*` (la landing los pasa al checkout de Hotmart). Excluir siempre a los compradores.
 
 ## 5. Ángulos de venta
@@ -123,7 +123,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "No necesitas un equipo de producción para escalar tus ventas. Necesitas testear más."
    - "¿Cuánto te cuesta cada anuncio que testeas? Con IA, casi nada."
 4. **Habilidad vendible / ingreso extra** (perfil freelancer)
-   No es solo usar IA: es una habilidad que puedes vender como servicio. Bono Cliente Cero: vender anuncios a $50 c/u.
+   No es solo usar IA: es una habilidad que puedes vender como servicio. La clase bonus enseña a vender estos anuncios a negocios.
    - "Los negocios están pagando por esto y casi nadie sabe hacerlo bien."
    - "Así venderías tu primer anuncio con IA esta semana."
 5. **Resultado concreto y rápido**
@@ -148,10 +148,10 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 | "No puedo conectarme a una clase." | Tienes la grabación completa del taller y acceso vitalicio al curso. |
 | "¿Y si sube el precio?" | Si entras en la apertura, nada cambia para ti: acceso de por vida y todas las actualizaciones sin pagar más. |
 | "¿Por qué en vivo?" | Es la apertura: se muestra el proceso en tiempo real y se resuelven dudas en vivo. |
-| "¿Puedo vender este servicio?" | Sí. Cliente Cero incluye el flujo, scripts y plantillas para vender anuncios con IA a negocios. |
+| "¿Puedo vender este servicio?" | Sí. En la clase bonus del martes 27 te enseño mi proceso para vender estos anuncios a negocios. |
 | "No sé nada de IA / no soy técnico." *(propuesta)* | Es paso a paso, construyendo tu propio anuncio en clase, con prompts y workflows listos y grupo de WhatsApp para dudas. |
 | "La IA cambia cada mes, esto quedará viejo." *(propuesta)* | Acceso vitalicio con todas las futuras actualizaciones del método. |
-| "¿$27 vale la pena?" *(propuesta)* | Un solo anuncio vendido con el flujo de Cliente Cero ($50) ya lo paga; el bono Cliente Cero solo vale $97. |
+| "¿$27 vale la pena?" *(propuesta)* | Te llevas el sistema de por vida con sus actualizaciones; un solo anuncio que vendas a un negocio ya lo paga. |
 
 ## 7. Mensajes clave y frases de marca
 
