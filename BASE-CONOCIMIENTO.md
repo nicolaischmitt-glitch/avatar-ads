@@ -40,14 +40,16 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 **Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
 
-**Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($197) · taller en vivo (lun 26): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
+**Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($497) · taller en vivo (lun 26): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
 
 **Bonos:**
 1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27, $67) — mi proceso para vender estos anuncios a negocios: qué oferta vender, captación orgánica y captación con anuncios.
-2. **Grupo privado de WhatsApp** ($97) — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
+2. **Grupo privado de soporte** ($97; en la landing no se dice "WhatsApp") — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
 3. **Grabación completa del taller** ($47).
 
-No existen (no mencionarlos): el bono **Cliente Cero** y un **curso Avatar Ads** con plataforma (eliminados el 22 oct 2026). Lo que el alumno se lleva para siempre es el sistema + la grabación.
+No existe (no mencionarlo): el bono **Cliente Cero** (eliminado el 22 oct 2026). Lo que el alumno se lleva hoy para siempre es el sistema + la grabación.
+
+**Futuro (cuadro "Próximamente" en la oferta, 22 oct 2026):** el **curso Avatar Ads**. Se prepara después del taller y se envía **por correo** a todos los que compraron esta edición, sin costo extra. Estimado interno: 3–4 semanas; en la landing no se pone fecha (solo "próximamente") para no comprometer un plazo.
 
 No prometer "3 anuncios listos" al final del taller.
 

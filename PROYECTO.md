@@ -100,14 +100,15 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 2. Freelancers / futuros proveedores que quieren vender anuncios con IA a negocios.
 
 ## Incluye
-(Oferta única de la landing, en orden, con su valor tachado.) **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación (valor $197) · Taller en vivo (lun 26): aprende a usar el sistema (valor $97) · Clase bonus mar 27 (valor $67) · Prompts (valor $47).
+(Oferta única de la landing, en orden, con su valor tachado.) **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación (valor $497) · Taller en vivo (lun 26): aprende a usar el sistema (valor $97) · Clase bonus mar 27 (valor $67) · Prompts (valor $47).
 Para usar el sistema el alumno necesita Claude con Claude Code (plan Pro, ~$20 al mes) y una cuenta de Google con Google Flow: está en la FAQ "¿Qué necesito para usar el sistema?".
 
 ## Bonos
 1. **Clase bonus en vivo (mar 27): cómo conseguir clientes** — "mi proceso para vender estos anuncios a negocios": qué oferta vender, captación orgánica y captación con anuncios (valor $67).
-2. **Grupo privado de WhatsApp:** feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana) (valor $97).
+2. **Grupo privado de soporte** (en la landing sin la palabra WhatsApp; es el grupo de WhatsApp de alumnos): feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana) (valor $97).
 3. **Grabación completa del taller** (valor $47).
-(22 oct 2026: se eliminaron "Herramientas" —no entregamos herramientas: Claude Code y Google Flow los paga el alumno—, el bono **Cliente Cero** —no existe— y el **acceso vitalicio al curso Avatar Ads** —aún no hay curso ni plataforma; no crear falsas expectativas—. Valores de cada componente puestos por Claude como ancla, el usuario puede cambiarlos.)
+(22 oct 2026: se eliminaron "Herramientas" —no entregamos herramientas: Claude Code y Google Flow los paga el alumno—, el bono **Cliente Cero** —no existe— y el **acceso vitalicio al curso Avatar Ads** como bono actual —aún no hay curso ni plataforma; pasó al cuadro "Futuro"—. Valores de cada componente puestos por Claude como ancla, el usuario puede cambiarlos; el del sistema lo subió el usuario a $497.)
+**Futuro (cuadro "Próximamente" en la oferta, 22 oct 2026):** el **curso Avatar Ads**. Se prepara después del taller y se envía **por correo** a todos los que compraron esta edición, sin costo extra. Estimado interno: 3–4 semanas; en la landing no se pone fecha (solo "próximamente") para no comprometer un plazo.
 (Eliminados: UGC Realism Vault y Low-Cost Production System. Ya no se promete "3 anuncios listos" ni proyecto práctico de 3 anuncios.)
 
 ## Temario
