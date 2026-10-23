@@ -36,6 +36,9 @@ Qué hace que funcione (imitar esto):
 - **"Por $27 te llevas el Sistema Avatar Ads, tuyo para siempre y con todas sus futuras actualizaciones. En las clases en vivo te enseño a usarlo."** · oferta
   Por qué: el usuario pidió dejar explícito que los $27 son el sistema, no la entrada a un taller. El taller es donde se enseña a usarlo (sin decir que es un mecanismo de marketing).
   CTA que acompaña: **"Quiero el sistema · $27"** (antes "Quiero mi cupo").
+- **"No es una clase. Es el sistema completo."** · h2 de la oferta (22 oct 2026)
+  Texto: "Por $27 no pagas por una clase para tomar notas: te llevas el Sistema Avatar Ads de por vida, con todas sus actualizaciones, el curso, la grabación y el grupo de soporte. El taller en vivo es la puerta de entrada: ahí te enseño a usarlo y creamos dos anuncios con él."
+  Por qué: el usuario no quiere que se perciba como "pagar $27 por ver una clase y llevarse notas". El taller se nombra por primera vez después de presentar el sistema ("Te lo entrego completo y, en un taller en vivo, te enseño a usarlo"), nunca en el inicio.
 - **"Ver todo lo que incluye"** · primer botón del hero (lleva a la oferta, no al checkout)
   Por qué: principio del usuario "el inicio capta, no vende": arriba no hay precio ni datos extra; el precio aparece cuando ya hay interés.
 
