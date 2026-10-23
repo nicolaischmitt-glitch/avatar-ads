@@ -167,7 +167,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 - "Calidad de producción, sin herramientas caras."
 - "Produce cientos de anuncios, testea más rápido, encuentra tus ganadores y escala tus ventas, sin gastar fortunas en producción, editores, equipo ni herramientas como Seedance."
 - "No se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio."
-- "Dos perfiles, una habilidad."
+- "Dos perfiles, un sistema." (antes "una habilidad": Avatar Ads es un sistema, no solo una habilidad)
 - "Esto es lo que veremos cada día."
 - "Todo para producir."
 - "La IA cambia rápido. Cada mejora del método llega a tu acceso sin pagar más."
