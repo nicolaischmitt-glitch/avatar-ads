@@ -8,11 +8,19 @@ Fuentes de este documento: la landing (`landing/index.html`, https://taller.droi
 
 ## 1. Qué es, en una frase
 
-Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistemas y las herramientas para **producir contenido y anuncios UGC hiperrealistas con IA, que parecen producidos profesionalmente, por centavos y sin herramientas caras**.
+Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistemas y las herramientas para **crear anuncios con IA que venden**: hiperrealistas, en volumen y por centavos, para testear, encontrar ganadores y escalar un negocio (el propio o el de clientes).
 
-- **Versión corta (bio / hook):** "Crea anuncios hiperrealistas con IA."
-- **Promesa de la landing (hero):** "Aprende a crear anuncios hiperrealistas con IA para escalar tus ventas u ofrecerlo como servicio." Subtítulo: "El mejor sistema calidad/precio. Cada anuncio te sale a menos de un dólar."
-- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — "Crea anuncios hiperrealistas con IA por menos de un dólar cada uno, para tu negocio o para tus clientes."
+- **Versión corta (bio / hook):** "Crea anuncios con IA que venden."
+- **Promesa de la landing (hero, desde el 22 oct 2026):** "Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno." Subtítulo: "No es solo un video que parece real: es el sistema para producir decenas de anuncios, encontrar tus ganadores y escalar tu negocio o el de tus clientes."
+- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — "Crea anuncios con IA que venden, por menos de un dólar cada uno, para tu negocio o para tus clientes."
+
+### Posicionamiento (decisión del 22 oct 2026)
+El objetivo de Avatar Ads **no es crear el video más real posible: es crear anuncios que generen ventas, leads y clientes**, y el sistema para producirlos en volumen y escalarlos.
+- **El hiperrealismo es el medio, no la meta.** Frase puente: *"Realista, porque lo falso no vende."* Que no se note la IA genera confianza; lo que vende es el ángulo, el guion, el CTA y poder testear muchas versiones.
+- **Escalera del mensaje:** un anuncio que se ve real (confianza) → un anuncio bien pensado (ángulo, hook, guion, CTA) → muchos anuncios (testeo, ganadores) → una **máquina de anuncios** (sistema que escala un negocio). La competencia se queda en el primer escalón; nuestro diferencial está en el 3 y el 4.
+- **"Máquina de anuncios"** = cómo se presenta el Sistema Avatar Ads (sección de la landing "Un video que parece real no es un anuncio que vende").
+- **Visión:** Avatar Ads = sistemas de IA para producir anuncios (y contenido); el video es el primer formato. No prometer módulos que aún no existen: basta con "el sistema crece con cada formato nuevo y te llega sin pagar más".
+- Prudencia: "que venden" se sostiene con la prueba real (ventas en Hotmart, CPL $0,35); nunca prometer resultados ni ingresos garantizados.
 
 ### Programa vs. talleres
 - **Avatar Ads (el producto)** es el programa: contenido, sistemas, prompts, workflows y herramientas para producir contenido y anuncios. Es lo que el alumno compra y conserva de por vida, con todas las futuras actualizaciones.
@@ -30,7 +38,9 @@ Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistem
 | Qué se ve | Taller: creamos en vivo dos anuncios completos (producto digital y servicio), de la idea al video editado · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
-**Incluye (oferta única):** taller en vivo (lun 26) · **Sistema Avatar Ads** con guía de instalación · herramientas · prompts.
+**Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
+
+**Incluye (oferta única):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación · taller en vivo (lun 26): aprende a usar el sistema · herramientas · prompts.
 
 **Bonos:**
 1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27) — mi proceso para conseguir clientes para este servicio de alta demanda: qué oferta vender, captación orgánica y captación con anuncios.
@@ -45,10 +55,10 @@ No prometer "3 anuncios listos" al final del taller.
 
 ## 3. Qué aprende el alumno
 
-- Desarrollar conceptos ganadores y guiones publicitarios persuasivos.
-- Crear anuncios UGC hiperrealistas utilizando IA.
-- Convertir imágenes de referencia en videos publicitarios.
-- Usar prompts y workflows para simplificar la producción.
+- Desarrollar ángulos ganadores y guiones publicitarios que venden.
+- Crear anuncios UGC hiperrealistas con IA que generan confianza.
+- Crear a su avatar con IA y mantenerlo igual en todas las escenas.
+- Usar un sistema de IA para producir decenas de anuncios y testearlos.
 - Producir anuncios para infoproductos, servicios y generación de leads.
 - Aplicar la habilidad en su negocio o para conseguir clientes.
 
@@ -93,8 +103,8 @@ La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y ven
 
 Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los hooks son *(propuesta)*; adaptarlos a la voz del guion.
 
-1. **Hiperrealismo / "que no parezca IA"** (ángulo principal del contenido orgánico)
-   La diferencia está en el prompt: pedirle a la IA un frame de video real de iPhone, con imperfecciones, luz y lugar concretos (no "una foto bonita").
+1. **Hiperrealismo / "que no parezca IA"** (gancho principal del contenido orgánico)
+   Siempre al servicio de vender: es el gancho que detiene el scroll, pero el cierre lleva a ventas, testeo y sistema (ver Posicionamiento, sección 1). La diferencia está en el prompt: pedirle a la IA un frame de video real de iPhone, con imperfecciones, luz y lugar concretos (no "una foto bonita").
    - "Si tus videos con IA se ven falsos, es porque los estás creando así."
    - "Este anuncio no lo grabó nadie."
    - "¿Persona real o IA? Mira las manos."
@@ -145,6 +155,11 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 
 ## 7. Mensajes clave y frases de marca
 
+- "Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno." (título de la landing)
+- "No es solo un video que parece real."
+- "Un video que parece real no es un anuncio que vende."
+- "Realista, porque lo falso no vende."
+- "Tu máquina de anuncios."
 - "Crea anuncios hiperrealistas con IA."
 - "Que parecen producidos profesionalmente. Y por centavos."
 - "Calidad de producción, sin herramientas caras."
@@ -155,7 +170,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 - "Todo para producir."
 - "La IA cambia rápido. Cada mejora del método llega a tu acceso sin pagar más."
 - "Entra hoy. Quédate para siempre."
-- CTA de venta: "Quiero mi cupo · $27" / "Reservar mi cupo".
+- CTA de venta: "Quiero el sistema · $27" (desde el 22 oct 2026; antes "Quiero mi cupo", que hacía pensar que se compra un lugar en un taller).
 
 ## 8. Prueba y activos disponibles
 

@@ -56,7 +56,7 @@ Contenido/reels/NN-slug/            (NN = número correlativo: 01, 02…)
 El usuario da una idea o un borrador. Si falta algo imprescindible (tema), pregunta una sola vez. Si no, avanza. Crea la carpeta `Contenido/reels/NN-slug/`.
 
 ### Fase 2 — Guion
-1. Lee `references/frameworks-guion.md` y `cta-lead-magnet.md`.
+1. Lee `references/frameworks-guion.md` y `cta-lead-magnet.md`. El copy (ángulo, hook, mensaje, CTA) sigue el skill `copy-avatar-ads`: su flujo de opciones + checklist y su `banco-aprobado.md`.
 2. Elige la estructura que mejor encaja (o la que pida el usuario) y escribe/mejora el guion: 30–60 s, español neutro latino, frases cortas y habladas.
 3. Si el usuario dio un borrador, conserva su idea y su voz; mejora hook, estructura, especificidad y CTA. Explica en 2–3 líneas qué cambiaste y por qué.
 4. Divide el guion en clips (reglas del master prompt: 4/6/8/10 s, prioriza 6 y 8; tabla de palabras por duración en frameworks-guion.md).
