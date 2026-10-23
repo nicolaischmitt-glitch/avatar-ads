@@ -38,7 +38,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 | Qué se ve | Taller: creamos en vivo dos anuncios completos (producto digital y servicio), de la idea al video editado · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
-**Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing. Enfatizar que no es "una clase para tomar notas": por $27 se llevan el sistema de por vida + actualizaciones + curso + grabación + grupo de soporte + bonos, y **el taller es la puerta de entrada**. En la landing, el taller no se nombra en el inicio: aparece por primera vez después de presentar el sistema.
+**Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
 
 **Incluye (oferta única):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación · taller en vivo (lun 26): aprende a usar el sistema · herramientas · prompts.
 
