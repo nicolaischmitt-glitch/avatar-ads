@@ -55,7 +55,8 @@ Avatar Ads 1.0/
 │   │                               formatos/head-talking/ = reglas + plantilla de edición del formato D (anuncio head talking de una toma + B-rolls)
 │   ├── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
 │   ├── carruseles-avatar-ads/   ← skill del sistema de carruseles (guion → diseño HTML → PNG → caption)
-│   └── copy-avatar-ads/         ← skill copywriter (brief → ángulo → 2–3 opciones → checklist → banco-aprobado.md)
+│   ├── copy-avatar-ads/         ← skill copywriter (brief → ángulo → 2–3 opciones → checklist → banco-aprobado.md)
+│   └── paginas-de-venta/        ← skill de landing pages y páginas de venta: reglas del usuario (inicio, secciones, oferta, valores, FAQ, proceso)
 │                             (.claude/skills/<skill> son solo enlaces a estas carpetas; no borrarlos)
 └── archivo/             ← material viejo, guardado por si acaso (solo en Google Drive; se puede borrar)
     ├── version-1/            primera edición, hecha con los clips equivocados (video 1–7)
@@ -143,12 +144,14 @@ Sitio en **GitHub Pages** (desde el 21 oct 2026; antes Netlify, que pausó las p
   `mklink /J ".claude\skills\reels-avatar-ads" "skills\reels-avatar-ads"` ·
   `mklink /J ".claude\skills\lead-magnets-avatar-ads" "skills\lead-magnets-avatar-ads"` ·
   `mklink /J ".claude\skills\carruseles-avatar-ads" "skills\carruseles-avatar-ads"` ·
-  `mklink /J ".claude\skills\copy-avatar-ads" "skills\copy-avatar-ads"`
+  `mklink /J ".claude\skills\copy-avatar-ads" "skills\copy-avatar-ads"` ·
+  `mklink /J ".claude\skills\paginas-de-venta" "skills\paginas-de-venta"`
   Landing: instalar GitHub CLI (`winget install GitHub.cli`), `gh auth login --web` y publicar con `node publicar-landing.mjs` (crea `.deploy-landing/` solo).
 
 ## Pendientes de la landing
 - [x] Links de los botones CTA → checkout de Hotmart: https://pay.hotmart.com/G108061829I?checkoutMode=10 (los 4 botones).
 - [x] Videos en la landing (`landing/videos/`): 01 = anuncio de Avatar Ads (portada, en el hero), 02 = reel de podcast (`Contenido/reels/07-podcast-seedance-centavos`), 03 = avatar con labial (`anuncios/02-labial-auto`), 04–05 = ejemplos de `anuncios/ejemplos-ugc/` (airpods, suplemento; el de skincare se quitó el 22 oct 2026). La sección de ejemplos va justo después del hero. Se reproducen en silencio al entrar en pantalla y tienen botón "Activar sonido".
 - [x] Mensaje nuevo (22 oct 2026): título "Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno." + subtítulo del sistema (ver posicionamiento en BASE-CONOCIMIENTO.md, sección 1).
+- [x] Sin etiquetas pequeñas encima de los títulos de las secciones (22 oct 2026); "Qué aprenderás" pasó a ser un h2.
 - [x] Estructura actual (22 oct 2026): hero (solo el logo centrado arriba, sin etiqueta "Apertura · Taller en vivo", sin barra superior ni precio; CTA "Ver todo lo que incluye" → #inscripcion; los demás botones van al checkout) → ejemplos (videos) → "un video que parece real no es un anuncio que vende" (comparación + máquina de anuncios en 5 pasos) → resultados reales (video de ventas en Hotmart + 3 mensajes de clientes, con visor) → "el sistema más económico" (costo por anuncio de 30 s: Avatar Ads ~$0,37 vs. promedio de otras herramientas ~$13 → con $13 haces ~35 con el sistema y 1 afuera; el promedio sale de Wan 2.5 ~$3, Seedance 2.0 API oficial ~$11, Seedance 2.5 ~$17 y Seedance 2.0 fal.ai ~$20. El ~$0,37 es el costo real del reel 07: 43 s por $0,53) → "testea más, encuentra más ganadores" (gráfico XY animado, ilustrativo: ads con IA 20–30/mes vs ads normales 4/mes → 1 ganador, + captura de Meta CPL $0,35) → para quién / qué aprenderás → oferta única (primero el Sistema Avatar Ads + todas sus futuras actualizaciones, después el taller lun 26 "aprende a usar el sistema" → clase bonus mar 27 con temario desplegable, herramientas, prompts + bonos destacados + $27 + CTA "Quiero el sistema · $27") → FAQ (incluye "¿Qué estoy comprando exactamente?") → FAQ → cierre.
 - [ ] Confirmar cifras de la comparativa: Wan 2.5 ~$0,10/s y Seedance 2.0 $0,11–$0,46/s son precios públicos de API (oct 2026); el usuario mencionó ~$1/s para Seedance en el reel 07. Precios verificados el 21 oct 2026 (tabla completa en `anuncios/03-calidad-seedance-centavos/guion.md`): Seedance 2.0 en 1080p cuesta $0,682/s en fal.ai y $0,37/s en la API oficial de BytePlus ($0,41–$0,91/s con video de referencia); Seedance 2.5 en 1080p, $0,569/s (hasta $2,38/s con video de referencia).
