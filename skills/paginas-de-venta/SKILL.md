@@ -38,6 +38,14 @@ Mientras más simple, mejor. Arriba solo va lo que capta la atención.
 - Las alternativas van **agrupadas** ("Otras herramientas (promedio)") con el detalle de cada una **dentro del cuadro**, no como tarjetas sueltas.
 - Cada número tiene que poder explicarse: de dónde sale y su fuente, en letra pequeña debajo. Si no sabemos de dónde sale un dato, no va.
 
+## 3b. Gráficos que explican (no solo texto)
+Al usuario le importa mucho: **una página de venta no puede ser solo texto.** Entendemos con símbolos, comparaciones y gráficos, no solo con palabras. Cada concepto clave de la página debería tener su gráfico.
+- **El favorito del usuario:** el gráfico XY animado "Anuncios ganadores encontrados" de la landing de Avatar Ads (sección `#testeo`): dos curvas, "Ads con IA · 20–30 anuncios al mes", que sube rápido, frente a "Ads normales · 4 anuncios al mes", que apenas crece. Explica en un vistazo que testear más = encontrar más ganadores. Úsalo como modelo.
+- Otros que funcionaron: el mosaico de cuadritos (un cuadrito = un anuncio: ~35 frente a 1), la comparación lado a lado "Solo un video con IA ✕" frente a "Un anuncio con el sistema ✓" y la "máquina" en pasos numerados (01 Idea → 05 Testear y escalar).
+- **Tipos que sirven:** curva de crecimiento (antes / después o nosotros / ellos), mosaico de unidades (cuántos salen con el mismo dinero), comparación lado a lado con ✓ y ✕, proceso en pasos, barras de costo, línea de tiempo.
+- **Reglas:** un gráfico = una idea; se entiende sin leer el párrafo; animado al entrar en pantalla (sutil); hecho en HTML/SVG con los colores de la marca (acento para "nosotros", gris para la alternativa); legible a 375 px. Si es ilustrativo y no son datos reales, lo dice en letra pequeña ("Gráfico ilustrativo."); si son datos, lleva su fuente.
+- Al crear o rehacer una página, **propón qué gráfico acompaña cada concepto** (en el plan de secciones), no solo el texto.
+
 ## 4. La oferta
 - **Lo que compran es el producto (el sistema), no el evento.** El taller o clase en vivo es la puerta de entrada donde se enseña a usarlo. No decir que el evento es un mecanismo de marketing.
 - **Primero el producto principal**, destacado; después el evento en vivo, la clase bonus, lo demás y los bonos.
@@ -64,6 +72,7 @@ Mientras más simple, mejor. Arriba solo va lo que capta la atención.
 - [ ] Inicio: solo logo centrado, título, subtítulo, video y un botón a la oferta. Sin precio, fechas ni etiquetas.
 - [ ] Ninguna sección tiene etiqueta pequeña encima del título.
 - [ ] Cada número se entiende en una lectura y tiene fuente.
+- [ ] Los conceptos clave tienen un gráfico que los explica (no solo texto); los ilustrativos lo dicen.
 - [ ] La oferta empieza por el producto, cada componente tiene valor tachado y no hay nada que no se entregue.
 - [ ] Lo futuro está en "Próximamente", sin fecha.
 - [ ] Las FAQ coinciden con la oferta actual y dicen qué se necesita para usar el producto.
