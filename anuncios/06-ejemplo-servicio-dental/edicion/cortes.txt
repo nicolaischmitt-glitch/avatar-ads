@@ -1,0 +1,11 @@
+# clip  inicio  fin   (segundos dentro del clip; unir-clips los ajusta a fotogramas de 24 fps)
+# v3 (23 oct 2026): vuelta a los cortes naturales (la v2, con pausas de 0,07–0,1 s, se veía demasiado rápida; ver cortes-v2-descartado.txt).
+# Medido con medir-voz.mjs (piso −52/−54 dB). Inicio = voz − 0,05 · fin = voz + ≥0,06 tras la cola suave · solo se recortan las pausas > 0,3 s (a ~0,15–0,25 s).
+# "sonrisa," (clip 3) conserva su cola suave hasta 6,24 (en la v2 se cortaba en "sonris-").
+1  0.51  2.46
+1  2.85  5.14
+2  1.17  4.88
+2  5.33  7.80
+3  0.75  3.70
+3  4.47  6.36
+3  6.59  8.00

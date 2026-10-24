@@ -32,7 +32,7 @@ Después de aprobar el texto, el skill `reels-avatar-ads` lo divide en clips.
 
 ## Landing (sección por sección)
 - **Hero:** título (promesa) + subtítulo (cómo / para quién) + prueba visual + CTA a la oferta ("Ver todo lo que incluye"). **El inicio capta, no vende:** sin precio, sin fechas, sin datos extra, sin barra superior y sin botón directo al checkout. El precio aparece en la sección de la oferta.
-- Cada sección: etiqueta corta (`label`) → h2 con contraste y una parte en verde → una frase que explica → la prueba o el gráfico.
+- Cada sección: h2 con contraste y una parte en verde (sin etiqueta pequeña encima) → una frase que explica → la prueba o el gráfico.
 - **Oferta:** lo que compran es el Sistema Avatar Ads de por vida; el taller es donde se enseña a usarlo. Primero el sistema, después el taller y los bonos.
 - **FAQ:** una objeción real por pregunta (sección 6 de BASE-CONOCIMIENTO), respuesta en 1–2 frases.
 - **Cierre:** repite la promesa del hero con otras palabras + CTA.

@@ -39,7 +39,7 @@ if (desde != null) {
 }
 
 const files = fs.statSync(target).isDirectory()
-  ? fs.readdirSync(target).filter((f) => /\.(mp4|mov|wav|mp3|m4a)$/i.test(f)).sort().map((f) => path.join(target, f))
+  ? fs.readdirSync(target).filter((f) => /\.(mp4|mov|wav|mp3|m4a)$/i.test(f) && !/^broll-/i.test(f)).sort().map((f) => path.join(target, f))
   : [target];
 for (const f of files) {
   const db = levels(f);

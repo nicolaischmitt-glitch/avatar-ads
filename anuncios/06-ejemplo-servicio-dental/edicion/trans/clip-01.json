@@ -1,0 +1,92 @@
+[
+  {
+    "id": "w0",
+    "text": "¿Te",
+    "start": 0,
+    "end": 0.48
+  },
+  {
+    "id": "w1",
+    "text": "da",
+    "start": 0.56,
+    "end": 0.8
+  },
+  {
+    "id": "w2",
+    "text": "pena",
+    "start": 0.8,
+    "end": 1.12
+  },
+  {
+    "id": "w3",
+    "text": "sonreír",
+    "start": 1.12,
+    "end": 1.68
+  },
+  {
+    "id": "w4",
+    "text": "en",
+    "start": 1.68,
+    "end": 1.76
+  },
+  {
+    "id": "w5",
+    "text": "las",
+    "start": 1.76,
+    "end": 2
+  },
+  {
+    "id": "w6",
+    "text": "fotos?",
+    "start": 2,
+    "end": 2.48
+  },
+  {
+    "id": "w7",
+    "text": "Lo",
+    "start": 2.72,
+    "end": 2.96
+  },
+  {
+    "id": "w8",
+    "text": "veo",
+    "start": 2.96,
+    "end": 3.36
+  },
+  {
+    "id": "w9",
+    "text": "todos",
+    "start": 3.36,
+    "end": 3.68
+  },
+  {
+    "id": "w10",
+    "text": "los",
+    "start": 3.68,
+    "end": 3.84
+  },
+  {
+    "id": "w11",
+    "text": "días",
+    "start": 3.84,
+    "end": 4.16
+  },
+  {
+    "id": "w12",
+    "text": "en",
+    "start": 4.24,
+    "end": 4.4
+  },
+  {
+    "id": "w13",
+    "text": "la",
+    "start": 4.4,
+    "end": 4.56
+  },
+  {
+    "id": "w14",
+    "text": "clínica.",
+    "start": 4.56,
+    "end": 5.6
+  }
+]

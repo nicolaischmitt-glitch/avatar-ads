@@ -14,6 +14,11 @@ Ejemplo terminado: `ejemplo-storyboard-anuncio-03.png` (storyboard del anuncio c
 - **2 tomas** (opcional): si el guion cambia de tema, se puede cambiar de lugar (p. ej. carro → casa). La segunda imagen se genera adjuntando la primera a Nano Banana para mantener a la misma persona; en `clips-plan.json` cada clip apunta a su toma. El cambio de toma es un corte de escena (transición rápida), no necesita zoom.
 - Selfie sostenido con la mano (carro): en los gestos, "con la mano libre". Con un objeto en la mano (taza), gesticula con la otra.
 
+### B-rolls (los propone Claude, pasos 3 y 4 de `prompts-flow.md`)
+- 2–3 por anuncio, de 6 u 8 s, sin diálogo: el producto en macro, el lugar sin personas, la situación del dolor del cliente o el resultado.
+- **Primero el frame, después el video**: el frame se crea en Nano Banana Pro (4 variaciones, se elige una → `broll/broll-01.jpg`) y Flow lo anima (→ `clips/broll-01.mp4`). Nunca directo de texto a video: quema créditos y se ve "de IA".
+- En la edición van en `public/broll/`. Cubren cortes internos y suben el ritmo, pero el avatar sigue en cámara ≈ 60–65 % del tiempo.
+
 ### Storyboard
 - Lámina 1920×1080 con 2 filas × 8 viñetas. Cada viñeta es el lienzo real 1080×1920 escalado (frames reales de los clips + los gráficos con las mismas clases que la edición), con su número, una etiqueta corta y la frase.
 - Estructura de referencia: `storyboard/ejemplo-storyboard-anuncio-03.html` (las rutas de fuentes e imágenes de ese ejemplo son de otro proyecto: copia la estructura, no las rutas). Colores y tipografías de `negocio/marca.md`.
@@ -42,7 +47,7 @@ Ejemplo terminado: `ejemplo-storyboard-anuncio-03.png` (storyboard del anuncio c
 Reglas generales de voz, audio, zonas seguras y SFX: `sistema/edicion/reglas-edicion.md` (léelas antes).
 1. Copia `edicion/unir-clips.mjs` y `edicion/build.mjs` a `anuncios/NN-slug/edicion/`, y `edicion/public-base/` (fuentes, GSAP y SFX) a `anuncios/NN-slug/edicion/public/`.
 2. **Medir la voz**: `node sistema/scripts/medir-voz.mjs anuncios/NN-slug/clips` → inicio, fin y huecos de cada clip.
-3. **`cortes.txt`** (ejemplo: `edicion/cortes-ejemplo-anuncio-03.txt`): por clip, desde el inicio de la voz − 0,04 s hasta el fin + ~0,05 s; los huecos > 0,3 s se recortan a ~0,15 s; el último clip deja ~0,8 s de cola para el botón. Ningún tramo de menos de ~0,8 s. Para quitar una palabra: ubicarla con `medir-voz.mjs clip --desde a --hasta b` y partir el clip en dos filas.
+3. **`cortes.txt`** (ejemplo: `edicion/cortes-ejemplo-anuncio-03.txt`): por clip, desde el inicio de la voz − 0,04 s hasta el fin + ≥ 0,06 s (sin cortar la cola de la última palabra); solo las pausas > 0,3 s se recortan a ~0,15–0,25 s (regla "Pausas naturales" de `reglas-edicion.md`), cada corte tapado con B-roll, gráfico o cambio de zoom; el último clip deja ~0,8 s de cola para el botón. Ningún tramo de menos de ~0,8 s. Para quitar una palabra: ubicarla con `medir-voz.mjs clip --desde a --hasta b` y partir el clip en dos filas.
 4. `node unir-clips.mjs` (dentro de `edicion/`) → `base.mp4` (1080×1920, 24 fps, cortes en fotogramas exactos) + `base-cortes.json`.
 5. `hyperframes transcribe base.mp4 -l es` → `transcript.json`.
 6. Audio limpio para la composición:

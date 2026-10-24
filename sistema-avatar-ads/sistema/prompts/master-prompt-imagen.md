@@ -115,3 +115,9 @@ Si sigue bloqueando en Flow, probar en la app de Gemini o en Google AI Studio.
 1. Usa **Nano Banana Pro** y pon 9:16 también en su interfaz (algunos modos ignoran el aspect ratio del JSON).
 2. Genera 4 variaciones y revisa con lupa las manos, los ojos, los dientes, la textura de la piel y el texto del fondo (no debe haber letras inventadas).
 3. Guarda la elegida en la carpeta del anuncio (`avatar/avatar.jpg`). Es el primer frame de todos los clips de esa toma.
+
+## 6. Frames de B-roll (la misma lógica, sin avatar)
+Todo B-roll empieza por una imagen: primero su frame aquí (4 variaciones baratas, se elige la toma) y después se anima en Google Flow con ese frame como imagen inicial. Generar el B-roll directo de texto a video quema créditos en cada intento y da tomas que se ven "de IA".
+- Misma idea que el avatar: un **frame de video de iPhone**, no una foto; imperfección controlada (polvo, desgaste, cosas un poco fuera de lugar, nada demasiado limpio ni brillante); lugares reales y vividos (un consultorio de barrio, no una clínica futurista); luz natural de frente; sin textos, logos, pantallas legibles ni caras reconocibles.
+- Si sale el producto o el lugar del avatar, se adjunta la imagen del avatar para que sean los mismos (sin la persona).
+- La estructura (task · output · subject · environment · camera · lighting · realism_rules · negative) la arma la plantilla de B-roll del generador de prompts (`broll-plantilla.mjs`); por cada toma solo se escriben la toma, qué se ve, el lugar, 3–5 detalles, el encuadre y la luz.

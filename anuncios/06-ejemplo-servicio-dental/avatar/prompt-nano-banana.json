@@ -1,0 +1,64 @@
+{
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional woman films of herself with her phone front camera, in the consultation room of her dental clinic, to talk to her audience. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone front-camera video frame, not a professional photo"
+  },
+  "subject": {
+    "identity": "an original, non-famous Latin American woman, 34 years old, a dentist",
+    "face": "light-medium warm skin with natural texture (visible pores, slight unevenness, faint under-eye lines), warm brown eyes, softly defined brows, minimal natural makeup, slight natural facial asymmetry",
+    "hair": "dark brown hair tied back in a neat low ponytail, a few loose strands framing the face",
+    "facial_hair": "none",
+    "accessories": "small silver stud earrings, no glasses, no necklace",
+    "build": "average build"
+  },
+  "wardrobe": {
+    "top": "short-sleeved teal medical scrub top with a V-neck, matte cotton fabric, natural fabric wrinkles",
+    "style": "clean professional clinic look, nothing flashy, no visible logos, no name tag"
+  },
+  "pose_and_expression": {
+    "position": "standing in the consultation room, upper body leaning very slightly toward the camera",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "calm, confident and friendly, a subtle natural half-smile, as if about to start talking; mouth closed or barely parted, relaxed jaw",
+    "hands": "hands loosely clasped in front of her waist in the lower part of the frame, fingers relaxed, all fingers anatomically correct and fully visible",
+    "posture": "shoulders relaxed and square to the camera, natural and unposed"
+  },
+  "environment": {
+    "location": "a bright, modern dental clinic consultation room, during the day",
+    "background": "a white and light-gray dental chair slightly behind her to one side, a dental light arm folded up, white cabinets with a light wood countertop, a small green plant, softly out of focus, uncluttered",
+    "foreground": "the edge of a white countertop at the lower edge of the frame with a small tray of neatly arranged dental instruments, slightly out of focus",
+    "atmosphere": "tidy, real, working dental clinic, not a staged studio set"
+  },
+  "camera": {
+    "device": "iPhone front camera propped on a small tripod on the countertop at chest-to-eye height, slightly below eye level",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "medium close-up from the waist up, subject centered horizontally; her head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty space above her head for on-screen graphics",
+    "focus": "face sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft, diffused frontal daylight from a large window directly in front of her, behind the phone, lighting her whole face evenly from the front",
+    "fill": "soft neutral ceiling light of the clinic",
+    "mood": "bright, clean and realistic; both sides of the face equally lit with the same brightness and no side shadows, only very soft natural shading under the chin and nose; accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "natural and authentic, like an everyday phone video, not a stock photo",
+    "real skin texture, no smoothing, no beauty filter, no plastic or waxy skin",
+    "natural fabric folds and wrinkles on the scrubs",
+    "correct human anatomy: two hands, five fingers each, natural proportions",
+    "realistic eyes with natural catchlights from the window in front of her",
+    "even, symmetrical illumination on the face, as when someone films herself facing a window"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, watermarks, UI elements, name tags, readable signs",
+    "side lighting, split lighting, one half of the face darker than the other, strong shadows on one side of the face, a window beside her lighting the face from the side",
+    "backlighting, silhouette, overexposed background",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, asymmetrical eyes, warped face",
+    "smooth or airbrushed skin, 3D render, cartoon, illustration, CGI look",
+    "surgical mask, gloves, face shield, blood, a patient in the chair",
+    "big smile showing teeth, exaggerated expression, posing",
+    "cluttered background, other people, mirrors"
+  ]
+}

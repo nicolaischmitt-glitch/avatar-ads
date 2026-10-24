@@ -1,0 +1,10 @@
+# clip  inicio  fin   (segundos dentro del clip; unir-clips los ajusta a fotogramas de 24 fps)
+# Medido con medir-voz.mjs (piso −52/−54 dB). Inicio = voz − 0,05 · fin = voz + 0,20 · pausas internas recortadas a ~0,15 s.
+# Cada corte interno cae en un cambio de escena: B-roll consultorio, fin del gráfico, acercamiento, cierre.
+1  0.51  2.46
+1  2.85  5.24
+2  1.17  4.88
+2  5.33  7.80
+3  0.75  3.70
+3  4.47  6.36
+3  6.59  8.00

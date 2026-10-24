@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: "Jakarta"; src: url("fonts/PlusJakartaSans.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
+      :root { --teal: #0E7C86; --teal-2: #13A3A0; --mint: #DDF3F1; --ink: #0F2A33; --soft: #5B7480; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #fff; font-family: "Jakarta", sans-serif; color: var(--ink); }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #fff; }
+      #video-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 33%; }
+      #zoom video { width: 100%; height: 100%; object-fit: cover; }
+      .g { position: absolute; z-index: 10; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      .center { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+      /* subtítulo por frase (altura del pecho, fuera del 20 % inferior) */
+      .sub { position: absolute; z-index: 20; left: 0; right: 0; top: 1330px; display: flex; justify-content: center; pointer-events: none; }
+      /* caja oscura translúcida de esquinas suaves: se lee sobre el uniforme turquesa y sobre fondos blancos,
+         y no se confunde con el botón (blanco, redondo, con borde turquesa y anillo que late) */
+      .sub span { display: inline-block; background: rgba(12,34,41,.82); color: #fff; font-weight: 800; font-size: 60px; line-height: 1.15; letter-spacing: -0.5px;
+        padding: 18px 34px; border-radius: 16px; text-align: center; max-width: 960px; }
+      .sub b { color: #8FF0E2; font-weight: 800; }
+      /* pastillas sobre la cabeza */
+      .pill { display: inline-flex; align-items: center; gap: 18px; padding: 22px 40px; border-radius: 999px; background: var(--teal); color: #fff; font-weight: 800; font-size: 40px;
+        letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 12px 34px rgba(14,124,134,.35); white-space: nowrap; }
+      .pill.light { background: rgba(255,255,255,.96); color: var(--teal); }
+      .pill svg { width: 44px; height: 44px; }
+      /* visor de cámara alrededor de la cara */
+      .vf { position: absolute; left: 290px; top: 250px; width: 500px; height: 660px; }
+      .vf i { position: absolute; width: 90px; height: 90px; border: 0 solid #fff; filter: drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+      .vf i:nth-child(1) { left: 0; top: 0; border-left-width: 10px; border-top-width: 10px; border-top-left-radius: 26px; }
+      .vf i:nth-child(2) { right: 0; top: 0; border-right-width: 10px; border-top-width: 10px; border-top-right-radius: 26px; }
+      .vf i:nth-child(3) { left: 0; bottom: 0; border-left-width: 10px; border-bottom-width: 10px; border-bottom-left-radius: 26px; }
+      .vf i:nth-child(4) { right: 0; bottom: 0; border-right-width: 10px; border-bottom-width: 10px; border-bottom-right-radius: 26px; }
+      .flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+      /* rótulo */
+      .lower { position: absolute; left: 70px; top: 1110px; display: flex; align-items: stretch; border-radius: 26px; overflow: hidden; box-shadow: 0 14px 40px rgba(15,42,51,.25); }
+      .lower .bar { width: 16px; background: var(--teal); }
+      .lower .txt { background: rgba(255,255,255,.96); padding: 24px 40px 24px 30px; }
+      .lower .n { font-weight: 800; font-size: 50px; color: var(--ink); }
+      .lower .r { font-weight: 600; font-size: 32px; color: var(--teal); margin-top: 6px; }
+      /* B-roll a pantalla completa */
+      .bvid { position: absolute; z-index: 8; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      /* tarjeta de planificación digital */
+      .full { position: absolute; z-index: 8; inset: 0; overflow: hidden; }
+      .full .bg { position: absolute; inset: -60px; width: calc(100% + 120px); height: calc(100% + 120px); object-fit: cover; filter: blur(26px) saturate(.9); }
+      .full .veil { position: absolute; inset: 0; background: rgba(246,250,250,.72); }
+      .design { position: absolute; left: 90px; right: 90px; top: 300px; background: #fff; border-radius: 48px; padding: 60px 56px; box-shadow: 0 30px 80px rgba(15,42,51,.18); }
+      .design h3 { margin: 0; font-weight: 800; font-size: 54px; color: var(--ink); text-align: center; }
+      .design h3 span { color: var(--teal); }
+      .scan { position: relative; height: 420px; margin: 40px 0 46px; border-radius: 30px; background-color: var(--mint); overflow: hidden;
+        background-image: linear-gradient(rgba(14,124,134,.10) 2px, transparent 2px), linear-gradient(90deg, rgba(14,124,134,.10) 2px, transparent 2px); background-size: 46px 46px; }
+      .scan svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .scan .line { position: absolute; top: 0; bottom: 0; left: 0; width: 6px; background: var(--teal-2); box-shadow: 0 0 30px var(--teal-2); }
+      .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+      .step { position: relative; border: 3px solid #CFE3E3; border-radius: 28px; padding: 28px 18px; text-align: center; overflow: hidden; }
+      .step .on { position: absolute; inset: 0; background: var(--mint); border: 3px solid var(--teal); border-radius: 28px; opacity: 0; }
+      .step .k, .step .t { position: relative; }
+      .step .k { width: 64px; height: 64px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 800; font-size: 36px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+      .step .t { font-weight: 700; font-size: 34px; color: var(--ink); }
+      /* botón y marca */
+      .btnw { position: relative; display: inline-block; }
+      .btn { position: relative; display: inline-flex; align-items: center; gap: 24px; background: #fff; color: var(--teal); font-weight: 800; font-size: 60px; padding: 36px 64px; border-radius: 999px;
+        border: 5px solid var(--teal); box-shadow: 0 20px 60px rgba(6,30,36,.35); white-space: nowrap; }
+      .btn svg { width: 58px; height: 58px; }
+      .ring { position: absolute; inset: -5px; border-radius: 999px; border: 5px solid #fff; opacity: 0; }
+      .brand { display: inline-flex; align-items: center; gap: 22px; background: rgba(255,255,255,.96); padding: 24px 44px; border-radius: 999px; box-shadow: 0 12px 34px rgba(15,42,51,.2); }
+      .brand svg { width: 64px; height: 64px; }
+      .brand b { font-weight: 800; font-size: 50px; color: var(--ink); }
+      .brand b span { color: var(--teal); }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="anuncio-06" data-start="0" data-duration="17.417" data-fps="24" data-width="1080" data-height="1920">
+      <div id="video-wrap">
+        <div id="zoom"><video id="bg-video" src="input-video.mp4" playsinline data-has-audio="true" data-start="0" data-duration="17.417" data-track-index="1"></video></div>
+      </div>
+      <audio id="bgm" src="audio/bgm.wav" data-start="0" data-duration="17.417" data-track-index="2" data-volume="1"></audio>
+
+      <!-- 02 · visor de cámara en "fotos" -->
+      <div class="g clip" id="foto" data-start="1.359" data-duration="0.599" data-track-index="6">
+        <div class="vf" id="vf"><i></i><i></i><i></i><i></i></div>
+        <div class="flash" id="flash"></div>
+      </div>
+
+      <!-- 03 · B-roll consultorio -->
+      <video class="bvid clip" id="consult" src="broll/consultorio.mp4" muted playsinline data-media-start="2.6" data-start="1.958" data-duration="0.962" data-track-index="9"></video>
+
+      <!-- 04 · rótulo de la doctora -->
+      <div class="g clip" id="lower" data-start="2.92" data-duration="2.8" data-track-index="6">
+        <div class="lower" id="lower-box"><div class="bar"></div><div class="txt"><div class="n">Dra. Valeria Ortiz</div><div class="r">Odontóloga · Diseño de sonrisa</div></div></div>
+      </div>
+
+      <!-- 06 · planificación digital -->
+      <div class="full clip" id="design" data-start="5.72" data-duration="2.238" data-track-index="8">
+        <img class="bg" src="broll/consultorio-bg.jpg" alt=""><div class="veil"></div>
+        <div class="design" id="design-card">
+          <h3>Planificación <span>digital</span></h3>
+          <div class="scan">
+            <svg viewBox="0 0 800 420" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path id="arch" d="M90 150 Q400 330 710 150" stroke="#0E7C86" stroke-width="4" stroke-dasharray="10 12" opacity=".6"/>
+              <rect class="tooth" id="tooth-0" x="114" y="164" width="50" height="78" rx="21" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-1" x="172" y="148" width="58" height="92" rx="24" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-2" x="238" y="136" width="66" height="106" rx="28" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-3" x="312" y="130" width="80" height="124" rx="33" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-4" x="400" y="130" width="80" height="124" rx="33" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-5" x="488" y="136" width="66" height="106" rx="28" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-6" x="562" y="148" width="58" height="92" rx="24" fill="#fff" stroke="#0E7C86" stroke-width="5"/><rect class="tooth" id="tooth-7" x="628" y="164" width="50" height="78" rx="21" fill="#fff" stroke="#0E7C86" stroke-width="5"/>
+              <path id="smile" d="M150 300 Q400 380 650 300" stroke="#0E7C86" stroke-width="5" stroke-dasharray="560" stroke-dashoffset="560"/>
+            </svg>
+            <div class="line" id="scanline"></div>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="on" id="step-0"></div><div class="k">1</div><div class="t">Escaneo</div></div>
+            <div class="step"><div class="on" id="step-1"></div><div class="k">2</div><div class="t">Diseño</div></div>
+            <div class="step"><div class="on" id="step-2"></div><div class="k">3</div><div class="t">Vista previa</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 · B-roll sonrisa -->
+      <video class="bvid clip" id="smile-v" src="broll/sonrisa.mp4" muted playsinline data-media-start="1.5" data-start="8.92" data-duration="1.496" data-track-index="9"></video>
+      <!-- 10 · botón -->
+      <div class="g clip" id="btn1" data-start="11.96" data-duration="1.415" data-track-index="7">
+        <div class="center" style="top:1110px"><div id="btn1-b"><div class="btnw"><div class="ring" id="btn1-ring"></div><div class="btn">Agendar valoración <svg viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div></div></div>
+      </div>
+
+      <!-- 12 · cierre: marca + botón -->
+      <div class="g clip" id="end" data-start="15.291" data-duration="2.125" data-track-index="7">
+        <div class="center" style="top:120px"><div class="brand" id="end-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7 .5 2.5 1 6.5 2.5 6.5S9.5 17 12 17s3 4 4.5 4 2-4 2.5-6.5c.5-2.5 2-4 2-7C21 5 19.5 3 17 3c-2 0-3 1-5 1S9 3 7 3z"/></svg>
+          <b>Clínica Dental <span>Alba</span></b></div></div>
+        <div class="center" style="top:1110px"><div id="end-btn"><div class="btnw"><div class="ring" id="end-ring"></div><div class="btn">Agendar valoración <svg viewBox="0 0 24 24" fill="none" stroke="#0E7C86" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div></div></div>
+      </div>
+
+      <div class="sub clip" id="sub-0" data-start="0" data-duration="1.125" data-track-index="3"><span>¿Te da pena <b>sonreír</b></span></div>
+      <div class="sub clip" id="sub-1" data-start="1.125" data-duration="0.833" data-track-index="3"><span>en las <b>fotos</b>?</span></div>
+      <div class="sub clip" id="sub-2" data-start="1.958" data-duration="1.333" data-track-index="3"><span>Lo veo <b>todos los días</b></span></div>
+      <div class="sub clip" id="sub-3" data-start="3.292" data-duration="0.875" data-track-index="3"><span>en la <b>clínica</b>.</span></div>
+      <div class="sub clip" id="sub-4" data-start="4.167" data-duration="1.542" data-track-index="3"><span>Con el <b>diseño de sonrisa</b></span></div>
+      <div class="sub clip" id="sub-5" data-start="5.708" data-duration="2.167" data-track-index="3"><span>planificamos tu cambio <b>en digital</b></span></div>
+      <div class="sub clip" id="sub-6" data-start="7.875" data-duration="1.042" data-track-index="3"><span>y <b>antes de empezar</b></span></div>
+      <div class="sub clip" id="sub-7" data-start="8.917" data-duration="1.417" data-track-index="3"><span>ya ves <b>cómo vas a quedar</b></span></div>
+      <div class="sub clip" id="sub-8" data-start="10.333" data-duration="1.625" data-track-index="3"><span>Agenda tu <b>primera valoración</b></span></div>
+      <div class="sub clip" id="sub-9" data-start="11.958" data-duration="1.25" data-track-index="3"><span>en el <b>botón de abajo</b></span></div>
+      <div class="sub clip" id="sub-10" data-start="13.208" data-duration="2.083" data-track-index="3"><span>y te mostramos tu <b>nueva sonrisa</b></span></div>
+      <div class="sub clip" id="sub-11" data-start="15.292" data-duration="2.125" data-track-index="3"><span><b>Sin compromiso</b>.</span></div>
+
+      <audio id="sfx-01-click-soft" src="audio/click-soft.mp3" data-start="1.458" data-duration="0.365" data-track-index="11" data-volume="0.45"></audio>
+      <audio id="sfx-02-whoosh-short" src="audio/whoosh-short.mp3" data-start="1.875" data-duration="0.574" data-track-index="12" data-volume="0.1"></audio>
+      <audio id="sfx-03-pop" src="audio/pop.mp3" data-start="2.958" data-duration="0.72" data-track-index="13" data-volume="0.16"></audio>
+      <audio id="sfx-04-whoosh-short" src="audio/whoosh-short.mp3" data-start="5.625" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-05-click-soft" src="audio/click-soft.mp3" data-start="5.75" data-duration="0.365" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sfx-06-click-soft" src="audio/click-soft.mp3" data-start="6.625" data-duration="0.365" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-07-click-soft" src="audio/click-soft.mp3" data-start="7.292" data-duration="0.365" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-08-whoosh-short" src="audio/whoosh-short.mp3" data-start="8.833" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-09-chime" src="audio/chime.mp3" data-start="12.333" data-duration="1" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx-10-pop" src="audio/pop.mp3" data-start="15.333" data-duration="0.72" data-track-index="12" data-volume="0.16"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          const tl = window.gsap.timeline({ paused: true });
+          const Z = "#zoom";
+          tl.set(Z, { scale: 1 }, 0);
+          tl.to(Z, { scale: 1.05, duration: 1.458, ease: "none" }, 0);
+          tl.to(Z, { scale: 1.11, duration: 0.45, ease: "power2.out" }, 1.458);
+          tl.set(Z, { scale: 1.12 }, 1.956);
+          tl.to(Z, { scale: 1.15, duration: 2.242, ease: "none" }, 1.958);
+          tl.set(Z, { scale: 1 }, 4.248);
+          tl.to(Z, { scale: 1.05, duration: 3.658, ease: "none" }, 4.25);
+          tl.set(Z, { scale: 1.12 }, 7.956);
+          tl.to(Z, { scale: 1.16, duration: 2.408, ease: "none" }, 7.958);
+          tl.set(Z, { scale: 1 }, 10.415);
+          tl.to(Z, { scale: 1.04, duration: 2.908, ease: "none" }, 10.417);
+          tl.set(Z, { scale: 1.15 }, 13.373);
+          tl.to(Z, { scale: 1.2, duration: 1.867, ease: "none" }, 13.375);
+          tl.set(Z, { scale: 1 }, 15.29);
+          tl.to(Z, { scale: 1.03, duration: 2.075, ease: "none" }, 15.292);
+
+          tl.fromTo("#sub-0 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 0);
+          tl.fromTo("#sub-1 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 1.125);
+          tl.fromTo("#sub-2 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 1.958);
+          tl.fromTo("#sub-3 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 3.292);
+          tl.fromTo("#sub-4 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 4.167);
+          tl.fromTo("#sub-5 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 5.708);
+          tl.fromTo("#sub-6 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 7.875);
+          tl.fromTo("#sub-7 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 8.917);
+          tl.fromTo("#sub-8 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 10.333);
+          tl.fromTo("#sub-9 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 11.958);
+          tl.fromTo("#sub-10 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 13.208);
+          tl.fromTo("#sub-11 span", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }, 15.292);
+
+          const rise = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+          const soft = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, t);
+          const fadeIn = (sel, t, d = 0.25) => tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d, ease: "power1.out" }, t);
+
+          // 02 · visor + destello
+          tl.fromTo("#vf", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power3.out" }, 1.36);
+          tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.55, duration: 0.06 }, 1.458);
+          tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 1.518);
+          // 03 · consultorio (entra con fundido corto, empuje lento)
+          fadeIn("#consult", 1.958, 0.18);
+          tl.fromTo("#consult", { scale: 1.04 }, { scale: 1.1, duration: 0.962, ease: "none" }, 1.958);
+          // 04 · rótulo
+          tl.fromTo("#lower-box", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.97);
+          // 06 · planificación digital
+          fadeIn("#design", 5.72, 0.2);
+          rise("#design-card", 5.77, 0.45);
+          for (let i = 0; i < 8; i++) tl.fromTo("#tooth-" + i, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.22, ease: "back.out(2)" }, 6.02 + i * 0.05);
+          tl.fromTo("#scanline", { x: 40 }, { x: 740, duration: 1.6, ease: "sine.inOut" }, 6.02);
+          tl.to("#smile", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 6.64);
+          [5.75,6.625,7.291666666666667].forEach((t, i) => tl.to("#step-" + i, { opacity: 1, duration: 0.25 }, t));
+          // 08 · sonrisa
+          fadeIn("#smile-v", 8.92, 0.18);
+          // 10 · botón (entra y rebota en "botón")
+          soft("#btn1-b", 11.99);
+          tl.to("#btn1-b", { y: 12, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut" }, 12.333);
+          const pulse = (id, t, n) => { for (let k = 0; k < n; k++) tl.fromTo(id, { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 1.18, duration: 0.7, ease: "power2.out" }, t + k * 0.75); };
+          pulse("#btn1-ring", 12.26, 1);
+          // 12 · cierre
+          rise("#end-brand", 15.322);
+          soft("#end-btn", 15.372);
+          pulse("#end-ring", 15.742, 2);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["anuncio-06"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>

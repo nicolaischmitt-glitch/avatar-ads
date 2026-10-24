@@ -1,0 +1,64 @@
+{
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional man films of himself with his phone front camera, at the desk of his home office, to talk to his audience. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone front-camera video frame, not a professional photo"
+  },
+  "subject": {
+    "identity": "an original, non-famous Latin American man, 31 years old, an English teacher",
+    "face": "medium tan skin with natural texture (visible pores, slight unevenness, faint under-eye lines), dark brown eyes, thick dark brows, slight natural facial asymmetry",
+    "hair": "short dark brown hair, slightly longer and tousled on top, a few strands out of place",
+    "facial_hair": "short, well-kept stubble",
+    "accessories": "a simple black wristwatch, no glasses, no jewelry",
+    "build": "average build"
+  },
+  "wardrobe": {
+    "top": "light blue oxford button-down shirt with the sleeves rolled up to the forearms, top button open, natural fabric wrinkles",
+    "style": "smart casual, nothing flashy, no visible logos"
+  },
+  "pose_and_expression": {
+    "position": "seated at his desk, upper body leaning very slightly toward the camera",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "calm, confident and friendly, a subtle natural half-smile, as if about to start talking; mouth closed or barely parted, relaxed jaw",
+    "hands": "both forearms resting on the desk, hands relaxed in the lower part of the frame, fingers relaxed, all fingers anatomically correct and fully visible",
+    "posture": "shoulders relaxed and square to the camera, natural and unposed"
+  },
+  "environment": {
+    "location": "his small, bright home office, during the day",
+    "background": "a warm white wall, a simple wooden bookshelf with a few books and a small plant, a cork board with a couple of blank paper notes, over-ear headphones hanging on a hook, softly out of focus, uncluttered",
+    "foreground": "the corner of an open laptop at the lower edge of the frame, its screen angled away (no readable content), next to an open notebook and a pen, slightly out of focus",
+    "atmosphere": "tidy, real, lived-in home office, not a staged studio set"
+  },
+  "camera": {
+    "device": "iPhone front camera propped on the desk in front of him at chest-to-eye height, slightly below eye level",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "medium close-up from the waist up, subject centered horizontally; his head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty space above his head for on-screen graphics",
+    "focus": "face sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft, diffused frontal daylight from a large window directly in front of him, behind the phone, lighting his whole face evenly from the front",
+    "fill": "warm ambient room light",
+    "mood": "bright, clean and realistic; both sides of the face equally lit with the same brightness and no side shadows, only very soft natural shading under the chin and nose; accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "natural and authentic, like an everyday phone video, not a stock photo",
+    "real skin texture, no smoothing, no beauty filter, no plastic or waxy skin",
+    "natural fabric folds and wrinkles on the shirt",
+    "correct human anatomy: two hands, five fingers each, natural proportions",
+    "realistic eyes with natural catchlights from the window in front of him",
+    "even, symmetrical illumination on the face, as when someone films himself facing a window"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, watermarks, UI elements, readable laptop screen, readable writing on the notes or books",
+    "side lighting, split lighting, one half of the face darker than the other, strong shadows on one side of the face, a window beside him lighting the face from the side",
+    "backlighting, silhouette, overexposed background",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, asymmetrical eyes, warped face",
+    "smooth or airbrushed skin, 3D render, cartoon, illustration, CGI look",
+    "glasses, headphones on his head, a microphone",
+    "big smile showing teeth, exaggerated expression, posing",
+    "cluttered background, other people, mirrors"
+  ]
+}

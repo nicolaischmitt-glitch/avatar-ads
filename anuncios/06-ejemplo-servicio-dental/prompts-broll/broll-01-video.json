@@ -1,0 +1,14 @@
+{
+  "scene": {
+    "duration_seconds": 8,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "avance lento en mano, con un leve balanceo natural",
+    "action": "la cámara avanza muy despacio hacia el sillón, como alguien que entra al consultorio",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "audio": "solo sonido ambiente suave de la clínica, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
+  }
+}

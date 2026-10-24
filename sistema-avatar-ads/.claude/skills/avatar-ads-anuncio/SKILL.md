@@ -13,8 +13,8 @@ Antes de empezar, lee `negocio/negocio.md`, `negocio/marca.md` y `negocio/aprend
 | 1 | Brief | carpeta del anuncio + `brief.md` | no |
 | 2 | Ángulo y formato | ángulo y formato elegidos | sí (elige) |
 | 3 | Guion | `guion.md` + `guion.txt` | **sí** |
-| 4 | Avatar | 3 caminos (tengo uno · referencia · desde cero) → ficha → prompt de Nano Banana Pro → `avatar/avatar.jpg` | **sí** (ficha e imagen) |
-| 5 | Prompts de video | `prompts-flow.md` listo para Flow | no |
+| 4 | Avatar | 3 caminos (tengo uno · referencia · desde cero) → ficha → prompt de Nano Banana Pro | **sí** (ficha) |
+| 5 | Paquete de prompts | `prompts-flow.md` en 4 pasos: imagen del avatar → clips de voz → frames de los B-rolls → videos de los B-rolls | no |
 | 6 | Revisión de clips | lista de clips buenos y a regenerar | sí, si hay que regenerar |
 | 7 | Storyboard | `storyboard/storyboard.png` | **sí** |
 | 8 | Edición | vista previa en el navegador | sí (itera conversando) |
@@ -26,10 +26,12 @@ Al empezar, muéstrale al usuario esta lista en una línea ("Vamos por 9 pasos: 
 ## Carpeta de cada anuncio
 ```
 anuncios/NN-slug/          (NN = 01, 02…; slug corto en minúsculas: 01-curso-reposteria)
-├── brief.md · guion.md · guion.txt · clips-plan.json · prompts-flow.md
+├── brief.md · guion.md · guion.txt · clips-plan.json · prompts-flow.md (los 3 pasos, en orden)
 ├── avatar/                prompt-nano-banana.json + avatar.jpg (la imagen elegida)
-├── prompts/               clip-01.json …
-├── clips/                 aquí el usuario deja los videos de Flow: clip-01.mp4 …
+├── prompts/               clip-01.json … (voz)
+├── prompts-broll/         broll-01-imagen.json + broll-01-video.json … (sin diálogo)
+├── broll/                 los frames elegidos de cada B-roll: broll-01.jpg …
+├── clips/                 aquí el usuario deja los videos de Flow: clip-01.mp4 … y broll-01.mp4 …
 ├── recursos/              capturas, pruebas, fotos del producto que aporta el usuario
 ├── storyboard/            storyboard.html + storyboard.png
 ├── edicion/               proyecto de edición (HyperFrames)
@@ -64,7 +66,7 @@ Pregunta: **"¿Cómo quieres crear a tu avatar?"** con tres opciones (si el nego
 3. **Desde cero** *(recomendado: es el que da la mejor calidad)*.
 
 ### Camino 1 · Ya tengo un avatar
-Copia la imagen a `avatar/avatar.jpg`, revísala (punto "Revisión" de abajo) y salta al paso 5. Si la imagen no sirve para Flow (manos fuera de cuadro, boca abierta, sin espacio arriba), dile qué falla y ofrécele el camino 3.
+Copia la imagen a `avatar/avatar.jpg`, revísala (punto "Revisión" de abajo) y sigue al paso 5 (el Paso 1 del paquete dirá que ya la tiene). Si la imagen no sirve para Flow (manos fuera de cuadro, boca abierta, sin espacio arriba), dile qué falla y ofrécele el camino 3.
 
 ### Camino 2 · Partir de una referencia
 Pide la imagen y guárdala en `avatar/referencia.jpg`; mírala. Haz las mismas 3 preguntas del camino 3 (la escena ya la pone la referencia, así que la tercera es solo para confirmar el lugar). En el JSON usa la frase opcional del `task` del master ("If a reference image is attached, copy its camera angle, framing, setting and lighting, but create a completely different original person") y dile al usuario que adjunte la referencia en Nano Banana junto con el prompt. Nunca copiar la cara de la persona de la referencia.
@@ -78,19 +80,23 @@ Pide la imagen y guárdala en `avatar/referencia.jpg`; mírala. Haz las mismas 3
 2. **Ficha del avatar**: con esas respuestas y `negocio.md`, propón el resto pensando en **alguien en quien su cliente ideal confiaría** (el avatar es quien vende este producto): nacionalidad acorde al público, rasgos, pelo, ropa concreta (color, tela), estilo, 3–5 objetos del fondo y el objeto en primer plano. Muéstrala en 6–8 líneas cortas, por ejemplo:
    > **Valentina, 32 años, colombiana** · pelo castaño ondulado suelto · blusa de lino blanca, estilo casual cuidado · graba en su cocina luminosa: frutas en la mesa, plantas, repisa de madera · taza en primer plano · luz de ventana frente a ella.
    Pregunta "¿Va así o cambias algo?" y ajusta lo que pida ("más joven", "con lentes", "en su consultorio").
-3. Con la ficha aprobada, lee completo `sistema/prompts/master-prompt-imagen.md` y escribe el JSON en inglés con su estructura fija → `avatar/prompt-nano-banana.json`. Muéstralo en un bloque listo para copiar.
+3. Con la ficha aprobada, lee completo `sistema/prompts/master-prompt-imagen.md` y escribe el JSON en inglés con su estructura fija → `avatar/prompt-nano-banana.json` (con 2 tomas: `avatar/prompt-a.json`, `avatar/prompt-b.json`). No se lo entregues suelto: va como **Paso 1** del paquete del paso 5, junto con todo lo demás.
+   Si el avatar va a sostener el producto, ponlo ya en la imagen (Flow no añade objetos que no estén en ella).
 
 ### Generar y revisar (caminos 2 y 3)
-1. Instrucciones para el usuario: abrir **Nano Banana Pro**, poner el formato 9:16, pegar el JSON (y adjuntar la referencia en el camino 2), generar 4 variaciones, elegir una y guardarla como `anuncios/NN-slug/avatar/avatar.jpg`.
-2. **Revisión** (todos los caminos): abre la imagen con Read y revisa manos y dedos, ojos, dientes, piel no plástica, luz pareja en la cara, sin letras inventadas en el fondo, boca cerrada, espacio libre arriba de la cabeza. Si algo falla, dile qué corregir o ajusta el prompt.
+1. El usuario genera la imagen con el **Paso 1** de `prompts-flow.md` (Nano Banana Pro, 9:16, 4 variaciones; en el camino 2, adjuntando la referencia), elige una, la guarda como `anuncios/NN-slug/avatar/avatar.jpg` y pasa directo a los clips. Si quiere, te la muestra antes.
+2. **Revisión** (cuando te muestre la imagen, o en el paso 6 con el primer frame de los clips): abre la imagen con Read y revisa manos y dedos, ojos, dientes, piel no plástica, luz pareja en la cara, sin letras inventadas en el fondo, boca cerrada, espacio libre arriba de la cabeza. Si algo falla, dile qué corregir o ajusta el prompt.
 3. Si el generador bloquea el prompt, sigue la sección "Si el generador lo bloquea" del master.
 4. Si el usuario quiere reutilizar este avatar en otros anuncios, cópialo a `negocio/avatar/` y anota su ficha en `marca.md`.
 
-## 5 · Prompts de video (Google Flow)
-1. Lee completo `sistema/prompts/master-prompt-video.txt`: sus reglas mandan en este paso.
-2. Escribe `clips-plan.json` (formato en la cabecera de `sistema/scripts/generar-prompts.mjs`): voz (`speaker`) y `acento` desde `marca.md`, una toma por imagen, y por clip el **fragmento exacto** del guion + gestos concretos según el significado ("al decir 'tres pasos', muestra tres dedos"; "al decir 'el botón', señala hacia abajo").
-3. Ejecuta `node sistema/scripts/generar-prompts.mjs anuncios/NN-slug`. Si falla la validación o hay avisos de palabras de más, corrige el plan y repite. Nunca entregues prompts que no pasen.
-4. Dale al usuario las instrucciones: en Flow, subir `avatar/avatar.jpg` como imagen inicial, pegar el JSON de cada clip (están en `prompts-flow.md`, ábreselo) y guardar los videos como `clips/clip-01.mp4`, `clip-02.mp4`… Recomienda generar primero el clip 01 y, si le gusta, el resto. Genera 2 variaciones por clip y quédate con la mejor.
+## 5 · Paquete de prompts (un solo archivo, en 4 pasos)
+El usuario recibe **todo junto y en el orden en que lo usa**, en `prompts-flow.md`: **Paso 1** imagen del avatar → **Paso 2** clips de voz → **Paso 3** frames de los B-rolls → **Paso 4** videos de los B-rolls. Así crea la imagen, se queda con la que le gusta y genera todos los clips de corrido, sin volver a preguntar.
+**Toda toma empieza por una imagen**: el B-roll nunca se genera directo de texto a video. Primero su frame en Nano Banana Pro (barato: 4 variaciones, el usuario elige la toma que le gusta) y después Flow anima ese frame. Generar el video directo quema créditos en cada intento y da tomas que se ven "de IA" y que el usuario no habría elegido.
+1. Lee completo `sistema/prompts/master-prompt-video.txt`: sus reglas mandan en los clips de voz.
+2. **Ideas de B-roll** (las propones tú, el usuario no tiene que pensarlas): 2–3 por anuncio, una por idea fuerte del guion, de 6 u 8 s, sin diálogo. Lo que funciona: el producto en macro (textura, gotas, detalles), el lugar del servicio sin personas, la situación del dolor del cliente (alguien en una reunión, frente al espejo), el resultado. Reglas: sin textos ni letreros legibles, pantallas sin contenido, sin marcas ni logos, sin música ni voces, sin caras reconocibles en primer plano; lugares reales y algo imperfectos (un consultorio de barrio, no una clínica futurista); si sale el producto o el lugar del avatar, pon `"referencia": "avatar/avatar.jpg"` para que sea el mismo. Por cada B-roll escribes el frame (`shot`, `subject`, `location`, `details`, `framing`, `light`, en inglés) y la animación (`action`, `camera_movement`, en español): la plantilla está en `sistema/scripts/broll-plantilla.mjs`. Los gráficos (cifras, formularios, botones) no son B-rolls: se hacen en la edición.
+3. Escribe `clips-plan.json` (formato en la cabecera de `sistema/scripts/generar-prompts.mjs`): voz (`speaker`) y `acento` desde `marca.md`, una toma por imagen, por clip el **fragmento exacto** del guion + gestos concretos según el significado ("al decir 'tres pasos', muestra tres dedos"; "al decir 'el botón', señala hacia abajo"; con el producto en la mano, gesticula con la otra) y los `brolls`.
+4. Ejecuta `node sistema/scripts/generar-prompts.mjs anuncios/NN-slug`. Si falla la validación o hay avisos, corrige el plan y repite. Nunca entregues prompts que no pasen.
+5. Ábrele `prompts-flow.md` y explícale los 4 pasos en 4 líneas: 1) imagen del avatar en Nano Banana Pro → `avatar/avatar.jpg`; 2) en Flow, esa imagen como imagen inicial + el JSON de cada clip → `clips/clip-01.mp4`…; 3) el frame de cada B-roll en Nano Banana Pro → `broll/broll-01.jpg`…; 4) en Flow, cada frame como imagen inicial + su JSON → `clips/broll-01.mp4`…. Genera 2 variaciones por clip y quédate con la mejor. Si un frame de B-roll no convence, ajusta su prompt antes de pasar al video.
 
 ## 6 · Revisión de clips
 Cuando diga que los clips están listos, sigue `sistema/checklists/revision-clips.md`: renombra si hace falta, revisa frames, transcribe y mide la voz. Dile qué clips están bien y cuáles regenerar (solo esos), con el motivo en una línea.

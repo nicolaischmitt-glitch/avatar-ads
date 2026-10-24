@@ -13,10 +13,15 @@
 
 ## Voz fluida (se aplica siempre, sin que el usuario lo pida)
 1. **Arranque inmediato**: la primera palabra suena en el primer fotograma.
-2. **Sin huecos**: ninguna pausa de más de ~0,3 s; las mayores se recortan a ~0,1–0,2 s, cortando dentro del silencio, nunca dentro de una palabra. Al final, ~0,5–0,8 s de cola para leer el CTA.
+2. **Pausas naturales, sin silencios largos**: recorta solo las pausas de más de ~0,3 s, dejándolas en ~0,15–0,25 s, cortando dentro del silencio. Las pausas cortas entre palabras se dejan: si se recortan de más, el video se ve acelerado y poco natural. Nunca cortes la cola suave de la última palabra (fin = fin de la voz que da `medir-voz.mjs` + ≥ 0,06 s). Revisa `base.mp4` con `node sistema/scripts/pausas.mjs base.mp4 --min 0.3`. Al final, ~0,5–0,8 s de cola para leer el CTA.
 3. **Sin palabras estiradas**: si una vocal se sostiene de más, se corta dentro de ella dejando ~0,15 s y se salta a la palabra siguiente. Para encontrarlas: `node sistema/scripts/detectar-estiramientos.mjs <carpeta de clips>`.
 4. **Cada corte interno se tapa** con un cambio de zoom (diferencia ≥ 0,1) o con un B-roll.
-5. **Cortes alineados a fotogramas** (24 fps); ningún plano de menos de ~0,8 s.
+5. **Cortes alineados a fotogramas** (24 fps); ningún plano de menos de ~0,8 s a la vista (bajo un B-roll pueden ser más cortos).
+
+## Cada elemento con un propósito
+- No añadas cosas solo por añadir: nada de títulos arriba que repitan lo que dice el subtítulo.
+- Cada gráfico aporta algo que la voz no dice: autoridad (rótulo de quien habla), explicar (proceso), mostrar (B-roll), actuar (botón), quién (marca al cierre).
+- **El botón del CTA nunca se parece a los subtítulos**: si los subtítulos llevan caja, el botón usa otra forma y color (o los subtítulos van sin caja y el botón es la única píldora).
 
 ## Audio
 - Voz a **−14 LUFS**, pico ≤ −1,5 dB (filtro en el paso de "audio limpio" del formato).

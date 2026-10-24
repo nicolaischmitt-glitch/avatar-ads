@@ -30,8 +30,13 @@ Se avanza paso a paso y se pide aprobación al final de cada paso (copy, imagen,
   `node skills/reels-avatar-ads/scripts/validar-json.mjs <carpeta>/prompts --guion <carpeta>/guion.txt`
 - Se puede probar primero el clip 01 y, si al usuario le gusta, generar el resto.
 
+### Entrega: un solo `prompts-flow.md` en 4 pasos (decisión del usuario, 22 oct 2026)
+Al usuario le gustó recibirlo todo junto y en orden (anuncios 06–08): **Paso 1** imagen del avatar (el JSON de Nano Banana) → **Paso 2** clips de voz → **Paso 3** frames de los B-rolls → **Paso 4** videos de los B-rolls. Crea la imagen, se queda con la que le gusta y genera todos los clips de corrido. Ejemplo: `anuncios/08-ejemplo-producto-serum/prompts-flow.md` (generado con su `generar-prompts.mjs`; en el kit, `sistema/scripts/generar-prompts.mjs` con `brolls` en `clips-plan.json`).
+- **Las ideas de B-roll las propone Claude** (el usuario lo pidió): 2–3 por anuncio, 6–8 s, sin diálogo. Producto en macro, el lugar sin personas, la situación del dolor del cliente. Sin textos, letreros, pantallas legibles, logos, música ni voces; lugares reales y algo imperfectos. Si sale el producto del avatar, adjuntar `avatar/avatar.jpg` al frame. Los gráficos (cifras, formularios, botones) se hacen en la edición, no como B-roll.
+- **B-roll = frame primero, video después** (el usuario lo pidió el 22 oct 2026: el B-roll 01 del anuncio 06, generado directo de texto a video, se vio "de IA", con una toma que no habría elegido, y cada intento quema créditos). Plantilla: `scripts/broll-plantilla.mjs` → `prompts-broll/broll-NN-imagen.json` (Nano Banana, inglés, mismo realismo de iPhone que el avatar) + `broll-NN-video.json` (Flow, anima ese frame). Frame elegido → `broll/broll-NN.jpg`. Van fuera de `prompts/` para que `validar-json.mjs` no los lea.
+
 ### 4 · Clips
-- El usuario los deja en `clips/`. Renombrarlos a `clip-01.mp4` … `clip-NN.mp4` (unir-clips los busca así).
+- El usuario los deja en `clips/`. Renombrarlos a `clip-01.mp4` … `clip-NN.mp4` (unir-clips los busca así) y los B-rolls a `broll-01.mp4` … (`medir-voz.mjs` los ignora).
 
 ### 5 · Revisión de clips
 - Hoja de frames (1 por segundo) para ver cara, manos y continuidad.
@@ -102,6 +107,16 @@ En el anuncio 04 se cortaron finales de palabra ("centavo-", "minu-") y quedaron
 4. Todo hueco > 0,3 s dentro del clip se recorta a ~0,15 s (incluidos los de entre frases, como "dólar. … ¡Un solo segundo!").
 5. **Verificación obligatoria antes del render**: transcribir `base.mp4` y revisar (a) que la última palabra de cada tramo esté completa (si la transcripción la escribe incompleta o rara, alargar el corte), (b) que no haya más de 0,3 s entre una palabra y la siguiente en todo el video, (c) que el primer sonido esté en el fotograma 0. Si algo falla, corregir `cortes.txt` y repetir.
 6. Si un clip de Flow termina **justo** con la última palabra (voz hasta el último fotograma), la palabra probablemente está cortada en origen: avisar y pedir regenerarlo más largo.
+
+### Pausas: naturales, ni largas ni recortadas de más (anuncio 06, 23 oct 2026)
+- **v1**: el usuario notó "espacios" entre frases y entre clips. **v2**: se recortaron todas las pausas a 0,07–0,1 s (con `pausas.mjs --umbral -33`) y quedó **demasiado rápido, poco natural**: el usuario pidió volver a la forma anterior. **v3** (la buena): solo se recortan las pausas **> 0,3 s** (a ~0,15–0,25 s); las pausas cortas naturales entre palabras se dejan. La meta es que se vea natural, sin silencios largos.
+- En la v2 además se cortó el final de "sonrisa" ("sonris-"): la cola suave de la última vocal (−35 a −45 dB) es parte de la palabra. **Fin de tramo = fin de la voz con umbral piso + 10 dB (medir-voz.mjs) + ≥ 0,06 s**, nunca con el umbral −33.
+- `scripts/pausas.mjs <archivo> --min 0.3` sirve para revisar `base.mp4`: ninguna pausa de más de ~0,3 s.
+
+### Cada elemento con un propósito (anuncio 06, 23 oct 2026)
+- No añadir cosas solo por añadir. **Nada de títulos o chips arriba que repitan lo que dice el subtítulo**: se camuflan con él y no aportan.
+- Antes de poner un gráfico, preguntarse qué aporta que la voz y el subtítulo no digan: autoridad (rótulo de quien habla), explicar (tarjeta de proceso), mostrar (B-roll), actuar (botón), quién (marca al cierre).
+- **El botón del CTA nunca se parece a los subtítulos.** En el 06 v1 los subtítulos iban en píldora blanca y el botón también era una píldora: se confundían. Si los subtítulos llevan caja, el botón usa otra forma y color; en el 06 v2 los subtítulos van sin caja (texto blanco con sombra) y el botón es la única píldora (blanco, borde y texto turquesa, anillo que late).
 
 ## Errores ya resueltos (no repetir)
 - **Logo con fondo negro**: `mix-blend-mode: screen` va en el **contenedor** `.g` del logo (capa propia), no en la imagen dentro de otra capa.

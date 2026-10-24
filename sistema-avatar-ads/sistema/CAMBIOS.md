@@ -1,5 +1,13 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.1.0 — 22 oct 2026
+- **Paquete de prompts en 4 pasos**: `prompts-flow.md` trae todo junto y en el orden en que se usa: 1) imagen del avatar (Nano Banana Pro) → 2) clips de voz (Flow) → 3) frames de los B-rolls (Nano Banana Pro) → 4) videos de los B-rolls (Flow). Creas la imagen, te quedas con la que te gusta y generas todos los clips de corrido.
+- **Ideas de B-roll**: Claude propone 2–3 B-rolls por anuncio con sus prompts (sin diálogo). `generar-prompts.mjs` acepta `brolls` en `clips-plan.json`.
+- **B-roll = frame primero, video después**: cada B-roll se crea primero como imagen (barata: 4 variaciones, eliges la toma → `broll/broll-01.jpg`) y después Flow anima esa imagen (→ `clips/broll-01.mp4`). Generarlo directo de texto a video quemaba créditos y daba tomas que se veían "de IA". Plantilla nueva: `sistema/scripts/broll-plantilla.mjs`; sección 6 nueva en `master-prompt-imagen.md`.
+- `medir-voz.mjs` ignora los B-rolls.
+- **Pausas naturales**: script nuevo `pausas.mjs` para revisar que no queden silencios de más de ~0,3 s; las pausas cortas entre palabras se dejan (recortarlas todas se ve acelerado) y nunca se corta la cola de la última palabra.
+- **Cada elemento con un propósito**: sin títulos que repitan el subtítulo, y el botón del CTA nunca se parece a los subtítulos (`reglas-edicion.md`).
+
 ## 1.0.0 — primera versión
 - Copiloto en Claude Code con 3 skills: inicio (instalación + entrevista del negocio), anuncio (9 pasos de la idea al video editado) y actualizar.
 - Base de conocimiento del negocio en `negocio/` que Claude mantiene al día.

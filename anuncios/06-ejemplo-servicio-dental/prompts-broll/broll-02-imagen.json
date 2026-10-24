@@ -1,0 +1,41 @@
+{
+  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a close-up of the lower half of a young Latin American woman's face while she sits in a dental chair, from the nose down. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone video frame, not a professional photo"
+  },
+  "subject": "natural lips with no heavy makeup, mouth closed in a relaxed neutral expression, real skin texture with pores, a paper patient bib clipped at her neck",
+  "environment": {
+    "location": "a dental clinic consultation room",
+    "details": "the blurred dental light above, a light-gray headrest behind her head",
+    "atmosphere": "real, lived-in and slightly imperfect, like a real everyday place, not a staged set or a showroom"
+  },
+  "camera": {
+    "device": "iPhone main camera, handheld, at a natural human height",
+    "framing": "tight vertical close-up, from the tip of the nose to the chin and neck",
+    "focus": "natural phone depth of field, no artificial heavy bokeh",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft frontal light from the dental lamp, slightly warm",
+    "mood": "natural and realistic, low contrast, accurate colors, no dramatic lighting"
+  },
+  "realism_rules": [
+    "must look like an ordinary frame from a phone video, not AI-generated and not a stock photo",
+    "small real-world imperfections: light dust, slight wear, small scratches, uneven surfaces, a few things slightly out of place",
+    "nothing too clean, too glossy or perfectly symmetrical",
+    "true-to-life materials, textures and reflections",
+    "if hands or skin appear: real skin texture with pores and fine lines, correct anatomy, five fingers"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, brand names, watermarks, UI elements, readable signs or screens",
+    "CGI, 3D render, illustration, overly glossy or plastic surfaces, futuristic or sci-fi look",
+    "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
+    "perfect symmetry, empty sterile spaces, everything brand new",
+    "deformed hands, extra fingers, warped objects",
+    "recognizable faces, a likeness of any real person",
+    "eyes or full face visible",
+    "dental instruments in the mouth, gloves, blood"
+  ]
+}

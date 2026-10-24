@@ -1,0 +1,314 @@
+[
+  {
+    "id": "w0",
+    "text": "¿Te",
+    "start": 0,
+    "end": 0.24
+  },
+  {
+    "id": "w1",
+    "text": "da",
+    "start": 0.24,
+    "end": 0.4
+  },
+  {
+    "id": "w2",
+    "text": "pena",
+    "start": 0.4,
+    "end": 0.64
+  },
+  {
+    "id": "w3",
+    "text": "sonreír",
+    "start": 0.64,
+    "end": 1.2
+  },
+  {
+    "id": "w4",
+    "text": "en",
+    "start": 1.2,
+    "end": 1.28
+  },
+  {
+    "id": "w5",
+    "text": "las",
+    "start": 1.28,
+    "end": 1.44
+  },
+  {
+    "id": "w6",
+    "text": "fotos?",
+    "start": 1.44,
+    "end": 2
+  },
+  {
+    "id": "w7",
+    "text": "Lo",
+    "start": 2,
+    "end": 2.16
+  },
+  {
+    "id": "w8",
+    "text": "veo",
+    "start": 2.16,
+    "end": 2.56
+  },
+  {
+    "id": "w9",
+    "text": "todos",
+    "start": 2.56,
+    "end": 2.8
+  },
+  {
+    "id": "w10",
+    "text": "los",
+    "start": 2.8,
+    "end": 2.96
+  },
+  {
+    "id": "w11",
+    "text": "días,",
+    "start": 2.96,
+    "end": 3.36
+  },
+  {
+    "id": "w12",
+    "text": "en",
+    "start": 3.36,
+    "end": 3.52
+  },
+  {
+    "id": "w13",
+    "text": "la",
+    "start": 3.52,
+    "end": 3.6
+  },
+  {
+    "id": "w14",
+    "text": "clínica.",
+    "start": 3.6,
+    "end": 4.24
+  },
+  {
+    "id": "w15",
+    "text": "Con",
+    "start": 4.24,
+    "end": 4.4
+  },
+  {
+    "id": "w16",
+    "text": "el",
+    "start": 4.4,
+    "end": 4.56
+  },
+  {
+    "id": "w17",
+    "text": "diseño",
+    "start": 4.56,
+    "end": 4.88
+  },
+  {
+    "id": "w18",
+    "text": "de",
+    "start": 4.88,
+    "end": 5.04
+  },
+  {
+    "id": "w19",
+    "text": "sonrisa",
+    "start": 5.04,
+    "end": 5.6
+  },
+  {
+    "id": "w20",
+    "text": "planificamos",
+    "start": 5.76,
+    "end": 6.48
+  },
+  {
+    "id": "w21",
+    "text": "tu",
+    "start": 6.48,
+    "end": 6.64
+  },
+  {
+    "id": "w22",
+    "text": "cambio",
+    "start": 6.64,
+    "end": 7.12
+  },
+  {
+    "id": "w23",
+    "text": "en",
+    "start": 7.12,
+    "end": 7.28
+  },
+  {
+    "id": "w24",
+    "text": "digital,",
+    "start": 7.28,
+    "end": 7.92
+  },
+  {
+    "id": "w25",
+    "text": "y",
+    "start": 7.92,
+    "end": 8.16
+  },
+  {
+    "id": "w26",
+    "text": "antes",
+    "start": 8.16,
+    "end": 8.4
+  },
+  {
+    "id": "w27",
+    "text": "de",
+    "start": 8.4,
+    "end": 8.48
+  },
+  {
+    "id": "w28",
+    "text": "empezar,",
+    "start": 8.48,
+    "end": 8.96
+  },
+  {
+    "id": "w29",
+    "text": "ya",
+    "start": 8.96,
+    "end": 9.2
+  },
+  {
+    "id": "w30",
+    "text": "ves",
+    "start": 9.2,
+    "end": 9.44
+  },
+  {
+    "id": "w31",
+    "text": "cómo",
+    "start": 9.44,
+    "end": 9.68
+  },
+  {
+    "id": "w32",
+    "text": "vas",
+    "start": 9.68,
+    "end": 9.92
+  },
+  {
+    "id": "w33",
+    "text": "a",
+    "start": 9.92,
+    "end": 10
+  },
+  {
+    "id": "w34",
+    "text": "quedar.",
+    "start": 10,
+    "end": 10.4
+  },
+  {
+    "id": "w35",
+    "text": "Agenda",
+    "start": 10.4,
+    "end": 10.72
+  },
+  {
+    "id": "w36",
+    "text": "tu",
+    "start": 10.96,
+    "end": 11.12
+  },
+  {
+    "id": "w37",
+    "text": "primera",
+    "start": 11.12,
+    "end": 11.44
+  },
+  {
+    "id": "w38",
+    "text": "valoración",
+    "start": 11.44,
+    "end": 12
+  },
+  {
+    "id": "w39",
+    "text": "en",
+    "start": 12,
+    "end": 12.16
+  },
+  {
+    "id": "w40",
+    "text": "el",
+    "start": 12.16,
+    "end": 12.32
+  },
+  {
+    "id": "w41",
+    "text": "botón",
+    "start": 12.32,
+    "end": 12.64
+  },
+  {
+    "id": "w42",
+    "text": "de",
+    "start": 12.64,
+    "end": 12.8
+  },
+  {
+    "id": "w43",
+    "text": "abajo",
+    "start": 12.8,
+    "end": 13.28
+  },
+  {
+    "id": "w44",
+    "text": "y",
+    "start": 13.28,
+    "end": 13.52
+  },
+  {
+    "id": "w45",
+    "text": "te",
+    "start": 13.52,
+    "end": 13.68
+  },
+  {
+    "id": "w46",
+    "text": "mostramos",
+    "start": 13.68,
+    "end": 14.16
+  },
+  {
+    "id": "w47",
+    "text": "tu",
+    "start": 14.16,
+    "end": 14.32
+  },
+  {
+    "id": "w48",
+    "text": "nueva",
+    "start": 14.32,
+    "end": 14.64
+  },
+  {
+    "id": "w49",
+    "text": "sonrisa.",
+    "start": 14.64,
+    "end": 15.36
+  },
+  {
+    "id": "w50",
+    "text": "Sin",
+    "start": 15.36,
+    "end": 15.6
+  },
+  {
+    "id": "w51",
+    "text": "compromiso.",
+    "start": 15.6,
+    "end": 16.48
+  }
+]
