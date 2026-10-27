@@ -49,7 +49,7 @@ Qué hace que funcione (imitar esto):
 - **Ejemplos para el carrusel de la landing (22 oct 2026, negocios ficticios, ~20 s cada uno):** aprobados tal cual, sin cambios.
   - Servicio (anuncio 06): "¿Te da pena sonreír en las fotos? Lo veo todos los días en la clínica." → diseño de sonrisa → "Agenda tu primera valoración en el botón de abajo… sin compromiso."
   - Leads (anuncio 07): "Si entiendes inglés pero te bloqueas cuando tienes que hablarlo, no te falta vocabulario. Te falta práctica guiada." → clase gratuita → "Regístrate gratis en el botón de abajo y te envío el enlace de la clase." (23 oct 2026: antes "…y te envío el acceso a tu correo", que Google Flow bloqueaba por políticas: evitar juntar "acceso" + "correo" + "regístrate" en la voz)
-  - Producto (anuncio 08): "Si tu piel se ve apagada por la mañana, mira lo que hago antes de salir." → demostración (dos gotas, textura) → "Lo consigues en el botón de abajo."
+  - Producto (anuncio 08): "Si tu piel se ve apagada por la mañana, ponte esto todas las mañanas antes de salir." (27 oct 2026: el usuario lo eligió en vez de "…mira lo que hago antes de salir", que le pareció novato. Descartó hooks más agresivos de miedo o dinero: "te ves cansado aunque duermas bien", "gastas en cremas y sigue apagada", "la edad se nota primero en la piel". Prefiere una orden directa con el producto en la mano) → demostración (dos gotas, textura) → "Lo consigues en el botón de abajo."
   Por qué: hook de dolor en una frase, una sola idea y un solo CTA. En el servicio habla la especialista, no un paciente inventado (no se fingen testimonios).
 
 ## Descartado (y por qué)

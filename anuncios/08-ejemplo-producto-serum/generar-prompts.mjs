@@ -14,8 +14,8 @@ const tpl = s.slice(s.indexOf("{"), s.lastIndexOf("}") + 1);
 const FRASCO = "sostiene el mismo frasco ámbar con gotero de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, y gesticula con la mano izquierda";
 // [clip, duración, texto exacto, gestos, descripción]
 const clips = [
-  ["01", 6, "Si tu piel se ve apagada por la mañana, mira lo que hago antes de salir.",
-    `${FRASCO}: al decir 'Si tu piel se ve apagada', se toca suavemente la mejilla con las yemas de la mano izquierda; al decir 'por la mañana', hace una media sonrisa cómplice; al decir 'mira lo que hago antes de salir', levanta un poco el frasco hacia la cámara para mostrarlo`,
+  ["01", 6, "Si tu piel se ve apagada por la mañana, ponte esto todas las mañanas antes de salir.",
+    `${FRASCO}: al decir 'Si tu piel se ve apagada', se toca suavemente la mejilla con las yemas de la mano izquierda; al decir 'ponte esto', levanta un poco el frasco hacia la cámara para mostrarlo; al decir 'todas las mañanas antes de salir', asiente levemente con una media sonrisa cómplice`,
     "Hook: piel apagada"],
   ["02", 8, "Dos gotas de este sérum de vitamina C. Mira la textura: es ligera y se absorbe en segundos.",
     `${FRASCO}: al decir 'Dos gotas', muestra dos dedos con la mano izquierda; al decir 'de este sérum de vitamina C', acerca el frasco a la cámara con la etiqueta hacia delante; al decir 'Mira la textura', frota suavemente las yemas del pulgar y el índice de la mano izquierda; al decir 'se absorbe en segundos', se pasa las yemas de la mano izquierda por la mejilla con un movimiento corto y suave`,

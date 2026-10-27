@@ -70,6 +70,14 @@ Dónde va cada cosa nueva: anuncio → `anuncios/NN-slug/` · reel → `Contenid
 Para volver a renderizar el anuncio: desde `anuncios/01-avatar-ads/edicion/` → `hyperframes render public -o ../finales/<nombre>.mp4 --fps 24 --quality delivery --workers 1`.
 La versión limpia sin franja se puede rehacer con `anuncios/01-avatar-ads/edicion/versiones/index-v2-sin-texto.html` (ya corregida).
 
+## Visión (27 oct 2026, idea en desarrollo, aún no pulida)
+**Avatar Ads es un sistema para crear, testear y escalar anuncios con IA.** No es solo un curso ni solo un sistema para hacer videos hiperrealistas.
+- **Ciclo:** crear (lo que ya hace el sistema 1.x: de la idea al anuncio editado) → testear (se publican varios y los datos dicen cuál gana) → escalar (del ganador, el sistema crea variaciones controladas) → se vuelven a testear → nuevos ganadores. Así se encuentran ganadores y se escala más rápido.
+- **Variaciones de un ganador** (ejemplos del usuario): mismo anuncio con 3 hooks distintos · mismo guion con otro personaje · copy completamente nuevo · otro formato. Cada variación cambia una cosa y deja el resto igual.
+- **Alrededor del sistema:** formación (talleres, curso), soporte (grupo, feedback de anuncios) y actualizaciones continuas. El alumno compra el sistema + todo lo necesario para sacarle provecho.
+- **Horizonte:** a futuro, posiblemente un software (SaaS) donde ocurra todo el ciclo.
+- Implicación para el kit: guardar cada anuncio por piezas intercambiables (hook, guion, avatar, B-rolls, edición) para poder variarlo; un próximo paso natural es un módulo de variaciones ("este es mi ganador, dame 3 versiones cambiando X").
+
 ## Misión actual
 Objetivo del negocio: hacer crecer Avatar Ads 1.0 vendiéndolo con **talleres en vivo semanales de $37** (mecanismo de marketing; cada taller da acceso al programa). El primero es el sábado 31 de octubre de 2026 (proceso completo para crear anuncios UGC hiperrealistas); después, un taller cada semana.
 
@@ -124,7 +132,7 @@ Nombre oficial: **Sistema Avatar Ads**. Vive en **Claude Code** (app de escritor
 - Se actualiza de forma continua a medida que el usuario crea anuncios y encuentra formatos nuevos; el alumno recibe cada versión (acceso vitalicio).
 - Prioridad Windows (~70–80 % de la audiencia, estimado) y también Mac.
 - Nosotros también lo usamos para los anuncios nuevos (un solo sistema, probado de verdad).
-- Versión actual: 1.1.0 (22 oct 2026): formato head talking + paquete de prompts en 4 pasos (imagen del avatar → clips de voz → frames de los B-rolls → videos de los B-rolls, propuestos por Claude) en un solo `prompts-flow.md`. Todo B-roll empieza por una imagen (nunca de texto a video directo). Los master prompts del kit son copias de `skills/master prompt…`: si se cambia uno, actualizar el otro y anotar el cambio en `sistema/CAMBIOS.md` (subir `VERSION`).
+- Versión actual: 1.1.1 (27 oct 2026; la 1.1.0 del 22 oct trajo): formato head talking + paquete de prompts en 4 pasos (imagen del avatar → clips de voz → frames de los B-rolls → videos de los B-rolls, propuestos por Claude) en un solo `prompts-flow.md`. Todo B-roll empieza por una imagen (nunca de texto a video directo). Los master prompts del kit son copias de `skills/master prompt…`: si se cambia uno, actualizar el otro y anotar el cambio en `sistema/CAMBIOS.md` (subir `VERSION`).
 - Entrega al alumno: un `.zip` de la carpeta `sistema-avatar-ads/` (sin `anuncios/` propios) en el área de alumno; las actualizaciones, igual (skill `avatar-ads-actualizar`). Dónde se aloja el zip: por definir.
 
 ## Publicación

@@ -4,7 +4,7 @@ Ejemplo del carrusel de la landing (`#ejemplos`). Producto **ficticio**. Formato
 Aprobado por el usuario el 22 oct 2026.
 
 ## Guion (voz de hombre en su baño, con el frasco en la mano)
-1. Si tu piel se ve apagada por la mañana, mira lo que hago antes de salir. *(6 s)*
+1. Si tu piel se ve apagada por la mañana, ponte esto todas las mañanas antes de salir. *(6 s)*
 2. Dos gotas de este sérum de vitamina C. Mira la textura: es ligera y se absorbe en segundos. *(8 s)*
 3. No deja la piel grasosa y la sientes fresca todo el día. Lo consigues en el botón de abajo. *(8 s)*
 
