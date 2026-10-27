@@ -31,7 +31,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 | Elemento | Detalle |
 |---|---|
-| Formato | Taller online de apertura: 1 día intenso en vivo (lun 26 oct 2026) + clase bonus de captación de clientes (mar 27), ambas a las 7 p.m. Ecuador; da acceso al programa |
+| Formato | Taller online de apertura: 1 día intenso en vivo (sáb 31 oct 2026) + clase bonus de captación de clientes (dom 1 nov), ambas a las 10 a.m. Ecuador; da acceso al programa |
 | Precio | $27, pago único (edición de apertura). Sin cupones ni descuentos |
 | Cupo | Sin límite de cupos |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
@@ -40,10 +40,10 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 **Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
 
-**Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($497) · taller en vivo (lun 26): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
+**Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($497) · taller en vivo (sáb 31): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
 
 **Bonos:**
-1. **Clase bonus en vivo: cómo conseguir clientes** (mar 27, $67) — mi proceso para vender estos anuncios a negocios: qué oferta vender, captación orgánica y captación con anuncios.
+1. **Clase bonus en vivo: cómo conseguir clientes** (dom 1 nov, $67) — mi proceso para vender estos anuncios a negocios: qué oferta vender, captación orgánica y captación con anuncios.
 2. **Grupo privado de soporte** ($97; en la landing no se dice "WhatsApp") — feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.
 3. **Grabación completa del taller** ($47).
 
@@ -65,8 +65,8 @@ No prometer "3 anuncios listos" al final del taller.
 - Aplicar la habilidad en su negocio o para conseguir clientes.
 
 ### Temario (esto es lo que veremos)
-- **Taller (lun 26) — Un día intenso.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · storyboard · personaje e imágenes con IA con consistencia entre escenas · prompts de video (acciones, gesticulación, expresiones, voz) · generación de clips, corrección y gestión de créditos · edición automatizada (ritmo, subtítulos, textos, producto, CTA) · exportación. → *Creamos en vivo dos anuncios completos: uno para un producto digital y otro para un servicio.*
-- **Clase bonus (mar 27) — Cómo conseguir clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio.
+- **Taller (sáb 31) — Un día intenso.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · storyboard · personaje e imágenes con IA con consistencia entre escenas · prompts de video (acciones, gesticulación, expresiones, voz) · generación de clips, corrección y gestión de créditos · edición automatizada (ritmo, subtítulos, textos, producto, CTA) · exportación. → *Creamos en vivo dos anuncios completos: uno para un producto digital y otro para un servicio.*
+- **Clase bonus (dom 1 nov) — Cómo conseguir clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio.
 
 ### Sistema Avatar Ads
 El sistema propio que se enseña en el taller y que el alumno se lleva: vive en Claude Code, le hace preguntas y lo guía de la idea al anuncio editado, con la base de conocimiento de su negocio siempre actualizada y la edición automatizada. Se actualiza con cada formato y anuncio nuevo que creamos. En el copy: "el Sistema Avatar Ads", "el mismo sistema que uso para crear mis anuncios".
@@ -94,7 +94,7 @@ Invierten en publicidad y necesitan producir nuevas creatividades para **probar,
 Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a negocios y empresas.
 - **Quieren:** una habilidad vendible, un servicio concreto con precio, primeros clientes.
 - **Dolores** *(propuesta)*: no saben qué servicio ofrecer ni cuánto cobrar; no tienen portafolio; no saben prospectar; las herramientas caras se comen el margen.
-- **Puente de la oferta:** la clase bonus (mar 27) enseña qué oferta vender y cómo captar clientes, y el grupo de WhatsApp da feedback de sus anuncios.
+- **Puente de la oferta:** la clase bonus (dom 1 nov) enseña qué oferta vender y cómo captar clientes, y el grupo de WhatsApp da feedback de sus anuncios.
 
 ### Lista de email (Brevo, ~590 contactos)
 La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y vender productos digitales (ebooks) con IA. Les interesa generar ingresos online con IA. Lista fría (meses sin correos): el primer correo reconecta antes de vender.
@@ -150,7 +150,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 | "No puedo conectarme a una clase." | Tienes la grabación completa del taller y acceso vitalicio al curso. |
 | "¿Y si sube el precio?" | Si entras en la apertura, nada cambia para ti: acceso de por vida y todas las actualizaciones sin pagar más. |
 | "¿Por qué en vivo?" | Es la apertura: se muestra el proceso en tiempo real y se resuelven dudas en vivo. |
-| "¿Puedo vender este servicio?" | Sí. En la clase bonus del martes 27 te enseño mi proceso para vender estos anuncios a negocios. |
+| "¿Puedo vender este servicio?" | Sí. En la clase bonus del domingo 1 de noviembre te enseño mi proceso para vender estos anuncios a negocios. |
 | "No sé nada de IA / no soy técnico." *(propuesta)* | Es paso a paso, construyendo tu propio anuncio en clase, con prompts y workflows listos y grupo de WhatsApp para dudas. |
 | "La IA cambia cada mes, esto quedará viejo." *(propuesta)* | Acceso vitalicio con todas las futuras actualizaciones del método. |
 | "¿$27 vale la pena?" *(propuesta)* | Te llevas el sistema de por vida con sus actualizaciones; un solo anuncio que vendas a un negocio ya lo paga. |
