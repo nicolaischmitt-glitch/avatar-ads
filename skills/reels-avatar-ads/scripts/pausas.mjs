@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Lista TODAS las pausas de un audio/video a partir de un largo mínimo (por defecto 0,08 s), en ventanas de 10 ms.
-// Sirve para dejar el anuncio como una sola toma: ninguna pausa entre palabras de una misma frase, ni "microsegundos" entre clips.
+// Sirve para revisar el ritmo natural: uniones entre clips de ~0,4–0,6 s y ninguna pausa de más de ~0,6 s (con --min 0.3).
 // Umbral = piso de ruido (percentil 15) + 10 dB, como medir-voz.mjs.
 // Con --umbral -33 usa un umbral fijo en dB: así aparecen también las colas suaves y respiraciones entre palabras, que el oído nota como "espacio".
 // Uso: node pausas.mjs <archivo> [--min 0.08] [--umbral -33]

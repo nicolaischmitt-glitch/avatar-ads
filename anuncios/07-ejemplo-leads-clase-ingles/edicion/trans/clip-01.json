@@ -1,0 +1,86 @@
+[
+  {
+    "id": "w0",
+    "text": "Si",
+    "start": 0.32,
+    "end": 0.64
+  },
+  {
+    "id": "w1",
+    "text": "entiendes",
+    "start": 0.64,
+    "end": 1.36
+  },
+  {
+    "id": "w2",
+    "text": "inglés,",
+    "start": 1.36,
+    "end": 2
+  },
+  {
+    "id": "w3",
+    "text": "pero",
+    "start": 2,
+    "end": 2.24
+  },
+  {
+    "id": "w4",
+    "text": "te",
+    "start": 2.24,
+    "end": 2.4
+  },
+  {
+    "id": "w5",
+    "text": "bloqueas",
+    "start": 2.4,
+    "end": 3.04
+  },
+  {
+    "id": "w6",
+    "text": "cuando",
+    "start": 3.04,
+    "end": 3.28
+  },
+  {
+    "id": "w7",
+    "text": "tienes",
+    "start": 3.28,
+    "end": 3.52
+  },
+  {
+    "id": "w8",
+    "text": "que",
+    "start": 3.52,
+    "end": 3.68
+  },
+  {
+    "id": "w9",
+    "text": "hablarlo,",
+    "start": 3.68,
+    "end": 4.4
+  },
+  {
+    "id": "w10",
+    "text": "no",
+    "start": 4.4,
+    "end": 4.64
+  },
+  {
+    "id": "w11",
+    "text": "te",
+    "start": 4.64,
+    "end": 4.8
+  },
+  {
+    "id": "w12",
+    "text": "falta",
+    "start": 4.8,
+    "end": 5.12
+  },
+  {
+    "id": "w13",
+    "text": "vocabulario.",
+    "start": 5.12,
+    "end": 5.92
+  }
+]

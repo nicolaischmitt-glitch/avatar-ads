@@ -28,7 +28,7 @@ Ubicación real: `skills/reels-avatar-ads/` (en `.claude/skills/reels-avatar-ads
 | `references/recursos-visuales.md` | Fase 2 (lista de recursos) y Fase 5 |
 | `cta-lead-magnet.md` | Fase 2 (palabra clave y promesa del CTA) |
 | `scripts/validar-json.mjs` | Fase 4, obligatorio antes de entregar los prompts |
-| `scripts/detectar-estiramientos.mjs` | Fase 5 de todos los formatos: silencios y palabras estiradas (regla de voz fluida) |
+| `scripts/detectar-estiramientos.mjs` | Fase 5 de todos los formatos: silencios y palabras estiradas (regla de ritmo natural) |
 | `scripts/medir-voz.mjs` | Fase 5: inicio, fin y huecos de la voz por nivel de audio (para `cortes.txt`; Parakeet adelanta ~0,4 s los tiempos en clips sueltos) y nivel cada 20 ms para ubicar una palabra a quitar |
 | `formatos/head-talking/` | Formato D: `LEEME.md` + `edicion/` (plantillas `build.mjs`, `unir-clips.mjs`, `cortes` de ejemplo) |
 | `skills/master prompt para json prompts imagenes.md` | Avatar desde cero (frame de Nano Banana) |
@@ -82,7 +82,7 @@ Normalmente el usuario ya tiene la imagen/frame del avatar para Flow: no la gene
 ### Fase 5 — Edición
 Cuando el usuario diga que los clips están en `clips/`:
 1. Revisa cada clip (frames + transcripción con `hyperframes transcribe`). Avisa si el diálogo no coincide, hay texto generado, manos deformes o cambios de cara. Sugiere regenerar solo los clips malos.
-2. Une los clips aplicando la regla de **voz fluida** (Reglas generales): arranque inmediato, sin pausas > 0,3 s, sin palabras estiradas, cortes alineados a fotogramas.
+2. Une los clips aplicando la regla de **ritmo natural** (Reglas generales): arranque inmediato, hook sin cortes, ~0,45–0,55 s de silencio en cada unión entre clips, sin palabras estiradas, cortes alineados a fotogramas.
 3. Edita siguiendo `references/estilo-edicion.md`: entra por el skill `hyperframes` (y `hyperframes-core`, `hyperframes-animation`, `media-use` según haga falta). Construye los cutaways (mockups de UI, títulos, pasos, mockup del lead magnet, etc.).
 4. La primera vez, guarda la composición reutilizable en `Contenido/reels/_plantilla-edicion/` para que los siguientes reels partan de ella.
 5. Renderiza 1080×1920, 30 fps → `final/reel-NN-slug.mp4`. Revisa frames del render antes de entregar.
@@ -94,11 +94,11 @@ Cuando el usuario diga que los clips están en `clips/`:
 - No prometas resultados que el programa no da. Usa los datos reales de `PROYECTO.md`.
 - Recuerda al usuario (una vez por reel, en la entrega final) que el CTA necesita la automatización de comentarios → DM activa (ManyChat u otra) con la palabra clave correcta.
 - Si la palabra clave del reel aún no tiene lead magnet, al terminar el reel ofrécete a crearlo con el skill `lead-magnets-avatar-ads` (textos del DM incluidos).
-- **Voz fluida (todos los formatos: A, B, C y cualquier anuncio)**. Se aplica siempre en la edición, sin que el usuario lo pida:
+- **Ritmo natural del habla (todos los formatos: A, B, C y cualquier anuncio)**. Se aplica siempre en la edición, sin que el usuario lo pida. La meta es que suene como una persona real hablando, no como un guion leído de corrido sin respirar (regla vigente desde el 27 oct 2026: el usuario probó la versión "sin silencios" y entre clips se notaba el salto). Referencia aprobada: `anuncios/07-ejemplo-leads-clase-ingles/edicion/cortes.txt`.
   1. **Arranque inmediato**: la primera palabra suena en el primer fotograma del reel (máx. ~0,05 s antes). Nada de silencio, respiración ni gesto previo al inicio.
-  2. **Sin espacios sin voz**: entre palabras y entre frases no queda ningún hueco de más de ~0,3 s. Toda pausa mayor se recorta a ~0,1–0,2 s, cortando dentro del silencio, nunca dentro de una palabra. Excepción: una pausa dramática intencional del guion ("Pero…") puede quedar en ~0,3–0,45 s. Al final, ~0,5 s de cola para que se lea el CTA.
+  2. **Silencios humanos, sin exagerar**: (a) el **hook va de una sola toma, sin cortes**, con sus pausas naturales (hasta ~0,5 s); (b) en cada **unión entre clips** quedan **~0,45–0,55 s** de silencio (fin del clip ≈ fin de la voz + 0,2 s; inicio del siguiente ≈ inicio de la voz − 0,25 s), nunca menos de ~0,35 s porque se nota el salto; (c) dentro de un clip, las pausas de hasta ~0,35 s se dejan y las más largas se recortan a ~0,2–0,3 s, cortando dentro del silencio y de preferencia donde un cambio de escena tapa el corte; (d) ningún silencio de más de ~0,6 s. Al final, ~0,5–0,8 s de cola para que se lea el CTA.
   3. **Sin palabras estiradas**: si una vocal se sostiene de más ("me cuestaaa… casi"), se corta dentro de esa vocal dejando ~0,15 s de ella y se salta al inicio de la palabra siguiente.
   4. **Cómo encontrarlas**: `node skills/reels-avatar-ads/scripts/detectar-estiramientos.mjs <carpeta con los clips o la voz>` → lista los silencios y las vocales sostenidas (> 0,3 s) de cada archivo. Confirmar con la transcripción (`hyperframes transcribe`) y, si hay duda, con un espectrograma (`showspectrumpic`).
   5. **Cada corte interno se tapa**: con un cambio de zoom (formato A y C; si es el mismo plano, diferencia de escala ≥ 0,1) o haciéndolo coincidir con un cutaway/B-roll. En voz en off (formato B) los cortes son solo de audio.
   6. **Cortes alineados a fotogramas**: los cortes de imagen caen en un fotograma exacto de la velocidad de los clips (24 fps en Flow) y los cambios de zoom/overlay en ese mismo fotograma. Nunca convertir de fps antes de cortar (provoca "dobles cortes" de 1–5 fotogramas). Ningún plano debe durar menos de ~0,8 s (si un tramo queda más corto, unirlo con el vecino).
-  7. **Verificación antes de entregar**: transcribir el render final y comprobar que no queden huecos > 0,3 s (`silencedetect=n=-35dB:d=0.3`), y revisar con detección de escenas que cada corte aparezca una sola vez.
+  7. **Verificación antes de entregar**: `pausas.mjs base.mp4 --min 0.3` → las uniones entre clips miden ~0,4–0,6 s y nada pasa de ~0,6 s; en el render final, `silencedetect=n=-35dB:d=0.6` → 0 silencios (salvo la cola final); transcribir para confirmar palabras completas, y revisar con detección de escenas que cada corte aparezca una sola vez.

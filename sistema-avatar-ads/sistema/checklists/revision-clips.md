@@ -15,7 +15,7 @@
 | La cara cambia respecto a la imagen | Sí |
 | Aparece texto o subtítulos generados | Sí |
 | Voz distinta entre clips (tono, acento) | Sí, el que desentona |
-| Pausa larga o palabra estirada | No: se arregla en la edición (voz fluida) |
+| Pausa larga o palabra estirada | No: se arregla en la edición (ritmo natural) |
 | Se queda callado al final | No: se recorta |
 
 Dile al usuario: "Los clips 01, 02 y 04 están perfectos. Regenera el 03 porque [motivo]." Una línea por clip malo.

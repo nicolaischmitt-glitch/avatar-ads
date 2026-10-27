@@ -1,0 +1,308 @@
+[
+  {
+    "id": "w0",
+    "text": "Si",
+    "start": 0,
+    "end": 0.24
+  },
+  {
+    "id": "w1",
+    "text": "entiendes",
+    "start": 0.24,
+    "end": 0.72
+  },
+  {
+    "id": "w2",
+    "text": "inglés,",
+    "start": 0.72,
+    "end": 1.36
+  },
+  {
+    "id": "w3",
+    "text": "pero",
+    "start": 1.36,
+    "end": 1.6
+  },
+  {
+    "id": "w4",
+    "text": "te",
+    "start": 1.6,
+    "end": 1.84
+  },
+  {
+    "id": "w5",
+    "text": "bloqueas",
+    "start": 1.84,
+    "end": 2.4
+  },
+  {
+    "id": "w6",
+    "text": "cuando",
+    "start": 2.4,
+    "end": 2.64
+  },
+  {
+    "id": "w7",
+    "text": "tienes",
+    "start": 2.64,
+    "end": 2.88
+  },
+  {
+    "id": "w8",
+    "text": "que",
+    "start": 2.88,
+    "end": 3.04
+  },
+  {
+    "id": "w9",
+    "text": "hablarlo,",
+    "start": 3.04,
+    "end": 3.6
+  },
+  {
+    "id": "w10",
+    "text": "no",
+    "start": 3.6,
+    "end": 3.76
+  },
+  {
+    "id": "w11",
+    "text": "te",
+    "start": 3.76,
+    "end": 3.92
+  },
+  {
+    "id": "w12",
+    "text": "falta",
+    "start": 3.92,
+    "end": 4.24
+  },
+  {
+    "id": "w13",
+    "text": "vocabulario.",
+    "start": 4.24,
+    "end": 5.28
+  },
+  {
+    "id": "w14",
+    "text": "Te",
+    "start": 5.28,
+    "end": 5.44
+  },
+  {
+    "id": "w15",
+    "text": "falta",
+    "start": 5.44,
+    "end": 5.84
+  },
+  {
+    "id": "w16",
+    "text": "práctica",
+    "start": 5.84,
+    "end": 6.32
+  },
+  {
+    "id": "w17",
+    "text": "guiada.",
+    "start": 6.32,
+    "end": 6.88
+  },
+  {
+    "id": "w18",
+    "text": "Por",
+    "start": 6.88,
+    "end": 7.04
+  },
+  {
+    "id": "w19",
+    "text": "eso",
+    "start": 7.04,
+    "end": 7.2
+  },
+  {
+    "id": "w20",
+    "text": "preparé",
+    "start": 7.2,
+    "end": 7.76
+  },
+  {
+    "id": "w21",
+    "text": "una",
+    "start": 7.76,
+    "end": 7.92
+  },
+  {
+    "id": "w22",
+    "text": "clase",
+    "start": 7.92,
+    "end": 8.32
+  },
+  {
+    "id": "w23",
+    "text": "gratuita",
+    "start": 8.32,
+    "end": 8.88
+  },
+  {
+    "id": "w24",
+    "text": "con",
+    "start": 8.88,
+    "end": 9.12
+  },
+  {
+    "id": "w25",
+    "text": "las",
+    "start": 9.12,
+    "end": 9.28
+  },
+  {
+    "id": "w26",
+    "text": "frases",
+    "start": 9.28,
+    "end": 9.76
+  },
+  {
+    "id": "w27",
+    "text": "que",
+    "start": 9.76,
+    "end": 10
+  },
+  {
+    "id": "w28",
+    "text": "más",
+    "start": 10,
+    "end": 10.24
+  },
+  {
+    "id": "w29",
+    "text": "se",
+    "start": 10.24,
+    "end": 10.4
+  },
+  {
+    "id": "w30",
+    "text": "usan",
+    "start": 10.4,
+    "end": 10.8
+  },
+  {
+    "id": "w31",
+    "text": "en",
+    "start": 10.8,
+    "end": 10.96
+  },
+  {
+    "id": "w32",
+    "text": "una",
+    "start": 10.96,
+    "end": 11.12
+  },
+  {
+    "id": "w33",
+    "text": "reunión",
+    "start": 11.12,
+    "end": 11.52
+  },
+  {
+    "id": "w34",
+    "text": "de",
+    "start": 11.52,
+    "end": 11.68
+  },
+  {
+    "id": "w35",
+    "text": "trabajo.",
+    "start": 11.68,
+    "end": 12.24
+  },
+  {
+    "id": "w36",
+    "text": "Regístrate",
+    "start": 12.24,
+    "end": 12.96
+  },
+  {
+    "id": "w37",
+    "text": "gratis",
+    "start": 12.96,
+    "end": 13.36
+  },
+  {
+    "id": "w38",
+    "text": "en",
+    "start": 13.36,
+    "end": 13.52
+  },
+  {
+    "id": "w39",
+    "text": "el",
+    "start": 13.52,
+    "end": 13.68
+  },
+  {
+    "id": "w40",
+    "text": "botón",
+    "start": 13.68,
+    "end": 14
+  },
+  {
+    "id": "w41",
+    "text": "de",
+    "start": 14,
+    "end": 14.08
+  },
+  {
+    "id": "w42",
+    "text": "abajo",
+    "start": 14.08,
+    "end": 14.48
+  },
+  {
+    "id": "w43",
+    "text": "y",
+    "start": 14.48,
+    "end": 14.64
+  },
+  {
+    "id": "w44",
+    "text": "te",
+    "start": 14.64,
+    "end": 14.8
+  },
+  {
+    "id": "w45",
+    "text": "envío",
+    "start": 14.8,
+    "end": 15.2
+  },
+  {
+    "id": "w46",
+    "text": "el",
+    "start": 15.2,
+    "end": 15.36
+  },
+  {
+    "id": "w47",
+    "text": "enlace",
+    "start": 15.36,
+    "end": 15.92
+  },
+  {
+    "id": "w48",
+    "text": "de",
+    "start": 15.92,
+    "end": 16.08
+  },
+  {
+    "id": "w49",
+    "text": "la",
+    "start": 16.08,
+    "end": 16.24
+  },
+  {
+    "id": "w50",
+    "text": "clase.",
+    "start": 16.24,
+    "end": 16.8
+  }
+]

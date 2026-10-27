@@ -108,7 +108,7 @@ Cuando diga que los clips están listos, sigue `sistema/checklists/revision-clip
 4. Muéstrasela y pide lo que falte del usuario (capturas de resultados, fotos del producto, testimonios) para `recursos/`. El usuario puede cambiar lo que quiera: "aquí quiero mostrar mi página", "menos texto", "otro color". **Pide aprobación.**
 
 ## 8 · Edición
-Sigue el proceso de edición del `LEEME.md` del formato (unir clips con voz fluida → transcribir → construir la composición → revisar).
+Sigue el proceso de edición del `LEEME.md` del formato (unir clips con ritmo natural → transcribir → construir la composición → revisar).
 - Abre la vista previa para que el usuario la vea sin esperar el render: `hyperframes preview edicion/public --background` desde la carpeta del anuncio (abre el navegador; se detiene con `--stop`). Si la computadora es lenta, muestra snapshots por escena en su lugar.
 - El usuario pide cambios conversando ("el subtítulo más grande", "quita ese zoom", "la prueba antes"): aplícalos y vuelve a mostrar. Iteren hasta que lo apruebe.
 

@@ -1,5 +1,12 @@
 # Cambios del Sistema Avatar Ads
 
+## En preparación (sin versión todavía)
+- **Formato voz en off + B-rolls** (`sistema/formatos/voz-en-off/`): sin avatar a cámara, una voz de Google AI Studio (text-to-speech, gratis) sobre B-rolls. Idea guardada el 27 oct 2026; se publica cuando hagamos el primer anuncio.
+
+## 1.1.1 — 27 oct 2026
+- **Los subtítulos se distinguen de todo lo demás**: el rótulo de quien habla, el logo, las tarjetas y el botón nunca usan el mismo fondo y color que el subtítulo. Sin formularios visuales de registro en pantalla (`reglas-edicion.md`).
+- **Ritmo natural del habla** (reemplaza a "sin silencios de más de 0,3 s"): el hook va de una sola toma, cada unión entre clips deja ~0,45–0,55 s de silencio humano y las pausas internas solo se recortan si pasan de ~0,35 s. Ningún silencio de más de ~0,6 s. Ejemplo nuevo: `formatos/head-talking/edicion/cortes-ejemplo-anuncio-07.txt`.
+
 ## 1.1.0 — 22 oct 2026
 - **Paquete de prompts en 4 pasos**: `prompts-flow.md` trae todo junto y en el orden en que se usa: 1) imagen del avatar (Nano Banana Pro) → 2) clips de voz (Flow) → 3) frames de los B-rolls (Nano Banana Pro) → 4) videos de los B-rolls (Flow). Creas la imagen, te quedas con la que te gusta y generas todos los clips de corrido.
 - **Ideas de B-roll**: Claude propone 2–3 B-rolls por anuncio con sus prompts (sin diálogo). `generar-prompts.mjs` acepta `brolls` en `clips-plan.json`.

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Marca de agua · propuesta</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: #F5F7FB; color: #13294B; font-family: "Manrope", sans-serif; overflow: hidden; }
+  body { padding: 30px 48px; display: flex; flex-direction: column; gap: 22px; }
+  header { border-bottom: 1px solid #D5DCE8; padding-bottom: 12px; display: flex; justify-content: space-between; align-items: baseline; }
+  header h1 { font-weight: 800; font-size: 26px; }
+  .meta { font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6A7A93; }
+  .row { display: flex; gap: 34px; align-items: flex-start; }
+  .shot { display: flex; flex-direction: column; gap: 8px; }
+  .mini { width: 300px; height: 533px; border-radius: 14px; overflow: hidden; position: relative; background: #000; box-shadow: 0 8px 24px rgba(19,41,75,.16); }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.27778); transform-origin: 0 0; overflow: hidden; }
+  .cap { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #6A7A93; }
+  .face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .split-top { position: absolute; left: 0; right: 0; top: 0; height: 820px; background: #13294B; }
+  .split-vid { position: absolute; left: 0; right: 0; top: 820px; bottom: 0; overflow: hidden; }
+  .split-vid img { position: absolute; left: 0; top: -60px; width: 1080px; height: 1920px; object-fit: cover; }
+
+  /* ── la marca de agua (lienzo 1080×1920): borde derecho, a la altura del hombro, siempre encima de todo ── */
+  .wm { position: absolute; right: 44px; top: 940px; z-index: 99; display: flex; align-items: center; gap: 12px; opacity: .6;
+    font-family: "Archivo", sans-serif; font-stretch: 125%; font-weight: 800; font-size: 30px; letter-spacing: 1px; color: #fff;
+    text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+  .wm svg { width: 30px; height: 30px; filter: drop-shadow(0 1px 4px rgba(0,0,0,.4)); }
+  .wm b { color: #C5F740; font-weight: 800; }
+
+  .zoom { width: 520px; height: 533px; border-radius: 14px; overflow: hidden; position: relative; box-shadow: 0 8px 24px rgba(19,41,75,.16); }
+  .zoom .stage { transform: scale(1); left: -560px; top: -760px; }
+  .notes { font-size: 17px; line-height: 1.5; max-width: 1800px; }
+  .notes b { color: #FF6B4A; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Marca de agua «Avatar Ads 1.0» — dónde va y cómo se ve</h1>
+  <div class="meta">60 % de opacidad · 30 px en un video de 1080 px · fija todo el video</div>
+</header>
+<div class="row">
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f01.jpg">
+    <div class="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+  </div></div><div class="cap">Cara</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f02.jpg">
+    <div class="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+  </div></div><div class="cap">B-roll</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <div class="split-vid"><img src="frames/f04.jpg"></div><div class="split-top"></div>
+    <div class="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+  </div></div><div class="cap">Pantalla dividida</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f11.jpg">
+    <div class="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+  </div></div><div class="cap">Cierre</div></div>
+
+  <div class="shot"><div class="zoom"><div class="stage">
+    <img class="face" src="frames/f01.jpg">
+    <div class="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+  </div></div><div class="cap">Detalle ampliado</div></div>
+</div>
+<div class="notes">
+  <b>Por qué ahí:</b> en una esquina se quita con un recorte de 2 segundos. En el borde derecho, a la altura del hombro, para quitarla hay que recortar todo un lado del video y se rompe el encuadre 9:16.
+  No toca la cara, los subtítulos, el botón ni el ~20 % inferior que tapa la interfaz de Instagram.
+</div>
+</body>
+</html>

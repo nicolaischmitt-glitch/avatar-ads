@@ -11,9 +11,9 @@
 - Evitar la franja derecha (botones de Instagram/TikTok).
 - Los gráficos sobre la cara van en el tercio superior, sin taparle los ojos.
 
-## Voz fluida (se aplica siempre, sin que el usuario lo pida)
+## Voz y ritmo natural (se aplica siempre, sin que el usuario lo pida)
 1. **Arranque inmediato**: la primera palabra suena en el primer fotograma.
-2. **Pausas naturales, sin silencios largos**: recorta solo las pausas de más de ~0,3 s, dejándolas en ~0,15–0,25 s, cortando dentro del silencio. Las pausas cortas entre palabras se dejan: si se recortan de más, el video se ve acelerado y poco natural. Nunca cortes la cola suave de la última palabra (fin = fin de la voz que da `medir-voz.mjs` + ≥ 0,06 s). Revisa `base.mp4` con `node sistema/scripts/pausas.mjs base.mp4 --min 0.3`. Al final, ~0,5–0,8 s de cola para leer el CTA.
+2. **Ritmo natural del habla**: que suene como una persona real, no como un guion leído de corrido. **El hook va de una sola toma, sin cortes**, con sus pausas naturales (hasta ~0,5 s). **En cada unión entre clips quedan ~0,45–0,55 s de silencio** (fin del clip ≈ fin de la voz + 0,2 s; inicio del siguiente ≈ inicio de la voz − 0,25 s): con menos se nota el salto. Dentro de un clip, las pausas de hasta ~0,35 s se dejan y las más largas se recortan a ~0,2–0,3 s, cortando dentro del silencio. Ningún silencio de más de ~0,6 s. Nunca cortes la cola suave de la última palabra (fin = fin de la voz que da `medir-voz.mjs` + ≥ 0,06 s). Revisa `base.mp4` con `node sistema/scripts/pausas.mjs base.mp4 --min 0.3` (uniones de ~0,4–0,6 s, nada por encima de ~0,6 s). Al final, ~0,5–0,8 s de cola para leer el CTA. Ejemplo: `formatos/head-talking/edicion/cortes-ejemplo-anuncio-07.txt`.
 3. **Sin palabras estiradas**: si una vocal se sostiene de más, se corta dentro de ella dejando ~0,15 s y se salta a la palabra siguiente. Para encontrarlas: `node sistema/scripts/detectar-estiramientos.mjs <carpeta de clips>`.
 4. **Cada corte interno se tapa** con un cambio de zoom (diferencia ≥ 0,1) o con un B-roll.
 5. **Cortes alineados a fotogramas** (24 fps); ningún plano de menos de ~0,8 s a la vista (bajo un B-roll pueden ser más cortos).
@@ -22,6 +22,8 @@
 - No añadas cosas solo por añadir: nada de títulos arriba que repitan lo que dice el subtítulo.
 - Cada gráfico aporta algo que la voz no dice: autoridad (rótulo de quien habla), explicar (proceso), mostrar (B-roll), actuar (botón), quién (marca al cierre).
 - **El botón del CTA nunca se parece a los subtítulos**: si los subtítulos llevan caja, el botón usa otra forma y color (o los subtítulos van sin caja y el botón es la única píldora).
+- **Los subtítulos nunca se parecen a ningún otro gráfico**: el rótulo de quien habla, el logo, las tarjetas y el botón usan otro fondo y otro color de texto que la caja del subtítulo. Al terminar el storyboard, comparar cada gráfico con el subtítulo.
+- **Sin formularios visuales de registro en pantalla**: para "regístrate" basta la cara con un golpe de zoom y el botón.
 
 ## Audio
 - Voz a **−14 LUFS**, pico ≤ −1,5 dB (filtro en el paso de "audio limpio" del formato).

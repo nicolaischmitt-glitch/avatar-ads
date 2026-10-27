@@ -43,7 +43,7 @@ Plantilla en `formatos/podcast/edicion/`: `unir-clips.mjs`, `build.mjs` y un `co
    - Revisar que el texto coincida con el guion: en el reel 07 el clip 7 repetía "estos métodos" y se cortó.
 2. **`cortes.txt`** (clip, inicio, fin):
    - Cada clip empieza ~0,03 s antes de la primera palabra (el reel arranca hablando en el fotograma 0) y termina ~0,08 s después de la última. Al final dejar ~0,5 s para que se lea el CTA.
-   - **Toda pausa interna > 0,3 s se recorta** partiendo el clip en dos segmentos.
+   - **Pausas internas**: las de hasta ~0,35 s se dejan; las más largas se recortan a ~0,2–0,3 s partiendo el clip en dos segmentos (regla de ritmo natural del `SKILL.md`).
    - **Palabra estirada**: cortar dentro de la vocal sostenida dejando ~0,15 s de vocal y saltar al inicio de la palabra siguiente.
    - Cada corte interno se tapa con un cambio de zoom o, mejor, cae justo donde empieza un B-roll.
 3. `node edicion/unir-clips.mjs` → `base.mp4` a **24 fps** (la velocidad de Flow) con cada corte en un fotograma exacto, y `base-cortes.json`. Comprobar con `ffmpeg -i base.mp4 -vf "select='gt(scene,0.08)',showinfo" -an -f null -` que los cambios de personaje caen exactamente en los `start` de `base-cortes.json`.
@@ -79,8 +79,8 @@ Objetivo: que no sean solo dos personas hablando, sin saturar. Reel 07: 6 B-roll
 - Logos de marcas de terceros: solo el archivo oficial que dé el usuario; si no hay, el nombre escrito (nunca un logo inventado).
 - SFX: `whoosh-short` (vol. ~0,18) al entrar a cada B-roll, `pop`/`click-soft` en elementos, `impact-bass-1` en cifras.
 
-## Edición — criterios (que parezca una sola conversación, sin huecos)
-- Recortar el silencio inicial y final de cada clip; entre intervenciones dejar ~0,1–0,2 s.
+## Edición — criterios (que parezca una conversación real, sin huecos largos)
+- Recortar el silencio inicial y final de cada clip; entre intervenciones dejar ~0,35–0,5 s de silencio humano (regla de ritmo natural, 27 oct 2026: con ~0,15 s el cambio de clip se nota apurado). Ningún silencio de más de ~0,6 s.
 - Plano/contraplano: cada corte cambia de cámara, así que el corte no se nota.
 - Audio: igualar volumen entre los dos personajes, sin música (o una cama muy baja si el usuario la pide). Si una voz cambia de timbre entre clips, regenerar ese clip.
 - Subtítulos blancos de palabra activa (verde) abajo; la palabra clave del CTA escrita grande en pantalla al final.

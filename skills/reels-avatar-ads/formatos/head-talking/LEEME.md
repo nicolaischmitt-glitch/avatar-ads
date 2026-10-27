@@ -53,7 +53,7 @@ Al usuario le gustó recibirlo todo junto y en orden (anuncios 06–08): **Paso 
 
 ### 7 · Edición (plantilla en `formatos/head-talking/edicion/`)
 Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
-1. **`cortes.txt`** (ejemplo: `cortes-ejemplo-anuncio-03.txt`): por clip, desde el inicio de la voz − 0,04 s hasta el fin + ~0,05 s; los huecos > 0,3 s se recortan a ~0,15 s. El último clip deja ~0,8 s de cola para el botón.
+1. **`cortes.txt`** (ejemplo aprobado: `cortes-ejemplo-anuncio-07.txt`): aplicar la regla **Ritmo natural** (abajo): hook sin cortes, ~0,45–0,55 s en cada unión entre clips, pausas internas > ~0,35 s recortadas a ~0,2–0,3 s. El último clip deja ~0,8 s de cola para el botón.
    - **Quitar una palabra** (p. ej. un nombre): ubicarla con `medir-voz.mjs clip --desde a --hasta b` (cortar en los valles < −35 dB) y partir el clip en dos filas. Si el corte coincide con un cambio de escena, mejor.
    - Ningún tramo de menos de ~0,8 s.
 2. `node unir-clips.mjs` → `base.mp4` (1080×1920, 24 fps, cortes en fotogramas exactos) + `base-cortes.json`.
@@ -66,7 +66,7 @@ Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
 ### 8 · Render y verificación
 - `hyperframes render public -o ../finales/render-crudo.mp4 --fps 24 --quality delivery --workers 1` (~10 min, en segundo plano).
 - Normalizar: `ffmpeg -i render-crudo.mp4 -c:v copy -af "loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000" -c:a aac -b:a 192k -movflags +faststart <final>.mp4`.
-- Verificar: ≈ −14 LUFS y pico ≤ −1,5 dB (`ebur128=peak=true`); 0 silencios > 0,3 s (`silencedetect=n=-35dB:d=0.3`); detección de escenas sin cortes dobles (dos cortes a 1 fotograma = un elemento que entra tarde; revisar esos fotogramas).
+- Verificar: ≈ −14 LUFS y pico ≤ −1,5 dB (`ebur128=peak=true`); 0 silencios > 0,6 s (`silencedetect=n=-35dB:d=0.6`); detección de escenas sin cortes dobles (dos cortes a 1 fotograma = un elemento que entra tarde; revisar esos fotogramas).
 - Entregar el MP4 y recordar copiarlo a Drive.
 
 ## Catálogo de escenas (anuncio 03, todas en `build.mjs`)
@@ -104,19 +104,32 @@ En el anuncio 04 se cortaron finales de palabra ("centavo-", "minu-") y quedaron
 1. `medir-voz.mjs` ahora calcula el **piso de ruido de cada clip** (percentil 15) y usa **piso + 10 dB** como umbral de voz. Leer siempre su salida (piso, umbral, inicio, fin, huecos).
 2. **Fin de cada tramo = último fotograma con voz + 0,20 s como mínimo.** Nunca cortar mientras el nivel siga por encima de piso + 3 dB (la "s", "-tos", "-vos" finales son suaves y largas).
 3. **Inicio de cada tramo = primer fotograma con voz − 0,05 s.** Todo lo anterior (respiración, ruido, gesto) se quita.
-4. Todo hueco > 0,3 s dentro del clip se recorta a ~0,15 s (incluidos los de entre frases, como "dólar. … ¡Un solo segundo!").
-5. **Verificación obligatoria antes del render**: transcribir `base.mp4` y revisar (a) que la última palabra de cada tramo esté completa (si la transcripción la escribe incompleta o rara, alargar el corte), (b) que no haya más de 0,3 s entre una palabra y la siguiente en todo el video, (c) que el primer sonido esté en el fotograma 0. Si algo falla, corregir `cortes.txt` y repetir.
+4. Los huecos largos dentro del clip (como el ~1 s de "dólar. … ¡Un solo segundo!") se recortan según la regla **Ritmo natural** (abajo): a ~0,2–0,3 s dentro de un clip, ~0,45–0,55 s en las uniones entre clips.
+5. **Verificación obligatoria antes del render**: transcribir `base.mp4` y revisar (a) que la última palabra de cada tramo esté completa (si la transcripción la escribe incompleta o rara, alargar el corte), (b) que ninguna pausa pase de ~0,6 s y que las uniones entre clips midan ~0,4–0,6 s (`pausas.mjs base.mp4 --min 0.3`), (c) que el primer sonido esté en el fotograma 0. Si algo falla, corregir `cortes.txt` y repetir.
 6. Si un clip de Flow termina **justo** con la última palabra (voz hasta el último fotograma), la palabra probablemente está cortada en origen: avisar y pedir regenerarlo más largo.
 
-### Pausas: naturales, ni largas ni recortadas de más (anuncio 06, 23 oct 2026)
+### Ritmo natural del habla (regla vigente desde el anuncio 07, 27 oct 2026)
+La meta es que suene como una persona real hablando, no como un guion leído de corrido. El usuario probó la versión "sin silencios" y, entre el final de un clip y el inicio del siguiente, se notaba mucho el salto. Referencia aprobada: `anuncios/07-ejemplo-leads-clase-ingles/edicion/cortes.txt` (copia en `edicion/cortes-ejemplo-anuncio-07.txt`).
+1. **Arranque**: la primera palabra suena en el fotograma 0 (máx. ~0,05 s antes).
+2. **Hook sin cortes**: la primera frase va de una sola toma, con sus pausas naturales (hasta ~0,5 s). En el 07 v1 un corte rápido justo después de "Si entiendes inglés," se veía artificial.
+3. **Uniones entre clips: ~0,45–0,55 s de silencio** (fin del clip ≈ fin de la voz + 0,2 s; inicio del siguiente ≈ inicio de la voz − 0,25 s). Nunca menos de ~0,35 s: con ~0,15 s se veía apurado.
+4. **Dentro de un clip**: las pausas de hasta ~0,35 s se dejan; las más largas se recortan a ~0,2–0,3 s, de preferencia donde un cambio de escena (gráfico, pantalla dividida, zoom) tapa el corte.
+5. **Sin exagerar**: ningún silencio de más de ~0,6 s, salvo la cola final (~0,5–0,8 s para el botón).
+
+Historial (anuncio 06, 23 oct 2026):
 - **v1**: el usuario notó "espacios" entre frases y entre clips. **v2**: se recortaron todas las pausas a 0,07–0,1 s (con `pausas.mjs --umbral -33`) y quedó **demasiado rápido, poco natural**: el usuario pidió volver a la forma anterior. **v3** (la buena): solo se recortan las pausas **> 0,3 s** (a ~0,15–0,25 s); las pausas cortas naturales entre palabras se dejan. La meta es que se vea natural, sin silencios largos.
 - En la v2 además se cortó el final de "sonrisa" ("sonris-"): la cola suave de la última vocal (−35 a −45 dB) es parte de la palabra. **Fin de tramo = fin de la voz con umbral piso + 10 dB (medir-voz.mjs) + ≥ 0,06 s**, nunca con el umbral −33.
-- `scripts/pausas.mjs <archivo> --min 0.3` sirve para revisar `base.mp4`: ninguna pausa de más de ~0,3 s.
+- `scripts/pausas.mjs <archivo> --min 0.3` sirve para revisar `base.mp4`: las uniones entre clips miden ~0,4–0,6 s y ninguna pausa pasa de ~0,6 s.
 
 ### Cada elemento con un propósito (anuncio 06, 23 oct 2026)
 - No añadir cosas solo por añadir. **Nada de títulos o chips arriba que repitan lo que dice el subtítulo**: se camuflan con él y no aportan.
 - Antes de poner un gráfico, preguntarse qué aporta que la voz y el subtítulo no digan: autoridad (rótulo de quien habla), explicar (tarjeta de proceso), mostrar (B-roll), actuar (botón), quién (marca al cierre).
 - **El botón del CTA nunca se parece a los subtítulos.** En el 06 v1 los subtítulos iban en píldora blanca y el botón también era una píldora: se confundían. Si los subtítulos llevan caja, el botón usa otra forma y color; en el 06 v2 los subtítulos van sin caja (texto blanco con sombra) y el botón es la única píldora (blanco, borde y texto turquesa, anillo que late).
+- **Los subtítulos nunca se parecen a ningún otro gráfico** (anuncio 07, 27 oct 2026): ni el rótulo de quien habla, ni el logo, ni tarjetas o botones usan el mismo fondo y color de texto que la caja del subtítulo. En el 07 el rótulo del profesor iba en la misma caja azul marino que los subtítulos y se rechazó: el rótulo y el logo pasaron a tarjeta blanca. Al terminar el storyboard, comparar cada gráfico con el subtítulo (fondo, color de texto, forma).
+- **Nada de formularios visuales de registro en pantalla** (rechazado en el 07): para "regístrate" basta la cara con un golpe de zoom y luego el botón.
+
+### Marca de agua en los ejemplos de la landing (27 oct 2026)
+- Los anuncios de ejemplo de la landing (07 en adelante) llevan "▶ AVATAR ADS 1.0" pequeña y fija: Archivo 800, 30 px, blanco con "ADS" y el triángulo en verde #C5F740, 60 % de opacidad, en el borde derecho a la altura del hombro (no en una esquina, que se recorta fácil). Bloque `#wm` en `anuncios/07-ejemplo-leads-clase-ingles/edicion/build.mjs`.
 
 ## Errores ya resueltos (no repetir)
 - **Logo con fondo negro**: `mix-blend-mode: screen` va en el **contenedor** `.g` del logo (capa propia), no en la imagen dentro de otra capa.

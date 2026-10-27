@@ -14,4 +14,5 @@ Sin fecha ni cupos (evergreen).
 - Avatar: `avatar/prompt-nano-banana.json` → 4 variaciones → `avatar/avatar.jpg`.
 - Voz: `prompts/clip-01…03.json`. B-rolls: `prompts-broll/` (videollamada de trabajo, apuntes). Todo en `prompts-flow.md`.
 - Edición: academia ficticia (nombre por confirmar), paleta azul marino (#13294B) + coral (#FF6B4A). Tarjeta "Clase gratuita", 3 frases de reunión que aparecen, formulario que se llena y botón "Registrarme gratis ↓".
+- **Final aprobado (27 oct 2026):** `final/anuncio-07-ejemplo-leads-clase-ingles.mp4` (17,6 s). Daniel Ríos · Speak Up Academy, sin B-rolls (no gustaron), sin formulario, marca de agua "AVATAR ADS 1.0", hook sin cortes y ~0,5 s de silencio en cada unión entre clips (referencia de ritmo natural). Aún no está en la landing: el usuario la sube cuando estén los tres ejemplos.
 - Para la landing: título "Anuncio para generar leads".
