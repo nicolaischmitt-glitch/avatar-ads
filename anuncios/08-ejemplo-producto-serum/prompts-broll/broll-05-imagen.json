@@ -1,0 +1,39 @@
+{
+  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a macro close-up of a young woman's thumb and index fingertips with a drop of serum between them. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone video frame, not a professional photo"
+  },
+  "subject": "thumb and index fingertips with real skin texture and fingerprints, a small drop of clear, light, fluid serum between them",
+  "environment": {
+    "location": "a home bathroom in the morning",
+    "details": "the white sink blurred in the background",
+    "atmosphere": "real, lived-in and slightly imperfect, like a real everyday place, not a staged set or a showroom"
+  },
+  "camera": {
+    "device": "iPhone main camera, handheld, at a natural human height",
+    "framing": "vertical macro, the fingertips centered",
+    "focus": "natural phone depth of field, no artificial heavy bokeh",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft morning light from the front",
+    "mood": "natural and realistic, low contrast, accurate colors, no dramatic lighting"
+  },
+  "realism_rules": [
+    "must look like an ordinary frame from a phone video, not AI-generated and not a stock photo",
+    "small real-world imperfections: light dust, slight wear, small scratches, uneven surfaces, a few things slightly out of place",
+    "nothing too clean, too glossy or perfectly symmetrical",
+    "true-to-life materials, textures and reflections",
+    "if hands or skin appear: real skin texture with pores and fine lines, correct anatomy, five fingers"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, brand names, watermarks, UI elements, readable signs or screens",
+    "CGI, 3D render, illustration, overly glossy or plastic surfaces, futuristic or sci-fi look",
+    "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
+    "perfect symmetry, empty sterile spaces, everything brand new",
+    "deformed hands, extra fingers, warped objects",
+    "recognizable faces, a likeness of any real person"
+  ]
+}

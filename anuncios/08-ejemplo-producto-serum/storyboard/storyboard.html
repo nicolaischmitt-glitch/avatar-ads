@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Anuncio 08 · Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Archivo:wght@800&display=swap" rel="stylesheet">
+<style>
+  /* Marca ficticia ALBA: crema + naranja (los colores de la etiqueta). Estilo UGC natural: casi sin gráficos, el B-roll cuenta la historia.
+     Subtítulos sin caja (texto blanco con sombra, frase natural); el botón es la única píldora. */
+  :root { --cream: #F4EDE2; --orange: #F28C28; --ink: #2B2118; --soft: #8A7B6A; --paper: #FBF8F3; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: var(--paper); color: var(--ink); font-family: "Inter", sans-serif; overflow: hidden; }
+  body { padding: 28px 48px; display: flex; flex-direction: column; gap: 18px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #E6DCCD; padding-bottom: 12px; }
+  header h1 { font-weight: 800; font-size: 26px; }
+  header h1 span { color: var(--orange); }
+  .meta { font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+  .board { display: grid; grid-template-columns: repeat(8, 210px); justify-content: space-between; row-gap: 16px; }
+  .shot { display: flex; flex-direction: column; gap: 6px; }
+  .mini { width: 210px; height: 373px; border-radius: 14px; overflow: hidden; position: relative; background: #000; box-shadow: 0 8px 24px rgba(43,33,24,.16); }
+  .mini.br { outline: 4px solid var(--orange); outline-offset: -4px; }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.194444); transform-origin: 0 0; overflow: hidden; }
+  .cap { display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--soft); }
+  .cap b { color: var(--orange); }
+  .say { font-size: 13px; line-height: 1.3; color: var(--ink); min-height: 52px; font-weight: 500; }
+
+  /* ---------- lienzo 1080×1920 ---------- */
+  .face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 32%; }
+  /* subtítulo natural: frase corta, sin caja, debajo del frasco que ella sostiene (el frasco ocupa ~820–1470 px a la izquierda) */
+  .sub { position: absolute; z-index: 20; left: 70px; right: 70px; top: 1490px; text-align: center; color: #fff; font-weight: 700; font-size: 62px; line-height: 1.18;
+    text-shadow: 0 3px 4px rgba(0,0,0,.55), 0 0 26px rgba(0,0,0,.45); }
+  /* marca del producto: una sola vez, en la banda de arriba (encima de la cabeza) */
+  .chip { position: absolute; z-index: 12; left: 50%; top: 70px; transform: translateX(-50%); display: flex; align-items: center; gap: 22px; background: rgba(244,237,226,.96);
+    border-radius: 22px; padding: 20px 36px; box-shadow: 0 12px 34px rgba(0,0,0,.22); border-bottom: 8px solid var(--orange); white-space: nowrap; }
+  .chip b { font-weight: 800; font-size: 62px; letter-spacing: 5px; color: var(--ink); }
+  .chip span { font-weight: 600; font-size: 42px; color: var(--soft); }
+  /* CTA: la única píldora del video */
+  .btn { position: absolute; z-index: 14; left: 50%; top: 1420px; transform: translateX(-50%); background: var(--orange); color: #fff; font-weight: 800; font-size: 54px;
+    padding: 30px 74px; border-radius: 999px; box-shadow: 0 0 0 14px rgba(242,140,40,.25), 0 18px 44px rgba(0,0,0,.3); white-space: nowrap; }
+  /* marca de agua de los ejemplos de la landing */
+  .wm { position: absolute; z-index: 30; right: 44px; top: 940px; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 30px; color: #fff; opacity: .6;
+    text-shadow: 0 2px 6px rgba(0,0,0,.45); letter-spacing: 1px; }
+  .wm i { font-style: normal; color: #C5F740; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Anuncio 08 · <span>Sérum ALBA</span> — storyboard UGC natural</h1>
+  <div class="meta">~34 s · 9:16 · ella a cámara ≈ 47 % · B-roll ≈ 53 % · borde naranja = B-roll</div>
+</header>
+
+<div class="board">
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f01.jpg"><div class="sub">Dormía ocho horas…</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>01</b> Hook · cara</span><span>0,0 s</span></div>
+  <div class="say">«Dormía ocho horas y aun así…» Toma natural, sin zoom.</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f02.jpg"><div class="sub">mi cara decía que no<br>había dormido nada.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>02</b> B-roll cansada</span><span>2,0 s</span></div>
+  <div class="say">Se toca la ojera frente al espejo (B-roll 01).</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f03.jpg"><div class="sub">Probé cremas caras,<br>mascarillas…</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>03</b> Cara · cuenta</span><span>5,1 s</span></div>
+  <div class="say">Va contando con los dedos.</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f04.jpg"><div class="sub">de todo… y mi piel<br>seguía apagada,</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>04</b> B-roll cremas</span><span>7,3 s</span></div>
+  <div class="say">Su mano aparta las cremas que no funcionaron (B-roll 02).</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f05.jpg"><div class="sub">como sin vida.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>05</b> Cara · frustración</span><span>9,6 s</span></div>
+  <div class="say">Se pasa la mano por la mejilla.</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f06.jpg"><div class="sub">Hasta que empecé a usar…</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>06</b> B-roll aparece ALBA</span><span>10,8 s</span></div>
+  <div class="say">Su mano toma el frasco del lavabo: el giro de la historia (B-roll 03).</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f07.jpg"><div class="chip"><b>ALBA</b><span>Sérum de vitamina C</span></div><div class="sub">este sérum de vitamina C.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>07</b> Cara · marca</span><span>12,4 s</span></div>
+  <div class="say">Acerca el frasco. La marca aparece una sola vez, arriba.</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f08.jpg"><div class="sub">Dos gotas cada mañana,<br>nada más.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>08</b> B-roll gotas</span><span>14,4 s</span></div>
+  <div class="say">Dos gotas sobre el dorso de la mano (B-roll 04).</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f09.jpg"><div class="sub">Es súper ligero,</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>09</b> B-roll textura</span><span>16,5 s</span></div>
+  <div class="say">La textura entre los dedos (B-roll 05).</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f10.jpg"><div class="sub" style="top:1080px">se absorbe en segundos</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>10</b> B-roll aplicación</span><span>18,0 s</span></div>
+  <div class="say">Se lo aplica en la mejilla (B-roll 06).</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f11.jpg"><div class="sub">y no te deja la piel grasosa.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>11</b> Cara · niega</span><span>19,8 s</span></div>
+  <div class="say">Niega con el dedo.</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f12.jpg"><div class="sub">Hoy me miro al espejo…</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>12</b> Cara · espejo</span><span>21,6 s</span></div>
+  <div class="say">Mira hacia un lado, como a su reflejo.</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f13.jpg"><div class="sub">y me veo despierta,<br>fresca, con brillo…</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>13</b> B-roll resultado</span><span>23,2 s</span></div>
+  <div class="say">Piel luminosa: se mira y sonríe (B-roll 07).</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f14.jpg"><div class="sub">y eso que no llevo<br>maquillaje.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>14</b> Cara · orgullo</span><span>26,4 s</span></div>
+  <div class="say">Se señala la cara, cómplice.</div></div>
+
+  <div class="shot"><div class="mini"><div class="stage">
+    <img class="face" src="frames/f15.jpg"><div class="sub">Si tu piel también se ve<br>cansada, pruébalo.</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>15</b> CTA · cara</span><span>28,8 s</span></div>
+  <div class="say">Te habla directo y levanta el frasco en «pruébalo».</div></div>
+
+  <div class="shot"><div class="mini br"><div class="stage">
+    <img class="face" src="frames/f16.jpg"><div class="sub" style="top:250px">Lo consigues en el<br>botón de abajo.</div><div class="btn" style="top:1560px">Comprar ↓</div><div class="wm"><i>▶</i> AVATAR <i>ADS</i> 1.0</div>
+  </div></div><div class="cap"><span><b>16</b> B-roll + botón</span><span>31,8 s</span></div>
+  <div class="say">El frasco sobre el lavabo y el botón, que late (B-roll 08).</div></div>
+</div>
+</body>
+</html>

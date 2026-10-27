@@ -22,13 +22,13 @@
       "hand_gestures": {
         "enabled": true,
         "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
-        "synchronization": "sostiene el mismo frasco ámbar con gotero de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, y gesticula con la mano izquierda: al decir 'Dos gotas', muestra dos dedos con la mano izquierda; al decir 'de este sérum de vitamina C', acerca el frasco a la cámara con la etiqueta hacia delante; al decir 'Mira la textura', frota suavemente las yemas del pulgar y el índice de la mano izquierda; al decir 'se absorbe en segundos', se pasa las yemas de la mano izquierda por la mejilla con un movimiento corto y suave",
+        "synchronization": "sostiene el mismo frasco ámbar de ALBA de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, con la etiqueta siempre hacia la cámara y sin taparla con los dedos, y gesticula con la mano izquierda: al decir 'Probé cremas caras, mascarillas, de todo', va contando con los dedos de la mano izquierda, uno por cada cosa; al decir 'y mi piel seguía apagada', deja caer la mano con resignación; al decir 'como sin vida', se pasa las yemas por la mejilla con una expresión de frustración suave",
         "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
       }
     },
     "dialogue": {
-      "speaker": "hombre",
-      "script": "Dos gotas de este sérum de vitamina C. Mira la textura: es ligera y se absorbe en segundos.",
+      "speaker": "mujer",
+      "script": "Probé cremas caras, mascarillas, de todo… y mi piel seguía apagada, como sin vida.",
       "must_follow_exactly": true,
       "allow_rephrasing": false,
       "allow_additional_words": false

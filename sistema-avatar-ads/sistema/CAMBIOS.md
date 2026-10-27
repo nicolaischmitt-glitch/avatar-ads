@@ -1,7 +1,12 @@
 # Cambios del Sistema Avatar Ads
 
-## En preparación (sin versión todavía)
-- **Formato voz en off + B-rolls** (`sistema/formatos/voz-en-off/`): sin avatar a cámara, una voz de Google AI Studio (text-to-speech, gratis) sobre B-rolls. Idea guardada el 27 oct 2026; se publica cuando hagamos el primer anuncio.
+## 1.3.0 — 27 oct 2026
+- **Formato nuevo: voz en off + B-rolls** (`sistema/formatos/voz-en-off/`), probado en un anuncio real de skincare: una voz en primera persona cuenta una historia y 6–10 B-rolls la muestran, con cortes secos, subtítulos naturales, un solo botón y sin música. Se ve muy realista. Incluye cómo generar la voz gratis en Google AI Studio (Gemini 3.1 Flash TTS, con plantillas de Scene y Sample Context), cómo asignar cada B-roll a su frase mirando los clips y la plantilla de edición `edicion/build.mjs`.
+- `generar-prompts.mjs` acepta un `clips-plan.json` sin `clips` (formato voz en off: solo producto, avatar y B-rolls).
+
+## 1.2.0 — 27 oct 2026
+- **Producto físico LOCKED IN** (solo se activa cuando en el anuncio se ve un producto físico; en servicios, cursos o productos digitales todo sigue igual): sin esto, la IA inventaba un producto distinto en cada imagen. Ahora hay un **Paso 0**, la foto del producto (`producto/producto.png`, real o generada), que se adjunta en la imagen del avatar y en los B-rolls donde sale; su descripción (`product`) va idéntica en todos los prompts, con una etiqueta definida (nunca en blanco). Antes de animar, cada imagen se compara con esa foto. Reglas: sección 7 de `master-prompt-imagen.md`. `generar-prompts.mjs` acepta `producto` en `clips-plan.json` y `"producto": true` en cada B-roll.
+- **B-roll con el mismo avatar**: `"mismaPersona": true` (con `"referencia": "avatar/avatar.jpg"`) para tomas donde sale la misma persona, como aplicarse el producto en la cara. Antes, la referencia del avatar solo servía para el lugar y pedía sacar a la persona.
 
 ## 1.1.1 — 27 oct 2026
 - **Los subtítulos se distinguen de todo lo demás**: el rótulo de quien habla, el logo, las tarjetas y el botón nunca usan el mismo fondo y color que el subtítulo. Sin formularios visuales de registro en pantalla (`reglas-edicion.md`).

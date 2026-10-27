@@ -22,13 +22,13 @@
       "hand_gestures": {
         "enabled": true,
         "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
-        "synchronization": "sostiene el mismo frasco ámbar con gotero de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, y gesticula con la mano izquierda: al decir 'Si tu piel se ve apagada', se toca suavemente la mejilla con las yemas de la mano izquierda; al decir 'ponte esto', levanta un poco el frasco hacia la cámara para mostrarlo; al decir 'todas las mañanas antes de salir', asiente levemente con una media sonrisa cómplice",
+        "synchronization": "sostiene el mismo frasco ámbar de ALBA de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, con la etiqueta siempre hacia la cámara y sin taparla con los dedos, y gesticula con la mano izquierda: al decir 'Dormía ocho horas', levanta la mano izquierda con la palma abierta como quien no lo puede creer; al decir 'mi cara decía', se señala la cara con el índice izquierdo y hace una mueca de cansancio; al decir 'que no había dormido nada', se toca suavemente debajo del ojo con las yemas y niega levemente con la cabeza",
         "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
       }
     },
     "dialogue": {
-      "speaker": "hombre",
-      "script": "Si tu piel se ve apagada por la mañana, ponte esto todas las mañanas antes de salir.",
+      "speaker": "mujer",
+      "script": "Dormía ocho horas y aun así mi cara decía que no había dormido nada.",
       "must_follow_exactly": true,
       "allow_rephrasing": false,
       "allow_additional_words": false

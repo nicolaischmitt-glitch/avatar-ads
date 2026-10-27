@@ -1,0 +1,71 @@
+{
+  "scene": {
+    "style": "UGC hiperrealista grabado con un iPhone, apariencia raw y sin editar",
+    "camera": {
+      "shot": "plano fijo",
+      "movement": "sin movimiento de cámara",
+      "framing": "mantener exactamente el mismo encuadre durante toda la toma",
+      "cuts": "una sola toma, sin cortes bruscos",
+      "reframing": false
+    },
+    "character": {
+      "reference_image": true,
+      "identity_consistency": "mantener exactamente el mismo avatar de la imagen de referencia",
+      "location_consistency": "mantener la misma ubicación y la misma iluminación",
+      "eye_contact": "contacto visual directo con la cámara"
+    },
+    "performance": {
+      "language_accent": "español con acento ecuatoriano",
+      "delivery": "rápida, energética y natural",
+      "tone": "seguro, confiado y persuasivo",
+      "facial_expression": "sonrisa natural, cercanía y simpatía",
+      "hand_gestures": {
+        "enabled": true,
+        "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
+        "synchronization": "sostiene el mismo frasco ámbar de ALBA de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, con la etiqueta siempre hacia la cámara y sin taparla con los dedos, y gesticula con la mano izquierda: al decir 'Hoy me miro al espejo', mira un instante hacia un lado como si viera su reflejo y vuelve a la cámara; al decir 'me veo despierta, fresca, con brillo', sonríe de verdad y se toca el pómulo con las yemas; al decir 'y eso que no llevo maquillaje', se señala la cara con la mano izquierda abierta, orgullosa y cómplice",
+        "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
+      }
+    },
+    "dialogue": {
+      "speaker": "mujer",
+      "script": "Hoy me miro al espejo y me veo despierta, fresca, con brillo… y eso que no llevo maquillaje.",
+      "must_follow_exactly": true,
+      "allow_rephrasing": false,
+      "allow_additional_words": false
+    },
+    "visual_restrictions": {
+      "subtitles": false,
+      "captions": false,
+      "on_screen_text": false,
+      "text_overlays": false,
+      "titles": false,
+      "added_logos": false,
+      "watermarks": false,
+      "graphic_elements": false,
+      "visual_effects": false,
+      "transitions": false,
+      "filters": false,
+      "editing": false,
+      "style": "video completamente raw, natural y sin editar",
+      "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
+    },
+    "continuity": {
+      "same_avatar": true,
+      "same_location": true,
+      "same_camera_framing": true,
+      "no_camera_reframing": true
+    }
+  },
+  "instructions": [
+    "Utilizar el personaje de la imagen de referencia.",
+    "Mantener contacto visual directo con la cámara.",
+    "Realizar gestos visibles y naturales con ambas manos durante el diálogo.",
+    "Sincronizar los gestos con el significado del discurso.",
+    "Evitar manos inmóviles, brazos rígidos y movimientos robóticos.",
+    "Hablar con energía y naturalidad, en español con acento ecuatoriano.",
+    "Respetar el diálogo palabra por palabra.",
+    "No generar subtítulos ni ningún tipo de texto en pantalla.",
+    "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
+  ]
+}

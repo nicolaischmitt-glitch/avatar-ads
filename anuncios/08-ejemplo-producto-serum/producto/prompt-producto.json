@@ -1,0 +1,37 @@
+{
+  "task": "Generate one photorealistic reference photo of a single skincare product, front view, to be used as the exact visual reference of this product in every later image. The product must match \"product\" exactly; the label must be perfectly legible and correctly spelled.",
+  "output": {
+    "aspect_ratio": "1:1",
+    "look": "clean, realistic product reference photo taken with a phone, true-to-life colors"
+  },
+  "product": {
+    "name": "ALBA vitamin C face serum (a fictional brand)",
+    "bottle": "a small 30 ml amber-brown glass Boston round dropper bottle with rounded shoulders, about 9 cm tall including the dropper (roughly the length of an adult index finger), smooth glass with subtle real reflections",
+    "dropper": "a glossy black rubber bulb on top of a black ribbed plastic screw collar; when the dropper is out, a clear glass pipette with a narrow tip",
+    "label": "a matte cream paper label (#F4EDE2) wrapped around the middle of the bottle, covering about half of its height, with a thin solid orange band (#F28C28) along its bottom edge; flat, clean print, no gloss",
+    "label_text": "exactly two centered lines and nothing else: 'ALBA' in large bold dark-brown sans-serif capital letters, and below it 'VITAMINA C' in smaller dark-brown sans-serif capital letters; no other words, numbers, icons or symbols",
+    "serum": "a clear, slightly golden, light and fluid liquid",
+    "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, label design and label text"
+  },
+  "composition": {
+    "view": "straight front view at the bottle's mid-height, the label facing the camera and centered, the dropper cap on",
+    "framing": "the whole bottle in frame, centered, filling about 60% of the image height, with even space around it",
+    "surface": "standing upright on a plain light warm-gray matte surface, a soft natural contact shadow under it",
+    "background": "plain light warm-gray seamless background, nothing else in the image"
+  },
+  "lighting": {
+    "key": "soft, even, diffused daylight from the front, like a window behind the camera",
+    "mood": "neutral and accurate colors, low contrast, a soft natural highlight on the glass, no harsh reflections over the label"
+  },
+  "realism_rules": [
+    "real amber glass with true transparency and subtle reflections",
+    "real paper label texture, perfectly flat print, crisp letters",
+    "correct proportions, perfectly upright, no distortion"
+  ],
+  "negative": [
+    "any text other than 'ALBA' and 'VITAMINA C' on the label, misspelled letters, extra lines of small text, numbers, icons, barcodes",
+    "a second bottle, props, hands, people, flowers, water splashes, decorations",
+    "a different bottle shape, a frosted or clear bottle, a pump or spray cap, a gold or white cap",
+    "3D render, CGI, illustration, heavy studio advertising look, dramatic lighting, reflections covering the label"
+  ]
+}

@@ -1,0 +1,548 @@
+[
+  {
+    "id": "w0",
+    "text": "Dormía",
+    "start": 0.24,
+    "end": 0.8
+  },
+  {
+    "id": "w1",
+    "text": "ocho",
+    "start": 0.96,
+    "end": 1.28
+  },
+  {
+    "id": "w2",
+    "text": "horas",
+    "start": 1.28,
+    "end": 1.6
+  },
+  {
+    "id": "w3",
+    "text": "y",
+    "start": 1.68,
+    "end": 1.84
+  },
+  {
+    "id": "w4",
+    "text": "aún",
+    "start": 1.84,
+    "end": 2.16
+  },
+  {
+    "id": "w5",
+    "text": "así",
+    "start": 2.16,
+    "end": 2.32
+  },
+  {
+    "id": "w6",
+    "text": "mi",
+    "start": 2.48,
+    "end": 2.64
+  },
+  {
+    "id": "w7",
+    "text": "cara",
+    "start": 2.64,
+    "end": 2.88
+  },
+  {
+    "id": "w8",
+    "text": "decía",
+    "start": 2.88,
+    "end": 3.28
+  },
+  {
+    "id": "w9",
+    "text": "que",
+    "start": 3.28,
+    "end": 3.44
+  },
+  {
+    "id": "w10",
+    "text": "no",
+    "start": 3.44,
+    "end": 3.6
+  },
+  {
+    "id": "w11",
+    "text": "había",
+    "start": 3.6,
+    "end": 3.92
+  },
+  {
+    "id": "w12",
+    "text": "dormido",
+    "start": 3.92,
+    "end": 4.56
+  },
+  {
+    "id": "w13",
+    "text": "nada.",
+    "start": 4.56,
+    "end": 5.2
+  },
+  {
+    "id": "w14",
+    "text": "Probé",
+    "start": 5.2,
+    "end": 5.68
+  },
+  {
+    "id": "w15",
+    "text": "cremas",
+    "start": 5.68,
+    "end": 6.16
+  },
+  {
+    "id": "w16",
+    "text": "caras,",
+    "start": 6.24,
+    "end": 6.72
+  },
+  {
+    "id": "w17",
+    "text": "mascarillas,",
+    "start": 6.72,
+    "end": 7.76
+  },
+  {
+    "id": "w18",
+    "text": "de",
+    "start": 7.76,
+    "end": 8
+  },
+  {
+    "id": "w19",
+    "text": "todo,",
+    "start": 8,
+    "end": 8.48
+  },
+  {
+    "id": "w20",
+    "text": "y",
+    "start": 8.48,
+    "end": 8.64
+  },
+  {
+    "id": "w21",
+    "text": "mi",
+    "start": 8.64,
+    "end": 8.8
+  },
+  {
+    "id": "w22",
+    "text": "piel",
+    "start": 8.8,
+    "end": 9.12
+  },
+  {
+    "id": "w23",
+    "text": "seguía",
+    "start": 9.12,
+    "end": 9.52
+  },
+  {
+    "id": "w24",
+    "text": "apagada,",
+    "start": 9.52,
+    "end": 10.32
+  },
+  {
+    "id": "w25",
+    "text": "como",
+    "start": 10.32,
+    "end": 10.64
+  },
+  {
+    "id": "w26",
+    "text": "sin",
+    "start": 10.8,
+    "end": 11.12
+  },
+  {
+    "id": "w27",
+    "text": "vida,",
+    "start": 11.12,
+    "end": 11.84
+  },
+  {
+    "id": "w28",
+    "text": "hasta",
+    "start": 11.84,
+    "end": 12.16
+  },
+  {
+    "id": "w29",
+    "text": "que",
+    "start": 12.16,
+    "end": 12.32
+  },
+  {
+    "id": "w30",
+    "text": "empecé",
+    "start": 12.32,
+    "end": 12.72
+  },
+  {
+    "id": "w31",
+    "text": "a",
+    "start": 12.72,
+    "end": 12.8
+  },
+  {
+    "id": "w32",
+    "text": "usar",
+    "start": 12.88,
+    "end": 13.28
+  },
+  {
+    "id": "w33",
+    "text": "este",
+    "start": 13.28,
+    "end": 13.6
+  },
+  {
+    "id": "w34",
+    "text": "serum",
+    "start": 13.6,
+    "end": 14.16
+  },
+  {
+    "id": "w35",
+    "text": "de",
+    "start": 14.16,
+    "end": 14.24
+  },
+  {
+    "id": "w36",
+    "text": "vitamina",
+    "start": 14.24,
+    "end": 14.72
+  },
+  {
+    "id": "w37",
+    "text": "C.",
+    "start": 14.72,
+    "end": 15.28
+  },
+  {
+    "id": "w38",
+    "text": "Dos",
+    "start": 15.28,
+    "end": 15.6
+  },
+  {
+    "id": "w39",
+    "text": "gotas",
+    "start": 15.6,
+    "end": 16.08
+  },
+  {
+    "id": "w40",
+    "text": "cada",
+    "start": 16.08,
+    "end": 16.32
+  },
+  {
+    "id": "w41",
+    "text": "mañana,",
+    "start": 16.32,
+    "end": 16.8
+  },
+  {
+    "id": "w42",
+    "text": "nada",
+    "start": 16.8,
+    "end": 17.12
+  },
+  {
+    "id": "w43",
+    "text": "más.",
+    "start": 17.12,
+    "end": 17.68
+  },
+  {
+    "id": "w44",
+    "text": "Es",
+    "start": 17.68,
+    "end": 17.92
+  },
+  {
+    "id": "w45",
+    "text": "súper",
+    "start": 17.92,
+    "end": 18.32
+  },
+  {
+    "id": "w46",
+    "text": "ligero,",
+    "start": 18.32,
+    "end": 18.96
+  },
+  {
+    "id": "w47",
+    "text": "se",
+    "start": 18.96,
+    "end": 19.12
+  },
+  {
+    "id": "w48",
+    "text": "absorbe",
+    "start": 19.12,
+    "end": 19.68
+  },
+  {
+    "id": "w49",
+    "text": "en",
+    "start": 19.68,
+    "end": 19.84
+  },
+  {
+    "id": "w50",
+    "text": "segundos",
+    "start": 19.84,
+    "end": 20.4
+  },
+  {
+    "id": "w51",
+    "text": "y",
+    "start": 20.48,
+    "end": 20.72
+  },
+  {
+    "id": "w52",
+    "text": "no",
+    "start": 20.72,
+    "end": 20.88
+  },
+  {
+    "id": "w53",
+    "text": "te",
+    "start": 20.88,
+    "end": 21.04
+  },
+  {
+    "id": "w54",
+    "text": "deja",
+    "start": 21.04,
+    "end": 21.36
+  },
+  {
+    "id": "w55",
+    "text": "la",
+    "start": 21.36,
+    "end": 21.44
+  },
+  {
+    "id": "w56",
+    "text": "piel",
+    "start": 21.44,
+    "end": 21.68
+  },
+  {
+    "id": "w57",
+    "text": "grasosa.",
+    "start": 21.68,
+    "end": 22.48
+  },
+  {
+    "id": "w58",
+    "text": "Hoy",
+    "start": 22.48,
+    "end": 22.8
+  },
+  {
+    "id": "w59",
+    "text": "me",
+    "start": 22.8,
+    "end": 22.96
+  },
+  {
+    "id": "w60",
+    "text": "miro",
+    "start": 22.96,
+    "end": 23.28
+  },
+  {
+    "id": "w61",
+    "text": "al",
+    "start": 23.28,
+    "end": 23.44
+  },
+  {
+    "id": "w62",
+    "text": "espejo",
+    "start": 23.44,
+    "end": 23.92
+  },
+  {
+    "id": "w63",
+    "text": "y",
+    "start": 23.92,
+    "end": 24
+  },
+  {
+    "id": "w64",
+    "text": "me",
+    "start": 24,
+    "end": 24.16
+  },
+  {
+    "id": "w65",
+    "text": "veo",
+    "start": 24.16,
+    "end": 24.56
+  },
+  {
+    "id": "w66",
+    "text": "despierta,",
+    "start": 24.56,
+    "end": 25.68
+  },
+  {
+    "id": "w67",
+    "text": "fresca,",
+    "start": 25.68,
+    "end": 26.56
+  },
+  {
+    "id": "w68",
+    "text": "con",
+    "start": 26.56,
+    "end": 26.8
+  },
+  {
+    "id": "w69",
+    "text": "brillo,",
+    "start": 26.8,
+    "end": 27.52
+  },
+  {
+    "id": "w70",
+    "text": "y",
+    "start": 27.52,
+    "end": 27.76
+  },
+  {
+    "id": "w71",
+    "text": "eso",
+    "start": 27.76,
+    "end": 28.08
+  },
+  {
+    "id": "w72",
+    "text": "que",
+    "start": 28.08,
+    "end": 28.24
+  },
+  {
+    "id": "w73",
+    "text": "no",
+    "start": 28.24,
+    "end": 28.4
+  },
+  {
+    "id": "w74",
+    "text": "llevo",
+    "start": 28.4,
+    "end": 28.8
+  },
+  {
+    "id": "w75",
+    "text": "maquillaje.",
+    "start": 28.8,
+    "end": 29.84
+  },
+  {
+    "id": "w76",
+    "text": "Si",
+    "start": 29.84,
+    "end": 30.08
+  },
+  {
+    "id": "w77",
+    "text": "tu",
+    "start": 30.08,
+    "end": 30.24
+  },
+  {
+    "id": "w78",
+    "text": "piel",
+    "start": 30.24,
+    "end": 30.56
+  },
+  {
+    "id": "w79",
+    "text": "también",
+    "start": 30.56,
+    "end": 30.88
+  },
+  {
+    "id": "w80",
+    "text": "se",
+    "start": 30.88,
+    "end": 31.04
+  },
+  {
+    "id": "w81",
+    "text": "ve",
+    "start": 31.04,
+    "end": 31.2
+  },
+  {
+    "id": "w82",
+    "text": "cansada,",
+    "start": 31.2,
+    "end": 32.16
+  },
+  {
+    "id": "w83",
+    "text": "pruébalo.",
+    "start": 32.16,
+    "end": 33.12
+  },
+  {
+    "id": "w84",
+    "text": "Lo",
+    "start": 33.12,
+    "end": 33.28
+  },
+  {
+    "id": "w85",
+    "text": "consigues",
+    "start": 33.28,
+    "end": 33.84
+  },
+  {
+    "id": "w86",
+    "text": "en",
+    "start": 33.84,
+    "end": 33.92
+  },
+  {
+    "id": "w87",
+    "text": "el",
+    "start": 33.92,
+    "end": 34
+  },
+  {
+    "id": "w88",
+    "text": "botón",
+    "start": 34,
+    "end": 34.32
+  },
+  {
+    "id": "w89",
+    "text": "de",
+    "start": 34.32,
+    "end": 34.4
+  },
+  {
+    "id": "w90",
+    "text": "abajo.",
+    "start": 34.4,
+    "end": 34.72
+  }
+]

@@ -1,30 +1,62 @@
-# Formato · Voz en off + B-rolls (en preparación)
+# Formato · Voz en off + B-rolls (anuncio UGC narrado)
 
-> **Estado: idea guardada (27 oct 2026), aún no probada.** Todavía no hay anuncio hecho con este formato ni plantilla de edición. Cuando hagamos el primero, este archivo se completa con el proceso real y el formato pasa a "Disponible".
+Una voz cuenta una historia en primera persona y **los B-rolls la muestran**: la persona en su rutina, el producto, cómo se usa y el resultado. Cortes secos, subtítulos naturales y un solo botón al final. Nadie habla a cámara, así que no hay que cuidar la sincronía de labios ni la continuidad de una toma. Se ve muy realista: parece un video que alguien grabó de su día.
 
-Anuncio sin avatar hablando a cámara: **solo una voz narrando + B-rolls** (y gráficos/pruebas encima). Es uno de los formatos que se enseñan en Avatar Ads y parece de los más fáciles de ejecutar: no hay que cuidar la sincronía de labios, la continuidad de una toma ni la consistencia del personaje.
+## Cuándo usarlo
+- **Producto físico, skincare, ecommerce**: el producto y su uso son los protagonistas (gotas, textura, aplicación, resultado).
+- Historias **problema → solución** contadas como testimonio.
+- **Variación barata de un anuncio ganador**: el mismo guion de un head talking, con la voz y los B-rolls. Del mismo material salen dos anuncios para testear.
+- Menos indicado cuando lo que vende es la autoridad de una persona a cámara (experto, marca personal): ahí va mejor head talking.
 
-## La voz: Google AI Studio (text-to-speech)
-- Descubrimiento del usuario: los generadores **text-to-speech de Google AI Studio** dan voces en off de calidad profesional y **gratis**.
-- **Pendiente de comprobar:** límites de uso gratis (cuántas generaciones o minutos por día), qué voces suenan mejor en español latino, cómo controlar ritmo, tono y emoción, y si hay restricciones de uso comercial.
-- La voz es la pieza central: va primero, se mide su duración y los B-rolls se planifican sobre ella.
+## Cómo encaja en el flujo de `avatar-ads-anuncio`
+Los 9 pasos son los mismos; cambia lo siguiente:
 
-## Para qué tipo de anuncios sirve (propuesta inicial)
-- **Producto físico / ecommerce:** el producto en macro, en uso, antes/después, unboxing. Aquí el producto es el protagonista, no una persona.
-- **Problema → solución / historia:** escenas de la situación de dolor del cliente y luego el resultado ("¿Te pasa que…?").
-- **Explicativos y listas:** "3 razones…", "cómo funciona…", con gráficos y textos animados sobre los B-rolls.
-- **Servicios y negocios locales:** recorrido del lugar, el equipo trabajando, el resultado entregado (clínica, restaurante, inmobiliaria, gimnasio).
-- **Infoproductos con prueba:** voz sobre capturas, pantallas, resultados y gráficos.
-- **Variaciones de un ganador:** misma voz/guion con otros B-rolls, u otro hook narrado sobre los mismos B-rolls. Muy barato de variar (encaja con el ciclo crear → testear → escalar).
-- **Nichos donde una cara "de IA" no conviene** o donde el cliente no quiere un portavoz.
+### 3 · Guion
+- 30–40 s, ~90 palabras, en primera persona, con historia: **problema que se siente → lo que ya probó → descubrimiento → demostración → cómo se ve ahora → CTA**. La emoción sale de contar algo que le pasaba, no de describir el producto.
+- Cada frase tiene que poder **mostrarse** con un B-roll. Si no se puede filmar, se cambia.
+- Sin cifras ni promesas de resultado ("en 7 días", "elimina manchas").
 
-Menos indicado cuando lo que vende es la confianza en una persona (testimonio, experto, marca personal): ahí va mejor head talking.
+### 4 · Avatar y producto
+- **La persona igual se crea como avatar** (imagen 9:16) aunque no hable: es la referencia de su cara en todos los B-rolls donde sale. Si el anuncio muestra un producto físico, primero el producto LOCKED IN (sección 7 de `master-prompt-imagen.md`).
 
-## Referencias internas
-- (Nota interna, quitar al publicar el formato) Formato orgánico parecido ya hecho en el proyecto de Avatar Ads, fuera de este kit: `Contenido/reels/_plantilla-voz-en-off/` y el reel 02.
-- B-rolls: mismas reglas que head talking (frame primero en la imagen, después video; nunca texto a video directo).
+### 5 · Paquete de prompts
+- `clips-plan.json` **sin `clips`** (no hay clips de voz en Flow): el paquete queda en Paso 0 (producto, si hay) → Paso 1 (avatar) → Paso 3 y 4 (B-rolls).
+- **6–10 B-rolls de 6 s, uno por idea del guion y en su orden.** Mezcla: la persona (con el problema, usando el producto, el resultado) con `"mismaPersona": true` + `"referencia": "avatar/avatar.jpg"`; el producto (en la mano, en el lugar) con `"producto": true`; el uso en macro (gotas, textura); y la situación del problema (lo que no le funcionó).
+- Cuando ella sale "mirándose al espejo", la cámara está donde está el espejo: sin marco ni reflejo visible.
+- La última toma es el producto con espacio libre para el botón.
 
-## Por definir cuando lo probemos
-- Duración, ritmo de cortes y cuántos B-rolls por anuncio.
-- Plantilla de edición (subtítulos, gráficos, música o solo SFX).
-- Paso de la voz dentro de `prompts-flow.md` y del flujo del skill `avatar-ads-anuncio`.
+### La voz (Google AI Studio, gratis)
+La voz se genera aparte y va primero, porque marca el tiempo de todo.
+1. Entra a Google AI Studio → **Playground** → modo **Composer** → modelo **Gemini 3.1 Flash TTS Preview** (`gemini-3.1-flash-tts-preview`). Temperatura 1. Un solo speaker.
+2. **Elige la voz** en Speaker settings (es una variable: cambia en cada anuncio según la persona; p. ej. "Aoede", breezy, middle pitch, para una mujer joven). Escucha 2–3 antes de decidir.
+3. Escribe la **Scene** (en inglés: quién habla, dónde y cómo se graba). Plantilla:
+   > A [EDAD]-year-old [woman/man] records a selfie-style video in [LUGAR], lit by soft natural morning light. [She/He] talks straight to the camera as if telling a close friend about a product [she/he] genuinely loves. Intimate, casual, unpolished atmosphere with no professional production.
+4. Escribe el **Sample Context** (en inglés: idioma, acento, tono, ritmo y la curva emocional del guion). Plantilla:
+   > Speak in Spanish with a young [Latin American / acento del público] voice. Spontaneous, warm and genuine tone, like a real TikTok testimonial. Slightly fast pace with natural pauses, subtle breaths and small hesitations. Authentic, restrained enthusiasm: never sounding like an announcer or a commercial. [Raise the energy when describing the result], then drop to a confiding, softer tone for the final recommendation.
+5. Pega el **guion aprobado** en el bloque del speaker, tal cual, con puntos suspensivos donde quieres una pausa ("de todo… y mi piel…"). Con `[ ] + Expression` puedes marcar una emoción puntual.
+6. **Run**, escucha y, si algo suena a locutor o a comercial, ajusta el Sample Context y repite. Descarga el audio y guárdalo como `anuncios/NN-slug/voz/voz.wav`.
+Lo que hace que suene real: "selfie video", "close friend", "unpolished", "never sounding like an announcer", pausas, respiraciones, pequeñas dudas y **describir la curva emocional**. En el anuncio nunca se nombra la herramienta.
+
+### 6 · Revisión
+- B-rolls: como siempre (`sistema/checklists/revision-clips.md`), más el producto comparado con `producto.png`.
+- Voz: `hyperframes transcribe voz/voz.wav -l es` (deja `voz/transcript.json` con el tiempo de cada palabra; en un audio completo los tiempos cuadran) y compárala con el guion. Silencios: `ffmpeg -i voz/voz.wav -af silencedetect=n=-40dB:d=0.15 -f null -`.
+
+### 7 · Storyboard
+Igual que en head talking (lámina de frames), pero **cada viñeta es un B-roll**: en qué frase entra y qué gesto se ve.
+
+### 8 · Edición (plantilla: `edicion/build.mjs`)
+Copia `edicion/build.mjs` a `anuncios/NN-slug/edicion/` y en `edicion/public/` pon `fonts/Inter-700.woff2`, `vendor/gsap.min.js` y `audio/pop.mp3` (de `sistema/formatos/head-talking/edicion/public-base/`). Edita solo la CONFIG:
+1. **Ritmo de la voz**: `INICIO` (el primer sonido queda en el fotograma 0) y `QUITAR` (cada pausa de más de ~0,6 s se recorta a ~0,5 s quitando su centro). Las demás pausas se dejan: son las del habla.
+2. **Asigna cada B-roll a su frase mirándolos, no solo en orden** (`PLAN`). Haz una hoja de frames de cada B-roll (1 por segundo) y para cada frase elige la toma y el **segundo exacto** en que se ve lo que dice la voz:
+   - el corte entra ~0,08 s antes de la palabra que abre la frase;
+   - el segundo de entrada lo decide el gesto (la textura cuando los dedos ya frotan, la aplicación con los dedos ya en la mejilla);
+   - la **cola de un B-roll sirve para otra frase** (el final de "cansada frente al espejo", cuando cierra los ojos, cubre "como sin vida");
+   - un B-roll se puede **partir en dos** si la frase lo pide, y si una frase dura más que su B-roll se reparte con la toma vecina;
+   - ninguna toma de menos de ~1,2 s ni de más de ~5,6 s.
+3. **Subtítulos** (`PHRASES`): frases cortas (2–5 palabras), blanco con sombra, sin caja, sin palabra resaltada, `|` para el salto de línea. La altura va por toma en `PLAN`: **nunca encima de la etiqueta del producto ni de la cara** (por defecto ~1290 px; entre el mentón y el producto ~1110; arriba ~250).
+4. **Un solo gráfico**: el botón (`BOTON`, en el `COLOR` de la marca), que entra con la frase del CTA y rebota en "botón". Nada de etiquetas o chips que repitan lo que dice la voz.
+5. **Sin música de fondo.** Como mucho, un efecto suave en el botón.
+6. `node build.mjs` → `hyperframes lint public` → `hyperframes snapshot public --at …` (un tiempo por toma) y revisa que ningún subtítulo tape la etiqueta o la cara.
+
+### 9 · Render
+`hyperframes render public -o ../final/render-crudo.mp4 --fps 24 --quality delivery --workers 1` → `ffmpeg -i render-crudo.mp4 -c:v copy -af "loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000" -c:a aac -b:a 192k -movflags +faststart ../final/anuncio-NN-slug.mp4`. Verifica ≈ −14 LUFS y pico ≤ −1,5 dB, ningún silencio de más de 0,6 s (`silencedetect=n=-35dB:d=0.6`), un corte por toma y que la transcripción del video final tenga todas las palabras.

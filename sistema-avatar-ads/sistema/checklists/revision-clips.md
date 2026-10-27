@@ -14,6 +14,7 @@
 | Manos deformes, dedos de más | Sí, si se ve claramente |
 | La cara cambia respecto a la imagen | Sí |
 | Aparece texto o subtítulos generados | Sí |
+| Con producto físico: el producto o su etiqueta cambian respecto a `producto/producto.png` (otra forma, letras distintas, etiqueta en blanco) | Sí; si pasa en un frame de B-roll, regenera el frame antes de animarlo |
 | Voz distinta entre clips (tono, acento) | Sí, el que desentona |
 | Pausa larga o palabra estirada | No: se arregla en la edición (ritmo natural) |
 | Se queda callado al final | No: se recorta |

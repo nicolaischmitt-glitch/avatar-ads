@@ -22,13 +22,13 @@
       "hand_gestures": {
         "enabled": true,
         "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
-        "synchronization": "sostiene el mismo frasco ámbar con gotero de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, y gesticula con la mano izquierda: al decir 'No deja la piel grasosa', niega suavemente con la mano izquierda; al decir 'la sientes fresca todo el día', se toca la mejilla y sonríe satisfecho; al decir 'Lo consigues en el botón de abajo', señala hacia abajo con el índice de la mano izquierda",
+        "synchronization": "sostiene el mismo frasco ámbar de ALBA de la imagen de referencia en la mano derecha durante todo el clip, sin soltarlo, con la etiqueta siempre hacia la cámara y sin taparla con los dedos, y gesticula con la mano izquierda: al decir 'Hasta que empecé a usar', se le ilumina la cara y sonríe; al decir 'este sérum de vitamina C', acerca el frasco a la cámara con la etiqueta hacia delante y lo sostiene ahí un momento; al decir 'Dos gotas', muestra dos dedos con la mano izquierda; al decir 'nada más', abre la mano izquierda con naturalidad, como quien dice que es así de simple",
         "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
       }
     },
     "dialogue": {
-      "speaker": "hombre",
-      "script": "No deja la piel grasosa y la sientes fresca todo el día. Lo consigues en el botón de abajo.",
+      "speaker": "mujer",
+      "script": "Hasta que empecé a usar este sérum de vitamina C. Dos gotas cada mañana, nada más.",
       "must_follow_exactly": true,
       "allow_rephrasing": false,
       "allow_additional_words": false

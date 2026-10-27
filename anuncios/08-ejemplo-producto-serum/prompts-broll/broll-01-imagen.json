@@ -1,24 +1,24 @@
 {
-  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a macro close-up of a drop of serum about to fall from a glass dropper onto the back of a man's hand, over a white bathroom sink. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad. The attached reference image shows the product/place: keep it exactly the same (shape, materials, colors, label), but do not include the person from the reference.",
+  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a close-up of the same woman just after waking up, looking at herself in the bathroom mirror (the phone is propped where the mirror is), touching the skin under her eye with a fingertip. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad. The attached reference image shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.",
   "output": {
     "aspect_ratio": "9:16",
     "orientation": "vertical",
     "look": "raw, unedited iPhone video frame, not a professional photo"
   },
-  "subject": "the back of a man's hand with real skin texture, fine hairs and visible veins; the glass dropper of the amber bottle above it, with a drop of clear, slightly golden serum at its tip",
+  "subject": "the same woman from the reference, face and shoulders in frame, hair a bit messier than in the reference, sleepy eyes, faint under-eye shadows, dull tired skin, a slightly disappointed expression, no product in her hands",
   "environment": {
-    "location": "a home bathroom in the morning",
-    "details": "a white sink with a few water droplets, the amber dropper bottle standing on the counter slightly out of focus, a folded beige towel",
+    "location": "the same home bathroom, early morning",
+    "details": "white rectangular tiles, the wooden shelf with rolled beige towels and the small green plant softly out of focus behind her",
     "atmosphere": "real, lived-in and slightly imperfect, like a real everyday place, not a staged set or a showroom"
   },
   "camera": {
     "device": "iPhone main camera, handheld, at a natural human height",
-    "framing": "vertical macro, the hand filling the lower half of the frame, the dropper entering from the top",
+    "framing": "vertical close-up from the shoulders up, face in the upper-middle of the frame",
     "focus": "natural phone depth of field, no artificial heavy bokeh",
     "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
   },
   "lighting": {
-    "key": "soft morning light from the front",
+    "key": "the same soft frontal light from the vanity light bar, slightly dimmer and cooler, early morning",
     "mood": "natural and realistic, low contrast, accurate colors, no dramatic lighting"
   },
   "realism_rules": [
@@ -34,6 +34,8 @@
     "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
     "perfect symmetry, empty sterile spaces, everything brand new",
     "deformed hands, extra fingers, warped objects",
-    "recognizable faces, a likeness of any real person"
+    "a different person, a changed face, a likeness of any real person",
+    "heavy makeup, beauty filter, glossy skin",
+    "a visible mirror frame or reflection"
   ]
 }

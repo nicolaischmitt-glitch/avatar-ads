@@ -4,10 +4,10 @@
     "reference_image": true,
     "start_frame": "usar la imagen de referencia como primer fotograma exacto",
     "style": "video real grabado con un iPhone, apariencia raw y sin editar",
-    "camera_movement": "cámara fija con un acercamiento muy lento",
-    "action": "caen exactamente dos gotas del gotero sobre el dorso de la mano y brillan con la luz",
+    "camera_movement": "cámara fija",
+    "action": "se toca debajo del ojo con la yema, se estira un poco la piel y suelta un pequeño suspiro de cansancio",
     "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
-    "consistency": "mantener exactamente el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "consistency": "mantener exactamente a la misma persona (cara, piel, pelo y ropa), el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
     "audio": "solo sonido ambiente suave, sin música ni voces",
     "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
   }

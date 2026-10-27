@@ -1,17 +1,26 @@
 {
-  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional man films of himself with his phone front camera, in his bathroom in the morning, to show his audience a skincare product he uses. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video.",
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional woman films of herself with her phone front camera, in her bathroom in the morning, to show her audience a skincare product she uses. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video. The attached reference image is the exact product she holds: replicate it identically (same bottle shape, size, materials, colors, label design and label text), as described in \"product\".",
   "output": {
     "aspect_ratio": "9:16",
     "orientation": "vertical",
     "look": "raw, unedited iPhone front-camera video frame, not a professional photo"
   },
+  "product": {
+    "name": "ALBA vitamin C face serum (a fictional brand)",
+    "bottle": "a small 30 ml amber-brown glass Boston round dropper bottle with rounded shoulders, about 9 cm tall including the dropper (roughly the length of an adult index finger), smooth glass with subtle real reflections",
+    "dropper": "a glossy black rubber bulb on top of a black ribbed plastic screw collar; when the dropper is out, a clear glass pipette with a narrow tip",
+    "label": "a matte cream paper label (#F4EDE2) wrapped around the middle of the bottle, covering about half of its height, with a thin solid orange band (#F28C28) along its bottom edge; flat, clean print, no gloss",
+    "label_text": "exactly two centered lines and nothing else: 'ALBA' in large bold dark-brown sans-serif capital letters, and below it 'VITAMINA C' in smaller dark-brown sans-serif capital letters; no other words, numbers, icons or symbols",
+    "serum": "a clear, slightly golden, light and fluid liquid",
+    "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, label design and label text"
+  },
   "subject": {
-    "identity": "an original, non-famous Latin American man, 28 years old",
-    "face": "light-medium olive skin with natural texture (visible pores, a couple of tiny blemishes, faint under-eye lines), hazel-brown eyes, natural brows, slight natural facial asymmetry",
-    "hair": "short black hair, slightly damp and casually pushed back, a few strands falling forward",
-    "facial_hair": "clean-shaven with a faint natural shadow on the jaw",
-    "accessories": "no glasses, no jewelry",
-    "build": "average build"
+    "identity": "an original, non-famous Latin American woman, 27 years old",
+    "face": "light-medium warm skin with natural texture (visible pores, a few tiny blemishes on the chin, faint under-eye shadows), dark brown eyes, natural full brows, slight natural facial asymmetry",
+    "hair": "long dark brown hair pulled back in a loose claw clip, a few loose strands framing her face, slightly messy morning hair",
+    "makeup": "no makeup, bare natural skin, natural lips",
+    "accessories": "small simple gold stud earrings, no other jewelry",
+    "build": "slim, natural build"
   },
   "wardrobe": {
     "top": "plain heather-gray crew-neck cotton t-shirt, a soft well-worn fabric, natural fabric wrinkles",
@@ -21,24 +30,24 @@
     "position": "standing at the bathroom counter, upper body leaning very slightly toward the camera",
     "gaze": "looking directly into the lens, making eye contact with the viewer",
     "expression": "calm, confident and friendly, a subtle natural half-smile, as if about to start talking; mouth closed or barely parted, relaxed jaw",
-    "hands": "his right hand holds a small amber glass dropper bottle with a black rubber dropper cap and a plain cream-colored label with no text, at chest height, the bottle clearly visible; his left hand rests relaxed on the counter edge in the lower part of the frame; fingers relaxed, all fingers anatomically correct and fully visible",
+    "hands": "her right hand holds the product bottle at chest height, label facing the camera and fully visible, fingers holding the bottle by the glass shoulder and the base without covering the label; her left hand rests relaxed on the counter edge in the lower part of the frame; fingers relaxed, all fingers anatomically correct and fully visible; nothing else in her hands",
     "posture": "shoulders relaxed and square to the camera, natural and unposed"
   },
   "environment": {
     "location": "a clean, simple bathroom in the morning",
-    "background": "a wall of white rectangular tiles, a wooden shelf with two rolled beige towels and a small green plant, a matte black towel ring, softly out of focus, uncluttered",
+    "background": "a wall of white rectangular tiles, a wooden shelf with two rolled beige towels and a small green plant, softly out of focus, uncluttered",
     "foreground": "the edge of a white sink counter at the lower edge of the frame with a ceramic cup and a folded hand towel, slightly out of focus",
     "atmosphere": "tidy, real, lived-in home bathroom, not a staged studio set"
   },
   "camera": {
-    "device": "iPhone front camera propped against the bathroom mirror at chest-to-eye height, slightly below eye level, facing him",
+    "device": "iPhone front camera propped against the bathroom mirror at chest-to-eye height, slightly below eye level, facing her",
     "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
-    "framing": "medium close-up from the waist up, subject centered horizontally; his head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty space above his head for on-screen graphics",
-    "focus": "face and bottle sharp, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "framing": "medium close-up from the waist up, subject centered horizontally; her head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty space above her head for on-screen graphics",
+    "focus": "face and bottle sharp, the label text crisp and readable, background softly in focus as a phone would render it (no artificial heavy bokeh)",
     "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
   },
   "lighting": {
-    "key": "soft, diffused frontal light from a warm-white vanity light bar above the mirror, directly in front of him, behind the phone, lighting his whole face evenly from the front",
+    "key": "soft, diffused frontal light from a warm-white vanity light bar above the mirror, directly in front of her, behind the phone, lighting her whole face evenly from the front",
     "fill": "soft morning daylight bouncing off the white tiles",
     "mood": "bright, fresh and realistic; both sides of the face equally lit with the same brightness and no side shadows, only very soft natural shading under the chin and nose; accurate skin tones, low contrast"
   },
@@ -47,17 +56,19 @@
     "real skin texture, no smoothing, no beauty filter, no plastic or waxy skin",
     "natural fabric folds and wrinkles on the t-shirt",
     "correct human anatomy: two hands, five fingers each, natural proportions, a natural grip on the bottle",
-    "realistic eyes with natural catchlights from the light in front of him",
-    "even, symmetrical illumination on the face, as when someone films himself facing the mirror light"
+    "realistic eyes with natural catchlights from the light in front of her",
+    "even, symmetrical illumination on the face, as when someone films herself facing the mirror light",
+    "the bottle is identical to the attached product image, at a realistic size in her hand"
   ],
   "negative": [
-    "text, captions, subtitles, logos, watermarks, UI elements, any writing or brand on the bottle label",
+    "text, captions, subtitles, logos, watermarks, UI elements; any text other than the product label (ALBA / VITAMINA C)",
+    "a different bottle, a changed or blank label, misspelled label text, a second bottle, extra products, rings or other objects in her hand",
     "side lighting, split lighting, one half of the face darker than the other, strong shadows on one side of the face",
     "backlighting, silhouette, overexposed background",
     "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
     "extra or deformed fingers, distorted hands, a deformed or floating bottle, asymmetrical eyes, warped face",
-    "smooth or airbrushed skin, 3D render, cartoon, illustration, CGI look",
-    "shirtless, towel around the neck, shaving foam, steam",
+    "smooth or airbrushed skin, heavy makeup, 3D render, cartoon, illustration, CGI look",
+    "towel on the head, bathrobe, face mask, skincare foam, steam",
     "big smile showing teeth, exaggerated expression, posing",
     "cluttered counter, many products, other people, a visible mirror reflection"
   ]

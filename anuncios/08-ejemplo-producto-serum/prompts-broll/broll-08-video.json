@@ -1,0 +1,15 @@
+{
+  "scene": {
+    "duration_seconds": 6,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "acercamiento muy lento de frente al frasco, sin girar a su alrededor (la etiqueta siempre de frente)",
+    "action": "la luz de la mañana hace brillar el vidrio ámbar; el frasco no se mueve",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "product_consistency": "el producto es exactamente el de la imagen: misma forma, tamaño, colores y etiqueta (ALBA / VITAMINA C); no cambia, no se deforma y el texto de la etiqueta no se reescribe",
+    "audio": "solo sonido ambiente suave, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos añadidos, letreros legibles, logotipos (salvo la etiqueta del producto), marcas de agua, gráficos, transiciones ni filtros."
+  }
+}

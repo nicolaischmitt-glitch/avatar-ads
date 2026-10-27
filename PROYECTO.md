@@ -28,7 +28,7 @@ Avatar Ads 1.0/
 │   │                    avatar/ · prompts/ · clips/ · moodboard/ (storyboard) · edicion/ (build.mjs, igual que el reel 07) · finales/anuncio-03-calidad-seedance-centavos.mp4
 │   ├── 04-yo-no-existo/ ← anuncio 2 tomas (carro → casa), mujer creada con Nano Banana, set de animaciones propio · finales/anuncio-04-yo-no-existo.mp4
 │   ├── 06-ejemplo-servicio-dental/ · 07-ejemplo-leads-clase-ingles/ · 08-ejemplo-producto-serum/
-│   │                    ← ejemplos propios en español para el carrusel de la landing (negocios ficticios, formato D, ~20 s): guion.md · avatar/ · prompts/ (voz) · prompts-broll/
+│   │                    ← ejemplos propios en español para el carrusel de la landing (negocios ficticios, formato D, ~20 s; el 08 —sérum ALBA— es un UGC de skincare con historia de ~35 s y 8 B-rolls, en dos versiones: voz en off + B-rolls (`edicion-voz-en-off/`, `final/anuncio-08-serum-voz-en-off.mp4`, formato E) y la chica a cámara + B-rolls (`edicion/`)): guion.md · avatar/ · prompts/ (voz) · prompts-broll/
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
 ├── Contenido/           ← todo el contenido orgánico de Instagram
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
@@ -132,7 +132,7 @@ Nombre oficial: **Sistema Avatar Ads**. Vive en **Claude Code** (app de escritor
 - Se actualiza de forma continua a medida que el usuario crea anuncios y encuentra formatos nuevos; el alumno recibe cada versión (acceso vitalicio).
 - Prioridad Windows (~70–80 % de la audiencia, estimado) y también Mac.
 - Nosotros también lo usamos para los anuncios nuevos (un solo sistema, probado de verdad).
-- Versión actual: 1.1.1 (27 oct 2026; la 1.1.0 del 22 oct trajo): formato head talking + paquete de prompts en 4 pasos (imagen del avatar → clips de voz → frames de los B-rolls → videos de los B-rolls, propuestos por Claude) en un solo `prompts-flow.md`. Todo B-roll empieza por una imagen (nunca de texto a video directo). Los master prompts del kit son copias de `skills/master prompt…`: si se cambia uno, actualizar el otro y anotar el cambio en `sistema/CAMBIOS.md` (subir `VERSION`).
+- Versión actual: 1.3.0 (27 oct 2026: **formato voz en off + B-rolls**, probado en el anuncio 08: voz de Google AI Studio (Gemini 3.1 Flash TTS) + 6–10 B-rolls que cuentan la historia, sin música; `sistema/formatos/voz-en-off/`). La 1.2.0 (27 oct 2026) trajo el **producto físico LOCKED IN**, solo cuando el anuncio muestra un producto físico: Paso 0 = foto del producto, bloque `product` idéntico en todos los prompts de imagen y `producto.png` adjunta; sección 7 del master prompt de imágenes). La 1.1.0 (22 oct) trajo: formato head talking + paquete de prompts en 4 pasos (imagen del avatar → clips de voz → frames de los B-rolls → videos de los B-rolls, propuestos por Claude) en un solo `prompts-flow.md`. Todo B-roll empieza por una imagen (nunca de texto a video directo). Los master prompts del kit son copias de `skills/master prompt…`: si se cambia uno, actualizar el otro y anotar el cambio en `sistema/CAMBIOS.md` (subir `VERSION`).
 - Entrega al alumno: un `.zip` de la carpeta `sistema-avatar-ads/` (sin `anuncios/` propios) en el área de alumno; las actualizaciones, igual (skill `avatar-ads-actualizar`). Dónde se aloja el zip: por definir.
 
 ## Publicación

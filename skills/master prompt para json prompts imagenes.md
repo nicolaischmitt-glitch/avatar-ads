@@ -120,5 +120,30 @@ Si sigue bloqueando en Flow, probar en la app de Gemini o en Google AI Studio.
 ## 6. Frames de B-roll (la misma lógica, sin avatar)
 Todo B-roll empieza por una imagen: primero su frame aquí (4 variaciones baratas, se elige la toma) y después se anima en Google Flow con ese frame como imagen inicial. Generar el B-roll directo de texto a video quema créditos en cada intento y da tomas que se ven "de IA".
 - Misma idea que el avatar: un **frame de video de iPhone**, no una foto; imperfección controlada (polvo, desgaste, cosas un poco fuera de lugar, nada demasiado limpio ni brillante); lugares reales y vividos (un consultorio de barrio, no una clínica futurista); luz natural de frente; sin textos, logos, pantallas legibles ni caras reconocibles.
-- Si sale el producto o el lugar del avatar, se adjunta la imagen del avatar para que sean los mismos (sin la persona).
+- Si sale el lugar del avatar, se adjunta la imagen del avatar para que sea el mismo (sin la persona). Si sale un **producto físico**, se bloquea con la sección 7.
 - La estructura (task · output · subject · environment · camera · lighting · realism_rules · negative) la arma la plantilla de B-roll del generador de prompts (`broll-plantilla.mjs`); por cada toma solo se escriben la toma, qué se ve, el lugar, 3–5 detalles, el encuadre y la luz.
+
+## 7. Producto físico LOCKED IN (solo si el anuncio muestra un producto físico)
+**Cuándo se activa:** únicamente cuando en el anuncio se ve un producto físico (un frasco, una caja, una prenda, un aparato), en la mano del avatar o en los B-rolls. Si el anuncio es de un servicio, un curso, una app o un producto digital, esta sección **no se usa** y todo sigue igual que antes.
+**Por qué existe** (anuncio de ejemplo del sérum, 27 oct 2026): sin un producto fijo, Nano Banana inventa uno distinto en cada imagen (etiqueta en blanco en una, letras inventadas en otra, otra forma de tapa) y el anuncio deja de ser creíble. La imagen del avatar tampoco sirve como referencia del producto, porque también lo inventa.
+
+**Cómo se bloquea:**
+1. **Paso 0 · la imagen del producto.** Antes del avatar, se crea una foto del producto solo, de frente, sobre fondo neutro y con la etiqueta nítida → `producto/producto.png`. Si el producto es real, se usa una foto real (de frente, bien iluminada) y no se genera nada. Si es ficticio, 4 variaciones y se elige la de etiqueta perfecta. Desde aquí el producto ya no cambia.
+2. **Un bloque `product` fijo**, en inglés, copiado **palabra por palabra** en todos los prompts de imagen donde sale el producto (Paso 0, avatar y B-rolls). Nunca se parafrasea entre prompts. Claves:
+   - `name`: qué es y la marca ("ALBA vitamin C face serum (a fictional brand)").
+   - `bottle` (o `body`/`box`, según el producto): forma, tamaño real comparado con algo conocido (una mano, un dedo), material y color.
+   - `cap` / `dropper` / partes: cada pieza con su color y material.
+   - `label`: color, acabado, dónde va y cuánto cubre.
+   - `label_text`: el texto exacto y nada más ("exactly two centered lines and nothing else: 'ALBA'… 'VITAMINA C'…; no other words, numbers, icons or symbols").
+   - contenido si se ve (`serum`, `cream`…): color y textura.
+   - `rule`: "the product must look exactly like this in every image: same shape, proportions, colors, materials, label design and label text".
+3. **Etiqueta definida, nunca en blanco.** Una etiqueta "lisa, sin texto" hace que el modelo la rellene a su manera. Mejor la marca en letras grandes y como mucho 2 líneas, colores sólidos, sin letra pequeña. El único texto permitido en esas imágenes es el de la etiqueta (se dice en `negative`).
+4. **Siempre se adjunta `producto/producto.png`**, también en la imagen del avatar. En el `task`: "The attached reference image is the exact product…: replicate it identically". En los B-rolls van dos imágenes: 1 = el producto, 2 = `avatar/avatar.jpg` (solo el lugar y la luz, sin la persona).
+5. **Avatar con el producto:** `hands` dice cómo lo sostiene, con la etiqueta hacia la cámara y sin taparla con los dedos, y que no tiene nada más en las manos. `negative`: "a different bottle, a changed or blank label, misspelled label text, a second bottle, extra products, other objects in the hand".
+6. **No dar pie a que invente:**
+   - fuera del lugar los objetos que se parecen al producto o se confunden con la mano (en el sérum, un toallero negro terminó pegado al frasco);
+   - coherencia física: si el gotero está en la mano, el frasco del lavabo está abierto y sin gotero;
+   - en video, nada de cámaras que giran alrededor del producto (tiene que inventar la parte de atrás): acercamiento lento de frente, la etiqueta siempre a la vista; en los clips de voz, "con la etiqueta siempre hacia la cámara".
+7. **Control antes de animar:** cada imagen se compara con `producto.png`. Si el producto o la etiqueta cambian, se regenera esa imagen (una imagen cuesta mucho menos que un video).
+
+**En el generador** (`generar-prompts.mjs`): `producto` en `clips-plan.json` con el bloque y el texto de la etiqueta → arma el Paso 0, copia el bloque en el prompt del avatar (si ese JSON tiene la clave `product`) y en cada B-roll con `"producto": true`. Ejemplo completo: `anuncios/08-ejemplo-producto-serum/` (sérum ALBA; su `generar-prompts.mjs` y `prompts-flow.md`). En el kit, el formato de `producto` está en la cabecera de `sistema/scripts/generar-prompts.mjs`.

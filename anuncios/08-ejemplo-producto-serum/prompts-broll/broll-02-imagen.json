@@ -1,19 +1,19 @@
 {
-  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a macro close-up of a man's thumb and index fingertips with a drop of serum between them. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.",
+  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: a close-up of several skincare jars and tubes crowded on a white bathroom counter, a woman's hand pushing them aside. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad. The attached reference image shows the product/place: keep it exactly the same (shape, materials, colors, label), but do not include the person from the reference.",
   "output": {
     "aspect_ratio": "9:16",
     "orientation": "vertical",
     "look": "raw, unedited iPhone video frame, not a professional photo"
   },
-  "subject": "thumb and index fingertips with real skin texture and fingerprints, a small drop of clear, light, fluid serum between them",
+  "subject": "five or six generic skincare products (white and pastel jars, tubes and a sheet-mask pouch) with blank or unreadable labels, half-used, a young woman's hand with natural short nails sliding them to the side",
   "environment": {
-    "location": "a home bathroom in the morning",
-    "details": "the white sink blurred in the background",
+    "location": "the same home bathroom in the morning",
+    "details": "the white sink edge, a ceramic cup, a folded beige towel, white tiles behind",
     "atmosphere": "real, lived-in and slightly imperfect, like a real everyday place, not a staged set or a showroom"
   },
   "camera": {
     "device": "iPhone main camera, handheld, at a natural human height",
-    "framing": "vertical macro, the fingertips centered",
+    "framing": "vertical, camera a bit above counter height, products filling the middle of the frame",
     "focus": "natural phone depth of field, no artificial heavy bokeh",
     "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
   },
@@ -34,6 +34,8 @@
     "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
     "perfect symmetry, empty sterile spaces, everything brand new",
     "deformed hands, extra fingers, warped objects",
-    "recognizable faces, a likeness of any real person"
+    "recognizable faces, a likeness of any real person",
+    "an amber dropper bottle",
+    "readable brand names on the products"
   ]
 }

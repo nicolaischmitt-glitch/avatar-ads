@@ -19,6 +19,11 @@ Ejemplo terminado: `ejemplo-storyboard-anuncio-03.png` (storyboard del anuncio c
 - **Primero el frame, después el video**: el frame se crea en Nano Banana Pro (4 variaciones, se elige una → `broll/broll-01.jpg`) y Flow lo anima (→ `clips/broll-01.mp4`). Nunca directo de texto a video: quema créditos y se ve "de IA".
 - En la edición van en `public/broll/`. Cubren cortes internos y suben el ritmo, pero el avatar sigue en cámara ≈ 60–65 % del tiempo.
 
+### Producto físico LOCKED IN (solo si se ve un producto físico)
+- Paso 0: la foto del producto (`producto/producto.png`, real o generada) fija cómo se ve. Se adjunta en la imagen del avatar y en cada B-roll donde sale, y su descripción (`product`) es idéntica en todos los prompts. Detalle: sección 7 de `sistema/prompts/master-prompt-imagen.md`.
+- Antes de animar, cada imagen se compara con `producto.png`; si el producto o la etiqueta cambian, se regenera esa imagen.
+- Para servicios, cursos o productos digitales no se usa.
+
 ### Storyboard
 - Lámina 1920×1080 con 2 filas × 8 viñetas. Cada viñeta es el lienzo real 1080×1920 escalado (frames reales de los clips + los gráficos con las mismas clases que la edición), con su número, una etiqueta corta y la frase.
 - Estructura de referencia: `storyboard/ejemplo-storyboard-anuncio-03.html` (las rutas de fuentes e imágenes de ese ejemplo son de otro proyecto: copia la estructura, no las rutas). Colores y tipografías de `negocio/marca.md`.
