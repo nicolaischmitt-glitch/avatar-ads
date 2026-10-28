@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Avatar Ads 1.0</title>
-<meta name="description" content="Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno. Sistema Avatar Ads de por vida + taller en vivo · $27, pago único.">
+<meta name="description" content="Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos. Sistema Avatar Ads de por vida + taller en vivo · $27, pago único.">
 <script>document.documentElement.classList.add("js")</script>
 <!-- Meta Pixel (el mismo pixel está configurado en Hotmart con la API de conversiones) -->
 <script>
@@ -115,6 +115,14 @@ fbq('track', 'PageView');
   .rail figcaption{margin-top:10px;font-size:13.5px}
   .rail figcaption b{display:block;font-family:var(--display);font-stretch:108%;font-weight:700;font-size:16px;color:var(--white)}
   .rail figcaption .muted{color:var(--meta)}
+  .cost{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:9px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+  .cost-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--meta)}
+  .cost-row + .cost-row{margin-top:4px}
+  .cost-row b{font-weight:500;font-size:13px;letter-spacing:.02em}
+  .cost-row.us span{color:var(--text-2)}
+  .cost-row.us b{color:var(--neon)}
+  .cost-row.them b{color:var(--text-2)}
+  .cost small{display:block;margin-top:7px;padding-top:6px;border-top:1px solid var(--line);font-size:9.5px;letter-spacing:.04em;text-transform:none;color:var(--meta)}
   .rail-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;color:var(--meta)}
 
   /* ===== Video vs. anuncio + máquina de anuncios ===== */
@@ -222,6 +230,7 @@ fbq('track', 'PageView');
   .sp-num b{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--white)}
   .sp-card.win .sp-num b{color:var(--neon);text-shadow:0 0 24px rgba(197,247,64,.45)}
   .sp-num span{font-size:14px;color:var(--meta)}
+  .sp-note{margin:-6px 0 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--meta)}
   .tiles{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}
   .tiles i,.sp-legend i{display:block;aspect-ratio:9/16;border-radius:3px;background:#5d6b63;position:relative}
   .sp-card.win .tiles i{background:var(--neon)}
@@ -361,7 +370,7 @@ fbq('track', 'PageView');
 <header class="hero">
   <div class="wrap">
     <div>
-      <h1>Crea anuncios con IA <span class="b">que venden.</span> <span class="h1-2">Hiperrealistas, en volumen y por menos de un dólar cada uno.</span></h1>
+      <h1>Crea anuncios con IA <span class="b">que venden.</span> <span class="h1-2">Hiperrealistas, en volumen y 13 veces más baratos.</span></h1>
       <p class="sub">No es solo un video que parece real: es el sistema para producir decenas de anuncios, <b>encontrar tus ganadores y escalar</b> tu negocio o el de tus clientes.</p>
 
       <!-- VIDEO 1 (principal): el anuncio de Avatar Ads 1.0 -->
@@ -387,13 +396,25 @@ fbq('track', 'PageView');
 </header>
 
 <!-- ============ EJEMPLOS ============ -->
-<!-- Orden (27 oct 2026): dentista (anuncios/06) · profesor de inglés (anuncios/07) · sérum ALBA a cámara y voz en off (anuncios/08) · reel de podcast (Contenido/reels/07-podcast-seedance-centavos) · labial (anuncios/02-labial-auto). 27 oct 2026: se quitaron airpods y suplemento (no eran nuestros). -->
+<!-- Orden (28 oct 2026): sérum ALBA a cámara (anuncios/08) · dentista (anuncios/06) · profesor de inglés (anuncios/07) · sérum ALBA voz en off (anuncios/08) · reel de podcast (Contenido/reels/07-podcast-seedance-centavos) · labial (anuncios/02-labial-auto). 27 oct 2026: se quitaron airpods y suplemento (no eran nuestros). -->
+<!-- Costos (28 oct 2026): "Con Avatar Ads" = créditos de Flow (Omni 1.1 720p: 4 s=7, 6 s=10, 8 s=12, 10 s=15) × ~$0,02 (plan de pago Google AI Pro: ~$19,99 por 1.000 créditos); con el plan gratuito, $0 (letra pequeña: "O $0 siguiendo una de las metodologías del sistema"). Promesa (28 oct 2026): "13 veces más baratos" = ~$13 vs ~$1 por anuncio de 30 s (~50 créditos), la misma proporción en los 6 ejemplos. "Otras herramientas" = segundos generados × ~$0,43/s (promedio de la sección de costos: ~$13 por 30 s). Sin contar repeticiones. -->
 <section class="alt" id="ejemplos">
   <div class="wrap">
     <h2>Hechos para vender. <span class="b">Sin cámaras ni productora.</span></h2>
     <p class="muted">Todos estos videos están hechos con IA, en formatos distintos para productos, servicios y marcas. Y no se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio.</p>
 
     <div class="rail">
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-serum.mp4" poster="videos/ejemplo-serum.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de un sérum con una avatar de IA hablando a cámara"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Anuncio para producto</b><span class="muted">Sérum · testimonio a cámara con B-rolls</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$2,88</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$38</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
       <figure>
         <div class="video-slot"><video src="videos/ejemplo-dental.mp4" poster="videos/ejemplo-dental.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de una clínica dental hecho con IA"></video>
           <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
@@ -403,6 +424,7 @@ fbq('track', 'PageView');
           </button>
         </div>
         <figcaption><b>Anuncio para servicio</b><span class="muted">Clínica dental · agenda una valoración</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,12</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$16</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
       </figure>
       <figure>
         <div class="video-slot"><video src="videos/ejemplo-ingles.mp4" poster="videos/ejemplo-ingles.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de una clase gratuita de inglés hecho con IA"></video>
@@ -413,16 +435,7 @@ fbq('track', 'PageView');
           </button>
         </div>
         <figcaption><b>Anuncio para leads</b><span class="muted">Clase gratuita de inglés · registro</span></figcaption>
-      </figure>
-      <figure>
-        <div class="video-slot"><video src="videos/ejemplo-serum.mp4" poster="videos/ejemplo-serum.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de un sérum con una avatar de IA hablando a cámara"></video>
-          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
-            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
-            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
-            <span class="txt">Activar sonido</span>
-          </button>
-        </div>
-        <figcaption><b>Anuncio para producto</b><span class="muted">Sérum · testimonio a cámara con B-rolls</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,04</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$14</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
       </figure>
       <figure>
         <div class="video-slot"><video src="videos/ejemplo-serum-voz.mp4" poster="videos/ejemplo-serum-voz.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de un sérum con voz en off y escenas hechas con IA"></video>
@@ -433,6 +446,7 @@ fbq('track', 'PageView');
           </button>
         </div>
         <figcaption><b>Voz en off + B-rolls</b><span class="muted">Sérum · la historia contada en escenas</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,60</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$21</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
       </figure>
       <figure>
         <div class="video-slot"><video src="videos/ejemplo-podcast.mp4" poster="videos/ejemplo-podcast.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: reel en formato podcast con dos avatares de IA"></video>
@@ -443,6 +457,7 @@ fbq('track', 'PageView');
           </button>
         </div>
         <figcaption><b>Formato podcast</b><span class="muted">Dos avatares IA conversando en un estudio</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,92</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$27</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
       </figure>
       <figure>
         <div class="video-slot"><video src="videos/ejemplo-labial.mp4" poster="videos/ejemplo-labial.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: avatar con IA presentando un labial"></video>
@@ -453,6 +468,7 @@ fbq('track', 'PageView');
           </button>
         </div>
         <figcaption><b>Anuncio UGC</b><span class="muted">Habla, se mueve y presenta el producto</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,10</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$15</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
       </figure>
     </div>
   </div>
@@ -529,14 +545,15 @@ fbq('track', 'PageView');
 <!-- ============ EL SISTEMA MÁS ECONÓMICO ============ -->
 <section id="economico">
   <div class="wrap narrow">
-    <h2>Calidad hiperrealista, <span class="b">por centavos.</span></h2>
-    <p class="muted">En otras herramientas de video con IA, un anuncio de 30 segundos te cuesta en promedio <b class="hl">~$13</b>. Con ese mismo dinero, con el Sistema Avatar Ads haces <b class="hl">~35</b>.</p>
+    <h2>Calidad hiperrealista, <span class="b">13 veces más barata.</span></h2>
+    <p class="muted">En otras herramientas de video con IA, un anuncio de 30 segundos te cuesta en promedio <b class="hl">~$13</b>. Con el Sistema Avatar Ads, <b class="hl">~$1</b>. Con ese mismo dinero haces <b class="hl">~13</b>.</p>
 
     <div class="spend" id="spend">
       <div class="sp-card win">
-        <div class="sp-top"><span class="sp-name">Sistema Avatar Ads</span><span class="sp-cost">~$0,37 / anuncio</span></div>
-        <div class="sp-num"><b>~35</b><span>anuncios con $13</span></div>
-        <div class="tiles" data-n="35" aria-hidden="true"></div>
+        <div class="sp-top"><span class="sp-name">Sistema Avatar Ads</span><span class="sp-cost">~$1 / anuncio</span></div>
+        <div class="sp-num"><b>~13</b><span>anuncios con $13</span></div>
+        <p class="sp-note">O $0 siguiendo una de las metodologías del sistema</p>
+        <div class="tiles" data-n="13" aria-hidden="true"></div>
       </div>
       <div class="sp-card">
         <div class="sp-top"><span class="sp-name">Otras herramientas (promedio)</span><span class="sp-cost">~$13 / anuncio</span></div>
@@ -558,7 +575,7 @@ fbq('track', 'PageView');
 <section class="alt" id="testeo">
   <div class="wrap">
     <h2>Testea más ángulos. <span class="b">Encuentra más ganadores.</span></h2>
-    <p class="muted narrow-p">Tus campañas rinden mejor cuando puedes probar más ángulos y creativos en menos tiempo. Con anuncios de IA, cada nueva versión cuesta centavos y minutos, no una producción entera.</p>
+    <p class="muted narrow-p">Tus campañas rinden mejor cuando puedes probar más ángulos y creativos en menos tiempo. Con anuncios de IA, cada nueva versión cuesta un par de dólares y minutos, no una producción entera.</p>
 
     <figure class="xy" id="xy">
       <figcaption class="xy-head">
@@ -709,7 +726,7 @@ fbq('track', 'PageView');
       <details><summary>¿Qué pasa cuando incremente el precio?</summary><p>El precio de Avatar Ads incrementará en las próximas ediciones. Si entras en la apertura, nada cambia para ti: mantienes tu acceso de por vida y recibes todas las futuras actualizaciones sin pagar más.</p></details>
       <details><summary>¿Necesito saber de copywriting o de anuncios?</summary><p>No. El Sistema Avatar Ads te guía con preguntas para definir el ángulo, el guion y el llamado a la acción de cada anuncio. En el taller lo ves en vivo, de la idea al anuncio editado.</p></details>
       <details><summary>¿Qué necesito para usar el sistema?</summary><p>Una computadora (Windows o Mac), una cuenta de Claude con un plan que incluya Claude Code (el plan Pro cuesta unos $20 al mes) y una cuenta de Google con acceso a Google Flow para generar los videos. En el taller te muestro cómo dejarlo todo listo.</p></details>
-      <details><summary>¿Necesito herramientas costosas?</summary><p>No. Te enseño un sistema económico con alternativas de bajo costo: cada anuncio te sale a menos de un dólar.</p></details>
+      <details><summary>¿Necesito herramientas costosas?</summary><p>No. Te enseño un sistema económico con alternativas de bajo costo: cada anuncio te sale unas 13 veces más barato que en otras herramientas, y puedes empezar con el plan gratuito.</p></details>
       <details><summary>¿Puedo vender este servicio?</summary><p>Sí. En la clase bonus del domingo 1 de noviembre te enseño qué oferta vender y cómo captar clientes de manera orgánica y con anuncios.</p></details>
     </div>
   </div>
@@ -720,7 +737,7 @@ fbq('track', 'PageView');
   <div class="wrap narrow">
     <img class="final-logo" src="logo-avatar-ads.webp" alt="" width="900" height="330" loading="lazy">
     <h2>Entra hoy. <span class="b">Quédate para siempre.</span></h2>
-    <p class="muted">Crea anuncios con IA que venden, por menos de un dólar cada uno, para tu negocio o para tus clientes.</p>
+    <p class="muted">Crea anuncios con IA que venden, 13 veces más baratos, para tu negocio o para tus clientes.</p>
     <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
     </a>

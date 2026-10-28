@@ -22,6 +22,13 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Landing · promesa de costo real (28 oct 2026)
+- **"Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos."** · título del hero (opción A recomendada, elegida por el usuario)
+  Por qué: con el plan de pago cada anuncio cuesta ~$1–3, así que "menos de un dólar" no era real; "13 veces" es la proporción que se repite en los 6 ejemplos (~$13 vs ~$1 por anuncio de 30 s) y se comprueba en las tarjetas de costo debajo de cada video.
+- **"Calidad hiperrealista, 13 veces más barata."** · h2 de la sección de costos
+- **"O $0 siguiendo una de las metodologías del sistema."** · letra pequeña de las tarjetas de costo
+  Por qué: el usuario pidió algo muy simple; el $0 queda como opción, nunca como el costo del anuncio ("solo $0 no es real").
+
 ### Landing · mensaje nuevo (22 oct 2026)
 - **"Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno."** · título del hero
   Por qué: pone el resultado (vender) primero y convierte el hiperrealismo en un adjetivo al servicio de la venta; resuelve tres objeciones seguidas (se ve falso, son pocos, es caro).
@@ -54,6 +61,8 @@ Qué hace que funcione (imitar esto):
   Por qué: hook de dolor en una frase, una sola idea y un solo CTA. En el servicio habla la especialista, no un paciente inventado (no se fingen testimonios).
 
 ## Descartado (y por qué)
+- "…y por menos de un dólar cada uno" (título del hero del 22 al 28 oct 2026) · no se cumple con el plan de pago (~$1–3 por anuncio).
+- Letra pequeña larga ("144 créditos con el plan de pago de Google · o $0 con el plan gratuito · otras herramientas = promedio de Seedance y Wan") · al usuario le pareció extremadamente larga.
 - "Aprende a crear anuncios **hiperrealistas** con IA para escalar tus ventas u ofrecerlo como servicio" (título anterior de la landing) · reemplazado el 22 oct 2026: vendía el video (el medio) y no el resultado (las ventas).
 - "El mejor sistema calidad/precio." · subtítulo anterior: genérico, no dice qué gana el cliente.
 - "Quiero mi cupo" / "Reservar cupo" · hacían pensar que se compra un lugar en un taller, no el sistema.

@@ -8,11 +8,11 @@ Fuentes de este documento: la landing (`landing/index.html`, https://taller.droi
 
 ## 1. Qué es, en una frase
 
-Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistemas y las herramientas para **crear anuncios con IA que venden**: hiperrealistas, en volumen y por centavos, para testear, encontrar ganadores y escalar un negocio (el propio o el de clientes).
+Avatar Ads 1.0 es un **curso/programa** que reúne todo el contenido, los sistemas y las herramientas para **crear anuncios con IA que venden**: hiperrealistas, en volumen y 13 veces más baratos que con otras herramientas, para testear, encontrar ganadores y escalar un negocio (el propio o el de clientes).
 
 - **Versión corta (bio / hook):** "Crea anuncios con IA que venden."
-- **Promesa de la landing (hero, desde el 22 oct 2026):** "Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno." Subtítulo: "No es solo un video que parece real: es el sistema para producir decenas de anuncios, encontrar tus ganadores y escalar tu negocio o el de tus clientes."
-- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — "Crea anuncios con IA que venden, por menos de un dólar cada uno, para tu negocio o para tus clientes."
+- **Promesa de la landing (hero, desde el 28 oct 2026):** "Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos." (22–28 oct: "…y por menos de un dólar cada uno"; se cambió porque con el plan de pago cada anuncio cuesta ~$1–3.) Subtítulo: "No es solo un video que parece real: es el sistema para producir decenas de anuncios, encontrar tus ganadores y escalar tu negocio o el de tus clientes."
+- **Cierre de la landing:** "Entra hoy. Quédate para siempre." — "Crea anuncios con IA que venden, 13 veces más baratos, para tu negocio o para tus clientes."
 
 ### Posicionamiento (decisión del 22 oct 2026)
 El objetivo de Avatar Ads **no es crear el video más real posible: es crear anuncios que generen ventas, leads y clientes**, y el sistema para producirlos en volumen y escalarlos.
@@ -98,7 +98,7 @@ Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a ne
 
 ### Lista de email (Brevo, ~590 contactos)
 La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y vender productos digitales (ebooks) con IA. Les interesa generar ingresos online con IA. Lista fría (meses sin correos): el primer correo reconecta antes de vender.
-- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, por centavos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (vender anuncios a negocios, clase bonus).
+- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, 13 veces más baratos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (vender anuncios a negocios, clase bonus).
 - Correos en `emails/` (una carpeta por secuencia). Brevo gratis = 300 correos al día: alternar Lista A / Lista B. Links con `src=emailN` + `utm_*` (la landing los pasa al checkout de Hotmart). Excluir siempre a los compradores.
 
 ## 5. Ángulos de venta
@@ -111,7 +111,8 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "Este anuncio no lo grabó nadie."
    - "¿Persona real o IA? Mira las manos."
 2. **Sistema económico / low cost** (ángulo diferencial declarado)
-   Calidad de producción sin herramientas caras como Seedance; producir "por centavos" y sin desperdiciar créditos.
+   Calidad de producción sin herramientas caras como Seedance; producir 13 veces más barato y sin desperdiciar créditos.
+   - **Costo real (28 oct 2026):** un anuncio de 30 s gasta ~50 créditos de Flow (Omni 1.1 720p: 6 s = 10, 8 s = 12) → **~$1 con el plan de pago de Google** (~$0,02 por crédito), o $0 con el plan gratuito ("O $0 siguiendo una de las metodologías del sistema"; nunca decir solo $0). Otras herramientas: ~$13 → **13 veces más barato**, la misma proporción en los 6 ejemplos de la landing. Ya no prometer "menos de un dólar" ni "por centavos". Ojo: el reel 07 ("costó 53 centavos") y el anuncio 03 ("67 centavos") usan cifras viejas; con esta cuenta el reel 07 sale ~$1,92.
    - Dato verificado (21 oct 2026) para el copy: **un segundo de Seedance 2.0 en 1080p cuesta ~$0,68 en fal.ai** (API oficial BytePlus: $0,37/s, hasta $0,91/s con video de referencia; Seedance 2.5: $0,57/s, hasta $2,38/s). Decir "te puede costar casi setenta centavos", no "siempre cuesta" (hay planes con suscripción más baratos). Fuentes y tabla: `anuncios/03-calidad-seedance-centavos/guion.md`.
    - "No necesitas Seedance para hacer esto."
    - "Este anuncio me costó menos que un café."
@@ -145,7 +146,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 
 | Objeción | Respuesta (basada en la oferta) |
 |---|---|
-| "Necesito herramientas caras." | No. Avatar Ads usa un sistema económico con alternativas de bajo costo: cada anuncio sale a menos de un dólar. |
+| "Necesito herramientas caras." | No. Avatar Ads usa un sistema económico con alternativas de bajo costo: cada anuncio sale unas 13 veces más barato que en otras herramientas, y se puede empezar con el plan gratuito. |
 | "Los videos con IA se ven falsos." | Se ven falsos cuando el prompt pide perfección. El sistema crea al avatar con un prompt que pide un video real de iPhone: piel con textura, luz natural, un lugar vivido. |
 | "No puedo conectarme a una clase." | Tienes la grabación completa del taller y acceso vitalicio al curso. |
 | "¿Y si sube el precio?" | Si entras en la apertura, nada cambia para ti: acceso de por vida y todas las actualizaciones sin pagar más. |
@@ -157,13 +158,14 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 
 ## 7. Mensajes clave y frases de marca
 
-- "Crea anuncios con IA que venden. Hiperrealistas, en volumen y por menos de un dólar cada uno." (título de la landing)
+- "Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos." (título de la landing desde el 28 oct 2026)
+- "Calidad hiperrealista, 13 veces más barata."
 - "No es solo un video que parece real."
 - "Un video que parece real no es un anuncio que vende."
 - "Realista, porque lo falso no vende."
 - "Tu máquina de anuncios."
 - "Crea anuncios hiperrealistas con IA."
-- "Que parecen producidos profesionalmente. Y por centavos."
+- "Que parecen producidos profesionalmente. Y 13 veces más baratos."
 - "Calidad de producción, sin herramientas caras."
 - "Produce cientos de anuncios, testea más rápido, encuentra tus ganadores y escala tus ventas, sin gastar fortunas en producción, editores, equipo ni herramientas como Seedance."
 - "No se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio."
