@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Avatar Ads 1.0</title>
-<meta name="description" content="Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos. Sistema Avatar Ads de por vida + taller en vivo · $27, pago único.">
+<meta name="description" content="Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos. Taller en vivo el sábado 31 de octubre + Sistema Avatar Ads de por vida · $27, pago único.">
 <script>document.documentElement.classList.add("js")</script>
 <!-- Meta Pixel (el mismo pixel está configurado en Hotmart con la API de conversiones) -->
 <script>
@@ -202,6 +202,21 @@ fbq('track', 'PageView');
   .countdown b{display:block;font-family:var(--display);font-weight:800;font-size:22px;color:var(--white);font-variant-numeric:tabular-nums}
   .countdown span{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--meta)}
   .cd-label{text-align:center;font-size:12.5px;color:var(--meta);margin-top:8px}
+  .hero-date{margin-top:12px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2)}
+  .hero-date i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);margin-right:8px;vertical-align:1px}
+
+  /* ===== Línea de tiempo del taller ===== */
+  .tl{list-style:none;position:relative;margin-top:24px;display:grid;gap:12px}
+  .tl::before{content:"";position:absolute;left:15px;top:18px;bottom:18px;width:2px;background:linear-gradient(var(--neon),var(--line))}
+  .tl li{position:relative;display:flex;gap:16px;align-items:flex-start}
+  .tl .dot{flex:none;position:relative;z-index:1;width:32px;height:32px;border-radius:50%;border:1px solid rgba(197,247,64,.55);background:var(--bg);display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--neon)}
+  .tl li.live .dot{background:var(--neon);color:var(--bg);box-shadow:0 0 18px rgba(197,247,64,.6)}
+  .tl .card{flex:1;border:1px solid var(--line-soft);background:var(--bg-2);border-radius:14px;padding:12px 14px}
+  .tl li.live .card{border-color:rgba(197,247,64,.55)}
+  .tl .when{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--neon)}
+  .tl b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white);margin:3px 0 2px}
+  .tl .card span:last-child{font-size:14.5px;color:var(--text-2)}
+  #taller .countdown{margin-top:22px}
 
   /* ===== Resultados (carrusel de prueba) ===== */
   .proof-media{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0d1310;padding:0}
@@ -323,6 +338,7 @@ fbq('track', 'PageView');
   .sticky.show{transform:none}
   .sticky .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:14px}
   .sticky .p{flex:1;min-width:0;font-size:12px;color:var(--meta);line-height:1.25}
+  .sticky .p .cd-text{color:var(--neon);font-family:var(--mono);font-size:11px}
   .sticky .p b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;color:var(--white);font-size:19px;letter-spacing:-.03em;white-space:nowrap}
   .sticky .btn{width:auto;flex:none;white-space:nowrap;padding:14px 20px;font-size:16px;justify-content:center}
 
@@ -388,9 +404,10 @@ fbq('track', 'PageView');
         </div>
       </figure>
 
-      <a class="btn" href="#inscripcion">Ver todo lo que incluye
+      <a class="btn" href="#taller">Ver el taller
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
+      <p class="hero-date"><i></i>Taller en vivo · sábado 31 de octubre</p>
     </div>
   </div>
 </header>
@@ -639,18 +656,37 @@ fbq('track', 'PageView');
   </div>
 </section>
 
-<!-- ============ LA OFERTA (programa por días + todo lo incluido + precio + CTA) ============ -->
+<!-- ============ EL TALLER EN VIVO (28 oct 2026: el taller es la oferta principal; la versión "sistema" está guardada en landing-versiones/sistema-curso/) ============ -->
+<section id="taller">
+  <div class="wrap narrow">
+    <h2>Este sábado lo creamos <span class="b">en vivo.</span></h2>
+    <p class="muted">Un taller en vivo, con fecha y hora: me ves crear dos anuncios completos con el Sistema Avatar Ads, de la idea al video editado, y resuelves tus dudas en el momento. Después, te quedas con todo.</p>
+    <ol class="tl">
+      <li class="live"><span class="dot">01</span><div class="card"><span class="when">Sáb 31 oct · 10:00 a.m. (Ecuador)</span><b>Taller en vivo</b><span>Creamos dos anuncios completos: uno para un producto digital y otro para un servicio.</span></div></li>
+      <li class="live"><span class="dot">02</span><div class="card"><span class="when">Dom 1 nov · 10:00 a.m. (Ecuador)</span><b>Clase bonus en vivo</b><span>Cómo conseguir clientes para vender estos anuncios.</span></div></li>
+      <li><span class="dot">03</span><div class="card"><span class="when">Después</span><b>Te quedas con todo</b><span>El Sistema Avatar Ads de por vida, la grabación del taller y el grupo de soporte.</span></div></li>
+    </ol>
+    <div class="countdown">
+          <div><b data-u="d">0</b><span>días</span></div>
+          <div><b data-u="h">00</b><span>horas</span></div>
+          <div><b data-u="m">00</b><span>min</span></div>
+          <div><b data-u="s">00</b><span>seg</span></div>
+        </div>
+    <p class="cd-label">para el inicio del taller en vivo</p>
+  </div>
+</section>
+
+<!-- ============ LA OFERTA (el taller + lo que te llevas por participar + precio + CTA) ============ -->
 <section class="alt" id="inscripcion">
   <div class="wrap narrow">
-    <h2>Todo lo que obtienes <span class="b">por $27.</span></h2>
-    <p class="muted">Por $27 te llevas el <b class="hl">Sistema Avatar Ads</b>, tuyo para siempre y con todas sus futuras actualizaciones. En las clases en vivo (10:00 a.m., hora de Ecuador) te enseño a usarlo. Toca cada clase para ver lo que veremos.</p>
+    <h2>Entra al taller en vivo <span class="b">por $27.</span></h2>
+    <p class="muted">Por $27 entras al <b class="hl">taller en vivo</b> del sábado 31 y a la clase bonus del domingo 1 (10:00 a.m., hora de Ecuador). Por participar, te llevas el <b class="hl">Sistema Avatar Ads</b>, tuyo para siempre y con todas sus futuras actualizaciones. Toca cada clase para ver lo que veremos.</p>
 
     <div class="stack">
       <div class="stack-head"><span>Avatar Ads 1.0</span><span>En vivo · 31 oct–1 nov</span></div>
 
       <ul class="stack-list">
-        <li class="main"><span class="ok"></span><div><b>Sistema Avatar Ads + todas sus futuras actualizaciones <s>Valor $497</s></b><span>Tu máquina de anuncios: el sistema que usamos para crear anuncios, de la idea al video editado. Es tuyo para siempre, con guía de instalación paso a paso y cada mejora que le hagamos, sin pagar más.</span></div></li>
-        <li><span class="ok"></span><div>
+        <li class="main"><span class="ok"></span><div>
           <b>Taller en vivo · Sábado 31: aprende a usar el sistema <s>Valor $97</s></b>
           <span>Un día intenso para que veas cómo se usa y por qué es tan potente: creamos en vivo dos anuncios completos, uno para un producto digital y otro para un servicio, desde la idea hasta el video editado.</span>
           <details class="more"><summary>Ver lo que veremos</summary>
@@ -678,6 +714,11 @@ fbq('track', 'PageView');
             </ul>
           </details>
         </div></li>
+      </ul>
+
+      <div class="stack-sep"><span>Lo que te llevas por participar</span></div>
+      <ul class="stack-list">
+        <li class="main"><span class="ok"></span><div><b>Sistema Avatar Ads + todas sus futuras actualizaciones <s>Valor $497</s></b><span>Tu máquina de anuncios: el sistema que usamos para crear anuncios, de la idea al video editado. Es tuyo para siempre, con guía de instalación paso a paso y cada mejora que le hagamos, sin pagar más.</span></div></li>
         <li><span class="ok"></span><div><b>Prompts <s>Valor $47</s></b><span>Prompts y workflows listos para adaptar a tus anuncios.</span></div></li>
       </ul>
 
@@ -700,10 +741,10 @@ fbq('track', 'PageView');
           <li><span>Horario</span><b>10:00 a.m. hora de Ecuador</b></li>
           <li><span>Modalidad</span><b>Online, en vivo</b></li>
         </ul>
-        <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
+        <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero entrar al taller · $27
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
-        <div class="countdown" id="countdown">
+        <div class="countdown">
           <div><b data-u="d">0</b><span>días</span></div>
           <div><b data-u="h">00</b><span>horas</span></div>
           <div><b data-u="m">00</b><span>min</span></div>
@@ -720,7 +761,7 @@ fbq('track', 'PageView');
   <div class="wrap narrow">
     <h2>Preguntas frecuentes.</h2>
     <div class="faq">
-      <details><summary>¿Qué estoy comprando exactamente?</summary><p>El Sistema Avatar Ads, tuyo para siempre y con todas sus futuras actualizaciones. El taller en vivo es donde te enseño a usarlo y por qué es tan potente: creamos con él dos anuncios completos.</p></details>
+      <details><summary>¿Qué estoy comprando exactamente?</summary><p>Tu lugar en el taller en vivo del sábado 31 de octubre y en la clase bonus del domingo 1 de noviembre. Por participar, te llevas el Sistema Avatar Ads, tuyo para siempre y con todas sus futuras actualizaciones: el mismo con el que creamos en vivo dos anuncios completos.</p></details>
       <details><summary>¿Por qué es en vivo?</summary><p>Porque es la apertura de Avatar Ads 1.0. Esta primera edición se da en vivo para mostrar el proceso en tiempo real y resolver dudas.</p></details>
       <details><summary>¿Y si no puedo conectarme a una clase?</summary><p>Tendrás la grabación completa del taller y el Sistema Avatar Ads de por vida, con todas sus actualizaciones.</p></details>
       <details><summary>¿Qué pasa cuando incremente el precio?</summary><p>El precio de Avatar Ads incrementará en las próximas ediciones. Si entras en la apertura, nada cambia para ti: mantienes tu acceso de por vida y recibes todas las futuras actualizaciones sin pagar más.</p></details>
@@ -736,9 +777,16 @@ fbq('track', 'PageView');
 <section class="final">
   <div class="wrap narrow">
     <img class="final-logo" src="logo-avatar-ads.webp" alt="" width="900" height="330" loading="lazy">
-    <h2>Entra hoy. <span class="b">Quédate para siempre.</span></h2>
-    <p class="muted">Crea anuncios con IA que venden, 13 veces más baratos, para tu negocio o para tus clientes.</p>
-    <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
+    <h2>Nos vemos el sábado, <span class="b">en vivo.</span></h2>
+    <p class="muted">Taller en vivo el sábado 31 de octubre a las 10:00 a.m. (Ecuador). Te llevas el sistema para crear anuncios con IA que venden, 13 veces más baratos, para tu negocio o para tus clientes.</p>
+    <div class="countdown">
+          <div><b data-u="d">0</b><span>días</span></div>
+          <div><b data-u="h">00</b><span>horas</span></div>
+          <div><b data-u="m">00</b><span>min</span></div>
+          <div><b data-u="s">00</b><span>seg</span></div>
+        </div>
+    <p class="cd-label" style="margin-bottom:22px">para el inicio del taller en vivo</p>
+    <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero entrar al taller · $27
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
     </a>
   </div>
@@ -748,8 +796,8 @@ fbq('track', 'PageView');
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>Avatar Ads</b>tu máquina de anuncios</div>
-    <a class="btn" href="#inscripcion">Conoce el sistema</a>
+    <div class="p"><b>Taller en vivo</b>sáb 31 oct · <span class="cd-text" data-cd-text>10:00 a.m.</span></div>
+    <a class="btn" href="#taller">Ver el taller</a>
   </div>
 </div>
 
@@ -762,14 +810,20 @@ fbq('track', 'PageView');
 <script>
   // Cuenta regresiva al inicio del taller
   const target = new Date("2026-10-31T10:00:00-05:00").getTime();
-  const u = {}; document.querySelectorAll("#countdown [data-u]").forEach(e => u[e.dataset.u] = e);
   const pad = n => String(n).padStart(2, "0");
+  const cdText = document.querySelector("[data-cd-text]");
   function tick(){
     let t = Math.max(0, Math.floor((target - Date.now()) / 1000));
-    u.d.textContent = Math.floor(t / 86400); t %= 86400;
-    u.h.textContent = pad(Math.floor(t / 3600)); t %= 3600;
-    u.m.textContent = pad(Math.floor(t / 60));
-    u.s.textContent = pad(t % 60);
+    const d = Math.floor(t / 86400); t %= 86400;
+    const h = Math.floor(t / 3600); t %= 3600;
+    const m = Math.floor(t / 60), sec = t % 60;
+    document.querySelectorAll(".countdown").forEach((c) => {
+      c.querySelector('[data-u="d"]').textContent = d;
+      c.querySelector('[data-u="h"]').textContent = pad(h);
+      c.querySelector('[data-u="m"]').textContent = pad(m);
+      c.querySelector('[data-u="s"]').textContent = pad(sec);
+    });
+    if (cdText) cdText.textContent = d + h + m + sec ? `faltan ${d} d ${pad(h)} h` : "en vivo";
   }
   tick(); setInterval(tick, 1000);
 

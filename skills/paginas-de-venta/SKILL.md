@@ -47,13 +47,14 @@ Al usuario le importa mucho: **una página de venta no puede ser solo texto.** E
 - Al crear o rehacer una página, **propón qué gráfico acompaña cada concepto** (en el plan de secciones), no solo el texto.
 
 ## 4. La oferta
-- **Lo que compran es el producto (el sistema), no el evento.** El taller o clase en vivo es la puerta de entrada donde se enseña a usarlo. No decir que el evento es un mecanismo de marketing.
+- **Decide primero qué es la oferta principal y díselo al lector sin ambigüedad.** Si es un evento en vivo con fecha (Avatar Ads, primera versión, desde el 28 oct 2026), el evento es lo que compran: se nombra en el hero (una línea con la fecha debajo del botón), tiene su propia sección con línea de tiempo y cuenta regresiva antes de la oferta, va primero en la oferta y el botón dice "Quiero entrar al taller · $X"; el producto (el sistema) va bajo "Lo que te llevas por participar". Si no hay evento, lo que compran es el producto y el taller o clase es donde se enseña a usarlo (versión guardada en `landing-versiones/sistema-curso/`). Nunca decir que el evento es un mecanismo de marketing.
+- Antes de un cambio grande de enfoque, **guarda la versión actual** en `landing-versiones/<nombre>/` (fuera de `landing/`, no se publica) para poder volver a ella.
 - **Primero el producto principal**, destacado; después el evento en vivo, la clase bonus, lo demás y los bonos.
 - **Valor tachado en cada componente** (`<s>Valor $X</s>`), también en los bonos. Los valores los propone Claude y el usuario los ajusta (Avatar Ads: sistema $497, taller $97, clase bonus $67, prompts $47, soporte $97, grabación $47).
 - **Nunca listar lo que no se entrega:** ni "herramientas" de terceros que el cliente paga aparte, ni bonos que no existen, ni cursos o plataformas que todavía no están. No crear falsas expectativas.
 - **Lo que vendrá va aparte**, en un cuadro "Próximamente" con la etiqueta "Futuro" y un estilo más tenue, explicando cómo lo recibirán (p. ej. "te lo enviamos a tu correo sin pagar nada más"). **Sin fecha en la página**; el estimado se da en el grupo.
 - Nombres neutros: "Grupo privado de soporte" (no el nombre de la app).
-- **Botón de compra con el nombre del producto + precio:** "Quiero el sistema · $27". No "Quiero mi cupo" / "Reservar cupo" (hace pensar que compran un lugar).
+- **Botón de compra con el nombre de la oferta principal + precio** ("Quiero entrar al taller · $27" si se vende el evento): "Quiero el sistema · $27". No "Quiero mi cupo" / "Reservar cupo" (hace pensar que compran un lugar).
 - Los textos de cada componente dicen el beneficio concreto ("Mi proceso para vender estos anuncios a negocios"), no frases genéricas ("para este servicio de alta demanda").
 
 ## 5. FAQ

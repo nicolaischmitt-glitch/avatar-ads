@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avatar Ads 1.0</title>
+<meta name="description" content="Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos. Sistema Avatar Ads de por vida + taller en vivo · $27, pago único.">
+<script>document.documentElement.classList.add("js")</script>
+<!-- Meta Pixel (el mismo pixel está configurado en Hotmart con la API de conversiones) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '602723701857782');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=602723701857782&ev=PageView&noscript=1"></noscript>
+<meta name="theme-color" content="#020604">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23020604%27/%3E%3Cpath d=%27M24 18l24 14-24 14z%27 fill=%27%23C5F740%27/%3E%3C/svg%3E">
+<meta property="og:image" content="https://taller.droilab.com/logo-avatar-ads.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* ===== Branding Avatar Ads: oscuro cinematográfico + verde neón ===== */
+  :root{
+    --bg:#020604;                 /* fondo principal */
+    --bg-2:#090F0B;               /* tarjetas, paneles, secciones secundarias */
+    --neon:#C5F740;               /* acento: CTA, iconos, indicadores */
+    --white:#F8F8F8;              /* títulos y texto principal */
+    --text-2:#DDDAD7;             /* descripciones */
+    --meta:#9F9587;               /* metadatos */
+    --forest:#305E4A;             /* bordes sutiles y degradados */
+    --warm-black:#271C12;         /* sombras */
+    --line:rgba(48,94,74,.55);
+    --line-soft:rgba(48,94,74,.3);
+    --neon-soft:rgba(197,247,64,.12);
+    --display:"Archivo", system-ui, sans-serif;
+    --body:"Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+    --gutter:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--text-2);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:92px}
+  img,video,svg{max-width:100%}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .wrap{width:100%;max-width:640px;margin:0 auto;padding:0 var(--gutter)}
+  section{padding:64px 0}
+
+  /* Secciones secundarias: panel con degradado verde muy sutil */
+  .alt{background:
+      radial-gradient(120% 60% at 50% 0%, rgba(48,94,74,.28), transparent 65%),
+      var(--bg-2);
+    border-block:1px solid var(--line-soft)}
+  .muted{color:var(--text-2)}
+  .meta{color:var(--meta)}
+
+  h1,h2,h3{font-family:var(--display);font-stretch:112%;color:var(--white);letter-spacing:-.025em;line-height:1.02;font-weight:800}
+  h3{font-weight:700;font-stretch:105%}
+  h2{font-size:clamp(30px,8.4vw,44px);margin:14px 0 14px}
+  h2 .b, h1 .b{color:var(--neon)}
+
+  /* Botón CTA */
+  .btn{display:flex;text-decoration:none;align-items:center;justify-content:space-between;gap:12px;width:100%;background:var(--neon);color:var(--bg);font-family:var(--display);font-stretch:108%;font-weight:800;font-size:18px;padding:19px 22px;border-radius:14px;
+    box-shadow:0 0 0 1px rgba(197,247,64,.6), 0 14px 34px -14px rgba(197,247,64,.55);transition:transform .12s, box-shadow .2s, filter .2s;text-align:left}
+  .btn:hover{filter:brightness(1.05);box-shadow:0 0 0 1px rgba(197,247,64,.8), 0 16px 40px -12px rgba(197,247,64,.7)}
+  .btn:active{transform:translateY(2px)}
+  .btn:focus-visible{outline:2px solid var(--white);outline-offset:3px}
+  .btn svg{flex:none}
+
+  /* ===== Barra superior + logo ===== */
+  .nav{display:flex;align-items:center;justify-content:center;padding:14px var(--gutter);max-width:640px;margin:0 auto}
+  .logo img{display:block;height:44px;width:auto;mix-blend-mode:screen}
+
+  /* ===== Hero ===== */
+  .hero{padding:20px 0 56px;position:relative;background:
+      radial-gradient(80% 45% at 50% 0%, rgba(48,94,74,.45), transparent 70%),
+      radial-gradient(50% 30% at 85% 10%, rgba(197,247,64,.08), transparent 70%),
+      linear-gradient(rgba(48,94,74,.14) 1px, transparent 1px) 0 0/100% 44px;
+    background-color:var(--bg)}
+  .hero h1{font-size:clamp(31px,8.6vw,54px);line-height:1.05;margin:6px 0 16px}
+  .hero h1 .h1-2{display:block;font-size:.66em;line-height:1.12;margin-top:10px;font-stretch:108%}
+  .hero p.sub{font-size:17.5px;color:var(--text-2);margin-bottom:26px}
+  .hero p.sub b{color:var(--white);font-weight:600}
+
+
+  /* ===== Videos (9:16) ===== */
+  .video-slot{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:
+      radial-gradient(70% 45% at 50% 40%, rgba(48,94,74,.45), transparent 70%), var(--bg-2);
+    border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+  .hero-video .video-slot{box-shadow:0 0 0 1px rgba(197,247,64,.25),0 30px 80px -30px rgba(197,247,64,.35)}
+  .video-slot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:pointer}
+  .video-slot .num{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--mono);font-size:11px;font-weight:500;background:var(--neon);color:var(--bg);padding:3px 7px;border-radius:6px}
+  .snd{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--white);
+    background:rgba(2,6,4,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(197,247,64,.35);border-radius:999px;padding:9px 14px;transition:background .15s, color .15s}
+  .snd:hover{background:var(--neon);color:var(--bg)}
+  .snd .on{display:none}
+  .snd[aria-pressed="true"] .on{display:block}
+  .snd[aria-pressed="true"] .off{display:none}
+  .snd[aria-pressed="true"]{bottom:auto;top:12px;left:auto;right:12px;transform:none;padding:8px}
+  .snd[aria-pressed="true"] .txt{display:none}
+  .hero-video{margin:0 auto 28px;max-width:300px}
+  .video-caption{margin-top:10px;text-align:center;font-size:13px;color:var(--meta)}
+  .video-caption.top{margin:0 0 8px;display:flex;align-items:flex-end;justify-content:center;gap:6px;white-space:nowrap;font-size:13.5px;font-weight:500;color:var(--text-2)}
+  .video-caption.top .arrow{flex:none;color:var(--neon);margin-bottom:-12px;animation:nudge 1.6s ease-in-out infinite}
+  @keyframes nudge{50%{transform:translateY(4px)}}
+
+  .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--gutter) 8px;margin:28px calc(var(--gutter) * -1) 0;scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail > figure{flex:0 0 74%;max-width:280px;scroll-snap-align:center}
+  .rail figcaption{margin-top:10px;font-size:13.5px}
+  .rail figcaption b{display:block;font-family:var(--display);font-stretch:108%;font-weight:700;font-size:16px;color:var(--white)}
+  .rail figcaption .muted{color:var(--meta)}
+  .cost{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:9px 11px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+  .cost-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--meta)}
+  .cost-row + .cost-row{margin-top:4px}
+  .cost-row b{font-weight:500;font-size:13px;letter-spacing:.02em}
+  .cost-row.us span{color:var(--text-2)}
+  .cost-row.us b{color:var(--neon)}
+  .cost-row.them b{color:var(--text-2)}
+  .cost small{display:block;margin-top:7px;padding-top:6px;border-top:1px solid var(--line);font-size:9.5px;letter-spacing:.04em;text-transform:none;color:var(--meta)}
+  .rail-hint{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;color:var(--meta)}
+
+  /* ===== Video vs. anuncio + máquina de anuncios ===== */
+  .vs{display:grid;gap:12px;margin-top:26px}
+  .vs article{border:1px solid var(--line-soft);background:var(--bg-2);border-radius:18px;padding:20px}
+  .vs article.win{border-color:rgba(197,247,64,.5);background:linear-gradient(160deg,rgba(197,247,64,.09),rgba(48,94,74,.14) 70%,var(--bg-2));box-shadow:0 24px 60px -36px rgba(197,247,64,.45)}
+  .vs-tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
+  .vs .win .vs-tag{color:var(--neon)}
+  .vs ul{list-style:none;display:grid;gap:10px;margin-top:14px}
+  .vs article:not(.win) li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--meta)}
+  .vs article:not(.win) li::before{content:"";flex:none;margin-top:3px;width:18px;height:18px;border-radius:5px;border:1px solid var(--line);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239F9587' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/10px no-repeat}
+  .machine{margin-top:22px;border:1px solid var(--line);border-radius:20px;padding:20px 18px;background:radial-gradient(90% 70% at 80% 0%,rgba(48,94,74,.35),transparent 70%),var(--bg-2)}
+  .machine-title{font-family:var(--display);font-stretch:108%;font-weight:700;font-size:19px;color:var(--white)}
+  .mflow{list-style:none;position:relative;display:grid;gap:20px;margin-top:20px}
+  .mflow::before,.mflow::after{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:var(--line)}
+  .mflow::after{background:linear-gradient(var(--neon),rgba(197,247,64,.55));box-shadow:0 0 8px rgba(197,247,64,.6);transform:scaleY(0);transform-origin:top;transition:transform 1.4s ease}
+  .machine.in .mflow::after{transform:none}
+  .mflow li{position:relative;display:flex;gap:14px;align-items:flex-start}
+  .mnode{flex:none;position:relative;z-index:1;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line);color:var(--meta);transition:border-color .4s, color .4s, box-shadow .4s, background .4s;transition-delay:calc(var(--i) * .28s)}
+  .machine.in .mnode{border-color:rgba(197,247,64,.7);color:var(--neon);box-shadow:0 0 0 4px rgba(197,247,64,.08),0 0 18px rgba(197,247,64,.25)}
+  .machine.in .last .mnode{background:var(--neon);color:var(--bg)}
+  .mnum{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--neon)}
+  .mflow b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;line-height:1.2;color:var(--white);margin:2px 0 3px}
+  .mflow small{display:block;font-size:14px;line-height:1.4;color:var(--text-2)}
+  .js .mflow li > div{opacity:0;transform:translateY(6px);transition:opacity .4s ease, transform .4s ease;transition-delay:calc(var(--i) * .28s)}
+  .machine.in .mflow li > div{opacity:1;transform:none}
+  .mpulse{position:absolute;z-index:2;left:17px;top:22px;width:10px;height:10px;border-radius:50%;background:var(--neon);box-shadow:0 0 12px var(--neon);opacity:0}
+  .machine.in .mpulse{animation:mrun 3s linear 1.6s infinite}
+  @keyframes mrun{0%{top:22px;opacity:0}10%,85%{opacity:1}100%{top:calc(100% - 32px);opacity:0}}
+  .mloop{margin-top:20px;display:flex;align-items:center;gap:12px;border:1px dashed rgba(197,247,64,.5);border-radius:14px;padding:12px 14px;font-size:14px;color:var(--text-2);background:rgba(197,247,64,.05)}
+  .mloop svg{flex:none;color:var(--neon)}
+  .machine.in .mloop svg{animation:mspin 6s linear infinite}
+  @keyframes mspin{to{transform:rotate(360deg)}}
+
+  /* ===== Para quién ===== */
+  .who{display:grid;gap:12px;margin-top:22px}
+  .who article{border:1px solid var(--line-soft);background:var(--bg-2);border-radius:18px;padding:20px}
+  .who .n{font-family:var(--mono);color:var(--neon);font-size:12px}
+  .who h3{font-size:21px;margin:8px 0 6px}
+  .who p{font-size:15px;color:var(--text-2)}
+
+  /* ===== Aprenderás ===== */
+  .checks{list-style:none;display:grid;gap:10px;margin-top:22px}
+  .checks li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--text-2)}
+  .checks li::before{content:"";flex:none;margin-top:3px;width:18px;height:18px;border-radius:5px;background:var(--neon) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23020604' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+
+  /* ===== Offer stack ===== */
+  .stack{margin-top:24px;border:1px solid rgba(197,247,64,.45);border-radius:22px;background:var(--bg-2);overflow:hidden;box-shadow:0 30px 80px -40px rgba(197,247,64,.4)}
+  .stack-head{background:var(--bg);border-bottom:1px solid var(--line);color:var(--text-2);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+  .stack-list{list-style:none;padding:8px 18px}
+  .stack-list > li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+  .stack-list > li:last-child{border-bottom:0}
+  .stack-list b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white);line-height:1.2;margin-bottom:3px}
+  .stack-list b s{white-space:nowrap;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--meta);margin-left:6px;letter-spacing:.04em}
+  .stack-list li > div > span{font-size:14.5px;color:var(--text-2);display:block}
+  .stack-list > li.main b{font-size:19px;color:var(--neon)}
+  .stack-list .ok{flex:none;margin-top:2px;width:22px;height:22px;border-radius:50%;border:1px solid rgba(197,247,64,.5);background:var(--neon-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C5F740' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+  .stack-sep{display:flex;align-items:center;gap:12px;padding:6px 18px 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--neon)}
+  .stack-sep::before,.stack-sep::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(197,247,64,.5),transparent)}
+  .stack-list.bonuses{padding:12px 14px 16px;display:grid;gap:10px}
+  .stack-list.bonuses > li{padding:14px;border:1px dashed rgba(197,247,64,.55);border-radius:14px;background:linear-gradient(160deg,rgba(197,247,64,.1),rgba(48,94,74,.15) 70%,transparent)}
+  .stack-list.bonuses > li:last-child{border-bottom:1px dashed rgba(197,247,64,.55)}
+  .stack-list.future > li, .stack-list.future > li:last-child{border:1px dashed var(--line);background:rgba(48,94,74,.12)}
+  .stack-list.future .tag{background:transparent;color:var(--neon);border:1px solid rgba(197,247,64,.55)}
+  .stack-list .tag{flex:none;margin-top:1px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:4px 7px;border-radius:6px}
+  .stack-total{border-top:1px solid var(--line);padding:22px 18px 24px;background:radial-gradient(90% 60% at 50% 0%, rgba(48,94,74,.35), transparent 70%),var(--bg)}
+
+  /* ===== Precio ===== */
+  .price{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:72px;color:var(--white);letter-spacing:-.04em;line-height:1}
+  .price small{font-family:var(--body);font-size:16px;letter-spacing:0;font-weight:500;color:var(--meta);margin-left:8px}
+  .info{list-style:none;margin:18px 0 22px;border-top:1px solid var(--line-soft)}
+  .info li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px}
+  .info li span{color:var(--meta)}
+  .info li b{text-align:right;font-weight:600;color:var(--white)}
+  .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+  .countdown div{background:var(--bg-2);border:1px solid var(--line-soft);border-radius:10px;padding:8px 0;text-align:center}
+  .countdown b{display:block;font-family:var(--display);font-weight:800;font-size:22px;color:var(--white);font-variant-numeric:tabular-nums}
+  .countdown span{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--meta)}
+  .cd-label{text-align:center;font-size:12.5px;color:var(--meta);margin-top:8px}
+
+  /* ===== Resultados (carrusel de prueba) ===== */
+  .proof-media{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0d1310;padding:0}
+  .proof-media video,.proof-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1310}
+  .proof-media video{object-fit:cover}
+  .proof-media.zoom{cursor:zoom-in}
+  .proof-media.stat{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:18px 14px;background:radial-gradient(90% 60% at 50% 20%,rgba(48,94,74,.45),transparent 70%),#0d1310}
+  .stat-nums{display:grid;gap:14px;text-align:left}
+  .stat-nums > span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
+  .stat-nums b{display:block;font-family:var(--display);font-stretch:112%;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--neon);text-shadow:0 0 24px rgba(197,247,64,.4);text-transform:none}
+  .stat-shot{display:block;border-radius:10px;overflow:hidden;background:#fff}
+  .proof-media.stat .stat-shot img{position:static;display:block;width:100%;height:auto;background:#fff}
+  .proof-media.zoom::after{content:"";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(2,6,4,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C5F740' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-4.5-4.5M11 8v6M8 11h6'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid rgba(197,247,64,.4)}
+  .pill{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--neon);color:var(--bg);padding:3px 7px;border-radius:6px}
+  .fine-print{margin-top:14px;font-size:12px;line-height:1.45;color:var(--meta)}
+
+  /* ===== Costo por anuncio: Avatar Ads vs. otras herramientas ===== */
+  .hl{color:var(--neon)}
+  .spend{display:grid;gap:12px;margin-top:24px}
+  .sp-card{border:1px solid var(--line);border-radius:18px;background:var(--bg);padding:16px}
+  .sp-card.win{border-color:rgba(197,247,64,.55);background:linear-gradient(160deg,rgba(197,247,64,.12),var(--bg) 65%);box-shadow:0 20px 50px -30px rgba(197,247,64,.6)}
+  .sp-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sp-name{font-family:var(--display);font-stretch:106%;font-weight:700;font-size:16px;color:var(--white)}
+  .sp-cost{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--meta)}
+  .sp-num{display:flex;align-items:baseline;gap:8px;margin:6px 0 12px}
+  .sp-num b{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--white)}
+  .sp-card.win .sp-num b{color:var(--neon);text-shadow:0 0 24px rgba(197,247,64,.45)}
+  .sp-num span{font-size:14px;color:var(--meta)}
+  .sp-note{margin:-6px 0 12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--meta)}
+  .tiles{display:grid;grid-template-columns:repeat(14,1fr);gap:4px}
+  .tiles i,.sp-legend i{display:block;aspect-ratio:9/16;border-radius:3px;background:#5d6b63;position:relative}
+  .sp-card.win .tiles i{background:var(--neon)}
+  .tiles i.maybe,.sp-legend i.maybe{background:transparent;border:1px dashed #5d6b63}
+  .tiles i::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-35%,-50%);border-left:4px solid rgba(2,6,4,.75);border-top:3px solid transparent;border-bottom:3px solid transparent}
+  .tiles i.maybe::after{display:none}
+  .js .tiles i{opacity:0;transform:scale(.4)}
+  .spend.in .tiles i{opacity:1;transform:none;transition:opacity .3s ease, transform .3s cubic-bezier(.3,1.6,.5,1);transition-delay:calc(var(--i) * 18ms)}
+  .sp-tools{list-style:none;margin-top:14px;border-top:1px solid var(--line-soft);padding-top:10px;display:grid;gap:6px}
+  .sp-tools li{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;color:var(--meta)}
+  .sp-tools b{font-family:var(--mono);font-weight:500;color:var(--text-2)}
+  .sp-legend{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin-top:12px;font-size:12.5px;color:var(--text-2)}
+  .sp-legend i{width:9px;display:inline-block;vertical-align:middle;background:var(--neon)}
+
+  /* ===== Gráfico XY ===== */
+  .xy{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(90% 70% at 80% 0%,rgba(48,94,74,.35),transparent 70%),var(--bg-2);padding:16px 12px 10px}
+  .xy-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 4px 6px}
+  .xy-title{font-family:var(--display);font-stretch:106%;font-weight:700;font-size:16px;color:var(--white)}
+  .xy-leg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-2)}
+  .xy-leg i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-left:6px}
+  .xy-leg .l-ia{background:var(--neon);box-shadow:0 0 6px var(--neon)}
+  .xy-leg .l-no{background:repeating-linear-gradient(90deg,#9F9587 0 5px,transparent 5px 9px)}
+  .xy svg{display:block;width:100%;height:auto;overflow:visible}
+  .xy-grid line{stroke:rgba(48,94,74,.45);stroke-width:1}
+  .xy-axis line{stroke:#9F9587;stroke-width:1.5}
+  .xy-x text,.xy-y{fill:#9F9587;font-family:"JetBrains Mono",monospace;font-size:19px;text-anchor:middle}
+  .xy-area{fill:url(#xyFill);opacity:0;transition:opacity 1s ease .9s}
+  .xy-ia{fill:none;stroke:#C5F740;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(197,247,64,.6))}
+  .xy-no{fill:none;stroke:#9F9587;stroke-width:3;stroke-dasharray:9 8;stroke-linecap:round}
+  .xy-dot.ia{fill:#C5F740;filter:drop-shadow(0 0 6px rgba(197,247,64,.9))}
+  .xy-dot.no{fill:#9F9587}
+  .xy-tag rect{fill:#020604;stroke-width:1.5}
+  .xy-tag.ia rect{stroke:#C5F740}
+  .xy-tag.no rect{stroke:#9F9587}
+  .xy-tag text{font-family:Inter,system-ui,sans-serif;font-size:20px;font-weight:600;text-anchor:middle}
+  .xy-tag.ia text{fill:#C5F740}
+  .xy-tag.no text{fill:#DDDAD7}
+  .xy-note{font-size:11.5px;color:var(--meta);padding:2px 4px 0;text-align:right}
+  .js .xy-ia{stroke-dasharray:900;stroke-dashoffset:900}
+  .js .xy-no{opacity:0}
+  .js .xy-dot,.js .xy-tag{opacity:0}
+  .xy.in .xy-ia{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.6,0,.2,1)}
+  .xy.in .xy-no{opacity:1;transition:opacity .6s ease .2s}
+  .xy.in .xy-area{opacity:1}
+  .xy.in .xy-dot,.xy.in .xy-tag{opacity:1;transition:opacity .5s ease 1.4s}
+
+  .proof-wide{margin-top:22px;border:1px solid rgba(197,247,64,.45);border-radius:18px;overflow:hidden;background:var(--bg-2);max-width:100%}
+  .proof-wide .zoom{display:block;width:100%;max-width:100%;overflow:hidden;cursor:zoom-in;background:#fff}
+  .proof-wide img{display:block;width:100%;max-width:100%;height:auto}
+  .proof-wide figcaption{padding:14px 16px;font-size:14.5px;color:var(--text-2)}
+  .proof-wide figcaption b{color:var(--neon)}
+
+  /* ===== Detalle de cada día dentro del stack ===== */
+  .more{margin-top:8px}
+  .more summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--neon)}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary::after{content:"+";font-size:15px;line-height:1;transition:transform .2s}
+  .more[open] summary::after{transform:rotate(45deg)}
+  .more ul{list-style:none;display:grid;gap:6px;margin-top:10px}
+  .more li{position:relative;padding-left:14px;font-size:14px;color:var(--text-2)}
+  .more li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--neon)}
+  .stack-list > li.day3{margin:6px 0;padding:14px;border:1.5px solid var(--neon);border-radius:14px;background:linear-gradient(160deg,rgba(197,247,64,.2),rgba(48,94,74,.25) 70%,transparent);box-shadow:0 0 30px -10px rgba(197,247,64,.55)}
+  .stack-list > li.day3:last-child{border-bottom:1.5px solid var(--neon)}
+
+  /* ===== Visor de capturas ===== */
+  .lightbox{border:0;padding:0;background:transparent;max-width:min(560px,94vw);max-height:92vh;margin:auto}
+  .lightbox::backdrop{background:rgba(2,6,4,.88);backdrop-filter:blur(4px)}
+  .lightbox img{display:block;max-width:100%;max-height:88vh;border-radius:14px}
+  .lb-close{position:fixed;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:var(--neon);color:var(--bg);font-weight:800;font-size:16px}
+
+  /* ===== FAQ ===== */
+  .faq{margin-top:20px}
+  .faq details{border-bottom:1px solid var(--line-soft);padding:16px 0}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;font-weight:600;font-size:16px;color:var(--white)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--neon);font-size:20px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin-top:8px;font-size:15px;color:var(--text-2)}
+
+  .final{text-align:center;padding:72px 0 56px;background:
+      radial-gradient(80% 60% at 50% 100%, rgba(48,94,74,.5), transparent 70%), var(--bg);
+    border-top:1px solid var(--line-soft)}
+  .final-logo{display:block;width:min(260px,70%);height:auto;margin:0 auto 22px;mix-blend-mode:screen}
+  .final h2{margin-bottom:12px}
+  .final p{margin-bottom:26px}
+  footer{padding:24px 0 8px;text-align:center;font-size:12.5px;color:var(--meta);font-family:var(--mono)}
+
+  /* ===== Barra fija móvil ===== */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(2,6,4,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s}
+  .sticky.show{transform:none}
+  .sticky .in{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:14px}
+  .sticky .p{flex:1;min-width:0;font-size:12px;color:var(--meta);line-height:1.25}
+  .sticky .p b{display:block;font-family:var(--display);font-stretch:110%;font-weight:800;color:var(--white);font-size:19px;letter-spacing:-.03em;white-space:nowrap}
+  .sticky .btn{width:auto;flex:none;white-space:nowrap;padding:14px 20px;font-size:16px;justify-content:center}
+
+  /* ===== Escritorio (secundario) ===== */
+  @media (min-width:900px){
+    :root{--gutter:32px}
+    section{padding:96px 0}
+    .wrap,.nav{max-width:1080px}
+    .logo img{height:52px}
+    .hero .wrap{max-width:720px;text-align:center}
+    .hero-video{max-width:340px}
+    .hero .btn{max-width:420px;margin:0 auto}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .split > :first-child h2{margin-top:14px}
+    .who,.vs{grid-template-columns:1fr 1fr}
+    .machine{padding:26px 24px}
+    .mflow{grid-template-columns:repeat(5,1fr);gap:14px}
+    .mflow::before,.mflow::after{left:10%;right:10%;top:21px;bottom:auto;width:auto;height:2px}
+    .mflow::after{transform:scaleX(0);transform-origin:left}
+    .mflow li{flex-direction:column;align-items:center;text-align:center}
+    .mpulse{top:17px;left:10%}
+    .machine.in .mpulse{animation-name:mrunx}
+    @keyframes mrunx{0%{left:10%;opacity:0}10%,85%{opacity:1}100%{left:90%;opacity:0}}
+    .spend{grid-template-columns:1fr 1fr;align-items:start}
+    .xy{padding:22px 22px 12px}
+    .narrow-p{max-width:720px}
+    .proof-wide{max-width:620px;margin-left:auto;margin-right:auto}
+    .rail{margin:28px 0 0;padding:4px 0 8px;justify-content:flex-start}
+    .rail > figure{flex:1 1 0;min-width:0;max-width:280px}
+    .narrow{max-width:720px}
+    .final .btn{max-width:420px;margin:0 auto}
+    .sticky{display:none}
+    body{padding-bottom:0}
+  }
+  @media (prefers-reduced-motion:reduce){.video-caption.top .arrow,.machine.in .mpulse,.machine.in .mloop svg{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo"><img src="logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Crea anuncios con IA <span class="b">que venden.</span> <span class="h1-2">Hiperrealistas, en volumen y 13 veces más baratos.</span></h1>
+      <p class="sub">No es solo un video que parece real: es el sistema para producir decenas de anuncios, <b>encontrar tus ganadores y escalar</b> tu negocio o el de tus clientes.</p>
+
+      <!-- VIDEO 1 (principal): el anuncio de Avatar Ads 1.0 -->
+      <figure class="hero-video">
+        <figcaption class="video-caption top">Anuncio creado con el sistema Avatar Ads
+          <svg class="arrow" width="22" height="26" viewBox="0 0 22 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2c8 1 13 7 12 19"/><path d="M10 17l5 5 4-6"/></svg>
+        </figcaption>
+        <div class="video-slot">
+          <video src="videos/avatar-ads-anuncio.mp4" poster="videos/avatar-ads-anuncio.jpg" playsinline muted loop preload="metadata" aria-label="Anuncio de Avatar Ads 1.0 creado con IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+      </figure>
+
+      <a class="btn" href="#inscripcion">Ver todo lo que incluye
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ EJEMPLOS ============ -->
+<!-- Orden (28 oct 2026): sérum ALBA a cámara (anuncios/08) · dentista (anuncios/06) · profesor de inglés (anuncios/07) · sérum ALBA voz en off (anuncios/08) · reel de podcast (Contenido/reels/07-podcast-seedance-centavos) · labial (anuncios/02-labial-auto). 27 oct 2026: se quitaron airpods y suplemento (no eran nuestros). -->
+<!-- Costos (28 oct 2026): "Con Avatar Ads" = créditos de Flow (Omni 1.1 720p: 4 s=7, 6 s=10, 8 s=12, 10 s=15) × ~$0,02 (plan de pago Google AI Pro: ~$19,99 por 1.000 créditos); con el plan gratuito, $0 (letra pequeña: "O $0 siguiendo una de las metodologías del sistema"). Promesa (28 oct 2026): "13 veces más baratos" = ~$13 vs ~$1 por anuncio de 30 s (~50 créditos), la misma proporción en los 6 ejemplos. "Otras herramientas" = segundos generados × ~$0,43/s (promedio de la sección de costos: ~$13 por 30 s). Sin contar repeticiones. -->
+<section class="alt" id="ejemplos">
+  <div class="wrap">
+    <h2>Hechos para vender. <span class="b">Sin cámaras ni productora.</span></h2>
+    <p class="muted">Todos estos videos están hechos con IA, en formatos distintos para productos, servicios y marcas. Y no se trata solo de usar IA: es una habilidad que puedes aplicar en tu negocio o vender como servicio.</p>
+
+    <div class="rail">
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-serum.mp4" poster="videos/ejemplo-serum.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de un sérum con una avatar de IA hablando a cámara"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Anuncio para producto</b><span class="muted">Sérum · testimonio a cámara con B-rolls</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$2,88</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$38</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-dental.mp4" poster="videos/ejemplo-dental.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de una clínica dental hecho con IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Anuncio para servicio</b><span class="muted">Clínica dental · agenda una valoración</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,12</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$16</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-ingles.mp4" poster="videos/ejemplo-ingles.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de una clase gratuita de inglés hecho con IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Anuncio para leads</b><span class="muted">Clase gratuita de inglés · registro</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,04</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$14</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-serum-voz.mp4" poster="videos/ejemplo-serum-voz.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: anuncio de un sérum con voz en off y escenas hechas con IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Voz en off + B-rolls</b><span class="muted">Sérum · la historia contada en escenas</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,60</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$21</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-podcast.mp4" poster="videos/ejemplo-podcast.jpg" playsinline muted loop preload="none" aria-label="Ejemplo: reel en formato podcast con dos avatares de IA"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Formato podcast</b><span class="muted">Dos avatares IA conversando en un estudio</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,92</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$27</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+      <figure>
+        <div class="video-slot"><video src="videos/ejemplo-labial.mp4" poster="videos/ejemplo-labial.jpg" playsinline muted loop preload="none" aria-label="Ejemplo UGC: avatar con IA presentando un labial"></video>
+          <button type="button" class="snd" aria-pressed="false" aria-label="Activar sonido">
+            <svg class="off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>
+            <svg class="on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+            <span class="txt">Activar sonido</span>
+          </button>
+        </div>
+        <figcaption><b>Anuncio UGC</b><span class="muted">Habla, se mueve y presenta el producto</span></figcaption>
+        <div class="cost"><div class="cost-row us"><span>Con Avatar Ads</span><b>~$1,10</b></div><div class="cost-row them"><span>Con otras herramientas</span><b>~$15</b></div><small>O $0 siguiendo una de las metodologías del sistema</small></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO vs. ANUNCIO (el sistema = máquina de anuncios) ============ -->
+<section id="sistema">
+  <div class="wrap">
+    <h2>Un video que parece real <span class="b">no es un anuncio que vende.</span></h2>
+    <p class="muted narrow-p">Que no se note la IA genera confianza. Pero lo que vende es todo lo demás: el ángulo, el guion, el llamado a la acción y poder producir y testear muchas versiones. Eso es lo que hace el Sistema Avatar Ads.</p>
+
+    <div class="vs">
+      <article>
+        <span class="vs-tag">Solo un video con IA</span>
+        <ul>
+          <li>Se ve bien, pero no tiene un ángulo claro.</li>
+          <li>Un guion improvisado.</li>
+          <li>Sin un llamado a la acción.</li>
+          <li>Uno a la vez: si no funciona, vuelves a empezar.</li>
+        </ul>
+      </article>
+      <article class="win">
+        <span class="vs-tag">Un anuncio con el Sistema Avatar Ads</span>
+        <ul class="checks">
+          <li>Ángulo y hook pensados para tu público.</li>
+          <li>Guion persuasivo: hook, desarrollo y CTA.</li>
+          <li>Un avatar realista que genera confianza.</li>
+          <li>Decenas de versiones para testear y escalar.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="machine" id="machine">
+      <p class="machine-title">Tu máquina de anuncios</p>
+      <ol class="mflow">
+        <span class="mpulse" aria-hidden="true"></span>
+        <li style="--i:0"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0012 3z"/></svg></span><div><span class="mnum">01</span><b>Idea y ángulo</b><small>El sistema te pregunta y define a quién le hablas.</small></div></li>
+        <li style="--i:1"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span><div><span class="mnum">02</span><b>Guion</b><small>Hook, desarrollo y CTA pensados para vender.</small></div></li>
+        <li style="--i:2"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></span><div><span class="mnum">03</span><b>Avatar y video</b><small>Un avatar realista que habla por tu marca.</small></div></li>
+        <li style="--i:3"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><div><span class="mnum">04</span><b>Edición</b><small>Subtítulos, ritmo, efectos y CTA: toda la edición, sin editores.</small></div></li>
+        <li class="last" style="--i:4"><span class="mnode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><div><span class="mnum">05</span><b>Testear y escalar</b><small>Decenas de versiones para encontrar tus ganadores.</small></div></li>
+      </ol>
+      <div class="mloop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg><span>Y vuelve a empezar: cada ángulo nuevo es otro anuncio, en minutos.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTADOS (recursos en landing/resultados/) ============ -->
+<section class="alt" id="resultados">
+  <div class="wrap">
+    <h2>¿Para qué sirven <span class="b">los anuncios hiperrealistas?</span></h2>
+    <p class="muted">Casos reales de anuncios hechos con IA.</p>
+
+    <div class="rail proof-rail">
+      <figure class="proof">
+        <div class="proof-media"><video src="resultados/hotmart-ventas.mp4" poster="resultados/hotmart-ventas.jpg" playsinline muted loop preload="none" aria-label="Grabación de pantalla del panel de ventas de Hotmart"></video><span class="pill">Video</span></div>
+        <figcaption><b>Para vender productos digitales</b><span class="muted">Ventas en Hotmart con anuncios UGC hechos con IA</span></figcaption>
+      </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom" aria-label="Ver captura completa"><img src="resultados/caso-servicio.webp" alt="Mensaje de un cliente: 10.537 USD facturados en abril con un servicio" loading="lazy"></button>
+        <figcaption><b>Para vender servicios</b><span class="muted">Resultado de un cliente: un servicio tradicional escalado con anuncios de IA</span></figcaption>
+      </figure>
+      <figure class="proof">
+        <button type="button" class="proof-media zoom stat" aria-label="Ver captura completa">
+          <span class="stat-nums"><span><b>581</b>leads</span><span><b>$0,35</b>por lead</span></span>
+          <span class="stat-shot"><img src="resultados/fb-ads-costo-por-lead.webp" alt="Administrador de anuncios de Meta: 581 clientes potenciales a 0,35 dólares por resultado" loading="lazy"></span>
+        </button>
+        <figcaption><b>Para generar leads</b><span class="muted">Campaña de Meta testeando anuncios UGC hiperrealistas</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL SISTEMA MÁS ECONÓMICO ============ -->
+<section id="economico">
+  <div class="wrap narrow">
+    <h2>Calidad hiperrealista, <span class="b">13 veces más barata.</span></h2>
+    <p class="muted">En otras herramientas de video con IA, un anuncio de 30 segundos te cuesta en promedio <b class="hl">~$13</b>. Con el Sistema Avatar Ads, <b class="hl">~$1</b>. Con ese mismo dinero haces <b class="hl">~13</b>.</p>
+
+    <div class="spend" id="spend">
+      <div class="sp-card win">
+        <div class="sp-top"><span class="sp-name">Sistema Avatar Ads</span><span class="sp-cost">~$1 / anuncio</span></div>
+        <div class="sp-num"><b>~13</b><span>anuncios con $13</span></div>
+        <p class="sp-note">O $0 siguiendo una de las metodologías del sistema</p>
+        <div class="tiles" data-n="13" aria-hidden="true"></div>
+      </div>
+      <div class="sp-card">
+        <div class="sp-top"><span class="sp-name">Otras herramientas (promedio)</span><span class="sp-cost">~$13 / anuncio</span></div>
+        <div class="sp-num"><b>1</b><span>anuncio con $13</span></div>
+        <div class="tiles" data-n="1" aria-hidden="true"></div>
+        <ul class="sp-tools">
+          <li><span>Wan 2.5</span><b>~$3</b></li>
+          <li><span>Seedance 2.0 · API oficial</span><b>~$11</b></li>
+          <li><span>Seedance 2.5</span><b>~$17</b></li>
+          <li><span>Seedance 2.0 · fal.ai</span><b>~$20</b></li>
+        </ul>
+      </div>
+    </div>
+    <p class="sp-legend"><i></i> 1 anuncio de 30 segundos</p>
+  </div>
+</section>
+
+<!-- ============ MÁS TESTEO = MEJORES CAMPAÑAS ============ -->
+<section class="alt" id="testeo">
+  <div class="wrap">
+    <h2>Testea más ángulos. <span class="b">Encuentra más ganadores.</span></h2>
+    <p class="muted narrow-p">Tus campañas rinden mejor cuando puedes probar más ángulos y creativos en menos tiempo. Con anuncios de IA, cada nueva versión cuesta un par de dólares y minutos, no una producción entera.</p>
+
+    <figure class="xy" id="xy">
+      <figcaption class="xy-head">
+        <span class="xy-title">Anuncios ganadores encontrados</span>
+        <span class="xy-leg"><i class="l-ia"></i>Ads con IA <i class="l-no"></i>Ads normales</span>
+      </figcaption>
+      <svg viewBox="0 0 600 352" role="img" aria-label="Gráfico ilustrativo: con ads con IA los anuncios ganadores crecen rápido mes a mes; con ads normales crecen lento, alrededor de uno por mes.">
+        <defs>
+          <linearGradient id="xyFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C5F740" stop-opacity=".28"/><stop offset="1" stop-color="#C5F740" stop-opacity="0"/></linearGradient>
+        </defs>
+        <g class="xy-grid">
+          <line x1="64" y1="30" x2="580" y2="30"/><line x1="64" y1="100" x2="580" y2="100"/><line x1="64" y1="170" x2="580" y2="170"/><line x1="64" y1="240" x2="580" y2="240"/>
+          <line x1="236" y1="30" x2="236" y2="310"/><line x1="408" y1="30" x2="408" y2="310"/><line x1="580" y1="30" x2="580" y2="310"/>
+        </g>
+        <g class="xy-axis"><line x1="64" y1="30" x2="64" y2="310"/><line x1="64" y1="310" x2="580" y2="310"/></g>
+        <g class="xy-x"><text x="76" y="340">Inicio</text><text x="236" y="340">Mes 1</text><text x="408" y="340">Mes 2</text><text x="562" y="340">Mes 3</text></g>
+        <text class="xy-y" transform="translate(30 170) rotate(-90)">Ganadores</text>
+        <path class="xy-area" d="M64,306 C190,302 250,230 320,160 S470,52 580,44 L580,310 L64,310 Z"/>
+        <path class="xy-no" d="M64,306 L580,262"/>
+        <path class="xy-ia" d="M64,306 C190,302 250,230 320,160 S470,52 580,44"/>
+        <circle class="xy-dot ia" cx="580" cy="44" r="6"/>
+        <circle class="xy-dot no" cx="580" cy="262" r="5"/>
+        <g class="xy-tag ia"><rect x="84" y="40" width="262" height="46" rx="12"/><text x="215" y="70">20–30 anuncios al mes</text></g>
+        <g class="xy-tag no"><rect x="322" y="196" width="232" height="46" rx="12"/><text x="438" y="226">4 anuncios al mes</text></g>
+      </svg>
+      <p class="xy-note">Gráfico ilustrativo.</p>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN + APRENDERÁS ============ -->
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Dos perfiles, un sistema.</h2>
+      <div class="who">
+        <article>
+          <span class="n">01</span>
+          <h3>Emprendedores y anunciantes</h3>
+          <p>Inviertes en publicidad y necesitas más creatividades para probar, encontrar ganadores y escalar. El sistema te las produce en volumen, sin grabarte ni pagar producción.</p>
+        </article>
+        <article>
+          <span class="n">02</span>
+          <h3>Freelancers y proveedores</h3>
+          <p>Quieres vender anuncios con IA a negocios. El sistema te da un proceso repetible para entregar anuncios de calidad, rápido y sin que las herramientas caras se coman tu ganancia.</p>
+        </article>
+      </div>
+    </div>
+    <div>
+      <h2>Qué aprenderás.</h2>
+      <ul class="checks">
+        <li>Desarrollar ángulos ganadores y guiones publicitarios que venden.</li>
+        <li>Crear anuncios UGC hiperrealistas con IA que generan confianza.</li>
+        <li>Crear a tu avatar con IA y mantenerlo igual en todas las escenas.</li>
+        <li>Usar un sistema de IA para producir decenas de anuncios y testearlos.</li>
+        <li>Producir anuncios para infoproductos, servicios y generación de leads.</li>
+        <li>Aplicar la habilidad en tu negocio o para conseguir clientes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA OFERTA (programa por días + todo lo incluido + precio + CTA) ============ -->
+<section class="alt" id="inscripcion">
+  <div class="wrap narrow">
+    <h2>Todo lo que obtienes <span class="b">por $27.</span></h2>
+    <p class="muted">Por $27 te llevas el <b class="hl">Sistema Avatar Ads</b>, tuyo para siempre y con todas sus futuras actualizaciones. En las clases en vivo (10:00 a.m., hora de Ecuador) te enseño a usarlo. Toca cada clase para ver lo que veremos.</p>
+
+    <div class="stack">
+      <div class="stack-head"><span>Avatar Ads 1.0</span><span>En vivo · 31 oct–1 nov</span></div>
+
+      <ul class="stack-list">
+        <li class="main"><span class="ok"></span><div><b>Sistema Avatar Ads + todas sus futuras actualizaciones <s>Valor $497</s></b><span>Tu máquina de anuncios: el sistema que usamos para crear anuncios, de la idea al video editado. Es tuyo para siempre, con guía de instalación paso a paso y cada mejora que le hagamos, sin pagar más.</span></div></li>
+        <li><span class="ok"></span><div>
+          <b>Taller en vivo · Sábado 31: aprende a usar el sistema <s>Valor $97</s></b>
+          <span>Un día intenso para que veas cómo se usa y por qué es tan potente: creamos en vivo dos anuncios completos, uno para un producto digital y otro para un servicio, desde la idea hasta el video editado.</span>
+          <details class="more"><summary>Ver lo que veremos</summary>
+            <ul>
+              <li>Setup: herramientas necesarias y alternativas económicas.</li>
+              <li>Ángulos publicitarios y formatos de anuncios con IA.</li>
+              <li>Desarrollo del script: hook, desarrollo y CTA.</li>
+              <li>Creación del storyboard del anuncio.</li>
+              <li>Creación del personaje y generación de imágenes con IA, con consistencia entre escenas.</li>
+              <li>Prompts de video: acciones, gesticulación, expresiones y voz.</li>
+              <li>Generación de clips, corrección de errores y gestión de créditos.</li>
+              <li>Edición automatizada: ritmo, subtítulos, textos, producto y CTA.</li>
+              <li>Exportación del anuncio terminado.</li>
+            </ul>
+          </details>
+        </div></li>
+        <li class="day3"><span class="tag">Bono</span><div>
+          <b>Clase bonus en vivo · Domingo 1: cómo conseguir clientes <s>Valor $67</s></b>
+          <span>Mi proceso para vender estos anuncios a negocios.</span>
+          <details class="more"><summary>Ver lo que veremos</summary>
+            <ul>
+              <li>Qué oferta vender.</li>
+              <li>El proceso para captar clientes de manera orgánica.</li>
+              <li>Cómo captar clientes con anuncios para ofrecer este servicio.</li>
+            </ul>
+          </details>
+        </div></li>
+        <li><span class="ok"></span><div><b>Prompts <s>Valor $47</s></b><span>Prompts y workflows listos para adaptar a tus anuncios.</span></div></li>
+      </ul>
+
+      <div class="stack-sep"><span>+ Bonos</span></div>
+      <ul class="stack-list bonuses">
+        <li><span class="tag">Bono</span><div><b>Grupo privado de soporte <s>Valor $97</s></b><span>Feedback de tus ads, ideas y los mejores sistemas que vayamos encontrando, porque la IA evoluciona cada semana.</span></div></li>
+        <li><span class="tag">Bono</span><div><b>Grabación completa del taller <s>Valor $47</s></b><span>Repite cualquier clase cuando quieras.</span></div></li>
+      </ul>
+
+      <div class="stack-sep"><span>+ Próximamente</span></div>
+      <ul class="stack-list bonuses future">
+        <li><span class="tag">Futuro</span><div><b>Curso Avatar Ads</b><span>Estamos preparando el curso completo. Cuando esté listo, te lo enviamos a tu correo sin pagar nada más: lo reciben todos los que entran en esta edición.</span></div></li>
+      </ul>
+
+      <div class="stack-total">
+        <div class="price">$27<small>pago único</small></div>
+        <ul class="info">
+          <li><span>Taller en vivo</span><b>Sáb 31 oct</b></li>
+          <li><span>Bono en vivo</span><b>Dom 1 nov</b></li>
+          <li><span>Horario</span><b>10:00 a.m. hora de Ecuador</b></li>
+          <li><span>Modalidad</span><b>Online, en vivo</b></li>
+        </ul>
+        <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <div class="countdown" id="countdown">
+          <div><b data-u="d">0</b><span>días</span></div>
+          <div><b data-u="h">00</b><span>horas</span></div>
+          <div><b data-u="m">00</b><span>min</span></div>
+          <div><b data-u="s">00</b><span>seg</span></div>
+        </div>
+        <p class="cd-label">para el inicio del taller en vivo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap narrow">
+    <h2>Preguntas frecuentes.</h2>
+    <div class="faq">
+      <details><summary>¿Qué estoy comprando exactamente?</summary><p>El Sistema Avatar Ads, tuyo para siempre y con todas sus futuras actualizaciones. El taller en vivo es donde te enseño a usarlo y por qué es tan potente: creamos con él dos anuncios completos.</p></details>
+      <details><summary>¿Por qué es en vivo?</summary><p>Porque es la apertura de Avatar Ads 1.0. Esta primera edición se da en vivo para mostrar el proceso en tiempo real y resolver dudas.</p></details>
+      <details><summary>¿Y si no puedo conectarme a una clase?</summary><p>Tendrás la grabación completa del taller y el Sistema Avatar Ads de por vida, con todas sus actualizaciones.</p></details>
+      <details><summary>¿Qué pasa cuando incremente el precio?</summary><p>El precio de Avatar Ads incrementará en las próximas ediciones. Si entras en la apertura, nada cambia para ti: mantienes tu acceso de por vida y recibes todas las futuras actualizaciones sin pagar más.</p></details>
+      <details><summary>¿Necesito saber de copywriting o de anuncios?</summary><p>No. El Sistema Avatar Ads te guía con preguntas para definir el ángulo, el guion y el llamado a la acción de cada anuncio. En el taller lo ves en vivo, de la idea al anuncio editado.</p></details>
+      <details><summary>¿Qué necesito para usar el sistema?</summary><p>Una computadora (Windows o Mac), una cuenta de Claude con un plan que incluya Claude Code (el plan Pro cuesta unos $20 al mes) y una cuenta de Google con acceso a Google Flow para generar los videos. En el taller te muestro cómo dejarlo todo listo.</p></details>
+      <details><summary>¿Necesito herramientas costosas?</summary><p>No. Te enseño un sistema económico con alternativas de bajo costo: cada anuncio te sale unas 13 veces más barato que en otras herramientas, y puedes empezar con el plan gratuito.</p></details>
+      <details><summary>¿Puedo vender este servicio?</summary><p>Sí. En la clase bonus del domingo 1 de noviembre te enseño qué oferta vender y cómo captar clientes de manera orgánica y con anuncios.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="final">
+  <div class="wrap narrow">
+    <img class="final-logo" src="logo-avatar-ads.webp" alt="" width="900" height="330" loading="lazy">
+    <h2>Entra hoy. <span class="b">Quédate para siempre.</span></h2>
+    <p class="muted">Crea anuncios con IA que venden, 13 veces más baratos, para tu negocio o para tus clientes.</p>
+    <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero el sistema · $27
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+    </a>
+  </div>
+  <footer>© 2026 Avatar Ads</footer>
+</section>
+
+<!-- Barra fija (solo móvil) -->
+<div class="sticky" id="sticky">
+  <div class="in">
+    <div class="p"><b>Avatar Ads</b>tu máquina de anuncios</div>
+    <a class="btn" href="#inscripcion">Conoce el sistema</a>
+  </div>
+</div>
+
+<!-- Visor de capturas -->
+<dialog class="lightbox" id="lightbox" aria-label="Captura ampliada">
+  <img alt="">
+  <button type="button" class="lb-close" aria-label="Cerrar">✕</button>
+</dialog>
+
+<script>
+  // Cuenta regresiva al inicio del taller
+  const target = new Date("2026-10-31T10:00:00-05:00").getTime();
+  const u = {}; document.querySelectorAll("#countdown [data-u]").forEach(e => u[e.dataset.u] = e);
+  const pad = n => String(n).padStart(2, "0");
+  function tick(){
+    let t = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    u.d.textContent = Math.floor(t / 86400); t %= 86400;
+    u.h.textContent = pad(Math.floor(t / 3600)); t %= 3600;
+    u.m.textContent = pad(Math.floor(t / 60));
+    u.s.textContent = pad(t % 60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Barra fija: aparece tras el hero, se oculta sobre la sección de precio
+  const sticky = document.getElementById("sticky");
+  const hero = document.querySelector(".hero");
+  const pricing = document.getElementById("inscripcion");
+  function onScroll(){
+    const r = pricing.getBoundingClientRect();
+    sticky.classList.toggle("show", hero.getBoundingClientRect().bottom < 0 && !(r.top < innerHeight && r.bottom > 0));
+  }
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // Videos: se reproducen en silencio al entrar en pantalla y se pausan al salir.
+  // "Activar sonido" reinicia ese video con audio y silencia los demás.
+  const vids = [...document.querySelectorAll(".video-slot video")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const btnOf = (v) => v.parentElement.querySelector(".snd");
+  function setSound(v, on){
+    v.muted = !on;
+    const b = btnOf(v);
+    b.setAttribute("aria-pressed", String(on));
+    b.setAttribute("aria-label", on ? "Silenciar" : "Activar sonido");
+  }
+  function toggleSound(v){
+    const turnOn = v.muted;
+    vids.forEach((o) => { if (o !== v) setSound(o, false); });
+    setSound(v, turnOn);
+    if (turnOn) { v.currentTime = 0; v.play().catch(() => {}); }
+  }
+  vids.forEach((v) => {
+    btnOf(v).addEventListener("click", () => toggleSound(v));
+    v.addEventListener("click", () => toggleSound(v));
+  });
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting) { if (!reduce || !v.muted) v.play().catch(() => {}); }
+        else { v.pause(); if (!v.muted) setSound(v, false); }
+      });
+    }, { threshold: 0.6 });
+    vids.forEach((v) => io.observe(v));
+  }
+
+  // Resultados: los videos se reproducen en silencio al entrar en pantalla
+  const proofVids = [...document.querySelectorAll(".proof-media video")];
+  if ("IntersectionObserver" in window) {
+    const pio = new IntersectionObserver((entries) => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting && !reduce) v.play().catch(() => {}); else v.pause();
+      });
+    }, { threshold: 0.6 });
+    proofVids.forEach((v) => pio.observe(v));
+  }
+
+  // Costo por anuncio: un mosaico por anuncio
+  document.querySelectorAll(".tiles").forEach((t) => {
+    const n = +t.dataset.n, maybe = +(t.dataset.maybe || 0);
+    for (let i = 0; i < n + maybe; i++) {
+      const el = document.createElement("i");
+      if (i >= n) el.className = "maybe";
+      el.style.setProperty("--i", i);
+      t.appendChild(el);
+    }
+  });
+  // Animaciones al entrar en pantalla (gráfico XY y mosaicos)
+  const anim = [document.getElementById("spend"), document.getElementById("xy"), document.getElementById("machine")];
+  if ("IntersectionObserver" in window && !reduce) {
+    const aio = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); aio.unobserve(e.target); }
+    }), { threshold: 0.35 });
+    anim.forEach((el) => aio.observe(el));
+  } else anim.forEach((el) => el.classList.add("in"));
+
+  // Visor de capturas: toca una imagen para verla completa
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img");
+  document.querySelectorAll(".zoom").forEach((b) => b.addEventListener("click", (e) => {
+    e.preventDefault();
+    const img = b.querySelector("img");
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    if (lb.showModal) lb.showModal(); else window.open(img.src, "_blank");
+  }));
+  lb.addEventListener("click", () => lb.close());
+
+  // Tracking de Meta: los botones de Hotmart llevan los parámetros de la visita (fbclid, utm_*)
+  // para que la compra se atribuya al anuncio; el clic se mide con un evento propio
+  // (InitiateCheckout ya lo envía Hotmart al abrir el checkout).
+  const visit = new URLSearchParams(location.search);
+  document.querySelectorAll('a[href^="https://pay.hotmart.com/"]').forEach((a) => {
+    const url = new URL(a.href);
+    visit.forEach((v, k) => { if (!url.searchParams.has(k)) url.searchParams.set(k, v); });
+    a.href = url.toString();
+    a.addEventListener("click", () => { if (window.fbq) fbq("trackCustom", "ClicCheckout"); });
+  });
+  // ViewContent: cuando la oferta ($27) entra en pantalla, una sola vez
+  if ("IntersectionObserver" in window) {
+    const vio = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        if (window.fbq) fbq("track", "ViewContent", { content_name: "Avatar Ads 1.0", value: 27, currency: "USD" });
+        vio.disconnect();
+      }
+    }, { threshold: 0.3 });
+    vio.observe(pricing);
+  }
+</script>
+</body>
+</html>

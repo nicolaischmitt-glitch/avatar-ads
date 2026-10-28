@@ -22,6 +22,13 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Landing · el taller en vivo como oferta principal (28 oct 2026)
+- **"Este sábado lo creamos en vivo."** · h2 de la sección nueva (línea de tiempo + cuenta regresiva)
+- **"Entra al taller en vivo por $27."** · h2 de la oferta · **"Lo que te llevas por participar"** · separador antes del sistema
+- **"Quiero entrar al taller · $27"** · botones de compra · **"Ver el taller"** · botón del hero y de la barra del celular
+- **"Nos vemos el sábado, en vivo."** · cierre
+  Por qué: el usuario sentía que la página no dejaba claro que hay un taller en vivo con tiempo límite; el taller es lo que se vende y el sistema es lo que se obtiene por participar.
+
 ### Landing · promesa de costo real (28 oct 2026)
 - **"Crea anuncios con IA que venden. Hiperrealistas, en volumen y 13 veces más baratos."** · título del hero (opción A recomendada, elegida por el usuario)
   Por qué: con el plan de pago cada anuncio cuesta ~$1–3, así que "menos de un dólar" no era real; "13 veces" es la proporción que se repite en los 6 ejemplos (~$13 vs ~$1 por anuncio de 30 s) y se comprueba en las tarjetas de costo debajo de cada video.
@@ -61,6 +68,7 @@ Qué hace que funcione (imitar esto):
   Por qué: hook de dolor en una frase, una sola idea y un solo CTA. En el servicio habla la especialista, no un paciente inventado (no se fingen testimonios).
 
 ## Descartado (y por qué)
+- "No es un curso grabado: es un taller en vivo, con fecha y hora" · propuesta del 28 oct 2026: también habrá un curso grabado, así que no se puede decir.
 - "…y por menos de un dólar cada uno" (título del hero del 22 al 28 oct 2026) · no se cumple con el plan de pago (~$1–3 por anuncio).
 - Letra pequeña larga ("144 créditos con el plan de pago de Google · o $0 con el plan gratuito · otras herramientas = promedio de Seedance y Wan") · al usuario le pareció extremadamente larga.
 - "Aprende a crear anuncios **hiperrealistas** con IA para escalar tus ventas u ofrecerlo como servicio" (título anterior de la landing) · reemplazado el 22 oct 2026: vendía el video (el medio) y no el resultado (las ventas).

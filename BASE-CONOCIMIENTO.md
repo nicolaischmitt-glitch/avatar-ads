@@ -38,7 +38,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 | Qué se ve | Taller: creamos en vivo dos anuncios completos (producto digital y servicio), de la idea al video editado · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
-**Lo que se compra con los $27 es el Sistema Avatar Ads**, de por vida y con todas sus futuras actualizaciones (decisión del 22 oct 2026). El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
+**Desde el 28 oct 2026, lo que se vende es el taller en vivo** (sáb 31 + clase bonus dom 1): es la oferta principal de esta primera versión, y el Sistema Avatar Ads (de por vida, con todas sus actualizaciones), los prompts, los bonos y el curso futuro son lo que se obtiene por participar. En el futuro, sin taller en vivo, se volverá a vender como sistema + curso (versión guardada en `landing-versiones/sistema-curso/`). Antes (22–28 oct 2026): "lo que se compra con los $27 es el Sistema Avatar Ads". El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
 
 **Incluye (oferta única, con valores tachados en la landing):** **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación ($497) · taller en vivo (sáb 31): aprende a usar el sistema ($97) · prompts ($47). No se ofrecen "herramientas": Claude Code (~$20 al mes) y Google Flow los paga el alumno, y se dice en la FAQ.
 
@@ -174,7 +174,8 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
 - "Todo para producir."
 - "La IA cambia rápido. Cada mejora del método llega a tu acceso sin pagar más."
 - "Entra hoy. Quédate para siempre."
-- CTA de venta: "Quiero el sistema · $27" (desde el 22 oct 2026; antes "Quiero mi cupo", que hacía pensar que se compra un lugar en un taller).
+- CTA de venta: "Quiero entrar al taller · $27" (desde el 28 oct 2026, porque el taller es la oferta principal). 22–28 oct: "Quiero el sistema · $27"; antes, "Quiero mi cupo".
+- "Este sábado lo creamos en vivo." · "Nos vemos el sábado, en vivo." (landing, 28 oct 2026)
 
 ## 8. Prueba y activos disponibles
 
