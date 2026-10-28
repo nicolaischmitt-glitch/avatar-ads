@@ -49,7 +49,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 No existe (no mencionarlo): el bono **Cliente Cero** (eliminado el 22 oct 2026). Lo que el alumno se lleva hoy para siempre es el sistema + la grabación.
 
-**Futuro (cuadro "Próximamente" en la oferta, 22 oct 2026):** el **curso Avatar Ads**. Se prepara después del taller y se envía **por correo** a todos los que compraron esta edición, sin costo extra. Estimado interno: 3–4 semanas; en la landing no se pone fecha (solo "próximamente") para no comprometer un plazo.
+**Curso Avatar Ads (incluido, desde el 28 oct 2026; antes iba en un cuadro "Próximamente"):** pedido del usuario: ya no se presenta como futuro sino como parte de lo que se obtiene. En la oferta va bajo "Lo que te llevas por participar" (valor $197, puesto por Claude como ancla; el usuario puede cambiarlo): "El curso completo para implementar el sistema paso a paso, a tu ritmo. Te lo enviamos a tu correo, sin pagar nada más." Se prepara después del taller y se envía por correo a todos los que compraron esta edición. Estimado interno: 3–4 semanas; en la landing no se pone fecha.
 
 No prometer "3 anuncios listos" al final del taller.
 

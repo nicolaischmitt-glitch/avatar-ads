@@ -112,7 +112,7 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 2. Freelancers / futuros proveedores que quieren vender anuncios con IA a negocios.
 
 ## Incluye
-(Oferta única de la landing, en orden, con su valor tachado.) **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación (valor $497) · Taller en vivo (sáb 31): aprende a usar el sistema (valor $97) · Clase bonus dom 1 nov (valor $67) · Prompts (valor $47).
+(Oferta única de la landing, en orden, con su valor tachado.) **Sistema Avatar Ads** + todas sus futuras actualizaciones, con guía de instalación (valor $497) · Taller en vivo (sáb 31): aprende a usar el sistema (valor $97) · Clase bonus dom 1 nov (valor $67) · Curso Avatar Ads (valor $197, desde el 28 oct 2026) · Prompts (valor $47).
 Para usar el sistema el alumno necesita Claude con Claude Code (plan Pro, ~$20 al mes) y una cuenta de Google con Google Flow: está en la FAQ "¿Qué necesito para usar el sistema?".
 
 ## Bonos
@@ -120,7 +120,7 @@ Para usar el sistema el alumno necesita Claude con Claude Code (plan Pro, ~$20 a
 2. **Grupo privado de soporte** (en la landing sin la palabra WhatsApp; es el grupo de WhatsApp de alumnos): feedback de sus ads, ideas y actualización con los mejores sistemas que vayamos encontrando (la IA evoluciona cada semana) (valor $97).
 3. **Grabación completa del taller** (valor $47).
 (22 oct 2026: se eliminaron "Herramientas" —no entregamos herramientas: Claude Code y Google Flow los paga el alumno—, el bono **Cliente Cero** —no existe— y el **acceso vitalicio al curso Avatar Ads** como bono actual —aún no hay curso ni plataforma; pasó al cuadro "Futuro"—. Valores de cada componente puestos por Claude como ancla, el usuario puede cambiarlos; el del sistema lo subió el usuario a $497.)
-**Futuro (cuadro "Próximamente" en la oferta, 22 oct 2026):** el **curso Avatar Ads**. Se prepara después del taller y se envía **por correo** a todos los que compraron esta edición, sin costo extra. Estimado interno: 3–4 semanas; en la landing no se pone fecha (solo "próximamente") para no comprometer un plazo.
+**Curso Avatar Ads (incluido, desde el 28 oct 2026; antes iba en un cuadro "Próximamente"):** pedido del usuario: ya no se presenta como futuro sino como parte de lo que se obtiene. En la oferta va bajo "Lo que te llevas por participar" (valor $197, puesto por Claude como ancla; el usuario puede cambiarlo): "El curso completo para implementar el sistema paso a paso, a tu ritmo. Te lo enviamos a tu correo, sin pagar nada más." Se prepara después del taller y se envía por correo a todos los que compraron esta edición. Estimado interno: 3–4 semanas; en la landing no se pone fecha.
 (Eliminados: UGC Realism Vault y Low-Cost Production System. Ya no se promete "3 anuncios listos" ni proyecto práctico de 3 anuncios.)
 
 ## Temario
