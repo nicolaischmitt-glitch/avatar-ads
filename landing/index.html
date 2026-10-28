@@ -217,6 +217,26 @@ fbq('track', 'PageView');
   .tl b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white);margin:3px 0 2px}
   .tl .card span:last-child{font-size:14.5px;color:var(--text-2)}
   #taller .countdown{margin-top:22px}
+  .hero-seats{display:block;margin-top:6px;color:var(--neon)}
+
+  /* ===== Puestos (escasez real: cambiar PUESTOS en el script) ===== */
+  .seats-box{margin-top:18px}
+  .seats{display:grid;grid-template-columns:repeat(15,1fr);gap:4px}
+  .seats i{display:block;aspect-ratio:1;border-radius:4px;background:var(--neon);box-shadow:0 0 8px rgba(197,247,64,.35)}
+  .seats i.taken{background:#3a4640;box-shadow:none}
+  .seats-label{margin-top:8px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
+  .seats-label b{color:var(--neon);font-weight:500}
+  .stack-total .seats-box{margin:0 0 18px}
+
+  /* ===== WhatsApp: hablar con el creador ===== */
+  .wa-line{margin-top:16px;text-align:center;font-size:14px;color:var(--text-2)}
+  .wa-line a{color:var(--neon);text-decoration:underline;text-underline-offset:3px}
+  .wa{display:grid;gap:16px;justify-items:center;text-align:center;border:1px solid var(--line);border-radius:22px;background:radial-gradient(90% 70% at 50% 0%,rgba(48,94,74,.35),transparent 70%),var(--bg-2);padding:26px 20px}
+  .wa img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid rgba(197,247,64,.6);box-shadow:0 0 30px -6px rgba(197,247,64,.5)}
+  .wa h2{margin:0}
+  .wa p{color:var(--text-2);font-size:15.5px;max-width:460px}
+  .btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;padding:16px 20px;border-radius:14px;border:1.5px solid var(--neon);color:var(--neon);font-weight:700;font-size:16px;background:transparent;text-decoration:none}
+  .btn-ghost:hover{background:rgba(197,247,64,.08)}
 
   /* ===== Resultados (carrusel de prueba) ===== */
   .proof-media{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0d1310;padding:0}
@@ -407,7 +427,7 @@ fbq('track', 'PageView');
       <a class="btn" href="#taller">Ver el taller
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
-      <p class="hero-date"><i></i>Taller en vivo · sábado 31 de octubre</p>
+      <p class="hero-date"><i></i>Taller en vivo · sábado 31 de octubre<span class="hero-seats">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</span></p>
     </div>
   </div>
 </header>
@@ -673,6 +693,7 @@ fbq('track', 'PageView');
           <div><b data-u="s">00</b><span>seg</span></div>
         </div>
     <p class="cd-label">para el inicio del taller en vivo</p>
+    <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</p></div>
   </div>
 </section>
 
@@ -736,7 +757,9 @@ fbq('track', 'PageView');
           <li><span>Bono en vivo</span><b>Dom 1 nov</b></li>
           <li><span>Horario</span><b>10:00 a.m. hora de Ecuador</b></li>
           <li><span>Modalidad</span><b>Online, en vivo</b></li>
+          <li><span>Puestos</span><b><span data-libres>11</span> de <span data-total>15</span> disponibles</b></li>
         </ul>
+        <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</p></div>
         <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero entrar al taller · $27
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
@@ -747,6 +770,7 @@ fbq('track', 'PageView');
           <div><b data-u="s">00</b><span>seg</span></div>
         </div>
         <p class="cd-label">para el inicio del taller en vivo</p>
+        <p class="wa-line">¿Tienes dudas antes de entrar? <a class="wa-link" href="https://wa.me/593985654593?text=Hola%20Nicolai%2C%20tengo%20una%20duda%20sobre%20el%20taller%20de%20Avatar%20Ads" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></p>
       </div>
     </div>
   </div>
@@ -765,6 +789,18 @@ fbq('track', 'PageView');
       <details><summary>¿Qué necesito para usar el sistema?</summary><p>Una computadora (Windows o Mac), una cuenta de Claude con un plan que incluya Claude Code (el plan Pro cuesta unos $20 al mes) y una cuenta de Google con acceso a Google Flow para generar los videos. En el taller te muestro cómo dejarlo todo listo.</p></details>
       <details><summary>¿Necesito herramientas costosas?</summary><p>No. Te enseño un sistema económico con alternativas de bajo costo: cada anuncio te sale unas 13 veces más barato que en otras herramientas, y puedes empezar con el plan gratuito.</p></details>
       <details><summary>¿Puedo vender este servicio?</summary><p>Sí. En la clase bonus del domingo 1 de noviembre te enseño qué oferta vender y cómo captar clientes de manera orgánica y con anuncios.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHATSAPP: hablar con el creador (28 oct 2026) ============ -->
+<section class="alt">
+  <div class="wrap narrow">
+    <div class="wa">
+      <img src="nicolai.webp" alt="Nicolai, creador de Avatar Ads" width="240" height="240" loading="lazy">
+      <h2>¿Te quedó alguna duda? <span class="b">Escríbeme.</span></h2>
+      <p>Sin bots ni asistentes: me escribes a mí, Nicolai, el creador de Avatar Ads, y te respondo personalmente.</p>
+      <a class="btn-ghost wa-link" href="https://wa.me/593985654593?text=Hola%20Nicolai%2C%20tengo%20una%20duda%20sobre%20el%20taller%20de%20Avatar%20Ads" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.6z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>Hablar con Nicolai por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -792,7 +828,7 @@ fbq('track', 'PageView');
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>Taller en vivo</b>sáb 31 oct · <span class="cd-text" data-cd-text>10:00 a.m.</span></div>
+    <div class="p"><b>Taller en vivo</b>quedan <span data-libres>11</span> puestos · <span class="cd-text" data-cd-text>sáb 31 oct</span></div>
     <a class="btn" href="#taller">Ver el taller</a>
   </div>
 </div>
@@ -804,6 +840,19 @@ fbq('track', 'PageView');
 </dialog>
 
 <script>
+  // Puestos del taller: actualizar "reservados" a mano con cada venta (y cerrar ventas en Hotmart al llegar a 15)
+  const PUESTOS = { total: 15, reservados: 4 };
+  const libres = Math.max(0, PUESTOS.total - PUESTOS.reservados);
+  document.querySelectorAll("[data-libres]").forEach((e) => e.textContent = libres);
+  document.querySelectorAll("[data-total]").forEach((e) => e.textContent = PUESTOS.total);
+  document.querySelectorAll(".seats").forEach((g) => {
+    for (let i = 0; i < PUESTOS.total; i++) {
+      const el = document.createElement("i");
+      if (i < PUESTOS.reservados) el.className = "taken";
+      g.appendChild(el);
+    }
+  });
+
   // Cuenta regresiva al inicio del taller
   const target = new Date("2026-10-31T10:00:00-05:00").getTime();
   const pad = n => String(n).padStart(2, "0");
@@ -819,7 +868,7 @@ fbq('track', 'PageView');
       c.querySelector('[data-u="m"]').textContent = pad(m);
       c.querySelector('[data-u="s"]').textContent = pad(sec);
     });
-    if (cdText) cdText.textContent = d + h + m + sec ? `faltan ${d} d ${pad(h)} h` : "en vivo";
+    if (cdText) cdText.textContent = d + h + m + sec ? (d ? `faltan ${d} d` : `faltan ${h} h`) : "en vivo";
   }
   tick(); setInterval(tick, 1000);
 
@@ -915,6 +964,7 @@ fbq('track', 'PageView');
     a.href = url.toString();
     a.addEventListener("click", () => { if (window.fbq) fbq("trackCustom", "ClicCheckout"); });
   });
+  document.querySelectorAll(".wa-link").forEach((a) => a.addEventListener("click", () => { if (window.fbq) fbq("trackCustom", "ClicWhatsApp"); }));
   // ViewContent: cuando la oferta ($27) entra en pantalla, una sola vez
   if ("IntersectionObserver" in window) {
     const vio = new IntersectionObserver((entries) => {
