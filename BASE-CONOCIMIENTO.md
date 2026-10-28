@@ -31,7 +31,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 
 | Elemento | Detalle |
 |---|---|
-| Formato | Taller online de apertura: 1 día intenso en vivo (sáb 31 oct 2026) + clase bonus de captación de clientes (dom 1 nov), ambas a las 10 a.m. Ecuador; da acceso al programa |
+| Formato | Taller online de apertura: 1 día intenso en vivo (**dom 1 nov 2026, 10 a.m.** Ecuador) + clase bonus de captación de clientes (**lun 2 nov, 7 p.m.** Ecuador); da acceso al programa. Fechas cambiadas el 28 oct 2026 (antes sáb 31 + dom 1): donde este documento diga otra cosa, manda `PROYECTO.md` |
 | Precio | $27, pago único (edición de apertura). Sin cupones ni descuentos |
 | Cupo | 15 puestos (desde el 28 oct 2026; quedan los que diga `PUESTOS` en la landing). Contacto directo: WhatsApp con el creador, "sin bots ni asistentes" |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
