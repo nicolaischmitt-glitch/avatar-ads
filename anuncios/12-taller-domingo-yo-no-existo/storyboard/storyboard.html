@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Anuncio 12 · Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Marca Avatar Ads. Set de escenas propio del 12 ("evento en vivo"), distinto al del VSL 09: boleto del taller, tachado de cámara/actor/edición,
+     línea de producción del anuncio, barras de costo, mazo de anuncios con ganadores, recibo "incluido", etiqueta de bonus, butacas.
+     Sin pantalla dividida: el avatar queda entero y los gráficos van en la banda superior o en cutaways con su propio video desenfocado.
+     Subtítulos sin caja (blanco con sombra); el botón es la única píldora neón. */
+  :root { --bg:#020604; --card:#090F0B; --neon:#C5F740; --white:#F8F8F8; --t2:#DDDAD7; --meta:#9F9587; --forest:#305E4A; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: var(--bg); color: var(--t2); font-family: "Inter", sans-serif; overflow: hidden; }
+  body { padding: 24px 40px; display: flex; flex-direction: column; gap: 16px;
+    background: radial-gradient(60% 40% at 50% 0%, rgba(48,94,74,.35), transparent 70%), var(--bg); }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(48,94,74,.6); padding-bottom: 12px; }
+  header h1 { font-family: "Archivo"; font-stretch: 112%; font-weight: 800; font-size: 26px; color: var(--white); letter-spacing: -.01em; }
+  header h1 span { color: var(--neon); }
+  .meta { font-family: "JetBrains Mono"; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--meta); }
+
+  .board { display: grid; grid-template-columns: repeat(8, 212px); justify-content: space-between; row-gap: 14px; }
+  .shot { display: flex; flex-direction: column; gap: 6px; }
+  .mini { width: 212px; height: 377px; border-radius: 12px; overflow: hidden; position: relative; background: #000; border: 1px solid rgba(48,94,74,.7); }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.196296); transform-origin: 0 0; overflow: hidden; background: var(--bg); }
+  .cap { display: flex; justify-content: space-between; font-family: "JetBrains Mono"; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--meta); }
+  .cap b { color: var(--neon); font-weight: 700; }
+  .say { font-size: 12px; line-height: 1.3; color: var(--t2); min-height: 46px; }
+
+  /* ---------- lienzo 1080×1920 ---------- */
+  .face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 30%; }
+  .blur { filter: blur(30px) saturate(.7) brightness(.8); transform: scale(1.15); }
+  .veil { position: absolute; inset: 0; background: linear-gradient(rgba(2,6,4,.78), rgba(2,6,4,.9)); }
+  .sub { position: absolute; z-index: 20; left: 60px; right: 60px; top: 1230px; text-align: center; font-family: "Archivo"; font-stretch: 108%; font-weight: 800;
+    font-size: 70px; line-height: 1.1; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.75), 0 0 2px rgba(0,0,0,.9); letter-spacing: -.01em; }
+  .sub b { color: var(--neon); }
+  .lbl { font-family: "JetBrains Mono"; font-size: 30px; letter-spacing: .12em; text-transform: uppercase; color: var(--meta); }
+  .lbl.n { color: var(--neon); }
+  .glass { background: rgba(9,15,11,.88); border: 3px solid rgba(48,94,74,.9); border-radius: 44px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  .top { position: absolute; left: 0; right: 0; top: 60px; display: flex; justify-content: center; z-index: 10; }
+  .chip { display: inline-flex; align-items: center; gap: 22px; padding: 22px 38px; border-radius: 26px; background: rgba(2,6,4,.82); border: 3px solid rgba(48,94,74,.9);
+    font-family: "JetBrains Mono"; font-weight: 700; font-size: 34px; letter-spacing: .1em; color: var(--white); text-transform: uppercase; }
+  .chip i { width: 18px; height: 18px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 18px var(--neon); display: block; }
+
+  /* 02 costo de este anuncio (tarjeta pequeña sobre la cabeza) */
+  .cost { padding: 30px 46px; display: flex; align-items: center; gap: 34px; }
+  .cost .v { font-family: "Archivo"; font-stretch: 115%; font-weight: 900; font-size: 110px; color: var(--neon); line-height: 1; }
+  .cost .k { display: flex; flex-direction: column; gap: 8px; }
+  .cost .k b { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 40px; color: var(--white); }
+
+  /* 03 boleto del taller */
+  .ticket { display: flex; width: 900px; height: 230px; border-radius: 34px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  .ticket .l { flex: 1; background: rgba(9,15,11,.92); border: 3px solid rgba(48,94,74,.9); border-right: 0; border-radius: 34px 0 0 34px; padding: 34px 46px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .ticket .l b { font-family: "Archivo"; font-stretch: 112%; font-weight: 900; font-size: 64px; color: var(--white); line-height: 1; }
+  .ticket .r { width: 270px; background: var(--neon); border-radius: 0 34px 34px 0; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    font-family: "JetBrains Mono"; font-weight: 700; color: var(--bg); }
+  .ticket .r::before { content: ""; position: absolute; left: -2px; top: 18px; bottom: 18px; border-left: 6px dotted var(--bg); }
+  .ticket .r .d { font-size: 30px; letter-spacing: .1em; }
+  .ticket .r .n { font-family: "Archivo"; font-stretch: 100%; font-weight: 900; font-size: 76px; line-height: .9; }
+  .live { display: inline-flex; align-items: center; gap: 14px; }
+  .live i { width: 20px; height: 20px; border-radius: 50%; background: #FF4D4D; box-shadow: 0 0 0 8px rgba(255,77,77,.25); display: block; }
+
+  /* 04 tu negocio / tus clientes */
+  .two { display: flex; gap: 26px; }
+  .two .chip.on { border-color: var(--neon); color: var(--neon); }
+
+  /* 06 línea de producción del anuncio (cutaway) */
+  .prod { position: absolute; left: 70px; right: 70px; top: 120px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .rail { display: flex; align-items: center; width: 100%; justify-content: space-between; position: relative; }
+  .rail::before { content: ""; position: absolute; left: 50px; right: 50px; top: 50px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--neon) 78%, rgba(48,94,74,.6) 78%); }
+  .node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; width: 170px; }
+  .node .d { width: 100px; height: 100px; border-radius: 50%; background: var(--bg); border: 6px solid var(--neon); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 26px rgba(197,247,64,.35); }
+  .node .d svg { width: 48px; height: 48px; }
+  .node .t { font-family: "JetBrains Mono"; font-weight: 700; font-size: 26px; letter-spacing: .06em; text-transform: uppercase; color: var(--t2); }
+  .node.next .d { border-style: dashed; border-color: var(--forest); box-shadow: none; }
+  .node.next .t { color: var(--meta); }
+  .phone { width: 470px; aspect-ratio: 9/16; border-radius: 56px; border: 14px solid #111A14; outline: 3px solid rgba(48,94,74,.9); overflow: hidden; position: relative; box-shadow: 0 40px 100px rgba(0,0,0,.7); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .phone .bar { position: absolute; left: 30px; right: 30px; bottom: 30px; height: 12px; border-radius: 6px; background: rgba(255,255,255,.25); }
+  .phone .bar i { display: block; width: 78%; height: 100%; border-radius: 6px; background: var(--neon); }
+
+  /* 07 sin cámaras, sin actores, sin edición manual */
+  .nos { display: flex; gap: 30px; }
+  .no { width: 230px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; position: relative; padding: 0; border-radius: 36px; }
+  .no svg { width: 84px; height: 84px; }
+  .no .t { font-family: "JetBrains Mono"; font-weight: 700; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; color: var(--meta); }
+  .no::after { content: ""; position: absolute; left: 30px; right: 30px; top: 50%; height: 8px; border-radius: 4px; background: #FF5A5A; transform: rotate(-24deg); box-shadow: 0 0 16px rgba(255,90,90,.6); }
+  .no.pend::after { display: none; }
+
+  /* 08 barras de costo (cutaway) */
+  .bars { position: absolute; left: 90px; right: 90px; top: 220px; z-index: 8; padding: 56px 56px 46px; display: flex; flex-direction: column; gap: 46px; }
+  .bar2 .h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+  .bar2 .h b { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 46px; color: var(--white); }
+  .bar2 .h span { font-family: "Archivo"; font-stretch: 112%; font-weight: 900; font-size: 64px; color: var(--meta); }
+  .bar2 .track { height: 70px; border-radius: 20px; background: rgba(48,94,74,.25); overflow: hidden; }
+  .bar2 .track i { display: block; height: 100%; border-radius: 20px; background: #5B6B60; }
+  .bar2.us .h span { color: var(--neon); }
+  .bar2.us .track i { background: var(--neon); box-shadow: 0 0 30px rgba(197,247,64,.6); }
+  .x13 { font-family: "Archivo"; font-stretch: 125%; font-weight: 900; font-size: 210px; color: var(--neon); line-height: .9; text-align: center; }
+  .x13 small { display: block; font-family: "JetBrains Mono"; font-size: 30px; letter-spacing: .12em; color: var(--white); margin-top: 12px; }
+  .src { font-size: 24px; color: var(--meta); line-height: 1.35; text-align: center; }
+
+  /* 09 mazo de anuncios con ganadores (cutaway) */
+  .deck { position: absolute; left: 90px; right: 90px; top: 180px; z-index: 8; display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+  .ad { aspect-ratio: 9/16; border-radius: 18px; background: #0E1A13; border: 2px solid rgba(48,94,74,.8); position: relative; display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono"; font-weight: 700; font-size: 26px; color: rgba(221,218,215,.35); }
+  .ad.w { background: rgba(197,247,64,.14); border: 4px solid var(--neon); color: var(--neon); box-shadow: 0 0 34px rgba(197,247,64,.45); }
+  .ad.w::after { content: "✓"; position: absolute; top: -18px; right: -18px; width: 50px; height: 50px; border-radius: 50%; background: var(--neon); color: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 30px; }
+  .ad.dim { opacity: .35; }
+  .up { position: absolute; left: 0; right: 0; top: 920px; z-index: 9; display: flex; justify-content: center; }
+  .up .chip { border-color: var(--neon); color: var(--neon); }
+
+  /* 10 logo + de por vida */
+  .logo { position: absolute; left: 0; right: 0; top: 470px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .logo .g { mix-blend-mode: screen; }
+  .logo img { width: 740px; display: block; }
+  .glow { position: absolute; left: 50%; top: 640px; width: 900px; height: 600px; transform: translate(-50%,-50%); background: radial-gradient(closest-side, rgba(197,247,64,.22), transparent); z-index: 7; }
+  .forever { font-family: "JetBrains Mono"; font-weight: 700; font-size: 40px; letter-spacing: .14em; color: var(--neon); text-transform: uppercase; }
+
+  /* 11 recibo "incluido" sobre la cabeza */
+  .rec { width: 900px; padding: 30px 44px; display: flex; flex-direction: column; gap: 6px; }
+  .rec .row { display: flex; align-items: center; gap: 24px; padding: 14px 0; border-bottom: 2px dashed rgba(48,94,74,.8); }
+  .rec .row:last-child { border-bottom: 0; }
+  .rec .row b { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 44px; color: var(--white); }
+  .rec .row .ok { margin-left: auto; font-family: "JetBrains Mono"; font-weight: 700; font-size: 26px; letter-spacing: .1em; color: var(--neon); }
+  .rec .row.new { opacity: .55; }
+
+  /* 13 etiqueta de bonus */
+  .bonus { display: flex; align-items: center; gap: 30px; padding: 30px 46px; border-color: var(--neon); box-shadow: 0 0 50px rgba(197,247,64,.25), 0 30px 80px rgba(0,0,0,.55); }
+  .bonus .ic { width: 110px; height: 110px; border-radius: 30px; background: var(--neon); display: flex; align-items: center; justify-content: center; flex: none; }
+  .bonus .ic svg { width: 64px; height: 64px; }
+  .bonus b { display: block; font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 50px; color: var(--white); line-height: 1.05; margin-top: 6px; }
+
+  /* 14 butacas */
+  .seats { padding: 30px 44px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .seats .rowS { display: flex; gap: 14px; }
+  .seats .rowS i { width: 52px; height: 46px; border-radius: 12px 12px 6px 6px; background: rgba(48,94,74,.5); display: block; }
+  .seats .rowS i.f { background: var(--neon); box-shadow: 0 0 14px rgba(197,247,64,.5); }
+
+  /* 15 botón (la única píldora) */
+  .btnw { position: absolute; left: 0; right: 0; top: 1040px; display: flex; justify-content: center; z-index: 14; }
+  .btn { display: inline-flex; align-items: center; gap: 26px; background: var(--neon); color: var(--bg); font-family: "Archivo"; font-stretch: 108%; font-weight: 900; font-size: 58px; padding: 36px 64px; border-radius: 999px;
+    box-shadow: 0 0 0 14px rgba(197,247,64,.2), 0 20px 60px rgba(197,247,64,.45); }
+  .btn svg { width: 56px; height: 56px; }
+  .toplogo { position: absolute; left: 0; right: 0; top: 70px; display: flex; justify-content: center; z-index: 10; }
+  .toplogo .g { mix-blend-mode: screen; background: #000; padding: 6px 30px; border-radius: 22px; }
+  .toplogo img { width: 470px; display: block; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Anuncio 12 · <span>Taller del domingo</span> — «Yo no existo», sin B-rolls</h1>
+  <div class="meta">~50 s · 9:16 · 15 escenas · avatar en cámara ≈ 70 %</div>
+</header>
+
+<div class="board">
+  <!-- 1 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f01.jpg" style="transform: scale(1.12)">
+      <div class="top"><div class="chip"><i></i>100% inteligencia artificial</div></div>
+      <div class="sub">Yo <b>no existo.</b></div>
+    </div></div>
+    <div class="cap"><span><b>01</b> Hook · cara</span><span>0,0 s</span></div>
+    <div class="say">Arranca en el primer fotograma, cerca de la cara. El chip entra con un parpadeo.</div>
+  </div>
+  <!-- 2 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f02.jpg">
+      <div class="top"><div class="glass cost"><div class="v">&lt;$2</div><div class="k"><span class="lbl">Costo de</span><b>este anuncio</b></div></div></div>
+      <div class="sub">Este anuncio costó <b>menos de dos dólares.</b></div>
+    </div></div>
+    <div class="cap"><span><b>02</b> Cara · costo</span><span>1,0 s</span></div>
+    <div class="say">Corte con zoom distinto. El contador sube de $0 y se fija en «&lt;$2».</div>
+  </div>
+  <!-- 3 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f03.jpg">
+      <div class="top"><div class="ticket"><div class="l"><span class="lbl live"><i></i>En vivo</span><b>Taller Avatar Ads</b></div><div class="r"><span class="d">ESTE</span><span class="n">DOM</span></div></div></div>
+      <div class="sub">Y este domingo, <b>en vivo,</b></div>
+    </div></div>
+    <div class="cap"><span><b>03</b> Boleto del taller</span><span>4,1 s</span></div>
+    <div class="say">El boleto baja girando y el talón verde se separa un poco. Sin fecha ni precio.</div>
+  </div>
+  <!-- 4 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f04.jpg" style="transform: scale(1.08)">
+      <div class="top"><div class="two"><div class="chip">Tus anuncios</div><div class="chip on">Tus clientes</div></div></div>
+      <div class="sub">o los de <b>tus clientes.</b></div>
+    </div></div>
+    <div class="cap"><span><b>04</b> Cara · dos usos</span><span>7,9 s</span></div>
+    <div class="say">Dos chips: se enciende cada uno con su palabra.</div>
+  </div>
+  <!-- 5 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f05.jpg" style="transform: scale(1.18)">
+      <div class="sub">Es un taller en vivo <b>de un día.</b></div>
+    </div></div>
+    <div class="cap"><span><b>05</b> Cara · punch-in</span><span>11,0 s</span></div>
+    <div class="say">Solo la cara, golpe de zoom en «un día».</div>
+  </div>
+  <!-- 6 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f06.jpg"><div class="veil"></div>
+      <div class="prod">
+        <div class="rail">
+          <div class="node"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg></div><div class="t">Idea</div></div>
+          <div class="node"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7"/></svg></div><div class="t">Guion</div></div>
+          <div class="node"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="t">Avatar</div></div>
+          <div class="node"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><div class="t">Video</div></div>
+          <div class="node next"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#9F9587" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><div class="t">Edición</div></div>
+        </div>
+        <div class="phone"><img src="assets/ejemplo-serum.jpg"><div class="bar"><i></i></div></div>
+      </div>
+      <div class="sub">de la idea al <b>video editado.</b></div>
+    </div></div>
+    <div class="cap"><span><b>06</b> Línea de producción</span><span>13,0 s</span></div>
+    <div class="say">Cutaway: la línea avanza paso a paso y el teléfono se llena con un anuncio de producto (el sérum de la landing).</div>
+  </div>
+  <!-- 7 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f07.jpg">
+      <div class="top"><div class="nos">
+        <div class="glass no"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span class="t">Cámaras</span></div>
+        <div class="glass no"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span class="t">Actores</span></div>
+        <div class="glass no pend"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 5v5M14 5v5"/></svg><span class="t">Edición</span></div>
+      </div></div>
+      <div class="sub">sin cámaras, <b>sin actores</b></div>
+    </div></div>
+    <div class="cap"><span><b>07</b> Tachados</span><span>18,0 s</span></div>
+    <div class="say">Cada ícono se tacha en rojo con su palabra; «edición» en «editar manualmente».</div>
+  </div>
+  <!-- 8 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f08.jpg"><div class="veil"></div>
+      <div class="glass bars">
+        <div class="lbl">1 anuncio de 30 s</div>
+        <div class="bar2"><div class="h"><b>Otras herramientas</b><span>~$13</span></div><div class="track"><i style="width:100%"></i></div></div>
+        <div class="bar2 us"><div class="h"><b>Avatar Ads</b><span>~$1</span></div><div class="track"><i style="width:8%"></i></div></div>
+        <div class="x13">13×<small>más barato</small></div>
+        <div class="src">Promedio de Wan 2.5, Seedance 2.0 y Seedance 2.5 (precios públicos de API, oct 2026) · Avatar Ads con el plan de pago de Google</div>
+      </div>
+      <div class="sub">hasta <b>trece veces más baratos</b></div>
+    </div></div>
+    <div class="cap"><span><b>08</b> Barras de costo</span><span>23,0 s</span></div>
+    <div class="say">Cutaway: la barra gris se llena, la verde apenas arranca y cae el «13×». Mismos datos de la landing.</div>
+  </div>
+  <!-- 9 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f09.jpg"><div class="veil"></div>
+      <div class="deck">
+        <div class="ad">AD</div><div class="ad">AD</div><div class="ad w">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div>
+        <div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad w">AD</div><div class="ad">AD</div>
+        <div class="ad w">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div>
+        <div class="ad">AD</div><div class="ad">AD</div><div class="ad">AD</div><div class="ad w">AD</div><div class="ad">AD</div><div class="ad">AD</div>
+      </div>
+      <div class="up"><div class="chip"><i></i>Más tests = más ganadores</div></div>
+      <div class="sub">encontrar <b>tus ganadores</b> y escalar.</div>
+    </div></div>
+    <div class="cap"><span><b>09</b> Mazo de anuncios</span><span>27,3 s</span></div>
+    <div class="say">«decenas de ángulos»: caen 24 anuncios en cascada; «ganadores»: se marcan varios (no uno solo).</div>
+  </div>
+  <!-- 10 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f10.jpg"><div class="veil"></div>
+      <div class="glow"></div>
+      <div class="logo"><div class="g"><img src="assets/logo-avatar-ads.webp"></div><div class="forever">∞ De por vida</div></div>
+      <div class="sub">el <b>Sistema Avatar Ads</b> de por vida,</div>
+    </div></div>
+    <div class="cap"><span><b>10</b> Logo</span><span>31,8 s</span></div>
+    <div class="say">«Entras al taller» en cara; el logo aparece en «Sistema Avatar Ads» con un brillo verde.</div>
+  </div>
+  <!-- 11 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f11.jpg">
+      <div class="top"><div class="glass rec">
+        <div class="row"><b>Taller en vivo</b><span class="ok">✓ Incluido</span></div>
+        <div class="row"><b>Sistema de por vida</b><span class="ok">✓ Incluido</span></div>
+        <div class="row"><b>Curso completo</b><span class="ok">✓ Incluido</span></div>
+        <div class="row new"><b>Grabación</b><span class="ok">✓ Incluido</span></div>
+      </div></div>
+      <div class="sub">el curso completo y <b>la grabación.</b></div>
+    </div></div>
+    <div class="cap"><span><b>11</b> Recibo · incluido</span><span>35,0 s</span></div>
+    <div class="say">Vuelve la cara y el recibo se imprime línea por línea sobre la cabeza. Sin precio.</div>
+  </div>
+  <!-- 12 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f12.jpg" style="transform: scale(1.14)">
+      <div class="sub">si quieres vender esto <b>como servicio,</b></div>
+    </div></div>
+    <div class="cap"><span><b>12</b> Cara · punch-in</span><span>38,3 s</span></div>
+    <div class="say">Solo la cara, golpe de zoom en «servicio».</div>
+  </div>
+  <!-- 13 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f13.jpg">
+      <div class="top"><div class="glass bonus"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S10 8 12 8zM12 8c2-4 6-4 6-1.5S14 8 12 8z"/></svg></div><div><span class="lbl n">Bonus · clase en vivo</span><b>Cómo conseguir clientes</b></div></div></div>
+      <div class="sub">cómo conseguir <b>clientes.</b></div>
+    </div></div>
+    <div class="cap"><span><b>13</b> Etiqueta de bonus</span><span>40,9 s</span></div>
+    <div class="say">La etiqueta entra con un pequeño rebote en «clase bonus».</div>
+  </div>
+  <!-- 14 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f14.jpg">
+      <div class="top"><div class="glass seats"><span class="lbl n">Cupo limitado</span>
+        <div class="rowS"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div></div>
+      <div class="sub">Los puestos son <b>limitados.</b></div>
+    </div></div>
+    <div class="cap"><span><b>14</b> Butacas</span><span>45,3 s</span></div>
+    <div class="say">Las butacas se van ocupando. Ilustrativo, sin número de puestos (el anuncio sirve cada semana).</div>
+  </div>
+  <!-- 15 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f15.jpg">
+      <div class="toplogo"><div class="g"><img src="assets/logo-avatar-ads.webp"></div></div>
+      <div class="btnw"><div class="btn">Reservar mi lugar <svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+      <div class="sub">Toca el <b>botón</b> y reserva tu lugar.</div>
+    </div></div>
+    <div class="cap"><span><b>15</b> CTA · botón</span><span>47,3 s</span></div>
+    <div class="say">Logo arriba; el botón entra y rebota en «botón». ~0,8 s de cola.</div>
+  </div>
+</div>
+</body>
+</html>

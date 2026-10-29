@@ -1,0 +1,68 @@
+[
+  {
+    "id": "w0",
+    "text": "Los",
+    "start": 0.32,
+    "end": 0.64
+  },
+  {
+    "id": "w1",
+    "text": "puestos",
+    "start": 0.64,
+    "end": 1.28
+  },
+  {
+    "id": "w2",
+    "text": "son",
+    "start": 1.28,
+    "end": 1.52
+  },
+  {
+    "id": "w3",
+    "text": "limitados.",
+    "start": 1.52,
+    "end": 2.48
+  },
+  {
+    "id": "w4",
+    "text": "Toca",
+    "start": 2.48,
+    "end": 2.96
+  },
+  {
+    "id": "w5",
+    "text": "el",
+    "start": 2.96,
+    "end": 3.04
+  },
+  {
+    "id": "w6",
+    "text": "botón",
+    "start": 3.04,
+    "end": 3.52
+  },
+  {
+    "id": "w7",
+    "text": "y",
+    "start": 3.52,
+    "end": 3.76
+  },
+  {
+    "id": "w8",
+    "text": "reserva",
+    "start": 3.76,
+    "end": 4.32
+  },
+  {
+    "id": "w9",
+    "text": "tu",
+    "start": 4.32,
+    "end": 4.64
+  },
+  {
+    "id": "w10",
+    "text": "lugar.",
+    "start": 4.64,
+    "end": 5.6
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "w0",
+    "text": "Sin",
+    "start": 0.32,
+    "end": 0.56
+  },
+  {
+    "id": "w1",
+    "text": "cámaras,",
+    "start": 0.8,
+    "end": 1.68
+  },
+  {
+    "id": "w2",
+    "text": "sin",
+    "start": 1.68,
+    "end": 2
+  },
+  {
+    "id": "w3",
+    "text": "actores",
+    "start": 2,
+    "end": 2.72
+  },
+  {
+    "id": "w4",
+    "text": "y",
+    "start": 2.88,
+    "end": 3.12
+  },
+  {
+    "id": "w5",
+    "text": "sin",
+    "start": 3.12,
+    "end": 3.36
+  },
+  {
+    "id": "w6",
+    "text": "tener",
+    "start": 3.36,
+    "end": 3.68
+  },
+  {
+    "id": "w7",
+    "text": "que",
+    "start": 3.68,
+    "end": 3.84
+  },
+  {
+    "id": "w8",
+    "text": "editar",
+    "start": 3.84,
+    "end": 4.32
+  },
+  {
+    "id": "w9",
+    "text": "manualmente.",
+    "start": 4.56,
+    "end": 5.68
+  }
+]

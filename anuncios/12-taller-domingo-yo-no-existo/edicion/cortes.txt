@@ -1,0 +1,19 @@
+# clip  inicio  fin   (segundos dentro del clip; unir-clips los ajusta a fotogramas de 24 fps)
+# Ritmo natural (29 oct 2026), medido con medir-voz.mjs: arranque en "Yo" (voz − 0,05); uniones entre clips ≈ 0,45 s
+# (fin = voz + 0,2 · inicio = voz − 0,25); pausas internas > ~0,4 s recortadas a ~0,3 s (la de "Yo no existo. | Este anuncio",
+# 0,78 s, queda en ~0,3 s con cambio de zoom). Clip 08 deja ~0,8 s de cola para el botón.
+1  0.65  1.67
+1  2.15  5.25
+2  0.50  7.40
+3  0.29  2.29
+3  2.55  7.52
+4  0.39  2.83
+4  2.95  5.55
+5  0.66  4.95
+5  5.07  9.64
+6  0.91  7.36
+7  0.39  3.01
+7  3.13  4.99
+7  5.13  7.64
+8  0.46  2.45
+8  2.57  5.70

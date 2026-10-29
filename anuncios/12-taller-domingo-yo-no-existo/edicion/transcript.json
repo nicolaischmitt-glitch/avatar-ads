@@ -1,0 +1,782 @@
+[
+  {
+    "id": "w0",
+    "text": "Yo",
+    "start": 0,
+    "end": 0.24
+  },
+  {
+    "id": "w1",
+    "text": "no",
+    "start": 0.24,
+    "end": 0.4
+  },
+  {
+    "id": "w2",
+    "text": "existo.",
+    "start": 0.4,
+    "end": 1.12
+  },
+  {
+    "id": "w3",
+    "text": "Este",
+    "start": 1.12,
+    "end": 1.36
+  },
+  {
+    "id": "w4",
+    "text": "anuncio",
+    "start": 1.36,
+    "end": 1.92
+  },
+  {
+    "id": "w5",
+    "text": "costó",
+    "start": 1.92,
+    "end": 2.48
+  },
+  {
+    "id": "w6",
+    "text": "menos",
+    "start": 2.48,
+    "end": 2.8
+  },
+  {
+    "id": "w7",
+    "text": "de",
+    "start": 2.88,
+    "end": 3.04
+  },
+  {
+    "id": "w8",
+    "text": "2",
+    "start": 3.04,
+    "end": 3.36
+  },
+  {
+    "id": "w9",
+    "text": "dólares.",
+    "start": 3.36,
+    "end": 4.16
+  },
+  {
+    "id": "w10",
+    "text": "Y",
+    "start": 4.16,
+    "end": 4.4
+  },
+  {
+    "id": "w11",
+    "text": "este",
+    "start": 4.4,
+    "end": 4.64
+  },
+  {
+    "id": "w12",
+    "text": "domingo",
+    "start": 4.64,
+    "end": 5.2
+  },
+  {
+    "id": "w13",
+    "text": "en",
+    "start": 5.36,
+    "end": 5.52
+  },
+  {
+    "id": "w14",
+    "text": "vivo",
+    "start": 5.52,
+    "end": 5.92
+  },
+  {
+    "id": "w15",
+    "text": "te",
+    "start": 6.16,
+    "end": 6.4
+  },
+  {
+    "id": "w16",
+    "text": "enseño",
+    "start": 6.4,
+    "end": 6.96
+  },
+  {
+    "id": "w17",
+    "text": "cómo",
+    "start": 6.96,
+    "end": 7.28
+  },
+  {
+    "id": "w18",
+    "text": "hacerlo",
+    "start": 7.28,
+    "end": 7.84
+  },
+  {
+    "id": "w19",
+    "text": "para",
+    "start": 8.08,
+    "end": 8.32
+  },
+  {
+    "id": "w20",
+    "text": "tus",
+    "start": 8.32,
+    "end": 8.56
+  },
+  {
+    "id": "w21",
+    "text": "propios",
+    "start": 8.56,
+    "end": 8.96
+  },
+  {
+    "id": "w22",
+    "text": "anuncios",
+    "start": 8.96,
+    "end": 9.68
+  },
+  {
+    "id": "w23",
+    "text": "o",
+    "start": 9.68,
+    "end": 9.92
+  },
+  {
+    "id": "w24",
+    "text": "los",
+    "start": 9.92,
+    "end": 10.16
+  },
+  {
+    "id": "w25",
+    "text": "de",
+    "start": 10.16,
+    "end": 10.32
+  },
+  {
+    "id": "w26",
+    "text": "tus",
+    "start": 10.32,
+    "end": 10.48
+  },
+  {
+    "id": "w27",
+    "text": "clientes.",
+    "start": 10.48,
+    "end": 11.12
+  },
+  {
+    "id": "w28",
+    "text": "Es",
+    "start": 11.12,
+    "end": 11.2
+  },
+  {
+    "id": "w29",
+    "text": "un",
+    "start": 11.28,
+    "end": 11.44
+  },
+  {
+    "id": "w30",
+    "text": "taller",
+    "start": 11.44,
+    "end": 11.84
+  },
+  {
+    "id": "w31",
+    "text": "en",
+    "start": 11.84,
+    "end": 12
+  },
+  {
+    "id": "w32",
+    "text": "vivo",
+    "start": 12,
+    "end": 12.32
+  },
+  {
+    "id": "w33",
+    "text": "de",
+    "start": 12.32,
+    "end": 12.48
+  },
+  {
+    "id": "w34",
+    "text": "un",
+    "start": 12.48,
+    "end": 12.64
+  },
+  {
+    "id": "w35",
+    "text": "día.",
+    "start": 12.64,
+    "end": 13.12
+  },
+  {
+    "id": "w36",
+    "text": "Creamos",
+    "start": 13.12,
+    "end": 13.6
+  },
+  {
+    "id": "w37",
+    "text": "un",
+    "start": 13.6,
+    "end": 13.76
+  },
+  {
+    "id": "w38",
+    "text": "anuncio",
+    "start": 13.76,
+    "end": 14.32
+  },
+  {
+    "id": "w39",
+    "text": "completo",
+    "start": 14.32,
+    "end": 14.8
+  },
+  {
+    "id": "w40",
+    "text": "para",
+    "start": 14.8,
+    "end": 15.04
+  },
+  {
+    "id": "w41",
+    "text": "un",
+    "start": 15.04,
+    "end": 15.2
+  },
+  {
+    "id": "w42",
+    "text": "producto,",
+    "start": 15.2,
+    "end": 15.68
+  },
+  {
+    "id": "w43",
+    "text": "de",
+    "start": 15.84,
+    "end": 16.08
+  },
+  {
+    "id": "w44",
+    "text": "la",
+    "start": 16.08,
+    "end": 16.24
+  },
+  {
+    "id": "w45",
+    "text": "idea",
+    "start": 16.24,
+    "end": 16.72
+  },
+  {
+    "id": "w46",
+    "text": "al",
+    "start": 16.72,
+    "end": 16.96
+  },
+  {
+    "id": "w47",
+    "text": "video",
+    "start": 16.96,
+    "end": 17.2
+  },
+  {
+    "id": "w48",
+    "text": "editado.",
+    "start": 17.36,
+    "end": 18.24
+  },
+  {
+    "id": "w49",
+    "text": "Sin",
+    "start": 18.24,
+    "end": 18.48
+  },
+  {
+    "id": "w50",
+    "text": "cámaras,",
+    "start": 18.48,
+    "end": 19.28
+  },
+  {
+    "id": "w51",
+    "text": "sin",
+    "start": 19.28,
+    "end": 19.6
+  },
+  {
+    "id": "w52",
+    "text": "actores",
+    "start": 19.6,
+    "end": 20.24
+  },
+  {
+    "id": "w53",
+    "text": "y",
+    "start": 20.4,
+    "end": 20.64
+  },
+  {
+    "id": "w54",
+    "text": "sin",
+    "start": 20.64,
+    "end": 20.8
+  },
+  {
+    "id": "w55",
+    "text": "tener",
+    "start": 20.8,
+    "end": 21.12
+  },
+  {
+    "id": "w56",
+    "text": "que",
+    "start": 21.12,
+    "end": 21.36
+  },
+  {
+    "id": "w57",
+    "text": "editar",
+    "start": 21.36,
+    "end": 21.84
+  },
+  {
+    "id": "w58",
+    "text": "manualmente.",
+    "start": 22,
+    "end": 23.04
+  },
+  {
+    "id": "w59",
+    "text": "Anuncios",
+    "start": 23.04,
+    "end": 23.52
+  },
+  {
+    "id": "w60",
+    "text": "hiperrealistas,",
+    "start": 23.52,
+    "end": 24.48
+  },
+  {
+    "id": "w61",
+    "text": "hasta",
+    "start": 24.48,
+    "end": 24.8
+  },
+  {
+    "id": "w62",
+    "text": "13",
+    "start": 24.8,
+    "end": 25.12
+  },
+  {
+    "id": "w63",
+    "text": "veces",
+    "start": 25.12,
+    "end": 25.44
+  },
+  {
+    "id": "w64",
+    "text": "más",
+    "start": 25.44,
+    "end": 25.6
+  },
+  {
+    "id": "w65",
+    "text": "baratos",
+    "start": 25.6,
+    "end": 25.92
+  },
+  {
+    "id": "w66",
+    "text": "que",
+    "start": 26,
+    "end": 26.16
+  },
+  {
+    "id": "w67",
+    "text": "con",
+    "start": 26.16,
+    "end": 26.32
+  },
+  {
+    "id": "w68",
+    "text": "otras",
+    "start": 26.32,
+    "end": 26.64
+  },
+  {
+    "id": "w69",
+    "text": "herramientas.",
+    "start": 26.64,
+    "end": 27.36
+  },
+  {
+    "id": "w70",
+    "text": "Eso",
+    "start": 27.36,
+    "end": 27.68
+  },
+  {
+    "id": "w71",
+    "text": "significa",
+    "start": 27.68,
+    "end": 28.16
+  },
+  {
+    "id": "w72",
+    "text": "probar",
+    "start": 28.16,
+    "end": 28.48
+  },
+  {
+    "id": "w73",
+    "text": "decenas",
+    "start": 28.48,
+    "end": 28.96
+  },
+  {
+    "id": "w74",
+    "text": "de",
+    "start": 28.96,
+    "end": 29.04
+  },
+  {
+    "id": "w75",
+    "text": "ángulos,",
+    "start": 29.04,
+    "end": 29.68
+  },
+  {
+    "id": "w76",
+    "text": "encontrar",
+    "start": 29.68,
+    "end": 30.16
+  },
+  {
+    "id": "w77",
+    "text": "tus",
+    "start": 30.16,
+    "end": 30.32
+  },
+  {
+    "id": "w78",
+    "text": "ganadores",
+    "start": 30.32,
+    "end": 30.88
+  },
+  {
+    "id": "w79",
+    "text": "y",
+    "start": 30.96,
+    "end": 31.2
+  },
+  {
+    "id": "w80",
+    "text": "escalar.",
+    "start": 31.2,
+    "end": 31.92
+  },
+  {
+    "id": "w81",
+    "text": "Entras",
+    "start": 31.92,
+    "end": 32.4
+  },
+  {
+    "id": "w82",
+    "text": "al",
+    "start": 32.4,
+    "end": 32.56
+  },
+  {
+    "id": "w83",
+    "text": "taller",
+    "start": 32.56,
+    "end": 32.96
+  },
+  {
+    "id": "w84",
+    "text": "y",
+    "start": 32.96,
+    "end": 33.04
+  },
+  {
+    "id": "w85",
+    "text": "te",
+    "start": 33.04,
+    "end": 33.12
+  },
+  {
+    "id": "w86",
+    "text": "quedas",
+    "start": 33.12,
+    "end": 33.44
+  },
+  {
+    "id": "w87",
+    "text": "con",
+    "start": 33.44,
+    "end": 33.52
+  },
+  {
+    "id": "w88",
+    "text": "el",
+    "start": 33.52,
+    "end": 33.6
+  },
+  {
+    "id": "w89",
+    "text": "sistema",
+    "start": 33.6,
+    "end": 33.84
+  },
+  {
+    "id": "w90",
+    "text": "Avatar",
+    "start": 34,
+    "end": 34.56
+  },
+  {
+    "id": "w91",
+    "text": "de",
+    "start": 34.88,
+    "end": 35.04
+  },
+  {
+    "id": "w92",
+    "text": "por",
+    "start": 35.04,
+    "end": 35.2
+  },
+  {
+    "id": "w93",
+    "text": "vida,",
+    "start": 35.2,
+    "end": 35.84
+  },
+  {
+    "id": "w94",
+    "text": "el",
+    "start": 35.84,
+    "end": 36
+  },
+  {
+    "id": "w95",
+    "text": "curso",
+    "start": 36,
+    "end": 36.48
+  },
+  {
+    "id": "w96",
+    "text": "completo",
+    "start": 36.48,
+    "end": 37.04
+  },
+  {
+    "id": "w97",
+    "text": "y",
+    "start": 37.04,
+    "end": 37.12
+  },
+  {
+    "id": "w98",
+    "text": "la",
+    "start": 37.28,
+    "end": 37.44
+  },
+  {
+    "id": "w99",
+    "text": "grabación.",
+    "start": 37.44,
+    "end": 38.4
+  },
+  {
+    "id": "w100",
+    "text": "Y",
+    "start": 38.4,
+    "end": 38.56
+  },
+  {
+    "id": "w101",
+    "text": "si",
+    "start": 38.56,
+    "end": 38.72
+  },
+  {
+    "id": "w102",
+    "text": "quieres",
+    "start": 38.72,
+    "end": 39.04
+  },
+  {
+    "id": "w103",
+    "text": "vender",
+    "start": 39.04,
+    "end": 39.52
+  },
+  {
+    "id": "w104",
+    "text": "esto",
+    "start": 39.52,
+    "end": 39.76
+  },
+  {
+    "id": "w105",
+    "text": "como",
+    "start": 39.92,
+    "end": 40.24
+  },
+  {
+    "id": "w106",
+    "text": "servicio,",
+    "start": 40.24,
+    "end": 40.88
+  },
+  {
+    "id": "w107",
+    "text": "hay",
+    "start": 40.88,
+    "end": 41.12
+  },
+  {
+    "id": "w108",
+    "text": "una",
+    "start": 41.12,
+    "end": 41.28
+  },
+  {
+    "id": "w109",
+    "text": "clase",
+    "start": 41.28,
+    "end": 41.68
+  },
+  {
+    "id": "w110",
+    "text": "bonus",
+    "start": 41.68,
+    "end": 42.16
+  },
+  {
+    "id": "w111",
+    "text": "en",
+    "start": 42.16,
+    "end": 42.32
+  },
+  {
+    "id": "w112",
+    "text": "vivo,",
+    "start": 42.32,
+    "end": 42.88
+  },
+  {
+    "id": "w113",
+    "text": "donde",
+    "start": 42.88,
+    "end": 43.2
+  },
+  {
+    "id": "w114",
+    "text": "te",
+    "start": 43.2,
+    "end": 43.36
+  },
+  {
+    "id": "w115",
+    "text": "enseño",
+    "start": 43.36,
+    "end": 43.92
+  },
+  {
+    "id": "w116",
+    "text": "cómo",
+    "start": 43.92,
+    "end": 44.16
+  },
+  {
+    "id": "w117",
+    "text": "conseguir",
+    "start": 44.16,
+    "end": 44.72
+  },
+  {
+    "id": "w118",
+    "text": "clientes.",
+    "start": 44.72,
+    "end": 45.44
+  },
+  {
+    "id": "w119",
+    "text": "Los",
+    "start": 45.44,
+    "end": 45.6
+  },
+  {
+    "id": "w120",
+    "text": "puestos",
+    "start": 45.6,
+    "end": 46.16
+  },
+  {
+    "id": "w121",
+    "text": "son",
+    "start": 46.16,
+    "end": 46.32
+  },
+  {
+    "id": "w122",
+    "text": "limitados.",
+    "start": 46.32,
+    "end": 47.04
+  },
+  {
+    "id": "w123",
+    "text": "Toca",
+    "start": 47.2,
+    "end": 47.68
+  },
+  {
+    "id": "w124",
+    "text": "el",
+    "start": 47.68,
+    "end": 47.76
+  },
+  {
+    "id": "w125",
+    "text": "botón",
+    "start": 47.76,
+    "end": 48.24
+  },
+  {
+    "id": "w126",
+    "text": "y",
+    "start": 48.24,
+    "end": 48.4
+  },
+  {
+    "id": "w127",
+    "text": "reserva",
+    "start": 48.4,
+    "end": 49.04
+  },
+  {
+    "id": "w128",
+    "text": "tu",
+    "start": 49.04,
+    "end": 49.28
+  },
+  {
+    "id": "w129",
+    "text": "lugar.",
+    "start": 49.28,
+    "end": 50.24
+  }
+]

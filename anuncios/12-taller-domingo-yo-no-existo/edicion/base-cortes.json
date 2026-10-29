@@ -1,0 +1,137 @@
+[
+  {
+    "clip": 1,
+    "a": 0.6667,
+    "b": 1.6667,
+    "frameStart": 0,
+    "frames": 24,
+    "start": 0,
+    "end": 1
+  },
+  {
+    "clip": 1,
+    "a": 2.1667,
+    "b": 5.25,
+    "frameStart": 24,
+    "frames": 74,
+    "start": 1,
+    "end": 4.0833
+  },
+  {
+    "clip": 2,
+    "a": 0.5,
+    "b": 7.4167,
+    "frameStart": 98,
+    "frames": 166,
+    "start": 4.0833,
+    "end": 11
+  },
+  {
+    "clip": 3,
+    "a": 0.2917,
+    "b": 2.2917,
+    "frameStart": 264,
+    "frames": 48,
+    "start": 11,
+    "end": 13
+  },
+  {
+    "clip": 3,
+    "a": 2.5417,
+    "b": 7.5,
+    "frameStart": 312,
+    "frames": 119,
+    "start": 13,
+    "end": 17.9583
+  },
+  {
+    "clip": 4,
+    "a": 0.375,
+    "b": 2.8333,
+    "frameStart": 431,
+    "frames": 59,
+    "start": 17.9583,
+    "end": 20.4167
+  },
+  {
+    "clip": 4,
+    "a": 2.9583,
+    "b": 5.5417,
+    "frameStart": 490,
+    "frames": 62,
+    "start": 20.4167,
+    "end": 23
+  },
+  {
+    "clip": 5,
+    "a": 0.6667,
+    "b": 4.9583,
+    "frameStart": 552,
+    "frames": 103,
+    "start": 23,
+    "end": 27.2917
+  },
+  {
+    "clip": 5,
+    "a": 5.0833,
+    "b": 9.625,
+    "frameStart": 655,
+    "frames": 109,
+    "start": 27.2917,
+    "end": 31.8333
+  },
+  {
+    "clip": 6,
+    "a": 0.9167,
+    "b": 7.375,
+    "frameStart": 764,
+    "frames": 155,
+    "start": 31.8333,
+    "end": 38.2917
+  },
+  {
+    "clip": 7,
+    "a": 0.375,
+    "b": 3,
+    "frameStart": 919,
+    "frames": 63,
+    "start": 38.2917,
+    "end": 40.9167
+  },
+  {
+    "clip": 7,
+    "a": 3.125,
+    "b": 5,
+    "frameStart": 982,
+    "frames": 45,
+    "start": 40.9167,
+    "end": 42.7917
+  },
+  {
+    "clip": 7,
+    "a": 5.125,
+    "b": 7.625,
+    "frameStart": 1027,
+    "frames": 60,
+    "start": 42.7917,
+    "end": 45.2917
+  },
+  {
+    "clip": 8,
+    "a": 0.4583,
+    "b": 2.4583,
+    "frameStart": 1087,
+    "frames": 48,
+    "start": 45.2917,
+    "end": 47.2917
+  },
+  {
+    "clip": 8,
+    "a": 2.5833,
+    "b": 5.7083,
+    "frameStart": 1135,
+    "frames": 75,
+    "start": 47.2917,
+    "end": 50.4167
+  }
+]
