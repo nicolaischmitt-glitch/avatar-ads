@@ -43,6 +43,10 @@
     font-family: "JetBrains Mono"; font-weight: 700; font-size: 34px; letter-spacing: .1em; color: var(--white); text-transform: uppercase; }
   .chip i { width: 18px; height: 18px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 18px var(--neon); display: block; }
 
+  /* 01 flecha que lo señala (al lado de la cara, nunca encima) */
+  .arrow { position: absolute; z-index: 12; left: 640px; top: 300px; width: 400px; height: 440px; filter: drop-shadow(0 0 18px rgba(197,247,64,.7)) drop-shadow(0 6px 16px rgba(0,0,0,.6)); }
+  .vid-tag { position: absolute; left: 50%; bottom: 70px; transform: translateX(-50%); padding: 10px 22px; border-radius: 16px; background: rgba(2,6,4,.8); font-family: "JetBrains Mono"; font-weight: 700; font-size: 24px; letter-spacing: .08em; color: var(--neon); white-space: nowrap; }
+
   /* 02 costo de este anuncio (tarjeta pequeña sobre la cabeza) */
   .cost { padding: 30px 46px; display: flex; align-items: center; gap: 34px; }
   .cost .v { font-family: "Archivo"; font-stretch: 115%; font-weight: 900; font-size: 110px; color: var(--neon); line-height: 1; }
@@ -151,7 +155,7 @@
 <body>
 <header>
   <h1>Anuncio 12 · <span>Taller del domingo</span> — «Yo no existo», sin B-rolls</h1>
-  <div class="meta">~50 s · 9:16 · 15 escenas · avatar en cámara ≈ 70 %</div>
+  <div class="meta">~50 s · 9:16 · 15 escenas · avatar en cámara ≈ 84 % · cutaways de 2–3 s</div>
 </header>
 
 <div class="board">
@@ -160,10 +164,11 @@
     <div class="mini"><div class="stage">
       <img class="face" src="frames/f01.jpg" style="transform: scale(1.12)">
       <div class="top"><div class="chip"><i></i>100% inteligencia artificial</div></div>
+      <svg class="arrow" viewBox="0 0 400 440" fill="none" stroke="#C5F740" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><path d="M360 30 C 360 230, 260 330, 90 360"/><path d="M170 280 L 80 362 L 180 420"/></svg>
       <div class="sub">Yo <b>no existo.</b></div>
     </div></div>
-    <div class="cap"><span><b>01</b> Hook · cara</span><span>0,0 s</span></div>
-    <div class="say">Arranca en el primer fotograma, cerca de la cara. El chip entra con un parpadeo.</div>
+    <div class="cap"><span><b>01</b> Hook · cara + flecha</span><span>0,0 s</span></div>
+    <div class="say">Arranca en el primer fotograma. En «Yo» la flecha se dibuja hacia él con un «swoosh» y un golpe al llegar; el chip se mantiene.</div>
   </div>
   <!-- 2 -->
   <div class="shot">
@@ -216,12 +221,12 @@
           <div class="node"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><div class="t">Video</div></div>
           <div class="node next"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#9F9587" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><div class="t">Edición</div></div>
         </div>
-        <div class="phone"><img src="assets/ejemplo-serum.jpg"><div class="bar"><i></i></div></div>
+        <div class="phone"><img src="assets/serum-video.jpg"><div class="vid-tag">▶ VIDEO · SIN SONIDO</div></div>
       </div>
       <div class="sub">de la idea al <b>video editado.</b></div>
     </div></div>
-    <div class="cap"><span><b>06</b> Línea de producción</span><span>13,0 s</span></div>
-    <div class="say">Cutaway: la línea avanza paso a paso y el teléfono se llena con un anuncio de producto (el sérum de la landing).</div>
+    <div class="cap"><span><b>06</b> Línea de producción</span><span>14,8 – 18,0 s</span></div>
+    <div class="say">Cutaway de ~3 s desde «para un producto»: la línea avanza y en el teléfono corre el video del sérum de la landing, sin sonido.</div>
   </div>
   <!-- 7 -->
   <div class="shot">
@@ -250,8 +255,8 @@
       </div>
       <div class="sub">hasta <b>trece veces más baratos</b></div>
     </div></div>
-    <div class="cap"><span><b>08</b> Barras de costo</span><span>23,0 s</span></div>
-    <div class="say">Cutaway: la barra gris se llena, la verde apenas arranca y cae el «13×». Mismos datos de la landing.</div>
+    <div class="cap"><span><b>08</b> Barras de costo</span><span>24,4 – 26,6 s</span></div>
+    <div class="say">Solo ~2 s, en «hasta trece veces más baratos»; «Anuncios hiperrealistas» y «que con otras herramientas» van en cara.</div>
   </div>
   <!-- 9 -->
   <div class="shot">
@@ -266,19 +271,17 @@
       <div class="up"><div class="chip"><i></i>Más tests = más ganadores</div></div>
       <div class="sub">encontrar <b>tus ganadores</b> y escalar.</div>
     </div></div>
-    <div class="cap"><span><b>09</b> Mazo de anuncios</span><span>27,3 s</span></div>
-    <div class="say">«decenas de ángulos»: caen 24 anuncios en cascada; «ganadores»: se marcan varios (no uno solo).</div>
+    <div class="cap"><span><b>09</b> Mazo de anuncios</span><span>28,1 – 30,9 s</span></div>
+    <div class="say">~2,8 s: «probar decenas de ángulos» caen los anuncios; «ganadores», se marcan varios. «Eso significa» y «y escalar» en cara.</div>
   </div>
   <!-- 10 -->
   <div class="shot">
     <div class="mini"><div class="stage">
-      <img class="face blur" src="frames/f10.jpg"><div class="veil"></div>
-      <div class="glow"></div>
-      <div class="logo"><div class="g"><img src="assets/logo-avatar-ads.webp"></div><div class="forever">∞ De por vida</div></div>
+      <img class="face" src="frames/f10.jpg" style="transform: scale(1.12)">
       <div class="sub">el <b>Sistema Avatar Ads</b> de por vida,</div>
     </div></div>
-    <div class="cap"><span><b>10</b> Logo</span><span>31,8 s</span></div>
-    <div class="say">«Entras al taller» en cara; el logo aparece en «Sistema Avatar Ads» con un brillo verde.</div>
+    <div class="cap"><span><b>10</b> Cara · punch-in</span><span>31,8 s</span></div>
+    <div class="say">Sin logo: él hablando, golpe de zoom en «Sistema Avatar Ads».</div>
   </div>
   <!-- 11 -->
   <div class="shot">
