@@ -28,7 +28,10 @@ Avatar Ads 1.0/
 │   │   ├── 05-testea-mas-voz-en-off/ ← solo guion
 │   │   └── 12-taller-domingo-yo-no-existo/ ← anuncio pagado del taller semanal (29 oct 2026): «Yo no existo», avatar del VSL 09, formato D sin B-rolls,
 │   │                        "este domingo" sin fecha ni precio (sirve cada semana) · final/anuncio-12-taller-domingo-yo-no-existo.mp4 (50 s, con la música bgm_004 del VSL; también -sin-musica.mp4)
-│   └── imagenes/        ← anuncios estáticos (imagen): 10-estatico-puertas-precio/ · 11-estatico-camino-proceso/ (imagen.html → render.mjs → final/*.png)
+│   └── imagenes/        ← anuncios estáticos (imagen), skill `estaticos-avatar-ads`: 10-estatico-puertas-precio/ · 11-estatico-camino-proceso/ (imagen.html → render.mjs → final/*.png)
+│                        13-estatico-ninguna-existe/ (mosaico; aprobada la de 6: final/ninguna-existe-6.png) · 14-estatico-13-veces-mas-barato/ (se pauta la de ~$13 por 30 s:
+│                        final/13-veces-mas-barato-30s.png; sin sufijo = ~$26 por 1 minuto) · 15-estatico-real-o-ia/ (encuesta)
+│                        → evergreen del taller (29 oct 2026), fondo blanco con fotos; _frames/ = banco de frames de nuestros avatares (README.md con encuadres)
 ├── videos-landing/      ← videos hechos para la landing (ejemplos del carrusel y VSL del hero). Una carpeta por video: NN-slug/. Lo que se publica es la versión comprimida en landing/videos/
 │   ├── 02-labial-auto/  ← avatar en el auto con labial: 5 clips → subtítulos blancos + zooms
 │   │   ├── clips/       ← clip 1–5 originales (traen un botón "<" que la edición borra con delogo)
@@ -65,6 +68,7 @@ Avatar Ads 1.0/
 │   │                               formatos/head-talking/ = reglas + plantilla de edición del formato D (anuncio head talking de una toma + B-rolls)
 │   ├── lead-magnets-avatar-ads/ ← skill del sistema de lead magnets (promesa del reel → PDF → DM → landing)
 │   ├── carruseles-avatar-ads/   ← skill del sistema de carruseles (guion → diseño HTML → PNG → caption)
+│   ├── estaticos-avatar-ads/    ← skill de anuncios estáticos (brief → formato + copy → plantilla HTML → PNG feed + historia → checklist)
 │   ├── copy-avatar-ads/         ← skill copywriter (brief → ángulo → 2–3 opciones → checklist → banco-aprobado.md)
 │   └── paginas-de-venta/        ← skill de landing pages y páginas de venta: reglas del usuario (inicio, secciones, oferta, valores, FAQ, proceso)
 │                             (.claude/skills/<skill> son solo enlaces a estas carpetas; no borrarlos)
@@ -87,7 +91,7 @@ La versión limpia sin franja se puede rehacer con `anuncios/videos/01-avatar-ad
 - Implicación para el kit: guardar cada anuncio por piezas intercambiables (hook, guion, avatar, B-rolls, edición) para poder variarlo; un próximo paso natural es un módulo de variaciones ("este es mi ganador, dame 3 versiones cambiando X").
 
 ## Misión actual
-Objetivo del negocio: hacer crecer Avatar Ads 1.0 vendiéndolo con **talleres en vivo semanales de $37** (mecanismo de marketing; cada taller da acceso al programa). El primero es el sábado 31 de octubre de 2026 (proceso completo para crear anuncios UGC hiperrealistas); después, un taller cada semana.
+Objetivo del negocio: hacer crecer Avatar Ads 1.0 vendiéndolo con **talleres en vivo semanales de $27** (mecanismo de marketing; cada taller da acceso al programa). El primero es el sábado 31 de octubre de 2026 (proceso completo para crear anuncios UGC hiperrealistas); después, un taller cada semana.
 
 1. **Sistema de creación de videos hiperrealistas**: el mejor sistema posible, lo más sistematizado posible, para contenido orgánico (reels) y anuncios: guion → prompts para Google Flow → generación → edición profesional. Se refina en paralelo a los talleres. Base actual: skill `skills/reels-avatar-ads/` + master prompt. Contenido orgánico complementario: carruseles (skill `carruseles-avatar-ads`), también con CTA a lead magnet.
 2. **Contenido del programa Avatar Ads**: módulos, clases, sistemas, herramientas, materiales y recursos del programa, más el contenido del taller del 26 de oct y de los siguientes talleres semanales.
@@ -109,10 +113,21 @@ Estética premium, cinematográfica, tecnológica y minimalista; todo oscuro, br
 - **Fechas (cambio del 28 oct 2026):** taller en vivo el **domingo 1 de noviembre de 2026 a las 10:00 a.m.** + clase bonus el **lunes 2 de noviembre a las 7:00 p.m.**, hora de Ecuador (UTC-5). Actualizado en la landing (hero, sección del taller, oferta, FAQ, cierre, barra del celular, cuenta regresiva), la página de gracias y el `.ics`. Si en otro lugar de este documento dice "sáb 31" / "dom 1 nov", manda esta línea. Antes: sábado 31 de octubre + bonus el domingo 1, ambas a las 10:00 a.m. (decidido el 27 oct 2026 (antes: lunes 26 + bonus martes 27 a las 7 p.m.; y antes aún, 2 días + bonus el miércoles 28).
 - **Dinámica:** los alumnos observan; el usuario crea en vivo **1 anuncio** con el Sistema Avatar Ads, para un **producto** ficticio (decisión del 29 oct 2026, por eficiencia; antes eran 2: producto digital + servicio). Será un producto físico, como el sérum del anuncio 08, pero en el copy se dice solo "un producto". Método "programa de cocina": los clips de Flow se generan antes; en vivo se hace brief → guion → storyboard → prompts → un clip de muestra → edición. Después, cada alumno lo implementa solo con la grabación, los tutoriales, la guía de instalación y el grupo de WhatsApp. El taller probablemente se da desde una Mac (por confirmar).
 - **Modalidad:** online, clases en vivo
-- **Cupo:** **15 puestos** (vuelve el 28 oct 2026, pedido del usuario; del 20 al 28 oct fue sin límite). Reservados al 28 oct: 4 → quedan 11. En la landing se muestra en 4 lugares (línea bajo el botón del hero, sección del taller con gráfico de 15 puestos, oferta con dato + gráfico, barra del celular); el número sale de una sola constante: `const PUESTOS = { total: 15, reservados: 4 }` en el script de `landing/index.html` → cambiar `reservados` con cada venta y publicar. Al llegar a 15, cerrar las ventas en Hotmart. FAQ "¿Por qué solo 15 puestos?" pendiente: el usuario no ha dado el motivo.
+- **Cupo:** **15 puestos** (vuelve el 28 oct 2026, pedido del usuario; del 20 al 28 oct fue sin límite). Reservados al 29 oct: 5 → quedan 10 (28 oct: 4 → 11). En la landing se muestra en 4 lugares (línea bajo el botón del hero, sección del taller con gráfico de 15 puestos, oferta con dato + gráfico, barra del celular); el número sale de una sola constante: `const PUESTOS = { total: 15, reservados: 4 }` en el script de `landing/index.html` → cambiar `reservados` con cada venta y publicar. Al llegar a 15, cerrar las ventas en Hotmart. FAQ "¿Por qué solo 15 puestos?" pendiente: el usuario no ha dado el motivo.
 - **Inversión:** $27, pago único (sin cupones ni descuentos)
 - **Precio futuro:** incrementará en próximas ediciones (aún sin cifra). Quien entra en la apertura conserva acceso vitalicio + todas las futuras actualizaciones.
 - **Ángulo diferencial:** "sistema económico" — anuncios de alta calidad sin depender de herramientas costosas (p. ej. Seedance).
+- **Valores tachados = offer stack (aclaración del usuario, 29 oct 2026):** los "Valor $X" de cada componente son solo anclas para elevar la percepción de valor, no precios reales. El único precio real hoy es **$27 por todo** (taller, curso, sistema y soporte). No usarlos como precios en ningún análisis ni copy fuera del offer stack.
+
+## Oferta de los próximos talleres (decisión del 29 oct 2026, en construcción)
+Motivo: por $27 se entregaba todo (taller + sistema + curso + soporte) y el funnel terminaba en el checkout. Lo que ya compraron la apertura se respeta tal cual (todo de por vida). Esto aplica a los talleres siguientes, hasta fin de año.
+- **Funnel hasta fin de año:** el taller en vivo es la puerta de entrada (primer paso). Al final del taller se ofrece el **Sistema Avatar Ads + curso + soporte** por **$97 o más** (cifra exacta por definir).
+- **Precio del taller:** entre **$9 y $15** (aún sin fijar; no publicar una cifra).
+- **Incluye el taller:** taller en vivo + **grabación ilimitada** (no por unos días) + archivo de **prompts básicos**. Nada más.
+- **Sin segundo día (desde el próximo taller; el de apertura mantiene su clase bonus en vivo del lun 2 nov):** ya no hay clase bonus en vivo sobre cómo vender estos anuncios como servicio. Se reemplaza por una **clase pregrabada de ~30 min** con todo el proceso para vender estos anuncios a negocios, como **order bump o upsell en el checkout de Hotmart** (precio por definir).
+- **Pendiente (no urgente):** duración de la oferta de $97 después del taller y el bono que solo tiene quien compra en esa ventana. Claude lo propone cuando se arme el próximo taller.
+- **Desde enero 2027:** sin talleres en vivo; se vende curso + sistema como un solo paquete a **$97**, directo con anuncios a una página de ventas (base: `landing-versiones/sistema-curso/`).
+- Reemplaza la idea anterior de "talleres semanales de $37".
 
 ## Público
 1. Emprendedores y anunciantes que quieren producir creatividades para probar, optimizar y escalar campañas.
@@ -162,6 +177,7 @@ Sitio en **GitHub Pages** (desde el 21 oct 2026; antes Netlify, que pausó las p
   `mklink /J ".claude\skills\reels-avatar-ads" "skills\reels-avatar-ads"` ·
   `mklink /J ".claude\skills\lead-magnets-avatar-ads" "skills\lead-magnets-avatar-ads"` ·
   `mklink /J ".claude\skills\carruseles-avatar-ads" "skills\carruseles-avatar-ads"` ·
+  `mklink /J ".claude\skills\estaticos-avatar-ads" "skills\estaticos-avatar-ads"` ·
   `mklink /J ".claude\skills\copy-avatar-ads" "skills\copy-avatar-ads"` ·
   `mklink /J ".claude\skills\paginas-de-venta" "skills\paginas-de-venta"`
   Landing: instalar GitHub CLI (`winget install GitHub.cli`), `gh auth login --web` y publicar con `node publicar-landing.mjs` (crea `.deploy-landing/` solo).

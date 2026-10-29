@@ -427,7 +427,7 @@ fbq('track', 'PageView');
       <a class="btn" href="#taller">Ver el taller
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
-      <p class="hero-date"><i></i>Taller en vivo · domingo 1 de noviembre<span class="hero-seats">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</span></p>
+      <p class="hero-date"><i></i>Taller en vivo · domingo 1 de noviembre<span class="hero-seats">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</span></p>
     </div>
   </div>
 </header>
@@ -693,7 +693,7 @@ fbq('track', 'PageView');
           <div><b data-u="s">00</b><span>seg</span></div>
         </div>
     <p class="cd-label">para el inicio del taller en vivo</p>
-    <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</p></div>
+    <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</p></div>
   </div>
 </section>
 
@@ -757,9 +757,9 @@ fbq('track', 'PageView');
           <li><span>Bono en vivo</span><b>Lun 2 nov · 7:00 p.m.</b></li>
           <li><span>Horario</span><b>Hora de Ecuador</b></li>
           <li><span>Modalidad</span><b>Online, en vivo</b></li>
-          <li><span>Puestos</span><b><span data-libres>11</span> de <span data-total>15</span> disponibles</b></li>
+          <li><span>Puestos</span><b><span data-libres>10</span> de <span data-total>15</span> disponibles</b></li>
         </ul>
-        <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>11</b> de <span data-total>15</span> puestos</p></div>
+        <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</p></div>
         <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero entrar al taller · $27
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
@@ -828,7 +828,7 @@ fbq('track', 'PageView');
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>Taller en vivo</b>quedan <span data-libres>11</span> puestos · <span class="cd-text" data-cd-text>dom 1 nov</span></div>
+    <div class="p"><b>Taller en vivo</b>quedan <span data-libres>10</span> puestos · <span class="cd-text" data-cd-text>dom 1 nov</span></div>
     <a class="btn" href="#taller">Ver el taller</a>
   </div>
 </div>
@@ -841,7 +841,7 @@ fbq('track', 'PageView');
 
 <script>
   // Puestos del taller: actualizar "reservados" a mano con cada venta (y cerrar ventas en Hotmart al llegar a 15)
-  const PUESTOS = { total: 15, reservados: 4 };
+  const PUESTOS = { total: 15, reservados: 5 };
   const libres = Math.max(0, PUESTOS.total - PUESTOS.reservados);
   document.querySelectorAll("[data-libres]").forEach((e) => e.textContent = libres);
   document.querySelectorAll("[data-total]").forEach((e) => e.textContent = PUESTOS.total);
