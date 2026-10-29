@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+      @font-face { font-family: "Mono"; src: url("fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      :root { --bg: #020604; --card: #090F0B; --neon: #C5F740; --white: #F8F8F8; --t2: #DDDAD7; --meta: #9F9587; --forest: #305E4A; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: "Inter", sans-serif; color: var(--t2); }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #video-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 33%; }
+      #zoom video { width: 100%; height: 100%; object-fit: cover; }
+      .g { position: absolute; z-index: 10; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      .center { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+      .lbl { font-family: "Mono"; font-weight: 500; font-size: 30px; letter-spacing: .12em; text-transform: uppercase; color: var(--meta); }
+      .lbl.n { color: var(--neon); }
+      .glass { background: rgba(9,15,11,.88); border: 3px solid rgba(48,94,74,.9); border-radius: 44px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+      .chip { display: inline-flex; align-items: center; gap: 22px; padding: 22px 38px; border-radius: 26px; background: rgba(2,6,4,.82); border: 3px solid rgba(48,94,74,.9);
+        font-family: "Mono"; font-size: 34px; letter-spacing: .1em; color: var(--white); text-transform: uppercase; }
+      .chip i { width: 18px; height: 18px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 18px var(--neon); display: block; }
+      /* subtítulo: sin caja, blanco con sombra; palabra clave en neón (altura del pecho, fuera del 20 % inferior) */
+      .sub { position: absolute; z-index: 20; left: 60px; right: 60px; top: 1230px; display: flex; justify-content: center; pointer-events: none; }
+      .sub span { display: block; text-align: center; font-family: "Archivo"; font-weight: 800; font-size: 70px; line-height: 1.1; color: #fff; letter-spacing: -0.5px;
+        text-shadow: 0 4px 18px rgba(0,0,0,.8), 0 0 3px rgba(0,0,0,.9); }
+      .sub b { color: var(--neon); font-weight: 800; }
+      /* cutaway: fondo desenfocado del propio video */
+      .full { position: absolute; z-index: 8; inset: 0; overflow: hidden; background: var(--bg); }
+      .full .bg { position: absolute; inset: -80px; width: calc(100% + 160px); height: calc(100% + 160px); object-fit: cover; filter: blur(30px) saturate(.7) brightness(.8); }
+      .full .veil { position: absolute; inset: 0; background: linear-gradient(rgba(2,6,4,.78), rgba(2,6,4,.9)); }
+      /* 01 · flecha (al lado de la cabeza, nunca encima) */
+      #arrow { position: absolute; left: 650px; top: 300px; width: 380px; height: 420px; overflow: visible; filter: drop-shadow(0 0 18px rgba(197,247,64,.7)) drop-shadow(0 6px 16px rgba(0,0,0,.6)); }
+      /* 02 · costo */
+      .cost { padding: 30px 46px; display: flex; align-items: center; gap: 34px; }
+      .cost .v { font-family: "Archivo"; font-weight: 800; font-size: 110px; color: var(--neon); line-height: 1; white-space: nowrap; }
+      .cost .k { display: flex; flex-direction: column; gap: 8px; }
+      .cost .k b { font-family: "Archivo"; font-weight: 800; font-size: 40px; color: var(--white); }
+      /* 03 · boleto */
+      .ticket { display: flex; width: 900px; height: 230px; border-radius: 34px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+      .ticket .l { flex: 1; background: rgba(9,15,11,.92); border: 3px solid rgba(48,94,74,.9); border-right: 0; border-radius: 34px 0 0 34px; padding: 34px 46px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+      .ticket .l b { font-family: "Archivo"; font-weight: 800; font-size: 64px; color: var(--white); line-height: 1; }
+      .ticket .r { width: 270px; background: var(--neon); border-radius: 0 34px 34px 0; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-family: "Mono"; color: var(--bg); }
+      .ticket .r::before { content: ""; position: absolute; left: -2px; top: 18px; bottom: 18px; border-left: 6px dotted var(--bg); }
+      .ticket .r .d { font-size: 30px; letter-spacing: .1em; }
+      .ticket .r .n { font-family: "Archivo"; font-weight: 800; font-size: 76px; line-height: .9; }
+      .live { display: inline-flex; align-items: center; gap: 14px; }
+      .live i { width: 20px; height: 20px; border-radius: 50%; background: #FF4D4D; box-shadow: 0 0 0 8px rgba(255,77,77,.25); display: block; }
+      /* 04 · dos usos */
+      .two { display: flex; gap: 26px; }
+      .two .chip { opacity: .45; }
+      /* 06 · línea de producción + teléfono con el video del sérum */
+      .rail { position: absolute; left: 80px; right: 80px; top: 120px; display: flex; justify-content: space-between; }
+      .rline { position: absolute; left: 85px; right: 85px; top: 47px; height: 6px; border-radius: 3px; background: rgba(48,94,74,.6); overflow: hidden; }
+      .rline i { position: absolute; inset: 0; background: var(--neon); transform-origin: 0 50%; transform: scaleX(0); }
+      .node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; width: 170px; opacity: .4; }
+      .node .d { width: 100px; height: 100px; border-radius: 50%; background: var(--bg); border: 6px solid var(--neon); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 26px rgba(197,247,64,.35); }
+      .node .d svg { width: 48px; height: 48px; }
+      .node .t { font-family: "Mono"; font-size: 26px; letter-spacing: .06em; text-transform: uppercase; color: var(--t2); }
+      .phone { position: absolute; left: 305px; top: 340px; width: 470px; height: 836px; border-radius: 56px; border: 14px solid #111A14; outline: 3px solid rgba(48,94,74,.9); background: #000; box-shadow: 0 40px 100px rgba(0,0,0,.7); }
+      #serum { position: absolute; z-index: 9; left: 319px; top: 354px; width: 442px; height: 808px; object-fit: cover; border-radius: 42px; }
+      /* 07 · tachados */
+      .nos { display: flex; gap: 30px; }
+      .no { width: 230px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; position: relative; border-radius: 36px; }
+      .no svg { width: 84px; height: 84px; }
+      .no .t { font-family: "Mono"; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; color: var(--meta); }
+      .no .x { position: absolute; left: 30px; right: 30px; top: 50%; height: 8px; border-radius: 4px; background: #FF5A5A; transform: rotate(-24deg) scaleX(0); box-shadow: 0 0 16px rgba(255,90,90,.6); }
+      /* 08 · barras de costo */
+      .bars { position: absolute; left: 90px; right: 90px; top: 220px; padding: 56px 56px 46px; display: flex; flex-direction: column; gap: 46px; }
+      .bar2 .h { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+      .bar2 .h b { font-family: "Archivo"; font-weight: 800; font-size: 46px; color: var(--white); }
+      .bar2 .h span { font-family: "Archivo"; font-weight: 800; font-size: 64px; color: var(--meta); }
+      .bar2 .track { height: 70px; border-radius: 20px; background: rgba(48,94,74,.25); overflow: hidden; }
+      .bar2 .track i { display: block; height: 100%; border-radius: 20px; background: #5B6B60; transform-origin: 0 50%; }
+      .bar2.us .h span { color: var(--neon); }
+      .bar2.us .track i { background: var(--neon); box-shadow: 0 0 30px rgba(197,247,64,.6); width: 8%; }
+      .x13 { font-family: "Archivo"; font-weight: 800; font-size: 210px; color: var(--neon); line-height: .9; text-align: center; }
+      .x13 small { display: block; font-family: "Mono"; font-size: 30px; letter-spacing: .12em; color: var(--white); margin-top: 12px; text-transform: uppercase; }
+      .src { font-size: 24px; color: var(--meta); line-height: 1.35; text-align: center; }
+      /* 09 · mazo de anuncios */
+      .deck { position: absolute; left: 90px; right: 90px; top: 180px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+      .ad { aspect-ratio: 9/16; border-radius: 18px; background: #0E1A13; border: 2px solid rgba(48,94,74,.8); position: relative; display: flex; align-items: center; justify-content: center;
+        font-family: "Mono"; font-size: 26px; color: rgba(221,218,215,.35); }
+      .ad .w { position: absolute; inset: -2px; border-radius: 18px; background: #1B2A12; border: 4px solid var(--neon); color: var(--neon); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 34px rgba(197,247,64,.45); opacity: 0; }
+      .ad .w span { position: absolute; top: -18px; right: -18px; width: 50px; height: 50px; border-radius: 50%; background: var(--neon); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: "Inter"; font-weight: 700; font-size: 30px; }
+      .up { position: absolute; left: 0; right: 0; top: 920px; display: flex; justify-content: center; }
+      .up .chip { border-color: var(--neon); color: var(--neon); }
+      /* 11 · recibo "incluido" */
+      .rec { width: 900px; padding: 30px 44px; display: flex; flex-direction: column; gap: 6px; }
+      .rec .row { display: flex; align-items: center; gap: 24px; padding: 11px 0; border-bottom: 2px dashed rgba(48,94,74,.8); }
+      .rec .row:last-child { border-bottom: 0; }
+      .rec .row b { font-family: "Archivo"; font-weight: 800; font-size: 44px; color: var(--white); }
+      .rec .row .ok { margin-left: auto; font-family: "Mono"; font-size: 26px; letter-spacing: .1em; color: var(--neon); }
+      /* 13 · bonus */
+      .bonus { display: flex; align-items: center; gap: 30px; padding: 30px 46px; border-color: var(--neon); box-shadow: 0 0 50px rgba(197,247,64,.25), 0 30px 80px rgba(0,0,0,.55); }
+      .bonus .ic { width: 110px; height: 110px; border-radius: 30px; background: var(--neon); display: flex; align-items: center; justify-content: center; flex: none; }
+      .bonus .ic svg { width: 64px; height: 64px; }
+      .bonus b { display: block; font-family: "Archivo"; font-weight: 800; font-size: 50px; color: var(--white); line-height: 1.05; margin-top: 6px; }
+      /* 14 · butacas (ilustrativo, sin número) */
+      .seats { padding: 30px 44px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      .seats .rowS { display: flex; gap: 14px; }
+      .seats .rowS i { width: 52px; height: 46px; border-radius: 12px 12px 6px 6px; background: rgba(48,94,74,.5); display: block; }
+      /* 15 · logo + botón (la única píldora) */
+      .btnw { position: relative; display: inline-block; }
+      .btn { position: relative; display: inline-flex; align-items: center; gap: 26px; background: var(--neon); color: var(--bg); font-family: "Archivo"; font-weight: 800; font-size: 58px;
+        padding: 36px 64px; border-radius: 999px; box-shadow: 0 20px 60px rgba(197,247,64,.45); white-space: nowrap; }
+      .btn svg { width: 56px; height: 56px; }
+      .ring { position: absolute; inset: 0; border-radius: 999px; border: 6px solid var(--neon); opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="anuncio-12" data-start="0" data-duration="50.417" data-fps="24" data-width="1080" data-height="1920">
+      <div id="video-wrap">
+        <div id="zoom"><video id="bg-video" src="input-video.mp4" playsinline data-has-audio="true" data-start="0" data-duration="50.417" data-track-index="1"></video></div>
+      </div>
+
+      <!-- 01 · chip IA + flecha -->
+      <div class="g clip" id="chip" data-start="0" data-duration="4.083" data-track-index="6">
+        <div class="center" style="top:60px"><div class="chip" id="chip-ia"><i></i>100% inteligencia artificial</div></div>
+      </div>
+      <div class="g clip" id="arrow-l" data-start="0" data-duration="1.041" data-track-index="7">
+        <svg id="arrow" viewBox="0 0 380 420" fill="none" stroke="#C5F740" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+          <path id="arrow-body" d="M340 20 C 340 220, 250 320, 90 345" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <path id="arrow-head" d="M170 268 L 80 347 L 178 405"/>
+        </svg>
+      </div>
+
+      <!-- 02 · costo de este anuncio -->
+      <div class="g clip" id="cost" data-start="1.041" data-duration="3.042" data-track-index="6">
+        <div class="center" style="top:190px"><div class="glass cost" id="cost-card"><div class="v">&lt;$<span id="cost-n">0</span></div><div class="k"><span class="lbl">Costo de</span><b>este anuncio</b></div></div></div>
+      </div>
+
+      <!-- 03 · boleto del taller (sin fecha ni precio) -->
+      <div class="g clip" id="ticket" data-start="4.083" data-duration="3.917" data-track-index="6">
+        <div class="center" style="top:60px"><div class="ticket" id="ticket-card"><div class="l"><span class="lbl live"><i></i>En vivo</span><b>Taller Avatar Ads</b></div><div class="r" id="stub"><span class="d">ESTE</span><span class="n">DOM</span></div></div></div>
+      </div>
+
+      <!-- 04 · tus anuncios / tus clientes -->
+      <div class="g clip" id="uses" data-start="8" data-duration="3.041" data-track-index="6">
+        <div class="center" style="top:60px"><div class="two"><div class="chip" id="use-0">Tus anuncios</div><div class="chip" id="use-1">Tus clientes</div></div></div>
+      </div>
+
+      <!-- 06 · línea de producción + video del sérum (sin sonido) -->
+      <div class="full clip" id="prod" data-start="14.731" data-duration="3.435" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="rail"><div class="rline"><i id="rline"></i></div><div class="node" id="node-0"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg></div><div class="t">Idea</div></div><div class="node" id="node-1"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7"/></svg></div><div class="t">Guion</div></div><div class="node" id="node-2"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="t">Avatar</div></div><div class="node" id="node-3"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><div class="t">Video</div></div><div class="node" id="node-4"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><div class="t">Edición</div></div></div><div class="phone" id="phone"></div>
+      </div>
+      <video class="clip" id="serum" src="video/serum.mp4" muted playsinline data-start="14.731" data-duration="3.435" data-track-index="9"></video>
+
+      <!-- 07 · sin cámaras, sin actores, sin edición manual -->
+      <div class="g clip" id="nos" data-start="18.166" data-duration="4.834" data-track-index="6">
+        <div class="center" style="top:60px"><div class="nos"><div class="glass no" id="no-0"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span class="t">Cámaras</span><i class="x" id="x-0"></i></div><div class="glass no" id="no-1"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span class="t">Actores</span><i class="x" id="x-1"></i></div><div class="glass no" id="no-2"><svg viewBox="0 0 24 24" fill="none" stroke="#DDDAD7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M8 5v5M14 5v5"/></svg><span class="t">Edición</span><i class="x" id="x-2"></i></div></div></div>
+      </div>
+
+      <!-- 08 · barras de costo -->
+      <div class="full clip" id="bars" data-start="24.416" data-duration="1.917" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="glass bars" id="bars-card"><div class="lbl">1 anuncio de 30 s</div>
+          <div class="bar2"><div class="h"><b>Otras herramientas</b><span>~$13</span></div><div class="track"><i id="bar-a" style="width:100%"></i></div></div>
+          <div class="bar2 us"><div class="h"><b>Avatar Ads</b><span>~$1</span></div><div class="track"><i id="bar-b"></i></div></div>
+          <div class="x13" id="x13">13×<small>más barato</small></div>
+          <div class="src">Promedio de Wan 2.5, Seedance 2.0 y Seedance 2.5 (precios públicos de API, oct 2026) · Avatar Ads con el plan de pago de Google</div>
+        </div>
+      </div>
+
+      <!-- 09 · mazo de anuncios con varios ganadores -->
+      <div class="full clip" id="deck" data-start="28.106" data-duration="2.81" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="deck"><div class="ad" id="ad-0">AD</div><div class="ad" id="ad-1">AD</div><div class="ad" id="ad-2">AD<div class="w" id="w-0">AD<span>✓</span></div></div><div class="ad" id="ad-3">AD</div><div class="ad" id="ad-4">AD</div><div class="ad" id="ad-5">AD</div><div class="ad" id="ad-6">AD</div><div class="ad" id="ad-7">AD</div><div class="ad" id="ad-8">AD</div><div class="ad" id="ad-9">AD</div><div class="ad" id="ad-10">AD<div class="w" id="w-1">AD<span>✓</span></div></div><div class="ad" id="ad-11">AD</div><div class="ad" id="ad-12">AD<div class="w" id="w-2">AD<span>✓</span></div></div><div class="ad" id="ad-13">AD</div><div class="ad" id="ad-14">AD</div><div class="ad" id="ad-15">AD</div><div class="ad" id="ad-16">AD</div><div class="ad" id="ad-17">AD</div><div class="ad" id="ad-18">AD</div><div class="ad" id="ad-19">AD</div><div class="ad" id="ad-20">AD</div><div class="ad" id="ad-21">AD<div class="w" id="w-3">AD<span>✓</span></div></div><div class="ad" id="ad-22">AD</div><div class="ad" id="ad-23">AD</div></div><div class="up"><div class="chip" id="deck-chip"><i></i>Más tests = más ganadores</div></div>
+      </div>
+
+      <!-- 11 · recibo "incluido" (sin precio) -->
+      <div class="g clip" id="rec" data-start="31.875" data-duration="6.458" data-track-index="6">
+        <div class="center" style="top:36px"><div class="glass rec" id="rec-card"><div class="row" id="row-0"><b>Taller en vivo</b><span class="ok">✓ Incluido</span></div><div class="row" id="row-1"><b>Sistema de por vida</b><span class="ok">✓ Incluido</span></div><div class="row" id="row-2"><b>Curso completo</b><span class="ok">✓ Incluido</span></div><div class="row" id="row-3"><b>Grabación</b><span class="ok">✓ Incluido</span></div></div></div>
+      </div>
+
+      <!-- 13 · bonus -->
+      <div class="g clip" id="bonus" data-start="40.833" data-duration="4.542" data-track-index="6">
+        <div class="center" style="top:60px"><div class="glass bonus" id="bonus-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S10 8 12 8zM12 8c2-4 6-4 6-1.5S14 8 12 8z"/></svg></div><div><span class="lbl n">Bonus · clase en vivo</span><b>Cómo conseguir clientes</b></div></div></div>
+      </div>
+
+      <!-- 14 · butacas -->
+      <div class="g clip" id="seats" data-start="45.375" data-duration="1.75" data-track-index="6">
+        <div class="center" style="top:60px"><div class="glass seats" id="seats-card"><span class="lbl n">Cupo limitado</span><div class="rowS"><i id="seat-0"></i><i id="seat-1"></i><i id="seat-2"></i><i id="seat-3"></i><i id="seat-4"></i><i id="seat-5"></i><i id="seat-6"></i><i id="seat-7"></i><i id="seat-8"></i><i id="seat-9"></i></div></div></div>
+      </div>
+
+      <!-- 15 · CTA: logo (capa propia con mezcla "screen") + botón -->
+      <div class="g clip" id="cta-logo-layer" style="mix-blend-mode: screen" data-start="47.075" data-duration="3.341" data-track-index="6">
+        <div class="center" style="top:60px"><div id="cta-logo"><img src="img/logo-avatar-ads.webp" alt="" style="width:470px;display:block"></div></div>
+      </div>
+      <div class="g clip" id="cta" data-start="47.075" data-duration="3.341" data-track-index="7">
+        <div class="center" style="top:1040px"><div id="cta-btn"><div class="btnw"><div class="ring" id="cta-ring"></div><div class="btn">Reservar mi lugar <svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div></div></div>
+      </div>
+
+      <div class="sub clip" id="sub-0" data-start="0" data-duration="1.042" data-track-index="3"><span>Yo <b>no existo.</b></span></div>
+      <div class="sub clip" id="sub-1" data-start="1.042" data-duration="1.375" data-track-index="3"><span>Este anuncio <b>costó</b></span></div>
+      <div class="sub clip" id="sub-2" data-start="2.417" data-duration="1.667" data-track-index="3"><span><b>menos de dos dólares.</b></span></div>
+      <div class="sub clip" id="sub-3" data-start="4.083" data-duration="2" data-track-index="3"><span>Y este domingo, <b>en vivo,</b></span></div>
+      <div class="sub clip" id="sub-4" data-start="6.083" data-duration="1.917" data-track-index="3"><span>te enseño <b>cómo hacerlo</b></span></div>
+      <div class="sub clip" id="sub-5" data-start="8" data-duration="1.625" data-track-index="3"><span>para <b>tus propios anuncios</b></span></div>
+      <div class="sub clip" id="sub-6" data-start="9.625" data-duration="1.417" data-track-index="3"><span>o los de <b>tus clientes.</b></span></div>
+      <div class="sub clip" id="sub-7" data-start="11.042" data-duration="1.208" data-track-index="3"><span>Es un <b>taller en vivo</b></span></div>
+      <div class="sub clip" id="sub-8" data-start="12.25" data-duration="0.792" data-track-index="3"><span>de <b>un día.</b></span></div>
+      <div class="sub clip" id="sub-9" data-start="13.042" data-duration="1.708" data-track-index="3"><span>Creamos un <b>anuncio completo</b></span></div>
+      <div class="sub clip" id="sub-10" data-start="14.75" data-duration="1.042" data-track-index="3"><span>para un <b>producto,</b></span></div>
+      <div class="sub clip" id="sub-11" data-start="15.792" data-duration="2.375" data-track-index="3"><span>de la idea al <b>video editado.</b></span></div>
+      <div class="sub clip" id="sub-12" data-start="18.167" data-duration="1.042" data-track-index="3"><span>Sin <b>cámaras,</b></span></div>
+      <div class="sub clip" id="sub-13" data-start="19.208" data-duration="1.125" data-track-index="3"><span>sin <b>actores</b></span></div>
+      <div class="sub clip" id="sub-14" data-start="20.333" data-duration="2.667" data-track-index="3"><span>y sin tener que <b>editar manualmente.</b></span></div>
+      <div class="sub clip" id="sub-15" data-start="23" data-duration="1.417" data-track-index="3"><span>Anuncios <b>hiperrealistas,</b></span></div>
+      <div class="sub clip" id="sub-16" data-start="24.417" data-duration="1.542" data-track-index="3"><span>hasta <b>13 veces más baratos</b></span></div>
+      <div class="sub clip" id="sub-17" data-start="25.958" data-duration="1.333" data-track-index="3"><span>que con <b>otras herramientas.</b></span></div>
+      <div class="sub clip" id="sub-18" data-start="27.292" data-duration="1.125" data-track-index="3"><span>Eso significa <b>probar</b></span></div>
+      <div class="sub clip" id="sub-19" data-start="28.417" data-duration="1.208" data-track-index="3"><span><b>decenas de ángulos,</b></span></div>
+      <div class="sub clip" id="sub-20" data-start="29.625" data-duration="1.292" data-track-index="3"><span>encontrar <b>tus ganadores</b></span></div>
+      <div class="sub clip" id="sub-21" data-start="30.917" data-duration="0.958" data-track-index="3"><span>y <b>escalar.</b></span></div>
+      <div class="sub clip" id="sub-22" data-start="31.875" data-duration="1.042" data-track-index="3"><span>Entras al <b>taller</b></span></div>
+      <div class="sub clip" id="sub-23" data-start="32.917" data-duration="0.542" data-track-index="3"><span>y <b>te quedas</b> con</span></div>
+      <div class="sub clip" id="sub-24" data-start="33.458" data-duration="2.333" data-track-index="3"><span>el <b>Sistema Avatar Ads</b> de por vida,</span></div>
+      <div class="sub clip" id="sub-25" data-start="35.792" data-duration="1.208" data-track-index="3"><span>el <b>curso completo</b></span></div>
+      <div class="sub clip" id="sub-26" data-start="37" data-duration="1.333" data-track-index="3"><span>y la <b>grabación.</b></span></div>
+      <div class="sub clip" id="sub-27" data-start="38.333" data-duration="1.542" data-track-index="3"><span>Y si quieres <b>vender esto</b></span></div>
+      <div class="sub clip" id="sub-28" data-start="39.875" data-duration="0.958" data-track-index="3"><span>como <b>servicio,</b></span></div>
+      <div class="sub clip" id="sub-29" data-start="40.833" data-duration="2" data-track-index="3"><span>hay una <b>clase bonus</b> en vivo,</span></div>
+      <div class="sub clip" id="sub-30" data-start="42.833" data-duration="1.042" data-track-index="3"><span>donde <b>te enseño</b></span></div>
+      <div class="sub clip" id="sub-31" data-start="43.875" data-duration="1.5" data-track-index="3"><span>cómo <b>conseguir clientes.</b></span></div>
+      <div class="sub clip" id="sub-32" data-start="45.375" data-duration="1.75" data-track-index="3"><span>Los puestos son <b>limitados.</b></span></div>
+      <div class="sub clip" id="sub-33" data-start="47.125" data-duration="1.042" data-track-index="3"><span>Toca el <b>botón</b></span></div>
+      <div class="sub clip" id="sub-34" data-start="48.167" data-duration="2.25" data-track-index="3"><span>y <b>reserva tu lugar.</b></span></div>
+
+      <audio id="sfx-01-whoosh-short" src="audio/whoosh-short.mp3" data-start="0" data-duration="0.574" data-track-index="11" data-volume="0.14"></audio>
+      <audio id="sfx-02-impact-bass-1" src="audio/impact-bass-1.mp3" data-start="0.375" data-duration="0.8" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-03-click-soft" src="audio/click-soft.mp3" data-start="2.5" data-duration="0.365" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-04-whoosh-short" src="audio/whoosh-short.mp3" data-start="4" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-05-click-soft" src="audio/click-soft.mp3" data-start="8.542" data-duration="0.365" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-06-click-soft" src="audio/click-soft.mp3" data-start="10.5" data-duration="0.365" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sfx-07-whoosh-short" src="audio/whoosh-short.mp3" data-start="14.625" data-duration="0.574" data-track-index="13" data-volume="0.1"></audio>
+      <audio id="sfx-08-click-soft" src="audio/click-soft.mp3" data-start="16.25" data-duration="0.365" data-track-index="14" data-volume="0.2"></audio>
+      <audio id="sfx-09-click-soft" src="audio/click-soft.mp3" data-start="16.958" data-duration="0.365" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-10-glitch-1" src="audio/glitch-1.mp3" data-start="18.583" data-duration="0.4" data-track-index="12" data-volume="0.07"></audio>
+      <audio id="sfx-11-glitch-1" src="audio/glitch-1.mp3" data-start="19.667" data-duration="0.4" data-track-index="13" data-volume="0.07"></audio>
+      <audio id="sfx-12-glitch-1" src="audio/glitch-1.mp3" data-start="21.458" data-duration="0.4" data-track-index="14" data-volume="0.07"></audio>
+      <audio id="sfx-13-whoosh-short" src="audio/whoosh-short.mp3" data-start="24.333" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-14-pop" src="audio/pop.mp3" data-start="25.083" data-duration="0.72" data-track-index="12" data-volume="0.14"></audio>
+      <audio id="sfx-15-whoosh-short" src="audio/whoosh-short.mp3" data-start="28" data-duration="0.574" data-track-index="13" data-volume="0.1"></audio>
+      <audio id="sfx-16-ping" src="audio/ping.mp3" data-start="30.333" data-duration="0.6" data-track-index="14" data-volume="0.12"></audio>
+      <audio id="sfx-17-click-soft" src="audio/click-soft.mp3" data-start="32.542" data-duration="0.365" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-18-click-soft" src="audio/click-soft.mp3" data-start="33.583" data-duration="0.365" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sfx-19-click-soft" src="audio/click-soft.mp3" data-start="36" data-duration="0.365" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-20-click-soft" src="audio/click-soft.mp3" data-start="37.458" data-duration="0.365" data-track-index="14" data-volume="0.2"></audio>
+      <audio id="sfx-21-pop" src="audio/pop.mp3" data-start="41.292" data-duration="0.72" data-track-index="11" data-volume="0.14"></audio>
+      <audio id="sfx-22-pop" src="audio/pop.mp3" data-start="47.125" data-duration="0.72" data-track-index="12" data-volume="0.14"></audio>
+      <audio id="sfx-23-chime" src="audio/chime.mp3" data-start="47.75" data-duration="1" data-track-index="13" data-volume="0.14"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          const tl = window.gsap.timeline({ paused: true });
+          const Z = "#zoom";
+          tl.set(Z, { scale: 1 }, 0);
+          tl.to(Z, { scale: 1.04, duration: 0.25, ease: "none" }, 0);
+          tl.to(Z, { scale: 1.1, duration: 0.3, ease: "power3.out" }, 0.25);
+          tl.set(Z, { scale: 1.12 }, 0.998);
+          tl.to(Z, { scale: 1.15, duration: 3.033, ease: "none" }, 1);
+          tl.set(Z, { scale: 1 }, 4.081);
+          tl.to(Z, { scale: 1.04, duration: 6.867, ease: "none" }, 4.083);
+          tl.set(Z, { scale: 1.12 }, 10.998);
+          tl.to(Z, { scale: 1.15, duration: 1.5, ease: "none" }, 11);
+          tl.to(Z, { scale: 1.23, duration: 0.3, ease: "power3.out" }, 12.5);
+          tl.set(Z, { scale: 1 }, 12.998);
+          tl.to(Z, { scale: 1.04, duration: 4.908, ease: "none" }, 13);
+          tl.set(Z, { scale: 1.12 }, 17.956);
+          tl.to(Z, { scale: 1.15, duration: 2.408, ease: "none" }, 17.958);
+          tl.set(Z, { scale: 1 }, 20.415);
+          tl.to(Z, { scale: 1.04, duration: 2.533, ease: "none" }, 20.417);
+          tl.set(Z, { scale: 1.12 }, 22.998);
+          tl.to(Z, { scale: 1.15, duration: 4.242, ease: "none" }, 23);
+          tl.set(Z, { scale: 1 }, 27.29);
+          tl.to(Z, { scale: 1.04, duration: 4.492, ease: "none" }, 27.292);
+          tl.set(Z, { scale: 1.12 }, 31.831);
+          tl.to(Z, { scale: 1.15, duration: 1.75, ease: "none" }, 31.833);
+          tl.to(Z, { scale: 1.22, duration: 0.3, ease: "power3.out" }, 33.583);
+          tl.set(Z, { scale: 1 }, 38.29);
+          tl.to(Z, { scale: 1.04, duration: 1.958, ease: "none" }, 38.292);
+          tl.to(Z, { scale: 1.11, duration: 0.3, ease: "power3.out" }, 40.25);
+          tl.set(Z, { scale: 1.12 }, 40.915);
+          tl.to(Z, { scale: 1.15, duration: 1.825, ease: "none" }, 40.917);
+          tl.set(Z, { scale: 1 }, 42.79);
+          tl.to(Z, { scale: 1.04, duration: 2.45, ease: "none" }, 42.792);
+          tl.set(Z, { scale: 1.12 }, 45.29);
+          tl.to(Z, { scale: 1.15, duration: 1.95, ease: "none" }, 45.292);
+          tl.set(Z, { scale: 1 }, 47.29);
+          tl.to(Z, { scale: 1.04, duration: 3.075, ease: "none" }, 47.292);
+
+          tl.fromTo("#sub-0 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 0);
+          tl.fromTo("#sub-1 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 1.042);
+          tl.fromTo("#sub-2 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 2.417);
+          tl.fromTo("#sub-3 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 4.083);
+          tl.fromTo("#sub-4 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 6.083);
+          tl.fromTo("#sub-5 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 8);
+          tl.fromTo("#sub-6 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 9.625);
+          tl.fromTo("#sub-7 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 11.042);
+          tl.fromTo("#sub-8 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 12.25);
+          tl.fromTo("#sub-9 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 13.042);
+          tl.fromTo("#sub-10 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 14.75);
+          tl.fromTo("#sub-11 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 15.792);
+          tl.fromTo("#sub-12 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 18.167);
+          tl.fromTo("#sub-13 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 19.208);
+          tl.fromTo("#sub-14 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 20.333);
+          tl.fromTo("#sub-15 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 23);
+          tl.fromTo("#sub-16 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 24.417);
+          tl.fromTo("#sub-17 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 25.958);
+          tl.fromTo("#sub-18 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 27.292);
+          tl.fromTo("#sub-19 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 28.417);
+          tl.fromTo("#sub-20 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 29.625);
+          tl.fromTo("#sub-21 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 30.917);
+          tl.fromTo("#sub-22 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 31.875);
+          tl.fromTo("#sub-23 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 32.917);
+          tl.fromTo("#sub-24 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 33.458);
+          tl.fromTo("#sub-25 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 35.792);
+          tl.fromTo("#sub-26 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 37);
+          tl.fromTo("#sub-27 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 38.333);
+          tl.fromTo("#sub-28 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 39.875);
+          tl.fromTo("#sub-29 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 40.833);
+          tl.fromTo("#sub-30 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 42.833);
+          tl.fromTo("#sub-31 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 43.875);
+          tl.fromTo("#sub-32 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 45.375);
+          tl.fromTo("#sub-33 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 47.125);
+          tl.fromTo("#sub-34 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 48.167);
+
+          const rise = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+          const drop = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+          const soft = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, t);
+          const fadeIn = (sel, t, d = 0.15) => tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d, ease: "power1.out" }, t);
+          const count = (id, to, t, d, fmt) => { const o = { v: 0 }; tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => { document.getElementById(id).textContent = fmt(o.v); } }, t); };
+          const D = {"FU":{"prod":[14.732,18.167],"bars":[24.417,26.333],"deck":[28.107,30.917]},"T":{"arrow":[0,1.042],"chip":[0,4.083],"cost":[1.042,4.083],"costN":2.5,"ticket":[4.083,8],"uses":[8,11.042],"useA":8.542,"useB":10.5,"rail":[14.792,16.25,16.958],"nos":[18.167,23],"cross":[18.5,19.583,21.375],"barsX":24.792,"deckWin":30.333,"rec":[31.875,38.333],"rows":[32.542,33.583,36,37.458],"bonus":[40.833,45.375],"bonusAt":41.292,"seats":[45.375,47.125],"cta":[47.075,50.417],"boton":47.75}};
+
+          // 01 · chip con parpadeo + flecha que se dibuja hacia él y golpea al llegar
+          tl.fromTo("#chip-ia", { opacity: 0 }, { opacity: 1, duration: 0.06, repeat: 3, yoyo: true, ease: "none" }, 0.02);
+          tl.set("#chip-ia", { opacity: 1 }, 0.3);
+          tl.fromTo("#arrow-body", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.32, ease: "power2.in" }, 0.04);
+          tl.fromTo("#arrow-head", { opacity: 0, scale: 0.4, svgOrigin: "80 347" }, { opacity: 1, scale: 1, svgOrigin: "80 347", duration: 0.25, ease: "back.out(3)" }, 0.34);
+          tl.fromTo("#arrow", { x: 0, y: 0 }, { x: -14, y: 10, duration: 0.12, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.38);
+          tl.to("#arrow", { opacity: 0, duration: 0.15 }, D.T.arrow[1] - 0.15);
+
+          // 02 · costo
+          drop("#cost-card", D.T.cost[0] + 0.05);
+          count("cost-n", 2, D.T.costN - 0.05, 0.5, (v) => Math.round(v));
+
+          // 03 · boleto: baja girando y el talón se separa un poco
+          tl.fromTo("#ticket-card", { opacity: 0, y: -60, rotation: -6 }, { opacity: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, D.T.ticket[0] + 0.05);
+          tl.to("#stub", { x: 14, rotation: 3, duration: 0.3, ease: "power2.out" }, D.T.ticket[0] + 0.7);
+
+          // 04 · dos usos: se enciende cada uno con su palabra
+          drop("#use-0", D.T.uses[0] + 0.05, 0.3); drop("#use-1", D.T.uses[0] + 0.12, 0.3);
+          tl.to("#use-0", { opacity: 1, borderColor: "#C5F740", color: "#C5F740", duration: 0.2 }, D.T.useA);
+          tl.to("#use-1", { opacity: 1, borderColor: "#C5F740", color: "#C5F740", duration: 0.2 }, D.T.useB);
+
+          // 06 · línea de producción: avanza mientras corre el video del sérum
+          fadeIn("#prod", D.FU.prod[0]);
+          fadeIn("#serum", D.FU.prod[0]);
+          tl.fromTo("#phone", { scale: 0.92 }, { scale: 1, duration: 0.4, ease: "power3.out" }, D.FU.prod[0]);
+          tl.fromTo("#serum", { scale: 0.92 }, { scale: 1, duration: 0.4, ease: "power3.out" }, D.FU.prod[0]);
+          tl.to("#rline", { scaleX: 1, duration: D.FU.prod[1] - D.FU.prod[0] - 0.3, ease: "none" }, D.FU.prod[0] + 0.1);
+          for (let i = 0; i < 5; i++) tl.to("#node-" + i, { opacity: 1, duration: 0.15 }, D.FU.prod[0] + 0.1 + i * ((D.FU.prod[1] - D.FU.prod[0] - 0.4) / 4));
+
+          // 07 · tachados: una raya roja por palabra
+          for (let i = 0; i < 3; i++) drop("#no-" + i, D.T.nos[0] + 0.05 + i * 0.07, 0.3);
+          D.T.cross.forEach((t, i) => tl.to("#x-" + i, { scaleX: 1, duration: 0.18, ease: "power2.out" }, t + 0.1));
+
+          // 08 · barras: la gris se llena, la verde apenas arranca, cae el 13×
+          fadeIn("#bars", D.FU.bars[0]);
+          rise("#bars-card", D.FU.bars[0], 0.3);
+          tl.fromTo("#bar-a", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, D.FU.bars[0] + 0.15);
+          tl.fromTo("#bar-b", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, D.FU.bars[0] + 0.35);
+          tl.fromTo("#x13", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, D.T.barsX + 0.3);
+
+          // 09 · mazo: caen en cascada y se marcan varios ganadores
+          fadeIn("#deck", D.FU.deck[0]);
+          for (let i = 0; i < 24; i++) tl.fromTo("#ad-" + i, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.22, ease: "power3.out" }, D.FU.deck[0] + 0.05 + i * 0.04);
+          for (let k = 0; k < 4; k++) {
+            tl.to("#w-" + k, { opacity: 1, duration: 0.15 }, D.T.deckWin + k * 0.1);
+            tl.fromTo("#ad-" + [2,10,12,21][k], { scale: 1 }, { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }, D.T.deckWin + k * 0.1);
+          }
+          soft("#deck-chip", D.T.deckWin + 0.3);
+
+          // 11 · recibo: una línea por palabra
+          drop("#rec-card", D.T.rec[0] + 0.05, 0.35);
+          for (let i = 0; i < 4; i++) tl.set("#row-" + i, { opacity: 0 }, D.T.rec[0]);
+          D.T.rows.forEach((t, i) => tl.fromTo("#row-" + i, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, t - 0.05));
+
+          // 13 · bonus con rebote
+          tl.fromTo("#bonus-card", { opacity: 0, y: -50, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(2)" }, D.T.bonusAt - 0.1);
+
+          // 14 · butacas que se van ocupando (ilustrativo)
+          drop("#seats-card", D.T.seats[0] + 0.05, 0.3);
+          for (let i = 0; i < 6; i++) tl.to("#seat-" + i, { backgroundColor: "#C5F740", boxShadow: "0 0 14px rgba(197,247,64,.5)", duration: 0.12 }, D.T.seats[0] + 0.3 + i * 0.12);
+
+          // 15 · CTA: logo + botón que rebota en "botón"
+          rise("#cta-logo", D.T.cta[0] + 0.05);
+          soft("#cta-btn", D.T.cta[0] + 0.1);
+          tl.to("#cta-btn", { y: 12, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut" }, D.T.boton);
+          for (let k = 0; k < 3; k++) tl.fromTo("#cta-ring", { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 1.18, duration: 0.7, ease: "power2.out" }, D.T.boton + 0.3 + k * 0.8);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["anuncio-12"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>
