@@ -32,6 +32,8 @@ Avatar Ads 1.0/
 │   │                    ← ejemplos propios en español para el carrusel de la landing (negocios ficticios, formato D, ~20 s; el 08 —sérum ALBA— es un UGC de skincare con historia de ~35 s y 8 B-rolls, en dos versiones: voz en off + B-rolls (`edicion-voz-en-off/`, `final/anuncio-08-serum-voz-en-off.mp4`, formato E) y la chica a cámara + B-rolls (`edicion/`)): guion.md · avatar/ · prompts/ (voz) · prompts-broll/
 │   ├── 09-vsl-landing/  ← VSL nuevo para el hero de la landing (28 oct 2026): copy del usuario, evergreen, empresario en su oficina, formato D
 │   │                    sin B-rolls por ahora (prompts de 9 B-rolls listos en prompts-flow.md) · storyboard/ · edicion/ · final/anuncio-09-vsl-landing.mp4 (84 s)
+│   ├── 12-taller-domingo-yo-no-existo/ ← anuncio pagado del taller semanal (29 oct 2026): «Yo no existo», avatar del VSL 09, formato D sin B-rolls,
+│   │                    "este domingo" sin fecha ni precio (sirve cada semana) · final/anuncio-12-taller-domingo-yo-no-existo.mp4 (50 s)
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
 ├── Contenido/           ← todo el contenido orgánico de Instagram
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
