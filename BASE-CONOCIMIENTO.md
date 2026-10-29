@@ -35,7 +35,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 | Precio | $27, pago único (edición de apertura). Sin cupones ni descuentos |
 | Cupo | 15 puestos (desde el 28 oct 2026; quedan los que diga `PUESTOS` en la landing). Contacto directo: WhatsApp con el creador, "sin bots ni asistentes" |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
-| Qué se ve | Taller: creamos en vivo dos anuncios completos (producto digital y servicio), de la idea al video editado · Clase bonus: cómo conseguir clientes |
+| Qué se ve | Taller: creamos en vivo un anuncio completo para un producto, de la idea al video editado (desde el 29 oct 2026; antes eran dos) · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
 
 **Desde el 28 oct 2026, lo que se vende es el taller en vivo** (sáb 31 + clase bonus dom 1): es la oferta principal de esta primera versión, y el Sistema Avatar Ads (de por vida, con todas sus actualizaciones), los prompts, los bonos y el curso futuro son lo que se obtiene por participar. En el futuro, sin taller en vivo, se volverá a vender como sistema + curso (versión guardada en `landing-versiones/sistema-curso/`). Antes (22–28 oct 2026): "lo que se compra con los $27 es el Sistema Avatar Ads". El taller en vivo es donde se enseña a usarlo y por qué es tan potente; en el copy no se dice que el taller es un mecanismo de marketing.
@@ -65,7 +65,7 @@ No prometer "3 anuncios listos" al final del taller.
 - Aplicar la habilidad en su negocio o para conseguir clientes.
 
 ### Temario (esto es lo que veremos)
-- **Taller (sáb 31) — Un día intenso.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · storyboard · personaje e imágenes con IA con consistencia entre escenas · prompts de video (acciones, gesticulación, expresiones, voz) · generación de clips, corrección y gestión de créditos · edición automatizada (ritmo, subtítulos, textos, producto, CTA) · exportación. → *Creamos en vivo dos anuncios completos: uno para un producto digital y otro para un servicio.*
+- **Taller (sáb 31) — Un día intenso.** Setup de herramientas y alternativas económicas · ángulos y formatos de anuncios con IA · script (hook, desarrollo, CTA) · storyboard · personaje e imágenes con IA con consistencia entre escenas · prompts de video (acciones, gesticulación, expresiones, voz) · generación de clips, corrección y gestión de créditos · edición automatizada (ritmo, subtítulos, textos, producto, CTA) · exportación. → *Creamos en vivo un anuncio completo para un producto.*
 - **Clase bonus (dom 1 nov) — Cómo conseguir clientes.** Qué oferta vender · captación orgánica · captación con anuncios para ofrecer el servicio.
 
 ### Sistema Avatar Ads
@@ -98,7 +98,7 @@ Quieren dominar una **habilidad con alta demanda** y vender anuncios con IA a ne
 
 ### Lista de email (Brevo, ~590 contactos)
 La mayoría llegó por un lead magnet antiguo: un entrenamiento para crear y vender productos digitales (ebooks) con IA. Les interesa generar ingresos online con IA. Lista fría (meses sin correos): el primer correo reconecta antes de vender.
-- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, 13 veces más baratos." Encaja con el taller (uno de los dos anuncios en vivo es para un producto digital) y con el ángulo de servicio (vender anuncios a negocios, clase bonus).
+- **Ángulo puente:** "Crear el producto con IA ya es fácil; lo difícil es venderlo, y para vender necesitas anuncios. Ahora los anuncios también se hacen con IA, 13 veces más baratos." Encaja con el taller (el anuncio en vivo es para un producto) y con el ángulo de servicio (vender anuncios a negocios, clase bonus).
 - Correos en `emails/` (una carpeta por secuencia). Brevo gratis = 300 correos al día: alternar Lista A / Lista B. Links con `src=emailN` + `utm_*` (la landing los pasa al checkout de Hotmart). Excluir siempre a los compradores.
 
 ## 5. Ángulos de venta
@@ -130,7 +130,7 @@ Cada ángulo con su idea central y ganchos de ejemplo para reels/anuncios. Los h
    - "Los negocios están pagando por esto y casi nadie sabe hacerlo bien."
    - "Así venderías tu primer anuncio con IA esta semana."
 5. **Resultado concreto y rápido**
-   En un solo día ves el proceso completo, de la idea al anuncio editado, con dos anuncios creados en vivo.
+   En un solo día ves el proceso completo, de la idea al anuncio editado, con un anuncio creado en vivo.
    - "En un día ves cómo pasar de una idea a un anuncio editado."
 6. **Apertura / oportunidad de entrada** (urgencia real)
    Primera edición, en vivo, $27 y acceso vitalicio con actualizaciones aunque el precio suba.
