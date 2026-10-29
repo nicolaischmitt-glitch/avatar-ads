@@ -1,7 +1,7 @@
 # Formato E · Voz en off + B-rolls (anuncio UGC narrado)
 
 Solo una voz narrando en primera persona sobre **B-rolls que cuentan la historia** (la persona en su rutina, el producto, el uso, el resultado), con cortes secos y casi sin gráficos. No hay nadie hablando a cámara, así que no hay sincronía de labios ni continuidad de una toma que cuidar.
-**Probado en el anuncio 08 (sérum ALBA, 27 oct 2026):** al usuario le gustó mucho, dijo que "se ve muy realista". Final: `anuncios/08-ejemplo-producto-serum/final/anuncio-08-serum-voz-en-off.mp4` · edición: `anuncios/08-ejemplo-producto-serum/edicion-voz-en-off/build.mjs`.
+**Probado en el anuncio 08 (sérum ALBA, 27 oct 2026):** al usuario le gustó mucho, dijo que "se ve muy realista". Final: `videos-landing/08-ejemplo-producto-serum/final/anuncio-08-serum-voz-en-off.mp4` · edición: `videos-landing/08-ejemplo-producto-serum/edicion-voz-en-off/build.mjs`.
 Es distinto del formato B (voz del usuario + motion graphics para orgánico): aquí la imagen es footage hiperrealista y el objetivo es vender.
 
 ## Cuándo usarlo
@@ -34,7 +34,7 @@ Es distinto del formato B (voz del usuario + motion graphics para orgánico): aq
 - `hyperframes transcribe voz.wav -l es` → tiempos de cada palabra (en un archivo de voz completo los tiempos sí cuadran; el adelanto de ~0,4 s es de los clips sueltos de Flow).
 - `silencedetect=n=-40dB:d=0.15` → silencios. Ritmo natural: el primer sonido en el fotograma 0 (en el 08 se quitaron 0,27 s del inicio) y las pausas de más de ~0,6 s se recortan a ~0,5 s quitando su centro (`QUITAR` en `build.mjs`, con fundidos de 10 ms para que no haga clic). Las demás pausas se dejan: son las del habla.
 
-## Edición (plantilla: `anuncios/08-ejemplo-producto-serum/edicion-voz-en-off/build.mjs`)
+## Edición (plantilla: `videos-landing/08-ejemplo-producto-serum/edicion-voz-en-off/build.mjs`)
 1. **Asignar cada B-roll a su frase, mirando los B-rolls, no solo en orden.** Hoja de frames de cada B-roll (1 por segundo) → para cada frase, la toma y el **segundo exacto** que muestra lo que dice la voz. Lo que se hizo en el 08:
    - el corte entra **~0,08 s antes de la palabra** que abre la frase (`PLAN`: archivo, palabra, segundo de entrada);
    - **punto de entrada elegido por el gesto**: la textura entra en el segundo 2,3, cuando los dedos ya frotan; la aplicación en el 0,4, con los dedos ya en la mejilla;

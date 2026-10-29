@@ -2,7 +2,7 @@
 
 Estructura fija para generar **desde cero** (sin imagen de referencia) el frame inicial de un avatar con Nano Banana. Ese frame es después la imagen de referencia de los clips en Google Flow (prompts de video: `skills/master prompt para json prompts videos.txt`).
 Probada por primera vez en el anuncio 03 (21 oct 2026): el resultado se ve como un video real de iPhone. Se enseña en el taller.
-Prompt de ejemplo: `anuncios/03-calidad-seedance-centavos/avatar/prompt-nano-banana.json` · resultado: `…/avatar/avatar.jpg`.
+Prompt de ejemplo: `anuncios/videos/03-calidad-seedance-centavos/avatar/prompt-nano-banana.json` · resultado: `…/avatar/avatar.jpg`.
 
 ## 1. Cuándo usarla
 - **Es el método principal** (decisión del 21 oct 2026): crear el avatar desde cero con este JSON en **Nano Banana Pro** dio mejor calidad que partir de un frame de un UGC real y cambiar al personaje (anuncios 03 y 04).
@@ -146,4 +146,4 @@ Todo B-roll empieza por una imagen: primero su frame aquí (4 variaciones barata
    - en video, nada de cámaras que giran alrededor del producto (tiene que inventar la parte de atrás): acercamiento lento de frente, la etiqueta siempre a la vista; en los clips de voz, "con la etiqueta siempre hacia la cámara".
 7. **Control antes de animar:** cada imagen se compara con `producto.png`. Si el producto o la etiqueta cambian, se regenera esa imagen (una imagen cuesta mucho menos que un video).
 
-**En el generador** (`generar-prompts.mjs`): `producto` en `clips-plan.json` con el bloque y el texto de la etiqueta → arma el Paso 0, copia el bloque en el prompt del avatar (si ese JSON tiene la clave `product`) y en cada B-roll con `"producto": true`. Ejemplo completo: `anuncios/08-ejemplo-producto-serum/` (sérum ALBA; su `generar-prompts.mjs` y `prompts-flow.md`). En el kit, el formato de `producto` está en la cabecera de `sistema/scripts/generar-prompts.mjs`.
+**En el generador** (`generar-prompts.mjs`): `producto` en `clips-plan.json` con el bloque y el texto de la etiqueta → arma el Paso 0, copia el bloque en el prompt del avatar (si ese JSON tiene la clave `product`) y en cada B-roll con `"producto": true`. Ejemplo completo: `videos-landing/08-ejemplo-producto-serum/` (sérum ALBA; su `generar-prompts.mjs` y `prompts-flow.md`). En el kit, el formato de `producto` está en la cabecera de `sistema/scripts/generar-prompts.mjs`.

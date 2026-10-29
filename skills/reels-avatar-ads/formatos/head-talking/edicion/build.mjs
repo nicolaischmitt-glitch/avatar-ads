@@ -3,7 +3,7 @@
 // Construye public/index.html a partir de:
 //   transcript.json (palabras con tiempos de base.mp4) · base-cortes.json (segmentos, alineados a fotogramas) · la CONFIG de abajo.
 // Uso: node build.mjs (desde esta carpeta) → hyperframes lint public → hyperframes render public -o … --fps 24
-// Basado en el build.mjs del reel 07 (mismo vocabulario visual). Ejemplo: anuncios/03-calidad-seedance-centavos/
+// Basado en el build.mjs del reel 07 (mismo vocabulario visual). Ejemplo: anuncios/videos/03-calidad-seedance-centavos/
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";

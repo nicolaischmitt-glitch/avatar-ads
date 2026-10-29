@@ -1,7 +1,7 @@
 # Formato D · Head talking de una toma + B-rolls (anuncio directo)
 
 Un solo avatar habla a cámara en un plano fijo, como si se grabara con su iPhone (una sola toma), y la edición lo intercala con **B-rolls y gráficos de marca** al ritmo del reel 07. Sirve para **anuncios pagados** (venta directa → landing) y también para reels orgánicos (en ese caso, CTA "comenta PALABRA").
-Primer anuncio con este formato (aprobado por el usuario, 21 oct 2026): `anuncios/03-calidad-seedance-centavos/` → `finales/anuncio-03-calidad-seedance-centavos.mp4`.
+Primer anuncio con este formato (aprobado por el usuario, 21 oct 2026): `anuncios/videos/03-calidad-seedance-centavos/` → `finales/anuncio-03-calidad-seedance-centavos.mp4`.
 
 **Objetivo:** vender. Plantea la idea en el hook, demuestra con cifras y pruebas reales, y cierra con un CTA a la landing. El avatar es IA, así que el propio anuncio prueba lo que se vende.
 
@@ -10,7 +10,7 @@ Primer anuncio con este formato (aprobado por el usuario, 21 oct 2026): `anuncio
 Se avanza paso a paso y se pide aprobación al final de cada paso (copy, imagen, storyboard).
 
 ### 1 · Copy
-- Si el usuario trae su copy, **respetar su estructura y su orden**: solo pulir claridad, persuasión y que se pueda generar. Si se reescribe más a fondo, guardar esa versión aparte como otro anuncio (así nació `anuncios/04-yo-no-existo/`).
+- Si el usuario trae su copy, **respetar su estructura y su orden**: solo pulir claridad, persuasión y que se pueda generar. Si se reescribe más a fondo, guardar esa versión aparte como otro anuncio (así nació `anuncios/videos/04-yo-no-existo/`).
 - **Evergreen** (anuncios pagados): sin precio ni fecha, ni en la voz ni en pantalla. Los detalles viven en la landing.
 - **Datos reales**: toda cifra se investiga y se cita (p. ej. Seedance: `BASE-CONOCIMIENTO.md` §5.2). Usar "te puede costar", no "cuesta siempre". En pantalla va la fuente en letra pequeña.
 - **Escrito para la voz**: cifras en palabras ("sesenta y siete centavos"), sin símbolos; "inteligencia artificial" en vez de "IA" (Flow puede leer "ía"); evitar repetir palabras ("solo… solo").
@@ -32,9 +32,9 @@ Se avanza paso a paso y se pide aprobación al final de cada paso (copy, imagen,
 - Se puede probar primero el clip 01 y, si al usuario le gusta, generar el resto.
 
 ### Entrega: un solo `prompts-flow.md` en 4 pasos (decisión del usuario, 22 oct 2026)
-Al usuario le gustó recibirlo todo junto y en orden (anuncios 06–08): **Paso 1** imagen del avatar (el JSON de Nano Banana) → **Paso 2** clips de voz → **Paso 3** frames de los B-rolls → **Paso 4** videos de los B-rolls. Crea la imagen, se queda con la que le gusta y genera todos los clips de corrido. Ejemplo: `anuncios/08-ejemplo-producto-serum/prompts-flow.md` (generado con su `generar-prompts.mjs`; en el kit, `sistema/scripts/generar-prompts.mjs` con `brolls` en `clips-plan.json`).
+Al usuario le gustó recibirlo todo junto y en orden (anuncios 06–08): **Paso 1** imagen del avatar (el JSON de Nano Banana) → **Paso 2** clips de voz → **Paso 3** frames de los B-rolls → **Paso 4** videos de los B-rolls. Crea la imagen, se queda con la que le gusta y genera todos los clips de corrido. Ejemplo: `videos-landing/08-ejemplo-producto-serum/prompts-flow.md` (generado con su `generar-prompts.mjs`; en el kit, `sistema/scripts/generar-prompts.mjs` con `brolls` en `clips-plan.json`).
 - **Las ideas de B-roll las propone Claude** (el usuario lo pidió): 2–3 por anuncio, 6–8 s, sin diálogo. Producto en macro, el lugar sin personas, la situación del dolor del cliente. Sin textos, letreros, pantallas legibles, logos, música ni voces; lugares reales y algo imperfectos. Si sale el lugar del avatar, adjuntar `avatar/avatar.jpg` al frame; si sale el propio avatar (p. ej. aplicándose el producto), además `mismaPersona: true`. Si sale un **producto físico**, se bloquea (siguiente punto). Los gráficos (cifras, formularios, botones) se hacen en la edición, no como B-roll.
-- **Producto físico LOCKED IN** (27 oct 2026, solo si el anuncio muestra un producto físico; en servicios, cursos o productos digitales no se usa): en la primera prueba del anuncio 08 el frasco salía distinto en cada imagen. Paso 0 = foto del producto (`producto/producto.png`, real o generada), un bloque `product` idéntico en todos los prompts de imagen y `producto.png` adjunta en el avatar y en los B-rolls donde sale. Reglas en la sección 7 de `skills/master prompt para json prompts imagenes.md`; ejemplo: `anuncios/08-ejemplo-producto-serum/`.
+- **Producto físico LOCKED IN** (27 oct 2026, solo si el anuncio muestra un producto físico; en servicios, cursos o productos digitales no se usa): en la primera prueba del anuncio 08 el frasco salía distinto en cada imagen. Paso 0 = foto del producto (`producto/producto.png`, real o generada), un bloque `product` idéntico en todos los prompts de imagen y `producto.png` adjunta en el avatar y en los B-rolls donde sale. Reglas en la sección 7 de `skills/master prompt para json prompts imagenes.md`; ejemplo: `videos-landing/08-ejemplo-producto-serum/`.
 - **B-roll = frame primero, video después** (el usuario lo pidió el 22 oct 2026: el B-roll 01 del anuncio 06, generado directo de texto a video, se vio "de IA", con una toma que no habría elegido, y cada intento quema créditos). Plantilla: `scripts/broll-plantilla.mjs` → `prompts-broll/broll-NN-imagen.json` (Nano Banana, inglés, mismo realismo de iPhone que el avatar) + `broll-NN-video.json` (Flow, anima ese frame). Frame elegido → `broll/broll-NN.jpg`. Van fuera de `prompts/` para que `validar-json.mjs` no los lea.
 
 ### 4 · Clips
@@ -48,7 +48,7 @@ Al usuario le gustó recibirlo todo junto y en orden (anuncios 06–08): **Paso 
 
 ### 6 · Storyboard
 - **Solo los frames** (lámina 1920×1080, 2 filas × 8 viñetas), cada uno con su número, una etiqueta corta y la frase. Sin paneles de reglas, recursos, paleta ni tipografía.
-- Cada viñeta es el lienzo real 1080×1920 escalado: frames reales de los clips + los gráficos con las mismas clases que la edición. Plantilla: `anuncios/03-calidad-seedance-centavos/moodboard/moodboard.html` → PNG con Chrome headless.
+- Cada viñeta es el lienzo real 1080×1920 escalado: frames reales de los clips + los gráficos con las mismas clases que la edición. Plantilla: `anuncios/videos/03-calidad-seedance-centavos/moodboard/moodboard.html` → PNG con Chrome headless.
 - **Estilo = render final del reel 07** (no su moodboard viejo): subtítulos palabra por palabra siempre, muchos B-rolls y gráficos.
 - **Avatar en cámara ≈ 60–65 %** (contando la tarjeta de la escena "misma calidad"). Si da menos, pasar B-rolls a **gráficos sobre la cara** (tarjeta pequeña en el tercio superior) y dejar a pantalla completa solo lo que necesita espacio: pruebas reales, comparaciones, la cuadrícula de anuncios y la galería. Calcular el % con los tiempos reales antes de mostrarlo.
 - En el chat, aparte: los recursos que faltan del usuario.
@@ -89,7 +89,7 @@ Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
 | Logo + días + botón | CTA | Logo (mezcla "screen"), tarjetas Día 1 / Día 2 sobre la cara, botón verde "Reservar mi lugar ↓" que rebota en "botón" |
 
 ## Variantes y reglas añadidas (anuncio 04)
-- **Animaciones distintas en cada anuncio**: si el anuncio anterior usó un set de escenas, el siguiente propone otro (el usuario lo pidió en el 04). Set alternativo probado en `anuncios/04-yo-no-existo/moodboard/moodboard.html`: subtítulos en mayúsculas con píldora verde, pantalla dividida, video en burbuja sobre las pruebas, escaneo IA + glitch, taxímetro, sellos "WINNER", escalera de barras, teléfono 3D con marcador, calendario, botón con toque.
+- **Animaciones distintas en cada anuncio**: si el anuncio anterior usó un set de escenas, el siguiente propone otro (el usuario lo pidió en el 04). Set alternativo probado en `anuncios/videos/04-yo-no-existo/moodboard/moodboard.html`: subtítulos en mayúsculas con píldora verde, pantalla dividida, video en burbuja sobre las pruebas, escaneo IA + glitch, taxímetro, sellos "WINNER", escalera de barras, teléfono 3D con marcador, calendario, botón con toque.
 - **Pantalla dividida (gráfico arriba, avatar abajo)**: el subtítulo va **sobre la línea divisoria** (franja), el panel de arriba ocupa ~43 % (0–820 px) y el video de abajo se encuadra con la cara justo debajo de la franja. Si el subtítulo queda en su posición normal, le tapa la cara.
 - **Nunca subtítulos ni gráficos clave en el ~20 % inferior**: lo tapa la interfaz de Reels/Stories (texto del anuncio, botón de Meta).
 - **Varias tomas**: se puede cambiar de lugar cuando el guion cambia de tema (anuncio 04: carro para el hook y el precio → casa para el argumento de negocio). La segunda imagen se genera adjuntando la primera para mantener a la misma persona; en Flow cada clip usa la imagen de su toma. El cambio de toma es un corte de escena (transición whip), no necesita zoom.
@@ -97,7 +97,7 @@ Copiar `unir-clips.mjs` y `build.mjs` a `<anuncio>/edicion/`.
 
 ## Nunca tapar la cara + look premium (anuncio 04, storyboard v3 rechazado)
 - **Ningún gráfico, tarjeta, sticker ni app tapa la cara de la avatar, en ningún momento.** Sobre la cara solo se permite la banda superior (por encima de la cabeza) y el subtítulo a la altura del pecho. Si un gráfico necesita espacio, va en un cutaway a pantalla completa (su propio video desenfocado de fondo + el objeto flotando), no encima de ella.
-- El estilo "UGC nativo" (encuesta de IG, app de Notas, calculadora, stickers, emojis, flechas a mano) se rechazó: **no se ve premium**. El usuario quiere un look profesional: tipografía fina, mucho aire, pocas cosas a la vez, colores de marca. Referencia aprobada para proponer: `anuncios/04-yo-no-existo/moodboard/storyboard-anuncio-04-v4.png` ("Keynote premium").
+- El estilo "UGC nativo" (encuesta de IG, app de Notas, calculadora, stickers, emojis, flechas a mano) se rechazó: **no se ve premium**. El usuario quiere un look profesional: tipografía fina, mucho aire, pocas cosas a la vez, colores de marca. Referencia aprobada para proponer: `anuncios/videos/04-yo-no-existo/moodboard/storyboard-anuncio-04-v4.png` ("Keynote premium").
 
 ## Nunca mostrar nuestras herramientas
 En los anuncios no se nombran ni se muestran las herramientas propias (Nano Banana, Flow, Claude, HyperFrames, etc.): ni en texto, ni en etiquetas, ni en capturas de sus interfaces. Se dice "creada desde cero", "100% inteligencia artificial". Sí se puede nombrar a la competencia cuando el guion la compara (Seedance), con su fuente.
@@ -112,7 +112,7 @@ En el anuncio 04 se cortaron finales de palabra ("centavo-", "minu-") y quedaron
 6. Si un clip de Flow termina **justo** con la última palabra (voz hasta el último fotograma), la palabra probablemente está cortada en origen: avisar y pedir regenerarlo más largo.
 
 ### Ritmo natural del habla (regla vigente desde el anuncio 07, 27 oct 2026)
-La meta es que suene como una persona real hablando, no como un guion leído de corrido. El usuario probó la versión "sin silencios" y, entre el final de un clip y el inicio del siguiente, se notaba mucho el salto. Referencia aprobada: `anuncios/07-ejemplo-leads-clase-ingles/edicion/cortes.txt` (copia en `edicion/cortes-ejemplo-anuncio-07.txt`).
+La meta es que suene como una persona real hablando, no como un guion leído de corrido. El usuario probó la versión "sin silencios" y, entre el final de un clip y el inicio del siguiente, se notaba mucho el salto. Referencia aprobada: `videos-landing/07-ejemplo-leads-clase-ingles/edicion/cortes.txt` (copia en `edicion/cortes-ejemplo-anuncio-07.txt`).
 1. **Arranque**: la primera palabra suena en el fotograma 0 (máx. ~0,05 s antes).
 2. **Hook sin cortes**: la primera frase va de una sola toma, con sus pausas naturales (hasta ~0,5 s). En el 07 v1 un corte rápido justo después de "Si entiendes inglés," se veía artificial.
 3. **Uniones entre clips: ~0,45–0,55 s de silencio** (fin del clip ≈ fin de la voz + 0,2 s; inicio del siguiente ≈ inicio de la voz − 0,25 s). Nunca menos de ~0,35 s: con ~0,15 s se veía apurado.
@@ -132,7 +132,7 @@ Historial (anuncio 06, 23 oct 2026):
 - **Nada de formularios visuales de registro en pantalla** (rechazado en el 07): para "regístrate" basta la cara con un golpe de zoom y luego el botón.
 
 ### Marca de agua en los ejemplos de la landing (27 oct 2026)
-- Los anuncios de ejemplo de la landing (07 en adelante) llevan "▶ AVATAR ADS 1.0" pequeña y fija: Archivo 800, 30 px, blanco con "ADS" y el triángulo en verde #C5F740, 60 % de opacidad, en el borde derecho a la altura del hombro (no en una esquina, que se recorta fácil). Bloque `#wm` en `anuncios/07-ejemplo-leads-clase-ingles/edicion/build.mjs`.
+- Los anuncios de ejemplo de la landing (07 en adelante) llevan "▶ AVATAR ADS 1.0" pequeña y fija: Archivo 800, 30 px, blanco con "ADS" y el triángulo en verde #C5F740, 60 % de opacidad, en el borde derecho a la altura del hombro (no en una esquina, que se recorta fácil). Bloque `#wm` en `videos-landing/07-ejemplo-leads-clase-ingles/edicion/build.mjs`.
 
 ## Errores ya resueltos (no repetir)
 - **Logo con fondo negro**: `mix-blend-mode: screen` va en el **contenedor** `.g` del logo (capa propia), no en la imagen dentro de otra capa.

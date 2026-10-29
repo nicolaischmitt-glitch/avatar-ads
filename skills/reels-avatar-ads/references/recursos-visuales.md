@@ -17,7 +17,7 @@ En cada guion, clasifica cada recurso en una de estas 3 columnas y dile al usuar
 ## 3. Me los das tú (más auténticos, y a veces es la única forma)
 - **Grabaciones de pantalla reales** de tus herramientas (Google Flow generando, tu prompt, el timeline de edición). La autenticidad vende más que un mockup. Graba en vertical o a pantalla completa, sin datos personales.
 - **Imagen de referencia del avatar** (la misma que usas en Flow) → para la secuencia "foto → avatar".
-- **Clips extra del avatar** en otras escenas, si quieres la secuencia demostrativa (puedes reutilizar los de reels anteriores, p. ej. `anuncios/01-avatar-ads/` y `anuncios/02-labial-auto/`).
+- **Clips extra del avatar** en otras escenas, si quieres la secuencia demostrativa (puedes reutilizar los de reels anteriores, p. ej. `anuncios/videos/01-avatar-ads/` y `videos-landing/02-labial-auto/`).
 - Anuncios reales hechos por ti o por alumnos (con permiso) para el bloque de prueba.
 - Métricas reales (capturas de Instagram/Ads Manager) si quieres usar números reales en vez de ilustrativos.
 

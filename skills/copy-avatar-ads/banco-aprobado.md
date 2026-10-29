@@ -24,11 +24,11 @@ Qué hace que funcione (imitar esto):
 
 ### Anuncio estático 11 · el camino, ángulo proceso (28 oct 2026, aprobado)
 - **Final elegido:** título rojo "CREAR ANUNCIOS DE LA MANERA TRADICIONAL" + "2–3 horas por anuncio"; línea verde **sin pasos** (versión A: idea → 1 anuncio, "el sistema hace el resto"); **fondo blanco** (`final/camino-proceso.png` y `-historia.png`). Se probó la versión con el branding oscuro y el usuario prefirió la blanca porque "visualmente es claro". Las variantes `-pasos` y `-marca` quedan en `final/` sin usar.
-- **🔴 "GRABARTE TÚ · 2–3 horas por anuncio"** (camino enredado: idea → escribir el guion → preparar el lugar → micrófono → luz → grabar → me equivoqué → grabar otra vez → editar → 1 anuncio) · **🟢 "CON AVATAR ADS"** (línea recta: idea → 1 anuncio, "el sistema hace el resto"). Carpeta: `anuncios/11-estatico-camino-proceso/`.
+- **🔴 "GRABARTE TÚ · 2–3 horas por anuncio"** (camino enredado: idea → escribir el guion → preparar el lugar → micrófono → luz → grabar → me equivoqué → grabar otra vez → editar → 1 anuncio) · **🟢 "CON AVATAR ADS"** (línea recta: idea → 1 anuncio, "el sistema hace el resto"). Carpeta: `anuncios/imagenes/11-estatico-camino-proceso/`.
   Por qué: el lado tradicional es el proceso real del usuario (se graba él mismo, 2–3 h por anuncio, dato suyo). Corrección del usuario: **no** buscaba creadores, ni negociaba precios ni enviaba productos; no usar ese proceso como "lo tradicional" para nuestro público.
 
 ### Anuncio estático 10 · las dos puertas, ángulo precio (28 oct 2026)
-- **🟢 "PAGAR ~$1 POR ANUNCIO" · 🔴 "PAGARLE ~$20 A SEEDANCE POR ANUNCIO"** · textos de las puertas (meme de las dos puertas: una persona contra la multitud). Carpeta: `anuncios/10-estatico-puertas-precio/`.
+- **🟢 "PAGAR ~$1 POR ANUNCIO" · 🔴 "PAGARLE ~$20 A SEEDANCE POR ANUNCIO"** · textos de las puertas (meme de las dos puertas: una persona contra la multitud). Carpeta: `anuncios/imagenes/10-estatico-puertas-precio/`.
   Por qué: compara lo mismo con lo mismo (un anuncio de 30 s), así que se entiende sin hacer cuentas. El usuario propuso "Seedance $1 cada 30 s": se corrigió porque en realidad cuesta ~$0,68 **por segundo** (~$20 por anuncio). Elegida entre 3 opciones (las otras: "$1 por anuncio vs $0,68 por segundo" y "anuncios de $1 vs de $13").
 - Texto de Meta propuesto: "Casi todos hacen lo mismo: le pagan a Seedance casi 70 centavos por cada segundo de video. Un anuncio de 30 segundos: ~$20… Así testeas 20 anuncios por lo que otros pagan por uno." (sin aprobar todavía)
 
