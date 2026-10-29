@@ -33,7 +33,7 @@ Avatar Ads 1.0/
 │   ├── 09-vsl-landing/  ← VSL nuevo para el hero de la landing (28 oct 2026): copy del usuario, evergreen, empresario en su oficina, formato D
 │   │                    sin B-rolls por ahora (prompts de 9 B-rolls listos en prompts-flow.md) · storyboard/ · edicion/ · final/anuncio-09-vsl-landing.mp4 (84 s)
 │   ├── 12-taller-domingo-yo-no-existo/ ← anuncio pagado del taller semanal (29 oct 2026): «Yo no existo», avatar del VSL 09, formato D sin B-rolls,
-│   │                    "este domingo" sin fecha ni precio (sirve cada semana) · final/anuncio-12-taller-domingo-yo-no-existo.mp4 (50 s)
+│   │                    "este domingo" sin fecha ni precio (sirve cada semana) · final/anuncio-12-taller-domingo-yo-no-existo.mp4 (50 s, con la música bgm_004 del VSL; también -sin-musica.mp4)
 │   └── ejemplos-ugc/    ← los 3 ejemplos UGC originales (airpods, MAKE UP, MODELO)
 ├── Contenido/           ← todo el contenido orgánico de Instagram
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
