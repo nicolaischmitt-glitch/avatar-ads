@@ -17,6 +17,7 @@ Se avanza paso a paso y se pide aprobación al final de cada paso (copy, imagen,
 - Pruebas de clientes: solo con permiso y con la etiqueta "resultado de un cliente". Nunca presentarlos como alumnos.
 - 35–45 s generados (≈ 100–120 palabras). Termina con CTA al botón ("Reserva tu lugar en el botón de abajo").
 - Dividir en clips de 6/8/10 s (tabla en `references/frameworks-guion.md`). Cada clip termina en una pausa natural.
+- **Misma velocidad de habla en todos los clips**: contar sílabas por segundo de clip (~3,2–4,3, máx. ~4,5) y que todos se parezcan. Si a un clip le sobra texto, Flow hace que el avatar acelere y se nota al unirlo con los demás (anuncio 12, clip 05: 52 sílabas en 10 s).
 
 ### 2 · Avatar (frame de la toma única)
 - Desde cero con Nano Banana: estructura fija de `skills/master prompt para json prompts imagenes.md` (prompt en inglés, encuadre con espacio arriba para gráficos, manos visibles, boca cerrada).

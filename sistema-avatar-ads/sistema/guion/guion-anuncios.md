@@ -62,13 +62,19 @@ Duración: 35–45 s generados (≈ 100–120 palabras). Un anuncio de 20–25 s
 - Nada de promesas garantizadas ("vas a ganar…"). Usa "puedes", "te ayuda a".
 - Anuncios pagados evergreen: sin fechas ni precios que caduquen.
 
-## Duración y palabras por clip
-| Clip | Palabras aprox. |
-|---|---|
-| 4 s | 8–10 |
-| 6 s | 13–16 |
-| 8 s | 18–22 |
-| 10 s | 23–27 |
+## Duración, sílabas y palabras por clip
+| Clip | Sílabas (máx.) | Palabras aprox. |
+|---|---|---|
+| 4 s | 13–17 | 7–9 |
+| 6 s | 19–26 | 11–14 |
+| 8 s | 26–34 | 15–19 |
+| 10 s | 32–43 | 19–24 |
+
+**La misma velocidad de habla en todos los clips** (regla del 29 oct 2026). Flow hace que el avatar diga todo el texto dentro del clip: si le sobra texto, **acelera**; si le sobra tiempo, habla tranquilo. Al unir los clips se nota el cambio de velocidad (anuncio 12: el clip de 10 s con 52 sílabas, 5,2 por segundo, sonaba acelerado al lado de los demás, que iban a 3,2–4,5).
+- Se cuentan **sílabas**, no palabras: "hiperrealistas" y "herramientas" pesan mucho más que "y" o "tu".
+- Meta: **~3,2–4,3 sílabas por segundo de clip** (sílabas ÷ duración del clip), nunca más de ~4,5, y **todos los clips del anuncio parecidos entre sí** (ninguno más de ~0,7 por encima de los demás; los clips cortos dan algo menos porque el avatar tarda ~0,6 s en arrancar).
+- Si un fragmento no cabe, se sube la duración del clip o se divide en dos; nunca se aprieta.
+- Si un clip queda muy por debajo de los demás (p. ej. 2,5 contra 4), el avatar sonará más lento: se le suma la frase siguiente o se baja la duración.
 
 Corta cada clip en un final de frase o una pausa natural. El CTA va en el último clip; si no cabe, un clip más.
 

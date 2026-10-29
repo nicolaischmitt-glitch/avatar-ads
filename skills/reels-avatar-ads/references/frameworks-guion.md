@@ -57,14 +57,20 @@ Muy potente porque el propio reel es la prueba.
 - No pongas símbolos en el guion hablado ($, %, /): escribe "dólares", "por ciento".
 - Nada de afirmaciones falsas ni resultados garantizados.
 
-## Duración y palabras por clip (habla rápida y natural)
+## Duración, sílabas y palabras por clip (misma velocidad en todos)
 
-| Duración clip | Palabras aprox. |
-|---|---|
-| 4 s | 8–10 |
-| 6 s | 13–16 |
-| 8 s | 18–22 |
-| 10 s | 23–27 |
+| Clip | Sílabas (máx.) | Palabras aprox. |
+|---|---|---|
+| 4 s | 13–17 | 7–9 |
+| 6 s | 19–26 | 11–14 |
+| 8 s | 26–34 | 15–19 |
+| 10 s | 32–43 | 19–24 |
+
+**La misma velocidad de habla en todos los clips** (regla del 29 oct 2026). Flow hace que el avatar diga todo el texto dentro del clip: si le sobra texto, **acelera**; si le sobra tiempo, habla tranquilo. Al unir los clips se nota el cambio de velocidad (anuncio 12: el clip de 10 s con 52 sílabas, 5,2 por segundo, sonaba acelerado al lado de los demás, que iban a 3,2–4,5).
+- Se cuentan **sílabas**, no palabras: "hiperrealistas" y "herramientas" pesan mucho más que "y" o "tu".
+- Meta: **~3,2–4,3 sílabas por segundo de clip** (sílabas ÷ duración del clip), nunca más de ~4,5, y **todos los clips del anuncio parecidos entre sí** (ninguno más de ~0,7 por encima de los demás; los clips cortos dan algo menos porque el avatar tarda ~0,6 s en arrancar).
+- Si un fragmento no cabe, se sube la duración del clip o se divide en dos; nunca se aprieta.
+- Si un clip queda muy por debajo de los demás (p. ej. 2,5 contra 4), el avatar sonará más lento: se le suma la frase siguiente o se baja la duración.
 
 Reel de 30 s ≈ 70–80 palabras · 45 s ≈ 105–120 · 60 s ≈ 140–160.
 Corta cada clip en un final de frase o pausa natural (punto, coma fuerte). Nunca a mitad de una idea.

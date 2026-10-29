@@ -56,6 +56,9 @@ fs.mkdirSync(path.join(dir, "prompts"), { recursive: true });
 for (const f of fs.readdirSync(path.join(dir, "prompts"))) if (/^clip-\d+\.json$/.test(f)) fs.rmSync(path.join(dir, "prompts", f));
 
 plan.clips = plan.clips ?? [];   // formato voz en off: sin clips de voz (la voz se genera aparte, ver formatos/voz-en-off/LEEME.md)
+// sílabas aproximadas (grupos de vocales): sirven para medir la velocidad de habla de cada clip
+const silabas = (t) => t.toLowerCase().split(/[^a-záéíóúüñ]+/).filter(Boolean).reduce((a, w) => a + (w.match(/[aeiouáéíóúü]+/g) || []).length, 0);
+const ritmos = [];
 const total = plan.clips.reduce((a, c) => a + c.dur, 0);
 const tomas = Object.keys(plan.tomas ?? {}).length ? plan.tomas : { a: "avatar/avatar.jpg" };
 // Producto físico LOCKED IN (solo si el plan trae "producto"): un bloque fijo + producto/producto.png adjunta en todo.
@@ -119,6 +122,9 @@ for (const c of plan.clips) {
   const [min, max] = PALABRAS[c.dur] ?? [0, 99];
   if (n > max + 2) avisos.push(`clip ${c.n}: ${n} palabras para ${c.dur} s (máx. ~${max}); súbelo de duración o divídelo`);
   if (n < min - 4) avisos.push(`clip ${c.n}: ${n} palabras para ${c.dur} s (pocas; el avatar puede quedarse callado al final)`);
+  const sil = silabas(c.texto), sps = sil / c.dur;
+  ritmos.push([c.n, sps]);
+  if (sps > 4.5) avisos.push(`clip ${c.n}: ${sil} sílabas en ${c.dur} s (${sps.toFixed(1)} por segundo): el avatar va a acelerar; súbelo de duración o divídelo (meta ~3,2–4,3)`);
   if (/[$%/]/.test(c.texto)) avisos.push(`clip ${c.n}: tiene símbolos ($ % /); escríbelos en palabras`);
 
   const j = JSON.parse(tpl);
@@ -149,6 +155,13 @@ if (brolls.length) md += brollMarkdown(brolls);
 const guionTxt = path.join(dir, "guion.txt");
 if (plan.clips.length && !fs.existsSync(guionTxt)) fs.writeFileSync(guionTxt, plan.clips.map((c) => c.texto.trim()).join(" ") + "\n");
 fs.writeFileSync(path.join(dir, "prompts-flow.md"), md);
+// misma velocidad de habla en todos los clips: ninguno mucho más rápido (>0,7) o más lento (>1,0) que la mediana
+// (los clips cortos dan un poco menos porque el avatar tarda ~0,6 s en arrancar)
+if (ritmos.length > 1) {
+  const m = [...ritmos].map((r) => r[1]).sort((a, b) => a - b)[Math.floor(ritmos.length / 2)];
+  for (const [n, s] of ritmos) if ((s - m > 0.7 || m - s > 1.0) && s <= 4.5)
+    avisos.push(`clip ${n}: ${s.toFixed(1)} sílabas por segundo contra ${m.toFixed(1)} de los demás; ${s > m ? "sonará más rápido" : "sonará más lento"} (ajusta la duración o el texto)`);
+}
 console.log(`${plan.clips.length} prompts de voz → ${dir}/prompts/ · ${brolls.length} B-rolls → prompts-broll/ · prompts-flow.md (${total} s)`);
 if (avisos.length) console.log("\nAvisos:\n" + avisos.map((a) => "  - " + a).join("\n"));
 

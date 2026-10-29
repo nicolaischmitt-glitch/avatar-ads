@@ -1,5 +1,8 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.4.1 — 29 oct 2026
+- **La misma velocidad de habla en todos los clips.** Google Flow hace que el avatar diga todo el texto dentro del clip: si le sobra texto, acelera, y al unir los clips se nota (en un anuncio real, un clip de 10 s con demasiadas sílabas sonaba apurado al lado de los demás). Ahora la tabla de `guion/guion-anuncios.md` se mide en sílabas por segundo (~3,2–4,3, máx. ~4,5) y `generar-prompts.mjs` avisa si un clip pasa de 4,5 o se aleja de los demás.
+
 ## 1.4.0 — 28 oct 2026
 - **Audio limpio en todos los anuncios.** Google Flow inventa el sonido ambiente de cada clip: en un anuncio real, la mayoría de los clips trajo un zumbido grave de fondo (como de aire acondicionado) y uno salió limpio, y al unirlos se notaba el cambio. Ahora hay dos defensas:
   - el master prompt de video tiene un bloque nuevo, `audio`, que pide solo la voz: sin ambiente, ruido, música ni efectos (`sistema/prompts/master-prompt-video.txt`; los prompts se siguen generando con `generar-prompts.mjs`, que ya lo incluye);
