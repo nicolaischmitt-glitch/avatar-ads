@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- Anuncio estático 11 · el camino (ángulo proceso): grabarte tú (camino enredado, 2–3 h) vs. con Avatar Ads (línea recta).
+     Mismo estilo que el anuncio 10 (fondo blanco, línea, verde y rojo). ?historia → 1080×1920.
+     Render (desde la raíz):  node anuncios/11-estatico-camino-proceso/render.mjs  → final/camino-proceso.png + final/camino-proceso-historia.png -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-600.woff2") format("woff2"); font-weight: 600; }
+  html, body { margin: 0; background: #fff; }
+  svg { display: block; }
+  text { font-family: "Inter", sans-serif; }
+  .titulo { font-weight: 600; letter-spacing: -1px; }
+  @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  :root { --bg: #fff; --txt: #151515; }
+  .marca { --bg: #020604; --txt: #DDDAD7; }
+  html.marca, .marca body { background: var(--bg); }
+  .marca .titulo { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -0.5px; }
+  .paso { font-weight: 600; font-size: 27px; fill: var(--txt); stroke: var(--bg); stroke-width: 10px; stroke-linejoin: round; paint-order: stroke; }
+</style>
+</head>
+<body>
+<svg id="s" width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+const HIST = location.search.includes("historia");
+// ?marca → branding de Avatar Ads: fondo oscuro, verde neón, títulos en Archivo
+const MARCA = location.search.includes("marca");
+if (MARCA) document.documentElement.classList.add("marca");
+const [INK, GREEN, RED, MUTED, LINE] = MARCA
+  ? ["#F8F8F8", "#C5F740", "#E5534B", "#9F9587", "#305E4A"]
+  : ["#151515", "#4BA86E", "#D2322D", "#666", "#e2e2e2"];
+const T = MARCA ? 0.86 : 1; // Archivo es más ancha: títulos un poco más chicos
+const svg = document.getElementById("s");
+if (HIST) { svg.setAttribute("height", 1920); svg.setAttribute("viewBox", "0 0 1080 1920"); }
+
+// curva suave (Catmull-Rom → Bézier) que pasa por todos los puntos
+function curva(pts) {
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    d += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+}
+const punto = (x, y, r, color) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${color}"/>`;
+const etiqueta = (x, y, t, anchor = "middle") => `<text class="paso" x="${x}" y="${y}" text-anchor="${anchor}">${t}</text>`;
+const titulo = (x, y, t, color, size, anchor = "start") => `<text class="titulo" x="${x}" y="${y}" font-size="${size * T}" fill="${color}" text-anchor="${anchor}">${t}</text>`;
+
+// ── Grabarte tú: el camino enredado. [x, y, etiqueta, dx, dy, anchor] (las etiquetas marcan una parada)
+const camino = [
+  [110, 520, "IDEA", 0, 48],
+  [210, 340, "Escribir el guion", 0, -26],
+  [310, 300], [370, 420], [285, 505], [235, 420], [330, 360],
+  [455, 330, "Preparar el lugar", 30, -26],
+  [560, 410], [505, 520],
+  [395, 575, "Micrófono", -22, 8, "end"],
+  [375, 690],
+  [495, 745, "Luz", 0, 48],
+  [610, 650], [585, 530],
+  [690, 455, "Grabar", -10, -26],
+  [810, 400], [880, 500],
+  [790, 585, "Me equivoqué", 0, 46],
+  [735, 500], [835, 455],
+  [950, 560, "Grabar otra vez", 0, -26],
+  [900, 690],
+  [770, 735, "Editar", 0, 48],
+  [880, 790], [975, 760],
+];
+let rojo = titulo(110, 115, "CREAR ANUNCIOS DE LA", RED, 58) + titulo(110, 177, "MANERA TRADICIONAL", RED, 58);
+rojo += `<text x="110" y="232" font-size="36" style="fill:var(--txt)">2–3 horas por anuncio</text>`;
+rojo += `<g transform="translate(0 40)">`;
+rojo += `<path d="${curva(camino)}" fill="none" stroke="${RED}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`;
+for (const [x, y, t, dx, dy, a] of camino) if (t) rojo += punto(x, y, t === "IDEA" ? 11 : 8, INK);
+for (const [x, y, t, dx, dy, a] of camino) if (t) rojo += etiqueta(x + dx, y + dy, t, a);
+const [fx, fy] = camino.at(-1);
+rojo += punto(fx, fy, 13, RED) + titulo(fx + 10, fy + 58, "1 ANUNCIO", RED, 34, "end") + `</g>`;
+
+// ── Con Avatar Ads: la línea recta (?pasos → con las paradas reales: guion, clips, edición)
+const PASOS = location.search.includes("pasos");
+let verde = `<line x1="110" y1="925" x2="970" y2="925" stroke="${LINE}" stroke-width="2"/>`;
+verde += titulo(110, 1040, "CON AVATAR ADS", GREEN, 64);
+verde += `<path d="M110,1170 L955,1170" stroke="${GREEN}" stroke-width="5" stroke-linecap="round"${MARCA ? ' filter="url(#brillo)"' : ""}/>`;
+verde += punto(110, 1170, 11, INK) + etiqueta(110, 1218, "IDEA");
+if (PASOS) {
+  for (const [x, t, sub] of [[305, "Guion", "lo hace el sistema"], [505, "Clips", "los generas tú"], [700, "Edición", "automática"]]) {
+    verde += punto(x, 1170, 8, INK) + etiqueta(x, 1218, t);
+    verde += `<text x="${x}" y="1250" font-size="22" fill="${MUTED}" text-anchor="middle">${sub}</text>`;
+  }
+} else verde += `<text x="532" y="1146" font-size="28" fill="${MUTED}" text-anchor="middle">el sistema hace el resto</text>`;
+verde += punto(970, 1170, 13, GREEN) + titulo(980, 1228, "1 ANUNCIO", GREEN, 34, "end");
+
+svg.innerHTML = `<defs><filter id="brillo" filterUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g transform="translate(0 ${HIST ? 230 : 0})">${rojo}</g><g transform="translate(0 ${HIST ? 330 : 0})">${verde}</g>`;
+</script>
+</body>
+</html>

@@ -121,6 +121,15 @@ Utiliza exactamente esta estructura en todos los clips. No añadas ni elimines c
       "style": "video completamente raw, natural y sin editar",
       "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
     },
+    "audio": {
+      "voice_only": true,
+      "ambient_sound": false,
+      "background_noise": false,
+      "music": false,
+      "sound_effects": false,
+      "room_tone": "habitación silenciosa, sin eco ni reverberación",
+      "rule": "Se escucha únicamente la voz del avatar, clara y cercana, como grabada en una habitación silenciosa. Sin sonido ambiente, sin ruido de aire acondicionado, refrigerador, ventilador, tráfico ni zumbido eléctrico, y sin música ni efectos de sonido."
+    },
     "continuity": {
       "same_avatar": true,
       "same_location": true,
@@ -138,6 +147,7 @@ Utiliza exactamente esta estructura en todos los clips. No añadas ni elimines c
     "Respetar el diálogo palabra por palabra.",
     "No generar subtítulos ni ningún tipo de texto en pantalla.",
     "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "No generar sonido ambiente, ruido de fondo, música ni efectos de sonido: solo la voz del avatar.",
     "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
   ]
 }
@@ -178,6 +188,12 @@ Las palabras y cifras del diálogo deben pronunciarse, pero no mostrarse escrita
 Mantén intactos los campos de `visual_restrictions` y sus valores. No añadas más campos de restricciones ni modifiques los existentes por iniciativa propia.
 
 Las restricciones expresan el resultado visual deseado, pero no garantizan por sí solas que el generador las cumpla.
+
+### Audio (desde el 28 oct 2026)
+
+Google Flow genera la imagen y el sonido juntos. Sin instrucciones de audio, cada clip inventa su propio ambiente: en el VSL de la landing (anuncio 09), los clips 01–10 salieron con un retumbe grave de fondo (40–150 Hz, como de aire acondicionado) y el 11 salió limpio, y al unirlos se notaba el cambio.
+
+Por eso el bloque `audio` pide solo la voz, sin ambiente, ruido, música ni efectos. Mantén intactos sus campos y valores. Es una instrucción, no una garantía: la edición limpia siempre el audio de todos modos (reducción de ruido + puerta en las pausas), para que todos los clips queden con el mismo fondo.
 
 ## 8. EJEMPLO DE REFERENCIA
 
@@ -240,6 +256,15 @@ Ejemplo:
       "style": "video completamente raw, natural y sin editar",
       "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
     },
+    "audio": {
+      "voice_only": true,
+      "ambient_sound": false,
+      "background_noise": false,
+      "music": false,
+      "sound_effects": false,
+      "room_tone": "habitación silenciosa, sin eco ni reverberación",
+      "rule": "Se escucha únicamente la voz del avatar, clara y cercana, como grabada en una habitación silenciosa. Sin sonido ambiente, sin ruido de aire acondicionado, refrigerador, ventilador, tráfico ni zumbido eléctrico, y sin música ni efectos de sonido."
+    },
     "continuity": {
       "same_avatar": true,
       "same_location": true,
@@ -257,6 +282,7 @@ Ejemplo:
     "Respetar el diálogo palabra por palabra.",
     "No generar subtítulos ni ningún tipo de texto en pantalla.",
     "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "No generar sonido ambiente, ruido de fondo, música ni efectos de sonido: solo la voz del avatar.",
     "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
   ]
 }
@@ -284,6 +310,7 @@ Antes de entregar los prompts, comprueba que:
 - Los únicos cambios corresponden al diálogo, los gestos específicos, la duración y las variables expresamente autorizadas.
 - El JSON es válido y puede copiarse directamente.
 - Se mantienen las restricciones de video raw, sin subtítulos, textos, efectos ni transiciones.
+- Se mantiene el bloque `audio`: solo la voz, sin sonido ambiente, ruido de fondo, música ni efectos.
 - El guion se conserva palabra por palabra, sin omisiones ni modificaciones.
 - La duración asignada es razonable para el diálogo.
 - Los clips mantienen continuidad visual y narrativa.

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "w0",
+    "text": "Son",
+    "start": 0,
+    "end": 0.4
+  },
+  {
+    "id": "w1",
+    "text": "anuncios",
+    "start": 0.4,
+    "end": 0.96
+  },
+  {
+    "id": "w2",
+    "text": "con",
+    "start": 0.96,
+    "end": 1.2
+  },
+  {
+    "id": "w3",
+    "text": "estructuras",
+    "start": 1.2,
+    "end": 1.92
+  },
+  {
+    "id": "w4",
+    "text": "probadas",
+    "start": 1.92,
+    "end": 2.56
+  },
+  {
+    "id": "w5",
+    "text": "para",
+    "start": 2.56,
+    "end": 2.8
+  },
+  {
+    "id": "w6",
+    "text": "escalar",
+    "start": 2.8,
+    "end": 3.28
+  },
+  {
+    "id": "w7",
+    "text": "rápido.",
+    "start": 3.28,
+    "end": 3.76
+  }
+]

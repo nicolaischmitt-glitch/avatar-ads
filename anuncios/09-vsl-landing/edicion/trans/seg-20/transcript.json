@@ -1,0 +1,110 @@
+[
+  {
+    "id": "w0",
+    "text": "Además,",
+    "start": 0,
+    "end": 0.72
+  },
+  {
+    "id": "w1",
+    "text": "el",
+    "start": 0.72,
+    "end": 0.88
+  },
+  {
+    "id": "w2",
+    "text": "sistema",
+    "start": 0.88,
+    "end": 1.2
+  },
+  {
+    "id": "w3",
+    "text": "es",
+    "start": 1.2,
+    "end": 1.36
+  },
+  {
+    "id": "w4",
+    "text": "tuyo",
+    "start": 1.36,
+    "end": 1.84
+  },
+  {
+    "id": "w5",
+    "text": "para",
+    "start": 1.84,
+    "end": 2
+  },
+  {
+    "id": "w6",
+    "text": "siempre,",
+    "start": 2,
+    "end": 2.64
+  },
+  {
+    "id": "w7",
+    "text": "con",
+    "start": 2.64,
+    "end": 2.8
+  },
+  {
+    "id": "w8",
+    "text": "todas",
+    "start": 2.8,
+    "end": 3.12
+  },
+  {
+    "id": "w9",
+    "text": "sus",
+    "start": 3.12,
+    "end": 3.36
+  },
+  {
+    "id": "w10",
+    "text": "actualizaciones,",
+    "start": 3.36,
+    "end": 4.4
+  },
+  {
+    "id": "w11",
+    "text": "porque",
+    "start": 4.4,
+    "end": 4.64
+  },
+  {
+    "id": "w12",
+    "text": "la",
+    "start": 4.64,
+    "end": 4.8
+  },
+  {
+    "id": "w13",
+    "text": "inteligencia",
+    "start": 4.8,
+    "end": 5.44
+  },
+  {
+    "id": "w14",
+    "text": "artificial",
+    "start": 5.44,
+    "end": 6
+  },
+  {
+    "id": "w15",
+    "text": "cambia",
+    "start": 6,
+    "end": 6.4
+  },
+  {
+    "id": "w16",
+    "text": "cada",
+    "start": 6.4,
+    "end": 6.64
+  },
+  {
+    "id": "w17",
+    "text": "semana.",
+    "start": 6.64,
+    "end": 7.04
+  }
+]

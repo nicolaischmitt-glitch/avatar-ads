@@ -1,68 +1,63 @@
-# 09 · VSL de la landing (borrador, 27 oct 2026)
+# 09 · VSL de la landing
+Formato D (head talking de una toma + muchos B-rolls) · evergreen (sin precio ni fechas) · reemplaza al video del hero (`anuncios/01-avatar-ads`).
+Copy del usuario, aprobado tal cual el 28 oct 2026 (los borradores A/B de Claude se descartaron). Para la voz, las cifras van en palabras ("entre diez y treinta videos"), pero el texto es el mismo.
+Avatar: empresario ecuatoriano, unos 38 años, lentes y camisa azul marino, en su oficina con la laptop en primer plano (mismo concepto que el video actual, con otra persona). Prompt en `avatar/prompt-nano-banana.json`.
+Duración: 228 palabras · 12 clips · 104 s generados → ≈ 1:35–1:40 editado.
 
-Reemplaza al video del hero (`anuncios/01-avatar-ads`). Mismo concepto: un avatar empresario habla a cámara en su oficina, con la laptop a la vista, en una sola toma. El video es la prueba del hiperrealismo.
-- **Evergreen:** sin precio ni fechas (ni en la voz ni en pantalla). El precio y las clases los muestra la landing.
-- **Duración:** menos de 2 min (~150 palabras por minuto, se miden por clip al generarlos).
-- **Escrito para la voz:** cifras en palabras, "inteligencia artificial" en vez de "IA", sin nombrar nuestras herramientas.
-- **CTA = el botón de debajo del video** en la landing ("Ver todo lo que incluye").
-- El avatar habla por la marca ("creamos", "te enseñamos"), igual que el video actual.
+## Copy
+Encontrar un anuncio ganador te cuesta entre 10 y 30 videos. Con el método tradicional, eso son semanas de trabajo y miles de dólares.
 
----
+Planeación, creadores, grabación, editores. O herramientas de inteligencia artificial que cobran una fortuna por un solo video. Y si lo haces tú mismo, te pasas horas grabándote y editando, en vez de vender.
 
-## Versión A · "Nada de esto es real" (recomendada)
-Revelación al inicio → problema → sistema → cómo funciona → para qué sirve → oferta → CTA. ~280 palabras ≈ 1:50–1:55.
+Por eso creamos el Sistema Avatar Ads: un sistema automatizado que crea anuncios hiperrealistas, en volumen, y por menos de un dólar cada uno.
 
-**Hook (revelación)**
-Mírame bien. La oficina, la laptop, mi voz, mis manos… nada de esto es real. A este video no lo grabó nadie: lo creó un sistema de inteligencia artificial.
+Primero, encuentra los mejores ángulos de venta para tu producto. Luego, escribe guiones con la estructura de miles de anuncios ganadores. Crea tu avatar realista. Genera las escenas y los videos. Edita el anuncio por completo. Y te lo entrega listo para probar.
 
-**Problema**
-Hoy, para vender por internet necesitas anuncios. Muchos anuncios. Pero producirlos cuesta: creadores, grabación, editores… o herramientas de inteligencia artificial donde un solo segundo de video te puede costar casi setenta centavos. Y si lo haces tú mismo, te pasas horas grabándote y editando, en vez de vender.
+Y funciona para cualquier tipo de negocio. Si vendes productos digitales, productos físicos o servicios tradicionales, o si necesitas generar leads, el sistema crea el anuncio que tu oferta necesita.
 
-**Giro**
-Por eso creamos el Sistema Avatar Ads: tu máquina de anuncios. Porque un video que parece real no es un anuncio que vende. Lo que vende es el ángulo, el guion, el llamado a la acción… y poder testear muchas versiones.
+No son solo anuncios que parecen reales. Son anuncios con estructuras probadas para escalar rápido.
 
-**Cómo funciona**
-Primero, el sistema te hace preguntas sobre tu negocio y define a quién le hablas. Después escribe el guion: el gancho, el desarrollo y el cierre. Crea a tu avatar, como yo, y lo mantiene igual en todas las escenas. Y al final te entrega el anuncio editado, con subtítulos, ritmo y efectos. Sin cámaras, sin productora y sin editores.
+Además, el sistema es tuyo para siempre, con todas sus actualizaciones, porque la inteligencia artificial cambia cada semana. Y tienes acceso vitalicio al curso paso a paso, clases en vivo y soporte para que revisemos tus anuncios y te demos feedback.
 
-**Para qué sirve**
-Cada anuncio te sale por menos de un dólar. Así puedes testear decenas, encontrar tus ganadores mucho más rápido… y escalar. Sirve para vender productos digitales, para vender servicios y para captar clientes potenciales. Y si quieres, también puedes vender estos anuncios a otros negocios.
-
-**Oferta**
-El sistema es tuyo para siempre, con todas sus actualizaciones, porque la inteligencia artificial cambia cada semana. En las clases en vivo te enseñamos a usarlo paso a paso, y tienes un grupo de soporte que revisa tus anuncios.
-
-**CTA**
 Si quieres tu propia máquina de anuncios, toca el botón de abajo y mira todo lo que incluye.
 
----
+## Clips (voz)
+| Clip | Dur. | Texto exacto |
+|---|---|---|
+| 01 | 10 s | Encontrar un anuncio ganador te cuesta entre diez y treinta videos. Con el método tradicional, eso son semanas de trabajo y miles de dólares. *(hook en una sola toma)* |
+| 02 | 8 s | Planeación, creadores, grabación, editores. O herramientas de inteligencia artificial que cobran una fortuna por un solo video. |
+| 03 | 8 s | Y si lo haces tú mismo, te pasas horas grabándote y editando, en vez de vender. |
+| 04 | 10 s | Por eso creamos el Sistema Avatar Ads: un sistema automatizado que crea anuncios hiperrealistas, en volumen, y por menos de un dólar cada uno. |
+| 05 | 10 s | Primero, encuentra los mejores ángulos de venta para tu producto. Luego, escribe guiones con la estructura de miles de anuncios ganadores. |
+| 06 | 10 s | Crea tu avatar realista. Genera las escenas y los videos. Edita el anuncio por completo. Y te lo entrega listo para probar. |
+| 07 | 8 s | Y funciona para cualquier tipo de negocio. Si vendes productos digitales, productos físicos o servicios tradicionales, |
+| 08 | 6 s | o si necesitas generar leads, el sistema crea el anuncio que tu oferta necesita. |
+| 09 | 8 s | No son solo anuncios que parecen reales. Son anuncios con estructuras probadas para escalar rápido. |
+| 10 | 8 s | Además, el sistema es tuyo para siempre, con todas sus actualizaciones, porque la inteligencia artificial cambia cada semana. |
+| 11 | 10 s | Y tienes acceso vitalicio al curso paso a paso, clases en vivo y soporte para que revisemos tus anuncios y te demos feedback. |
+| 12 | 8 s | Si quieres tu propia máquina de anuncios, toca el botón de abajo y mira todo lo que incluye. |
 
-## Versión B · "El que testea más, gana" (revelación al final)
-Dolor del anunciante → por qué testear → sistema → cómo funciona → prueba → oferta → revelación → CTA. ~260 palabras ≈ 1:45.
+## Plan de B-rolls y gráficos (borrador: se cierra en el storyboard)
+Meta: muchos B-rolls, con el avatar en cámara ≈ 55–65 %. Los B-rolls son video generado (prompts en el Paso 3 y el Paso 4 de `prompts-flow.md`); los gráficos se hacen en la edición.
 
-**Hook (dolor)**
-Si cada anuncio que pruebas te cuesta una producción entera, vas a encontrar muy pocos ganadores. Y sin anuncios ganadores, no escalas.
+| Momento | Qué se ve | Tipo |
+|---|---|---|
+| "entre diez y treinta videos" | cuadrícula de íconos de anuncio que se llena de 10 a 30 | gráfico |
+| "semanas de trabajo y miles de dólares" | noche en el escritorio, manos cansadas | B-roll 01 |
+| "creadores, grabación" | creadora montando el aro de luz y el teléfono | B-roll 02 |
+| "editores" | manos de un editor, timeline borroso | B-roll 03 |
+| "cobran una fortuna por un solo video" | tarjeta con el costo de otras herramientas (dato de la landing, ~$13 por anuncio de 30 s, con fuente) | gráfico |
+| "horas grabándote y editando" | hombre que vuelve a darle a grabar | B-roll 04 |
+| "Por eso creamos el Sistema Avatar Ads" | el avatar tecleando en su laptop → logo | B-roll 05 + logo |
+| "menos de un dólar cada uno" | contador de costo por anuncio | gráfico |
+| Pasos 1–6 (clips 05–06) | tarjetas del proceso (la "máquina de anuncios" de la landing); en "crea tu avatar realista", la propia cara del avatar | gráfico |
+| "productos digitales / físicos / servicios" | café con laptop → empacando un pedido → barbería | B-rolls 06, 07, 08 |
+| "generar leads" | captura de Meta: 581 leads a $0,35 (prueba real, `landing/resultados/`) | prueba |
+| "estructuras probadas para escalar" | curva que sube / varios ganadores iluminados | gráfico |
+| "tuyo para siempre… actualizaciones" | versiones del sistema que se suman | gráfico |
+| "clases en vivo y soporte" | clase en vivo desde casa | B-roll 09 |
+| CTA | cara + botón "Ver todo lo que incluye ↓" que rebota en "botón" | gráfico |
 
-**Problema**
-El que testea más anuncios, gana. Pero producirlos es caro y lento: creadores, grabación, editores… o herramientas de inteligencia artificial donde un solo segundo de video te puede costar casi setenta centavos. Y si lo haces tú mismo, pierdes horas grabándote y editando.
-
-**Sistema**
-Para eso creamos el Sistema Avatar Ads: tu máquina de anuncios. Anuncios hiperrealistas, en volumen y por menos de un dólar cada uno.
-
-**Cómo funciona**
-Le cuentas tu negocio y el sistema te guía con preguntas: define el ángulo y a quién le hablas, escribe el guion, crea a tu avatar y te entrega el anuncio editado, con subtítulos, ritmo y efectos. Sin cámaras, sin productora y sin editores. Y como cada anuncio cuesta centavos, haces decenas de versiones, las testeas y te quedas con las que venden.
-
-**Prueba**
-Con anuncios así vendemos productos digitales, un cliente escaló su servicio tradicional, y en una campaña conseguimos quinientos ochenta y un clientes potenciales a treinta y cinco centavos cada uno.
-
-**Oferta**
-El sistema es tuyo para siempre, con todas sus actualizaciones. En las clases en vivo te enseñamos a usarlo paso a paso, tienes un grupo de soporte que revisa tus anuncios, y te mostramos cómo vender este servicio a otros negocios.
-
-**Revelación**
-Ah, y una cosa más. Esta oficina, esta laptop… y yo. Nada de esto es real. A este video también lo hizo el sistema.
-
-**CTA**
-Toca el botón de abajo y mira todo lo que incluye.
-
----
-
-## Pendiente
-- Elegir versión (o mezclar partes) → después: avatar (frame de la oficina), división en clips de 6/8/10 s, B-rolls y prompts (skill `reels-avatar-ads`, formato head talking).
+## Recursos
+- Del usuario: `avatar/avatar.jpg` (elegida de 4 variaciones), los 12 clips de voz y los 9 B-rolls.
+- Ya los tenemos: captura de Meta (CPL $0,35), video de Hotmart y logo (`landing/`), y SFX del reel 07 o del anuncio 03.

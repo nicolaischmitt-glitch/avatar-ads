@@ -1,0 +1,14 @@
+{
+  "scene": {
+    "duration_seconds": 6,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "cámara en mano muy estable, casi fija",
+    "action": "peina un mechón y lo corta con las tijeras con un movimiento preciso",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "audio": "solo el sonido de las tijeras y ambiente suave del local, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
+  }
+}

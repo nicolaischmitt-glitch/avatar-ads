@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Anuncio 09 · Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Marca Avatar Ads: oscuro + verde neón. Set de escenas propio del 09 ("Keynote premium" oscuro): tarjetas de vidrio con borde verde bosque,
+     pantalla dividida, proceso de 6 pasos, línea de actualizaciones. Subtítulos sin caja (blanco con sombra); el botón es la única píldora (neón). */
+  :root { --bg:#020604; --card:#090F0B; --neon:#C5F740; --white:#F8F8F8; --t2:#DDDAD7; --meta:#9F9587; --forest:#305E4A; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; background: var(--bg); color: var(--t2); font-family: "Inter", sans-serif; overflow: hidden; }
+  body { padding: 26px 40px; display: flex; flex-direction: column; gap: 16px;
+    background: radial-gradient(60% 40% at 50% 0%, rgba(48,94,74,.35), transparent 70%), var(--bg); }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(48,94,74,.6); padding-bottom: 12px; }
+  header h1 { font-family: "Archivo"; font-stretch: 112%; font-weight: 800; font-size: 26px; color: var(--white); letter-spacing: -.01em; }
+  header h1 span { color: var(--neon); }
+  .meta { font-family: "JetBrains Mono"; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--meta); }
+
+  .board { display: grid; grid-template-columns: repeat(9, 196px); justify-content: space-between; row-gap: 16px; }
+  .shot { display: flex; flex-direction: column; gap: 6px; }
+  .mini { width: 196px; height: 348px; border-radius: 12px; overflow: hidden; position: relative; background: #000; border: 1px solid rgba(48,94,74,.7); }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.181481); transform-origin: 0 0; overflow: hidden; background: var(--bg); }
+  .cap { display: flex; justify-content: space-between; font-family: "JetBrains Mono"; font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase; color: var(--meta); }
+  .cap b { color: var(--neon); font-weight: 700; }
+  .say { font-size: 12px; line-height: 1.3; color: var(--t2); min-height: 46px; }
+
+  /* ---------- lienzo 1080×1920 ---------- */
+  .face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 30%; }
+  .blur { filter: blur(30px) saturate(.7) brightness(.8); transform: scale(1.15); }
+  .veil { position: absolute; inset: 0; background: linear-gradient(rgba(2,6,4,.78), rgba(2,6,4,.88)); }
+  /* subtítulo: sin caja, blanco con sombra; palabra clave en neón */
+  .sub { position: absolute; z-index: 20; left: 60px; right: 60px; top: 1230px; text-align: center; font-family: "Archivo"; font-stretch: 108%; font-weight: 800;
+    font-size: 70px; line-height: 1.1; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.75), 0 0 2px rgba(0,0,0,.9); letter-spacing: -.01em; }
+  .sub b { color: var(--neon); }
+  .lbl { font-family: "JetBrains Mono"; font-size: 30px; letter-spacing: .12em; text-transform: uppercase; color: var(--meta); }
+  .lbl.n { color: var(--neon); }
+
+  /* tarjeta de vidrio */
+  .glass { background: rgba(9,15,11,.86); border: 3px solid rgba(48,94,74,.9); border-radius: 44px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+
+  /* pantalla dividida: panel arriba (0–800), franja con el subtítulo, avatar abajo con la cara justo bajo la franja */
+  .split-top { position: absolute; left: 0; right: 0; top: 0; height: 800px; z-index: 4; padding: 90px 80px 60px; display: flex; flex-direction: column; justify-content: center; gap: 26px;
+    background: radial-gradient(80% 60% at 50% 0%, rgba(48,94,74,.5), transparent 70%), var(--bg); }
+  .split-vid { position: absolute; left: 0; right: 0; top: 800px; bottom: 0; overflow: hidden; z-index: 2; }
+  .split-vid img { position: absolute; left: 0; top: -150px; width: 1080px; height: 1920px; object-fit: cover; }
+  .strip { position: absolute; left: 0; right: 0; top: 760px; height: 130px; z-index: 20; display: flex; align-items: center; justify-content: center;
+    background: var(--bg); border-top: 2px solid rgba(48,94,74,.9); border-bottom: 2px solid rgba(48,94,74,.9);
+    font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 62px; color: #fff; letter-spacing: -.01em; }
+  .strip b { color: var(--neon); }
+
+  /* banda superior (encima de la cabeza) */
+  .top { position: absolute; left: 0; right: 0; top: 70px; display: flex; justify-content: center; z-index: 10; }
+  .chip { display: inline-flex; align-items: center; gap: 22px; padding: 22px 38px; border-radius: 26px; background: rgba(2,6,4,.82); border: 3px solid rgba(48,94,74,.9);
+    font-family: "JetBrains Mono"; font-weight: 700; font-size: 34px; letter-spacing: .1em; color: var(--white); text-transform: uppercase; }
+  .chip i { width: 18px; height: 18px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 18px var(--neon); display: block; }
+  .chip svg { width: 48px; height: 48px; }
+
+  /* F2: 30 videos, uno ganador */
+  .tiles { display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; }
+  .tile { aspect-ratio: 9/16; border-radius: 16px; background: #0E1A13; border: 2px solid rgba(48,94,74,.8); position: relative; }
+  .tile.on { background: #16281D; }
+  .tile.on::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: translate(-35%,-50%); border-left: 16px solid rgba(221,218,215,.55); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+  .tile.win { background: var(--neon); border-color: var(--neon); box-shadow: 0 0 40px rgba(197,247,64,.6); }
+  .tile.win::after { border-left-color: var(--bg); }
+  .tile.off { opacity: .28; }
+  .count { display: flex; justify-content: space-between; align-items: baseline; }
+  .count .big { font-family: "Archivo"; font-stretch: 115%; font-weight: 900; font-size: 120px; color: var(--white); line-height: 1; }
+  .count .big span { color: var(--neon); }
+
+  /* F3: semanas + dinero */
+  .cards { position: absolute; left: 90px; right: 90px; top: 230px; z-index: 8; display: flex; flex-direction: column; gap: 40px; }
+  .cal { padding: 46px 50px; }
+  .cal .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; margin-top: 26px; }
+  .cal .grid i { display: block; aspect-ratio: 1; border-radius: 12px; background: rgba(197,247,64,.75); }
+  .cal .grid i.e { background: rgba(48,94,74,.35); }
+  .money { padding: 46px 50px; display: flex; align-items: center; gap: 40px; }
+  .money .bills { display: flex; flex-direction: column; gap: 12px; }
+  .money .bills i { display: block; width: 230px; height: 46px; border-radius: 10px; background: linear-gradient(90deg, #6B8F3A, #8DB34A); border: 2px solid #A9CF5E; }
+  .money .bills i:nth-child(2) { margin-left: 18px; } .money .bills i:nth-child(3) { margin-left: 6px; } .money .bills i:nth-child(4) { margin-left: 24px; }
+  .money .t { font-family: "Archivo"; font-stretch: 112%; font-weight: 900; font-size: 92px; color: var(--white); line-height: 1; }
+
+  /* F4: recibo de producción */
+  .receipt { position: absolute; left: 110px; right: 110px; top: 220px; z-index: 8; padding: 56px 60px; }
+  .receipt .row { display: flex; align-items: center; gap: 34px; padding: 30px 0; border-bottom: 2px dashed rgba(48,94,74,.8); }
+  .receipt .row:last-child { border-bottom: 0; }
+  .receipt .ic { width: 96px; height: 96px; border-radius: 26px; background: rgba(48,94,74,.35); display: flex; align-items: center; justify-content: center; flex: none; }
+  .receipt .ic svg { width: 54px; height: 54px; }
+  .receipt .t { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 58px; color: var(--white); }
+  .receipt .p { margin-left: auto; font-family: "JetBrains Mono"; font-weight: 700; font-size: 44px; color: var(--meta); }
+  .receipt .row.new { opacity: .55; transform: translateX(30px); }
+
+  /* F5: precio de otras herramientas */
+  .price { padding: 50px 56px; }
+  .price .v { white-space: nowrap; font-family: "Archivo"; font-stretch: 115%; font-weight: 900; font-size: 190px; color: var(--white); line-height: .95; margin: 14px 0 10px; }
+  .price .v span { font-size: 80px; color: var(--meta); }
+  .price .src { font-size: 26px; color: var(--meta); line-height: 1.35; }
+
+  /* F8: logo */
+  .logo { position: absolute; left: 0; right: 0; top: 470px; z-index: 8; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+  .logo .g { mix-blend-mode: screen; }
+  .logo img { width: 760px; display: block; }
+  .glow { position: absolute; left: 50%; top: 640px; width: 900px; height: 600px; transform: translate(-50%,-50%); background: radial-gradient(closest-side, rgba(197,247,64,.22), transparent); z-index: 7; }
+
+  /* F9: volumen */
+  .fan { position: absolute; left: 70px; right: 70px; top: 170px; z-index: 8; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .fan img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 24px; border: 3px solid rgba(48,94,74,.9); display: block; }
+  .tag { position: absolute; left: 50%; top: 760px; transform: translateX(-50%) rotate(-3deg); z-index: 12; padding: 26px 48px; border-radius: 28px; background: var(--bg); border: 4px solid var(--neon);
+    box-shadow: 0 0 50px rgba(197,247,64,.45); font-family: "Archivo"; font-stretch: 112%; font-weight: 900; font-size: 74px; color: var(--neon); white-space: nowrap; }
+  .tag small { font-family: "JetBrains Mono"; font-size: 30px; color: var(--white); letter-spacing: .08em; margin-left: 12px; }
+
+  /* F10/F12: proceso de 6 pasos */
+  .steps { display: flex; flex-direction: column; gap: 14px; }
+  .st { display: flex; align-items: center; gap: 28px; padding: 18px 28px; border-radius: 26px; border: 2px solid rgba(48,94,74,.55); background: rgba(9,15,11,.7); }
+  .st .k { font-family: "JetBrains Mono"; font-weight: 700; font-size: 30px; color: var(--meta); width: 60px; }
+  .st .t { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 44px; color: rgba(248,248,248,.45); }
+  .st .ok { margin-left: auto; width: 54px; height: 54px; border-radius: 50%; background: rgba(197,247,64,.16); display: flex; align-items: center; justify-content: center; }
+  .st .ok svg { width: 32px; height: 32px; }
+  .st.done .t { color: var(--t2); }
+  .st.act { border-color: var(--neon); background: rgba(197,247,64,.1); box-shadow: 0 0 40px rgba(197,247,64,.25); }
+  .st.act .k { color: var(--neon); } .st.act .t { color: var(--white); }
+
+  /* F11: marco de escaneo alrededor de la cara (no la tapa) */
+  .brk { position: absolute; z-index: 9; width: 120px; height: 120px; border-color: var(--neon); border-style: solid; filter: drop-shadow(0 0 12px rgba(197,247,64,.7)); }
+  .brk.a { left: 210px; top: 250px; border-width: 8px 0 0 8px; border-radius: 26px 0 0 0; }
+  .brk.b { right: 210px; top: 250px; border-width: 8px 8px 0 0; border-radius: 0 26px 0 0; }
+  .brk.c { left: 210px; top: 990px; border-width: 0 0 8px 8px; border-radius: 0 0 0 26px; }
+  .brk.d { right: 210px; top: 990px; border-width: 0 8px 8px 0; border-radius: 0 0 26px 0; }
+
+  /* F13: tipos de negocio */
+  .biz { position: absolute; left: 80px; right: 80px; top: 240px; z-index: 8; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .bz { padding: 50px 40px; display: flex; flex-direction: column; gap: 30px; }
+  .bz .ic { width: 120px; height: 120px; border-radius: 34px; background: rgba(197,247,64,.12); display: flex; align-items: center; justify-content: center; }
+  .bz .ic svg { width: 68px; height: 68px; }
+  .bz .t { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 54px; color: var(--white); line-height: 1.05; }
+  .bz.lit { border-color: var(--neon); box-shadow: 0 0 50px rgba(197,247,64,.22); }
+  .bz.dim { opacity: .35; }
+
+  /* F14: prueba real */
+  .proof { position: absolute; left: 70px; right: 70px; top: 150px; z-index: 8; display: flex; flex-direction: column; gap: 34px; align-items: center; }
+  .nums { display: flex; gap: 30px; width: 100%; }
+  .nums .glass { flex: 1; padding: 36px 40px; }
+  .nums .v { font-family: "Archivo"; font-stretch: 115%; font-weight: 900; font-size: 128px; color: var(--neon); line-height: 1; margin-top: 10px; }
+  .shot-img { width: 100%; border-radius: 32px; border: 3px solid rgba(48,94,74,.9); display: block; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+
+  /* F15: curva */
+  .chart { padding: 44px 50px 36px; }
+  .chart svg { width: 100%; height: 400px; display: block; margin-top: 10px; }
+  .chart .lg { display: flex; justify-content: space-between; font-family: "JetBrains Mono"; font-size: 28px; color: var(--meta); letter-spacing: .08em; text-transform: uppercase; }
+  .chart .lg b { color: var(--neon); }
+
+  /* F16: actualizaciones */
+  .vers { display: flex; align-items: center; justify-content: space-between; position: relative; margin-top: 30px; }
+  .vers::before { content: ""; position: absolute; left: 60px; right: 60px; top: 60px; height: 6px; background: linear-gradient(90deg, var(--neon) 72%, rgba(48,94,74,.6) 72%); border-radius: 3px; }
+  .vn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; width: 220px; }
+  .vn .d { width: 120px; height: 120px; border-radius: 50%; background: var(--bg); border: 6px solid var(--neon); display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono"; font-weight: 700; font-size: 34px; color: var(--neon); box-shadow: 0 0 30px rgba(197,247,64,.35); }
+  .vn .t { font-size: 30px; color: var(--t2); text-align: center; line-height: 1.25; }
+  .vn.next .d { border-style: dashed; border-color: var(--forest); color: var(--meta); box-shadow: none; }
+  .vn.next .t { color: var(--meta); }
+
+  /* F17: lo que incluye */
+  .incl { position: absolute; left: 90px; right: 90px; top: 250px; z-index: 8; display: flex; flex-direction: column; gap: 34px; }
+  .in { display: flex; align-items: center; gap: 38px; padding: 44px 48px; }
+  .in .ic { width: 120px; height: 120px; border-radius: 34px; background: rgba(197,247,64,.12); display: flex; align-items: center; justify-content: center; flex: none; }
+  .in .ic svg { width: 66px; height: 66px; }
+  .in .t { font-family: "Archivo"; font-stretch: 108%; font-weight: 800; font-size: 60px; color: var(--white); line-height: 1.05; }
+  .in .s { font-size: 32px; color: var(--meta); margin-top: 8px; }
+  .in:nth-child(3) { opacity: .6; transform: translateX(30px); }
+
+  /* F18: botón (la única píldora) */
+  .btnw { position: absolute; left: 0; right: 0; top: 1040px; display: flex; justify-content: center; z-index: 14; }
+  .btn { display: inline-flex; align-items: center; gap: 26px; background: var(--neon); color: var(--bg); font-family: "Archivo"; font-stretch: 108%; font-weight: 900; font-size: 58px; padding: 36px 64px; border-radius: 999px;
+    box-shadow: 0 0 0 14px rgba(197,247,64,.2), 0 20px 60px rgba(197,247,64,.45); }
+  .btn svg { width: 56px; height: 56px; }
+  .toplogo { position: absolute; left: 0; right: 0; top: 70px; display: flex; justify-content: center; z-index: 10; }
+  .toplogo .g { mix-blend-mode: screen; background: #000; padding: 6px 30px; border-radius: 22px; }
+  .toplogo img { width: 470px; display: block; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Anuncio 09 · <span>VSL de la landing</span> — storyboard sin B-rolls</h1>
+  <div class="meta">~85 s · 9:16 · 18 escenas · avatar en cámara ≈ 70 % (≈ 60 % con B-rolls)</div>
+</header>
+
+<div class="board">
+  <!-- 1 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f01.jpg">
+      <div class="sub">Encontrar un anuncio <b>ganador</b></div>
+    </div></div>
+    <div class="cap"><span><b>01</b> Hook · cara</span><span>0,0 s</span></div>
+    <div class="say">Arranca en el primer fotograma, de una sola toma.</div>
+  </div>
+  <!-- 2 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f02.jpg"></div>
+      <div class="split-top">
+        <div class="tiles">
+          <div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile win"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div><div class="tile on"></div>
+        </div>
+      </div>
+      <div class="strip">entre&nbsp;<b>10 y 30 videos</b></div>
+    </div></div>
+    <div class="cap"><span><b>02</b> 30 videos</span><span>2,4 s</span></div>
+    <div class="say">Los videos se llenan de 10 a 30 y uno se enciende: el ganador.</div>
+  </div>
+  <!-- 3 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f03.jpg"><div class="veil"></div>
+      <div class="cards">
+        <div class="glass cal"><div class="lbl">Semanas de trabajo</div>
+          <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></div></div>
+        <div class="glass money"><div class="bills"><i></i><i></i><i></i><i></i></div><div class="t">$$$</div></div>
+      </div>
+      <div class="sub">semanas de trabajo y <b>miles de dólares</b></div>
+    </div></div>
+    <div class="cap"><span><b>03</b> Calendario + dinero</span><span>5,6 s</span></div>
+    <div class="say">Los días se tachan uno tras otro y los billetes se apilan. (B-roll 01 después)</div>
+  </div>
+  <!-- 4 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f04.jpg"><div class="veil"></div>
+      <div class="glass receipt">
+        <div class="lbl" style="margin-bottom:14px">Producir 1 anuncio</div>
+        <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg></div><div class="t">Planeación</div><div class="p">$$</div></div>
+        <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="t">Creadores</div><div class="p">$$$</div></div>
+        <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><div class="t">Grabación</div><div class="p">$$</div></div>
+        <div class="row new"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><div class="t">Editores</div><div class="p">$$$</div></div>
+      </div>
+      <div class="sub">creadores, grabación, <b>editores</b>.</div>
+    </div></div>
+    <div class="cap"><span><b>04</b> Recibo de producción</span><span>9,0 s</span></div>
+    <div class="say">Una línea por palabra. (B-rolls 02 y 03 después)</div>
+  </div>
+  <!-- 5 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f05.jpg"></div>
+      <div class="split-top">
+        <div class="glass price">
+          <div class="lbl">1 anuncio de 30 s · otras herramientas</div>
+          <div class="v">~$13<span> c/u</span></div>
+          <div class="src">Promedio de Wan 2.5, Seedance 2.0 y Seedance 2.5 · precios públicos de API, oct 2026</div>
+        </div>
+      </div>
+      <div class="strip">que cobran una&nbsp;<b>fortuna</b></div>
+    </div></div>
+    <div class="cap"><span><b>05</b> Dividida · precio</span><span>12,7 s</span></div>
+    <div class="say">El contador sube de $0 a ~$13, con la fuente en letra pequeña (dato de la landing).</div>
+  </div>
+  <!-- 6 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f06.jpg" style="transform: scale(1.1)">
+      <div class="top"><div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Grabar · editar · repetir</div></div>
+      <div class="sub">te pasas <b>horas</b> grabándote y editando</div>
+    </div></div>
+    <div class="cap"><span><b>06</b> Cara · reloj arriba</span><span>17,6 s</span></div>
+    <div class="say">Las manecillas giran rápido sobre la cabeza. (B-roll 04 después)</div>
+  </div>
+  <!-- 7 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f07.jpg" style="transform: scale(1.22)">
+      <div class="sub">en vez de <b>vender</b>.</div>
+    </div></div>
+    <div class="cap"><span><b>07</b> Cara · punch-in</span><span>19,9 s</span></div>
+    <div class="say">Golpe de zoom en «vender».</div>
+  </div>
+  <!-- 8 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f08.jpg"><div class="veil"></div>
+      <div class="glow"></div>
+      <div class="logo"><div class="g"><img src="assets/logo-avatar-ads.webp"></div><div class="lbl n">Tu máquina de anuncios</div></div>
+      <div class="sub">Por eso creamos el <b>Sistema Avatar Ads</b></div>
+    </div></div>
+    <div class="cap"><span><b>08</b> Logo</span><span>21,9 s</span></div>
+    <div class="say">El logo aparece con un brillo verde. (B-roll 05, él en su laptop, justo antes)</div>
+  </div>
+  <!-- 9 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f09.jpg"><div class="veil"></div>
+      <div class="fan">
+        <img src="assets/ejemplo-serum.jpg"><img src="assets/ejemplo-dental.jpg"><img src="assets/ejemplo-ingles.jpg">
+        <img src="assets/ejemplo-serum-voz.jpg"><img src="assets/ejemplo-podcast.jpg"><img src="assets/ejemplo-labial.jpg">
+      </div>
+      <div class="tag">&lt; $1<small>/ ANUNCIO</small></div>
+      <div class="sub">por <b>menos de un dólar</b> cada uno.</div>
+    </div></div>
+    <div class="cap"><span><b>09</b> Nuestros anuncios</span><span>27,1 s</span></div>
+    <div class="say">«…en volumen»: los anuncios de la landing entran en cascada y cae la etiqueta del precio.</div>
+  </div>
+  <!-- 10 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f10.jpg"></div>
+      <div class="split-top">
+        <div class="steps">
+          <div class="st act"><div class="k">01</div><div class="t">Ángulos de venta</div></div>
+          <div class="st"><div class="k">02</div><div class="t">Guiones</div></div>
+          <div class="st"><div class="k">03</div><div class="t">Avatar realista</div></div>
+          <div class="st"><div class="k">04</div><div class="t">Escenas y videos</div></div>
+          <div class="st"><div class="k">05</div><div class="t">Edición completa</div></div>
+          <div class="st"><div class="k">06</div><div class="t">Listo para probar</div></div>
+        </div>
+      </div>
+      <div class="strip">los mejores&nbsp;<b>ángulos de venta</b></div>
+    </div></div>
+    <div class="cap"><span><b>10</b> Dividida · proceso</span><span>30,4 s</span></div>
+    <div class="say">Los 6 pasos; se enciende el que dice. En «Luego, escribe guiones» pasa al 02.</div>
+  </div>
+  <!-- 11 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f11.jpg" style="transform: scale(1.06)">
+      <div class="brk a"></div><div class="brk b"></div><div class="brk c"></div><div class="brk d"></div>
+      <div class="top"><div class="chip"><i></i>Avatar · 100% IA</div></div>
+      <div class="sub">Crea tu <b>avatar realista</b>.</div>
+    </div></div>
+    <div class="cap"><span><b>11</b> El propio avatar</span><span>38,1 s</span></div>
+    <div class="say">Las esquinas lo enmarcan sin tocar la cara: la prueba es él.</div>
+  </div>
+  <!-- 12 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f12.jpg"></div>
+      <div class="split-top">
+        <div class="steps">
+          <div class="st done"><div class="k">01</div><div class="t">Ángulos de venta</div><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          <div class="st done"><div class="k">02</div><div class="t">Guiones</div><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          <div class="st done"><div class="k">03</div><div class="t">Avatar realista</div><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          <div class="st done"><div class="k">04</div><div class="t">Escenas y videos</div><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          <div class="st done"><div class="k">05</div><div class="t">Edición completa</div><div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          <div class="st act"><div class="k">06</div><div class="t">Listo para probar</div></div>
+        </div>
+      </div>
+      <div class="strip">y te lo entrega&nbsp;<b>listo</b></div>
+    </div></div>
+    <div class="cap"><span><b>12</b> Dividida · listo</span><span>43,5 s</span></div>
+    <div class="say">Los pasos 03–05 se marcan al ritmo de la voz; el 06 queda encendido.</div>
+  </div>
+  <!-- 13 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f13.jpg"><div class="veil"></div>
+      <div class="biz">
+        <div class="glass bz lit"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div><div class="t">Productos digitales</div></div>
+        <div class="glass bz lit"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><div class="t">Productos físicos</div></div>
+        <div class="glass bz lit"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><div class="t">Servicios tradicionales</div></div>
+        <div class="glass bz dim"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .7 3.2 2.6 3.5 5.5"/></svg></div><div class="t">Generar leads</div></div>
+      </div>
+      <div class="sub">productos físicos o <b>servicios</b></div>
+    </div></div>
+    <div class="cap"><span><b>13</b> Tipos de negocio</span><span>48,4 s</span></div>
+    <div class="say">Una tarjeta se enciende con cada palabra. (B-rolls 06, 07 y 08 después)</div>
+  </div>
+  <!-- 14 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f14.jpg"><div class="veil"></div>
+      <div class="proof">
+        <div class="nums">
+          <div class="glass"><div class="lbl">Leads</div><div class="v">581</div></div>
+          <div class="glass"><div class="lbl">Costo por lead</div><div class="v">$0,35</div></div>
+        </div>
+        <img class="shot-img" src="assets/fb-ads-costo-por-lead.webp">
+        <div class="lbl">Campaña real en Meta</div>
+      </div>
+      <div class="sub">si necesitas generar <b>leads</b>,</div>
+    </div></div>
+    <div class="cap"><span><b>14</b> Prueba real</span><span>52,6 s</span></div>
+    <div class="say">La captura de Meta con las cifras grandes arriba (la misma de la landing).</div>
+  </div>
+  <!-- 15 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f15.jpg"></div>
+      <div class="split-top">
+        <div class="glass chart">
+          <div class="lg"><span>Testea</span><span>Gana</span><b>Escala</b></div>
+          <svg viewBox="0 0 800 400" fill="none">
+            <path d="M0 360 H800 M0 250 H800 M0 140 H800 M0 30 H800" stroke="rgba(48,94,74,.45)" stroke-width="2"/>
+            <path d="M20 350 C 200 340, 330 300, 450 230 S 680 60, 780 30" stroke="#C5F740" stroke-width="10" stroke-linecap="round"/>
+            <path d="M20 350 C 200 340, 330 300, 450 230 S 680 60, 780 30 V 380 H 20 Z" fill="rgba(197,247,64,.1)"/>
+            <circle cx="780" cy="30" r="20" fill="#C5F740"/>
+          </svg>
+        </div>
+      </div>
+      <div class="strip">para&nbsp;<b>escalar rápido</b>.</div>
+    </div></div>
+    <div class="cap"><span><b>15</b> Dividida · curva</span><span>60,8 s</span></div>
+    <div class="say">«No son solo anuncios que parecen reales…»: va en la cara; la curva entra en «estructuras probadas».</div>
+  </div>
+  <!-- 16 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="split-vid"><img src="frames/f16.jpg"></div>
+      <div class="split-top">
+        <div class="lbl" style="text-align:center">Tuyo para siempre</div>
+        <div class="vers">
+          <div class="vn"><div class="d">1.1</div><div class="t">Head talking</div></div>
+          <div class="vn"><div class="d">1.2</div><div class="t">Producto físico</div></div>
+          <div class="vn"><div class="d">1.3</div><div class="t">Voz en off</div></div>
+          <div class="vn next"><div class="d">+</div><div class="t">Lo que viene</div></div>
+        </div>
+      </div>
+      <div class="strip">con todas sus&nbsp;<b>actualizaciones</b></div>
+    </div></div>
+    <div class="cap"><span><b>16</b> Versiones</span><span>64,5 s</span></div>
+    <div class="say">Las versiones reales del sistema se encienden una a una; la última queda abierta.</div>
+  </div>
+  <!-- 17 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face blur" src="frames/f17.jpg"><div class="veil"></div>
+      <div class="incl">
+        <div class="glass in"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M9 8h6"/></svg></div><div><div class="t">Curso paso a paso</div><div class="s">Acceso vitalicio</div></div></div>
+        <div class="glass in"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><circle cx="12" cy="11.5" r="2.5" fill="#C5F740"/><path d="M8 21h8"/></svg></div><div><div class="t">Clases en vivo</div><div class="s">Aprende a usar el sistema</div></div></div>
+        <div class="glass in"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><div><div class="t">Soporte y feedback</div><div class="s">Revisamos tus anuncios</div></div></div>
+      </div>
+      <div class="sub">clases en vivo y <b>soporte</b></div>
+    </div></div>
+    <div class="cap"><span><b>17</b> Lo que incluye</span><span>73,5 s</span></div>
+    <div class="say">Una tarjeta por cosa, en cascada. (B-roll 09 en «clases en vivo»)</div>
+  </div>
+  <!-- 18 -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <img class="face" src="frames/f18.jpg" style="transform: scale(1.04)">
+      <div class="toplogo"><div class="g"><img src="assets/logo-avatar-ads.webp"></div></div>
+      <div class="btnw"><div class="btn">Ver todo lo que incluye
+        <svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+      <div class="sub">toca el <b>botón de abajo</b></div>
+    </div></div>
+    <div class="cap"><span><b>18</b> CTA · botón</span><span>81,7 s</span></div>
+    <div class="say">Logo arriba; el botón entra y rebota en «botón». ~0,8 s de cola.</div>
+  </div>
+</div>
+</body>
+</html>

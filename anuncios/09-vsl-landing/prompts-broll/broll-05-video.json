@@ -1,0 +1,14 @@
+{
+  "scene": {
+    "duration_seconds": 6,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "cámara en mano muy estable, con un acercamiento lento",
+    "action": "escribe con calma en el teclado y pulsa una última tecla con decisión",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente a la misma persona (cara, piel, pelo y ropa), el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "audio": "solo el sonido suave del teclado, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
+  }
+}

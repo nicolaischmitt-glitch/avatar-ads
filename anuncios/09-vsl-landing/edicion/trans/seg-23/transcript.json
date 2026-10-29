@@ -1,0 +1,68 @@
+[
+  {
+    "id": "w0",
+    "text": "Toca",
+    "start": 0,
+    "end": 0.32
+  },
+  {
+    "id": "w1",
+    "text": "el",
+    "start": 0.32,
+    "end": 0.4
+  },
+  {
+    "id": "w2",
+    "text": "botón",
+    "start": 0.4,
+    "end": 0.72
+  },
+  {
+    "id": "w3",
+    "text": "de",
+    "start": 0.72,
+    "end": 0.8
+  },
+  {
+    "id": "w4",
+    "text": "abajo",
+    "start": 0.8,
+    "end": 1.28
+  },
+  {
+    "id": "w5",
+    "text": "y",
+    "start": 1.28,
+    "end": 1.44
+  },
+  {
+    "id": "w6",
+    "text": "mira",
+    "start": 1.44,
+    "end": 1.84
+  },
+  {
+    "id": "w7",
+    "text": "todo",
+    "start": 1.84,
+    "end": 2.08
+  },
+  {
+    "id": "w8",
+    "text": "lo",
+    "start": 2.08,
+    "end": 2.24
+  },
+  {
+    "id": "w9",
+    "text": "que",
+    "start": 2.24,
+    "end": 2.4
+  },
+  {
+    "id": "w10",
+    "text": "incluye.",
+    "start": 2.4,
+    "end": 3.36
+  }
+]

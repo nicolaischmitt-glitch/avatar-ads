@@ -1,0 +1,56 @@
+[
+  {
+    "id": "w0",
+    "text": "El",
+    "start": 0,
+    "end": 0.32
+  },
+  {
+    "id": "w1",
+    "text": "sistema",
+    "start": 0.32,
+    "end": 0.64
+  },
+  {
+    "id": "w2",
+    "text": "crea",
+    "start": 0.64,
+    "end": 0.96
+  },
+  {
+    "id": "w3",
+    "text": "el",
+    "start": 0.96,
+    "end": 1.12
+  },
+  {
+    "id": "w4",
+    "text": "anuncio",
+    "start": 1.12,
+    "end": 1.52
+  },
+  {
+    "id": "w5",
+    "text": "que",
+    "start": 1.52,
+    "end": 1.68
+  },
+  {
+    "id": "w6",
+    "text": "tu",
+    "start": 1.68,
+    "end": 1.84
+  },
+  {
+    "id": "w7",
+    "text": "oferta",
+    "start": 1.84,
+    "end": 2.16
+  },
+  {
+    "id": "w8",
+    "text": "necesita.",
+    "start": 2.32,
+    "end": 2.8
+  }
+]

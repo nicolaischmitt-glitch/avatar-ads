@@ -50,13 +50,13 @@ Ejemplo terminado: `ejemplo-storyboard-anuncio-03.png` (storyboard del anuncio c
 
 ## Edición (plantillas en `edicion/`)
 Reglas generales de voz, audio, zonas seguras y SFX: `sistema/edicion/reglas-edicion.md` (léelas antes).
-1. Copia `edicion/unir-clips.mjs` y `edicion/build.mjs` a `anuncios/NN-slug/edicion/`, y `edicion/public-base/` (fuentes, GSAP y SFX) a `anuncios/NN-slug/edicion/public/`.
+1. Copia `edicion/unir-clips.mjs`, `edicion/build.mjs` y `edicion/audio.mjs` a `anuncios/NN-slug/edicion/`, y `edicion/public-base/` (fuentes, GSAP y SFX) a `anuncios/NN-slug/edicion/public/`.
 2. **Medir la voz**: `node sistema/scripts/medir-voz.mjs anuncios/NN-slug/clips` → inicio, fin y huecos de cada clip.
 3. **`cortes.txt`** (ejemplo: `edicion/cortes-ejemplo-anuncio-07.txt`): sin cortar la cola de la última palabra (fin ≥ voz + 0,06 s); hook de una sola toma, ~0,45–0,55 s de silencio en cada unión entre clips y pausas internas > ~0,35 s recortadas a ~0,2–0,3 s (regla "Ritmo natural del habla" de `reglas-edicion.md`), cada corte tapado con B-roll, gráfico o cambio de zoom; el último clip deja ~0,8 s de cola para el botón. Ningún tramo de menos de ~0,8 s. Para quitar una palabra: ubicarla con `medir-voz.mjs clip --desde a --hasta b` y partir el clip en dos filas.
 4. `node unir-clips.mjs` (dentro de `edicion/`) → `base.mp4` (1080×1920, 24 fps, cortes en fotogramas exactos) + `base-cortes.json`.
 5. `hyperframes transcribe base.mp4 -l es` → `transcript.json`.
-6. Audio limpio para la composición:
-   `ffmpeg -i base.mp4 -c:v copy -af "highpass=f=70,acompressor=threshold=-22dB:ratio=3:attack=5:release=90:makeup=2,loudnorm=I=-14:TP=-1.5:LRA=7" -c:a aac -b:a 192k -ar 48000 public/input-video.mp4`
+6. **Audio limpio para la composición (siempre): `node audio.mjs ninguna`** → `public/input-video.mp4`. Quita el ruido de fondo que Flow mete en algunos clips (un zumbido grave, como de aire acondicionado) para que todos suenen igual: filtro de graves, reducción de ruido y una puerta suave en las pausas, y deja la voz a −14 LUFS.
+   - **Si el usuario quiere música**: búscala con `npx hyperframes media-use resolve --type bgm --intent "…" --project .`, haz una muestra de 30 s con `node audio.mjs bgm_00N --muestra` para que la escuche, y mézclala con `node audio.mjs bgm_00N` (se repite con fundidos hasta cubrir el video, va muy por debajo de la voz y baja sola cuando el avatar habla). También acepta la ruta de un archivo propio: `node audio.mjs musica/mi-pista.mp3`.
 7. **`build.mjs`**: es la plantilla del anuncio 03. Edita la CONFIG (`FIX` = palabras mal transcritas, `KEY` = palabras que quedan resaltadas, `ZOOM` por segmento, `PUNCH`, los momentos `T` anclados con `at("palabra", desde)` o con cortes `S(i)`, los SFX) y **reemplaza el HTML y las animaciones de las escenas** por las del storyboard aprobado. Pon los colores de `marca.md` en las variables de `:root` y, si la marca usa otras tipografías, descárgalas de Google Fonts (woff2) a `public/fonts/`. El logo y los B-rolls van en `public/broll/`. `node build.mjs` imprime el % de avatar en cámara.
 8. `hyperframes lint public` (0 errores; los avisos de "sub-composition" son normales) → vista previa (`hyperframes preview public --background`) o `hyperframes snapshot public -o snaps --at …` con un tiempo por escena → revisar y corregir.
 

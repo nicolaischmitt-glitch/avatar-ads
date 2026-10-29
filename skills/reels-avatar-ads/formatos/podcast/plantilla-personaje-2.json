@@ -49,6 +49,15 @@
       "style": "video completamente raw, natural y sin editar",
       "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente a este personaje sentado frente al micrófono, hablando y gesticulando de forma natural mientras conversa con su interlocutor fuera de cuadro. Solo se escucha la voz de este personaje: sin otras voces, sin música y sin efectos de sonido."
     },
+    "audio": {
+      "voice_only": true,
+      "ambient_sound": false,
+      "background_noise": false,
+      "music": false,
+      "sound_effects": false,
+      "room_tone": "habitación silenciosa, sin eco ni reverberación",
+      "rule": "Se escucha únicamente la voz del avatar, clara y cercana, como grabada en una habitación silenciosa. Sin sonido ambiente, sin ruido de aire acondicionado, refrigerador, ventilador, tráfico ni zumbido eléctrico, y sin música ni efectos de sonido."
+    },
     "continuity": {
       "same_avatar": true,
       "same_location": true,
@@ -66,6 +75,7 @@
     "Respetar el diálogo palabra por palabra.",
     "No generar subtítulos ni ningún tipo de texto en pantalla.",
     "No añadir efectos, transiciones, filtros, música ni elementos visuales no solicitados.",
+    "No generar sonido ambiente, ruido de fondo, música ni efectos de sonido: solo la voz del avatar.",
     "Mantener la misma persona, el mismo estudio y el mismo encuadre."
   ]
 }

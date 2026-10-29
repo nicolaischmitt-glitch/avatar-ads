@@ -27,7 +27,8 @@
 
 ## Audio
 - Voz a **−14 LUFS**, pico ≤ −1,5 dB (filtro en el paso de "audio limpio" del formato).
-- **Música**: por defecto sin música (la voz y los SFX se escuchan mejor en anuncios). Si el usuario quiere música, va muy baja, por debajo de la voz.
+- **Voz limpia siempre** (`audio.mjs`): Google Flow inventa el sonido ambiente de cada clip y a veces mete un zumbido grave de fondo (aire acondicionado, refrigerador). Si unos clips lo traen y otros no, al unirlos se nota el cambio. La limpieza (filtro de graves + reducción de ruido + puerta suave en las pausas) deja todas las pausas al mismo nivel. El bloque `audio` del master prompt de video pide "solo la voz", pero no lo garantiza: la limpieza va siempre.
+- **Música**: por defecto sin música (la voz y los SFX se escuchan mejor en anuncios). Si el usuario quiere música, va muy baja, por debajo de la voz, y baja sola cuando habla el avatar (`audio.mjs <pista>`).
 - **SFX** en cada animación (volumen 0,25–0,5, por debajo de la voz), archivos en `public/audio/`:
 
 | Animación | Sonido |

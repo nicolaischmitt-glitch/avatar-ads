@@ -1,0 +1,32 @@
+[
+  {
+    "id": "w0",
+    "text": "O",
+    "start": 0,
+    "end": 0.16
+  },
+  {
+    "id": "w1",
+    "text": "si",
+    "start": 0.32,
+    "end": 0.48
+  },
+  {
+    "id": "w2",
+    "text": "necesitas",
+    "start": 0.48,
+    "end": 0.88
+  },
+  {
+    "id": "w3",
+    "text": "generar",
+    "start": 1.04,
+    "end": 1.36
+  },
+  {
+    "id": "w4",
+    "text": "leads.",
+    "start": 1.36,
+    "end": 1.92
+  }
+]

@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+      @font-face { font-family: "Mono"; src: url("fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      :root { --bg: #020604; --card: #090F0B; --neon: #C5F740; --white: #F8F8F8; --t2: #DDDAD7; --meta: #9F9587; --forest: #305E4A; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: "Inter", sans-serif; color: var(--t2); }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #video-wrap { position: absolute; inset: 0; overflow: hidden; z-index: 1; }
+      #zoom { position: absolute; inset: 0; transform-origin: 50% 33%; }
+      #zoom video { width: 100%; height: 100%; object-fit: cover; }
+      .g { position: absolute; z-index: 10; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      .center { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+      .lbl { font-family: "Mono"; font-weight: 500; font-size: 30px; letter-spacing: .12em; text-transform: uppercase; color: var(--meta); }
+      .lbl.n { color: var(--neon); }
+      .glass { background: rgba(9,15,11,.88); border: 3px solid rgba(48,94,74,.9); border-radius: 44px; box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+      /* subtítulo: sin caja, blanco con sombra; palabra clave en neón (altura del pecho, fuera del 20 % inferior) */
+      .sub { position: absolute; z-index: 20; left: 60px; right: 60px; top: 1230px; display: flex; justify-content: center; pointer-events: none; }
+      .sub span { display: block; text-align: center; font-family: "Archivo"; font-weight: 800; font-size: 70px; line-height: 1.1; color: #fff; letter-spacing: -0.5px;
+        text-shadow: 0 4px 18px rgba(0,0,0,.8), 0 0 3px rgba(0,0,0,.9); }
+      .sub b { color: var(--neon); font-weight: 800; }
+      /* en la pantalla dividida el subtítulo va en la franja */
+      .sub.split { top: 760px; height: 130px; left: 30px; right: 30px; align-items: center; }
+      .sub.split span { font-size: 56px; text-shadow: none; white-space: nowrap; }
+      .sub.split.long span { font-size: 48px; }
+      /* fondo desenfocado del propio video */
+      .full { position: absolute; z-index: 8; inset: 0; overflow: hidden; background: var(--bg); }
+      .full .bg { position: absolute; inset: -80px; width: calc(100% + 160px); height: calc(100% + 160px); object-fit: cover; filter: blur(30px) saturate(.7) brightness(.8); }
+      .full .veil { position: absolute; inset: 0; background: linear-gradient(rgba(2,6,4,.78), rgba(2,6,4,.88)); }
+      /* pantalla dividida */
+      .split-top { position: absolute; left: 0; right: 0; top: 0; height: 800px; padding: 90px 80px 60px; display: flex; flex-direction: column; justify-content: center; gap: 26px;
+        background: radial-gradient(80% 60% at 50% 0%, rgba(48,94,74,.5), transparent 70%), var(--bg); }
+      .strip { position: absolute; left: 0; right: 0; top: 760px; height: 130px; background: var(--bg); border-top: 2px solid rgba(48,94,74,.9); border-bottom: 2px solid rgba(48,94,74,.9); }
+      /* 02 · 30 videos */
+      .tiles { display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; }
+      .tile { aspect-ratio: 9/16; border-radius: 14px; background: #16281D; border: 2px solid rgba(48,94,74,.8); position: relative; }
+      .tile::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-35%,-50%); border-left: 16px solid rgba(221,218,215,.55); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+      .tile .w { position: absolute; inset: -2px; border-radius: 14px; background: var(--neon); box-shadow: 0 0 40px rgba(197,247,64,.7); opacity: 0; }
+      .wintag { align-self: center; font-family: "Mono"; font-size: 32px; letter-spacing: .14em; color: var(--neon); opacity: 0; }
+      /* 03 · calendario + dinero */
+      .cards { position: absolute; left: 90px; right: 90px; top: 230px; display: flex; flex-direction: column; gap: 40px; }
+      .cal { padding: 46px 50px; }
+      .cal .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; margin-top: 26px; }
+      .cal .grid i { display: block; aspect-ratio: 1; border-radius: 12px; background: rgba(48,94,74,.35); position: relative; overflow: hidden; }
+      .cal .grid i::after { content: ""; position: absolute; inset: 0; background: rgba(197,247,64,.75); opacity: var(--on, 0); }
+      .money { padding: 46px 50px; display: flex; align-items: center; gap: 40px; }
+      .bills { display: flex; flex-direction: column-reverse; gap: 12px; }
+      .bills i { display: block; width: 230px; height: 46px; border-radius: 10px; background: linear-gradient(90deg, #6B8F3A, #8DB34A); border: 2px solid #A9CF5E; }
+      .money .t { font-family: "Archivo"; font-weight: 800; font-size: 92px; color: var(--white); line-height: 1; }
+      /* 04 · recibo */
+      .receipt { position: absolute; left: 110px; right: 110px; top: 220px; padding: 56px 60px; }
+      .rrow { display: flex; align-items: center; gap: 34px; padding: 30px 0; border-bottom: 2px dashed rgba(48,94,74,.8); }
+      .rrow:last-child { border-bottom: 0; }
+      .rrow .ic { width: 96px; height: 96px; border-radius: 26px; background: rgba(48,94,74,.35); display: flex; align-items: center; justify-content: center; flex: none; }
+      .rrow .ic svg { width: 54px; height: 54px; }
+      .rrow .t { font-family: "Archivo"; font-weight: 800; font-size: 58px; color: var(--white); }
+      .rrow .p { margin-left: auto; font-family: "Mono"; font-size: 44px; color: var(--meta); }
+      /* 05 · precio */
+      .price { padding: 50px 56px; }
+      .price .v { white-space: nowrap; font-family: "Archivo"; font-weight: 800; font-size: 190px; color: var(--white); line-height: .95; margin: 14px 0 10px; }
+      .price .v small { font-size: 80px; color: var(--meta); }
+      .price .src { font-size: 26px; color: var(--meta); line-height: 1.35; }
+      /* 06 · reloj sobre la cabeza */
+      .chip { display: inline-flex; align-items: center; gap: 22px; padding: 22px 38px; border-radius: 26px; background: rgba(2,6,4,.82); border: 3px solid rgba(48,94,74,.9);
+        font-family: "Mono"; font-size: 34px; letter-spacing: .1em; color: var(--white); text-transform: uppercase; }
+      .chip svg { width: 52px; height: 52px; }
+      .chip i { width: 18px; height: 18px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 18px var(--neon); display: block; }
+      /* 08 · logo */
+      .logo { position: absolute; left: 0; right: 0; top: 470px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+      .logo .lg { mix-blend-mode: screen; }
+      .logo img { width: 760px; display: block; }
+      .glow { position: absolute; left: 50%; top: 640px; width: 900px; height: 600px; transform: translate(-50%,-50%); background: radial-gradient(closest-side, rgba(197,247,64,.24), transparent); }
+      /* 09 · nuestros anuncios */
+      .fan { position: absolute; left: 70px; right: 70px; top: 170px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+      .fan img { width: 100%; aspect-ratio: 9/16; object-fit: cover; border-radius: 24px; border: 3px solid rgba(48,94,74,.9); display: block; }
+      .tag { position: absolute; left: 0; right: 0; top: 760px; display: flex; justify-content: center; }
+      .tag div { transform: rotate(-3deg); padding: 26px 48px; border-radius: 28px; background: var(--bg); border: 4px solid var(--neon); box-shadow: 0 0 50px rgba(197,247,64,.45);
+        font-family: "Archivo"; font-weight: 800; font-size: 74px; color: var(--neon); white-space: nowrap; }
+      .tag small { font-family: "Mono"; font-size: 30px; color: var(--white); letter-spacing: .08em; margin-left: 12px; }
+      /* 10/12 · proceso */
+      .steps { display: flex; flex-direction: column; gap: 14px; }
+      .st { position: relative; display: flex; align-items: center; gap: 28px; padding: 18px 28px; border-radius: 26px; border: 2px solid rgba(48,94,74,.55); background: rgba(9,15,11,.7); }
+      .st .k { font-family: "Mono"; font-size: 30px; color: var(--meta); width: 60px; }
+      .st .t { font-family: "Archivo"; font-weight: 800; font-size: 44px; color: rgba(248,248,248,.45); }
+      .st .ok { margin-left: auto; width: 54px; height: 54px; border-radius: 50%; background: rgba(197,247,64,.16); display: flex; align-items: center; justify-content: center; opacity: 0; }
+      .st .ok svg { width: 32px; height: 32px; }
+      .st.act { border-color: var(--neon); background: rgba(197,247,64,.1); box-shadow: 0 0 40px rgba(197,247,64,.25); }
+      .st.act .k { color: var(--neon); } .st.act .t { color: var(--white); } .st.done .t { color: var(--t2); }
+      /* 11 · marco alrededor de la cara (no la tapa) */
+      .brk { position: absolute; width: 120px; height: 120px; border-color: var(--neon); border-style: solid; filter: drop-shadow(0 0 12px rgba(197,247,64,.7)); }
+      .brk.a { left: 210px; top: 250px; border-width: 8px 0 0 8px; border-radius: 26px 0 0 0; }
+      .brk.b { right: 210px; top: 250px; border-width: 8px 8px 0 0; border-radius: 0 26px 0 0; }
+      .brk.c { left: 210px; top: 990px; border-width: 0 0 8px 8px; border-radius: 0 0 0 26px; }
+      .brk.d { right: 210px; top: 990px; border-width: 0 8px 8px 0; border-radius: 0 0 26px 0; }
+      /* 13 · tipos de negocio */
+      .biz { position: absolute; left: 80px; right: 80px; top: 240px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+      .bz { padding: 50px 40px; display: flex; flex-direction: column; gap: 30px; opacity: .35; }
+      .bz .ic { width: 120px; height: 120px; border-radius: 34px; background: rgba(197,247,64,.12); display: flex; align-items: center; justify-content: center; }
+      .bz .ic svg { width: 68px; height: 68px; }
+      .bz .t { font-family: "Archivo"; font-weight: 800; font-size: 54px; color: var(--white); line-height: 1.05; }
+      /* 14 · prueba real */
+      .proof { position: absolute; left: 70px; right: 70px; top: 150px; display: flex; flex-direction: column; gap: 34px; align-items: center; }
+      .nums { display: flex; gap: 30px; width: 100%; }
+      .nums .glass { flex: 1; padding: 36px 40px; }
+      .nums .v { font-family: "Archivo"; font-weight: 800; font-size: 128px; color: var(--neon); line-height: 1; margin-top: 10px; }
+      .shot-img { width: 100%; border-radius: 32px; border: 3px solid rgba(48,94,74,.9); display: block; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+      /* 15 · curva */
+      .chart { padding: 44px 50px 36px; }
+      .chart svg { width: 100%; height: 400px; display: block; margin-top: 10px; overflow: visible; }
+      .chart .lg { display: flex; justify-content: space-between; font-family: "Mono"; font-size: 28px; color: var(--meta); letter-spacing: .08em; text-transform: uppercase; }
+      .chart .lg b { color: var(--neon); font-weight: 500; }
+      /* 16 · versiones */
+      .vers { display: flex; align-items: center; justify-content: space-between; position: relative; margin-top: 30px; }
+      .vline { position: absolute; left: 110px; right: 110px; top: 57px; height: 6px; background: rgba(48,94,74,.6); border-radius: 3px; overflow: hidden; }
+      .vline i { position: absolute; inset: 0; background: var(--neon); transform-origin: 0 50%; transform: scaleX(0); }
+      .vn { position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; width: 220px; opacity: .35; }
+      .vn .d { width: 120px; height: 120px; border-radius: 50%; background: var(--bg); border: 6px solid var(--neon); display: flex; align-items: center; justify-content: center;
+        font-family: "Mono"; font-size: 34px; color: var(--neon); box-shadow: 0 0 30px rgba(197,247,64,.35); }
+      .vn .t { font-size: 30px; color: var(--t2); text-align: center; line-height: 1.25; }
+      .vn.next .d { border-style: dashed; border-color: var(--forest); color: var(--meta); box-shadow: none; }
+      .vn.next .t { color: var(--meta); }
+      /* 17 · lo que incluye */
+      .incl { position: absolute; left: 90px; right: 90px; top: 250px; display: flex; flex-direction: column; gap: 34px; }
+      .in { display: flex; align-items: center; gap: 38px; padding: 44px 48px; }
+      .in .ic { width: 120px; height: 120px; border-radius: 34px; background: rgba(197,247,64,.12); display: flex; align-items: center; justify-content: center; flex: none; }
+      .in .ic svg { width: 66px; height: 66px; }
+      .in .t { font-family: "Archivo"; font-weight: 800; font-size: 60px; color: var(--white); line-height: 1.05; }
+      .in .s { font-size: 32px; color: var(--meta); margin-top: 8px; }
+      /* 18 · logo + botón (la única píldora) */
+      .toplogo { mix-blend-mode: screen; }
+      .toplogo img { width: 470px; display: block; }
+      .btnw { position: relative; display: inline-block; }
+      .btn { position: relative; display: inline-flex; align-items: center; gap: 26px; background: var(--neon); color: var(--bg); font-family: "Archivo"; font-weight: 800; font-size: 58px;
+        padding: 36px 64px; border-radius: 999px; box-shadow: 0 20px 60px rgba(197,247,64,.45); white-space: nowrap; }
+      .btn svg { width: 56px; height: 56px; }
+      .ring { position: absolute; inset: 0; border-radius: 999px; border: 6px solid var(--neon); opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="anuncio-09" data-start="0" data-duration="84.292" data-fps="24" data-width="1080" data-height="1920">
+      <div id="video-wrap">
+        <div id="zoom"><video id="bg-video" src="input-video.mp4" playsinline data-has-audio="true" data-start="0" data-duration="84.292" data-track-index="1"></video></div>
+      </div>
+
+      <!-- 02 · 30 videos -->
+      <div class="g clip" id="tiles" data-start="1.291" data-duration="2.25" data-track-index="8">
+        <div class="split-top"><div class="tiles"><div class="tile" id="tile-0"></div><div class="tile" id="tile-1"></div><div class="tile" id="tile-2"></div><div class="tile" id="tile-3"></div><div class="tile" id="tile-4"></div><div class="tile" id="tile-5"></div><div class="tile" id="tile-6"></div><div class="tile" id="tile-7"></div><div class="tile" id="tile-8"></div><div class="tile" id="tile-9"></div><div class="tile" id="tile-10"></div><div class="tile" id="tile-11"></div><div class="tile" id="tile-12"></div><div class="tile" id="tile-13"></div><div class="tile" id="tile-14"></div><div class="tile" id="tile-15"></div><div class="tile" id="tile-16"></div><div class="tile win" id="tile-17"><div class="w" id="win"></div></div><div class="tile" id="tile-18"></div><div class="tile" id="tile-19"></div><div class="tile" id="tile-20"></div><div class="tile" id="tile-21"></div><div class="tile" id="tile-22"></div><div class="tile" id="tile-23"></div><div class="tile" id="tile-24"></div><div class="tile" id="tile-25"></div><div class="tile" id="tile-26"></div><div class="tile" id="tile-27"></div><div class="tile" id="tile-28"></div><div class="tile" id="tile-29"></div></div><div class="wintag" id="wintag">★ 1 ganador</div></div><div class="strip"></div>
+      </div>
+
+      <!-- 03 · calendario + dinero -->
+      <div class="full clip" id="cal" data-start="4.75" data-duration="2.708" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="cards">
+          <div class="glass cal" id="cal-card"><div class="lbl">Semanas de trabajo</div><div class="grid"><i id="day-0"></i><i id="day-1"></i><i id="day-2"></i><i id="day-3"></i><i id="day-4"></i><i id="day-5"></i><i id="day-6"></i><i id="day-7"></i><i id="day-8"></i><i id="day-9"></i><i id="day-10"></i><i id="day-11"></i><i id="day-12"></i><i id="day-13"></i><i id="day-14"></i><i id="day-15"></i><i id="day-16"></i><i id="day-17"></i><i id="day-18"></i><i id="day-19"></i><i id="day-20"></i><i id="day-21"></i><i id="day-22"></i><i id="day-23"></i><i id="day-24"></i><i id="day-25"></i><i id="day-26"></i><i id="day-27"></i></div></div>
+          <div class="glass money" id="money-card"><div class="bills"><i id="bill-0"></i><i id="bill-1"></i><i id="bill-2"></i><i id="bill-3"></i></div><div class="t">$$$</div></div>
+        </div>
+      </div>
+
+      <!-- 04 · recibo de producción -->
+      <div class="full clip" id="receipt" data-start="7.458" data-duration="2.875" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="glass receipt" id="receipt-card"><div class="lbl" style="margin-bottom:14px">Producir 1 anuncio</div>
+          <div class="rrow" id="rrow-0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg></div><div class="t">Planeación</div><div class="p">$$</div></div>
+          <div class="rrow" id="rrow-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div><div class="t">Creadores</div><div class="p">$$$</div></div>
+          <div class="rrow" id="rrow-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><div class="t">Grabación</div><div class="p">$$</div></div>
+          <div class="rrow" id="rrow-3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div><div class="t">Editores</div><div class="p">$$$</div></div>
+        </div>
+      </div>
+
+      <!-- 05 · precio de otras herramientas -->
+      <div class="g clip" id="price" data-start="12.166" data-duration="2.584" data-track-index="8">
+        <div class="split-top"><div class="glass price" id="price-card"><div class="lbl">1 anuncio de 30 s · otras herramientas</div>
+          <div class="v">~$<span id="price-n">0</span><small> c/u</small></div>
+          <div class="src">Promedio de Wan 2.5, Seedance 2.0 y Seedance 2.5 · precios públicos de API, oct 2026</div></div></div><div class="strip"></div>
+      </div>
+
+      <!-- 06 · reloj sobre la cabeza -->
+      <div class="g clip" id="clock" data-start="16.333" data-duration="2.667" data-track-index="6">
+        <div class="center" style="top:70px"><div class="chip" id="clock-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line id="hand" x1="12" y1="12" x2="12" y2="6.5"/><circle cx="12" cy="12" r="1" fill="#C5F740"/></svg>Grabar · editar · repetir</div></div>
+      </div>
+
+      <!-- 08 · logo -->
+      <div class="full clip" id="logo" data-start="20.416" data-duration="2.5" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="glow" id="glow"></div><div class="logo"><div class="lg" id="logo-img"><img src="img/logo-avatar-ads.webp" alt=""></div><div class="lbl n" id="logo-lbl">Tu máquina de anuncios</div></div>
+      </div>
+
+      <!-- 09 · nuestros anuncios -->
+      <div class="full clip" id="fan" data-start="26.166" data-duration="2.875" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="fan"><img id="fan-0" src="img/ejemplo-serum.jpg" alt=""><img id="fan-1" src="img/ejemplo-dental.jpg" alt=""><img id="fan-2" src="img/ejemplo-ingles.jpg" alt=""><img id="fan-3" src="img/ejemplo-serum-voz.jpg" alt=""><img id="fan-4" src="img/ejemplo-podcast.jpg" alt=""><img id="fan-5" src="img/ejemplo-labial.jpg" alt=""></div><div class="tag"><div id="fan-tag">&lt; $1<small>/ ANUNCIO</small></div></div>
+      </div>
+
+      <!-- 10 · proceso (pasos 01–02) -->
+      <div class="g clip" id="stepsA" data-start="29.041" data-duration="8.417" data-track-index="8">
+        <div class="split-top"><div class="steps">
+            <div class="st" id="a-st-0"><div class="k">01</div><div class="t">Ángulos de venta</div><div class="ok" id="a-ok-0"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="a-st-1"><div class="k">02</div><div class="t">Guiones</div><div class="ok" id="a-ok-1"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="a-st-2"><div class="k">03</div><div class="t">Avatar realista</div><div class="ok" id="a-ok-2"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="a-st-3"><div class="k">04</div><div class="t">Escenas y videos</div><div class="ok" id="a-ok-3"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="a-st-4"><div class="k">05</div><div class="t">Edición completa</div><div class="ok" id="a-ok-4"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="a-st-5"><div class="k">06</div><div class="t">Listo para probar</div><div class="ok" id="a-ok-5"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          </div></div><div class="strip"></div>
+      </div>
+
+      <!-- 11 · el propio avatar -->
+      <div class="g clip" id="avatar" data-start="37.458" data-duration="1.667" data-track-index="6">
+        <div id="brks"><div class="brk a"></div><div class="brk b"></div><div class="brk c"></div><div class="brk d"></div></div>
+        <div class="center" style="top:70px"><div class="chip" id="avatar-chip"><i></i>Avatar · 100% IA</div></div>
+      </div>
+
+      <!-- 12 · proceso (pasos 03–06) -->
+      <div class="g clip" id="stepsB" data-start="39.125" data-duration="5.791" data-track-index="8">
+        <div class="split-top"><div class="steps">
+            <div class="st" id="b-st-0"><div class="k">01</div><div class="t">Ángulos de venta</div><div class="ok" id="b-ok-0"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="b-st-1"><div class="k">02</div><div class="t">Guiones</div><div class="ok" id="b-ok-1"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="b-st-2"><div class="k">03</div><div class="t">Avatar realista</div><div class="ok" id="b-ok-2"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="b-st-3"><div class="k">04</div><div class="t">Escenas y videos</div><div class="ok" id="b-ok-3"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="b-st-4"><div class="k">05</div><div class="t">Edición completa</div><div class="ok" id="b-ok-4"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+            <div class="st" id="b-st-5"><div class="k">06</div><div class="t">Listo para probar</div><div class="ok" id="b-ok-5"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div></div>
+          </div></div><div class="strip"></div>
+      </div>
+
+      <!-- 13 · tipos de negocio -->
+      <div class="full clip" id="biz" data-start="45.875" data-duration="7.875" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="biz">
+          <div class="glass bz" id="bz-0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div><div class="t">Productos digitales</div></div>
+          <div class="glass bz" id="bz-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><div class="t">Productos físicos</div></div>
+          <div class="glass bz" id="bz-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><div class="t">Servicios tradicionales</div></div>
+          <div class="glass bz" id="bz-3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .7 3.2 2.6 3.5 5.5"/></svg></div><div class="t">Generar leads</div></div>
+        </div>
+      </div>
+
+      <!-- 14 · prueba real -->
+      <div class="full clip" id="proof" data-start="53.75" data-duration="2.833" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="proof">
+          <div class="nums"><div class="glass" id="num-0"><div class="lbl">Leads</div><div class="v" id="leads-n">0</div></div><div class="glass" id="num-1"><div class="lbl">Costo por lead</div><div class="v">$0,35</div></div></div>
+          <img class="shot-img" id="proof-img" src="img/fb-ads-costo-por-lead.webp" alt="">
+          <div class="lbl">Campaña real en Meta</div>
+        </div>
+      </div>
+
+      <!-- 15 · curva -->
+      <div class="g clip" id="curve" data-start="59.166" data-duration="3.834" data-track-index="8">
+        <div class="split-top"><div class="glass chart" id="chart-card"><div class="lg"><span>Testea</span><span>Gana</span><b>Escala</b></div>
+          <svg viewBox="0 0 800 400" fill="none">
+            <path d="M0 360 H800 M0 250 H800 M0 140 H800 M0 30 H800" stroke="rgba(48,94,74,.45)" stroke-width="2"/>
+            <path id="curve-fill" d="M20 350 C 200 340, 330 300, 450 230 S 680 60, 780 30 V 380 H 20 Z" fill="rgba(197,247,64,.1)"/>
+            <path id="curve-line" d="M20 350 C 200 340, 330 300, 450 230 S 680 60, 780 30" stroke="#C5F740" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+            <circle id="curve-dot" cx="780" cy="30" r="20" fill="#C5F740"/>
+          </svg></div></div><div class="strip"></div>
+      </div>
+
+      <!-- 16 · versiones -->
+      <div class="g clip" id="vers" data-start="64.833" data-duration="2.542" data-track-index="8">
+        <div class="split-top"><div class="lbl" style="text-align:center">Tuyo para siempre</div>
+          <div class="vers"><div class="vline"><i id="vline"></i></div>
+            <div class="vn" id="vn-0"><div class="d">1.1</div><div class="t">Head talking</div></div>
+            <div class="vn" id="vn-1"><div class="d">1.2</div><div class="t">Producto físico</div></div>
+            <div class="vn" id="vn-2"><div class="d">1.3</div><div class="t">Voz en off</div></div>
+            <div class="vn next" id="vn-3"><div class="d">+</div><div class="t">Lo que viene</div></div>
+          </div></div><div class="strip"></div>
+      </div>
+
+      <!-- 17 · lo que incluye -->
+      <div class="full clip" id="incl" data-start="71.916" data-duration="6.459" data-track-index="8">
+        <img class="bg" src="img/avatar-bg.jpg" alt=""><div class="veil"></div>
+        <div class="incl">
+          <div class="glass in" id="in-0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M9 8h6"/></svg></div><div><div class="t">Curso paso a paso</div><div class="s">Acceso vitalicio</div></div></div>
+          <div class="glass in" id="in-1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><circle cx="12" cy="11.5" r="2.5" fill="#C5F740"/><path d="M8 21h8"/></svg></div><div><div class="t">Clases en vivo</div><div class="s">Aprende a usar el sistema</div></div></div>
+          <div class="glass in" id="in-2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#C5F740" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><div><div class="t">Soporte y feedback</div><div class="s">Revisamos tus anuncios</div></div></div>
+        </div>
+      </div>
+
+      <!-- 18 · CTA: logo (capa propia con mezcla "screen") + botón -->
+      <div class="g clip" id="cta-logo-layer" style="mix-blend-mode: screen" data-start="80.616" data-duration="3.675" data-track-index="6">
+        <div class="center" style="top:60px"><div id="cta-logo"><img src="img/logo-avatar-ads.webp" alt="" style="width:470px;display:block"></div></div>
+      </div>
+      <div class="g clip" id="cta" data-start="80.616" data-duration="3.675" data-track-index="7">
+        <div class="center" style="top:1040px"><div id="cta-btn"><div class="btnw"><div class="ring" id="cta-ring"></div><div class="btn">Ver todo lo que incluye <svg viewBox="0 0 24 24" fill="none" stroke="#020604" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div></div></div>
+      </div>
+
+      <div class="sub clip" id="sub-0" data-start="-0.042" data-duration="1.333" data-track-index="3"><span>Encontrar un anuncio <b>ganador</b></span></div>
+      <div class="sub split long clip" id="sub-1" data-start="1.292" data-duration="2.25" data-track-index="3"><span>te cuesta entre <b>10 y 30 videos</b>.</span></div>
+      <div class="sub clip" id="sub-2" data-start="3.542" data-duration="1.208" data-track-index="3"><span>Con el <b>método tradicional</b>,</span></div>
+      <div class="sub clip" id="sub-3" data-start="4.75" data-duration="1.5" data-track-index="3"><span>eso son <b>semanas</b> de trabajo</span></div>
+      <div class="sub clip" id="sub-4" data-start="6.25" data-duration="1.208" data-track-index="3"><span>y <b>miles de dólares</b>.</span></div>
+      <div class="sub clip" id="sub-5" data-start="7.458" data-duration="1.542" data-track-index="3"><span>Planeación, <b>creadores</b>,</span></div>
+      <div class="sub clip" id="sub-6" data-start="9" data-duration="1.333" data-track-index="3"><span>grabación, <b>editores</b>.</span></div>
+      <div class="sub clip" id="sub-7" data-start="10.333" data-duration="1.833" data-track-index="3"><span>O herramientas de <b>inteligencia artificial</b></span></div>
+      <div class="sub split clip" id="sub-8" data-start="12.167" data-duration="1.292" data-track-index="3"><span>que cobran una <b>fortuna</b></span></div>
+      <div class="sub split clip" id="sub-9" data-start="13.458" data-duration="1.292" data-track-index="3"><span>por <b>un solo video</b>.</span></div>
+      <div class="sub clip" id="sub-10" data-start="14.75" data-duration="1.583" data-track-index="3"><span>Y si lo haces <b>tú mismo</b>,</span></div>
+      <div class="sub clip" id="sub-11" data-start="16.333" data-duration="2.667" data-track-index="3"><span>te pasas <b>horas</b> grabándote y editando,</span></div>
+      <div class="sub clip" id="sub-12" data-start="19" data-duration="1.417" data-track-index="3"><span>en vez de <b>vender</b>.</span></div>
+      <div class="sub clip" id="sub-13" data-start="20.417" data-duration="2.5" data-track-index="3"><span>Por eso creamos el <b>Sistema Avatar Ads</b></span></div>
+      <div class="sub clip" id="sub-14" data-start="22.917" data-duration="1.167" data-track-index="3"><span>un sistema <b>automatizado</b></span></div>
+      <div class="sub clip" id="sub-15" data-start="24.083" data-duration="2.083" data-track-index="3"><span>que crea anuncios <b>hiperrealistas</b>,</span></div>
+      <div class="sub clip" id="sub-16" data-start="26.167" data-duration="0.875" data-track-index="3"><span>en <b>volumen</b></span></div>
+      <div class="sub clip" id="sub-17" data-start="27.042" data-duration="2" data-track-index="3"><span>y por <b>menos de un dólar</b> cada uno.</span></div>
+      <div class="sub split clip" id="sub-18" data-start="29.042" data-duration="1.458" data-track-index="3"><span>Primero, <b>encuentra</b></span></div>
+      <div class="sub split long clip" id="sub-19" data-start="30.5" data-duration="1.5" data-track-index="3"><span>los mejores <b>ángulos de venta</b></span></div>
+      <div class="sub split clip" id="sub-20" data-start="32" data-duration="1" data-track-index="3"><span>para tu <b>producto</b>.</span></div>
+      <div class="sub split clip" id="sub-21" data-start="33" data-duration="2" data-track-index="3"><span>Luego, escribe <b>guiones</b></span></div>
+      <div class="sub split clip" id="sub-22" data-start="35" data-duration="0.792" data-track-index="3"><span>con la <b>estructura</b></span></div>
+      <div class="sub split long clip" id="sub-23" data-start="35.792" data-duration="1.667" data-track-index="3"><span>de miles de <b>anuncios ganadores</b>.</span></div>
+      <div class="sub clip" id="sub-24" data-start="37.458" data-duration="1.667" data-track-index="3"><span>Crea tu <b>avatar realista</b>.</span></div>
+      <div class="sub split long clip" id="sub-25" data-start="39.125" data-duration="1.917" data-track-index="3"><span>Genera las <b>escenas</b> y los videos,</span></div>
+      <div class="sub split long clip" id="sub-26" data-start="41.042" data-duration="1.708" data-track-index="3"><span>edita el anuncio <b>por completo</b></span></div>
+      <div class="sub split clip" id="sub-27" data-start="42.75" data-duration="0.958" data-track-index="3"><span>y te lo <b>entrega</b></span></div>
+      <div class="sub split clip" id="sub-28" data-start="43.708" data-duration="1.208" data-track-index="3"><span><b>listo</b> para probar.</span></div>
+      <div class="sub clip" id="sub-29" data-start="44.917" data-duration="0.958" data-track-index="3"><span>Y <b>funciona</b> para</span></div>
+      <div class="sub clip" id="sub-30" data-start="45.875" data-duration="1.292" data-track-index="3"><span><b>cualquier tipo</b> de negocio.</span></div>
+      <div class="sub clip" id="sub-31" data-start="47.167" data-duration="1.917" data-track-index="3"><span>Si vendes <b>productos digitales</b>,</span></div>
+      <div class="sub clip" id="sub-32" data-start="49.083" data-duration="1.042" data-track-index="3"><span><b>productos físicos</b></span></div>
+      <div class="sub clip" id="sub-33" data-start="50.125" data-duration="1.667" data-track-index="3"><span>o <b>servicios</b> tradicionales,</span></div>
+      <div class="sub clip" id="sub-34" data-start="51.792" data-duration="1.958" data-track-index="3"><span>o si necesitas generar <b>leads</b>,</span></div>
+      <div class="sub clip" id="sub-35" data-start="53.75" data-duration="1.5" data-track-index="3"><span>el sistema crea el <b>anuncio</b></span></div>
+      <div class="sub clip" id="sub-36" data-start="55.25" data-duration="1.333" data-track-index="3"><span>que tu <b>oferta</b> necesita.</span></div>
+      <div class="sub clip" id="sub-37" data-start="56.583" data-duration="1.333" data-track-index="3"><span>No son <b>solo</b> anuncios</span></div>
+      <div class="sub clip" id="sub-38" data-start="57.917" data-duration="1.25" data-track-index="3"><span>que parecen <b>reales</b>,</span></div>
+      <div class="sub split long clip" id="sub-39" data-start="59.167" data-duration="1.917" data-track-index="3"><span>son anuncios con <b>estructuras</b></span></div>
+      <div class="sub split long clip" id="sub-40" data-start="61.083" data-duration="1.917" data-track-index="3"><span>probadas para <b>escalar rápido</b>.</span></div>
+      <div class="sub clip" id="sub-41" data-start="63" data-duration="1.833" data-track-index="3"><span>Además, el sistema es <b>tuyo</b></span></div>
+      <div class="sub split clip" id="sub-42" data-start="64.833" data-duration="0.792" data-track-index="3"><span><b>para siempre</b>,</span></div>
+      <div class="sub split long clip" id="sub-43" data-start="65.625" data-duration="1.75" data-track-index="3"><span>con todas sus <b>actualizaciones</b>,</span></div>
+      <div class="sub clip" id="sub-44" data-start="67.375" data-duration="1.625" data-track-index="3"><span>porque la <b>inteligencia artificial</b></span></div>
+      <div class="sub clip" id="sub-45" data-start="69" data-duration="1.208" data-track-index="3"><span>cambia <b>cada semana</b>.</span></div>
+      <div class="sub clip" id="sub-46" data-start="70.208" data-duration="1.708" data-track-index="3"><span>Y tienes acceso <b>vitalicio</b></span></div>
+      <div class="sub clip" id="sub-47" data-start="71.917" data-duration="1.333" data-track-index="3"><span>al <b>curso</b> paso a paso,</span></div>
+      <div class="sub clip" id="sub-48" data-start="73.25" data-duration="0.917" data-track-index="3"><span><b>clases en vivo</b></span></div>
+      <div class="sub clip" id="sub-49" data-start="74.167" data-duration="0.958" data-track-index="3"><span>y <b>soporte</b></span></div>
+      <div class="sub clip" id="sub-50" data-start="75.125" data-duration="2.125" data-track-index="3"><span>para que <b>revisemos</b> tus anuncios</span></div>
+      <div class="sub clip" id="sub-51" data-start="77.25" data-duration="1.125" data-track-index="3"><span>y te demos <b>feedback</b>.</span></div>
+      <div class="sub clip" id="sub-52" data-start="78.375" data-duration="1.083" data-track-index="3"><span>Si quieres tu <b>propia</b></span></div>
+      <div class="sub clip" id="sub-53" data-start="79.458" data-duration="1.208" data-track-index="3"><span><b>máquina de anuncios</b>,</span></div>
+      <div class="sub clip" id="sub-54" data-start="80.667" data-duration="1.25" data-track-index="3"><span>toca el <b>botón de abajo</b></span></div>
+      <div class="sub clip" id="sub-55" data-start="81.917" data-duration="2.375" data-track-index="3"><span>y mira <b>todo lo que incluye</b>.</span></div>
+
+      <audio id="sfx-01-whoosh-short" src="audio/whoosh-short.mp3" data-start="1.208" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-02-ping" src="audio/ping.mp3" data-start="3.042" data-duration="0.6" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-03-whoosh-short" src="audio/whoosh-short.mp3" data-start="4.667" data-duration="0.574" data-track-index="13" data-volume="0.1"></audio>
+      <audio id="sfx-04-whoosh-short" src="audio/whoosh-short.mp3" data-start="7.375" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-05-click-soft" src="audio/click-soft.mp3" data-start="7.5" data-duration="0.365" data-track-index="11" data-volume="0.22"></audio>
+      <audio id="sfx-06-click-soft" src="audio/click-soft.mp3" data-start="8.333" data-duration="0.365" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-07-click-soft" src="audio/click-soft.mp3" data-start="9.042" data-duration="0.365" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-08-click-soft" src="audio/click-soft.mp3" data-start="9.75" data-duration="0.365" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="sfx-09-whoosh-short" src="audio/whoosh-short.mp3" data-start="12.083" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-10-pop" src="audio/pop.mp3" data-start="16.375" data-duration="0.72" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-11-whoosh-cinematic" src="audio/whoosh-cinematic.mp3" data-start="20.25" data-duration="1.2" data-track-index="13" data-volume="0.12"></audio>
+      <audio id="sfx-12-whoosh-short" src="audio/whoosh-short.mp3" data-start="26.083" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-13-pop" src="audio/pop.mp3" data-start="27.458" data-duration="0.72" data-track-index="11" data-volume="0.16"></audio>
+      <audio id="sfx-14-whoosh-short" src="audio/whoosh-short.mp3" data-start="28.958" data-duration="0.574" data-track-index="12" data-volume="0.1"></audio>
+      <audio id="sfx-15-click-soft" src="audio/click-soft.mp3" data-start="33" data-duration="0.365" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-16-pop" src="audio/pop.mp3" data-start="37.5" data-duration="0.72" data-track-index="14" data-volume="0.12"></audio>
+      <audio id="sfx-17-whoosh-short" src="audio/whoosh-short.mp3" data-start="39.042" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-18-click-soft" src="audio/click-soft.mp3" data-start="39.125" data-duration="0.365" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-19-click-soft" src="audio/click-soft.mp3" data-start="41.042" data-duration="0.365" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-20-click-soft" src="audio/click-soft.mp3" data-start="43.708" data-duration="0.365" data-track-index="14" data-volume="0.22"></audio>
+      <audio id="sfx-21-whoosh-short" src="audio/whoosh-short.mp3" data-start="45.792" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-22-click-soft" src="audio/click-soft.mp3" data-start="48.333" data-duration="0.365" data-track-index="12" data-volume="0.2"></audio>
+      <audio id="sfx-23-click-soft" src="audio/click-soft.mp3" data-start="49.625" data-duration="0.365" data-track-index="13" data-volume="0.2"></audio>
+      <audio id="sfx-24-click-soft" src="audio/click-soft.mp3" data-start="50.417" data-duration="0.365" data-track-index="14" data-volume="0.2"></audio>
+      <audio id="sfx-25-click-soft" src="audio/click-soft.mp3" data-start="53.208" data-duration="0.365" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-26-whoosh-short" src="audio/whoosh-short.mp3" data-start="53.667" data-duration="0.574" data-track-index="12" data-volume="0.1"></audio>
+      <audio id="sfx-27-whoosh-short" src="audio/whoosh-short.mp3" data-start="59.083" data-duration="0.574" data-track-index="13" data-volume="0.1"></audio>
+      <audio id="sfx-28-whoosh-short" src="audio/whoosh-short.mp3" data-start="64.75" data-duration="0.574" data-track-index="14" data-volume="0.1"></audio>
+      <audio id="sfx-29-whoosh-short" src="audio/whoosh-short.mp3" data-start="71.833" data-duration="0.574" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-30-pop" src="audio/pop.mp3" data-start="72.125" data-duration="0.72" data-track-index="12" data-volume="0.12"></audio>
+      <audio id="sfx-31-pop" src="audio/pop.mp3" data-start="73.25" data-duration="0.72" data-track-index="13" data-volume="0.12"></audio>
+      <audio id="sfx-32-pop" src="audio/pop.mp3" data-start="74.167" data-duration="0.72" data-track-index="14" data-volume="0.12"></audio>
+      <audio id="sfx-33-pop" src="audio/pop.mp3" data-start="80.667" data-duration="0.72" data-track-index="11" data-volume="0.14"></audio>
+      <audio id="sfx-34-chime" src="audio/chime.mp3" data-start="81.125" data-duration="1" data-track-index="12" data-volume="0.14"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          const tl = window.gsap.timeline({ paused: true });
+          const Z = "#zoom";
+          tl.set(Z, { scale: 1 }, 0);
+          tl.to(Z, { scale: 1.04, duration: 3.492, ease: "none" }, 0);
+          tl.set(Z, { scale: 1.12 }, 3.54);
+          tl.to(Z, { scale: 1.15, duration: 3.783, ease: "none" }, 3.542);
+          tl.set(Z, { scale: 1 }, 7.373);
+          tl.to(Z, { scale: 1.04, duration: 2.95, ease: "none" }, 7.375);
+          tl.set(Z, { scale: 1.12 }, 10.373);
+          tl.to(Z, { scale: 1.15, duration: 4.242, ease: "none" }, 10.375);
+          tl.set(Z, { scale: 1 }, 14.665);
+          tl.to(Z, { scale: 1.04, duration: 5, ease: "none" }, 14.667);
+          tl.to(Z, { scale: 1.13, duration: 0.3, ease: "power3.out" }, 19.667);
+          tl.set(Z, { scale: 1.12 }, 20.456);
+          tl.to(Z, { scale: 1.15, duration: 2.283, ease: "none" }, 20.458);
+          tl.set(Z, { scale: 1 }, 22.79);
+          tl.to(Z, { scale: 1.04, duration: 6.117, ease: "none" }, 22.792);
+          tl.set(Z, { scale: 1.12 }, 28.956);
+          tl.to(Z, { scale: 1.15, duration: 2.908, ease: "none" }, 28.958);
+          tl.set(Z, { scale: 1 }, 31.915);
+          tl.to(Z, { scale: 1.04, duration: 0.908, ease: "none" }, 31.917);
+          tl.set(Z, { scale: 1.12 }, 32.873);
+          tl.to(Z, { scale: 1.15, duration: 0.742, ease: "none" }, 32.875);
+          tl.set(Z, { scale: 1 }, 33.665);
+          tl.to(Z, { scale: 1.04, duration: 3.7, ease: "none" }, 33.667);
+          tl.set(Z, { scale: 1.12 }, 37.415);
+          tl.to(Z, { scale: 1.15, duration: 1.658, ease: "none" }, 37.417);
+          tl.set(Z, { scale: 1 }, 39.123);
+          tl.to(Z, { scale: 1.04, duration: 3.617, ease: "none" }, 39.125);
+          tl.set(Z, { scale: 1.12 }, 42.79);
+          tl.to(Z, { scale: 1.15, duration: 1.992, ease: "none" }, 42.792);
+          tl.set(Z, { scale: 1 }, 44.831);
+          tl.to(Z, { scale: 1.04, duration: 2.325, ease: "none" }, 44.833);
+          tl.set(Z, { scale: 1.12 }, 47.206);
+          tl.to(Z, { scale: 1.15, duration: 4.575, ease: "none" }, 47.208);
+          tl.set(Z, { scale: 1 }, 51.831);
+          tl.to(Z, { scale: 1.04, duration: 1.908, ease: "none" }, 51.833);
+          tl.set(Z, { scale: 1.12 }, 53.79);
+          tl.to(Z, { scale: 1.15, duration: 2.783, ease: "none" }, 53.792);
+          tl.set(Z, { scale: 1 }, 56.623);
+          tl.to(Z, { scale: 1.04, duration: 2.533, ease: "none" }, 56.625);
+          tl.set(Z, { scale: 1.12 }, 59.206);
+          tl.to(Z, { scale: 1.15, duration: 3.783, ease: "none" }, 59.208);
+          tl.set(Z, { scale: 1 }, 63.04);
+          tl.to(Z, { scale: 1.04, duration: 7.117, ease: "none" }, 63.042);
+          tl.set(Z, { scale: 1.12 }, 70.206);
+          tl.to(Z, { scale: 1.15, duration: 8.158, ease: "none" }, 70.208);
+          tl.set(Z, { scale: 1 }, 78.415);
+          tl.to(Z, { scale: 1.04, duration: 2.242, ease: "none" }, 78.417);
+          tl.set(Z, { scale: 1.12 }, 80.706);
+          tl.to(Z, { scale: 1.15, duration: 0.417, ease: "none" }, 80.708);
+          tl.to(Z, { scale: 1.21, duration: 0.3, ease: "power3.out" }, 81.125);
+
+          tl.fromTo("#sub-0 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, -0.042);
+          tl.fromTo("#sub-1 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 1.292);
+          tl.fromTo("#sub-2 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 3.542);
+          tl.fromTo("#sub-3 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 4.75);
+          tl.fromTo("#sub-4 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 6.25);
+          tl.fromTo("#sub-5 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 7.458);
+          tl.fromTo("#sub-6 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 9);
+          tl.fromTo("#sub-7 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 10.333);
+          tl.fromTo("#sub-8 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 12.167);
+          tl.fromTo("#sub-9 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 13.458);
+          tl.fromTo("#sub-10 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 14.75);
+          tl.fromTo("#sub-11 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 16.333);
+          tl.fromTo("#sub-12 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 19);
+          tl.fromTo("#sub-13 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 20.417);
+          tl.fromTo("#sub-14 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 22.917);
+          tl.fromTo("#sub-15 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 24.083);
+          tl.fromTo("#sub-16 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 26.167);
+          tl.fromTo("#sub-17 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 27.042);
+          tl.fromTo("#sub-18 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 29.042);
+          tl.fromTo("#sub-19 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 30.5);
+          tl.fromTo("#sub-20 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 32);
+          tl.fromTo("#sub-21 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 33);
+          tl.fromTo("#sub-22 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 35);
+          tl.fromTo("#sub-23 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 35.792);
+          tl.fromTo("#sub-24 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 37.458);
+          tl.fromTo("#sub-25 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 39.125);
+          tl.fromTo("#sub-26 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 41.042);
+          tl.fromTo("#sub-27 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 42.75);
+          tl.fromTo("#sub-28 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 43.708);
+          tl.fromTo("#sub-29 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 44.917);
+          tl.fromTo("#sub-30 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 45.875);
+          tl.fromTo("#sub-31 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 47.167);
+          tl.fromTo("#sub-32 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 49.083);
+          tl.fromTo("#sub-33 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 50.125);
+          tl.fromTo("#sub-34 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 51.792);
+          tl.fromTo("#sub-35 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 53.75);
+          tl.fromTo("#sub-36 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 55.25);
+          tl.fromTo("#sub-37 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 56.583);
+          tl.fromTo("#sub-38 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 57.917);
+          tl.fromTo("#sub-39 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 59.167);
+          tl.fromTo("#sub-40 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 61.083);
+          tl.fromTo("#sub-41 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 63);
+          tl.fromTo("#sub-42 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 64.833);
+          tl.fromTo("#sub-43 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 65.625);
+          tl.fromTo("#sub-44 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 67.375);
+          tl.fromTo("#sub-45 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 69);
+          tl.fromTo("#sub-46 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 70.208);
+          tl.fromTo("#sub-47 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 71.917);
+          tl.fromTo("#sub-48 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 73.25);
+          tl.fromTo("#sub-49 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 74.167);
+          tl.fromTo("#sub-50 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 75.125);
+          tl.fromTo("#sub-51 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 77.25);
+          tl.fromTo("#sub-52 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 78.375);
+          tl.fromTo("#sub-53 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 79.458);
+          tl.fromTo("#sub-54 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 80.667);
+          tl.fromTo("#sub-55 span", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 81.917);
+
+          const rise = (sel, t, d = 0.4) => tl.fromTo(sel, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: d, ease: "power3.out" }, t);
+          const soft = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, t);
+          const fadeIn = (sel, t, d = 0.2) => tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: d, ease: "power1.out" }, t);
+          const count = (id, to, t, d, fmt) => { const o = { v: 0 }; tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => { document.getElementById(id).textContent = fmt(o.v); } }, t); };
+          const split = (a, b) => { tl.set(Z, { y: 600 }, a - 0.002); tl.set(Z, { y: 0 }, b - 0.002); };
+          const D = {"SP":{"tiles":[1.292,3.542],"price":[12.167,14.75],"stepsA":[29.042,37.458],"stepsB":[39.125,44.917],"curve":[59.167,63],"vers":[64.833,67.375]},"FU":{"cal":[4.75,7.458],"receipt":[7.458,10.333],"logo":[20.417,22.917],"fan":[26.167,29.042],"biz":[45.875,53.75],"proof":[53.75,56.583],"incl":[71.917,78.375]},"T":{"tilesWin":3.042,"days":[5.375,6.333],"bills":6.5,"rows":[7.5,8.333,9.042,9.75],"fortuna":13.042,"clock":[16.333,19],"fanTag":27.458,"steps":[29.042,33],"avatar":[37.458,39.125],"stepsB":[39.125,41.042,43.708],"biz":[48.333,49.625,50.417,53.208],"vers":[65.042,65.833,66.417],"incl":[72.125,73.25,74.167],"cta":[80.617,84.292],"boton":81.125}};
+
+          // pantallas divididas: el video baja bajo la franja
+          Object.values(D.SP).forEach(([a, b]) => split(a, b));
+          // fondos desenfocados (si siguen a otra pantalla completa, entran sin fundido: si no, la cara asoma un fotograma)
+          fadeIn("#cal", 4.75, 0.15);
+          tl.set("#receipt", { opacity: 1 }, 7.458);
+          fadeIn("#logo", 20.416, 0.15);
+          fadeIn("#fan", 26.166, 0.15);
+          fadeIn("#biz", 45.875, 0.15);
+          tl.set("#proof", { opacity: 1 }, 53.75);
+          fadeIn("#incl", 71.916, 0.15);
+
+          // 02 · 30 videos: entran en cascada y se enciende el ganador
+          for (let i = 0; i < 30; i++) tl.fromTo("#tile-" + i, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, D.SP.tiles[0] + 0.05 + i * ((D.T.tilesWin - D.SP.tiles[0] - 0.2) / 30));
+          tl.to("#win", { opacity: 1, duration: 0.2 }, D.T.tilesWin);
+          tl.fromTo("#tile-17", { scale: 1 }, { scale: 1.25, duration: 0.2, yoyo: true, repeat: 1, ease: "sine.inOut" }, D.T.tilesWin);
+          fadeIn("#wintag", D.T.tilesWin + 0.15, 0.25);
+
+          // 03 · calendario + dinero
+          rise("#cal-card", D.FU.cal[0] + 0.05);
+          for (let i = 0; i < 21; i++) tl.set("#day-" + i, { "--on": 1 }, D.T.days[0] + i * ((D.T.days[1] - D.T.days[0]) / 21));
+          rise("#money-card", D.FU.cal[0] + 0.25);
+          for (let i = 0; i < 4; i++) tl.fromTo("#bill-" + i, { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, D.T.bills - 0.2 + i * 0.14);
+
+          // 04 · recibo: una línea por palabra
+          rise("#receipt-card", D.FU.receipt[0] + 0.02, 0.3);
+          D.T.rows.forEach((t, i) => tl.fromTo("#rrow-" + i, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, t - 0.05));
+
+          // 05 · precio: el contador sube en "fortuna"
+          rise("#price-card", D.SP.price[0] + 0.05);
+          count("price-n", 13, D.T.fortuna - 0.1, 0.8, (v) => Math.round(v));
+
+          // 06 · reloj: las manecillas giran rápido
+          soft("#clock-chip", D.T.clock[0] + 0.05);
+          tl.fromTo("#hand", { rotation: 0, svgOrigin: "12 12" }, { rotation: 1080, svgOrigin: "12 12", duration: D.T.clock[1] - D.T.clock[0], ease: "none" }, D.T.clock[0]);
+
+          // 08 · logo
+          tl.fromTo("#logo-img", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, D.FU.logo[0] + 0.05);
+          tl.fromTo("#glow", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, D.FU.logo[0] + 0.1);
+          rise("#logo-lbl", D.FU.logo[0] + 0.45, 0.35);
+
+          // 09 · nuestros anuncios en cascada + etiqueta del precio
+          for (let i = 0; i < 6; i++) tl.fromTo("#fan-" + i, { opacity: 0, y: 60, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.5)" }, D.FU.fan[0] + 0.05 + i * 0.09);
+          tl.fromTo("#fan-tag", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, D.T.fanTag);
+
+          // 10 · proceso A: 01 y luego 02
+          for (let i = 0; i < 6; i++) tl.fromTo("#a-st-" + i, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, D.SP.stepsA[0] + 0.05 + i * 0.06);
+          tl.set("#a-st-0", { className: "st act" }, D.T.steps[0] + 0.1);
+          tl.set("#a-st-0", { className: "st done" }, D.T.steps[1]);
+          tl.set("#a-ok-0", { opacity: 1 }, D.T.steps[1]);
+          tl.set("#a-st-1", { className: "st act" }, D.T.steps[1]);
+
+          // 11 · el propio avatar: esquinas + chip
+          tl.fromTo("#brks", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out", transformOrigin: "50% 33%" }, D.T.avatar[0] + 0.05);
+          soft("#avatar-chip", D.T.avatar[0] + 0.15);
+
+          // 12 · proceso B: 01–03 hechos; 04, 05 y 06 al ritmo de la voz
+          for (let i = 0; i < 6; i++) tl.set("#b-st-" + i, { className: i < 3 ? "st done" : "st" }, D.SP.stepsB[0]);
+          for (let i = 0; i < 3; i++) tl.set("#b-ok-" + i, { opacity: 1 }, D.SP.stepsB[0]);
+          fadeIn("#stepsB .steps", D.SP.stepsB[0], 0.15);
+          D.T.stepsB.forEach((t, k) => {
+            const i = 3 + k;
+            if (i > 3) { tl.set("#b-st-" + (i - 1), { className: "st done" }, t); tl.set("#b-ok-" + (i - 1), { opacity: 1 }, t); }
+            tl.set("#b-st-" + i, { className: "st act" }, t);
+          });
+
+          // 13 · tipos de negocio: una tarjeta por palabra
+          for (let i = 0; i < 4; i++) tl.fromTo("#bz-" + i, { y: 40 }, { y: 0, duration: 0.35, ease: "power3.out" }, D.FU.biz[0] + 0.05 + i * 0.07);
+          D.T.biz.forEach((t, i) => {
+            tl.to("#bz-" + i, { opacity: 1, borderColor: "#C5F740", boxShadow: "0 0 50px rgba(197,247,64,.22)", duration: 0.2 }, t);
+            tl.fromTo("#bz-" + i, { scale: 1 }, { scale: 1.05, duration: 0.15, yoyo: true, repeat: 1, ease: "sine.inOut" }, t);
+          });
+
+          // 14 · prueba real
+          rise("#num-0", D.FU.proof[0] + 0.05, 0.35); rise("#num-1", D.FU.proof[0] + 0.15, 0.35);
+          count("leads-n", 581, D.FU.proof[0] + 0.1, 0.9, (v) => Math.round(v));
+          rise("#proof-img", D.FU.proof[0] + 0.25);
+
+          // 15 · curva
+          rise("#chart-card", D.SP.curve[0] + 0.05);
+          tl.fromTo("#curve-line", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, D.SP.curve[0] + 0.2);
+          tl.fromTo("#curve-fill", { opacity: 0 }, { opacity: 1, duration: 0.5 }, D.SP.curve[0] + 0.9);
+          tl.fromTo("#curve-dot", { scale: 0, svgOrigin: "780 30" }, { scale: 1, svgOrigin: "780 30", duration: 0.3, ease: "back.out(2.5)" }, D.SP.curve[0] + 1.25);
+
+          // 16 · versiones: se encienden una a una
+          tl.to("#vline", { scaleX: 0.72, duration: D.T.vers[2] - D.T.vers[0] + 0.3, ease: "power1.inOut" }, D.T.vers[0]);
+          D.T.vers.forEach((t, i) => tl.to("#vn-" + i, { opacity: 1, duration: 0.25 }, t));
+          tl.to("#vn-3", { opacity: 1, duration: 0.3 }, D.T.vers[2] + 0.35);
+
+          // 17 · lo que incluye, en cascada
+          D.T.incl.forEach((t, i) => tl.fromTo("#in-" + i, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, t - 0.05));
+
+          // 18 · CTA: logo + botón que rebota en "botón"
+          rise("#cta-logo", D.T.cta[0] + 0.05);
+          soft("#cta-btn", D.T.cta[0] + 0.1);
+          tl.to("#cta-btn", { y: 12, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut" }, D.T.boton);
+          for (let k = 0; k < 3; k++) tl.fromTo("#cta-ring", { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 1.18, duration: 0.7, ease: "power2.out" }, D.T.boton + 0.3 + k * 0.8);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["anuncio-09"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>

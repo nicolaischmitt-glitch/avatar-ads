@@ -1,5 +1,12 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.4.0 — 28 oct 2026
+- **Audio limpio en todos los anuncios.** Google Flow inventa el sonido ambiente de cada clip: en un anuncio real, la mayoría de los clips trajo un zumbido grave de fondo (como de aire acondicionado) y uno salió limpio, y al unirlos se notaba el cambio. Ahora hay dos defensas:
+  - el master prompt de video tiene un bloque nuevo, `audio`, que pide solo la voz: sin ambiente, ruido, música ni efectos (`sistema/prompts/master-prompt-video.txt`; los prompts se siguen generando con `generar-prompts.mjs`, que ya lo incluye);
+  - la edición limpia siempre la voz con `edicion/audio.mjs` (filtro de graves + reducción de ruido + puerta suave en las pausas), así todos los clips quedan con el mismo fondo aunque Flow meta ruido.
+- **Música de fondo opcional** con el mismo script: `node audio.mjs <pista>` la repite con fundidos hasta cubrir el video, la deja muy por debajo de la voz, la baja sola cuando habla el avatar y la desvanece al final. `--muestra` hace una muestra de 30 s para elegir.
+- Checklist de calidad final: punto nuevo "fondo parejo" entre clips.
+
 ## 1.3.0 — 27 oct 2026
 - **Formato nuevo: voz en off + B-rolls** (`sistema/formatos/voz-en-off/`), probado en un anuncio real de skincare: una voz en primera persona cuenta una historia y 6–10 B-rolls la muestran, con cortes secos, subtítulos naturales, un solo botón y sin música. Se ve muy realista. Incluye cómo generar la voz gratis en Google AI Studio (Gemini 3.1 Flash TTS, con plantillas de Scene y Sample Context), cómo asignar cada B-roll a su frase mirando los clips y la plantilla de edición `edicion/build.mjs`.
 - `generar-prompts.mjs` acepta un `clips-plan.json` sin `clips` (formato voz en off: solo producto, avatar y B-rolls).
