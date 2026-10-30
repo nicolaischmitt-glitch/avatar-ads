@@ -18,7 +18,7 @@ El copy de cada sección se escribe con el skill **`copy-avatar-ads`** (opciones
 
 ## 1. El inicio capta, no vende
 Mientras más simple, mejor. Arriba solo va lo que capta la atención.
-- **Arriba del todo:** solo el **logo, centrado**. Sin barra superior de fecha y hora, sin píldoras al lado del logo, sin etiquetas tipo "Apertura · Taller en vivo".
+- **Arriba del todo:** solo el **logo, centrado**, sobre el mismo fondo del hero (no en un bloque aparte). Excepción si se vende un evento en vivo (Avatar Ads, 30 oct 2026): una franja negra muy pequeña encima del logo con la fecha ("● Taller en vivo · domingo 10 a.m. (hora Ecuador)") y la cuenta regresiva entre el video y el botón del hero. Sin barra superior de fecha y hora, sin píldoras al lado del logo, sin etiquetas tipo "Apertura · Taller en vivo".
 - **Hero = título + subtítulo + prueba visual (video) + un botón.** Nada más.
 - **Sin precio, sin fechas, sin horarios, sin datos extra** (ni recuadros de "1 día · +1 clase · <$1").
 - **El primer botón no va al checkout:** baja a la oferta ("Ver todo lo que incluye", con flecha hacia abajo). Los botones de compra aparecen desde la oferta.

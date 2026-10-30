@@ -71,12 +71,17 @@ fbq('track', 'PageView');
   .btn:focus-visible{outline:2px solid var(--white);outline-offset:3px}
   .btn svg{flex:none}
 
-  /* ===== Barra superior + logo ===== */
+  /* ===== Franja superior (fecha del taller) + logo dentro del hero ===== */
+  .topbar{background:#000;border-bottom:1px solid var(--line-soft);padding:8px var(--gutter);text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;color:var(--text-2)}
+  .topbar i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon);margin-right:7px;vertical-align:1px}
+  .topbar b{color:var(--white);font-weight:500}
+  .hero .countdown{max-width:340px;margin:0 auto}
+  .hero-cd{margin:8px 0 22px}
   .nav{display:flex;align-items:center;justify-content:center;padding:14px var(--gutter);max-width:640px;margin:0 auto}
   .logo img{display:block;height:44px;width:auto;mix-blend-mode:screen}
 
   /* ===== Hero ===== */
-  .hero{padding:20px 0 56px;position:relative;background:
+  .hero{padding:0 0 56px;position:relative;background:
       radial-gradient(80% 45% at 50% 0%, rgba(48,94,74,.45), transparent 70%),
       radial-gradient(50% 30% at 85% 10%, rgba(197,247,64,.08), transparent 70%),
       linear-gradient(rgba(48,94,74,.14) 1px, transparent 1px) 0 0/100% 44px;
@@ -398,12 +403,13 @@ fbq('track', 'PageView');
 </head>
 <body>
 
-<nav class="nav">
-  <div class="logo"><img src="logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
-</nav>
+<div class="topbar"><i></i><b>Taller en vivo</b> · domingo 10 a.m. (hora Ecuador)</div>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (el logo va dentro para compartir el fondo) ============ -->
 <header class="hero">
+  <nav class="nav">
+    <div class="logo"><img src="logo-avatar-ads.webp" alt="Avatar Ads 1.0" width="900" height="330"></div>
+  </nav>
   <div class="wrap">
     <div>
       <h1>Crea anuncios con IA <span class="b">que venden.</span> <span class="h1-2">Hiperrealistas y <span class="b">13 veces más baratos.</span></span></h1>
@@ -424,10 +430,17 @@ fbq('track', 'PageView');
         </div>
       </figure>
 
+      <div class="countdown">
+        <div><b data-u="d">0</b><span>días</span></div>
+        <div><b data-u="h">00</b><span>horas</span></div>
+        <div><b data-u="m">00</b><span>min</span></div>
+        <div><b data-u="s">00</b><span>seg</span></div>
+      </div>
+      <p class="cd-label hero-cd">para el taller en vivo · <span class="hl">quedan <b data-libres>10</b> de <span data-total>15</span> puestos</span></p>
+
       <a class="btn" href="#taller">Ver el taller
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
-      <p class="hero-date"><i></i>Taller en vivo · domingo 1 de noviembre<span class="hero-seats">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</span></p>
     </div>
   </div>
 </header>
