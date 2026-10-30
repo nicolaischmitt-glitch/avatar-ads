@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- Anuncio estático 13 · "Ninguna de estas personas existe" (mosaico de frames de nuestros anuncios). Evergreen: sin fecha ni precio.
+     Fondo blanco (estilo de los estáticos 10 y 11). Frames en ../_frames/.
+     Render (desde la raíz):  node anuncios/imagenes/13-estatico-ninguna-existe/render.mjs  → final/ninguna-existe.png (1080×1350) + -historia.png (1080×1920)
+     ?seis → versión con 6 avatares en 2 filas (menos cargada): final/ninguna-existe-6.png + -6-historia.png -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-600.woff2") format("woff2"); font-weight: 600; }
+  :root { --ink: #151515; --green: #4BA86E; --tile-h: 274px; --top: 64px; }
+  body.historia { --tile-h: 280px; --top: 240px; }
+  body.seis { --tile-h: 420px; }
+  body.seis.historia { --tile-h: 440px; }
+  html, body { margin: 0; background: #fff; }
+  body { width: 1080px; height: 1350px; box-sizing: border-box; padding: var(--top) 44px 0; font-family: "Inter", sans-serif; color: var(--ink); }
+  body.historia { height: 1920px; padding-bottom: 340px; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 72px; line-height: 0.98; letter-spacing: -2px; text-align: center; margin: 0; text-transform: uppercase; }
+  h1 em { font-style: normal; color: var(--green); }
+  .sub { font-size: 34px; line-height: 1.3; text-align: center; margin: 18px 0 28px; color: #444; }
+  .sub b { font-weight: 600; color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { position: relative; height: var(--tile-h); border-radius: 18px; overflow: hidden; background: #eee; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; }
+  .tile span { position: absolute; left: 12px; bottom: 12px; background: rgba(255,255,255,.94); border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 20px; }
+  .seis .tile span { left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .seis .tile span { font-size: 24px; padding: 8px 16px; bottom: 14px; }
+  .cta { margin: 28px auto 0; width: fit-content; background: var(--ink); color: #fff; border-radius: 999px; padding: 22px 40px; font-weight: 600; font-size: 34px; }
+  .cta i { font-style: normal; color: #7FD39C; }
+</style>
+</head>
+<body>
+<h1>Ninguna de estas personas <em>existe.</em></h1>
+<p class="sub">Son anuncios que creamos con IA.<br><b>Sin cámaras, sin actores, sin grabar nada.</b></p>
+<div class="grid" id="grid"></div>
+<div class="cta">Aprende a crearlos en un taller en vivo <i>→</i></div>
+<script>
+// ?historia → 1080×1920, el contenido baja a la zona segura de las historias
+if (location.search.includes("historia")) document.body.classList.add("historia");
+const SEIS = location.search.includes("seis");
+if (SEIS) document.body.classList.add("seis");
+// [frame, etiqueta, object-position (opcional)] · en la versión de 6 las etiquetas van centradas
+const frames = SEIS ? [
+  ["serum", "Skincare", "center 50%"], ["anuncio03", "Curso online"], ["dental", "Clínica dental"],
+  ["podcast-p1", "Podcast"], ["yonoexisto-carro", "Anuncio UGC", "center 95%"], ["vsl", "Video de ventas"],
+] : [
+  ["serum", "Skincare"], ["anuncio03", "Curso online"], ["dental", "Clínica dental"],
+  ["podcast-p1", "Podcast"], ["yonoexisto-carro", "Anuncio UGC"], ["ingles", "Clases de inglés"],
+  ["vsl", "Video de ventas"], ["labial", "Maquillaje", "center 55%"], ["podcast-p2", "Entrevista"],
+];
+document.getElementById("grid").innerHTML = frames
+  .map(([f, t, pos]) => `<div class="tile"><img src="../_frames/${f}.jpg"${pos ? ` style="object-position:${pos}"` : ""}><span>${t}</span></div>`).join("");
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Plantilla de anuncio estático (skill estaticos-avatar-ads). Copiar a anuncios/imagenes/NN-slug/ y cambiar el contenido.
+     Fondo blanco · Archivo 800 (títulos) + Inter (texto) · verde = bueno / Avatar Ads, rojo = malo / lo de siempre.
+     ?historia → 1080×1920, contenido centrado dentro de la zona segura. Las variantes se eligen con más ?parámetros (ver el script).
+     Frames: ../_frames/ (catálogo y encuadres en _frames/README.md).
+     Render (desde la raíz):  node anuncios/imagenes/NN-slug/render.mjs -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-600.woff2") format("woff2"); font-weight: 600; }
+  :root { --ink: #151515; --green: #4BA86E; --red: #D2322D; --muted: #444; --tile-h: 420px; --top: 64px; }
+  body.historia { --tile-h: 440px; --top: 250px; }
+  html, body { margin: 0; background: #fff; }
+  body { width: 1080px; height: 1350px; box-sizing: border-box; padding: var(--top) 44px 0; font-family: "Inter", sans-serif; color: var(--ink); overflow: hidden; }
+  body.historia { height: 1920px; padding-bottom: 340px; display: flex; flex-direction: column; justify-content: center; }
+
+  /* Título · palabra clave en <em> (verde) o <em class="rojo"> */
+  h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 72px; line-height: 0.98; letter-spacing: -2px; text-align: center; margin: 0; text-transform: uppercase; }
+  h1 em { font-style: normal; color: var(--green); }
+  h1 em.rojo { color: var(--red); }
+  /* Apoyo: 1–2 líneas, la segunda en <b> */
+  .sub { font-size: 34px; line-height: 1.3; text-align: center; margin: 18px 0 28px; color: var(--muted); }
+  .sub b { font-weight: 600; color: var(--ink); }
+
+  /* Cuadrícula de fotos · etiqueta centrada abajo (nunca sobre la cara ni el producto) */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { position: relative; height: var(--tile-h); border-radius: 18px; overflow: hidden; background: #eee; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; }
+  .tile span { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); white-space: nowrap; background: rgba(255,255,255,.94); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 24px; }
+
+  /* Recuadros de comparación (rojo = lo de siempre, verde = Avatar Ads) */
+  .cols { display: flex; gap: 18px; }
+  .panel { border: 5px solid; border-radius: 24px; padding: 22px 20px 20px; display: flex; flex-direction: column; }
+  .panel.rojo { border-color: var(--red); } .panel.verde { border-color: var(--green); flex: 1; }
+  .panel .quien { font-weight: 600; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+  .panel .cifra { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 76px; line-height: 1; text-align: center; margin: 10px 0 2px; letter-spacing: -2px; }
+  .panel.rojo .quien, .panel.rojo .cifra { color: var(--red); }
+  .panel.verde .quien, .panel.verde .cifra { color: var(--green); }
+
+  /* Foto grande + encuesta tipo historia de Instagram (abajo de la foto) */
+  .foto { position: relative; height: 860px; border-radius: 28px; overflow: hidden; background: #eee; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+  .encuesta { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: flex; gap: 14px; background: #fff; border-radius: 26px; padding: 14px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+  .encuesta div { width: 260px; padding: 20px 0; border-radius: 16px; text-align: center; font-weight: 600; font-size: 40px; }
+  .encuesta .no { background: #F0F0F0; color: #9a9a9a; text-decoration: line-through; text-decoration-thickness: 3px; }
+  .encuesta .si { background: var(--green); color: #fff; }
+
+  /* Nota de qué mide una cifra · CTA (uno solo) */
+  .nota { font-size: 21px; color: #777; text-align: center; margin: 16px 0 0; }
+  .cta { margin: 28px auto 0; width: fit-content; background: var(--ink); color: #fff; border-radius: 999px; padding: 22px 40px; font-weight: 600; font-size: 34px; }
+  .cta i { font-style: normal; color: #7FD39C; }
+</style>
+</head>
+<body>
+<!-- Ejemplo: formato A (mosaico). Reemplaza el contenido por el de tu anuncio. -->
+<h1>Ninguna de estas personas <em>existe.</em></h1>
+<p class="sub">Son anuncios que creamos con IA.<br><b>Sin cámaras, sin actores, sin grabar nada.</b></p>
+<div class="grid" id="grid"></div>
+<div class="cta">Aprende a crearlos en un taller en vivo <i>→</i></div>
+<script>
+const Q = new URLSearchParams(location.search);
+if (Q.has("historia")) document.body.classList.add("historia");
+
+// [frame de ../_frames/, etiqueta, object-position (opcional, ver _frames/README.md)]
+const frames = [
+  ["serum", "Skincare", "center 50%"], ["anuncio03", "Curso online"], ["dental", "Clínica dental"],
+  ["podcast-p1", "Podcast"], ["yonoexisto-carro", "Anuncio UGC", "center 95%"], ["vsl", "Video de ventas"],
+];
+document.getElementById("grid").innerHTML = frames
+  .map(([f, t, pos]) => `<div class="tile"><img src="../_frames/${f}.jpg"${pos ? ` style="object-position:${pos}"` : ""}><span>${t}</span></div>`).join("");
+
+// Control de desbordes para render.mjs: algo fuera del lienzo (feed) o de la zona segura 250–1580 px (historia)
+window.addEventListener("load", () => document.fonts.ready.then(() => {
+  const [arriba, abajo] = Q.has("historia") ? [250, 1580] : [0, 1350];
+  const fuera = [...document.body.children].some((el) => {
+    if (el.tagName === "SCRIPT") return false;
+    const r = el.getBoundingClientRect();
+    return r.top < arriba - 1 || r.bottom > abajo + 1;
+  });
+  document.documentElement.dataset.desborde = fuera ? "si" : "no";
+}));
+</script>
+</body>
+</html>

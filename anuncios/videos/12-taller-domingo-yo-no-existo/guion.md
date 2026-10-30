@@ -1,7 +1,7 @@
 # 12 · Taller del domingo — "Yo no existo"
 Formato D **sin B-rolls**: head talking de una toma, solo el avatar + gráficos de la edición (subtítulos, cifras, botón).
 Avatar: el mismo del VSL de la landing (`videos-landing/09-vsl-landing`): empresario con lentes y camisa azul marino en su oficina → `avatar/avatar.jpg`. Voz de hombre, acento ecuatoriano (plantilla sin cambios).
-Copy del usuario (29 oct 2026), estructura y orden respetados. **Evergreen semanal**: "este domingo" sin fecha (hay taller en vivo cada domingo) y sin precio en la voz ni en pantalla (el de esta edición es $27 y los siguientes serán $37: el precio vive en la landing).
+Copy del usuario (29 oct 2026), estructura y orden respetados. **Evergreen semanal**: "este domingo" sin fecha (hay taller en vivo cada domingo) y sin precio en la voz ni en pantalla (el de esta edición es $27: el precio vive en la landing).
 Duración: ~115 palabras · 8 clips · 60 s generados → ≈ 50 s editado.
 
 ## Copy (para la voz: cifras en palabras)

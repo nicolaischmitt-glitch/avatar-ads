@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Anuncio estático 15 · "¿Persona real o IA?": un frame grande de nuestro avatar (anuncio 04) + encuesta resuelta (IA ✓). Evergreen: sin fecha ni precio.
+     Fondo blanco. Frames en ../_frames/. La encuesta va abajo, nunca sobre la cara.
+     Render (desde la raíz):  node anuncios/imagenes/15-estatico-real-o-ia/render.mjs  → final/real-o-ia.png (1080×1350) + -historia.png (1080×1920) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-600.woff2") format("woff2"); font-weight: 600; }
+  :root { --ink: #151515; --green: #4BA86E; --photo-h: 860px; --top: 56px; }
+  body.historia { --photo-h: 900px; --top: 250px; }
+  html, body { margin: 0; background: #fff; }
+  body { width: 1080px; height: 1350px; box-sizing: border-box; padding: var(--top) 44px 0; font-family: "Inter", sans-serif; color: var(--ink); }
+  body.historia { height: 1920px; padding-bottom: 340px; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 92px; line-height: 1; letter-spacing: -2px; text-align: center; margin: 0 0 28px; text-transform: uppercase; }
+  .photo { position: relative; height: var(--photo-h); border-radius: 28px; overflow: hidden; background: #eee; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+  /* encuesta tipo historia de Instagram, abajo de la foto */
+  .poll { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: flex; gap: 14px; background: #fff; border-radius: 26px; padding: 14px; box-shadow: 0 10px 40px rgba(0,0,0,.25); }
+  .opt { width: 260px; padding: 20px 0; border-radius: 16px; text-align: center; font-weight: 600; font-size: 40px; }
+  .opt.no { background: #F0F0F0; color: #9a9a9a; text-decoration: line-through; text-decoration-thickness: 3px; }
+  .opt.si { background: var(--green); color: #fff; }
+  .sub { font-size: 34px; line-height: 1.3; text-align: center; margin: 26px 0 0; color: #444; }
+  .sub b { font-weight: 600; color: var(--ink); }
+  .cta { margin: 26px auto 0; width: fit-content; background: var(--ink); color: #fff; border-radius: 999px; padding: 22px 40px; font-weight: 600; font-size: 34px; }
+  .cta i { font-style: normal; color: #7FD39C; }
+</style>
+</head>
+<body>
+<h1>¿Persona real o IA?</h1>
+<div class="photo">
+  <img src="../_frames/yonoexisto-carro.jpg">
+  <div class="poll"><div class="opt no">Real</div><div class="opt si">IA ✓</div></div>
+</div>
+<p class="sub">Nadie grabó este anuncio. <b>Ella no existe.</b></p>
+<div class="cta">Aprende a crearlos en un taller en vivo <i>→</i></div>
+<script>
+// ?historia → 1080×1920, el contenido baja a la zona segura de las historias
+if (location.search.includes("historia")) document.body.classList.add("historia");
+</script>
+</body>
+</html>

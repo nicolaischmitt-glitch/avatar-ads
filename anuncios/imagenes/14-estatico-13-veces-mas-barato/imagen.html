@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Anuncio estático 14 · 13 veces más barato: con lo que cuesta 1 anuncio en otras herramientas (~$26 por anuncio de 1 minuto) haces 13 con el sistema (~$2).
+     Evergreen: sin fecha ni precio del taller. Cifras de BASE-CONOCIMIENTO.md (ángulo 2). Fondo blanco, rojo = malo, verde = bueno. Frames en ../_frames/.
+     Render (desde la raíz):  node anuncios/imagenes/14-estatico-13-veces-mas-barato/render.mjs  → final/13-veces-mas-barato.png (1080×1350) + -historia.png (1080×1920) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Inter"; src: url("fonts/Inter-600.woff2") format("woff2"); font-weight: 600; }
+  :root { --ink: #151515; --green: #4BA86E; --red: #D2322D; --tile-h: 158px; --top: 64px; }
+  body.historia { --tile-h: 186px; --top: 250px; }
+  html, body { margin: 0; background: #fff; }
+  body { width: 1080px; height: 1350px; box-sizing: border-box; padding: var(--top) 44px 0; font-family: "Inter", sans-serif; color: var(--ink); }
+  body.historia { height: 1920px; padding-bottom: 340px; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 74px; line-height: 0.98; letter-spacing: -2px; text-align: center; margin: 0; text-transform: uppercase; }
+  h1 em { font-style: normal; color: var(--green); }
+  .sub { font-size: 32px; line-height: 1.3; text-align: center; margin: 18px 0 30px; color: #444; }
+  .sub b { font-weight: 600; color: var(--ink); }
+  .cols { display: flex; gap: 18px; }
+  .panel { border: 5px solid; border-radius: 24px; padding: 22px 20px 20px; display: flex; flex-direction: column; }
+  .panel.red { border-color: var(--red); width: 230px; }
+  .panel.green { border-color: var(--green); flex: 1; }
+  .who { font-weight: 600; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; text-align: center; }
+  .red .who, .red .cost { color: var(--red); }
+  .green .who, .green .cost { color: var(--green); }
+  .cost { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 76px; line-height: 1; text-align: center; margin: 10px 0 2px; letter-spacing: -2px; }
+  .eq { font-weight: 600; font-size: 30px; text-align: center; margin-bottom: 18px; }
+  .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; flex: 1; align-content: flex-start; }
+  .tile { height: var(--tile-h); border-radius: 12px; overflow: hidden; background: #eee; }
+  .green .tile { width: calc((100% - 32px) / 5); }
+  .red .tile { width: 100%; height: calc(var(--tile-h) * 3 + 16px); }
+  .tile img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .nota { font-size: 21px; color: #777; text-align: center; margin: 16px 0 0; }
+  .cta { margin: 22px auto 0; width: fit-content; background: var(--ink); color: #fff; border-radius: 999px; padding: 22px 40px; font-weight: 600; font-size: 34px; }
+  .cta i { font-style: normal; color: #7FD39C; }
+</style>
+</head>
+<body>
+<h1>Con lo que pagas<br>por 1 anuncio,<br><em>haz 13.</em></h1>
+<p class="sub">Anuncios hiperrealistas con IA,<br><b>13 veces más baratos que con otras herramientas.</b></p>
+<div class="cols">
+  <div class="panel red">
+    <div class="who">Otras herramientas</div>
+    <div class="cost">~$26</div>
+    <div class="eq">= 1 anuncio</div>
+    <div class="tiles"><div class="tile"><img src="../_frames/anuncio12.jpg"></div></div>
+  </div>
+  <div class="panel green">
+    <div class="who">Con Avatar Ads</div>
+    <div class="cost">~$26</div>
+    <div class="eq">= 13 anuncios</div>
+    <div class="tiles" id="tiles"></div>
+  </div>
+</div>
+<p class="nota">Costo aproximado de un anuncio de 1 minuto.</p>
+<div class="cta">Aprende el sistema en un taller en vivo <i>→</i></div>
+<script>
+// ?historia → 1080×1920, el contenido baja a la zona segura de las historias
+if (location.search.includes("historia")) document.body.classList.add("historia");
+// ?30s → misma comparación con un anuncio de 30 segundos (~$13), la cifra de la landing
+if (location.search.includes("30s")) {
+  document.querySelectorAll(".cost").forEach((el) => (el.textContent = "~$13"));
+  document.querySelector(".nota").textContent = "Costo aproximado de un anuncio de 30 segundos.";
+}
+const frames = ["serum", "dental", "podcast-p1", "labial", "ingles", "yonoexisto-carro", "anuncio03", "serum-broll-6",
+  "podcast-p2", "yonoexisto-casa", "vsl", "labial-2", "serum-broll-4"];
+document.getElementById("tiles").innerHTML = frames.map((f) => `<div class="tile"><img src="../_frames/${f}.jpg"></div>`).join("");
+</script>
+</body>
+</html>

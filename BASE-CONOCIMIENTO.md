@@ -53,7 +53,7 @@ No existe (no mencionarlo): el bono **Cliente Cero** (eliminado el 22 oct 2026).
 
 No prometer "3 anuncios listos" al final del taller.
 
-**Futuro del negocio:** después de la apertura, talleres en vivo semanales de $37 como mecanismo de venta del programa. El precio de Avatar Ads incrementará en próximas ediciones (aún sin cifra: no inventar una).
+**Futuro del negocio (decisión del 29 oct 2026; detalle en `PROYECTO.md`, "Oferta de los próximos talleres"):** hasta fin de año, talleres en vivo de $9–15 (cifra sin fijar) que incluyen solo el taller, la grabación ilimitada y prompts básicos; al final del taller se vende el Sistema Avatar Ads + curso + soporte por $97 o más. La clase de cómo vender estos anuncios a negocios pasa a ser una clase pregrabada de ~30 min (order bump o upsell en Hotmart); ya no hay segundo día en vivo. Desde enero 2027, curso + sistema a $97 directo con anuncios a una página de ventas. Los "Valor $X" de la landing son anclas del offer stack, no precios reales.
 
 ## 3. Qué aprende el alumno
 
