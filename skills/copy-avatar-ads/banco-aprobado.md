@@ -22,6 +22,22 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Landing · subtítulos cortos (30 oct 2026)
+Regla del usuario: cada subtítulo de sección, máximo 3–4 líneas en el celular (antes había de hasta 7). Aprobados todos tal cual ("Aplicar todos"):
+- **"El sistema para crear decenas de anuncios, encontrar tus ganadores y escalar tu negocio o el de tus clientes."** · subtítulo del hero (reemplaza "No es solo un video que parece real: es el sistema para producir decenas de anuncios…", que al usuario no le gustaba; "económicos" se quitó porque el título ya dice "13 veces más baratos")
+- **"Todos hechos con IA, para productos, servicios y marcas. Úsalo en tu negocio o véndelo como servicio."** · ejemplos
+- **"Que no se note la IA genera confianza. Lo que vende es el ángulo, el guion y testear muchas versiones: eso hace el sistema."** · sección del sistema
+- **"Un anuncio de 30 s cuesta ~$13 en otras herramientas y ~$1 con el Sistema Avatar Ads. Con el mismo dinero, haces ~13."** · costos
+- **"Mientras más anuncios testeas, más rápido encuentras ganadores. Con IA, cada versión cuesta un par de dólares, no una producción entera."** · testeo
+- **"Me ves crear un anuncio completo con el sistema, de la idea al video editado, y resuelves tus dudas en vivo. Después, te quedas con todo."** · taller
+- **"Entras al taller del domingo 1 (10 a.m.) y a la clase bonus del lunes 2 (7 p.m.), hora de Ecuador. Y te quedas con el Sistema Avatar Ads para siempre."** · oferta
+- **"Domingo 1 de noviembre, 10 a.m. (Ecuador). Te llevas el sistema para crear anuncios que venden, 13 veces más baratos."** · cierre
+
+### Anuncio estático 13 · mosaico "Ninguna de estas personas existe" (29 oct 2026, aprobado)
+- **"NINGUNA DE ESTAS PERSONAS EXISTE."** (EXISTE en verde) · subtítulo **"Son anuncios que creamos con IA. Sin cámaras, sin actores, sin grabar nada."** · CTA **"Aprende a crearlos en un taller en vivo →"**. Carpeta: `anuncios/imagenes/13-estatico-ninguna-existe/` (final elegido: `ninguna-existe-6.png` y `-6-historia.png`).
+  Por qué: la prueba es la propia imagen (6 avatares de nuestros anuncios con su tipo de negocio: skincare, curso online, clínica dental, podcast, anuncio UGC, video de ventas). Evergreen: sin fecha ni precio.
+  Reacción del usuario: la versión de 9 avatares se veía "muy conglomerada"; eligió la de 6. Pidió etiquetas centradas (izquierda/derecha mezcladas "se ven desorganizadas") y que el producto (frasco ALBA) se vea completo.
+
 ### Anuncio estático 11 · el camino, ángulo proceso (28 oct 2026, aprobado)
 - **Final elegido:** título rojo "CREAR ANUNCIOS DE LA MANERA TRADICIONAL" + "2–3 horas por anuncio"; línea verde **sin pasos** (versión A: idea → 1 anuncio, "el sistema hace el resto"); **fondo blanco** (`final/camino-proceso.png` y `-historia.png`). Se probó la versión con el branding oscuro y el usuario prefirió la blanca porque "visualmente es claro". Las variantes `-pasos` y `-marca` quedan en `final/` sin usar.
 - **🔴 "GRABARTE TÚ · 2–3 horas por anuncio"** (camino enredado: idea → escribir el guion → preparar el lugar → micrófono → luz → grabar → me equivoqué → grabar otra vez → editar → 1 anuncio) · **🟢 "CON AVATAR ADS"** (línea recta: idea → 1 anuncio, "el sistema hace el resto"). Carpeta: `anuncios/imagenes/11-estatico-camino-proceso/`.

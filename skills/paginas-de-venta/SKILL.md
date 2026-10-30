@@ -27,7 +27,7 @@ Mientras más simple, mejor. Arriba solo va lo que capta la atención.
 
 ## 2. Secciones
 - **Sin etiquetas pequeñas** encima de los títulos ("Ejemplos hechos con el sistema", "Resultados reales", "La oferta"…). Cada sección empieza directo con su título (h2). Si una columna se queda sin título, se le pone un h2 corto ("Qué aprenderás.").
-- Cada h2 con contraste y una parte en color de acento; debajo, una frase que explica; después la prueba o el gráfico.
+- Cada h2 con contraste y una parte en color de acento; debajo, una frase que explica (**máximo 3–4 líneas en el celular**, regla del usuario del 30 oct 2026); después la prueba o el gráfico.
 - **Orden que funcionó:** hero → ejemplos (videos) → contraste "X no es Y" + el sistema/mecanismo en pasos → resultados reales → comparativa de costo → beneficio principal (testeo) con prueba → para quién / qué aprenderás → oferta → FAQ → cierre (repite la promesa + botón).
 - **Hablar del sistema, no de "mis":** "el sistema que usamos para crear anuncios", no "el que uso para crear mis anuncios".
 - Videos: carrusel horizontal, se reproducen en silencio al entrar en pantalla, botón "Activar sonido". Quitar los ejemplos que no aporten (menos es más).
