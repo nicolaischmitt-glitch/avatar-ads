@@ -285,6 +285,25 @@ fbq('track', 'PageView');
   .sp-legend{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin-top:12px;font-size:12.5px;color:var(--text-2)}
   .sp-legend i{width:9px;display:inline-block;vertical-align:middle;background:var(--neon)}
 
+  /* ===== Carrera de costo ===== */
+  .race{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(90% 70% at 0% 0%,rgba(48,94,74,.3),transparent 70%),var(--bg-2);padding:18px 16px}
+  .race-head{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin-bottom:14px}
+  .race-row + .race-row{margin-top:16px}
+  .race-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px}
+  .race-name{font-family:var(--display);font-stretch:106%;font-weight:700;font-size:15px;color:var(--white)}
+  .race-name small{font-family:var(--body);font-weight:400;font-size:12.5px;color:var(--meta)}
+  .race-num{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:26px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--text-2)}
+  .race-row.us .race-num{color:var(--neon);text-shadow:0 0 18px rgba(197,247,64,.45)}
+  .race-track{height:16px;border-radius:6px;background:rgba(93,107,99,.18);overflow:hidden}
+  .race-track i{display:block;height:100%;width:var(--w);border-radius:6px;background:#5d6b63}
+  .race-row.us .race-track i{background:var(--neon);box-shadow:0 0 14px rgba(197,247,64,.6)}
+  .js .race-track i{width:0}
+  .race.in .race-track i{width:var(--w);transition:width var(--t) linear .2s}
+  .race-result{margin-top:16px;font-size:15px;color:var(--text-2)}
+  .race-result b{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:22px;color:var(--neon);margin-right:4px}
+  .race .sp-note{margin:8px 0 0}
+  .race .sp-tools{margin-top:12px}
+
   /* ===== Gráfico XY ===== */
   .xy{margin-top:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(90% 70% at 80% 0%,rgba(48,94,74,.35),transparent 70%),var(--bg-2);padding:16px 12px 10px}
   .xy-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:0 4px 6px}
@@ -399,6 +418,7 @@ fbq('track', 'PageView');
     body{padding-bottom:0}
   }
   .vs.single{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}
+  @media (prefers-reduced-motion:reduce){.race.in .race-track i{transition:none}}
   @media (prefers-reduced-motion:reduce){.video-caption.top .arrow,.machine.in .mpulse,.machine.in .mloop svg{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -590,26 +610,26 @@ fbq('track', 'PageView');
     <h2>Calidad hiperrealista, <span class="b">13 veces más barata.</span></h2>
     <p class="muted">Un anuncio de 30 s cuesta <b class="hl">~$13</b> en otras herramientas y <b class="hl">~$1</b> con el Sistema Avatar Ads. Con el mismo dinero, haces <b class="hl">~13</b>.</p>
 
-    <div class="spend" id="spend">
-      <div class="sp-card win">
-        <div class="sp-top"><span class="sp-name">Sistema Avatar Ads</span><span class="sp-cost">~$1 / anuncio</span></div>
-        <div class="sp-num"><b>~13</b><span>anuncios con $13</span></div>
-        <p class="sp-note">O $0 siguiendo una de las metodologías del sistema</p>
-        <div class="tiles" data-n="13" aria-hidden="true"></div>
+    <!-- Carrera de costo (30 oct 2026): las dos barras crecen a la misma velocidad ($ por segundo de animación); la verde se detiene en $1, la gris sigue hasta $13 -->
+    <div class="race" id="spend">
+      <p class="race-head">Costo de 1 anuncio de 30 segundos</p>
+      <div class="race-row them" style="--w:100%;--t:3.2s">
+        <div class="race-top"><span class="race-name">Otras herramientas <small>(promedio)</small></span><b class="race-num" data-to="13">$13,00</b></div>
+        <div class="race-track"><i></i></div>
       </div>
-      <div class="sp-card">
-        <div class="sp-top"><span class="sp-name">Otras herramientas (promedio)</span><span class="sp-cost">~$13 / anuncio</span></div>
-        <div class="sp-num"><b>1</b><span>anuncio con $13</span></div>
-        <div class="tiles" data-n="1" aria-hidden="true"></div>
-        <ul class="sp-tools">
-          <li><span>Wan 2.5</span><b>~$3</b></li>
-          <li><span>Seedance 2.0 · API oficial</span><b>~$11</b></li>
-          <li><span>Seedance 2.5</span><b>~$17</b></li>
-          <li><span>Seedance 2.0 · fal.ai</span><b>~$20</b></li>
-        </ul>
+      <div class="race-row us" style="--w:7.7%;--t:.25s">
+        <div class="race-top"><span class="race-name">Sistema Avatar Ads</span><b class="race-num" data-to="1">$1,00</b></div>
+        <div class="race-track"><i></i></div>
       </div>
+      <p class="race-result"><b>13×</b> más barato: con $13 haces ~13 anuncios en vez de 1.</p>
+      <p class="sp-note">O $0 siguiendo una de las metodologías del sistema</p>
+      <ul class="sp-tools">
+        <li><span>Wan 2.5</span><b>~$3</b></li>
+        <li><span>Seedance 2.0 · API oficial</span><b>~$11</b></li>
+        <li><span>Seedance 2.5</span><b>~$17</b></li>
+        <li><span>Seedance 2.0 · fal.ai</span><b>~$20</b></li>
+      </ul>
     </div>
-    <p class="sp-legend"><i></i> 1 anuncio de 30 segundos</p>
   </div>
 </section>
 
@@ -947,6 +967,27 @@ fbq('track', 'PageView');
     }), { threshold: 0.35 });
     anim.forEach((el) => aio.observe(el));
   } else anim.forEach((el) => el.classList.add("in"));
+
+  // Carrera de costo: los contadores suben a la misma velocidad que sus barras
+  const race = document.getElementById("spend");
+  const fmt = (v) => "$" + v.toFixed(2).replace(".", ",");
+  if (race && "IntersectionObserver" in window && !reduce) {
+    const nums = [...race.querySelectorAll(".race-num")];
+    nums.forEach((n) => n.textContent = fmt(0));
+    const rio = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      rio.disconnect();
+      const t0 = performance.now() + 200, perSec = 13 / 3.2;
+      const step = (now) => {
+        const el = Math.max(0, now - t0) / 1000;
+        let done = true;
+        nums.forEach((n) => { const to = +n.dataset.to, v = Math.min(to, el * perSec); n.textContent = fmt(v); if (v < to) done = false; });
+        if (!done) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 0.35 });
+    rio.observe(race);
+  }
 
   // Visor de capturas: toca una imagen para verla completa
   const lb = document.getElementById("lightbox");
