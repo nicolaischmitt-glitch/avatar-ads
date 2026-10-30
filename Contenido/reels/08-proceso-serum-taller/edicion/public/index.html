@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      /* Reel 08 · formato F (proceso + resultado). Fondo hueso de la marca, texto negro, verde neón como resaltador, verde bosque en etiquetas.
+         Izquierda: el proceso en paneles propios (nunca capturas de herramientas). Derecha: el anuncio del sérum, mudo y sin subtítulos.
+         19,9–21,3 s el anuncio se vuelve un celular al centro; 21,3–28,6 s habla la chica (su voz real); 33,1 s → CTA "comenta TALLER". */
+      @font-face { font-family: "Archivo"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+      @font-face { font-family: "Mono"; src: url("fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+      :root { --bg: #DDDAD7; --card: #F8F8F8; --ink: #020604; --lime: #C5F740; --forest: #305E4A; --meta: #6f675e; --soft: #c9c4be; --line: #e3dfda; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; color: var(--ink); font-family: "Inter", sans-serif;
+        background: radial-gradient(900px 800px at 80% 55%, rgba(255,255,255,.5), transparent 70%), var(--bg); }
+      .abs { position: absolute; }
+
+      /* títulos de arriba */
+      .ttl { position: absolute; left: 60px; right: 60px; top: 200px; height: 250px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0; }
+      .kicker { font-family: "Mono", monospace; font-size: 30px; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); margin-bottom: 14px; }
+      .h { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 74px; line-height: 1.08; letter-spacing: -.015em; }
+      .h em { font-style: normal; background: var(--lime); padding: 0 14px; border-radius: 12px; white-space: nowrap; }
+      .h.big { font-size: 82px; }
+
+      /* panel del proceso (izquierda) */
+      #panel { position: absolute; left: 40px; top: 490px; width: 400px; height: 1040px; background: var(--card); border: 2px solid var(--ink); border-radius: 30px; box-shadow: 10px 10px 0 var(--ink); overflow: hidden; }
+      .pst { position: absolute; inset: 30px 28px; opacity: 0; }
+      .plabel { font-family: "Mono", monospace; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; color: var(--forest); display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+      .plabel::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--lime); border: 2px solid var(--ink); }
+
+      /* anuncio (derecha → celular) */
+      #adw { position: absolute; left: 466px; top: 490px; width: 574px; height: 1040px; border-radius: 30px; overflow: hidden; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); background: #000; z-index: 5; }
+      #ad { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #tag { position: absolute; left: 22px; top: 22px; z-index: 3; font-family: "Mono", monospace; font-size: 24px; letter-spacing: .06em; color: var(--ink); background: var(--lime); border: 2px solid var(--ink); border-radius: 999px; padding: 8px 18px; opacity: 0; }
+      #bezel { position: absolute; inset: 0; z-index: 2; border-radius: inherit; border: 0 solid var(--ink); pointer-events: none; }
+      #notch { position: absolute; left: 50%; top: 22px; width: 150px; height: 40px; margin-left: -75px; background: var(--ink); border-radius: 999px; z-index: 3; opacity: 0; }
+      .esub { position: absolute; left: 40px; right: 40px; top: 880px; z-index: 4; text-align: center; color: #fff; font-family: "Inter"; font-weight: 700; font-size: 52px; line-height: 1.18;
+        text-shadow: 0 3px 4px rgba(0,0,0,.55), 0 0 26px rgba(0,0,0,.45); opacity: 0; }
+      #listen { position: absolute; left: 50%; top: 290px; transform: translateX(-50%); font-family: "Mono"; font-size: 30px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink);
+        background: var(--lime); border: 2px solid var(--ink); border-radius: 999px; padding: 12px 28px; opacity: 0; white-space: nowrap; }
+
+      /* barra de progreso */
+      #prog { position: absolute; left: 40px; right: 40px; top: 1580px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+      #prog div { height: 12px; border-radius: 6px; background: var(--soft); }
+      #progl { position: absolute; left: 40px; right: 40px; top: 1612px; height: 40px; font-family: "Mono"; font-size: 24px; letter-spacing: .05em; text-transform: uppercase; color: var(--meta); }
+      #progl span { position: absolute; left: 0; opacity: 0; } #progl b { position: absolute; right: 0; color: var(--ink); font-weight: 500; }
+
+      /* paso 0 · lista */
+      .step { display: flex; gap: 18px; align-items: center; font-size: 34px; font-weight: 700; padding: 22px 0; border-top: 1px solid var(--line); opacity: 0; }
+      .step:first-of-type { border-top: 0; padding-top: 0; }
+      .step i { font-style: normal; font-family: "Mono"; font-size: 24px; color: var(--lime); background: var(--ink); width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; flex: none; }
+      /* paso 1 · chat */
+      .who { font-family: "Mono"; font-size: 18px; color: var(--meta); margin: 0 0 8px 4px; letter-spacing: .06em; text-transform: uppercase; }
+      .bub { border-radius: 24px; padding: 20px 22px; font-size: 26px; line-height: 1.38; margin-bottom: 22px; }
+      .bub.me { background: var(--ink); color: #F8F8F8; margin-left: 40px; border-bottom-right-radius: 6px; }
+      .bub.ai { background: #fff; border: 2px solid var(--soft); border-bottom-left-radius: 6px; }
+      .bub.ai b { background: var(--lime); font-weight: 700; padding: 0 4px; border-radius: 4px; }
+      .w { opacity: 0; }
+      /* paso 2 · producto */
+      .photo { width: 100%; height: 600px; border-radius: 22px; overflow: hidden; border: 2px solid var(--soft); }
+      .photo img { width: 100%; height: 100%; object-fit: cover; }
+      .chk { display: flex; justify-content: space-between; align-items: center; font-size: 30px; font-weight: 700; padding: 16px 0; border-bottom: 1px solid var(--line); }
+      .chk b { background: var(--lime); border: 2px solid var(--ink); border-radius: 50%; width: 40px; height: 40px; display: grid; place-items: center; font-size: 22px; opacity: 0; }
+      .lock { margin-top: 22px; text-align: center; font-family: "Mono"; font-size: 24px; color: var(--lime); background: var(--ink); border-radius: 999px; padding: 14px; letter-spacing: .06em; opacity: 0; }
+      /* paso 3 · prompt → imagen */
+      .code { font-family: "Mono"; font-size: 19px; line-height: 1.6; color: #DDDAD7; background: var(--ink); border-radius: 18px; padding: 18px; height: 330px; overflow: hidden; position: relative; }
+      .code::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(transparent, var(--ink)); }
+      .k { color: var(--lime); } .s { color: #b9c9a3; }
+      .arrow { text-align: center; font-size: 40px; margin: 8px 0; line-height: 1; font-weight: 700; }
+      .reveal { position: relative; height: 560px; border-radius: 22px; overflow: hidden; border: 2px solid var(--ink); background: #cfcac4; }
+      .reveal img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+      #veil { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; backdrop-filter: blur(16px); background: rgba(221,218,215,.6); border-top: 6px solid var(--lime); box-shadow: 0 -10px 30px rgba(197,247,64,.8); }
+      /* paso 4 · escenas */
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .grid > * { width: 100%; height: 205px; object-fit: cover; border-radius: 12px; border: 2px solid var(--ink); opacity: 0; }
+      .grid .more { display: grid; place-items: center; background: var(--lime); font-family: "Archivo"; font-weight: 800; font-size: 50px; text-align: center; line-height: 1; }
+      .grid .more small { display: block; font-family: "Mono"; font-size: 18px; margin-top: 8px; letter-spacing: .06em; }
+      .note { margin-top: 22px; font-size: 26px; line-height: 1.38; color: #2a2622; } .note b { color: var(--ink); }
+      /* paso 5 · clips */
+      .clip-r { display: flex; gap: 18px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); opacity: 0; }
+      .clip-r img { width: 92px; height: 164px; object-fit: cover; border-radius: 12px; border: 2px solid var(--ink); flex: none; }
+      .clip-r .info { flex: 1; } .clip-r .t { font-size: 28px; font-weight: 700; } .clip-r .d { font-family: "Mono"; font-size: 19px; color: var(--meta); margin-top: 6px; }
+      .bar { height: 10px; border-radius: 5px; background: var(--line); margin-top: 14px; overflow: hidden; } .bar span { display: block; height: 100%; width: 0; background: var(--forest); }
+      .ok { font-family: "Mono"; font-size: 22px; background: var(--lime); border: 2px solid var(--ink); border-radius: 50%; width: 42px; height: 42px; display: grid; place-items: center; flex: none; opacity: 0; }
+      /* paso 6 · edición */
+      .lab { font-family: "Mono"; font-size: 18px; color: var(--meta); letter-spacing: .06em; margin: 18px 0 8px; }
+      .wave { height: 70px; display: flex; align-items: center; gap: 3px; background: var(--ink); border-radius: 10px; padding: 0 8px; }
+      .wave span { flex: 1; background: var(--lime); border-radius: 2px; }
+      .strip { height: 120px; display: flex; gap: 4px; } .strip img { flex: 1; min-width: 0; height: 100%; object-fit: cover; border-radius: 8px; }
+      .pills { height: 46px; display: flex; gap: 6px; } .pills span { background: #e9e6e2; border: 2px solid var(--soft); border-radius: 8px; flex: 1; }
+      .pills span:nth-child(3n) { flex: 1.6; } .pills span:nth-child(4n) { flex: .7; }
+      .tl { position: relative; }
+      #head { position: absolute; left: 0; top: 40px; bottom: -6px; width: 5px; background: #e5484d; border-radius: 2px; }
+      .render { margin-top: 40px; background: var(--ink); border-radius: 22px; padding: 24px; text-align: center; opacity: 0; }
+      .render .r1 { font-family: "Archivo"; font-weight: 800; font-size: 44px; color: var(--lime); }
+      .render .r2 { font-family: "Mono"; font-size: 20px; color: #9F9587; margin-top: 8px; }
+
+      /* CTA */
+      #cta { position: absolute; inset: 0; opacity: 0; }
+      #cta .box { position: absolute; left: 70px; right: 70px; top: 250px; text-align: center; }
+      #cta .h { font-size: 90px; }
+      .cmt { margin: 60px auto 0; width: 780px; background: #fff; border: 2px solid var(--ink); border-radius: 34px; padding: 26px 30px; display: flex; gap: 22px; align-items: center; text-align: left; box-shadow: 10px 10px 0 var(--ink); opacity: 0; }
+      .cmt .av { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #305E4A, #C5F740); flex: none; }
+      .cmt .u { font-size: 24px; font-weight: 700; color: #666; }
+      .cmt .wd { font-size: 54px; font-weight: 700; letter-spacing: .02em; height: 64px; } .cmt .wd span { opacity: 0; }
+      .cmt .wd::after { content: ""; display: inline-block; width: 5px; height: 48px; background: #111; margin-left: 6px; vertical-align: -6px; }
+      .dm { margin-top: 44px; font-size: 40px; font-weight: 500; color: #2a2622; opacity: 0; }
+      .dm b { background: var(--lime); color: var(--ink); padding: 0 8px; border-radius: 6px; font-weight: 700; }
+      .cards img { position: absolute; width: 270px; height: 480px; object-fit: cover; border-radius: 22px; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="reel-08" data-start="0" data-duration="39.3" data-fps="24" data-width="1080" data-height="1920">
+
+      <!-- títulos -->
+      <div class="ttl" id="t0"><div class="h">Así creamos este anuncio, <em>desde cero.</em></div></div>
+      <div class="ttl" id="t1"><div class="kicker">Paso 1 de 6</div><div class="h">Primero, el <em>guion.</em></div></div>
+      <div class="ttl" id="t2"><div class="kicker">Paso 2 de 6</div><div class="h">El <em>producto</em>, idéntico.</div></div>
+      <div class="ttl" id="t3"><div class="kicker">Paso 3 de 6</div><div class="h">La creamos a ella. <em id="t3e">No existe.</em></div></div>
+      <div class="ttl" id="t4"><div class="kicker">Paso 4 de 6</div><div class="h">Cada escena, <em>planeada.</em></div></div>
+      <div class="ttl" id="t5"><div class="kicker">Paso 5 de 6</div><div class="h">De imagen a <em>video.</em></div></div>
+      <div class="ttl" id="tq" style="top:110px"><div class="h big">¿Y crees que solo <em>se mueve?</em></div></div>
+      <div class="ttl" id="t6"><div class="kicker">Paso 6 de 6</div><div class="h">Y la edición, <em>automática.</em></div></div>
+      <div id="listen">🔊 Escúchala</div>
+
+      <!-- panel del proceso -->
+      <div id="panel">
+        <div class="pst" id="p0">
+          <div class="plabel">El proceso</div>
+          <div class="step"><i>01</i>Brief y guion</div>
+          <div class="step"><i>02</i>El producto</div>
+          <div class="step"><i>03</i>La chica</div>
+          <div class="step"><i>04</i>Las escenas</div>
+          <div class="step"><i>05</i>Los clips</div>
+          <div class="step"><i>06</i>La edición</div>
+        </div>
+        <div class="pst" id="p1">
+          <div class="plabel">Brief y guion</div>
+          <div id="b-me"><div class="who">Tú</div><div class="bub me">Sérum de vitamina C. Para mujeres con la piel cansada. Anuncio de 30 s.</div></div>
+          <div id="b-ai"><div class="who">Sistema</div><div class="bub ai" id="ai-txt"><b>Hook:</b> "Dormía ocho horas y aun así mi cara decía que no había dormido nada."<br><br><b>Historia:</b> probé cremas caras, mascarillas, de todo… hasta que empecé a usar este sérum.</div></div>
+        </div>
+        <div class="pst" id="p2">
+          <div class="plabel">El producto</div>
+          <div class="photo"><img id="prod" src="img/producto.jpg"></div>
+          <div class="chk">Frasco <b>✓</b></div>
+          <div class="chk">Etiqueta <b>✓</b></div>
+          <div class="chk">Colores <b>✓</b></div>
+          <div class="lock">🔒 IGUAL EN CADA ESCENA</div>
+        </div>
+        <div class="pst" id="p3">
+          <div class="plabel">La chica</div>
+          <div class="code"><div id="code-in">{<br>&nbsp;<span class="k">"look"</span>: <span class="s">"raw iPhone front-camera frame"</span>,<br>&nbsp;<span class="k">"subject"</span>: {<br>&nbsp;&nbsp;<span class="k">"age"</span>: <span class="s">"early 30s"</span>,<br>&nbsp;&nbsp;<span class="k">"skin"</span>: <span class="s">"visible pores, no makeup"</span>,<br>&nbsp;&nbsp;<span class="k">"hair"</span>: <span class="s">"dark, loose bun"</span><br>&nbsp;},<br>&nbsp;<span class="k">"place"</span>: <span class="s">"her bathroom, morning"</span>,<br>&nbsp;<span class="k">"light"</span>: <span class="s">"soft window light"</span>,<br>&nbsp;<span class="k">"product"</span>: <span class="s">"ALBA vitamin C serum"</span>,<br>&nbsp;<span class="k">"hands"</span>: <span class="s">"visible, natural"</span><br>}</div></div>
+          <div class="arrow">↓</div>
+          <div class="reveal"><img src="img/avatar.jpg"><div id="veil"></div></div>
+        </div>
+        <div class="pst" id="p4">
+          <div class="plabel">Las escenas</div>
+          <div class="grid">
+            <img src="img/clip-1.jpg"><img src="img/broll-1.jpg"><img src="img/broll-2.jpg">
+            <img src="img/broll-3.jpg"><img src="img/clip-2.jpg"><img src="img/broll-4.jpg">
+            <img src="img/broll-5.jpg"><img src="img/broll-6.jpg"><div class="more">+6<small>ESCENAS</small></div>
+          </div>
+          <div class="note"><b>14 escenas:</b> 6 de ella hablando y 8 de apoyo, cada una con su frase.</div>
+        </div>
+        <div class="pst" id="p5">
+          <div class="plabel">Los clips</div>
+          <div class="clip-r"><img src="img/clip-1.jpg"><div class="info"><div class="t">Escena 01</div><div class="d">habla · 6 s</div><div class="bar"><span></span></div></div><div class="ok">✓</div></div>
+          <div class="clip-r"><img src="img/broll-7.jpg"><div class="info"><div class="t">Escena 02</div><div class="d">apoyo · 6 s</div><div class="bar"><span></span></div></div><div class="ok">✓</div></div>
+          <div class="clip-r"><img src="img/clip-3.jpg"><div class="info"><div class="t">Escena 03</div><div class="d">habla · 8 s</div><div class="bar"><span></span></div></div><div class="ok">✓</div></div>
+          <div class="clip-r"><img src="img/broll-8.jpg"><div class="info"><div class="t">Escena 04</div><div class="d">apoyo · 6 s</div><div class="bar"><span></span></div></div><div class="ok">✓</div></div>
+        </div>
+        <div class="pst" id="p6">
+          <div class="plabel">La edición</div>
+          <div class="tl">
+            <div class="lab" style="margin-top:0">VOZ</div><div class="wave" id="wave"></div>
+            <div class="lab">ESCENAS</div><div class="strip"><img src="img/clip-1.jpg"><img src="img/broll-2.jpg"><img src="img/clip-2.jpg"><img src="img/broll-4.jpg"><img src="img/clip-3.jpg"><img src="img/broll-6.jpg"></div>
+            <div class="lab">SUBTÍTULOS</div><div class="pills"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div id="head"></div>
+          </div>
+          <div class="render"><div class="r1">Render ✓</div><div class="r2">34 s · 1080×1920 · listo</div></div>
+        </div>
+      </div>
+
+      <!-- anuncio -->
+      <div id="adw">
+        <video id="ad" src="anuncio.mp4" muted playsinline data-start="0" data-duration="34.26" data-track-index="1"></video>
+        <div id="bezel"></div><div id="notch"></div>
+        <div id="tag">100% IA</div>
+        <div class="esub" id="es0">Hoy me miro al espejo</div>
+        <div class="esub" id="es1">y me veo despierta,</div>
+        <div class="esub" id="es2">fresca, con brillo,</div>
+        <div class="esub" id="es3">y eso que no llevo<br>maquillaje.</div>
+      </div>
+
+      <!-- progreso -->
+      <div id="prog"><div id="g1"></div><div id="g2"></div><div id="g3"></div><div id="g4"></div><div id="g5"></div><div id="g6"></div></div>
+      <div id="progl"><span id="pl0">Así lo creamos</span><span id="pl1">01 · Guion</span><span id="pl2">02 · Producto</span><span id="pl3">03 · La chica</span><span id="pl4">04 · Escenas</span><span id="pl5">05 · Clips</span><span id="pl6">06 · Edición</span><b id="pn">6 pasos</b></div>
+
+      <!-- CTA -->
+      <div id="cta">
+        <div class="box">
+          <div class="kicker">Taller en vivo</div>
+          <div class="h" id="cta-h">Este domingo creo uno así, <em>en vivo.</em></div>
+          <div class="cmt"><div class="av"></div><div><div class="u">tu_usuario</div><div class="wd"><span>T</span><span>A</span><span>L</span><span>L</span><span>E</span><span>R</span></div></div></div>
+          <div class="dm">Comenta <b>TALLER</b> y te envío la info ↓</div>
+        </div>
+        <div class="cards">
+          <img id="c1" src="img/limpio-1.0.jpg" style="left:150px;top:1150px;transform:rotate(-7deg)">
+          <img id="c3" src="img/limpio-33.6.jpg" style="left:660px;top:1150px;transform:rotate(7deg)">
+          <img id="c2" src="img/limpio-4.8.jpg" style="left:405px;top:1110px;z-index:2">
+        </div>
+      </div>
+
+      <!-- audio: voz en off (parte 1) → la chica → voz en off (parte 2) -->
+      <audio id="vo1" src="audio/voz-p1-n.wav" data-start="0" data-duration="21.12" data-track-index="2" data-volume="1"></audio>
+      <audio id="ella" src="audio/ella.wav" data-start="21.3" data-duration="7.34" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo2" src="audio/voz-p2-n.wav" data-start="28.99" data-duration="9.36" data-track-index="2" data-volume="1"></audio>
+      <!-- SFX (siempre por debajo de la voz) -->
+      <audio id="sfx-1-whoosh-short" src="audio/whoosh-short.mp3" data-start="4.85" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-2-typing" src="audio/typing.mp3" data-start="6.3" data-duration="1.9" data-track-index="11" data-volume="0.1"></audio>
+      <audio id="sfx-3-whoosh-short" src="audio/whoosh-short.mp3" data-start="8.45" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-4-pop" src="audio/pop.mp3" data-start="10.45" data-duration="0.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sfx-5-pop" src="audio/pop.mp3" data-start="10.8" data-duration="0.5" data-track-index="13" data-volume="0.16"></audio>
+      <audio id="sfx-6-pop" src="audio/pop.mp3" data-start="11.15" data-duration="0.5" data-track-index="12" data-volume="0.16"></audio>
+      <audio id="sfx-7-whoosh-short" src="audio/whoosh-short.mp3" data-start="12.63" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-8-sparkle" src="audio/sparkle.mp3" data-start="15.35" data-duration="1" data-track-index="11" data-volume="0.14"></audio>
+      <audio id="sfx-9-whoosh-short" src="audio/whoosh-short.mp3" data-start="16.46" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-10-click-soft" src="audio/click-soft.mp3" data-start="16.7" data-duration="0.4" data-track-index="12" data-volume="0.14"></audio>
+      <audio id="sfx-11-click-soft" src="audio/click-soft.mp3" data-start="17.1" data-duration="0.4" data-track-index="13" data-volume="0.14"></audio>
+      <audio id="sfx-12-whoosh-short" src="audio/whoosh-short.mp3" data-start="18.14" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-13-whoosh-short" src="audio/whoosh-short.mp3" data-start="19.95" data-duration="0.6" data-track-index="11" data-volume="0.2"></audio>
+      <audio id="sfx-14-whoosh-short" src="audio/whoosh-short.mp3" data-start="28.7" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-15-chime" src="audio/chime.mp3" data-start="32.3" data-duration="1.2" data-track-index="11" data-volume="0.18"></audio>
+      <audio id="sfx-16-whoosh-short" src="audio/whoosh-short.mp3" data-start="33.0" data-duration="0.6" data-track-index="10" data-volume="0.16"></audio>
+      <audio id="sfx-17-key-press" src="audio/key-press.mp3" data-start="35.85" data-duration="0.3" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-18-key-press" src="audio/key-press.mp3" data-start="36.0" data-duration="0.3" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-19-key-press" src="audio/key-press.mp3" data-start="36.15" data-duration="0.3" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-20-key-press" src="audio/key-press.mp3" data-start="36.3" data-duration="0.3" data-track-index="13" data-volume="0.22"></audio>
+      <audio id="sfx-21-key-press" src="audio/key-press.mp3" data-start="36.45" data-duration="0.3" data-track-index="12" data-volume="0.22"></audio>
+      <audio id="sfx-22-key-press" src="audio/key-press.mp3" data-start="36.6" data-duration="0.3" data-track-index="13" data-volume="0.22"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          // forma de onda decorativa (determinista)
+          const wv = document.getElementById("wave");
+          for (let i = 0; i < 70; i++) { const s = document.createElement("span"); s.style.height = (18 + Math.abs(Math.sin(i * 1.7) * Math.cos(i * .43)) * 78) + "%"; wv.appendChild(s); }
+          // el texto del "sistema" se escribe palabra por palabra
+          const ai = document.getElementById("ai-txt");
+          ai.innerHTML = ai.innerHTML.replace(/(<b>[^<]*<\/b>|<br>|[^\s<]+)/g, (m) => m === "<br>" ? m : `<span class="w">${m}</span>`);
+
+          const g = window.gsap, tl = g.timeline({ paused: true });
+          const E = "power3.out", IO = "power3.inOut";
+          const show = (sel, t, d = 0.35) => tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: d, ease: E }, t);
+          const hide = (sel, t, d = 0.2) => tl.to(sel, { opacity: 0, duration: d, ease: "power1.in" }, t);
+          const LIME = "#C5F740", INK = "#020604", SOFT = "#c9c4be";
+
+          // pasos: [título, panel, etiqueta de progreso, entra, sale]
+          const S = [["#t0", "#p0", "#pl0", 0, 4.85], ["#t1", "#p1", "#pl1", 4.88, 8.45], ["#t2", "#p2", "#pl2", 8.48, 12.63],
+                     ["#t3", "#p3", "#pl3", 12.66, 16.46], ["#t4", "#p4", "#pl4", 16.49, 18.14], ["#t5", "#p5", "#pl5", 18.17, 19.7]];
+          S.forEach(([t, p, l, a, b], i) => {
+            show(t, a, i ? 0.35 : 0.01); hide(t, b);
+            tl.fromTo(p, { opacity: 0, x: i ? 40 : 0 }, { opacity: 1, x: 0, duration: i ? 0.35 : 0.01, ease: E }, a); hide(p, b);
+            tl.set(l, { opacity: 1 }, a); tl.set(l, { opacity: 0 }, b);
+            if (i) { tl.set(`#g${i}`, { backgroundColor: LIME, outline: `2px solid ${INK}` }, a); tl.set(`#g${i}`, { backgroundColor: INK, outline: "0px solid " + INK }, b); }
+            if (i) tl.set("#pn", { textContent: `${i}/6` }, a);
+          });
+
+          // 0 · lista de pasos + etiqueta del anuncio
+          tl.fromTo("#p0 .step", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3, stagger: 0.18, ease: E }, 0.25);
+          tl.fromTo("#tag", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.6);
+          tl.fromTo("#t0 em", { backgroundColor: "rgba(197,247,64,0)" }, { backgroundColor: LIME, duration: 0.3 }, 3.7);
+          // 1 · chat
+          show("#b-me", 5.0); show("#b-ai", 6.0);
+          tl.to("#ai-txt .w", { opacity: 1, duration: 0.05, stagger: 0.06 }, 6.2);
+          // 2 · producto
+          tl.fromTo("#prod", { scale: 1.25 }, { scale: 1, duration: 1.4, ease: E }, 8.5);
+          tl.fromTo("#p2 .chk b", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.35, ease: "back.out(2.4)" }, 10.45);
+          show("#p2 .lock", 11.6);
+          // 3 · prompt → imagen ("no existe")
+          tl.fromTo("#code-in", { y: 0 }, { y: -170, duration: 2.6, ease: "none" }, 12.8);
+          tl.fromTo("#veil", { height: "100%" }, { height: "0%", duration: 2.3, ease: "power1.inOut" }, 13.1);
+          tl.fromTo("#t3e", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 15.3);
+          // 4 · escenas
+          tl.fromTo("#p4 .grid > *", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.2, stagger: 0.1, ease: E }, 16.6);
+          show("#p4 .note", 17.5);
+          // 5 · clips
+          tl.fromTo("#p5 .clip-r", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.25, stagger: 0.12, ease: E }, 18.22);
+          tl.to("#p5 .bar span", { width: "100%", duration: 0.7, stagger: 0.18, ease: "power1.inOut" }, 18.4);
+          tl.fromTo("#p5 .ok", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.2, stagger: 0.18, ease: "back.out(2.4)" }, 19.05);
+
+          // pregunta → el anuncio se vuelve un celular al centro
+          show("#tq", 19.72); hide("#tq", 21.15);
+          tl.to("#panel", { x: -480, opacity: 0, duration: 0.7, ease: IO }, 19.95);
+          tl.to(["#prog", "#progl"], { opacity: 0, duration: 0.3 }, 19.95);
+          tl.to("#adw", { left: 191, top: 400, width: 698, height: 1240, borderRadius: 66, boxShadow: "14px 14px 0 #020604", duration: 0.9, ease: IO }, 19.95);
+          tl.to("#bezel", { borderWidth: 16, duration: 0.6, ease: IO }, 20.2);
+          tl.to("#notch", { opacity: 1, duration: 0.3 }, 20.6);
+          tl.to("#tag", { opacity: 0, duration: 0.2 }, 19.95);
+          tl.fromTo("#listen", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.3, ease: E }, 21.15);
+          // la chica habla (tiempos de sus frases en el anuncio − 0,28 s)
+          [[21.345, 22.97], [22.97, 24.97], [24.97, 26.72], [26.72, 28.64]].forEach(([a, b], i) => {
+            tl.fromTo(`#es${i}`, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, a);
+            tl.set(`#es${i}`, { opacity: 0 }, b);
+          });
+          hide("#listen", 28.6);
+          // vuelve a su lugar → paso 6
+          tl.to("#notch", { opacity: 0, duration: 0.2 }, 28.66);
+          tl.to("#bezel", { borderWidth: 0, duration: 0.4, ease: IO }, 28.66);
+          tl.to("#adw", { left: 466, top: 490, width: 574, height: 1040, borderRadius: 30, boxShadow: "10px 10px 0 #020604", duration: 0.8, ease: IO }, 28.7);
+          tl.to("#panel", { x: 0, opacity: 1, duration: 0.7, ease: IO }, 28.8);
+          tl.to(["#prog", "#progl"], { opacity: 1, duration: 0.3 }, 29.2);
+          tl.to("#tag", { opacity: 1, duration: 0.2 }, 29.4);
+          tl.set("#g5", { backgroundColor: INK, outline: "0px solid " + INK }, 28.8);
+          tl.set("#g6", { backgroundColor: LIME, outline: `2px solid ${INK}` }, 29.0);
+          tl.set("#pl6", { opacity: 1 }, 29.0); tl.set("#pn", { textContent: "6/6" }, 29.0);
+          show("#t6", 29.0); tl.fromTo("#p6", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 29.0);
+          tl.fromTo("#head", { left: "0%" }, { left: "98%", duration: 2.9, ease: "none" }, 29.4);
+          tl.fromTo("#p6 .render", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 32.3);
+          tl.set("#g6", { backgroundColor: INK, outline: "0px solid " + INK }, 32.3);
+
+          // CTA
+          tl.to(["#t6", "#panel", "#adw", "#prog", "#progl"], { opacity: 0, y: 30, duration: 0.35, ease: "power1.in" }, 33.0);
+          tl.set("#cta", { opacity: 1 }, 33.1);
+          show("#cta .kicker", 33.15); show("#cta-h", 33.2, 0.45);
+          tl.fromTo("#cta-h em", { backgroundColor: "rgba(197,247,64,0)" }, { backgroundColor: LIME, duration: 0.3 }, 34.6);
+          tl.fromTo(["#c1", "#c3", "#c2"], { opacity: 0, y: 160 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.12, ease: "back.out(1.4)" }, 33.5);
+          tl.fromTo("#cta .cmt", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 35.5);
+          tl.to("#cta .wd span", { opacity: 1, duration: 0.01, stagger: 0.15 }, 35.85);
+          show("#cta .dm", 36.9);
+          tl.to("#cta .cmt", { scale: 1.04, duration: 0.25, yoyo: true, repeat: 1, ease: "sine.inOut" }, 37.6);
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["reel-08"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>

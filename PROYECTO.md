@@ -45,6 +45,7 @@ Avatar Ads 1.0/
 │   ├── reels/           ← reels (skill `reels-avatar-ads`), una carpeta por reel: NN-slug/
 │   │   ├── 01 … 04      ← reels hechos (formato B: la voz original va en NN-slug/voz-original.mp4)
 │   │   ├── 05-clon-ia-anda-saluda/ ← réplica de referencias/ref01 (guion + prompts; esperando clips)
+│   │   ├── 08-proceso-serum-taller/ ← formato F: el proceso del anuncio del sérum (izquierda) + el anuncio mudo (derecha), voz en off de AI Studio, pausa en la que habla la chica; CTA "comenta TALLER"
 │   │   ├── 07-podcast-seedance-centavos/ ← primer reel formato podcast (2 personajes; final/reel-07-podcast-seedance-centavos.mp4)
 │   │   ├── _plantilla-edicion/     plantilla del formato avatar (talking head)
 │   │   └── _plantilla-voz-en-off/  plantilla + reglas del formato voz en off + motion graphics (LEEME.md, scripts de voz, SFX, logos)

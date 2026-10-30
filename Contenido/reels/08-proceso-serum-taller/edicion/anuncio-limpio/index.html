@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: "InterB"; src: url("fonts/Inter-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+      @font-face { font-family: "ArchivoWM"; src: url("fonts/Archivo-800.woff2") format("woff2"); font-weight: 800; font-display: block; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; font-family: "InterB", sans-serif; }
+      #base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+      .g { position: absolute; z-index: 10; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+      /* subtítulo natural: frase corta, texto blanco con sombra, sin caja (el botón es la única píldora) */
+      .sub { position: absolute; z-index: 20; left: 70px; right: 70px; text-align: center; pointer-events: none; }
+      .sub span { display: inline-block; color: #fff; font-weight: 700; font-size: 64px; line-height: 1.18; letter-spacing: -0.3px;
+        text-shadow: 0 3px 4px rgba(0,0,0,.55), 0 0 26px rgba(0,0,0,.45); }
+      /* CTA: píldora naranja de la marca ALBA, con un anillo que late */
+      .btnw { position: absolute; left: 50%; top: 1500px; transform: translateX(-50%); }
+      .btn { position: relative; display: inline-flex; align-items: center; gap: 20px; background: #F28C28; color: #fff; font-weight: 700; font-size: 58px;
+        padding: 32px 76px; border-radius: 999px; box-shadow: 0 18px 50px rgba(0,0,0,.3); white-space: nowrap; }
+      .btn svg { width: 52px; height: 52px; }
+      .ring { position: absolute; inset: 0; border-radius: 999px; border: 6px solid #F28C28; opacity: 0; }
+      /* marca de agua de los ejemplos de la landing: abajo al centro, fija, encima de todo */
+      #wm { position: absolute; left: 0; right: 0; top: 1800px; z-index: 99; display: flex; justify-content: center; align-items: center; gap: 12px; opacity: .6; pointer-events: none;
+        font-family: "ArchivoWM", sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 2px; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.45); }
+      #wm svg { width: 30px; height: 30px; filter: drop-shadow(0 1px 4px rgba(0,0,0,.4)); }
+      #wm b { color: #C5F740; font-weight: 800; }
+      .sub, #wm { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <div id="stage" data-composition-id="anuncio-08-chica" data-start="0" data-duration="34.542" data-fps="24" data-width="1080" data-height="1920">
+      <video id="base" src="base-video.mp4" muted playsinline data-start="0" data-duration="34.542" data-track-index="1"></video>
+      <audio id="voz" src="voz.wav" data-start="0" data-duration="34.542" data-track-index="2" data-volume="1"></audio>
+
+      <!-- botón: "Lo consigues en el botón de abajo." -->
+      <div class="g clip" id="cta" data-start="31.875" data-duration="2.667" data-track-index="7">
+        <div class="btnw" id="btn-w"><div class="ring" id="ring"></div><div class="btn">Comprar <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+      </div>
+
+      <div class="sub clip" id="sub-0" style="top:1510px" data-start="0" data-duration="1.292" data-track-index="3"><span>Dormía ocho horas</span></div>
+      <div class="sub clip" id="sub-1" style="top:1510px" data-start="1.292" data-duration="2.083" data-track-index="3"><span>y aún así mi cara decía</span></div>
+      <div class="sub clip" id="sub-2" style="top:1290px" data-start="3.375" data-duration="1.625" data-track-index="3"><span>que no había dormido nada.</span></div>
+      <div class="sub clip" id="sub-3" style="top:1510px" data-start="5" data-duration="1.583" data-track-index="3"><span>Probé cremas caras,</span></div>
+      <div class="sub clip" id="sub-4" style="top:1510px" data-start="6.583" data-duration="1.667" data-track-index="3"><span>mascarillas, de todo,</span></div>
+      <div class="sub clip" id="sub-5" style="top:1290px" data-start="8.25" data-duration="1.542" data-track-index="3"><span>y mi piel seguía apagada,</span></div>
+      <div class="sub clip" id="sub-6" style="top:1510px" data-start="9.792" data-duration="1.125" data-track-index="3"><span>como sin vida,</span></div>
+      <div class="sub clip" id="sub-7" style="top:1330px" data-start="10.917" data-duration="1.292" data-track-index="3"><span>hasta que empecé a usar</span></div>
+      <div class="sub clip" id="sub-8" style="top:1510px" data-start="12.208" data-duration="1.917" data-track-index="3"><span>este sérum de vitamina C.</span></div>
+      <div class="sub clip" id="sub-9" style="top:1290px" data-start="14.125" data-duration="1.583" data-track-index="3"><span>Dos gotas cada mañana,</span></div>
+      <div class="sub clip" id="sub-10" style="top:1290px" data-start="15.708" data-duration="0.875" data-track-index="3"><span>nada más.</span></div>
+      <div class="sub clip" id="sub-11" style="top:1290px" data-start="16.583" data-duration="1.375" data-track-index="3"><span>Es súper ligero,</span></div>
+      <div class="sub clip" id="sub-12" style="top:1110px" data-start="17.958" data-duration="1.667" data-track-index="3"><span>se absorbe en segundos</span></div>
+      <div class="sub clip" id="sub-13" style="top:1510px" data-start="19.625" data-duration="2" data-track-index="3"><span>y no te deja<br>la piel grasosa.</span></div>
+      <div class="sub clip" id="sub-14" style="top:1645px" data-start="21.625" data-duration="1.625" data-track-index="3"><span>Hoy me miro al espejo</span></div>
+      <div class="sub clip" id="sub-15" style="top:1290px" data-start="23.25" data-duration="2" data-track-index="3"><span>y me veo despierta,</span></div>
+      <div class="sub clip" id="sub-16" style="top:1290px" data-start="25.25" data-duration="1.75" data-track-index="3"><span>fresca, con brillo,</span></div>
+      <div class="sub clip" id="sub-17" style="top:1510px" data-start="27" data-duration="1.917" data-track-index="3"><span>y eso que no llevo<br>maquillaje.</span></div>
+      <div class="sub clip" id="sub-18" style="top:1645px" data-start="28.917" data-duration="0.875" data-track-index="3"><span>Si tu piel también</span></div>
+      <div class="sub clip" id="sub-19" style="top:1645px" data-start="29.792" data-duration="1.292" data-track-index="3"><span>se ve cansada,</span></div>
+      <div class="sub clip" id="sub-20" style="top:1510px" data-start="31.083" data-duration="0.792" data-track-index="3"><span>pruébalo.</span></div>
+      <div class="sub clip" id="sub-21" style="top:250px" data-start="31.875" data-duration="2.667" data-track-index="3"><span>Lo consigues en el<br>botón de abajo.</span></div>
+
+      <div id="wm"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#C5F740"/></svg>AVATAR <b>ADS</b> 1.0</div>
+      <audio id="sfx-pop" src="audio/pop.mp3" data-start="31.925" data-duration="0.72" data-track-index="11" data-volume="0.14"></audio>
+
+      <script src="vendor/gsap.min.js"></script>
+      <script>
+        (function () {
+          const tl = window.gsap.timeline({ paused: true });
+          tl.fromTo("#sub-0 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 0);
+          tl.fromTo("#sub-1 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 1.292);
+          tl.fromTo("#sub-2 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 3.375);
+          tl.fromTo("#sub-3 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 5);
+          tl.fromTo("#sub-4 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 6.583);
+          tl.fromTo("#sub-5 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 8.25);
+          tl.fromTo("#sub-6 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 9.792);
+          tl.fromTo("#sub-7 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 10.917);
+          tl.fromTo("#sub-8 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 12.208);
+          tl.fromTo("#sub-9 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 14.125);
+          tl.fromTo("#sub-10 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 15.708);
+          tl.fromTo("#sub-11 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 16.583);
+          tl.fromTo("#sub-12 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 17.958);
+          tl.fromTo("#sub-13 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 19.625);
+          tl.fromTo("#sub-14 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 21.625);
+          tl.fromTo("#sub-15 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 23.25);
+          tl.fromTo("#sub-16 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 25.25);
+          tl.fromTo("#sub-17 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 27);
+          tl.fromTo("#sub-18 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 28.917);
+          tl.fromTo("#sub-19 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 29.792);
+          tl.fromTo("#sub-20 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 31.083);
+          tl.fromTo("#sub-21 span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 31.875);
+
+          tl.fromTo("#btn-w", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 31.905);
+          tl.to("#btn-w", { y: 12, duration: 0.22, yoyo: true, repeat: 3, ease: "sine.inOut" }, 32.875);
+          for (let k = 0; k < 2; k++) tl.fromTo("#ring", { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 1.18, duration: 0.7, ease: "power2.out" }, 32.225 + k * 0.75);
+          window.__timelines = window.__timelines || {};
+          window.__timelines["anuncio-08-chica"] = tl;
+        })();
+      </script>
+    </div>
+  </body>
+</html>

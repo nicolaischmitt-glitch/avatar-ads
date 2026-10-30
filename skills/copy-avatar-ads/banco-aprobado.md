@@ -22,6 +22,13 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Reel 08 · así creamos este anuncio → comenta TALLER (30 oct 2026, aprobado)
+Archivo: `Contenido/reels/08-proceso-serum-taller/guion.md`. Voz en off (AI Studio) escrita en primera persona, como habla Nicolai.
+- **"Te muestro cómo creamos este anuncio con inteligencia artificial, desde cero."** · hook. Idea del usuario: eligió la opción "proceso" (C) por encima de la revelación "Esta chica no existe. Y apuesto a que no lo notaste." (A, la recomendada). Claude solo cambió "un" por "este" (señala el anuncio en pantalla).
+- **"Después, la creamos a ella. Sí: no existe."** · la revelación pasa al medio del reel.
+- **"¿Y crees que solo se mueve?"** → pausa → la chica habla 7,3 s → **"Sí, también habla."** · pregunta suelta + prueba (idea del usuario: cortar la voz en off para que se escuche a la chica).
+- **"Este domingo creo uno así, en vivo. Comenta TALLER y te envío la información."** · CTA. "En vivo" y no "desde cero": en el taller los clips se generan antes.
+
 ### Email · taller del domingo (30 oct 2026, aprobado tal cual)
 Archivo: `emails/03-taller-domingo/correo-taller-domingo.md`. Borrador de Nicolai, corregido y con ritmo.
 - **"Quedan 10 puestos para el domingo"** · asunto recomendado (escasez real y concreta; la lista ya recibió la reconexión)

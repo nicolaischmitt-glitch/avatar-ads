@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reel 08 · Storyboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wdth,wght@125,800;125,900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* Reel 08 · versión clara: fondo hueso de la marca (#DDDAD7), texto negro de la marca (#020604), verde neón (#C5F740) como resaltador
+     y verde bosque (#305E4A) para etiquetas. El anuncio es el protagonista: tarjeta con borde y sombra dura. */
+  :root { --bg: #DDDAD7; --card: #F8F8F8; --ink: #020604; --lime: #C5F740; --forest: #305E4A; --meta: #6f675e; --soft: #c9c4be; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; background: #c4bfb9; color: var(--ink); font-family: "Inter", sans-serif; }
+  body { padding: 30px 40px 36px; }
+  header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #aaa49d; padding-bottom: 14px; margin-bottom: 24px; }
+  header h1 { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-size: 28px; }
+  header h1 span { background: var(--lime); padding: 0 10px; border-radius: 6px; }
+  .meta { font-family: "JetBrains Mono", monospace; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #4f4840; }
+
+  .board { display: grid; grid-template-columns: repeat(4, 380px); justify-content: space-between; row-gap: 26px; }
+  .shot { display: flex; flex-direction: column; gap: 8px; }
+  .mini { width: 380px; height: 676px; border-radius: 18px; overflow: hidden; position: relative; background: var(--bg); box-shadow: 0 10px 30px rgba(2,6,4,.22); }
+  .stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform: scale(.351852); transform-origin: 0 0; overflow: hidden;
+    background: radial-gradient(900px 800px at 80% 55%, rgba(255,255,255,.5), transparent 70%), var(--bg); }
+  .cap { display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #4f4840; }
+  .cap b { color: var(--ink); background: var(--lime); padding: 0 5px; border-radius: 3px; }
+  .say { font-size: 14px; line-height: 1.35; color: #2a2622; }
+
+  /* ---------- lienzo 1080×1920 ---------- */
+  .top { position: absolute; left: 60px; right: 60px; top: 230px; height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .kicker { font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); margin-bottom: 14px; }
+  .h { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-size: 76px; line-height: 1.08; letter-spacing: -.01em; color: var(--ink); }
+  .h em { font-style: normal; background: var(--lime); padding: 0 14px; border-radius: 12px; box-decoration-break: clone; -webkit-box-decoration-break: clone; white-space: nowrap; }
+  .h.sm { font-size: 62px; }
+  .h.xl { font-size: 104px; }
+
+  .panel { position: absolute; left: 40px; top: 490px; width: 400px; height: 1040px; background: var(--card); border: 2px solid var(--ink); border-radius: 30px; padding: 30px 28px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); }
+  .plabel { font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--forest); display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .plabel::before { content: ""; width: 16px; height: 16px; border-radius: 50%; background: var(--lime); border: 2px solid var(--ink); }
+  .ad { position: absolute; left: 466px; top: 490px; width: 574px; height: 1040px; border-radius: 30px; overflow: hidden; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+  .ad img { width: 100%; height: 100%; object-fit: cover; }
+  .ad .tag { position: absolute; left: 22px; top: 22px; font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; letter-spacing: .06em; color: var(--ink); background: var(--lime); border: 2px solid var(--ink); border-radius: 999px; padding: 8px 18px; }
+  .ad .snd { position: absolute; right: 22px; top: 22px; font-size: 26px; background: rgba(248,248,248,.85); border-radius: 999px; padding: 6px 14px; }
+
+  /* barra de progreso: 6 pasos */
+  .prog { position: absolute; left: 40px; right: 40px; top: 1580px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .prog div { height: 12px; border-radius: 6px; background: var(--soft); }
+  .prog div.on { background: var(--lime); outline: 2px solid var(--ink); }
+  .prog div.done { background: var(--ink); }
+  .prog-l { position: absolute; left: 40px; right: 40px; top: 1612px; display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--meta); letter-spacing: .05em; text-transform: uppercase; }
+  .prog-l b { color: var(--ink); }
+
+  /* 1 · lista de pasos */
+  .steps { display: flex; flex-direction: column; gap: 22px; }
+  .step { display: flex; gap: 18px; align-items: center; font-size: 34px; font-weight: 700; color: var(--ink); }
+  .step i { font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 24px; color: var(--lime); background: var(--ink); width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; flex: none; }
+  .step + .step { padding-top: 22px; border-top: 1px solid #e3dfda; }
+
+  /* 2 · chat (genérico, sin marca de ninguna herramienta) */
+  .bub { border-radius: 24px; padding: 20px 22px; font-size: 25px; line-height: 1.35; margin-bottom: 18px; }
+  .bub.me { background: var(--ink); color: #F8F8F8; margin-left: 40px; border-bottom-right-radius: 6px; }
+  .bub.ai { background: #fff; border: 2px solid var(--soft); color: var(--ink); border-bottom-left-radius: 6px; }
+  .bub.ai b { background: var(--lime); font-weight: 800; padding: 0 4px; border-radius: 4px; }
+  .who { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--meta); margin: 0 0 8px 4px; letter-spacing: .06em; text-transform: uppercase; }
+  .cursor { display: inline-block; width: 14px; height: 30px; background: var(--ink); vertical-align: -5px; margin-left: 4px; }
+
+  /* 3 · producto */
+  .photo { width: 100%; height: 600px; border-radius: 22px; overflow: hidden; border: 2px solid var(--soft); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .checks { margin-top: 26px; display: flex; flex-direction: column; gap: 14px; }
+  .chk { display: flex; justify-content: space-between; align-items: center; font-size: 28px; font-weight: 700; color: var(--ink); padding-bottom: 14px; border-bottom: 1px solid #e3dfda; }
+  .chk b { background: var(--lime); border: 2px solid var(--ink); border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; font-size: 22px; }
+  .lock { margin-top: 22px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 24px; font-weight: 700; color: var(--lime); background: var(--ink); border-radius: 999px; padding: 12px; letter-spacing: .08em; }
+
+  /* 4 · avatar: prompt → imagen */
+  .code { font-family: "JetBrains Mono", monospace; font-size: 19px; line-height: 1.55; color: #DDDAD7; background: var(--ink); border-radius: 18px; padding: 18px; height: 330px; overflow: hidden; position: relative; }
+  .code::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(transparent, var(--ink)); }
+  .k { color: var(--lime); } .s { color: #b9c9a3; }
+  .arrow { text-align: center; font-size: 40px; color: var(--ink); margin: 8px 0; line-height: 1; font-weight: 800; }
+  .reveal { position: relative; height: 560px; border-radius: 22px; overflow: hidden; border: 2px solid var(--ink); }
+  .reveal img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .reveal .scan { position: absolute; left: 0; right: 0; top: 62%; bottom: 0; backdrop-filter: blur(14px); background: rgba(221,218,215,.55); border-top: 6px solid var(--lime); box-shadow: 0 -10px 30px rgba(197,247,64,.8); }
+
+  /* 5 · escenas */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .grid img, .grid .more { width: 100%; height: 205px; object-fit: cover; border-radius: 12px; border: 2px solid var(--ink); }
+  .grid .more { display: grid; place-items: center; background: var(--lime); font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-size: 48px; color: var(--ink); text-align: center; line-height: 1; }
+  .grid .more small { display: block; font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 700; margin-top: 8px; letter-spacing: .06em; }
+  .note { margin-top: 22px; font-size: 26px; line-height: 1.35; color: #2a2622; }
+  .note b { color: var(--ink); }
+
+  /* 6 · clips */
+  .clip { display: flex; gap: 18px; align-items: center; padding: 14px 0; border-bottom: 1px solid #e3dfda; }
+  .clip img { width: 92px; height: 164px; object-fit: cover; border-radius: 12px; border: 2px solid var(--ink); flex: none; }
+  .clip .info { flex: 1; }
+  .clip .t { font-size: 27px; font-weight: 800; color: var(--ink); }
+  .clip .d { font-family: "JetBrains Mono", monospace; font-size: 19px; color: var(--meta); margin-top: 6px; }
+  .bar { height: 10px; border-radius: 5px; background: #e3dfda; margin-top: 14px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--forest); }
+  .ok { font-family: "JetBrains Mono", monospace; font-size: 22px; color: var(--ink); font-weight: 800; background: var(--lime); border: 2px solid var(--ink); border-radius: 50%; width: 40px; height: 40px; display: grid; place-items: center; flex: none; }
+  .ok.wait { background: none; border: 0; color: var(--meta); width: auto; }
+
+  /* 7 · edición */
+  .tl { display: flex; flex-direction: column; gap: 18px; position: relative; margin-top: 6px; }
+  .trk .lab { font-family: "JetBrains Mono", monospace; font-size: 18px; color: var(--meta); letter-spacing: .06em; margin-bottom: 8px; }
+  .wave { height: 70px; display: flex; align-items: center; gap: 3px; background: var(--ink); border-radius: 10px; padding: 0 8px; }
+  .wave span { flex: 1; background: var(--lime); border-radius: 2px; }
+  .strip { height: 120px; display: flex; gap: 4px; }
+  .strip img { flex: 1; min-width: 0; height: 100%; object-fit: cover; border-radius: 8px; }
+  .pills { height: 46px; display: flex; gap: 6px; }
+  .pills span { background: #e9e6e2; border: 2px solid var(--soft); border-radius: 8px; flex: 1; }
+  .pills span:nth-child(3n) { flex: 1.6; } .pills span:nth-child(4n) { flex: .7; }
+  .head { position: absolute; left: 62%; top: 20px; bottom: -6px; width: 5px; background: #e5484d; border-radius: 2px; }
+  .render { margin-top: 34px; background: var(--ink); border-radius: 22px; padding: 22px; text-align: center; }
+  .render .r1 { font-family: "Archivo", sans-serif; font-weight: 900; font-stretch: 125%; font-size: 40px; color: var(--lime); }
+  .render .r2 { font-family: "JetBrains Mono", monospace; font-size: 20px; color: #9F9587; margin-top: 8px; }
+
+  /* 8 · CTA (sobre hueso, con frames del anuncio como tarjetas) */
+  .cta { position: absolute; left: 70px; right: 70px; top: 250px; text-align: center; }
+  .cta .h { font-size: 88px; }
+  .cmt { margin: 56px auto 0; width: 760px; background: #fff; color: #111; border: 2px solid var(--ink); border-radius: 34px; padding: 26px 30px; display: flex; gap: 22px; align-items: center; text-align: left; box-shadow: 10px 10px 0 var(--ink); }
+  .cmt .av { width: 74px; height: 74px; border-radius: 50%; background: linear-gradient(135deg, #305E4A, #C5F740); flex: none; }
+  .cmt .u { font-size: 24px; font-weight: 700; color: #555; }
+  .cmt .w { font-size: 50px; font-weight: 800; letter-spacing: .02em; }
+  .cmt .w::after { content: ""; display: inline-block; width: 5px; height: 46px; background: #111; margin-left: 6px; vertical-align: -6px; }
+  .dm { margin-top: 40px; font-size: 38px; font-weight: 600; color: #2a2622; }
+  .dm b { background: var(--lime); color: var(--ink); padding: 0 8px; border-radius: 6px; }
+  .cards { position: absolute; left: 0; right: 0; top: 1110px; height: 540px; }
+  .cards img { position: absolute; width: 270px; height: 480px; object-fit: cover; border-radius: 22px; border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Reel 08 · Así creamos este anuncio <span>→ comenta TALLER</span></h1>
+  <div class="meta">~40 s · 1080×1920 · fondo hueso · sin avatar hablando</div>
+</header>
+
+<div class="board">
+
+  <!-- 1 · HOOK -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="h">Así creamos este anuncio, <em>desde cero.</em></div></div>
+      <div class="panel">
+        <div class="plabel">El proceso</div>
+        <div class="steps">
+          <div class="step"><i>01</i>Brief y guion</div>
+          <div class="step"><i>02</i>El producto</div>
+          <div class="step"><i>03</i>La chica</div>
+          <div class="step"><i>04</i>Las escenas</div>
+          <div class="step"><i>05</i>Los clips</div>
+          <div class="step"><i>06</i>La edición</div>
+        </div>
+      </div>
+      <div class="ad"><img src="frames/ad-0.8.jpg"><div class="tag">100% IA</div><div class="snd">🔊</div></div>
+      <div class="prog"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="prog-l"><span>Así la creamos</span><b>6 pasos</b></div>
+    </div></div>
+    <div class="cap"><span><b>1</b> · Hook</span><span>0–3 s</span></div>
+    <div class="say">El anuncio arranca con su audio desde el primer fotograma. Arriba, el hook; a la izquierda, los 6 pasos que vamos a recorrer.</div>
+  </div>
+
+  <!-- 2 · GUION -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 1 de 6</div><div class="h sm">Primero, el <em>guion.</em></div></div>
+      <div class="panel">
+        <div class="plabel">Brief y guion</div>
+        <div class="who">Tú</div>
+        <div class="bub me">Sérum de vitamina C. Para mujeres con la piel cansada. Anuncio de 30 s.</div>
+        <div class="who">Sistema</div>
+        <div class="bub ai"><b>Hook:</b> "Dormía ocho horas y aun así mi cara decía que no había dormido nada."<br><br><b>Historia:</b> probé cremas caras, mascarillas… hasta que empecé a usar este sérum<span class="cursor"></span></div>
+      </div>
+      <div class="ad"><img src="frames/ad-5.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="on"></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="prog-l"><b>01 · Guion</b><span>1/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>2</b> · Guion</span><span>3–8 s</span></div>
+    <div class="say">Chat con nuestro diseño (sin logos): el brief y el guion real escribiéndose. A la derecha ella dice esas mismas frases.</div>
+  </div>
+
+  <!-- 3 · PRODUCTO -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 2 de 6</div><div class="h sm">El <em>producto</em>, idéntico.</div></div>
+      <div class="panel">
+        <div class="plabel">El producto</div>
+        <div class="photo"><img src="frames/producto.jpg"></div>
+        <div class="checks">
+          <div class="chk">Frasco <b>✓</b></div>
+          <div class="chk">Etiqueta <b>✓</b></div>
+          <div class="chk">Colores <b>✓</b></div>
+        </div>
+        <div class="lock">🔒 IGUAL EN CADA ESCENA</div>
+      </div>
+      <div class="ad"><img src="frames/ad-10.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="done"></div><div class="on"></div><div></div><div></div><div></div><div></div></div>
+      <div class="prog-l"><b>02 · Producto</b><span>2/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>3</b> · Producto</span><span>8–13 s</span></div>
+    <div class="say">La foto del frasco ALBA entra y se marcan los 3 checks. A la derecha, el mismo frasco en su mano.</div>
+  </div>
+
+  <!-- 4 · AVATAR -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 3 de 6</div><div class="h sm">La chica, <em>desde cero.</em></div></div>
+      <div class="panel">
+        <div class="plabel">La chica</div>
+        <div class="code">{<br>&nbsp;<span class="k">"look"</span>: <span class="s">"raw iPhone front-camera frame"</span>,<br>&nbsp;<span class="k">"subject"</span>: {<br>&nbsp;&nbsp;<span class="k">"age"</span>: <span class="s">"early 30s"</span>,<br>&nbsp;&nbsp;<span class="k">"skin"</span>: <span class="s">"visible pores, no makeup"</span><br>&nbsp;},<br>&nbsp;<span class="k">"place"</span>: <span class="s">"her bathroom, morning"</span>,<br>&nbsp;<span class="k">"product"</span>: <span class="s">"ALBA vitamin C serum"</span></div>
+        <div class="arrow">↓</div>
+        <div class="reveal"><img src="frames/avatar.jpg"><div class="scan"></div></div>
+      </div>
+      <div class="ad"><img src="frames/ad-15.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="done"></div><div class="done"></div><div class="on"></div><div></div><div></div><div></div></div>
+      <div class="prog-l"><b>03 · La chica</b><span>3/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>4</b> · La chica</span><span>13–19 s</span></div>
+    <div class="say">El prompt real se desplaza y debajo la imagen se "revela" de arriba abajo (línea verde de escaneo).</div>
+  </div>
+
+  <!-- 5 · ESCENAS -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 4 de 6</div><div class="h sm">Cada escena, <em>planeada.</em></div></div>
+      <div class="panel">
+        <div class="plabel">Las escenas</div>
+        <div class="grid">
+          <img src="frames/clip-1.jpg"><img src="frames/broll-1.jpg"><img src="frames/broll-2.jpg">
+          <img src="frames/broll-3.jpg"><img src="frames/clip-2.jpg"><img src="frames/broll-4.jpg">
+          <img src="frames/broll-5.jpg"><img src="frames/broll-6.jpg"><div class="more">+6<small>ESCENAS</small></div>
+        </div>
+        <div class="note"><b>14 escenas:</b> 6 de ella hablando y 8 de apoyo, cada una con su frase.</div>
+      </div>
+      <div class="ad"><img src="frames/ad-20.5.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="done"></div><div class="done"></div><div class="done"></div><div class="on"></div><div></div><div></div></div>
+      <div class="prog-l"><b>04 · Escenas</b><span>4/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>5</b> · Escenas</span><span>19–26 s</span></div>
+    <div class="say">La cuadrícula se llena una celda por golpe de ritmo (los frames reales de las escenas).</div>
+  </div>
+
+  <!-- 6 · CLIPS -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 5 de 6</div><div class="h sm">De imagen a <em>video.</em></div></div>
+      <div class="panel">
+        <div class="plabel">Los clips</div>
+        <div class="clip"><img src="frames/clip-1.jpg"><div class="info"><div class="t">Escena 01</div><div class="d">habla · 6 s</div><div class="bar"><span style="width:100%"></span></div></div><div class="ok">✓</div></div>
+        <div class="clip"><img src="frames/broll-7.jpg"><div class="info"><div class="t">Escena 02</div><div class="d">apoyo · 6 s</div><div class="bar"><span style="width:100%"></span></div></div><div class="ok">✓</div></div>
+        <div class="clip"><img src="frames/clip-3.jpg"><div class="info"><div class="t">Escena 03</div><div class="d">habla · 8 s</div><div class="bar"><span style="width:100%"></span></div></div><div class="ok">✓</div></div>
+        <div class="clip"><img src="frames/broll-8.jpg"><div class="info"><div class="t">Escena 04</div><div class="d">apoyo · 6 s</div><div class="bar"><span style="width:64%"></span></div></div><div class="ok wait">64%</div></div>
+      </div>
+      <div class="ad"><img src="frames/ad-26.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="done"></div><div class="done"></div><div class="done"></div><div class="done"></div><div class="on"></div><div></div></div>
+      <div class="prog-l"><b>05 · Clips</b><span>5/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>6</b> · Clips</span><span>26–31 s</span></div>
+    <div class="say">Lista de clips generándose: las barras se llenan y aparece el ✓. Las miniaturas se mueven (son los clips reales).</div>
+  </div>
+
+  <!-- 7 · EDICIÓN -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      <div class="top"><div class="kicker">Paso 6 de 6</div><div class="h sm">Y la edición, <em>automática.</em></div></div>
+      <div class="panel">
+        <div class="plabel">La edición</div>
+        <div class="tl">
+          <div class="trk"><div class="lab">VOZ</div><div class="wave" id="wave"></div></div>
+          <div class="trk"><div class="lab">ESCENAS</div><div class="strip"><img src="frames/clip-1.jpg"><img src="frames/broll-2.jpg"><img src="frames/clip-2.jpg"><img src="frames/broll-4.jpg"><img src="frames/clip-3.jpg"><img src="frames/broll-6.jpg"></div></div>
+          <div class="trk"><div class="lab">SUBTÍTULOS</div><div class="pills"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="head"></div>
+        </div>
+        <div class="render"><div class="r1">Render ✓</div><div class="r2">34 s · 1080×1920 · listo</div></div>
+      </div>
+      <div class="ad"><img src="frames/ad-31.jpg"><div class="snd">🔊</div></div>
+      <div class="prog"><div class="done"></div><div class="done"></div><div class="done"></div><div class="done"></div><div class="done"></div><div class="on"></div></div>
+      <div class="prog-l"><b>06 · Edición</b><span>6/6</span></div>
+    </div></div>
+    <div class="cap"><span><b>7</b> · Edición</span><span>31–35 s</span></div>
+    <div class="say">Línea de tiempo con voz, escenas y subtítulos; el cabezal avanza y termina en "Render ✓" justo cuando acaba el anuncio.</div>
+  </div>
+
+  <!-- 8 · CTA -->
+  <div class="shot">
+    <div class="mini"><div class="stage">
+      
+      <div class="cta">
+        <div class="kicker">Taller en vivo</div>
+        <div class="h">Este domingo creo uno así, <em>en vivo.</em></div>
+        <div class="cmt"><div class="av"></div><div><div class="u">tu_usuario</div><div class="w">TALLER</div></div></div>
+        <div class="dm">Comenta <b>TALLER</b> y te envío la info ↓</div>
+      </div>
+      <div class="cards"><img src="frames/avatar.jpg" style="left:150px;top:40px;transform:rotate(-7deg)"><img src="frames/ad-34.2.jpg" style="left:660px;top:40px;transform:rotate(7deg)"><img src="frames/ad-5.jpg" style="left:405px;top:0;z-index:2"></div>
+    </div></div>
+    <div class="cap"><span><b>8</b> · CTA</span><span>35–40 s</span></div>
+    <div class="say">El anuncio termina y entra la tarjeta sobre fondo hueso, con 3 frames del anuncio. La burbuja de comentario escribe "TALLER" letra por letra.</div>
+  </div>
+
+</div>
+<script>
+  // forma de onda decorativa (determinista)
+  const w = document.getElementById("wave");
+  for (let i = 0; i < 70; i++) { const s = document.createElement("span"); const h = 18 + Math.abs(Math.sin(i * 1.7) * Math.cos(i * .43)) * 78; s.style.height = h + "%"; w.appendChild(s); }
+</script>
+</body>
+</html>
