@@ -1,5 +1,8 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.4.2 — 30 oct 2026
+- **Voz en off más natural** (`formatos/voz-en-off/LEEME.md`): plantillas nuevas de Scene y Sample Context. La voz suena a una persona grabando una nota de voz en su celular, con **acento latino neutro pedido de forma explícita**, ritmo de conversación normal, energía baja y emoción contenida. Se quitan "TikTok testimonial", "slightly fast pace" y "raise the energy", que la hacían sonar a comercial. Voces sugeridas de tono tranquilo (Callirrhoe, Achernar, Sulafat, Vindemiatrix, Despina).
+
 ## 1.4.1 — 29 oct 2026
 - **La misma velocidad de habla en todos los clips.** Google Flow hace que el avatar diga todo el texto dentro del clip: si le sobra texto, acelera, y al unir los clips se nota (en un anuncio real, un clip de 10 s con demasiadas sílabas sonaba apurado al lado de los demás). Ahora la tabla de `guion/guion-anuncios.md` se mide en sílabas por segundo (~3,2–4,3, máx. ~4,5) y `generar-prompts.mjs` avisa si un clip pasa de 4,5 o se aleja de los demás.
 

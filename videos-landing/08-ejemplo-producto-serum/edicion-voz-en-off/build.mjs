@@ -1,7 +1,7 @@
 // Anuncio 08 · versión 2: voice over + B-rolls (sin los clips de la chica a cámara). Estilo UGC natural: cortes secos, casi sin gráficos.
 // Pasos (todo desde aquí): 1) voz.wav = el voice over con el ritmo natural (arranque en el fotograma 0, pausas > 0,6 s → ~0,5 s)
 // 2) base.mp4 = los B-rolls cortados y unidos en fotogramas exactos (1080×1920, 24 fps, sin audio)
-// 3) public/index.html = subtítulos naturales (blanco con sombra, sin caja), botón "Comprar ↓" al final y marca de agua abajo al centro.
+// 3) public/index.html = subtítulos naturales (blanco con sombra, sin caja), botón "Comprar ↓" al final y marca de agua abajo al centro. Sin música (30 oct 2026, pedido del usuario).
 // Uso: node build.mjs → hyperframes lint public → hyperframes render public -o ../final/… --fps 24 --quality delivery --workers 1
 import fs from "node:fs";
 import path from "node:path";
@@ -17,11 +17,14 @@ const ff = (args) => execFileSync("ffmpeg", ["-nostdin", "-v", "error", "-y", ..
 
 // ───────────────────────── CONFIG ─────────────────────────
 const ID = "anuncio-08-voz-en-off";
-const VOZ = path.join(anuncio, "audio voice over.wav");
-const INICIO = 0.27;                      // primer sonido de la voz a 0,045 s (la primera palabra en el fotograma 0)
+// Voz v2 (30 oct 2026): acento latino neutro, nota de voz, sin tono de comercial (prompts en ../voz/prompt-voz-v2.md).
+// La v1 (Aoede, "audio voice over.wav") quedó en build-v1-voz-aoede.mjs.
+const VOZ = path.join(anuncio, "voz", "voz-v2.wav");
+const TRANSCRIPT = path.join(anuncio, "voz", "transcript.json");
+const INICIO = 0.23;                      // primer sonido de la voz a 0,045 s (la primera palabra en el fotograma 0)
 // Pausas de más de 0,6 s (silencedetect −40 dB): se quita el centro y quedan ~0,5 s.
-const QUITAR = [[11.69, 11.83], [22.35, 22.47], [29.50, 29.80], [31.93, 32.10]];
-const FIN = 34.88;                        // fin del archivo (la voz termina en 34,59)
+const QUITAR = [[5.70, 6.14], [10.40, 10.60], [14.55, 15.22], [17.95, 18.31], [26.67, 27.36], [34.74, 35.70], [38.79, 39.14]];
+const FIN = 41.12;                        // fin del archivo (la voz termina en 40,76)
 const COLA = 0.6;                         // silencio extra al final para leer el botón
 
 // Frases del subtítulo (en orden). Natural: frases cortas, sin palabra resaltada. "|" = salto de línea.
@@ -35,19 +38,19 @@ const PHRASES = [
 ];
 const FIX = { serum: "sérum" };           // palabras mal transcritas
 
-// B-rolls en orden: [archivo, palabra donde entra (o 0), desde qué segundo del B-roll, altura del subtítulo]
+// B-rolls en orden: [archivo, palabra donde entra (o null), desde qué segundo del B-roll, altura del subtítulo, palabra siguiente (si se repite), velocidad (1 por defecto)]
 // El corte cae ~0,08 s antes de la palabra. Cada B-roll acompaña lo que dice la voz.
 const PLAN = [
   ["broll-01", null, 0.0, 1290],            // recién levantada, se mira cansada · "Dormía ocho horas… no había dormido nada."
-  ["broll-02", "Probé", 0.4, 1290],         // aparta las cremas · "Probé cremas caras, mascarillas… apagada,"
-  ["broll-01", "como", 4.3, 1290],          // cierra los ojos, cansada · "como sin vida,"
-  ["broll-03", "hasta", 0.6, 1330],         // su mano toma ALBA · "hasta que empecé a usar este sérum de vitamina C."
-  ["broll-04", "Dos", 0.8, 1290],           // dos gotas · "Dos gotas cada mañana, nada más."
+  ["broll-02", "Probé", 0.0, 1290, null, 0.86], // aparta las cremas (al 86 %: esta voz es más lenta) · "Probé cremas caras… Y mi piel seguía apagada"
+  ["broll-01", "como", 4.3, 1290],          // cierra los ojos, cansada · "como sin vida."
+  ["broll-03", "hasta", 0.6, 1330],         // su mano toma ALBA · "Hasta que empecé a usar este sérum de vitamina C."
+  ["broll-04", "Dos", 0.8, 1290],           // dos gotas · "Dos gotas cada mañana. Nada más."
   ["broll-05", "Es", 2.3, 1290],            // la textura entre los dedos · "Es súper ligero,"
   ["broll-06", "se", 0.4, 1110],            // se lo aplica en la mejilla · "se absorbe en segundos… grasosa." (subtítulo entre el mentón y el frasco)
-  ["broll-06", "Hoy", 4.1, 1110],         // termina de aplicarlo · "Hoy me miro al espejo"
+  ["broll-06", "Hoy", 4.1, 1110],           // termina de aplicarlo · "Hoy me miro al espejo"
   ["broll-07", "y", 0.1, 1290, "me"],       // piel luminosa, sonríe · "y me veo despierta, fresca, con brillo… maquillaje."
-  ["broll-08", "Si", 0.3, 250],             // el frasco y el botón · "Si tu piel también… botón de abajo."
+  ["broll-08", "Si", 0.2, 250],             // el frasco y el botón · "Si tu piel también… botón de abajo."
 ];
 const BTN_WORD = "Lo";                    // el botón entra con "Lo consigues…"
 // ────────────────────────────────────────────────────────────
@@ -69,7 +72,7 @@ const fc = keep.map(([x, y], i) => `[0:a]atrim=${x}:${y},asetpts=PTS-STARTPTS,af
 ff(["-i", VOZ, "-filter_complex", fc, "-map", "[out]", "-ar", "48000", "-ac", "1", path.join(here, "public", "voz.wav")]);
 
 // ── palabras con tiempos del anuncio
-const raw = JSON.parse(fs.readFileSync(path.join(anuncio, "edicion", "revision", "transcript-voice-over.json"), "utf8"));
+const raw = JSON.parse(fs.readFileSync(TRANSCRIPT, "utf8"));
 const words = (Array.isArray(raw) ? raw : raw.words).map((w) => {
   const clean = w.text.replace(/[.,]/g, "").toLowerCase();
   const text = FIX[clean] ? w.text.toLowerCase().replace(clean, FIX[clean]) : w.text;
@@ -85,19 +88,19 @@ const at = (txt, from = 0, next) => {
 
 // ── 2 · base.mp4: B-rolls en fotogramas exactos
 let from = 0;
-const cuts = PLAN.map(([file, word, src, subY, next], i) => {
+const cuts = PLAN.map(([file, word, src, subY, next, vel = 1], i) => {
   const t = word ? q(at(word, from, next).start - 0.08) : 0;
   from = t + 0.1;
-  return { file, t, src, subY };
+  return { file, t, src, subY, vel };
 });
 cuts.forEach((c, i) => { c.end = cuts[i + 1]?.t ?? DUR; c.frames = Math.round((c.end - c.t) * FPS); });
 const inputs = [], filt = [];
 cuts.forEach((c, i) => {
   const srcFile = path.join(anuncio, "clips", `${c.file}.mp4`);
   const len = +execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", srcFile]).toString();
-  if (c.src + c.frames / FPS > len + 0.01) throw new Error(`${c.file}: pide ${f3(c.src + c.frames / FPS)} s y dura ${f3(len)} s`);
+  if (c.src + (c.frames / FPS) * c.vel > len + 0.01) throw new Error(`${c.file}: pide ${f3(c.src + (c.frames / FPS) * c.vel)} s y dura ${f3(len)} s`);
   inputs.push("-i", srcFile);
-  filt.push(`[${i}:v]trim=start=${c.src},setpts=PTS-STARTPTS,fps=${FPS},trim=end_frame=${c.frames},scale=1080:1920:flags=lanczos,setsar=1[v${i}]`);
+  filt.push(`[${i}:v]trim=start=${c.src},setpts=(PTS-STARTPTS)/${c.vel},fps=${FPS},trim=end_frame=${c.frames},scale=1080:1920:flags=lanczos,setsar=1[v${i}]`);
 });
 filt.push(`${cuts.map((_, i) => `[v${i}]`).join("")}concat=n=${cuts.length}:v=1:a=0[out]`);
 ff([...inputs, "-filter_complex", filt.join(";"), "-map", "[out]", "-c:v", "libx264", "-crf", "14", "-preset", "slow", "-pix_fmt", "yuv420p", "-r", String(FPS), path.join(here, "public", "base.mp4")]);
@@ -158,7 +161,6 @@ const html = `<!doctype html>
     <div id="stage" data-composition-id="${ID}" data-start="0" data-duration="${f3(DUR)}" data-fps="${FPS}" data-width="1080" data-height="1920">
       <video id="base" src="base.mp4" muted playsinline data-start="0" data-duration="${f3(DUR)}" data-track-index="1"></video>
       <audio id="voz" src="voz.wav" data-start="0" data-duration="${f3(DUR)}" data-track-index="2" data-volume="1"></audio>
-      <audio id="bgm" src="audio/bgm-loop.wav" data-start="0" data-duration="${f3(DUR)}" data-track-index="4" data-volume="1"></audio>
 
       <!-- botón: "Lo consigues en el botón de abajo." -->
       <div class="g clip" id="cta" data-start="${f3(tBtn)}" data-duration="${f3(DUR - tBtn)}" data-track-index="7">
@@ -185,8 +187,6 @@ ${subsJs}
   </body>
 </html>
 `;
-// música suave en bucle, muy por debajo de la voz, con salida al final
-ff(["-stream_loop", "3", "-i", path.join(here, "public", "audio", "bgm.wav"), "-af", `atrim=0:${DUR},afade=t=out:st=${f3(DUR - 1.2)}:d=1.2,volume=0.8`, "-ar", "48000", path.join(here, "public", "audio", "bgm-loop.wav")]);
 fs.writeFileSync(path.join(here, "public", "index.html"), html);
 fs.writeFileSync(path.join(here, "base-cortes.json"), JSON.stringify(cuts.map(({ file, t, end, src }) => ({ file, start: f3(t), end: f3(end), src })), null, 1));
 console.log(`voz ${f3(VOZ_DUR)} s · anuncio ${f3(DUR)} s · ${blocks.length} frases · ${cuts.length} tomas de B-roll`);

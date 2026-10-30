@@ -22,6 +22,14 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Email · taller del domingo (30 oct 2026, aprobado tal cual)
+Archivo: `emails/03-taller-domingo/correo-taller-domingo.md`. Borrador de Nicolai, corregido y con ritmo.
+- **"Quedan 10 puestos para el domingo"** · asunto recomendado (escasez real y concreta; la lista ya recibió la reconexión)
+- **"¿Lo mejor?" / "Te salen unas 13 veces más baratos que con otras herramientas."** · pregunta suelta + respuesta, como en el correo 1
+- **Dos perfiles con flechas** ("→ Ya pautas anuncios…" / "→ O quieres una fuente de ingresos adicional…") para que cada lector se encuentre rápido
+- **"Mientras escribo este correo ya hay 5 inscritos. Quedan 10."** · escasez con el dato real (frase del usuario)
+- **P.D. "El taller es en vivo: me ves crear un anuncio completo… y me preguntas lo que quieras en el momento."** · responde "¿por qué en vivo?"
+
 ### Landing · subtítulos cortos (30 oct 2026)
 Regla del usuario: cada subtítulo de sección, máximo 3–4 líneas en el celular (antes había de hasta 7). Aprobados todos tal cual ("Aplicar todos"):
 - **"El sistema para crear decenas de anuncios, encontrar tus ganadores y escalar tu negocio o el de tus clientes."** · subtítulo del hero (reemplaza "No es solo un video que parece real: es el sistema para producir decenas de anuncios…", que al usuario no le gustaba; "económicos" se quitó porque el título ya dice "13 veces más baratos")
