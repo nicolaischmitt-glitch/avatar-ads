@@ -12,8 +12,9 @@
 //   negative:  ["…"]                               (opcional, lo específico de esta toma)
 //   referencia: "avatar/avatar.jpg"                 (opcional: adjuntarla en Nano Banana para que el producto o el lugar sean los mismos)
 //   mismaPersona: true                              (opcional: en la toma sale el avatar de "referencia" (su cara, pelo y ropa), p. ej. aplicándose el producto)
-//   look:      { id, desc }                          (opcional, lo pone generar-prompts.mjs a partir de "look": "<id>" del plan: sale la misma persona
-//               con otro look (pelo, ropa, cómo se ve su piel) y en el lugar de "location"; de la referencia solo se copia la cara)
+//   look:      { id, desc, identidad }               (opcional, lo pone generar-prompts.mjs a partir de "look": "<id>" del plan: sale la misma persona
+//               con otro look (peinado, ropa, cómo se ve su piel) y en el lugar de "location"; de la referencia solo se copia quién es.
+//               identidad = lo que se ve de verdad en avatar/avatar.jpg: cara, frente, entradas, cantidad de pelo, barba)
 //   producto:  { ref: "producto/producto.png", bloque: {…}, texto: "ALBA / VITAMINA C", corto: "the ALBA serum bottle" }
 //   producto_donde: "on the counter, next to the sink"   (con producto: dónde queda en la imagen, para el prompt de corrección)
 //              (opcional, LOCKED IN del producto físico: su imagen se adjunta como primera referencia, el bloque se copia
@@ -58,7 +59,7 @@ export function brollImagen(s) {
     ? ` The attached reference image shows the product/place: keep it exactly the same (shape, materials, colors, label), but do not include the person from the reference.`
     : "";
   const persona = s.look
-    ? ` shows the same person: keep exactly the same face, facial features, skin tone, age and body, so it is clearly the same person. Only the look changes in this scene, as described in "person_look", and the place is the one in "environment", even if it differs from the reference.`
+    ? ` shows the same person: keep exactly who he or she is, as described in "person_identity" (face, facial features, hairline, amount of hair, facial hair, skin tone, age and body), so it is clearly the same person. Only the look changes in this scene, as described in "person_look", and the place is the one in "environment", even if it differs from the reference.`
     : ` shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.`;
   if (s.mismaPersona && s.referencia && !p) ref = ` The attached reference image${persona}`;
   if (p) ref = ` Attached image 1 is the exact product: replicate it identically (same product shape, size, materials, colors, label design and label text), as described in "product".` +
@@ -71,7 +72,7 @@ export function brollImagen(s) {
       look: "raw, unedited iPhone video frame, not a professional photo",
     },
     subject: s.subject,
-    ...(s.look ? { person_look: s.look.desc } : {}),
+    ...(s.look ? { person_identity: s.look.identidad, person_look: s.look.desc } : {}),
     ...(p ? { product: p.bloque } : {}),
     environment: {
       location: s.location,
@@ -104,7 +105,7 @@ export function brollImagen(s) {
       "perfect symmetry, empty sterile spaces, everything brand new",
       "deformed hands, extra fingers, warped objects",
       s.mismaPersona ? "a different person, a changed face, a likeness of any real person" : "recognizable faces, a likeness of any real person",
-      ...(s.look ? ["the hair, clothes or place of the reference image when they differ from \"person_look\" and \"environment\""] : []),
+      ...(s.look ? [IDENTIDAD_NEG, "the hair styling, clothes or place of the reference image when they differ from \"person_look\" and \"environment\""] : []),
       ...(s.negative ?? []),
     ],
   };
@@ -128,17 +129,22 @@ export function correccionMarkdown(p, donde) {
 
 // Looks del avatar (solo si la historia los pide: antes y después, un día que avanza, otros lugares u otra ropa).
 // La misma persona de avatar/avatar.jpg con otro pelo, ropa o estado de la piel. Se genera adjuntando avatar/avatar.jpg.
-// l = { id, desc, location, details, pose, light }   (desc, location, details, pose y light en inglés)
+// l = { id, desc, location, details, pose, light, identidad }   (en inglés)
+//   identidad: lo que se ve de verdad en avatar/avatar.jpg (Claude mira la imagen y lo escribe): forma de la cara, frente y entradas, cantidad y largo del pelo, barba, rasgos.
+//   desc: el look EN RELACIÓN a como es ("his same short hair, slightly messy"), nunca un corte nuevo ni más pelo.
+// Es una imagen de referencia: cara despejada y de frente; las acciones (frotarse el ojo) van en el video del B-roll.
+export const IDENTIDAD_NEG = "more or less hair than the reference, a different hairline, a different haircut length, a different beard, a different face shape";
 export function lookImagen(l) {
   return {
-    task: "Generate one photorealistic still frame from a casual vertical video recorded with an iPhone, showing the same person as in the attached reference image. Keep exactly the same face, facial features, skin tone, age and body, so it is clearly the same person. Change only the look described in \"person_look\" and the place described in \"environment\". It will be the reference of this person's look in later frames.",
+    task: "Generate one photorealistic still frame from a casual vertical video recorded with an iPhone, showing the same person as in the attached reference image. Keep exactly who he or she is, as described in \"person_identity\": the same face and facial features, the same hairline and amount of hair, the same facial hair, skin tone, age and body, so it is clearly the same person. Change only the look described in \"person_look\" (never add hair or change the hairline) and the place described in \"environment\". It will be the reference of this person's look in later frames, so the face must be fully visible.",
     output: {
       aspect_ratio: "9:16",
       orientation: "vertical",
       look: "raw, unedited iPhone video frame, not a professional photo",
     },
+    person_identity: l.identidad,
     person_look: l.desc,
-    pose_and_expression: l.pose ?? "natural and unposed, face clearly visible and well lit, hands relaxed with all fingers anatomically correct",
+    pose_and_expression: (l.pose ? l.pose + "; " : "") + "facing the camera, the whole face fully visible and unobstructed (no hands, hair or objects in front of it), hands relaxed and away from the face, all fingers anatomically correct",
     environment: {
       location: l.location,
       details: l.details,
@@ -155,14 +161,16 @@ export function lookImagen(l) {
       mood: "natural and realistic, low contrast, accurate skin tones",
     },
     realism_rules: [
-      "the same person as the reference: identical face shape, eyes, nose, mouth, skin tone, age and build",
+      "the same person as the reference: identical face shape, eyes, nose, mouth, hairline, amount of hair, facial hair, skin tone, age and build",
       "real skin texture with pores and fine lines, no smoothing, no beauty filter",
       "natural fabric folds and wrinkles on the clothes",
       "correct human anatomy: two hands, five fingers each",
     ],
     negative: [
       "a different person, a changed face, different age, different skin tone, a likeness of any real person",
-      "the hair, clothes or place of the reference image when they differ from \"person_look\" and \"environment\"",
+      IDENTIDAD_NEG,
+      "hands covering or touching the face",
+      "the hair styling, clothes or place of the reference image when they differ from \"person_look\" and \"environment\"",
       "text, captions, logos, brand names, watermarks, UI elements, readable signs or screens",
       "smooth or airbrushed skin, 3D render, CGI, stock photo look, studio lighting, cinematic color grading, heavy bokeh",
       "deformed hands, extra fingers, asymmetrical eyes, warped face",

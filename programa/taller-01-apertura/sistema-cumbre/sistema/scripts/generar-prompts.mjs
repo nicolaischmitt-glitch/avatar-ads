@@ -30,6 +30,8 @@
 //       "5am":   { "imagen": "avatar/look-5am.jpg", "desc": "…pelo, ropa, cómo se ve su piel…", "location": "…", "details": "…", "pose": "…", "light": "…" },   // en inglés
 //       "listo": { "imagen": "avatar/avatar.jpg", "desc": "…" }   // el look de quien habla a cámara usa la imagen del avatar: no se genera aparte
 //     },                                    // → en el Paso 1, cada look con imagen propia se genera adjuntando avatar/avatar.jpg
+//     "identidad": "…",   // con looks: lo que se ve DE VERDAD en avatar/avatar.jpg (Claude mira la imagen elegida y lo escribe, en inglés):
+//                         // forma de la cara, frente y entradas, cantidad y largo del pelo, barba, rasgos. Sin esto, los looks y sus B-rolls esperan.
 //     (en un B-roll, "look": "5am" = sale el mismo avatar con ese look y en el lugar de "location"; reemplaza a "mismaPersona" + "referencia")
 //     "brolls": [   // ideas de B-roll que propone Claude: sin diálogo, 6 u 8 s. Campos en broll-plantilla.mjs
 //       { "n": "01", "dur": 6, "desc": "Macro del producto", "referencia": "avatar/avatar.jpg", "producto": true,   // referencia: opcional (mismo lugar) · producto: true si sale el producto
@@ -81,7 +83,7 @@ const brolls = (plan.brolls ?? []).map((b) => {
   if (b.look) {
     const l = looks[b.look];
     if (!l) avisos.push(`B-roll ${b.n}: dice "look": "${b.look}" pero el plan no tiene ese look`);
-    else b = { ...b, referencia: l.imagen, mismaPersona: true, look: { id: b.look, desc: l.desc } };
+    else b = { ...b, referencia: l.imagen, mismaPersona: true, look: { id: b.look, desc: l.desc, identidad: plan.identidad } };
   }
   if (!b.producto) return b;
   if (!prod) { avisos.push(`B-roll ${b.n}: dice "producto": true pero el plan no tiene "producto"`); return { ...b, producto: undefined }; }
@@ -137,10 +139,16 @@ for (const [k, img] of listaTomas) {
 // Looks con imagen propia (los que no son la imagen de una toma): misma persona, otro look
 const baseLook = listaTomas[0][1];
 const looksAparte = Object.entries(looks).filter(([, l]) => !Object.values(tomas).includes(l.imagen));
-if (looksAparte.length) md += `\n**Looks del avatar:** la misma persona con otro look. Genera cada uno **adjuntando \`${baseLook}\`** (la cara tiene que ser idéntica) y guárdalo con el nombre que se indica. Si la cara cambia, regenera.\n`;
-for (const [id, l] of looksAparte) {
+// Sin "identidad" (lo que se ve en el avatar elegido) los looks inventan pelo o cambian la cara: esperan a que exista el avatar.
+const sinIdentidad = Object.keys(looks).length > 0 && !plan.identidad;
+if (sinIdentidad) {
+  avisos.push(`looks: falta "identidad". Cuando el usuario guarde ${baseLook}, mírala, describe lo que se ve (cara, frente, entradas, pelo, barba) y vuelve a generar`);
+  md += `\n**Looks del avatar y escenas donde sale él:** primero guarda \`${baseLook}\` y dile a Claude "ya tengo el avatar". Claude lo mira, anota cómo es de verdad (para que la cara y el pelo no cambien) y te arma esos prompts.\n`;
+}
+else if (looksAparte.length) md += `\n**Looks del avatar:** la misma persona con otro look. Genera cada uno **adjuntando \`${baseLook}\`** (la cara tiene que ser idéntica) y guárdalo con el nombre que se indica. Si la cara, el pelo o la barba cambian, regenera.\n`;
+for (const [id, l] of sinIdentidad ? [] : looksAparte) {
   if (!l.imagen || !l.desc || !l.location) { avisos.push(`look ${id}: faltan "imagen", "desc" o "location"`); continue; }
-  const txt = JSON.stringify(lookImagen(l), null, 2);
+  const txt = JSON.stringify(lookImagen({ ...l, identidad: plan.identidad }), null, 2);
   fs.mkdirSync(path.join(dir, "avatar"), { recursive: true });
   fs.writeFileSync(path.join(dir, "avatar", `prompt-look-${id}.json`), txt + "\n");
   md += `\n## Look ${id} · adjunta \`${baseLook}\` → guárdala como \`${l.imagen}\`\n\n` +
@@ -179,11 +187,14 @@ for (const c of plan.clips) {
 // Van en prompts-broll/ para que el validador de voz no los lea.
 fs.mkdirSync(path.join(dir, "prompts-broll"), { recursive: true });
 for (const f of fs.readdirSync(path.join(dir, "prompts-broll"))) if (/^broll-\d+.*\.json$/.test(f)) fs.rmSync(path.join(dir, "prompts-broll", f));
-for (const b of brolls) {
+// sin identidad, los B-rolls donde sale él con un look esperan; los demás se pueden generar ya
+const brollsListos = sinIdentidad ? brolls.filter((b) => !b.look) : brolls;
+for (const b of brollsListos) {
   fs.writeFileSync(path.join(dir, "prompts-broll", `broll-${b.n}-imagen.json`), JSON.stringify(brollImagen(b), null, 2) + "\n");
   fs.writeFileSync(path.join(dir, "prompts-broll", `broll-${b.n}-video.json`), JSON.stringify(brollVideo(b), null, 2) + "\n");
 }
-if (brolls.length) md += brollMarkdown(brolls);
+if (brollsListos.length) md += brollMarkdown(brollsListos);
+if (brollsListos.length < brolls.length) md += `\nFaltan los B-rolls ${brolls.filter((b) => b.look).map((b) => b.n).join(", ")}: salen cuando Claude tenga la identidad del avatar.\n`;
 
 // guion.txt = el guion aprobado (se guarda al aprobarlo). Si no existe, se crea con el texto de los clips.
 const guionTxt = path.join(dir, "guion.txt");

@@ -1,5 +1,11 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.3 — 31 oct 2026
+- **Los looks ya no cambian la cara ni inventan pelo.** En el anuncio del café, el look "recién levantado" salía con más pelo y una cara un poco distinta: el prompt solo decía "la misma persona" y pedía "pelo despeinado arriba", y la IA no sabía que el avatar real tiene la frente amplia y entradas (el avatar no siempre sale como pedía su prompt). Ahora:
+  - **Identidad real:** cuando el alumno guarda `avatar.jpg`, Claude la mira y escribe cómo es de verdad (cara, frente, entradas, pelo, barba). Va en cada look y en cada escena con look, y se prohíbe más o menos pelo, otras entradas u otra barba. Hasta tener esa identidad, esos prompts esperan (los demás B-rolls se generan ya).
+  - **El look es relativo** ("su mismo pelo, despeinado"), nunca un corte nuevo.
+  - **La imagen del look muestra la cara despejada y de frente**; las acciones que la tapan (frotarse el ojo) van en el video.
+
 ## 1.5.2 — 31 oct 2026
 - **Prompt de corrección del producto.** A veces la imagen sale perfecta (pose, luz, encuadre) pero el producto cambia un poco. Al pedir en la edición de Flow "que el producto sea igual", Nano Banana volvía a generar toda la imagen y cambiaba la pose. Ahora, debajo de cada imagen donde sale el producto, `prompts-flow.md` trae un **prompt de corrección** ya armado para esa imagen: dice qué cambia y dónde está ("Change only the CUMBRE coffee bag on the kitchen counter") y nombra todo lo que no cambia. Se usa en Flow → editar, con `producto.png` adjunta; máximo 2 intentos. Probado en el anuncio de un café: funcionó al primer intento.
   - En `clips-plan.json`: `producto.corto`, `producto.donde` (por toma) y `producto_donde` en cada B-roll con producto; el generador avisa si faltan.
