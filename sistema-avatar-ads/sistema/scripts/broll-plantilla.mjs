@@ -60,7 +60,7 @@ export function brollImagen(s) {
     ? ` shows the same person: keep exactly the same face, facial features, skin tone, age and body, so it is clearly the same person. Only the look changes in this scene, as described in "person_look", and the place is the one in "environment", even if it differs from the reference.`
     : ` shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.`;
   if (s.mismaPersona && s.referencia && !p) ref = ` The attached reference image${persona}`;
-  if (p) ref = ` Attached image 1 is the exact product: replicate it identically (same bottle shape, size, materials, colors, label design and label text), as described in "product".` +
+  if (p) ref = ` Attached image 1 is the exact product: replicate it identically (same product shape, size, materials, colors, label design and label text), as described in "product".` +
     (s.referencia ? (s.mismaPersona ? ` Attached image 2${persona}` : ` Attached image 2 only shows the place: match its location and light, but do not include the person from it.`) : "");
   return {
     task: `Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: ${s.shot}. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.${ref}`,
@@ -97,7 +97,7 @@ export function brollImagen(s) {
     negative: [
       p ? `any text other than the product label (${p.texto}), captions, subtitles, other logos or brand names, watermarks, UI elements, readable signs or screens`
         : "text, captions, subtitles, logos, brand names, watermarks, UI elements, readable signs or screens",
-      ...(p ? ["a different bottle, a changed or blank label, misspelled label text, extra products, a second bottle"] : []),
+      ...(p ? ["a different product, a changed or blank label, misspelled label text, extra products, a second unit of the product"] : []),
       "CGI, 3D render, illustration, overly glossy or plastic surfaces, futuristic or sci-fi look",
       "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
       "perfect symmetry, empty sterile spaces, everything brand new",

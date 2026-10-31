@@ -18,7 +18,7 @@
 //     ],
 //     "producto": {   // SOLO si el anuncio muestra un producto físico (master-prompt-imagen.md, sección 7). Si no, no se pone.
 //       "texto": "ALBA / VITAMINA C",        // el texto exacto de la etiqueta (lo único escrito que puede salir)
-//       "bloque": { "name": "…", "bottle": "…", "cap": "…", "label": "…", "label_text": "…", "rule": "…" }   // en inglés; se copia igual en todo
+//       "bloque": { "name": "…", "bottle (o body, box, bag…)": "…", "cap": "…", "label": "…", "label_text": "…", "rule": "…" }   // en inglés; se copia igual en todo
 //     },                                    // → Paso 0 (producto/producto.png; si ya existe una foto real, no se genera)
 //                                           // → si el prompt del avatar tiene la clave "product", se reemplaza por este bloque
 //     (en un B-roll, "mismaPersona": true + "referencia": "avatar/avatar.jpg" = sale el mismo avatar, p. ej. aplicándose el producto)

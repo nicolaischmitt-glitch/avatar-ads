@@ -139,7 +139,7 @@ Todo B-roll empieza por una imagen: primero su frame aquí (4 variaciones barata
    - `rule`: "the product must look exactly like this in every image: same shape, proportions, colors, materials, label design and label text".
 3. **Etiqueta definida, nunca en blanco.** Una etiqueta "lisa, sin texto" hace que el modelo la rellene a su manera. Mejor la marca en letras grandes y como mucho 2 líneas, colores sólidos, sin letra pequeña. El único texto permitido en esas imágenes es el de la etiqueta (se dice en `negative`).
 4. **Siempre se adjunta `producto/producto.png`**, también en la imagen del avatar. En el `task`: "The attached reference image is the exact product…: replicate it identically". En los B-rolls van dos imágenes: 1 = el producto, 2 = `avatar/avatar.jpg` (solo el lugar y la luz, sin la persona).
-5. **Avatar con el producto:** `hands` dice cómo lo sostiene, con la etiqueta hacia la cámara y sin taparla con los dedos, y que no tiene nada más en las manos. `negative`: "a different bottle, a changed or blank label, misspelled label text, a second bottle, extra products, other objects in the hand".
+5. **Avatar con el producto:** `hands` dice cómo lo sostiene, con la etiqueta hacia la cámara y sin taparla con los dedos, y que no tiene nada más en las manos. `negative`: "a different product, a changed or blank label, misspelled label text, a second unit of the product, extra products, other objects in the hand".
 6. **No dar pie a que invente:**
    - fuera del lugar los objetos que se parecen al producto o se confunden con la mano (en el sérum, un toallero negro terminó pegado al frasco);
    - coherencia física: si el gotero está en la mano, el frasco del lavabo está abierto y sin gotero;
