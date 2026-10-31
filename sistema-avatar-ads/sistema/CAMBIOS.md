@@ -1,5 +1,8 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.4 — 31 oct 2026
+- **Escuchar el audio de cada clip.** La revisión de clips (`checklists/revision-clips.md`) suma un caso: si un clip trae estática o ruido de fondo que los demás no tienen, se regenera solo ese. Pasa poco (en el anuncio del café, 1 de 6 clips), así que no se regenera por las dudas. La limpieza de la edición quita un zumbido leve, pero no la estática.
+
 ## 1.5.3 — 31 oct 2026
 - **Los looks ya no cambian la cara ni inventan pelo.** En el anuncio del café, el look "recién levantado" salía con más pelo y una cara un poco distinta: el prompt solo decía "la misma persona" y pedía "pelo despeinado arriba", y la IA no sabía que el avatar real tiene la frente amplia y entradas (el avatar no siempre sale como pedía su prompt). Ahora:
   - **Identidad real:** cuando el alumno guarda `avatar.jpg`, Claude la mira y escribe cómo es de verdad (cara, frente, entradas, pelo, barba). Va en cada look y en cada escena con look, y se prohíbe más o menos pelo, otras entradas u otra barba. Hasta tener esa identidad, esos prompts esperan (los demás B-rolls se generan ya).

@@ -68,7 +68,7 @@ Orden propuesto con las notas del docx, más 3 diapositivas que faltan (marcadas
 9. Buena imagen vs. mala imagen (+ las dos imágenes del docx).
 10. Prompt humano vs. prompt JSON (lado a lado, el JSON resumido; el completo va en los materiales).
 11. ➕ Producto consistente (LOCKED IN): la misma foto del producto en cada imagen, si no el producto cambia en cada toma.
-12. ➕ Los clips: 6–10 s y la misma velocidad de habla (si sobra texto, el avatar acelera).
+12. ➕ Los clips: 6–10 s y la misma velocidad de habla (si sobra texto, el avatar acelera). Escuchar el audio de cada clip: si trae estática o ruido de fondo, se regenera solo ese; pasa poco (en el café, 1 de 6).
 13. Motores: Nano Banana Pro (imagen) y Omni 1.1 (video).
 
 Correcciones al texto del docx: "Nanabanana" → Nano Banana · la frase "Eso solo nos dará resultados" quedó incompleta.

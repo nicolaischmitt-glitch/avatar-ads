@@ -16,6 +16,7 @@
 | Aparece texto o subtítulos generados | Sí |
 | Con producto físico: el producto o su etiqueta cambian respecto a `producto/producto.png` (otra forma, letras distintas, etiqueta en blanco) | Sí; si pasa en un frame de B-roll, regenera el frame antes de animarlo |
 | Voz distinta entre clips (tono, acento) | Sí, el que desentona |
+| Estática o ruido de fondo que los demás clips no tienen (pídele al usuario que escuche cada clip) | Sí, solo ese. Pasa en ~1 de cada 5 clips: no se regenera por las dudas. La limpieza de la edición quita un zumbido leve, no la estática |
 | Pausa larga o palabra estirada | No: se arregla en la edición (ritmo natural) |
 | Se queda callado al final | No: se recorta |
 
