@@ -18,9 +18,13 @@
 //     ],
 //     "producto": {   // SOLO si el anuncio muestra un producto físico (master-prompt-imagen.md, sección 7). Si no, no se pone.
 //       "texto": "ALBA / VITAMINA C",        // el texto exacto de la etiqueta (lo único escrito que puede salir)
-//       "bloque": { "name": "…", "bottle (o body, box, bag…)": "…", "cap": "…", "label": "…", "label_text": "…", "rule": "…" }   // en inglés; se copia igual en todo
+//       "bloque": { "name": "…", "bottle (o body, box, bag…)": "…", "cap": "…", "label": "…", "label_text": "…", "rule": "…" },   // en inglés; se copia igual en todo
+//       "corto": "the ALBA serum bottle",    // cómo se nombra en el prompt de corrección (inglés)
+//       "donde": { "a": "in her right hand, label facing the camera" }   // dónde queda el producto en la imagen de cada toma (inglés)
 //     },                                    // → Paso 0 (producto/producto.png; si ya existe una foto real, no se genera)
 //                                           // → si el prompt del avatar tiene la clave "product", se reemplaza por este bloque
+//                                           // → debajo de cada imagen con producto, un prompt de corrección por si el producto sale distinto
+//     (en un B-roll con producto, "producto_donde": "on the counter, next to the sink" = dónde queda, para su prompt de corrección)
 //     (en un B-roll, "mismaPersona": true + "referencia": "avatar/avatar.jpg" = sale el mismo avatar, p. ej. aplicándose el producto)
 //     "looks": {   // SOLO si la historia los pide (antes y después, un día que avanza, otros lugares u otra ropa); máx. 3. Si no, no se pone.
 //       "5am":   { "imagen": "avatar/look-5am.jpg", "desc": "…pelo, ropa, cómo se ve su piel…", "location": "…", "details": "…", "pose": "…", "light": "…" },   // en inglés
@@ -39,7 +43,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { brollImagen, brollVideo, brollMarkdown, productoImagen, lookImagen } from "./broll-plantilla.mjs";
+import { brollImagen, brollVideo, brollMarkdown, productoImagen, lookImagen, correccionMarkdown } from "./broll-plantilla.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dir = process.argv[2];
@@ -68,7 +72,7 @@ const total = plan.clips.reduce((a, c) => a + c.dur, 0);
 const tomas = Object.keys(plan.tomas ?? {}).length ? plan.tomas : { a: "avatar/avatar.jpg" };
 // Producto físico LOCKED IN (solo si el plan trae "producto"): un bloque fijo + producto/producto.png adjunta en todo.
 const PROD_IMG = "producto/producto.png";
-const prod = plan.producto ? { ref: PROD_IMG, bloque: plan.producto.bloque, texto: plan.producto.texto } : null;
+const prod = plan.producto ? { ref: PROD_IMG, bloque: plan.producto.bloque, texto: plan.producto.texto, corto: plan.producto.corto } : null;
 if (plan.producto && (!prod.bloque || !prod.texto)) avisos.push("producto: faltan \"bloque\" o \"texto\" (master-prompt-imagen.md, sección 7)");
 // Looks del avatar: la misma cara con otro pelo, ropa o estado de la piel (solo si el plan trae "looks").
 const looks = plan.looks ?? {};
@@ -81,6 +85,7 @@ const brolls = (plan.brolls ?? []).map((b) => {
   }
   if (!b.producto) return b;
   if (!prod) { avisos.push(`B-roll ${b.n}: dice "producto": true pero el plan no tiene "producto"`); return { ...b, producto: undefined }; }
+  if (!b.producto_donde) avisos.push(`B-roll ${b.n}: falta "producto_donde" (dónde queda el producto, para su prompt de corrección)`);
   return { ...b, producto: prod };
 });
 let md = `# ${plan.anuncio} — Prompts\n\n` +
@@ -121,6 +126,10 @@ for (const [k, img] of listaTomas) {
       titulo += `**Adjunta \`${PROD_IMG}\`** al generar: el producto de la imagen debe ser idéntico.\n\n`;
     }
     md += titulo + bloque(txt);
+    if (conProducto(j)) {
+      if (!plan.producto.donde?.[k]) avisos.push(`toma ${k}: falta producto.donde.${k} (dónde queda el producto, para el prompt de corrección)`);
+      md += correccionMarkdown(prod, plan.producto.donde?.[k]);
+    }
   }
   else if (fs.existsSync(path.join(dir, img))) md += titulo + "Ya tienes esta imagen: no hace falta generarla.\n";
   else avisos.push(`toma ${k}: faltan el prompt de la imagen (${rel}) y la imagen (${img})`);

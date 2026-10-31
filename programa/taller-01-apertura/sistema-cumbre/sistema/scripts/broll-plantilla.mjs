@@ -14,7 +14,8 @@
 //   mismaPersona: true                              (opcional: en la toma sale el avatar de "referencia" (su cara, pelo y ropa), p. ej. aplicándose el producto)
 //   look:      { id, desc }                          (opcional, lo pone generar-prompts.mjs a partir de "look": "<id>" del plan: sale la misma persona
 //               con otro look (pelo, ropa, cómo se ve su piel) y en el lugar de "location"; de la referencia solo se copia la cara)
-//   producto:  { ref: "producto/producto.png", bloque: {…}, texto: "ALBA / VITAMINA C" }
+//   producto:  { ref: "producto/producto.png", bloque: {…}, texto: "ALBA / VITAMINA C", corto: "the ALBA serum bottle" }
+//   producto_donde: "on the counter, next to the sink"   (con producto: dónde queda en la imagen, para el prompt de corrección)
 //              (opcional, LOCKED IN del producto físico: su imagen se adjunta como primera referencia, el bloque se copia
 //               igual en cada prompt y el único texto permitido en la toma es el de la etiqueta)
 //   action:    "…" · camera_movement: "…" · audio: "…"   (la animación, en español)
@@ -109,6 +110,22 @@ export function brollImagen(s) {
   };
 }
 
+// Corrección del producto: cuando la imagen gusta pero el producto salió un poco distinto. Nano Banana no edita solo una parte:
+// vuelve a generar toda la imagen, así que el prompt nombra todo lo que NO cambia (si no, cambia la pose). Probado con CUMBRE (31 oct 2026).
+// p = { corto, texto } · donde = dónde está el producto en esa imagen ("on the kitchen counter", "in his right hand"), en inglés
+export function correccionProducto(p, donde) {
+  const cual = p.corto ?? "the product";
+  return `Edit this image. Change only ${cual}${donde ? ` ${donde}` : ""}: replace it with the exact product shown in the attached reference image (same shape, size, colors, materials, label design and label text: ${p.texto}).\n` +
+    `Keep everything else exactly as it is, pixel for pixel: any person in it (face, expression, pose, arms and hands, clothes), every other object, the place, the framing, the camera angle and the light.\n` +
+    `Do not move, add or remove anything. Do not regenerate the scene. Only ${cual} changes.`;
+}
+
+// Bloque de prompts-flow.md con la corrección, debajo de cada imagen donde sale el producto.
+export function correccionMarkdown(p, donde) {
+  return `\n**Si todo te gusta menos el producto:** no la regeneres. En Flow, abre la imagen → editar, adjunta \`${p.ref}\` y pega esto. Máximo 2 intentos: si cambia la pose, genera 4 variaciones nuevas con el prompt de arriba.\n\n` +
+    "```text\n" + correccionProducto(p, donde) + "\n```\n";
+}
+
 // Looks del avatar (solo si la historia los pide: antes y después, un día que avanza, otros lugares u otra ropa).
 // La misma persona de avatar/avatar.jpg con otro pelo, ropa o estado de la piel. Se genera adjuntando avatar/avatar.jpg.
 // l = { id, desc, location, details, pose, light }   (desc, location, details, pose y light en inglés)
@@ -184,6 +201,7 @@ export function brollMarkdown(brolls) {
     const refs = [b.producto?.ref, b.referencia].filter(Boolean).map((r) => `\`${r}\``);
     const ref = refs.length ? ` · adjunta ${refs.join(" + ")}` : "";
     md += `\n## B-roll ${b.n} · ${b.desc}${ref} → guárdala como \`broll/broll-${b.n}.jpg\`\n\n` + j(brollImagen(b));
+    if (b.producto) md += correccionMarkdown(b.producto, b.producto_donde);
   }
   md += `\n---\n\n# Paso 4 · Videos de los B-rolls (Google Flow, sin diálogo)\n\n` +
     `Sube el frame elegido como imagen inicial y pega el JSON. Guarda cada video como \`clips/broll-01.mp4\`, \`clips/broll-02.mp4\`…\n`;

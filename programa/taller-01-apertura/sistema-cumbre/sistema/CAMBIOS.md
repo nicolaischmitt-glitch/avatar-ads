@@ -1,5 +1,10 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.2 — 31 oct 2026
+- **Prompt de corrección del producto.** A veces la imagen sale perfecta (pose, luz, encuadre) pero el producto cambia un poco. Al pedir en la edición de Flow "que el producto sea igual", Nano Banana volvía a generar toda la imagen y cambiaba la pose. Ahora, debajo de cada imagen donde sale el producto, `prompts-flow.md` trae un **prompt de corrección** ya armado para esa imagen: dice qué cambia y dónde está ("Change only the CUMBRE coffee bag on the kitchen counter") y nombra todo lo que no cambia. Se usa en Flow → editar, con `producto.png` adjunta; máximo 2 intentos. Probado en el anuncio de un café: funcionó al primer intento.
+  - En `clips-plan.json`: `producto.corto`, `producto.donde` (por toma) y `producto_donde` en cada B-roll con producto; el generador avisa si faltan.
+  - Si el producto quedó en otro lugar de la imagen, Claude mira la imagen y reescribe el prompt.
+
 ## 1.5.1 — 31 oct 2026
 - **Producto físico sin palabras del sérum.** Las plantillas de los B-rolls decían "same bottle shape" y "a different bottle… a second bottle" (venían del primer ejemplo, un frasco de sérum). Ahora dicen "product", así sirven igual para una bolsa, una caja o cualquier producto. Lo notó el propio sistema creando el anuncio de un café en bolsa.
 
