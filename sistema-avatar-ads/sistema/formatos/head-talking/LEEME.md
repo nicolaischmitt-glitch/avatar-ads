@@ -15,7 +15,7 @@ Ejemplo terminado: `ejemplo-storyboard-anuncio-03.png` (storyboard del anuncio c
 - Selfie sostenido con la mano (carro): en los gestos, "con la mano libre". Con un objeto en la mano (taza), gesticula con la otra.
 
 ### B-rolls (los propone Claude, pasos 3 y 4 de `prompts-flow.md`)
-- 2–3 por anuncio, de 6 u 8 s, sin diálogo: el producto en macro, el lugar sin personas, la situación del dolor del cliente o el resultado.
+- 2–3 por anuncio, de 4 s (son una añadidura: en pantalla duran 1,5–3 s; 6 s solo si la acción necesita tiempo), sin diálogo: el producto en macro, el lugar sin personas, la situación del dolor del cliente o el resultado.
 - **Primero el frame, después el video**: el frame se crea en Nano Banana Pro (4 variaciones, se elige una → `broll/broll-01.jpg`) y Flow lo anima (→ `clips/broll-01.mp4`). Nunca directo de texto a video: quema créditos y se ve "de IA".
 - En la edición van en `public/broll/`. Cubren cortes internos y suben el ritmo, pero el avatar sigue en cámara ≈ 60–65 % del tiempo.
 

@@ -22,7 +22,7 @@ Los 9 pasos son los mismos; cambia lo siguiente:
 
 ### 5 · Paquete de prompts
 - `clips-plan.json` **sin `clips`** (no hay clips de voz en Flow): el paquete queda en Paso 0 (producto, si hay) → Paso 1 (avatar) → Paso 3 y 4 (B-rolls).
-- **6–10 B-rolls de 6 s, uno por idea del guion y en su orden.** Mezcla: la persona (con el problema, usando el producto, el resultado) con `"mismaPersona": true` + `"referencia": "avatar/avatar.jpg"`; el producto (en la mano, en el lugar) con `"producto": true`; el uso en macro (gotas, textura); y la situación del problema (lo que no le funcionó).
+- **6–10 B-rolls, uno por idea del guion y en su orden, de 4 o 6 s:** aquí son lo principal, así que cada uno dura según la frase que sostiene (regla de duración en el paso 5 de `avatar-ads-anuncio`: hasta ~9 palabras → 4 s; más, o una acción que necesita tiempo → 6 s). Mezcla: la persona (con el problema, usando el producto, el resultado) con `"mismaPersona": true` + `"referencia": "avatar/avatar.jpg"`; el producto (en la mano, en el lugar) con `"producto": true`; el uso en macro (gotas, textura); y la situación del problema (lo que no le funcionó).
 - Cuando ella sale "mirándose al espejo", la cámara está donde está el espejo: sin marco ni reflejo visible.
 - La última toma es el producto con espacio libre para el botón.
 

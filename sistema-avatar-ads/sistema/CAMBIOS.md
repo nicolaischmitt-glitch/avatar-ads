@@ -1,5 +1,8 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.5 — 31 oct 2026
+- **Cada B-roll dura lo que necesita (menos créditos).** Antes todos los B-rolls eran de 6 u 8 s, aunque en pantalla se vean 1,5–3 s. Ahora la duración depende de su papel: si es una **añadidura** (head talking, el avatar sigue hablando) va de **4 s**; si es lo **principal** (voz en off, cada B-roll sostiene una frase), 4 s hasta ~9 palabras y 6 s si la frase es más larga. En cualquier formato, 6 s si la acción necesita tiempo para verse natural (servir, aplicarse un producto, abrir algo). Un clip de 4 s cuesta 7 créditos y uno de 6 s, 10. La regla está en el paso 5 de `avatar-ads-anuncio`, y el generador avisa si un B-roll tiene otra duración.
+
 ## 1.5.4 — 31 oct 2026
 - **Escuchar el audio de cada clip.** La revisión de clips (`checklists/revision-clips.md`) suma un caso: si un clip trae estática o ruido de fondo que los demás no tienen, se regenera solo ese. Pasa poco (en el anuncio del café, 1 de 6 clips), así que no se regenera por las dudas. La limpieza de la edición quita un zumbido leve, pero no la estática.
 
