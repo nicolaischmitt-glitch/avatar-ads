@@ -33,8 +33,8 @@
 //     "identidad": "…",   // con looks: lo que se ve DE VERDAD en avatar/avatar.jpg (Claude mira la imagen elegida y lo escribe, en inglés):
 //                         // forma de la cara, frente y entradas, cantidad y largo del pelo, barba, rasgos. Sin esto, los looks y sus B-rolls esperan.
 //     (en un B-roll, "look": "5am" = sale el mismo avatar con ese look y en el lugar de "location"; reemplaza a "mismaPersona" + "referencia")
-//     "brolls": [   // ideas de B-roll que propone Claude: sin diálogo, 4 o 6 s (regla de duración en el skill avatar-ads-anuncio, paso 5). Campos en broll-plantilla.mjs
-//       { "n": "01", "dur": 4, "desc": "Macro del producto", "referencia": "avatar/avatar.jpg", "producto": true,   // referencia: opcional (mismo lugar) · producto: true si sale el producto
+//     "brolls": [   // ideas de B-roll que propone Claude: sin diálogo, 6 s (en 4 s la acción se acelera o se corta). Campos en broll-plantilla.mjs
+//       { "n": "01", "dur": 6, "desc": "Macro del producto", "referencia": "avatar/avatar.jpg", "producto": true,   // referencia: opcional (mismo lugar) · producto: true si sale el producto
 //         "shot": "…", "subject": "…", "location": "…", "details": "…", "framing": "…", "light": "…",   // el frame (inglés)
 //         "action": "…", "camera_movement": "…", "audio": "…" }                                           // la animación (español)
 //     ]
@@ -80,7 +80,7 @@ if (plan.producto && (!prod.bloque || !prod.texto)) avisos.push("producto: falta
 const looks = plan.looks ?? {};
 if (Object.keys(looks).length > 3) avisos.push(`looks: ${Object.keys(looks).length} (máx. 3; junta los que se parezcan)`);
 const brolls = (plan.brolls ?? []).map((b) => {
-  if (![4, 6, 8].includes(b.dur)) avisos.push(`B-roll ${b.n}: duración ${b.dur} s (usa 4 o 6; ver la regla de duración)`);
+  if (b.dur !== 6) avisos.push(`B-roll ${b.n}: duración ${b.dur} s (los B-rolls van de 6 s: en menos, la acción se acelera o se corta)`);
   if (b.look) {
     const l = looks[b.look];
     if (!l) avisos.push(`B-roll ${b.n}: dice "look": "${b.look}" pero el plan no tiene ese look`);
