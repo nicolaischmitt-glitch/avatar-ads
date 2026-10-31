@@ -1,0 +1,81 @@
+{
+  "scene": {
+    "style": "UGC hiperrealista grabado con un iPhone, apariencia raw y sin editar",
+    "camera": {
+      "shot": "plano fijo",
+      "movement": "sin movimiento de cámara",
+      "framing": "mantener exactamente el mismo encuadre durante toda la toma",
+      "cuts": "una sola toma, sin cortes bruscos",
+      "reframing": false
+    },
+    "character": {
+      "reference_image": true,
+      "identity_consistency": "mantener exactamente el mismo avatar de la imagen de referencia",
+      "location_consistency": "mantener la misma ubicación y la misma iluminación",
+      "eye_contact": "contacto visual directo con la cámara"
+    },
+    "performance": {
+      "language_accent": "español con acento neutro latino",
+      "delivery": "rápida, energética y natural",
+      "tone": "seguro, confiado y persuasivo",
+      "facial_expression": "sonrisa natural, cercanía y simpatía",
+      "hand_gestures": {
+        "enabled": true,
+        "style": "gestos visibles, espontáneos y naturales con ambas manos frente al torso",
+        "synchronization": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'CUMBRE', levanta un poco la taza hacia la cámara; al decir 'de altura', sube la mano izquierda con la palma hacia abajo, como marcando algo alto; al decir 'intenso, pero sin amargura', junta el pulgar y el índice de la mano izquierda en un gesto de precisión y asiente suavemente",
+        "body_language": "postura relajada y dinámica, con movimientos fluidos de manos, muñecas y antebrazos; evitar permanecer rígido o inmóvil"
+      }
+    },
+    "dialogue": {
+      "speaker": "hombre",
+      "script": "CUMBRE es café de especialidad de altura. Tostado medio: intenso, pero sin amargura.",
+      "must_follow_exactly": true,
+      "allow_rephrasing": false,
+      "allow_additional_words": false
+    },
+    "visual_restrictions": {
+      "subtitles": false,
+      "captions": false,
+      "on_screen_text": false,
+      "text_overlays": false,
+      "titles": false,
+      "added_logos": false,
+      "watermarks": false,
+      "graphic_elements": false,
+      "visual_effects": false,
+      "transitions": false,
+      "filters": false,
+      "editing": false,
+      "style": "video completamente raw, natural y sin editar",
+      "rule": "No añadir subtítulos, textos, títulos, gráficos, efectos visuales, filtros, transiciones, animaciones ni elementos digitales. No aplicar edición ni postproducción. Mostrar únicamente al avatar hablando y gesticulando de forma natural frente a la cámara."
+    },
+    "audio": {
+      "voice_only": true,
+      "ambient_sound": false,
+      "background_noise": false,
+      "music": false,
+      "sound_effects": false,
+      "room_tone": "habitación silenciosa, sin eco ni reverberación",
+      "rule": "Se escucha únicamente la voz del avatar, clara y cercana, como grabada en una habitación silenciosa. Sin sonido ambiente, sin ruido de aire acondicionado, refrigerador, ventilador, tráfico ni zumbido eléctrico, y sin música ni efectos de sonido."
+    },
+    "continuity": {
+      "same_avatar": true,
+      "same_location": true,
+      "same_camera_framing": true,
+      "no_camera_reframing": true
+    }
+  },
+  "instructions": [
+    "Utilizar el personaje de la imagen de referencia.",
+    "Mantener contacto visual directo con la cámara.",
+    "Realizar gestos visibles y naturales con ambas manos durante el diálogo.",
+    "Sincronizar los gestos con el significado del discurso.",
+    "Evitar manos inmóviles, brazos rígidos y movimientos robóticos.",
+    "Hablar con energía y naturalidad, en español con acento neutro latino.",
+    "Respetar el diálogo palabra por palabra.",
+    "No generar subtítulos ni ningún tipo de texto en pantalla.",
+    "No añadir efectos, transiciones, filtros ni elementos visuales no solicitados.",
+    "No generar sonido ambiente, ruido de fondo, música ni efectos de sonido: solo la voz del avatar.",
+    "Mantener el mismo avatar, la misma ubicación y el mismo encuadre."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "task": "Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: the same man pouring hot water from a kettle into a glass French press with ground coffee on his kitchen counter. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad. Attached image 1 is the exact product: replicate it identically (same bottle shape, size, materials, colors, label design and label text), as described in \"product\". Attached image 2 shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone video frame, not a professional photo"
+  },
+  "subject": "his hand pouring hot water from a matte black gooseneck kettle into the glass French press; the dark coffee blooms and rises with a light foam; the open CUMBRE bag stands next to it with its label facing the camera; his torso in the dark gray t-shirt partly visible, no face",
+  "product": {
+    "name": "CUMBRE specialty ground coffee, 340 g bag (a fictional brand)",
+    "bag": "a stand-up coffee pouch (doypack) with a flat bottom gusset, about 22 cm tall and 13 cm wide (roughly the length of an adult open hand), made of matte coffee-black paper (#16110D) with a smooth, non-glossy finish, no window, standing upright, filled and naturally creased",
+    "top": "the top edge is heat-sealed straight across, with a thin solid copper (#C8833A) strip along the seal",
+    "label": "printed directly on the front of the bag, centered in its upper-middle part, flat matte print, no paper sticker",
+    "artwork": "above the text, a minimalist mountain drawn with only a few thin copper (#C8833A) lines: one continuous outline of two overlapping peaks, the taller one in the center, no fill, no shading, no sun, no other shapes",
+    "label_text": "exactly two centered lines of text and nothing else: 'CUMBRE' in large, tall, condensed cream (#F3EBDD) sans-serif capital letters (Oswald style), and below it 'CAFÉ DE ALTURA' in small copper (#C8833A) sans-serif capital letters with wide letter spacing; no other words or numbers, and no graphics besides the thin-line mountain",
+    "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, mountain drawing, label design and label text"
+  },
+  "environment": {
+    "location": "the same kitchen as the reference image, early morning",
+    "details": "the light wooden counter, the plunger lid of the French press resting beside it, a matte black ceramic mug waiting, white wall tiles",
+    "atmosphere": "real, lived-in and slightly imperfect, like a real everyday place, not a staged set or a showroom"
+  },
+  "camera": {
+    "device": "iPhone main camera, handheld, at a natural human height",
+    "framing": "handheld vertical medium close-up at counter height, the French press centered and the bag to one side",
+    "focus": "natural phone depth of field, no artificial heavy bokeh",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "the same warm kitchen lights from the reference, faint blue pre-dawn light from the window",
+    "mood": "natural and realistic, low contrast, accurate colors, no dramatic lighting"
+  },
+  "realism_rules": [
+    "must look like an ordinary frame from a phone video, not AI-generated and not a stock photo",
+    "small real-world imperfections: light dust, slight wear, small scratches, uneven surfaces, a few things slightly out of place",
+    "nothing too clean, too glossy or perfectly symmetrical",
+    "true-to-life materials, textures and reflections",
+    "if hands or skin appear: real skin texture with pores and fine lines, correct anatomy, five fingers"
+  ],
+  "negative": [
+    "any text other than the product label (CUMBRE / CAFÉ DE ALTURA), captions, subtitles, other logos or brand names, watermarks, UI elements, readable signs or screens",
+    "a different bottle, a changed or blank label, misspelled label text, extra products, a second bottle",
+    "CGI, 3D render, illustration, overly glossy or plastic surfaces, futuristic or sci-fi look",
+    "stock photo look, advertising look, studio lighting, cinematic color grading, HDR, oversaturated colors, heavy bokeh",
+    "perfect symmetry, empty sterile spaces, everything brand new",
+    "deformed hands, extra fingers, warped objects",
+    "a different person, a changed face, a likeness of any real person",
+    "a coffee machine",
+    "a second bag",
+    "steam covering the label"
+  ]
+}

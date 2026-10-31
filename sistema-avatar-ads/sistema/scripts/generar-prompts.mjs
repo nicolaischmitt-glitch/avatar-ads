@@ -22,6 +22,11 @@
 //     },                                    // → Paso 0 (producto/producto.png; si ya existe una foto real, no se genera)
 //                                           // → si el prompt del avatar tiene la clave "product", se reemplaza por este bloque
 //     (en un B-roll, "mismaPersona": true + "referencia": "avatar/avatar.jpg" = sale el mismo avatar, p. ej. aplicándose el producto)
+//     "looks": {   // SOLO si la historia los pide (antes y después, un día que avanza, otros lugares u otra ropa); máx. 3. Si no, no se pone.
+//       "5am":   { "imagen": "avatar/look-5am.jpg", "desc": "…pelo, ropa, cómo se ve su piel…", "location": "…", "details": "…", "pose": "…", "light": "…" },   // en inglés
+//       "listo": { "imagen": "avatar/avatar.jpg", "desc": "…" }   // el look de quien habla a cámara usa la imagen del avatar: no se genera aparte
+//     },                                    // → en el Paso 1, cada look con imagen propia se genera adjuntando avatar/avatar.jpg
+//     (en un B-roll, "look": "5am" = sale el mismo avatar con ese look y en el lugar de "location"; reemplaza a "mismaPersona" + "referencia")
 //     "brolls": [   // ideas de B-roll que propone Claude: sin diálogo, 6 u 8 s. Campos en broll-plantilla.mjs
 //       { "n": "01", "dur": 6, "desc": "Macro del producto", "referencia": "avatar/avatar.jpg", "producto": true,   // referencia: opcional (mismo lugar) · producto: true si sale el producto
 //         "shot": "…", "subject": "…", "location": "…", "details": "…", "framing": "…", "light": "…",   // el frame (inglés)
@@ -34,7 +39,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { brollImagen, brollVideo, brollMarkdown, productoImagen } from "./broll-plantilla.mjs";
+import { brollImagen, brollVideo, brollMarkdown, productoImagen, lookImagen } from "./broll-plantilla.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dir = process.argv[2];
@@ -65,7 +70,15 @@ const tomas = Object.keys(plan.tomas ?? {}).length ? plan.tomas : { a: "avatar/a
 const PROD_IMG = "producto/producto.png";
 const prod = plan.producto ? { ref: PROD_IMG, bloque: plan.producto.bloque, texto: plan.producto.texto } : null;
 if (plan.producto && (!prod.bloque || !prod.texto)) avisos.push("producto: faltan \"bloque\" o \"texto\" (master-prompt-imagen.md, sección 7)");
+// Looks del avatar: la misma cara con otro pelo, ropa o estado de la piel (solo si el plan trae "looks").
+const looks = plan.looks ?? {};
+if (Object.keys(looks).length > 3) avisos.push(`looks: ${Object.keys(looks).length} (máx. 3; junta los que se parezcan)`);
 const brolls = (plan.brolls ?? []).map((b) => {
+  if (b.look) {
+    const l = looks[b.look];
+    if (!l) avisos.push(`B-roll ${b.n}: dice "look": "${b.look}" pero el plan no tiene ese look`);
+    else b = { ...b, referencia: l.imagen, mismaPersona: true, look: { id: b.look, desc: l.desc } };
+  }
   if (!b.producto) return b;
   if (!prod) { avisos.push(`B-roll ${b.n}: dice "producto": true pero el plan no tiene "producto"`); return { ...b, producto: undefined }; }
   return { ...b, producto: prod };
@@ -111,6 +124,18 @@ for (const [k, img] of listaTomas) {
   }
   else if (fs.existsSync(path.join(dir, img))) md += titulo + "Ya tienes esta imagen: no hace falta generarla.\n";
   else avisos.push(`toma ${k}: faltan el prompt de la imagen (${rel}) y la imagen (${img})`);
+}
+// Looks con imagen propia (los que no son la imagen de una toma): misma persona, otro look
+const baseLook = listaTomas[0][1];
+const looksAparte = Object.entries(looks).filter(([, l]) => !Object.values(tomas).includes(l.imagen));
+if (looksAparte.length) md += `\n**Looks del avatar:** la misma persona con otro look. Genera cada uno **adjuntando \`${baseLook}\`** (la cara tiene que ser idéntica) y guárdalo con el nombre que se indica. Si la cara cambia, regenera.\n`;
+for (const [id, l] of looksAparte) {
+  if (!l.imagen || !l.desc || !l.location) { avisos.push(`look ${id}: faltan "imagen", "desc" o "location"`); continue; }
+  const txt = JSON.stringify(lookImagen(l), null, 2);
+  fs.mkdirSync(path.join(dir, "avatar"), { recursive: true });
+  fs.writeFileSync(path.join(dir, "avatar", `prompt-look-${id}.json`), txt + "\n");
+  md += `\n## Look ${id} · adjunta \`${baseLook}\` → guárdala como \`${l.imagen}\`\n\n` +
+    (fs.existsSync(path.join(dir, l.imagen)) ? "Ya tienes esta imagen: no hace falta generarla.\n" : bloque(txt));
 }
 
 // Paso 2 · clips de voz (no hay en el formato voz en off)

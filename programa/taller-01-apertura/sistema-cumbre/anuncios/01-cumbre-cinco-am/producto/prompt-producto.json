@@ -1,0 +1,37 @@
+{
+  "task": "Generate one photorealistic reference photo of a single product, front view, to be used as the exact visual reference of this product in every later image. The product must match \"product\" exactly; the label must be perfectly legible and correctly spelled.",
+  "output": {
+    "aspect_ratio": "1:1",
+    "look": "clean, realistic product reference photo taken with a phone, true-to-life colors"
+  },
+  "product": {
+    "name": "CUMBRE specialty ground coffee, 340 g bag (a fictional brand)",
+    "bag": "a stand-up coffee pouch (doypack) with a flat bottom gusset, about 22 cm tall and 13 cm wide (roughly the length of an adult open hand), made of matte coffee-black paper (#16110D) with a smooth, non-glossy finish, no window, standing upright, filled and naturally creased",
+    "top": "the top edge is heat-sealed straight across, with a thin solid copper (#C8833A) strip along the seal",
+    "label": "printed directly on the front of the bag, centered in its upper-middle part, flat matte print, no paper sticker",
+    "artwork": "above the text, a minimalist mountain drawn with only a few thin copper (#C8833A) lines: one continuous outline of two overlapping peaks, the taller one in the center, no fill, no shading, no sun, no other shapes",
+    "label_text": "exactly two centered lines of text and nothing else: 'CUMBRE' in large, tall, condensed cream (#F3EBDD) sans-serif capital letters (Oswald style), and below it 'CAFÉ DE ALTURA' in small copper (#C8833A) sans-serif capital letters with wide letter spacing; no other words or numbers, and no graphics besides the thin-line mountain",
+    "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, mountain drawing, label design and label text"
+  },
+  "composition": {
+    "view": "straight front view at the product's mid-height, the label facing the camera and centered",
+    "framing": "the whole product in frame, centered, filling about 60% of the image height, with even space around it",
+    "surface": "standing upright on a plain light warm-gray matte surface, a soft natural contact shadow under it",
+    "background": "plain light warm-gray seamless background, nothing else in the image"
+  },
+  "lighting": {
+    "key": "soft, even, diffused daylight from the front, like a window behind the camera",
+    "mood": "neutral and accurate colors, low contrast, soft natural highlights, no harsh reflections over the label"
+  },
+  "realism_rules": [
+    "true-to-life materials with their real texture, transparency and reflections",
+    "real printed label, flat print, crisp letters",
+    "correct proportions, perfectly upright, no distortion"
+  ],
+  "negative": [
+    "any text other than the label (CUMBRE / CAFÉ DE ALTURA), misspelled letters, extra lines of small text, numbers, icons, barcodes",
+    "a second product, props, hands, people, flowers, splashes, decorations",
+    "a different shape, color, cap or label than described in \"product\"",
+    "3D render, CGI, illustration, heavy studio advertising look, dramatic lighting, reflections covering the label"
+  ]
+}

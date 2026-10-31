@@ -12,6 +12,8 @@
 //   negative:  ["…"]                               (opcional, lo específico de esta toma)
 //   referencia: "avatar/avatar.jpg"                 (opcional: adjuntarla en Nano Banana para que el producto o el lugar sean los mismos)
 //   mismaPersona: true                              (opcional: en la toma sale el avatar de "referencia" (su cara, pelo y ropa), p. ej. aplicándose el producto)
+//   look:      { id, desc }                          (opcional, lo pone generar-prompts.mjs a partir de "look": "<id>" del plan: sale la misma persona
+//               con otro look (pelo, ropa, cómo se ve su piel) y en el lugar de "location"; de la referencia solo se copia la cara)
 //   producto:  { ref: "producto/producto.png", bloque: {…}, texto: "ALBA / VITAMINA C" }
 //              (opcional, LOCKED IN del producto físico: su imagen se adjunta como primera referencia, el bloque se copia
 //               igual en cada prompt y el único texto permitido en la toma es el de la etiqueta)
@@ -54,7 +56,9 @@ export function brollImagen(s) {
   let ref = s.referencia
     ? ` The attached reference image shows the product/place: keep it exactly the same (shape, materials, colors, label), but do not include the person from the reference.`
     : "";
-  const persona = ` shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.`;
+  const persona = s.look
+    ? ` shows the same person: keep exactly the same face, facial features, skin tone, age and body, so it is clearly the same person. Only the look changes in this scene, as described in "person_look", and the place is the one in "environment", even if it differs from the reference.`
+    : ` shows the same person and place: keep her or his exact face, skin, hair, clothes, the place and the light, as if this frame came from the same phone video.`;
   if (s.mismaPersona && s.referencia && !p) ref = ` The attached reference image${persona}`;
   if (p) ref = ` Attached image 1 is the exact product: replicate it identically (same bottle shape, size, materials, colors, label design and label text), as described in "product".` +
     (s.referencia ? (s.mismaPersona ? ` Attached image 2${persona}` : ` Attached image 2 only shows the place: match its location and light, but do not include the person from it.`) : "");
@@ -66,6 +70,7 @@ export function brollImagen(s) {
       look: "raw, unedited iPhone video frame, not a professional photo",
     },
     subject: s.subject,
+    ...(s.look ? { person_look: s.look.desc } : {}),
     ...(p ? { product: p.bloque } : {}),
     environment: {
       location: s.location,
@@ -98,7 +103,52 @@ export function brollImagen(s) {
       "perfect symmetry, empty sterile spaces, everything brand new",
       "deformed hands, extra fingers, warped objects",
       s.mismaPersona ? "a different person, a changed face, a likeness of any real person" : "recognizable faces, a likeness of any real person",
+      ...(s.look ? ["the hair, clothes or place of the reference image when they differ from \"person_look\" and \"environment\""] : []),
       ...(s.negative ?? []),
+    ],
+  };
+}
+
+// Looks del avatar (solo si la historia los pide: antes y después, un día que avanza, otros lugares u otra ropa).
+// La misma persona de avatar/avatar.jpg con otro pelo, ropa o estado de la piel. Se genera adjuntando avatar/avatar.jpg.
+// l = { id, desc, location, details, pose, light }   (desc, location, details, pose y light en inglés)
+export function lookImagen(l) {
+  return {
+    task: "Generate one photorealistic still frame from a casual vertical video recorded with an iPhone, showing the same person as in the attached reference image. Keep exactly the same face, facial features, skin tone, age and body, so it is clearly the same person. Change only the look described in \"person_look\" and the place described in \"environment\". It will be the reference of this person's look in later frames.",
+    output: {
+      aspect_ratio: "9:16",
+      orientation: "vertical",
+      look: "raw, unedited iPhone video frame, not a professional photo",
+    },
+    person_look: l.desc,
+    pose_and_expression: l.pose ?? "natural and unposed, face clearly visible and well lit, hands relaxed with all fingers anatomically correct",
+    environment: {
+      location: l.location,
+      details: l.details,
+      atmosphere: "real, lived-in and slightly imperfect, not a staged set",
+    },
+    camera: {
+      device: "iPhone, handheld or propped, at a natural human height",
+      framing: "medium shot from the waist up, the face clearly visible, so the hair, clothes and skin can be seen",
+      focus: "face sharp, natural phone depth of field, no artificial heavy bokeh",
+      quality: "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors",
+    },
+    lighting: {
+      key: l.light ?? "soft natural light falling evenly on the face from the front",
+      mood: "natural and realistic, low contrast, accurate skin tones",
+    },
+    realism_rules: [
+      "the same person as the reference: identical face shape, eyes, nose, mouth, skin tone, age and build",
+      "real skin texture with pores and fine lines, no smoothing, no beauty filter",
+      "natural fabric folds and wrinkles on the clothes",
+      "correct human anatomy: two hands, five fingers each",
+    ],
+    negative: [
+      "a different person, a changed face, different age, different skin tone, a likeness of any real person",
+      "the hair, clothes or place of the reference image when they differ from \"person_look\" and \"environment\"",
+      "text, captions, logos, brand names, watermarks, UI elements, readable signs or screens",
+      "smooth or airbrushed skin, 3D render, CGI, stock photo look, studio lighting, cinematic color grading, heavy bokeh",
+      "deformed hands, extra fingers, asymmetrical eyes, warped face",
     ],
   };
 }

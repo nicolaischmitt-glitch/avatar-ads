@@ -17,7 +17,8 @@ Los 9 pasos son los mismos; cambia lo siguiente:
 - Sin cifras ni promesas de resultado ("en 7 días", "elimina manchas").
 
 ### 4 · Avatar y producto
-- **La persona igual se crea como avatar** (imagen 9:16) aunque no hable: es la referencia de su cara en todos los B-rolls donde sale. Si el anuncio muestra un producto físico, primero el producto LOCKED IN (sección 7 de `master-prompt-imagen.md`).
+- **La persona igual se crea como avatar** (imagen 9:16) aunque no hable: es la referencia de su cara en todos los B-rolls donde sale.
+- Este formato casi siempre cuenta un antes y después o un día que avanza: revisa si hacen falta **looks** (sección 8 de `master-prompt-imagen.md`). Por ejemplo, "un día en su vida": la misma persona recién levantada en casa, entrenando y en la oficina = 3 looks, y cada B-roll lleva `"look"` con su lugar en `location`. Si el anuncio muestra un producto físico, primero el producto LOCKED IN (sección 7 de `master-prompt-imagen.md`).
 
 ### 5 · Paquete de prompts
 - `clips-plan.json` **sin `clips`** (no hay clips de voz en Flow): el paquete queda en Paso 0 (producto, si hay) → Paso 1 (avatar) → Paso 3 y 4 (B-rolls).

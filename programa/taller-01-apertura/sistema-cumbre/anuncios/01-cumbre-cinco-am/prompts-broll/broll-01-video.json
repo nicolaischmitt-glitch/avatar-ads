@@ -1,0 +1,14 @@
+{
+  "scene": {
+    "duration_seconds": 6,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+    "action": "el celular vibra en la mesa de noche; él estira el brazo, apaga la alarma con el pulgar y se sienta en el borde de la cama frotándose la cara con una mano",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente a la misma persona (cara, piel, pelo y ropa), el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "audio": "solo la vibración suave del celular y el silencio de la madrugada, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
+  }
+}

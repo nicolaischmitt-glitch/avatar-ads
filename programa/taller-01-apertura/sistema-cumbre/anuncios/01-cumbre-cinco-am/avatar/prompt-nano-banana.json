@@ -1,0 +1,75 @@
+{
+  "task": "Generate one photorealistic still frame in the style of a casual vertical selfie video an original fictional man films of himself with his phone front camera, in his kitchen at five in the morning, to talk to his audience about the coffee he drinks every morning. It will be used as the first frame of a talking-head video, so it should feel candid and authentic, like a frame from an everyday phone video. The attached reference image is the exact coffee bag on the counter behind him: replicate it identically (same bag shape, size, materials, colors, mountain drawing, label design and label text), as described in \"product\".",
+  "output": {
+    "aspect_ratio": "9:16",
+    "orientation": "vertical",
+    "look": "raw, unedited iPhone front-camera video frame, not a professional photo"
+  },
+  "product": {
+    "name": "CUMBRE specialty ground coffee, 340 g bag (a fictional brand)",
+    "bag": "a stand-up coffee pouch (doypack) with a flat bottom gusset, about 22 cm tall and 13 cm wide (roughly the length of an adult open hand), made of matte coffee-black paper (#16110D) with a smooth, non-glossy finish, no window, standing upright, filled and naturally creased",
+    "top": "the top edge is heat-sealed straight across, with a thin solid copper (#C8833A) strip along the seal",
+    "label": "printed directly on the front of the bag, centered in its upper-middle part, flat matte print, no paper sticker",
+    "artwork": "above the text, a minimalist mountain drawn with only a few thin copper (#C8833A) lines: one continuous outline of two overlapping peaks, the taller one in the center, no fill, no shading, no sun, no other shapes",
+    "label_text": "exactly two centered lines of text and nothing else: 'CUMBRE' in large, tall, condensed cream (#F3EBDD) sans-serif capital letters (Oswald style), and below it 'CAFÉ DE ALTURA' in small copper (#C8833A) sans-serif capital letters with wide letter spacing; no other words or numbers, and no graphics besides the thin-line mountain",
+    "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, mountain drawing, label design and label text"
+  },
+  "subject": {
+    "identity": "an original, non-famous Latin American man, 34 years old, an entrepreneur who trains every morning",
+    "face": "light-olive warm skin with natural texture (visible pores, slight unevenness, faint under-eye lines from waking up early), dark brown eyes, defined brows, slight natural facial asymmetry",
+    "hair": "short dark brown hair, slightly messy from just waking up, a few strands out of place",
+    "facial_hair": "short, neatly trimmed dark beard",
+    "accessories": "a plain black sports watch on his left wrist, no other jewelry, no glasses",
+    "build": "athletic, fit build from regular training, not bulky"
+  },
+  "wardrobe": {
+    "top": "plain dark heather-gray cotton training t-shirt, crew neck, soft fabric, natural fabric wrinkles",
+    "style": "ready to train, simple and functional, nothing flashy, no visible logos"
+  },
+  "pose_and_expression": {
+    "position": "standing at his kitchen counter, upper body leaning very slightly toward the camera",
+    "gaze": "looking directly into the lens, making eye contact with the viewer",
+    "expression": "calm, confident and friendly, a subtle natural half-smile, as if about to start talking; mouth closed or barely parted, relaxed jaw",
+    "hands": "his right hand holds a matte black ceramic coffee mug with freshly served black coffee at chest height, fingers through the handle, a faint wisp of steam; his left hand rests relaxed on the counter edge in the lower part of the frame; fingers relaxed, all fingers anatomically correct and fully visible; nothing else in his hands",
+    "posture": "shoulders relaxed and square to the camera, natural and unposed"
+  },
+  "environment": {
+    "location": "his modern but lived-in home kitchen at five in the morning, before sunrise",
+    "background": "a light wooden counter behind him with the coffee bag standing upright slightly to one side of his shoulder, label facing the camera, next to a glass French press half full of coffee; white rectangular wall tiles; a small green plant; a window in the back wall showing a deep blue pre-dawn sky; softly in focus, uncluttered",
+    "foreground": "the edge of the counter at the lower edge of the frame with a plate holding a half-eaten piece of toast, slightly out of focus",
+    "atmosphere": "tidy, real, lived-in home kitchen, quiet early morning, not a staged studio set"
+  },
+  "camera": {
+    "device": "iPhone front camera propped against a shelf on the counter in front of him at chest-to-eye height, slightly below eye level",
+    "lens": "wide-angle selfie lens (about 24mm equivalent) with its natural mild perspective",
+    "framing": "medium close-up from the waist up, subject centered horizontally; his head sits in the upper-middle of the frame (eyes at about 38% of the frame height from the top), leaving clean empty space above his head for on-screen graphics",
+    "focus": "face and mug sharp, the coffee bag label readable, background softly in focus as a phone would render it (no artificial heavy bokeh)",
+    "quality": "1080x1920 vertical video frame, slight phone sensor noise, mild compression, true-to-life colors"
+  },
+  "lighting": {
+    "key": "soft, diffused warm-white light from a ceiling lamp and the under-cabinet lights on the cabinets directly in front of him, behind the phone, lighting his whole face evenly from the front",
+    "fill": "faint cool blue pre-dawn light from the window behind him, very soft, never backlighting his face",
+    "mood": "warm, calm, early-morning and realistic; both sides of the face equally lit with the same brightness and no side shadows, only very soft natural shading under the chin and nose; accurate skin tones, low contrast"
+  },
+  "realism_rules": [
+    "natural and authentic, like an everyday phone video, not a stock photo",
+    "real skin texture, no smoothing, no beauty filter, no plastic or waxy skin",
+    "natural fabric folds and wrinkles on the t-shirt",
+    "correct human anatomy: two hands, five fingers each, natural proportions, a natural grip on the mug handle",
+    "realistic eyes with natural catchlights from the light in front of him",
+    "even, symmetrical illumination on the face, as when someone films himself facing the kitchen lights",
+    "the coffee bag is identical to the attached product image, at a realistic size on the counter"
+  ],
+  "negative": [
+    "text, captions, subtitles, logos, watermarks, UI elements; any text other than the coffee bag label (CUMBRE / CAFÉ DE ALTURA)",
+    "a different bag, a changed or blank label, a missing or different mountain drawing, misspelled label text, a second bag, extra coffee packages, text or logos on the mug",
+    "side lighting, split lighting, one half of the face darker than the other, strong shadows on one side of the face, a window beside him lighting the face from the side",
+    "backlighting, silhouette, overexposed window",
+    "studio lighting, ring light reflections, cinematic color grading, heavy bokeh",
+    "extra or deformed fingers, distorted hands, a floating or deformed mug, asymmetrical eyes, warped face",
+    "smooth or airbrushed skin, 3D render, cartoon, illustration, CGI look",
+    "suit, shirt with collar, gym equipment in the kitchen, sweat",
+    "big smile showing teeth, exaggerated expression, posing",
+    "cluttered counter, coffee machines, other people, mirrors"
+  ]
+}

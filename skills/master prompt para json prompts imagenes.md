@@ -147,3 +147,16 @@ Todo B-roll empieza por una imagen: primero su frame aquí (4 variaciones barata
 7. **Control antes de animar:** cada imagen se compara con `producto.png`. Si el producto o la etiqueta cambian, se regenera esa imagen (una imagen cuesta mucho menos que un video).
 
 **En el generador** (`generar-prompts.mjs`): `producto` en `clips-plan.json` con el bloque y el texto de la etiqueta → arma el Paso 0, copia el bloque en el prompt del avatar (si ese JSON tiene la clave `product`) y en cada B-roll con `"producto": true`. Ejemplo completo: `videos-landing/08-ejemplo-producto-serum/` (sérum ALBA; su `generar-prompts.mjs` y `prompts-flow.md`). En el kit, el formato de `producto` está en la cabecera de `sistema/scripts/generar-prompts.mjs`.
+
+## 8. Looks del avatar (solo si la historia los pide)
+**Por defecto, un solo look.** Si alguien habla a cámara desde un lugar (un profesor, una dentista, un VSL), si los B-rolls no muestran a la persona, o si la muestran en el mismo momento y lugar (aplicándose el producto en el mismo baño), esta sección **no se usa** y todo sigue igual.
+**Cuándo se activa:** cuando el guion pide que la misma persona se vea distinta: un **antes y después** (cansada → con brillo, despeinado → arreglado), un **día que avanza** (la alarma de las 5, el gimnasio, la oficina) o la misma persona **en otros lugares o con otra ropa**. Máximo 3 looks.
+**Por qué existe** (anuncio del café CUMBRE, 30 oct 2026): la imagen del avatar fija su pelo y su ropa. Si el avatar se creó "despeinado porque se acaba de levantar", salía así en todas las escenas, y una escena "con la misma persona" copiaba también el lugar, así que no podía estar en el gimnasio.
+
+**Cómo funciona:** se separa **quién es** de **cómo se ve**.
+1. **La identidad** (cara, rasgos, tono de piel, edad, cuerpo) sale de `avatar/avatar.jpg` y no cambia nunca.
+2. **El look** (pelo, ropa, cómo se ve su piel en ese momento) cambia según el momento de la historia. Cada look se describe en una línea (`desc`, en inglés: "hair messy and flattened on one side, faded gray cotton t-shirt, sleepy eyes, no shine on the skin").
+3. **La imagen del avatar es el look de quien habla a cámara**, el que encaja con el mensaje (casi siempre el del después: el que ya tiene el resultado). Los demás looks se generan **adjuntando `avatar/avatar.jpg`**, con el prompt que arma el generador (`lookImagen`): misma cara, otro look, otro lugar. Si la cara cambia, se regenera.
+4. **Cada escena dice qué look usa.** De la referencia solo se copia la cara; el pelo y la ropa salen del look, y el lugar, de la escena. Un look de ropa distinta es otro look (pijama → ropa de entrenar → camisa = 3 looks).
+
+**En el generador** (`generar-prompts.mjs`): `looks` en `clips-plan.json` (`imagen`, `desc`, `location`, `details`, `pose`, `light`); el look de quien habla apunta a `avatar/avatar.jpg` y no se genera aparte. En cada B-roll, `"look": "<id>"` reemplaza a `"mismaPersona"` + `"referencia"`.

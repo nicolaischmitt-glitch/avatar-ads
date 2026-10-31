@@ -1,0 +1,182 @@
+{
+  "anuncio": "Anuncio 01 — CUMBRE a las cinco",
+  "speaker": "hombre",
+  "acento": "neutro latino",
+  "tomas": { "a": "avatar/avatar.jpg" },
+  "producto": {
+    "texto": "CUMBRE / CAFÉ DE ALTURA",
+    "bloque": {
+      "name": "CUMBRE specialty ground coffee, 340 g bag (a fictional brand)",
+      "bag": "a stand-up coffee pouch (doypack) with a flat bottom gusset, about 22 cm tall and 13 cm wide (roughly the length of an adult open hand), made of matte coffee-black paper (#16110D) with a smooth, non-glossy finish, no window, standing upright, filled and naturally creased",
+      "top": "the top edge is heat-sealed straight across, with a thin solid copper (#C8833A) strip along the seal",
+      "label": "printed directly on the front of the bag, centered in its upper-middle part, flat matte print, no paper sticker",
+      "artwork": "above the text, a minimalist mountain drawn with only a few thin copper (#C8833A) lines: one continuous outline of two overlapping peaks, the taller one in the center, no fill, no shading, no sun, no other shapes",
+      "label_text": "exactly two centered lines of text and nothing else: 'CUMBRE' in large, tall, condensed cream (#F3EBDD) sans-serif capital letters (Oswald style), and below it 'CAFÉ DE ALTURA' in small copper (#C8833A) sans-serif capital letters with wide letter spacing; no other words or numbers, and no graphics besides the thin-line mountain",
+      "rule": "the product must look exactly like this in every image: same shape, proportions, colors, materials, mountain drawing, label design and label text"
+    }
+  },
+  "clips": [
+    {
+      "n": "01", "dur": 8, "toma": "a", "desc": "Hook",
+      "texto": "Si te levantas a las cinco para ganarle al día, no lo empieces con un café cualquiera.",
+      "gestos": "sostiene la taza con la mano derecha a la altura del pecho durante todo el clip y gesticula solo con la mano izquierda; al decir 'a las cinco', levanta la mano izquierda mostrando los cinco dedos; al decir 'ganarle al día', cierra la mano izquierda en un puño suave y la mueve un poco hacia delante; al decir 'un café cualquiera', mueve la mano izquierda con la palma hacia abajo hacia un lado, como descartando algo"
+    },
+    {
+      "n": "02", "dur": 10, "toma": "a", "desc": "El contraste",
+      "texto": "Entrenas, cuidas lo que comes, te exiges en todo… y tu primer café es uno instantáneo, amargo, que ni disfrutas.",
+      "gestos": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'Entrenas', 'cuidas lo que comes' y 'te exiges en todo', cuenta con los dedos de la mano izquierda: uno, dos y tres; al decir 'instantáneo, amargo', hace una mueca leve de disgusto y mueve la mano izquierda de lado a lado con la palma hacia abajo; al decir 'que ni disfrutas', encoge levemente los hombros"
+    },
+    {
+      "n": "03", "dur": 8, "toma": "a", "desc": "El producto",
+      "texto": "CUMBRE es café de especialidad de altura. Tostado medio: intenso, pero sin amargura.",
+      "gestos": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'CUMBRE', levanta un poco la taza hacia la cámara; al decir 'de altura', sube la mano izquierda con la palma hacia abajo, como marcando algo alto; al decir 'intenso, pero sin amargura', junta el pulgar y el índice de la mano izquierda en un gesto de precisión y asiente suavemente"
+    },
+    {
+      "n": "04", "dur": 8, "toma": "a", "desc": "Fácil de preparar",
+      "texto": "Y ya viene molido: lo preparas igual que siempre, en tu cafetera o en tu prensa francesa.",
+      "gestos": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'ya viene molido', abre la mano izquierda con la palma hacia arriba; al decir 'igual que siempre', hace un pequeño movimiento tranquilo con la mano izquierda, restándole importancia; al decir 'en tu cafetera o en tu prensa francesa', mueve la mano izquierda hacia un lado y luego hacia el otro, como mostrando dos opciones"
+    },
+    {
+      "n": "05", "dur": 8, "toma": "a", "desc": "El ritual",
+      "texto": "Es tu ritual antes de que empiece todo. Y merece estar a la altura de tu día.",
+      "gestos": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'tu ritual', lleva la mano izquierda al pecho un instante; al decir 'antes de que empiece todo', abre la mano izquierda hacia delante; al decir 'a la altura de tu día', sube la mano izquierda con la palma hacia abajo hasta la altura del hombro"
+    },
+    {
+      "n": "06", "dur": 8, "toma": "a", "desc": "CTA",
+      "texto": "Gánale al día desde la primera taza. Toca el botón de abajo y pide tu CUMBRE.",
+      "gestos": "sostiene la taza con la mano derecha durante todo el clip y gesticula solo con la mano izquierda; al decir 'desde la primera taza', levanta un poco la taza hacia la cámara, como un brindis breve; al decir 'Toca el botón de abajo', señala hacia abajo con el índice de la mano izquierda; al decir 'pide tu CUMBRE', asiente con una media sonrisa"
+    }
+  ],
+  "brolls": [
+    {
+      "n": "01", "dur": 6, "desc": "Alarma a las 5 (hook)", "referencia": "avatar/avatar.jpg", "mismaPersona": true,
+      "shot": "the same man in bed in his dark bedroom before sunrise, reaching for his phone on the nightstand to turn off the alarm",
+      "subject": "the same man from the reference, lying in bed under a gray duvet, propping himself up on one elbow as his right hand reaches for the phone glowing on the nightstand; sleepy but determined face, messy hair; the phone screen glows without readable content",
+      "location": "his simple bedroom at five in the morning, still dark (not the kitchen from the reference image)",
+      "details": "a wooden nightstand with the glowing phone face up and a glass of water, rumpled gray bedsheets, a window with closed curtains and a faint blue light at their edge, the dark gray t-shirt from the reference",
+      "framing": "handheld vertical shot from beside the bed at mattress height, medium shot of his upper body and the nightstand",
+      "light": "the cool glow of the phone screen and the faint blue pre-dawn light from the curtains, dim but his face clearly visible",
+      "negative": ["the kitchen from the reference image", "a readable clock or readable screen", "a woman or another person in the bed", "pitch black frame"],
+      "action": "el celular vibra en la mesa de noche; él estira el brazo, apaga la alarma con el pulgar y se sienta en el borde de la cama frotándose la cara con una mano",
+      "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+      "audio": "solo la vibración suave del celular y el silencio de la madrugada, sin música ni voces"
+    },
+    {
+      "n": "02", "dur": 6, "desc": "Desayuno sencillo (cuidas lo que comes)", "referencia": "avatar/avatar.jpg", "mismaPersona": true,
+      "shot": "the same man at his kitchen counter preparing a simple healthy breakfast, slicing a banana over a bowl of oatmeal",
+      "subject": "the same man from the reference, seen from the chest down to the counter and slightly from the side, his hands slicing a banana with a small knife over a ceramic bowl of oatmeal, the black sports watch on his wrist",
+      "location": "the same kitchen as the reference image, early morning",
+      "details": "the light wooden counter, a white ceramic bowl of oatmeal, a small wooden cutting board, a few blueberries, white wall tiles",
+      "framing": "handheld vertical close-medium shot of his hands, the bowl and his torso in the dark gray t-shirt, his face partly out of frame at the top",
+      "light": "the same warm kitchen lights from the reference, plus faint blue pre-dawn light from the window",
+      "negative": ["the coffee bag", "packaged food with labels", "protein powder tubs"],
+      "action": "corta rodajas de plátano sobre el bowl de avena con movimientos tranquilos y precisos",
+      "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+      "audio": "solo el sonido suave del cuchillo sobre la tabla y el ambiente silencioso de la cocina, sin música ni voces"
+    },
+    {
+      "n": "03", "dur": 6, "desc": "El café de siempre: instantáneo (contraste)",
+      "shot": "a close-up of a hand stirring instant coffee granules into hot water in a plain white mug",
+      "subject": "a man's hand with a cheap metal teaspoon stirring dark instant coffee in a plain white ceramic mug, a few undissolved granules on the surface; next to it an open generic glass jar of instant coffee granules with no label",
+      "location": "a plain countertop in a dull, ordinary kitchen corner",
+      "details": "a few spilled coffee granules on the counter, a cheap electric kettle partly in frame, a crumpled paper napkin",
+      "framing": "handheld vertical close-up from slightly above, the mug centered, no face in frame",
+      "light": "flat, cold overhead fluorescent light, slightly dull colors",
+      "negative": ["any coffee bag", "labels or brand names on the jar or mug", "a face", "steam art"],
+      "action": "la cuchara gira dentro de la taza y los gránulos se disuelven de a poco en el agua oscura",
+      "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+      "audio": "solo el tintineo de la cuchara contra la taza, sin música ni voces"
+    },
+    {
+      "n": "04", "dur": 6, "desc": "Abre la bolsa CUMBRE (CUMBRE es…)", "referencia": "avatar/avatar.jpg", "mismaPersona": true, "producto": true,
+      "shot": "the same man's hands scooping ground coffee out of the open CUMBRE bag on his kitchen counter",
+      "subject": "the CUMBRE bag standing on the counter with its top seal cut open and folded down once, label and mountain drawing facing the camera and fully visible; his right hand dips a small metal measuring spoon into the bag and lifts out dark, evenly ground coffee; the black watch on his wrist",
+      "location": "the same kitchen as the reference image, early morning",
+      "details": "the light wooden counter, the empty glass French press next to the bag, white wall tiles, the plant softly out of focus",
+      "framing": "handheld vertical close-up of the bag and his hand at counter height, the bag centered and upright, his torso in the dark gray t-shirt partly visible, no face",
+      "light": "the same warm kitchen lights from the reference, falling on the front of the bag so the label is clear",
+      "negative": ["a sealed or different bag", "coffee beans instead of ground coffee", "spilled coffee covering the label"],
+      "action": "mete la cuchara medidora en la bolsa abierta, saca una cucharada de café molido y la levanta despacio; la bolsa no se mueve y la etiqueta queda siempre de frente",
+      "camera_movement": "acercamiento muy lento de frente a la bolsa, sin girar alrededor de ella",
+      "audio": "solo el roce suave de la cuchara con el café y la bolsa de papel, sin música ni voces"
+    },
+    {
+      "n": "05", "dur": 6, "desc": "Prepara en la prensa francesa (ya viene molido)", "referencia": "avatar/avatar.jpg", "mismaPersona": true, "producto": true,
+      "shot": "the same man pouring hot water from a kettle into a glass French press with ground coffee on his kitchen counter",
+      "subject": "his hand pouring hot water from a matte black gooseneck kettle into the glass French press; the dark coffee blooms and rises with a light foam; the open CUMBRE bag stands next to it with its label facing the camera; his torso in the dark gray t-shirt partly visible, no face",
+      "location": "the same kitchen as the reference image, early morning",
+      "details": "the light wooden counter, the plunger lid of the French press resting beside it, a matte black ceramic mug waiting, white wall tiles",
+      "framing": "handheld vertical medium close-up at counter height, the French press centered and the bag to one side",
+      "light": "the same warm kitchen lights from the reference, faint blue pre-dawn light from the window",
+      "negative": ["a coffee machine", "a second bag", "steam covering the label"],
+      "action": "vierte el agua caliente despacio en la prensa; el café molido sube y forma una espuma oscura; se ve un poco de vapor",
+      "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+      "audio": "solo el sonido del agua cayendo en la prensa y el ambiente silencioso de la cocina, sin música ni voces"
+    },
+    {
+      "n": "06", "dur": 6, "desc": "Sirve el café (intenso, sin amargura)", "referencia": "avatar/avatar.jpg",
+      "shot": "a close-up of freshly brewed coffee being poured from a glass French press into a matte black ceramic mug",
+      "subject": "a stream of rich dark-brown coffee falling into the matte black mug, a light golden-brown crema forming on top, soft steam rising",
+      "location": "the same kitchen counter as the reference image, early morning",
+      "details": "the light wooden counter, a few coffee grounds on the counter, white wall tiles out of focus",
+      "framing": "handheld vertical close-up at mug height, the mug in the lower-middle of the frame",
+      "light": "the same warm kitchen lights from the reference, catching the steam and the coffee stream",
+      "negative": ["a face", "a coffee machine", "latte art", "milk"],
+      "action": "el café oscuro cae desde la prensa a la taza negra, se forma una crema dorada y sube un poco de vapor",
+      "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+      "audio": "solo el sonido del café cayendo en la taza, sin música ni voces"
+    },
+    {
+      "n": "07", "dur": 6, "desc": "El ritual: primer sorbo al amanecer (selfie)", "referencia": "avatar/avatar.jpg", "mismaPersona": true,
+      "shot": "a vlog-style selfie of the same man next to his kitchen window at sunrise, holding the matte black mug close, about to take the first sip",
+      "subject": "the same man from the reference, holding the phone at arm's length with one hand and the steaming matte black mug in the other, a calm, focused look; he does not talk",
+      "location": "the same kitchen as the reference image, by the window, at sunrise",
+      "details": "the window behind him to one side showing the first orange light of sunrise over rooftops, the plant on the windowsill, the dark gray t-shirt",
+      "framing": "handheld front-camera selfie, vertical, chest-up, slightly from below eye level",
+      "light": "soft warm sunrise light falling on his face from the front, through the window next to the phone",
+      "negative": ["talking with an open mouth", "a readable view of signs", "lens flare"],
+      "action": "acerca la taza, sopla un poco el vapor y toma un sorbo despacio; luego mira por la ventana, tranquilo",
+      "camera_movement": "selfie en mano con el leve movimiento natural del brazo",
+      "audio": "solo el ambiente silencioso de la madrugada y algún pájaro lejano, sin música ni voces"
+    },
+    {
+      "n": "08", "dur": 6, "desc": "Entrena (entrenas / gánale al día)", "referencia": "avatar/avatar.jpg", "mismaPersona": true,
+      "shot": "the same man training in his small home garage gym at dawn, doing kettlebell swings",
+      "subject": "the same man from the reference in the same dark gray t-shirt, now slightly sweaty, swinging a black kettlebell with both hands, focused face",
+      "location": "a small, simple home garage gym at dawn (not the kitchen from the reference image)",
+      "details": "a rubber floor mat, a pull-up bar on the wall, two more kettlebells on the floor, a half-open garage door with cool morning light, a water bottle with no label",
+      "framing": "phone propped on the floor a few meters away, vertical, full body slightly from below",
+      "light": "cool dawn light coming through the half-open garage door in front of him, plus a warm bulb overhead",
+      "negative": ["the kitchen from the reference image", "other people", "gym brand logos", "mirrors"],
+      "action": "hace tres balanceos de kettlebell con buena técnica, respirando fuerte y enfocado",
+      "camera_movement": "cámara fija apoyada en el suelo",
+      "audio": "solo su respiración y el sonido del kettlebell, sin música ni voces"
+    },
+    {
+      "n": "09", "dur": 6, "desc": "Trabaja con su taza (a la altura de tu día)", "referencia": "avatar/avatar.jpg", "mismaPersona": true,
+      "shot": "the same man working at his home desk in the morning, typing on his laptop and taking a sip from the matte black mug",
+      "subject": "the same man from the reference, freshly showered, wearing a plain navy cotton t-shirt, focused on his laptop; the steaming matte black mug next to the keyboard",
+      "location": "a simple home office corner in the morning (not the kitchen from the reference image)",
+      "details": "a wooden desk, an open laptop seen from the side with the screen not visible, a paper notebook with a pen, a small plant, a window with soft morning daylight",
+      "framing": "phone propped on the desk at a three-quarter side angle, vertical, medium shot from the chest up",
+      "light": "soft morning daylight from the window in front of him, behind the laptop",
+      "negative": ["the kitchen from the reference image", "a readable screen", "the coffee bag", "a second monitor with readable content"],
+      "action": "teclea unos segundos, toma la taza, da un sorbo y vuelve a escribir, concentrado",
+      "camera_movement": "cámara fija apoyada en el escritorio",
+      "audio": "solo el tecleo suave y el ambiente tranquilo, sin música ni voces"
+    },
+    {
+      "n": "10", "dur": 6, "desc": "Cierre: bolsa y taza en el escritorio (botón)", "referencia": "broll/broll-09.jpg", "producto": true,
+      "shot": "the CUMBRE bag standing on his home desk next to the steaming matte black mug in soft morning light",
+      "subject": "the CUMBRE bag upright, sealed, label and mountain drawing facing the camera and fully visible, with the steaming matte black mug beside it; no person",
+      "location": "the same home office desk as in the reference image, morning",
+      "details": "the wooden desk, the closed paper notebook and pen, the edge of the closed laptop, the small plant, the window softly out of focus",
+      "framing": "handheld vertical shot at desk height, the bag and mug in the upper-middle of the frame, the lower third of the frame calm and empty (the desk surface) to leave room for an on-screen button",
+      "light": "soft morning daylight from the window behind the camera, evenly lighting the front of the bag",
+      "negative": ["a person", "a second bag", "an open laptop screen"],
+      "action": "el vapor sube despacio de la taza; nada más se mueve",
+      "camera_movement": "acercamiento muy lento de frente a la bolsa, sin girar alrededor de ella",
+      "audio": "solo el ambiente tranquilo de la mañana, sin música ni voces"
+    }
+  ]
+}

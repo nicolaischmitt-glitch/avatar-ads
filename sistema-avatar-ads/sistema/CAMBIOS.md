@@ -1,5 +1,11 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.0 — 30 oct 2026
+- **Looks del avatar.** La imagen del avatar fijaba su pelo y su ropa: si se creaba "despeinado porque se acaba de levantar", salía así en todas las escenas, y una escena con la misma persona copiaba también el lugar (no podía estar en el gimnasio ni en la oficina). Ahora se separa **quién es** (la cara, de `avatar/avatar.jpg`, que no cambia nunca) de **cómo se ve** (pelo, ropa, cómo se ve su piel), y cada escena tiene su propio lugar.
+  - Solo se activa cuando la historia lo pide: un antes y después, un día que avanza, o la misma persona en otros lugares o con otra ropa. Si la persona solo habla a cámara, todo sigue igual y el sistema no menciona nada. Máximo 3 looks.
+  - El sistema los propone en el paso del avatar (skill `avatar-ads-anuncio`), cada look se genera adjuntando `avatar/avatar.jpg` (Paso 1 del paquete) y cada B-roll dice qué look usa (`"look"` en `clips-plan.json`).
+  - Reglas en la sección 8 de `prompts/master-prompt-imagen.md`; plantilla `lookImagen` en `scripts/broll-plantilla.mjs`. El formato voz en off avisa que casi siempre los necesita ("un día en su vida").
+
 ## 1.4.2 — 30 oct 2026
 - **Voz en off más natural** (`formatos/voz-en-off/LEEME.md`): plantillas nuevas de Scene y Sample Context. La voz suena a una persona grabando una nota de voz en su celular, con **acento latino neutro pedido de forma explícita**, ritmo de conversación normal, energía baja y emoción contenida. Se quitan "TikTok testimonial", "slightly fast pace" y "raise the energy", que la hacían sonar a comercial. Voces sugeridas de tono tranquilo (Callirrhoe, Achernar, Sulafat, Vindemiatrix, Despina).
 

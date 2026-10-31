@@ -22,6 +22,10 @@ Qué hace que funcione (imitar esto):
 
 ## Aprobado
 
+### Anuncio del taller de apertura · café de especialidad para high achievers (30 oct 2026, hook aprobado; guion pendiente)
+- **"Si te levantas a las cinco para ganarle al día, no lo empieces con un café cualquiera."** · hook (ángulo de identidad: café para atletas, empresarios y emprendedores que madrugan, "mentalidad ganadora"). El usuario lo eligió por encima del de contraste ("Entreno todos los días, cuido lo que como… y le estaba echando el peor café a mi cuerpo", el recomendado) y del de dolor ("A las tres de la tarde ya no rendía…").
+  Por qué: le habla a quién es el cliente, no a un dolor; se reconoce en "me levanto a las cinco".
+
 ### Reel 08 · así creamos este anuncio → comenta TALLER (30 oct 2026, aprobado)
 Archivo: `Contenido/reels/08-proceso-serum-taller/guion.md`. Voz en off (AI Studio) escrita en primera persona, como habla Nicolai.
 - **"Te muestro cómo creamos este anuncio con inteligencia artificial, desde cero."** · hook. Idea del usuario: eligió la opción "proceso" (C) por encima de la revelación "Esta chica no existe. Y apuesto a que no lo notaste." (A, la recomendada). Claude solo cambió "un" por "este" (señala el anuncio en pantalla).

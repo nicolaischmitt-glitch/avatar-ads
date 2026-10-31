@@ -1,0 +1,14 @@
+{
+  "scene": {
+    "duration_seconds": 6,
+    "reference_image": true,
+    "start_frame": "usar la imagen de referencia como primer fotograma exacto",
+    "style": "video real grabado con un iPhone, apariencia raw y sin editar",
+    "camera_movement": "cámara en mano casi fija, con el leve temblor natural de un celular",
+    "action": "corta rodajas de plátano sobre el bowl de avena con movimientos tranquilos y precisos",
+    "motion": "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+    "consistency": "mantener exactamente a la misma persona (cara, piel, pelo y ropa), el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
+    "audio": "solo el sonido suave del cuchillo sobre la tabla y el ambiente silencioso de la cocina, sin música ni voces",
+    "restrictions": "Sin subtítulos, textos, letreros legibles, logotipos, marcas de agua, gráficos, transiciones ni filtros."
+  }
+}
