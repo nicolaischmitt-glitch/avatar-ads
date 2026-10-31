@@ -72,7 +72,7 @@ fbq('track', 'PageView');
   .btn svg{flex:none}
 
   /* ===== Franja superior (fecha del taller) + logo dentro del hero ===== */
-  .topbar{background:#000;border-bottom:1px solid var(--line-soft);padding:8px var(--gutter);text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;color:var(--text-2)}
+  .topbar{background:#000;border-bottom:1px solid var(--line-soft);padding:8px var(--gutter);text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;color:var(--text-2)}
   .topbar i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon);margin-right:7px;vertical-align:1px}
   .topbar b{color:var(--white);font-weight:500}
   .hero .countdown{max-width:340px;margin:0 auto}
@@ -414,7 +414,7 @@ fbq('track', 'PageView');
 </head>
 <body>
 
-<div class="topbar"><i></i><b>Taller en vivo</b> · domingo 10 a.m. (hora Ecu)</div>
+<div class="topbar"><i></i><b>Taller en vivo</b> · <span data-dia="largo">mañana domingo</span> 10 a.m. (hora Ecu)</div>
 
 <!-- ============ HERO (el logo va dentro para compartir el fondo) ============ -->
 <header class="hero">
@@ -696,7 +696,7 @@ fbq('track', 'PageView');
 <!-- ============ EL TALLER EN VIVO (28 oct 2026: el taller es la oferta principal; la versión "sistema" está guardada en landing-versiones/sistema-curso/) ============ -->
 <section id="taller">
   <div class="wrap narrow">
-    <h2>Este domingo lo creamos <span class="b">en vivo.</span></h2>
+    <h2><span data-dia="largo" data-cap>Mañana domingo</span> lo creamos <span class="b">en vivo.</span></h2>
     <p class="muted">Me ves crear un anuncio completo con el sistema, de la idea al video editado, y resuelves tus dudas en vivo. Después, te quedas con todo.</p>
     <ol class="tl">
       <li class="live"><span class="dot">01</span><div class="card"><span class="when">Dom 1 nov · 10:00 a.m. (Ecuador)</span><b>Taller en vivo</b><span>Creamos un anuncio completo para un producto, de la idea al video editado.</span></div></li>
@@ -823,7 +823,7 @@ fbq('track', 'PageView');
 <section class="final">
   <div class="wrap narrow">
     <img class="final-logo" src="logo-avatar-ads.webp" alt="" width="900" height="330" loading="lazy">
-    <h2>Nos vemos el domingo, <span class="b">en vivo.</span></h2>
+    <h2>Nos vemos <span data-dia="corto">mañana</span>, <span class="b">en vivo.</span></h2>
     <p class="muted">Domingo 1 de noviembre, 10 a.m. (Ecuador). Te llevas el sistema para crear anuncios que venden, 13 veces más baratos.</p>
     <div class="countdown">
           <div><b data-u="d">0</b><span>días</span></div>
@@ -842,7 +842,7 @@ fbq('track', 'PageView');
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>Taller en vivo</b>dom 1 nov · <span class="cd-text" data-cd-text>dom 1 nov</span></div>
+    <div class="p"><b>Taller en vivo</b><span data-dia="largo">mañana domingo</span> · <span class="cd-text">10 a.m.</span></div>
     <a class="btn" href="#taller">Ver el taller</a>
   </div>
 </div>
@@ -854,6 +854,17 @@ fbq('track', 'PageView');
 </dialog>
 
 <script>
+  // "Mañana" / "hoy" según la fecha en Ecuador (el HTML trae "mañana" por si no corre el script)
+  (() => {
+    const dia = (d) => d.toLocaleDateString("en-CA", { timeZone: "America/Guayaquil" });
+    const diff = Math.round((Date.parse(dia(new Date("2026-11-01T10:00:00-05:00"))) - Date.parse(dia(new Date()))) / 864e5);
+    const txt = diff === 0 ? { largo: "hoy domingo", corto: "hoy" } : diff === 1 ? { largo: "mañana domingo", corto: "mañana" } : { largo: "este domingo", corto: "el domingo" };
+    document.querySelectorAll("[data-dia]").forEach((e) => {
+      const t = txt[e.dataset.dia];
+      e.textContent = e.hasAttribute("data-cap") ? t[0].toUpperCase() + t.slice(1) : t;
+    });
+  })();
+
   // Cuenta regresiva al inicio del taller
   const target = new Date("2026-11-01T10:00:00-05:00").getTime();
   const pad = n => String(n).padStart(2, "0");
