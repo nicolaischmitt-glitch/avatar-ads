@@ -63,7 +63,7 @@ Orden propuesto con las notas del docx, más 3 diapositivas que faltan (marcadas
 4. Qué hace un buen anuncio (ángulo/guion/hook · ambiente · edición).
 5. Tipos de anuncio (head talking, product review, unboxing, vlog, podcast) → mismo proceso.
 6. El proceso en resumen (8 pasos) + "tu único trabajo: copiar, pegar y generar".
-7. Herramientas (Claude Code Pro, Google Flow: opción A plan de pago / opción B varias cuentas).
+7. Herramientas (Claude Code Pro, Google Flow: opción A plan de pago / opción B varias cuentas). Con la B se descarga en 720p (el usuario usa 5 cuentas, ~250 créditos al día, sin bloqueos) y no se ve mal: la edición hace un pequeño upscale y Meta comprime igual. Con el plan de pago, 1080p.
 8. El secreto: la imagen raíz es el 80 % del éxito, y por eso es donde pasamos el 80 % del tiempo. Los clips son la parte más simple; si la imagen no es buena, el video no va a ser bueno. (Punto clave del usuario: no perderlo.)
 9. Buena imagen vs. mala imagen (+ las dos imágenes del docx).
 10. Prompt humano vs. prompt JSON (lado a lado, el JSON resumido; el completo va en los materiales).
