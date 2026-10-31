@@ -1,5 +1,8 @@
 # Cambios del Sistema Avatar Ads
 
+## 1.5.7 — 31 oct 2026
+- **El frame del B-roll es el primer instante del video.** En el anuncio del café, el frame mostraba la acción ya hecha (la cuchara llena de café, la taza en la boca) y el video la repetía: volvía a meter la cuchara en la bolsa, o bajaba la taza y la subía otra vez. Ahora el frame muestra el momento justo antes de la acción, y el video cuenta lo que pasa desde ahí, una sola vez, sin repetir ni volver atrás. Está en la plantilla de los B-rolls, en el paso 5 de `avatar-ads-anuncio` y en la sección 6 de `prompts/master-prompt-imagen.md`.
+
 ## 1.5.6 — 31 oct 2026
 - **Los B-rolls vuelven a 6 s.** La 1.5.5 los bajaba a 4 s cuando eran una añadidura, para ahorrar créditos. En la práctica (anuncio del café), en 4 s la acción no alcanza: el movimiento se acelera o queda cortado. Ahora todos los B-rolls son de 6 s, y en la edición se usa solo la parte que hace falta.
 

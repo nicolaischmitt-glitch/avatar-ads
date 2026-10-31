@@ -6,6 +6,9 @@
 // spec = {
 //   n, dur, desc,
 //   shot:      "a slow close-up of …"              (qué es la toma, en una frase, inglés)
+//              El frame es el PRIMER INSTANTE del video: shot y subject muestran el momento justo antes de la acción
+//              ("the spoon held just above the open bag", no "scooping coffee"; "the mug resting next to his hand", no "taking a sip").
+//              Si el frame ya muestra la acción, el video la repite (vuelve a meter la cuchara, baja la taza y la sube otra vez).
 //   subject:   "…"                                 (qué se ve: objetos / manos / persona sin cara reconocible)
 //   location:  "…" · details: "3–5 objetos concretos del lugar"
 //   framing:   "…" · light: "…"                    (encuadre y fuente de luz)
@@ -19,7 +22,7 @@
 //   producto_donde: "on the counter, next to the sink"   (con producto: dónde queda en la imagen, para el prompt de corrección)
 //              (opcional, LOCKED IN del producto físico: su imagen se adjunta como primera referencia, el bloque se copia
 //               igual en cada prompt y el único texto permitido en la toma es el de la etiqueta)
-//   action:    "…" · camera_movement: "…" · audio: "…"   (la animación, en español)
+//   action:    "…" · camera_movement: "…" · audio: "…"   (la animación, en español: lo que pasa DESDE ese frame, una sola vez)
 // }
 
 // Paso 0 (solo con producto físico): foto de referencia del producto solo, de frente, fondo neutro y etiqueta nítida → producto/producto.png.
@@ -65,7 +68,7 @@ export function brollImagen(s) {
   if (p) ref = ` Attached image 1 is the exact product: replicate it identically (same product shape, size, materials, colors, label design and label text), as described in "product".` +
     (s.referencia ? (s.mismaPersona ? ` Attached image 2${persona}` : ` Attached image 2 only shows the place: match its location and light, but do not include the person from it.`) : "");
   return {
-    task: `Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: ${s.shot}. It will be the first frame of a short B-roll clip, so it must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.${ref}`,
+    task: `Generate one photorealistic still frame from a casual vertical video someone recorded with an iPhone: ${s.shot}. It will be the very first frame of a short B-roll clip: it shows the instant just before the action starts, not the action in progress or already finished. It must feel candid and authentic, like a frame from an everyday phone video, not a stock photo or an ad.${ref}`,
     output: {
       aspect_ratio: "9:16",
       orientation: "vertical",
@@ -183,11 +186,11 @@ export function brollVideo(s) {
     scene: {
       duration_seconds: s.dur,
       reference_image: true,
-      start_frame: "usar la imagen de referencia como primer fotograma exacto",
+      start_frame: "usar la imagen de referencia como primer fotograma exacto: la acción empieza desde lo que se ve en ella",
       style: "video real grabado con un iPhone, apariencia raw y sin editar",
       camera_movement: s.camera_movement,
       action: s.action,
-      motion: "movimiento sutil, realista y a velocidad natural; nada se deforma ni cambia de forma",
+      motion: "movimiento sutil, realista y a velocidad natural; la acción ocurre una sola vez, hacia adelante, sin repetirse ni volver atrás; nada se deforma ni cambia de forma",
       consistency: s.mismaPersona
         ? "mantener exactamente a la misma persona (cara, piel, pelo y ropa), el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas"
         : "mantener exactamente el lugar, los objetos, los colores y la luz de la imagen; no añadir objetos ni personas nuevas",
