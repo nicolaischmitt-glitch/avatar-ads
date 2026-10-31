@@ -222,16 +222,6 @@ fbq('track', 'PageView');
   .tl b{display:block;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:17px;color:var(--white);margin:3px 0 2px}
   .tl .card span:last-child{font-size:14.5px;color:var(--text-2)}
   #taller .countdown{margin-top:22px}
-  .hero-seats{display:block;margin-top:6px;color:var(--neon)}
-
-  /* ===== Puestos (escasez real: cambiar PUESTOS en el script) ===== */
-  .seats-box{margin-top:18px}
-  .seats{display:grid;grid-template-columns:repeat(15,1fr);gap:4px}
-  .seats i{display:block;aspect-ratio:1;border-radius:4px;background:var(--neon);box-shadow:0 0 8px rgba(197,247,64,.35)}
-  .seats i.taken{background:#3a4640;box-shadow:none}
-  .seats-label{margin-top:8px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2)}
-  .seats-label b{color:var(--neon);font-weight:500}
-  .stack-total .seats-box{margin:0 0 18px}
 
   /* ===== WhatsApp: hablar con el creador ===== */
   .wa-line{margin-top:16px;text-align:center;font-size:14px;color:var(--text-2)}
@@ -457,7 +447,7 @@ fbq('track', 'PageView');
         <div><b data-u="m">00</b><span>min</span></div>
         <div><b data-u="s">00</b><span>seg</span></div>
       </div>
-      <p class="cd-label hero-cd">para el taller en vivo · <span class="hl">quedan <b data-libres>10</b> de <span data-total>15</span> puestos</span></p>
+      <p class="cd-label hero-cd">para el taller en vivo</p>
 
       <a class="btn" href="#taller">Ver el taller
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -720,7 +710,6 @@ fbq('track', 'PageView');
           <div><b data-u="s">00</b><span>seg</span></div>
         </div>
     <p class="cd-label">para el inicio del taller en vivo</p>
-    <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</p></div>
   </div>
 </section>
 
@@ -784,9 +773,7 @@ fbq('track', 'PageView');
           <li><span>Bono en vivo</span><b>Lun 2 nov · 7:00 p.m.</b></li>
           <li><span>Horario</span><b>Hora de Ecuador</b></li>
           <li><span>Modalidad</span><b>Online, en vivo</b></li>
-          <li><span>Puestos</span><b><span data-libres>10</span> de <span data-total>15</span> disponibles</b></li>
         </ul>
-        <div class="seats-box"><div class="seats" aria-hidden="true"></div><p class="seats-label">Quedan <b data-libres>10</b> de <span data-total>15</span> puestos</p></div>
         <a class="btn" href="https://pay.hotmart.com/G108061829I?checkoutMode=10">Quiero entrar al taller · $27
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
@@ -855,7 +842,7 @@ fbq('track', 'PageView');
 <!-- Barra fija (solo móvil) -->
 <div class="sticky" id="sticky">
   <div class="in">
-    <div class="p"><b>Taller en vivo</b>quedan <span data-libres>10</span> puestos · <span class="cd-text" data-cd-text>dom 1 nov</span></div>
+    <div class="p"><b>Taller en vivo</b>dom 1 nov · <span class="cd-text" data-cd-text>dom 1 nov</span></div>
     <a class="btn" href="#taller">Ver el taller</a>
   </div>
 </div>
@@ -867,19 +854,6 @@ fbq('track', 'PageView');
 </dialog>
 
 <script>
-  // Puestos del taller: actualizar "reservados" a mano con cada venta (y cerrar ventas en Hotmart al llegar a 15)
-  const PUESTOS = { total: 15, reservados: 5 };
-  const libres = Math.max(0, PUESTOS.total - PUESTOS.reservados);
-  document.querySelectorAll("[data-libres]").forEach((e) => e.textContent = libres);
-  document.querySelectorAll("[data-total]").forEach((e) => e.textContent = PUESTOS.total);
-  document.querySelectorAll(".seats").forEach((g) => {
-    for (let i = 0; i < PUESTOS.total; i++) {
-      const el = document.createElement("i");
-      if (i < PUESTOS.reservados) el.className = "taken";
-      g.appendChild(el);
-    }
-  });
-
   // Cuenta regresiva al inicio del taller
   const target = new Date("2026-11-01T10:00:00-05:00").getTime();
   const pad = n => String(n).padStart(2, "0");

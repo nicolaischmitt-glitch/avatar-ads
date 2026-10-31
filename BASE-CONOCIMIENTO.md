@@ -33,7 +33,7 @@ El objetivo de Avatar Ads **no es crear el video más real posible: es crear anu
 |---|---|
 | Formato | Taller online de apertura: 1 día intenso en vivo (**dom 1 nov 2026, 10 a.m.** Ecuador) + clase bonus de captación de clientes (**lun 2 nov, 7 p.m.** Ecuador); da acceso al programa. Fechas cambiadas el 28 oct 2026 (antes sáb 31 + dom 1): donde este documento diga otra cosa, manda `PROYECTO.md` |
 | Precio | $27, pago único (edición de apertura). Sin cupones ni descuentos |
-| Cupo | 15 puestos (desde el 28 oct 2026; quedan los que diga `PUESTOS` en la landing). Contacto directo: WhatsApp con el creador, "sin bots ni asistentes" |
+| Cupo | Sin límite; la landing ya no muestra puestos (31 oct 2026), solo la cuenta regresiva. Contacto directo: WhatsApp con el creador, "sin bots ni asistentes" |
 | Acceso | Vitalicio + todas las futuras actualizaciones, aunque el precio suba |
 | Qué se ve | Taller: creamos en vivo un anuncio completo para un producto, de la idea al video editado (desde el 29 oct 2026; antes eran dos) · Clase bonus: cómo conseguir clientes |
 | Checkout | Hotmart (link en `PROYECTO.md`) |
@@ -202,7 +202,7 @@ Aún no hay testimonios de **alumnos de Avatar Ads**: no inventarlos ni presenta
 
 - No inventar datos: precios futuros, número de alumnos, testimonios, resultados de campañas, fechas nuevas. Si hace falta uno, preguntar.
 - **El inicio capta, no vende** (principio del usuario, 22 oct 2026): en el inicio de una landing, un funnel o cualquier pieza, mientras más simple, mejor. Arriba solo va el copy que capta la atención (título, subtítulo, prueba visual): sin precios, sin fechas ni horarios, sin datos extra y sin botón directo al checkout. El primer CTA lleva a la oferta ("Ver todo lo que incluye"); el precio y los detalles aparecen cuando ya hay interés.
-- Escasez y urgencia solo con hechos reales (apertura, fecha del taller en vivo, 15 puestos con el número real de reservados, precio que subirá).
+- Escasez y urgencia solo con hechos reales (apertura, fecha del taller en vivo con cuenta regresiva, precio que subirá). Sin escasez de puestos (se quitó el 31 oct 2026).
 - **Anuncios pagados = evergreen** (decisión del 21 oct 2026): sin precio ni fecha, ni en la voz ni en pantalla. Los detalles viven en la landing, así el mismo anuncio sirve para todos los talleres.
 - No usar caras de personas reales reconocibles en recursos; el avatar es IA.
 - Reels: usar el skill `reels-avatar-ads`. Carruseles: skill `carruseles-avatar-ads`. Prompts de video: el master prompt manda.
